@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/worona/worona-core/issues"
   },
-  "homepage": "https://github.com/worona/worona-core#readme"
+  "homepage": "https://github.com/worona/worona-core#readme",
+  "dependencies": {
+    "react": "^0.14.8",
+    "react-dom": "^0.14.8"
+  }
 }

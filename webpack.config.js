@@ -22,9 +22,20 @@ var exports = function(options) {
         {
           test: /\.jsx?$/,
           loader: 'babel',
+          query: {
+            presets: ['react-hmre'],
+          },
           exclude: /(node_modules)/,
         },
       ]
+    },
+    resolve: {
+      modulesDirectories: [
+        options.folder + '/themes',
+        options.folder + '/extensions',
+        options.folder + '/node_modules',
+        'node_modules',
+      ],
     },
     devServer: {
   		contentBase: path.join(__dirname, options.folder, 'dev'),
@@ -46,7 +57,7 @@ module.exports = [
   exports({
     name: 'dashboard',
     folder: 'worona-dashboard-client',
-    vendor: [],
+    vendor: ['react', 'react-dom'],
     port: 4000,
   }),
   exports({

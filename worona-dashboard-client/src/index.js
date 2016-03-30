@@ -1,10 +1,13 @@
-const origin = 'https://cdn.worona.io';
-const fallback = process.env.NODE_ENV === 'development' ?
-  'http://localhost:6000' : null;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Theme } from 'chess-theme';
 
-const init = () => {
-  document.write('worona dashboard loaded');
-  console.log('worona dashboard loaded');
-};
+class Dashboard extends React.Component {
+  render() {
+    return (
+      <Theme />
+    );
+  }
+}
 
-init();
+ReactDOM.render(<Dashboard />, document.getElementById('root'));
