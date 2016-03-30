@@ -57,7 +57,7 @@ module.exports = [
   exports({
     name: 'dashboard',
     folder: 'worona-dashboard-client',
-    vendor: ['react', 'react-dom'],
+    vendor: ['react', 'react-dom', 'redux', 'react-redux'],
     port: 4000,
   }),
   exports({
