@@ -1,4 +1,6 @@
 .DS_Store
 node_modules
 npm-debug.log
-**/dev/**/*.js
+**/dev/**/js
+**/dev/**/fonts
+**/dev/**/images

@@ -1,6 +1,7 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var exports = function(options) {
   return {
@@ -15,7 +16,7 @@ var exports = function(options) {
     output: {
       path: path.join(__dirname, options.folder, 'dev'),
       publicPath: '/',
-      filename: '[name].core.js',
+      filename: 'js/[name].core.[hash].js',
     },
     module: {
       loaders: [
@@ -37,15 +38,15 @@ var exports = function(options) {
         },
         {
           test: /\.(png|jpg|gif)$/,
-          loader: "file-loader?name=img/img-[hash:6].[ext]"
+          loader: "file-loader?name=images/[name].[hash].[ext]"
         },
         {
           test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          loader: "url-loader?limit=10000&minetype=application/font-woff"
+          loader: "url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[hash].[ext]"
         },
         {
           test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          loader: "file-loader"
+          loader: "file-loader?name=fonts/[name].[hash].[ext]"
         },
       ],
     },
@@ -69,7 +70,11 @@ var exports = function(options) {
       new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' }),
       new webpack.optimize.CommonsChunkPlugin(
-        'vendor', options.name + '.vendor.js'),
+        'vendor', 'js/' + options.name + '.vendor.[hash].js'),
+      new HtmlWebpackPlugin({
+        template: options.folder + '/src/index.html',
+        favicon: options.folder + '/src/favicon.png',
+      }),
     ]
   };
 }
