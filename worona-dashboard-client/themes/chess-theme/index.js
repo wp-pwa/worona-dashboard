@@ -1,11 +1,10 @@
 import React from 'react';
 import './style.sass';
-import { Header } from './components/Header';
-import { headerItems } from './config.js';
+import { Header } from './components/header/Header.jsx';
 
 export const Theme = () => (
   <div>
-    <Header items={headerItems} />
+    <Header />
     <section className="hero is-info">
       <div className="hero-content">
         <div className="container">

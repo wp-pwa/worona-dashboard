@@ -33,7 +33,7 @@ Button.propTypes = {
   icon: React.PropTypes.string,
 };
 
-export const Item = props => {
+export const MenuItem = props => {
   if (props.type === 'text') {
     return <Text {...props} />;
   } else if (props.type === 'button') {
@@ -41,7 +41,7 @@ export const Item = props => {
   }
   return null;
 };
-Item.propTypes = {
+MenuItem.propTypes = {
   type: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
   url: React.PropTypes.string.isRequired,

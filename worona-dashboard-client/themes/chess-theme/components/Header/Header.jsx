@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { VelocityTransitionGroup } from 'velocity-react';
 
 import worona from './worona.png';
-import { Item } from './Item.jsx';
+import { Menu } from './Menu.jsx';
 import { toggleMobileMenu } from '../../actions';
 
 
@@ -26,12 +27,17 @@ export const HeaderSC = ({ items, toggle, active }) => (
           <span></span>
         </span>
 
-        {/* Right side */}
-        <div className={`header-right header-menu ${(active ? 'is-active' : '')}`}>
-          {items.map((item, index) =>
-            (<Item key={index} {...item} />)
-          )}
-        </div>
+        {/* Right side, not mobile */}
+        <Menu items={items} />
+
+        {/* Right side, mobile */}
+        <VelocityTransitionGroup
+          enter={{ animation: 'slideDown', duration: 150 }}
+          leave={{ animation: 'slideUp', duration: 150 }}
+          duration={300}
+        >
+          {active ? <Menu items={items} active={active} /> : null}
+        </VelocityTransitionGroup>
       </div>
     </header>
   </section>
