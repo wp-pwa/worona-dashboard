@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.sass';
 import { Header } from './components/header/Header.jsx';
+import FastClick from 'fastclick';
 
 export const Theme = () => (
   <div>
@@ -19,3 +20,7 @@ export const Theme = () => (
     </section>
   </div>
 );
+
+window.addEventListener('load', () => {
+  FastClick.attach(document.body);
+});
