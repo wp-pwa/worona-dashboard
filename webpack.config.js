@@ -32,14 +32,22 @@ var exports = function(options) {
           loaders: ['style', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]']
         },
         {
-          test: /\.sass$/,
+          test: /\.s[ac]ss$/,
           loaders: ['style', 'css', 'sass']
         },
         {
           test: /\.(png|jpg|gif)$/,
           loader: "file-loader?name=img/img-[hash:6].[ext]"
         },
-      ]
+        {
+          test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: "url-loader?limit=10000&minetype=application/font-woff"
+        },
+        {
+          test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: "file-loader"
+        },
+      ],
     },
     resolve: {
       modulesDirectories: [

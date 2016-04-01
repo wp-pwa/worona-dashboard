@@ -1,41 +1,56 @@
 import React from 'react';
 import worona from './worona.png';
+import { Item } from './Item.jsx';
 // import style from './style.css';
 
-export const Header = () => (
-  <section className="hero is-info">
-    <header className="header">
-      <div className="container">
-        {/* Left side*/}
-        <div className="header-left">
-          <a className="header-item" href="/">
-            <img src={worona} alt="Logo" />
-          </a>
-        </div>
+export class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingMobileMenu: false,
+    };
+  }
 
-        {/* Hamburger menu (on mobile) */}
-        <span className="header-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
+  toggleMobileMenu(self) {
+    self.setState({
+      showingMobileMenu: !self.state.showingMobileMenu,
+    });
+  }
 
-        {/* Right side */}
-        <div className="header-right header-menu">
-          <span className="header-item">
-            <a href="https://docs.worona.org">Docs</a>
-          </span>
-          <span className="header-item">
-            <a href="https://forums.worona.org">Forums</a>
-          </span>
-          <span className="header-item">
-            <a href="https://support.worona.org">Support</a>
-          </span>
-          <span className="header-item">
-            <a className="button" href="#">Login</a>
-          </span>
-        </div>
-      </div>
-    </header>
-  </section>
-);
+  render() {
+    const mobileClass = this.state.showingMobileMenu ? 'is-active' : '';
+    return (
+      <section className="hero is-info">
+        <header className="header">
+          <div className="container">
+            {/* Left side*/}
+            <div className="header-left">
+              <a className="header-item" href="/">
+                <img src={worona} alt="Logo" />
+              </a>
+            </div>
+
+            {/* Hamburger menu (on mobile) */}
+            <span className={`header-toggle ${mobileClass}`}
+              onClick={() => this.toggleMobileMenu(this)}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+
+            {/* Right side */}
+            <div className={`header-right header-menu ${mobileClass}`}>
+              {this.props.items.map((item, index) =>
+                (<Item key={index} {...item} />)
+              )}
+            </div>
+          </div>
+        </header>
+      </section>
+    );
+  }
+}
+Header.propTypes = {
+  items: React.PropTypes.arrayOf(React.PropTypes.object),
+};
