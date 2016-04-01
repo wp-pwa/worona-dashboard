@@ -1,7 +1,7 @@
 import React from 'react';
+import './bulma.sass';
+import { Header } from './Header';
 
 export const Theme = () => (
-  <div>
-    Hola 2
-  </div>
+  <Header />
 );

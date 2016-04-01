@@ -27,6 +27,18 @@ var exports = function(options) {
           },
           exclude: /(node_modules)/,
         },
+        {
+          test: /\.css$/,
+          loaders: ['style', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]']
+        },
+        {
+          test: /\.sass$/,
+          loaders: ['style', 'css', 'sass']
+        },
+        {
+          test: /\.(png|jpg|gif)$/,
+          loader: "file-loader?name=img/img-[hash:6].[ext]"
+        },
       ]
     },
     resolve: {
@@ -37,6 +49,7 @@ var exports = function(options) {
         'node_modules',
       ],
     },
+    devtool: '#eval-source-map',
     devServer: {
   		contentBase: path.join(__dirname, options.folder, 'dev'),
   		noInfo: true,

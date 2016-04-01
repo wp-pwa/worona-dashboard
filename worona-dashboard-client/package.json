@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/worona/worona-core#readme",
   "dependencies": {
+    "bulma": "0.0.17",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
     "react-redux": "^4.4.1",

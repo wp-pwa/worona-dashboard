@@ -43,6 +43,12 @@ Open another terminal and run the dashboard and app clients.
 npm run client
 ```
 
+Open another terminal and run the tests watcher.
+
+```bash
+npm test
+```
+
 ---
 
 ## Using local modules in extension/theme development
