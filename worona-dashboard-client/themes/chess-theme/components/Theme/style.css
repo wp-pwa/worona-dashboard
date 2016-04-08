@@ -1,0 +1,21 @@
+:global html {
+  height: 100%;
+}
+
+:global(body), :global(#root), .body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  flex: 0 0 auto;
+}
+
+.main {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex: 0 0 auto;
+}

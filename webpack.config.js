@@ -22,7 +22,7 @@ var exports = function(options) {
       loaders: [
         {
           test: /\.jsx?$/,
-          loader: 'babel',
+          loader: 'babel-loader',
           query: {
             presets: ['react-hmre'],
           },
@@ -30,11 +30,19 @@ var exports = function(options) {
         },
         {
           test: /\.css$/,
-          loaders: ['style', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]']
+          loaders: [
+            'style-loader',
+            'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+            'postcss-loader',
+          ],
         },
         {
           test: /\.s[ac]ss$/,
-          loaders: ['style', 'css', 'sass']
+          loaders: [
+            'style-loader',
+            'css-loader',
+            'sass-loader',
+          ],
         },
         {
           test: /\.(png|jpg|gif)$/,
@@ -57,6 +65,7 @@ var exports = function(options) {
         options.folder + '/node_modules',
         'node_modules',
       ],
+      extensions: ['', '.js', '.jsx'],
     },
     devtool: '#eval-source-map',
     devServer: {
@@ -65,7 +74,11 @@ var exports = function(options) {
   		hot: true,
   		inline: true,
       port: options.port,
+      historyApiFallback: true,
   	},
+    postcss: function () { return [
+      require('postcss-cssnext')(),
+    ];},
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' }),
@@ -83,7 +96,19 @@ module.exports = [
   exports({
     name: 'dashboard',
     folder: 'worona-dashboard-client',
-    vendor: ['react', 'react-dom', 'redux', 'react-redux'],
+    vendor: [
+      // React
+      'react',
+      'react-dom',
+      'react-router',
+      // Redux
+      'redux',
+      'react-redux',
+      'react-router-redux',
+      // Other
+      'fastclick',
+      'velocity-react',
+    ],
     port: 4000,
   }),
   exports({

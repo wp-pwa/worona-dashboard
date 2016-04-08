@@ -1,0 +1,8 @@
+@import "../../variables.css";
+
+.login {
+  max-width: var(--width, 400px);
+}
+.account {
+  margin-top: 30px;
+}

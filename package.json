@@ -15,7 +15,8 @@
     "link:app-client": "(cd worona-app-client && npm link)",
     "link:dashboard-client": "(cd worona-dashboard-client && npm link)",
     "link:dashboard-server": "(cd worona-dashboard-server && npm link)",
-    "test": "ava worona*/**/tests/**/*.js --watch --verbose --require babel-register"
+    "test": "ava worona*/**/tests/**/*.js --watch --verbose --require babel-register",
+    "storybook": "start-storybook -p 9001"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,8 @@
   },
   "homepage": "https://github.com/worona/worona-core#readme",
   "devDependencies": {
-    "ava": "^0.13.0",
+    "@kadira/storybook": "^1.5.0",
+    "ava": "^0.14.0",
     "babel-core": "^6.7.2",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.6.0",
@@ -49,12 +51,19 @@
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.15.0",
     "node-sass": "^3.4.2",
+    "postcss": "^5.0.19",
+    "postcss-cssnext": "^2.5.2",
+    "postcss-loader": "^0.8.2",
+    "react": "^0.14.8",
+    "react-dom": "^0.14.8",
     "react-transform-hmr": "^1.0.4",
     "sass-loader": "^3.2.0",
+    "sinon": "^1.17.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "webpack-hot-middleware": "^2.10.0"
-  }
+  },
+  "dependencies": {}
 }

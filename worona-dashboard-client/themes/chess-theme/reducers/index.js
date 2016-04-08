@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { items } from './header-items';
+import { forms } from './forms';
 
 export const showingMobileMenu = (state = false, action) => {
   if (action.type === 'TOGGLE_MOBILE_MENU') {
@@ -13,4 +14,5 @@ export const theme = combineReducers({
     items,
     showingMobileMenu,
   }),
+  forms,
 });

@@ -18,5 +18,5 @@ test('theme.header.showingMobileMenu should be false again when toggle', t => {
 
 // theme.header.items
 test('theme.header.items should be the same than initialState', t => {
-  t.same(items(undefined, {}), itemsInitialState);
+  t.is(items(undefined, {}), itemsInitialState);
 });

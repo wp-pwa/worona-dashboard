@@ -7,7 +7,7 @@ import { Menu } from './Menu.jsx';
 import { toggleMobileMenu } from '../../actions';
 
 
-export const HeaderSC = ({ items, toggle, active }) => (
+let Header = ({ items, toggle, active }) => (
   <section className="hero is-info">
     <header className="header">
       <div className="container">
@@ -42,7 +42,7 @@ export const HeaderSC = ({ items, toggle, active }) => (
     </header>
   </section>
 );
-HeaderSC.propTypes = {
+Header.propTypes = {
   items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
   active: React.PropTypes.bool.isRequired,
   toggle: React.PropTypes.func.isRequired,
@@ -57,4 +57,4 @@ const mapDispatchToProps = (dispatch) => ({
   toggle: () => dispatch(toggleMobileMenu()),
 });
 
-export const Header = connect(mapStateToProps, mapDispatchToProps)(HeaderSC);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
