@@ -67,7 +67,7 @@ var exports = function(options) {
       ],
       extensions: ['', '.js', '.jsx'],
     },
-    devtool: '#eval-source-map',
+    // devtool: '#source-map',
     devServer: {
   		contentBase: path.join(__dirname, options.folder, 'dev'),
   		noInfo: true,

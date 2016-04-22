@@ -1,24 +1,35 @@
 import { createClass } from 'asteroid';
-import WebSocket from 'ws';
+import { store } from 'store';
+import { connected, disconnected, loggedOut } from '../actions';
 
 const Asteroid = createClass();
 
 // Connect to a Meteor backend
 export const connection = new Asteroid({
   endpoint: 'ws://localhost:3000/websocket',
-  SocketConstructor: WebSocket,
+  // SocketConstructor: ws,
 });
 
-// Logs the user in using username/email and password.
-// Does not hash the password before sending it to the server. This should
-// not be a problem, since you'll probably be using SSL anyway.
-// Returns a promise which resolves to the userId of the logged in user when
-// the login succeeds, or rejects when it fails.
-export const login = ({ username, email, password, onSuccess, onError }) => {
-  connection.loginWithPassword({ username, email, password })
-    .then(onSuccess).catch(onError);
-};
+window.connection = connection;
 
-export const logout = ({ onSuccess, onError }) => {
-  connection.logout().then(onSuccess).catch(onError);
-};
+export const login = (email, password) =>
+  connection.loginWithPassword({ email, password });
+
+export const logout = () =>
+  connection.logout();
+
+export const createAccount = (name, email, password) =>
+  connection.call('createAccount', email, password);
+
+// Events
+connection.on('connected', () => {
+  store.dispatch(connected());
+});
+
+connection.on('disconnected', () => {
+  store.dispatch(disconnected());
+});
+
+connection.on('loggedOut', () => {
+  store.dispatch(loggedOut());
+});

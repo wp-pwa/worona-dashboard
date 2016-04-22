@@ -7,3 +7,6 @@
 meteor-base             # Packages every Meteor app needs to have
 mongo                   # The database Meteor supports right now
 ecmascript              # Enable ECMAScript2015+ syntax in app code
+
+accounts-base
+accounts-password

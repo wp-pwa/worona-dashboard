@@ -4,9 +4,11 @@ import { reducer as form } from 'redux-form';
 import { accounts } from 'accounts/reducers';
 import { theme } from 'chess-theme/reducers';
 
-export const reducers = combineReducers({
+const reducers = combineReducers({
   accounts,
   theme,
   form,
   routing: routerReducer,
 });
+
+export default reducers;
