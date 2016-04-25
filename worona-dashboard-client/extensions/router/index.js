@@ -1,6 +1,6 @@
 /* eslint-disable react/prefer-stateless-function, react/no-multi-comp, react/prop-types */
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute, browserHistory } from 'react-router';
 import {
   Theme,
   Home,
@@ -56,3 +56,5 @@ export const routes = (store) => (
     </Route>
   </Route>
 );
+
+export default routes;

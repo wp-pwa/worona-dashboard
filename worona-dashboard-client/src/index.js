@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
-import { store } from 'store';
+import store from 'store';
 import { routes } from 'router';
 import FastClick from 'fastclick';
 

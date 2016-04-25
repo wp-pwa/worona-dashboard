@@ -5,12 +5,12 @@ import { reduxForm } from 'redux-form';
 import Hero from '../elements/Hero';
 import Input from '../elements/Input';
 import Button from '../elements/Button';
-import { createAccountRequest } from 'accounts/actions';
+import { createAccountRequested } from 'accounts/actions';
 import { validate } from './validate';
 import styles from './style.css';
 
 const submit = (values, dispatch) => {
-  dispatch(createAccountRequest(values.name, values.email, values.password));
+  dispatch(createAccountRequested(values.name, values.email, values.password));
 };
 
 let Register = ({ fields: { name, email, password }, handleSubmit, waiting, failed }) => (

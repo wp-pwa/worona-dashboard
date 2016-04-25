@@ -1,13 +1,21 @@
 import { combineReducers } from 'redux';
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions';
-import { LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE } from '../actions';
-import { CREATE_ACCOUNT_REQUEST, CREATE_ACCOUNT_SUCCESS, CREATE_ACCOUNT_FAILURE } from '../actions';
+import {
+  LOGIN_REQUESTED,
+  LOGIN_SUCCEED,
+  LOGIN_FAILED,
+  LOGOUT_REQUESTED,
+  LOGOUT_SUCCEED,
+  LOGOUT_FAILED,
+  CREATE_ACCOUNT_REQUESTED,
+  CREATE_ACCOUNT_SUCCEED,
+  CREATE_ACCOUNT_FAILED,
+} from '../actions';
 
 export const isLoggedIn = (state = false, action) => {
   switch (action.type) {
-    case LOGIN_SUCCESS:
+    case LOGIN_SUCCEED:
       return true;
-    case LOGOUT_SUCCESS:
+    case LOGOUT_SUCCEED:
       return false;
     default:
       return state;
@@ -16,10 +24,10 @@ export const isLoggedIn = (state = false, action) => {
 
 export const isLoggingIn = (state = false, action) => {
   switch (action.type) {
-    case LOGIN_REQUEST:
+    case LOGIN_REQUESTED:
       return true;
-    case LOGIN_FAILURE:
-    case LOGIN_SUCCESS:
+    case LOGIN_FAILED:
+    case LOGIN_SUCCEED:
       return false;
     default:
       return state;
@@ -28,10 +36,10 @@ export const isLoggingIn = (state = false, action) => {
 
 export const isLoggingOut = (state = false, action) => {
   switch (action.type) {
-    case LOGOUT_REQUEST:
+    case LOGOUT_REQUESTED:
       return true;
-    case LOGOUT_FAILURE:
-    case LOGOUT_SUCCESS:
+    case LOGOUT_FAILED:
+    case LOGOUT_SUCCEED:
       return false;
     default:
       return state;
@@ -40,10 +48,10 @@ export const isLoggingOut = (state = false, action) => {
 
 export const isCreatingAccount = (state = false, action) => {
   switch (action.type) {
-    case CREATE_ACCOUNT_REQUEST:
+    case CREATE_ACCOUNT_REQUESTED:
       return true;
-    case CREATE_ACCOUNT_FAILURE:
-    case CREATE_ACCOUNT_SUCCESS:
+    case CREATE_ACCOUNT_FAILED:
+    case CREATE_ACCOUNT_SUCCEED:
       return false;
     default:
       return state;

@@ -4,13 +4,15 @@ import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers';
 import sagas from './sagas';
 
-export const store = createStore(
+const store = createStore(
   reducers,
   compose(
     applyMiddleware(createSagaMiddleware(...sagas)),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+    typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
+
+export default store;
 
 if (module.hot) {
   module.hot.accept('./reducers', () => {
