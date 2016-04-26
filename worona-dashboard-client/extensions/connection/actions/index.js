@@ -1,6 +1,17 @@
-export const CONNECTED = 'connection/CONNECTED';
-export const connected = () => ({
-  type: CONNECTED,
+export const CONNECTION_REQUESTED = 'connection/CONNECTION_REQUESTED';
+export const connectionRequested = () => ({
+  type: CONNECTION_REQUESTED,
+});
+
+export const CONNECTION_SUCCEED = 'connection/CONNECTION_SUCCEED';
+export const connectionSucceed = () => ({
+  type: CONNECTION_SUCCEED,
+});
+
+export const CONNECTION_FAILED = 'connection/CONNECTION_FAILED';
+export const connectionFailed = error => ({
+  type: CONNECTION_FAILED,
+  error,
 });
 
 export const DISCONNECTED = 'connection/DISCONNECTED';
@@ -8,7 +19,4 @@ export const disconnected = () => ({
   type: DISCONNECTED,
 });
 
-export const LOGOUT_SUCCEED = 'connection/LOGOUT_SUCCEED';
-export const loggedOut = () => ({
-  type: LOGOUT_SUCCEED,
-});
+export { LOGOUT_SUCCEED, logoutSucceed } from '../dependencies';

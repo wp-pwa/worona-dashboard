@@ -17,6 +17,8 @@
     "link:dashboard-server": "(cd worona-dashboard-server && npm link)",
     "build:test": "webpack --config webpack.config.test.js",
     "test": "ava worona*/**/tests/**/*.js --watch --verbose --require babel-register --require ./test-globals.js --require babel-polyfill",
+    "test-coverage": "ava worona*/**/tests/**/*.js --verbose --require babel-register --require ./test-globals.js --require babel-polyfill",
+    "coverage": "nyc --require babel-polyfill --require babel-register --cache npm run test-coverage",
     "storybook": "start-storybook -p 9001",
     "mongo": "(cd worona-dashboard-server && meteor mongo)"
   },
@@ -55,6 +57,7 @@
     "html-webpack-plugin": "^2.15.0",
     "json-loader": "^0.5.4",
     "node-sass": "^3.4.2",
+    "nyc": "^6.4.0",
     "postcss": "^5.0.19",
     "postcss-cssnext": "^2.5.2",
     "postcss-loader": "^0.8.2",

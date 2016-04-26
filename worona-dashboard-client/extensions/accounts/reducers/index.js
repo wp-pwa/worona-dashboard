@@ -58,7 +58,7 @@ export const isCreatingAccount = (state = false, action) => {
   }
 };
 
-export const accounts = combineReducers({
+export default combineReducers({
   isLoggedIn,
   isLoggingIn,
   isLoggingOut,

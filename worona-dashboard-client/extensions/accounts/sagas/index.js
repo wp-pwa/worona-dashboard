@@ -1,7 +1,6 @@
 import { takeLatest } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
-import browserHistory from 'router/browserHistory';
-import { login, logout, createAccount } from 'connection/lib';
+import { createAccount, browserHistory } from '../dependencies';
 import {
   CREATE_ACCOUNT_REQUESTED,
   LOGIN_SUCCEED,
@@ -10,24 +9,30 @@ import {
   loginSucceed,
 } from '../actions';
 
+// Create a new account for the user.
 export function* createAccountSaga(action) {
-  const { name, email, password } = action;
+  const { email, password } = action;
   try {
-    const userId = yield call(createAccount, name, email, password);
+    const userId = yield call(createAccount, email, password);
     yield put(createAccountSucceed(userId));
     yield put(loginSucceed(userId));
   } catch (error) {
     yield put(createAccountFailed(error));
   }
 }
+export function* createAccountWatcher() {
+  yield* takeLatest(CREATE_ACCOUNT_REQUESTED, createAccountSaga);
+}
 
+// Redirect the user to the home after a successful login.
 export function* loginSucceedSaga() {
   yield call(browserHistory.push, '/');
 }
-
-export default function* sagas() {
-  yield [
-    takeLatest(CREATE_ACCOUNT_REQUESTED, createAccountSaga),
-    takeLatest(LOGIN_SUCCEED, loginSucceedSaga),
-  ];
+export function* loginSucceedWatcher() {
+  yield* takeLatest(LOGIN_SUCCEED, loginSucceedSaga);
 }
+
+export default [
+  createAccountWatcher,
+  loginSucceedWatcher,
+];

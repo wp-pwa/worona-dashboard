@@ -19,8 +19,5 @@ if (module.hot) {
     const next = require('./reducers').reducers;
     store.replaceReducer(next);
   });
-  module.hot.accept('./sagas', () => {
-    const next = require('./sagas').reducers;
-    store.replaceReducer(next);
-  });
+  module.hot.decline('./sagas');
 }

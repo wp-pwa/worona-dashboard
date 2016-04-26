@@ -9,7 +9,7 @@ export const showingMobileMenu = (state = false, action) => {
   return state;
 };
 
-export const theme = combineReducers({
+export default combineReducers({
   header: combineReducers({
     items,
     showingMobileMenu,

@@ -1,8 +1,7 @@
 import 'babel-polyfill';
 import accounts from 'accounts/sagas';
+import connection from 'connection/sagas';
 
-const sagas = [
-  accounts,
-];
-
-export default sagas;
+export default []
+  .concat(accounts)
+  .concat(connection);

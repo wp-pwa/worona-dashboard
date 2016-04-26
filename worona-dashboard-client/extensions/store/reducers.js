@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { routerReducer as routing } from 'react-router-redux';
 import { reducer as form } from 'redux-form';
-import { accounts } from 'accounts/reducers';
-import { theme } from 'chess-theme/reducers';
+import accounts from 'accounts/reducers';
+import connection from 'connection/reducers';
+import theme from 'chess-theme/reducers';
 
 const reducers = combineReducers({
-  accounts,
-  theme,
+  routing,
   form,
-  routing: routerReducer,
+  accounts,
+  connection,
+  theme,
 });
 
 export default reducers;
