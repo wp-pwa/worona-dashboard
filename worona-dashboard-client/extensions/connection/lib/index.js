@@ -1,63 +1,49 @@
 import { createClass } from 'asteroid';
-import DDPClient from 'ddp-client';
-
-export const connected = () => new Promise((resolve, reject) => reject());
+import { eventChannel } from 'redux-saga';
 
 const Asteroid = createClass();
 
-export default class Connection {
+export class Connection {
   constructor(url) {
     this.url = url || 'ws://localhost:3000/websocket';
-    this.asteroid = null;
+    this.client = null;
   }
 
   start() {
-    console.log('starting ddp...');
-    this.ddpclient = new DDPClient({
+    this.client = new Asteroid({
+      autoConnect: false,
       autoReconnect: false,
       maintainCollections: true,
-      ddpVersion: '1',  // ['1', 'pre2', 'pre1'] available
-      url: this.url,
+      ddpVersion: '1',
+      endpoint: this.url,
     });
-    // this.asteroid = new Asteroid({
-    //   endpoint: this.url,
-    //   autoConnect: false,
-    //   autoReconnect: false,
-    // });
   }
 
   connect() {
-    this.ddpclient.connect();
+    this.client.ddp.connect();
   }
 
-  connected() {
-    return new Promise((resolve, reject) => reject());
-  }
-
-  disconnect() {
-    this.asteroid.ddp.disconnect();
-  }
-
-  disconnected() {
-    return new Promise((resolve) => {
-      this.asteroid.once('disconnect', resolve);
+  connectedEventChannel() {
+    return eventChannel(listener => {
+      const connected = this.client.ddp.on('connected', () => {
+        listener('connected');
+      });
+      return () => {
+        this.client.ddp.removeListener('connected', connected);
+      };
     });
   }
 
-  // Returns a promise which resolves to the userId of the logged in user when the login succeeds,
-  // or rejects when it fails.
-  login(email, password) {
-    return this.asteroid.loginWithPassword({ email, password });
-  }
-
-  // Returns a promise which resolves to null when the logout succeeds, or rejects when it fails.
-  logout() {
-    return this.asteroid.logout();
-  }
-
-  // Returns a promise which resolves to the userId of the logged in user when the login succeeds,
-  // or rejects when it fails.
-  createAccount(email, password) {
-    return this.asteroid.call('createAccount', email, password);
+  disconnectedEventChannel() {
+    return eventChannel(listener => {
+      const disconnected = this.client.ddp.on('disconnected', () => {
+        listener('disconnected');
+      });
+      return () => {
+        this.client.ddp.removeListener('disconnected', disconnected);
+      };
+    });
   }
 }
+
+export default new Connection();

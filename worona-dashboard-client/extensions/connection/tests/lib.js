@@ -1,20 +1,16 @@
 import test from 'ava';
 import sinon from 'sinon';
-import {
-  connection,
-  connect,
-  disconnect,
-  login,
-  logout,
-  createAccount,
-} from '../lib';
+import { Connection } from '../lib';
 
-test.before(() => {
-  sinon.spy(connection, 'call');
-});
+let connection = null;
 
 test.beforeEach(() => {
+  connection = new Connection();
   connection.call.reset();
+});
+
+test.afterEach(() => {
+  connection = null;
 });
 
 test('connect', t => {
