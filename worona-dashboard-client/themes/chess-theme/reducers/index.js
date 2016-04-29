@@ -1,18 +1,9 @@
 import { combineReducers } from 'redux';
-import { items } from './header-items';
-import { forms } from './forms';
+import header from './header';
+import forms from './forms';
 
-export const showingMobileMenu = (state = false, action) => {
-  if (action.type === 'TOGGLE_MOBILE_MENU') {
-    return !state;
-  }
-  return state;
-};
 
 export default combineReducers({
-  header: combineReducers({
-    items,
-    showingMobileMenu,
-  }),
+  header,
   forms,
 });

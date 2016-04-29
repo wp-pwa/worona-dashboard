@@ -1,2 +1,2 @@
-// Timeout for reconnections.
-export const timeout = 5000;
+export const url = 'ws://localhost:3000/websocket';
+export const timeout = 10000;

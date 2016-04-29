@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
 
-const failed = (state, action) => {
+export const validationFailed = (state, action) => {
   if (action.type === 'redux-form/SUBMIT_FAILED' && action.form === 'register') {
     return true;
   }
   return false;
 };
 
-const register = combineReducers({
-  failed,
+export const register = combineReducers({
+  validationFailed,
 });
 
-export const forms = combineReducers({
+export default combineReducers({
   register,
 });

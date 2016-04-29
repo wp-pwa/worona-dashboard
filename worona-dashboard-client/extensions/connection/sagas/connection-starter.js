@@ -1,26 +1,21 @@
 /* eslint-disable no-constant-condition */
 import { put, call, take, race } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import connection from '../lib';
-import {
-  connectionStarted,
-  connectionRequested,
-  connectionSucceed,
-  connectionFailed,
-  disconnected,
-} from '../actions';
+import { start, connectedEventChannel, disconnectedEventChannel, connect } from '../lib';
+import { connectionStarted, connectionRequested, connectionSucceed, connectionFailed,
+  disconnected } from '../actions';
 import { CONNECTION_LOST, CONNECTION_TIMEOUT } from '../errors';
 import { timeout } from '../config';
 
 export default function* connectionStarter() {
-  yield call([connection, connection.start]);
+  yield call(start);
   yield put(connectionStarted());
-  const connectedChannel = yield call([connection, connection.connectedEventChannel]);
-  const disconnectedChannel = yield call([connection, connection.disconnectedEventChannel]);
+  const connectedChannel = yield call(connectedEventChannel);
+  const disconnectedChannel = yield call(disconnectedEventChannel);
 
   while (true) {
     yield put(connectionRequested());
-    yield call([connection, connection.connect]);
+    yield call(connect);
     const { connected } = yield race({
       connected: take(connectedChannel),
       timeout: call(delay, timeout),

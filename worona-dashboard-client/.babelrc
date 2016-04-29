@@ -5,6 +5,5 @@
   ],
   "plugins": [
     [ "resolver", { "resolveDirs": [ "extensions", "themes" ] } ]
-  ],
-  "sourceMaps": "inline"
+  ]
 }

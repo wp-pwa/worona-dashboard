@@ -1,3 +1,13 @@
+import { combineReducers } from 'redux';
+import { TOGGLE_MOBILE_MENU } from '../actions';
+
+export const showingMobileMenu = (state = false, action) => {
+  if (action.type === TOGGLE_MOBILE_MENU) {
+    return !state;
+  }
+  return state;
+};
+
 export const initialState = [
   {
     name: 'Website',
@@ -25,3 +35,8 @@ export const initialState = [
 ];
 
 export const items = (state = initialState) => state;
+
+export default combineReducers({
+  showingMobileMenu,
+  items,
+});

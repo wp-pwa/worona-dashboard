@@ -4,10 +4,10 @@ import { VelocityTransitionGroup } from 'velocity-react';
 
 import worona from './worona.png';
 import { Menu } from './Menu.jsx';
-import { toggleMobileMenu } from '../../actions';
+import { toggleMobileMenu } from '../../creators';
 
 
-let Header = ({ items, toggle, active }) => (
+const Header = ({ items, toggle, active }) => (
   <section className="hero is-info">
     <header className="header">
       <div className="container">

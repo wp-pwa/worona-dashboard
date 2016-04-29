@@ -5,42 +5,80 @@ import { Connection } from '../lib';
 let connection = null;
 
 test.beforeEach(() => {
-  connection = new Connection();
-  connection.call.reset();
+  connection = new Connection({ url: 'ws://test' });
 });
 
 test.afterEach(() => {
   connection = null;
 });
 
+test('start', t => {
+  t.falsy(connection._client);
+  connection.start();
+  t.is(connection._client.endpoint, 'ws://test');
+});
+
 test('connect', t => {
-  sinon.spy(connection.ddp, 'connect');
-  connect();
-  t.true(connection.ddp.connect.called);
+  connection.start();
+  sinon.spy(connection._client.ddp, 'connect');
+  connection.connect();
+  t.true(connection._client.ddp.connect.called);
 });
 
-test('disconnect', t => {
-  sinon.spy(connection.ddp, 'disconnect');
-  disconnect();
-  t.true(connection.ddp.disconnect.called);
+test('connectedEventChannel', t => {
+  connection.start();
+  sinon.spy(connection._client.ddp, 'on');
+  sinon.spy(connection._client.ddp, 'removeListener');
+  const channel = connection.connectedEventChannel();
+  t.true(connection._client.ddp.on.calledWith('connected'));
+  channel.close();
+  t.true(connection._client.ddp.removeListener.calledWith('connected'));
 });
 
-test('login with password and email', t => {
-  sinon.spy(connection, 'loginWithPassword');
-  login('john@smith.com', '1234');
-  t.true(connection.loginWithPassword.calledWith({
-    email: 'john@smith.com',
-    password: '1234',
-  }));
+test('disconnectedEventChannel', t => {
+  connection.start();
+  sinon.spy(connection._client.ddp, 'on');
+  sinon.spy(connection._client.ddp, 'removeListener');
+  const channel = connection.disconnectedEventChannel();
+  t.true(connection._client.ddp.on.calledWith('disconnected'));
+  channel.close();
+  t.true(connection._client.ddp.removeListener.calledWith('disconnected'));
 });
 
-test('logout', t => {
-  sinon.spy(connection, 'logout');
-  logout();
-  t.true(connection.logout.called);
+test('call', t => {
+  connection.start();
+  const call = sinon.stub(connection._client, 'call');
+  call.returns(1234);
+  const userId = connection.call('createAccount', 'name', 'password');
+  t.is(userId, 1234);
+  t.true(connection._client.call.calledWith('createAccount', 'name', 'password'));
 });
 
-test('createAccount', t => {
-  createAccount('john@smith.com', 'pass');
-  t.true(connection.call.calledWith('createAccount', 'john@smith.com', 'pass'));
+test('loginWithPassword', t => {
+  connection.start();
+  const login = sinon.stub(connection._client, 'loginWithPassword');
+  login.returns(1234);
+  const userId = connection.loginWithPassword('email', 'password');
+  t.is(userId, 1234);
+  t.true(connection._client.loginWithPassword.calledWith({ email: 'email', password: 'password' }));
+});
+
+test('loggedInEventChannel', t => {
+  connection.start();
+  sinon.spy(connection._client, 'on');
+  sinon.spy(connection._client, 'removeListener');
+  const channel = connection.loggedInEventChannel();
+  t.true(connection._client.on.calledWith('loggedIn'));
+  channel.close();
+  t.true(connection._client.removeListener.calledWith('loggedIn'));
+});
+
+test('loggedOutEventChannel', t => {
+  connection.start();
+  sinon.spy(connection._client, 'on');
+  sinon.spy(connection._client, 'removeListener');
+  const channel = connection.loggedOutEventChannel();
+  t.true(connection._client.on.calledWith('loggedOut'));
+  channel.close();
+  t.true(connection._client.removeListener.calledWith('loggedOut'));
 });

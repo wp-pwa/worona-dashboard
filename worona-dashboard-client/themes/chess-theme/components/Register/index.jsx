@@ -5,7 +5,9 @@ import { reduxForm } from 'redux-form';
 import Hero from '../elements/Hero';
 import Input from '../elements/Input';
 import Button from '../elements/Button';
-import { createAccountRequested } from 'accounts/actions';
+import { createAccountRequested } from '../../creators';
+import { createAccountStatus, createAccountError, isCreatingAccount, formFailed }
+  from '../../selectors';
 import { validate } from './validate';
 import styles from './style.css';
 
@@ -13,7 +15,8 @@ const submit = (values, dispatch) => {
   dispatch(createAccountRequested(values.name, values.email, values.password));
 };
 
-let Register = ({ fields: { name, email, password }, handleSubmit, waiting, failed }) => (
+const Register = ({ fields: { name, email, password }, handleSubmit, waiting, failed, statusMessage,
+  errorMessage }) => (
   <div>
     <Hero title="Create an account" color="info"
       subtitle="Welcome to Worona. You are only one step away to start making apps."
@@ -36,11 +39,16 @@ let Register = ({ fields: { name, email, password }, handleSubmit, waiting, fail
             color={cn(password.touched && password.error && 'danger')}
           />
 
-        <Button animate={cn(failed && 'shake')} color="success" center
-          size="medium" loading={waiting} disabled={waiting}
-        >
+          <Button animate={cn(failed && 'shake')} color="success" center
+            size="medium" loading={waiting} disabled={waiting}
+          >
             Create my account!
           </Button>
+
+          <div className={`help is-danger is-text-centered ${styles.status}`}>
+            {statusMessage}
+            {errorMessage.reason}
+          </div>
         </form>
 
         <div className={styles.account}>
@@ -61,17 +69,19 @@ Register.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool,
   failed: React.PropTypes.bool,
+  statusMessage: React.PropTypes.any,
+  errorMessage: React.PropTypes.any,
 };
 
 const mapStateToProps = state => ({
-  waiting: state.accounts.isCreatingAccount,
-  failed: state.theme.forms.register.failed,
+  waiting: isCreatingAccount(state),
+  statusMessage: createAccountStatus(state),
+  errorMessage: createAccountError(state),
+  failed: formFailed(state),
 });
 
-Register = reduxForm({
+export default reduxForm({
   form: 'register',
   fields: ['name', 'email', 'password'],
   validate,
 }, mapStateToProps)(Register);
-
-export default Register;
