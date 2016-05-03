@@ -1,11 +1,7 @@
 import { combineReducers } from 'redux';
 
-import {
-  CONNECTION_REQUESTED,
-  CONNECTION_SUCCEED,
-  CONNECTION_FAILED,
-  DISCONNECTED,
-} from '../actions';
+import { CONNECTION_REQUESTED, CONNECTION_SUCCEED, CONNECTION_FAILED, DISCONNECTED }
+  from '../actiontypes';
 
 export const isConnected = (state = false, action) => {
   switch (action.type) {

@@ -1,9 +1,9 @@
 import test from 'ava';
 import { loginRequested, loginStatusChanged, loginSucceed, loginFailed, logoutRequested,
   logoutSucceed, logoutFailed, createAccountRequested, createAccountStatusChanged,
-  createAccountSucceed, createAccountFailed } from '../creators';
+  createAccountSucceed, createAccountFailed, logoutStatusChanged } from '../actions';
 import { isLoggedIn, isLoggingIn, loginStatus, loginError, isLoggingOut, createAccountStatus,
-  createAccountError, isCreatingAccount } from '../reducers';
+  createAccountError, isCreatingAccount, logoutError, logoutStatus } from '../reducers';
 
 test('isLoggedIn', t => {
   t.false(isLoggedIn(undefined, {}));
@@ -26,12 +26,28 @@ test('loginStatus', t => {
   t.false(loginStatus(status, loginFailed()));
 });
 
+test('logoutStatus', t => {
+  const status = {};
+  t.false(logoutStatus(undefined, {}));
+  t.is(logoutStatus(false, logoutStatusChanged(status)), status);
+  t.false(logoutStatus(status, logoutSucceed()));
+  t.false(logoutStatus(status, logoutFailed()));
+});
+
 test('loginError', t => {
   const error = {};
   t.false(loginError(undefined, {}));
   t.is(loginError(false, loginFailed(error)), error);
   t.false(loginError(error, loginRequested()));
   t.false(loginError(error, loginSucceed()));
+});
+
+test('logoutError', t => {
+  const error = {};
+  t.false(logoutError(undefined, {}));
+  t.is(logoutError(false, logoutFailed(error)), error);
+  t.false(logoutError(error, logoutRequested()));
+  t.false(logoutError(error, logoutSucceed()));
 });
 
 test('isLoggingOut', t => {

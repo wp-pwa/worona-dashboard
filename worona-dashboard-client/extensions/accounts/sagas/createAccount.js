@@ -2,8 +2,8 @@ import { takeLatest } from 'redux-saga';
 import { fork, call, put, select, take } from 'redux-saga/effects';
 import { createAccount } from '../libs';
 import { createAccountSucceed, createAccountStatusChanged, loginRequested, createAccountFailed }
-  from '../creators';
-import { CREATE_ACCOUNT_REQUESTED, CONNECTION_SUCCEED } from '../actions';
+  from '../actions';
+import { CREATE_ACCOUNT_REQUESTED, CONNECTION_SUCCEED } from '../actiontypes';
 import { isConnected } from '../selectors';
 import { NOT_CONNECTED, CREATING_ACCOUNT, CONNECTED_CREATING_ACCOUNT } from '../messages';
 

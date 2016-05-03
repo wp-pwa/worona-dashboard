@@ -6,6 +6,7 @@ import {
   Home,
   Login,
   Register,
+  CreateFirstApp,
   Profile,
   Sites,
   Site,
@@ -23,6 +24,9 @@ class LoginEntry extends React.Component {
 }
 class RegisterEntry extends React.Component {
   render() { return <Register />; }
+}
+class CreateFirstAppEntry extends React.Component {
+  render() { return <CreateFirstApp />; }
 }
 class ProfileEntry extends React.Component {
   render() { return <Profile />; }
@@ -44,7 +48,7 @@ const requireAuth = (store) => (nextState, replace) => {
   }
 };
 
-const authNotNeeded = (store) => (nextState, replace) => {
+const dontRequireAuth = (store) => (nextState, replace) => {
   const { isLoggedIn } = store.getState().accounts;
   if (isLoggedIn) {
     replace({ pathname: '/' });
@@ -54,8 +58,9 @@ const authNotNeeded = (store) => (nextState, replace) => {
 export const routes = (store) => (
   <Route path="/" component={ThemeEntry} >
     <IndexRoute component={HomeEntry} onEnter={requireAuth(store)} />
-    <Route path="login" component={LoginEntry} onEnter={authNotNeeded(store)} />
-    <Route path="register" component={RegisterEntry} onEnter={authNotNeeded(store)} />
+    <Route path="login" component={LoginEntry} onEnter={dontRequireAuth(store)} />
+    <Route path="register" component={RegisterEntry} onEnter={dontRequireAuth(store)} />
+    <Route path="create-first-app" component={CreateFirstAppEntry} />
     <Route path="profile" component={ProfileEntry} onEnter={requireAuth(store)} />
     <Route path="sites" component={SitesEntry} onEnter={requireAuth(store)} />
     <Route path="site/:siteId" component={SiteEntry} onEnter={requireAuth(store)}>

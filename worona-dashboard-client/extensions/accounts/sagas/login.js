@@ -4,9 +4,9 @@ import { takeLatest } from 'redux-saga';
 import { isConnected } from '../selectors';
 import { loginWithPassword, loggedInEventChannel, loggedOutEventChannel, browserHistory }
   from '../libs';
-import { loginStatusChanged, loginSucceed, loginFailed, logoutSucceed } from '../creators';
+import { loginStatusChanged, loginSucceed, loginFailed, logoutSucceed } from '../actions';
 import { LOGIN_SUCCEED, LOGIN_REQUESTED, CONNECTION_SUCCEED, LOGIN_FAILED, LOGOUT_REQUESTED,
-  LOGOUT_SUCCEED, LOGOUT_FAILED } from '../actions';
+  LOGOUT_SUCCEED, LOGOUT_FAILED } from '../actiontypes';
 import { NOT_CONNECTED, LOGIN_IN, CONNECTED_LOGIN_IN } from '../messages';
 
 export function* loginRequestedSaga({ email, password }) {
@@ -79,7 +79,6 @@ export function* logEventsWatcher() {
   const loggedOutEvents = yield call(loggedOutEventChannel);
   while (true) {
     yield call(loginEvent, loggedInEvents);
-
     yield call(logoutEvent, loggedOutEvents);
   }
 }

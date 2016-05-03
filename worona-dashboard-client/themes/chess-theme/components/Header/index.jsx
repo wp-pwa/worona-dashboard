@@ -7,7 +7,7 @@ import { Menu } from './Menu.jsx';
 import { toggleMobileMenu } from '../../creators';
 
 
-const Header = ({ items, toggle, active }) => (
+const Header = ({ items, toggle, active, isLoggedIn }) => (
   <section className="hero is-info">
     <header className="header">
       <div className="container">
@@ -28,7 +28,7 @@ const Header = ({ items, toggle, active }) => (
         </span>
 
         {/* Right side, not mobile */}
-        <Menu items={items} />
+        <Menu items={items} isLoggedIn={isLoggedIn} />
 
         {/* Right side, mobile */}
         <VelocityTransitionGroup
@@ -46,11 +46,13 @@ Header.propTypes = {
   items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
   active: React.PropTypes.bool.isRequired,
   toggle: React.PropTypes.func.isRequired,
+  isLoggedIn: React.PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   items: state.theme.header.items,
   active: state.theme.header.showingMobileMenu,
+  isLoggedIn: state.accounts.isLoggedIn,
 });
 
 const mapDispatchToProps = (dispatch) => ({
