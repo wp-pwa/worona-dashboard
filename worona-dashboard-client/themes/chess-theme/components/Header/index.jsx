@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { VelocityTransitionGroup } from 'velocity-react';
-
 import worona from './worona.png';
 import { Menu } from './Menu.jsx';
-import { toggleMobileMenu } from '../../creators';
+import { toggleMobileMenu } from '../../actions';
+import { headerItems } from '../../selectors';
 
 
-const Header = ({ items, toggle, active, isLoggedIn }) => (
+const Header = ({ items, toggle, active }) => (
   <section className="hero is-info">
     <header className="header">
       <div className="container">
@@ -28,7 +28,7 @@ const Header = ({ items, toggle, active, isLoggedIn }) => (
         </span>
 
         {/* Right side, not mobile */}
-        <Menu items={items} isLoggedIn={isLoggedIn} />
+        <Menu items={items} />
 
         {/* Right side, mobile */}
         <VelocityTransitionGroup
@@ -46,13 +46,11 @@ Header.propTypes = {
   items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
   active: React.PropTypes.bool.isRequired,
   toggle: React.PropTypes.func.isRequired,
-  isLoggedIn: React.PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
-  items: state.theme.header.items,
+  items: headerItems(state),
   active: state.theme.header.showingMobileMenu,
-  isLoggedIn: state.accounts.isLoggedIn,
 });
 
 const mapDispatchToProps = (dispatch) => ({

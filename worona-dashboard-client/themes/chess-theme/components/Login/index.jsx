@@ -6,7 +6,7 @@ import Hero from '../elements/Hero';
 import Input from '../elements/Input';
 import Button from '../elements/Button';
 import { isLoggingIn, loginStatus, loginError } from '../../selectors';
-import { loginRequested } from '../../creators';
+import { loginRequested } from '../../actions';
 import { validate } from './validate';
 import styles from './styles.css';
 

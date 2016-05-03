@@ -2,7 +2,7 @@ import test from 'ava';
 import { put, call, take, race } from 'redux-saga/effects';
 import { delay, eventChannel } from 'redux-saga';
 import connectionStarter from '../sagas/connection-starter';
-import { start, connectedEventChannel, disconnectedEventChannel, connect } from '../lib';
+import { start, connectedEventChannel, disconnectedEventChannel, connect } from '../libs';
 import { connectionStarted, connectionRequested, connectionSucceed, connectionFailed,
   disconnected } from '../actions';
 import { CONNECTION_LOST, CONNECTION_TIMEOUT } from '../errors';

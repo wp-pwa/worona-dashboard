@@ -3,14 +3,15 @@ import { eventChannel } from 'redux-saga';
 import { select, put, take, call, race } from 'redux-saga/effects';
 import { createAccountSaga } from '../sagas/createAccount';
 import { loginRequestedSaga, loginEvent, logoutEvent } from '../sagas/login';
+import { logoutRequestedSaga } from '../sagas/logout';
 import { isConnected } from '../selectors';
 import { createAccountFailed, createAccountSucceed, createAccountStatusChanged, loginRequested,
-  loginStatusChanged, loginSucceed, loginFailed, logoutSucceed } from '../actions';
+  loginStatusChanged, loginSucceed, loginFailed, logoutSucceed, logoutFailed } from '../actions';
 import { CONNECTION_SUCCEED, LOGIN_REQUESTED, LOGIN_SUCCEED, LOGIN_FAILED, LOGOUT_REQUESTED,
   LOGOUT_SUCCEED, LOGOUT_FAILED } from '../actiontypes';
 import { NOT_CONNECTED, CREATING_ACCOUNT, CONNECTED_CREATING_ACCOUNT, CONNECTED_LOGIN_IN, LOGIN_IN }
   from '../messages';
-import { createAccount, loginWithPassword } from '../libs';
+import { createAccount, loginWithPassword, logout } from '../libs';
 
 test('createAccountSaga not connected', t => {
   const action = { name: 'name', email: 'email', password: 'pass' };
@@ -165,4 +166,16 @@ test('logoutEvent manual login with failure', t => {
     automaticLogout: take(loggedOutEvents),
     manualLogout: take(LOGOUT_REQUESTED),
   }));
+});
+
+test('logoutRequested succeed', t => {
+  const gen = logoutRequestedSaga();
+  t.deepEqual(gen.next().value, call(logout));
+  t.deepEqual(gen.next().value, put(logoutSucceed()));
+});
+
+test('logoutRequested failed', t => {
+  const gen = logoutRequestedSaga();
+  t.deepEqual(gen.next().value, call(logout));
+  t.deepEqual(gen.throw().value, put(logoutFailed()));
 });

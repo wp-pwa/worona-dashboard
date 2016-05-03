@@ -5,7 +5,7 @@ import { reduxForm } from 'redux-form';
 import Hero from '../elements/Hero';
 import Input from '../elements/Input';
 import Button from '../elements/Button';
-import { createAccountRequested } from '../../creators';
+import { createAccountRequested } from '../../actions';
 import { createAccountStatus, createAccountError, isCreatingAccount, formFailed }
   from '../../selectors';
 import { validate } from './validate';

@@ -1,6 +1,6 @@
 import test from 'ava';
 import sinon from 'sinon';
-import { Connection } from '../lib';
+import { Connection } from '../libs';
 
 let connection = null;
 
@@ -61,6 +61,13 @@ test('loginWithPassword', t => {
   const userId = connection.loginWithPassword('email', 'password');
   t.is(userId, 1234);
   t.true(connection._client.loginWithPassword.calledWith({ email: 'email', password: 'password' }));
+});
+
+test('logout', t => {
+  connection.start();
+  sinon.spy(connection._client, 'logout');
+  connection.logout();
+  t.true(connection._client.logout.called);
 });
 
 test('loggedInEventChannel', t => {

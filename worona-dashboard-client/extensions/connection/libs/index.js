@@ -75,6 +75,10 @@ export class Connection {
       };
     });
   }
+
+  logout() {
+    return this._client.logout();
+  }
 }
 
 const connection = new Connection();
@@ -86,6 +90,7 @@ export const call = connection.call.bind(connection);
 export const loginWithPassword = connection.loginWithPassword.bind(connection);
 export const loggedInEventChannel = connection.loggedInEventChannel.bind(connection);
 export const loggedOutEventChannel = connection.loggedOutEventChannel.bind(connection);
+export const logout = connection.logout.bind(connection);
 export default connection;
 
 if (typeof window !== 'undefined') window.connection = connection;

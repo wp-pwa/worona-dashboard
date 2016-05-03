@@ -1,12 +1,11 @@
 import React from 'react';
 import { MenuItem } from './MenuItem.jsx';
 
-export const Menu = ({ items, active, isLoggedIn }) => (
+export const Menu = ({ items, active }) => (
   <div className={`header-right header-menu ${(active ? 'is-active' : '')}`}>
     {items.map((item, index) =>
       (<MenuItem key={index} {...item} />)
     )}
-    {isLoggedIn ? <MenuItem type="text" name="Logout" url="" /> : null}
   </div>
 );
 Menu.propTypes = {

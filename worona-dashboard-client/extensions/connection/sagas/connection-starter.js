@@ -1,7 +1,7 @@
 /* eslint-disable no-constant-condition */
 import { put, call, take, race } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import { start, connectedEventChannel, disconnectedEventChannel, connect } from '../lib';
+import { start, connectedEventChannel, disconnectedEventChannel, connect } from '../libs';
 import { connectionStarted, connectionRequested, connectionSucceed, connectionFailed,
   disconnected } from '../actions';
 import { CONNECTION_LOST, CONNECTION_TIMEOUT } from '../errors';
