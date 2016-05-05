@@ -1,13 +1,7 @@
 import './style.sass';
 
-import Theme from './components/Theme';
-import Home from './components/Home';
-import Login from './components/Login';
-import Register from './components/Register';
-
-export {
-  Theme,
-  Home,
-  Login,
-  Register,
-};
+export { default as Theme } from './components/Theme';
+export { default as Home } from './components/Home';
+export { default as Login } from './components/Login';
+export { default as Register } from './components/Register';
+export { default as CreateFirstApp } from './components/CreateFirstApp';

@@ -3,7 +3,8 @@ import { loginRequested, loginStatusChanged, loginSucceed, loginFailed, logoutRe
   logoutSucceed, logoutFailed, createAccountRequested, createAccountStatusChanged,
   createAccountSucceed, createAccountFailed, logoutStatusChanged } from '../actions';
 import { isLoggedIn, isLoggingIn, loginStatus, loginError, isLoggingOut, createAccountStatus,
-  createAccountError, isCreatingAccount, logoutError, logoutStatus } from '../reducers';
+  createAccountError, isCreatingAccount, logoutError, logoutStatus, isFirstLogin }
+  from '../reducers';
 
 test('isLoggedIn', t => {
   t.false(isLoggedIn(undefined, {}));
@@ -78,4 +79,10 @@ test('createAccountError', t => {
   t.is(createAccountError(false, createAccountFailed(error)), error);
   t.false(createAccountError(error, createAccountRequested()));
   t.false(createAccountError(error, createAccountSucceed()));
+});
+
+test('isFirstLogin', t => {
+  t.false(isFirstLogin(undefined, {}));
+  t.true(isFirstLogin(false, createAccountSucceed()));
+  t.false(isFirstLogin(true, logoutSucceed()));
 });

@@ -1,7 +1,7 @@
 /* eslint-disable no-constant-condition */
 import { call, take, put, select, race, fork } from 'redux-saga/effects';
 import { takeLatest } from 'redux-saga';
-import { isConnected } from '../selectors';
+import { isConnected, isFirstLogin } from '../selectors';
 import { loginWithPassword, loggedInEventChannel, loggedOutEventChannel, browserHistory }
   from '../libs';
 import { loginStatusChanged, loginSucceed, loginFailed, logoutSucceed } from '../actions';
@@ -30,8 +30,11 @@ export function* loginRequestedWatcher() {
 }
 
 export function* loginSucceedSaga() {
-  // Redirect the user to the home after a successful login.
-  yield call(browserHistory.push, '/');
+  if (yield select(isFirstLogin)) {
+    yield call(browserHistory.push, '/create-first-app');
+  } else {
+    yield call(browserHistory.push, '/');
+  }
 }
 export function* loginSucceedWatcher() {
   yield* takeLatest(LOGIN_SUCCEED, loginSucceedSaga);

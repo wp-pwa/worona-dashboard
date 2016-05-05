@@ -45,12 +45,30 @@ test('disconnectedEventChannel', t => {
   t.true(connection._client.ddp.removeListener.calledWith('disconnected'));
 });
 
-test('call', t => {
+test('call success', t => {
   connection.start();
   const call = sinon.stub(connection._client, 'call');
-  call.returns(1234);
-  const userId = connection.call('createAccount', 'name', 'password');
-  t.is(userId, 1234);
+  const userId = {};
+  call.returns(Promise.resolve(userId));
+  connection.call('createAccount', 'name', 'password').then(result => t.is(userId, result));
+  t.true(connection._client.call.calledWith('createAccount', 'name', 'password'));
+});
+
+test('call throws', t => {
+  connection.start();
+  const call = sinon.stub(connection._client, 'call');
+  const error = {};
+  call.returns(Promise.reject(error));
+  connection.call('createAccount', 'name', 'password').catch(err => t.is(err, error));
+  t.true(connection._client.call.calledWith('createAccount', 'name', 'password'));
+});
+
+test('call throws with Meteor Error', t => {
+  connection.start();
+  const call = sinon.stub(connection._client, 'call');
+  const meteorError = { errorType: 'Meteor.Error' };
+  call.returns(Promise.resolve(meteorError));
+  connection.call('createAccount', 'name', 'password').catch(err => t.is(err, meteorError));
   t.true(connection._client.call.calledWith('createAccount', 'name', 'password'));
 });
 

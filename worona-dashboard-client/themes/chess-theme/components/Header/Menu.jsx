@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuItem } from './MenuItem.jsx';
+import MenuItem from '../elements/MenuItem';
 
 export const Menu = ({ items, active }) => (
   <div className={`header-right header-menu ${(active ? 'is-active' : '')}`}>
@@ -13,3 +13,5 @@ Menu.propTypes = {
   active: React.PropTypes.bool,
   isLoggedIn: React.PropTypes.bool,
 };
+
+export default Menu;

@@ -23,9 +23,9 @@ const Register = ({ fields: { name, email, password }, handleSubmit, waiting, fa
     />
 
     <section className="hero-content">
-      <div className={cn('container', styles.login)}>
+      <div className="container is-text-centered">
 
-        <form onSubmit={handleSubmit(submit)}>
+        <form onSubmit={handleSubmit(submit)} className={styles.box}>
           <Input type="text" placeholder="My name is..." icon="user" {...name}
             help={cn(name.touched && name.error)}
             color={cn(name.touched && name.error && 'danger')}
@@ -40,22 +40,23 @@ const Register = ({ fields: { name, email, password }, handleSubmit, waiting, fa
           />
 
           <Button animate={cn(failed && 'shake')} color="success" center
-            size="medium" loading={waiting} disabled={waiting}
+            size="medium" loading={waiting} disabled={waiting} className={styles.button}
           >
-            Create my account!
+            Create my account
           </Button>
 
-          <div className={`help is-danger is-text-centered ${styles.status}`}>
+          <div className={cn('help', styles.status)}>
             {statusMessage}
+          </div>
+
+          <div className={cn('help', 'is-danger', styles.status)}>
             {errorMessage.reason}
           </div>
         </form>
 
-        <div className={styles.account}>
+        <div className={styles.link}>
           <Link to="/login">
-            <Button color="info" outlined center>
-              Wait... I already have an account!
-            </Button>
+            I already have an account
           </Link>
         </div>
 

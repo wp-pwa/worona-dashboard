@@ -124,6 +124,17 @@ export const createAccountError = (state = false, action) => {
   }
 };
 
+export const isFirstLogin = (state = false, action) => {
+  switch (action.type) {
+    case CREATE_ACCOUNT_SUCCEED:
+      return true;
+    case LOGOUT_SUCCEED:
+      return false;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   isLoggedIn,
   isLoggingIn,
@@ -133,4 +144,5 @@ export default combineReducers({
   isCreatingAccount,
   createAccountError,
   createAccountStatus,
+  isFirstLogin,
 });

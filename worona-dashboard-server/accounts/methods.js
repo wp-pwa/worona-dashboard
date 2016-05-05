@@ -7,11 +7,15 @@ Meteor.methods({
     check(name, String);
     check(email, String);
     check(password, String);
+
+    if (process.env.NODE_ENV === 'development') Meteor._sleepForMs(2000);
+
     const userId = Accounts.createUser({ email, password });
+
     if (userId) {
-      Meteor.users.update(userId, { $set: { name } });
+      Meteor.users.update(userId, { $set: { profile: { name } } });
     }
-    Meteor._sleepForMs(5000);
+
     return userId;
   },
 });

@@ -18,12 +18,12 @@ export const validate = values => {
     errors.name = messages.maxChar(15);
   }
   if (!values.email) {
-    errors.email = 'Required';
+    errors.email = messages.required;
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
+    errors.email = messages.invalidEmail;
   }
   if (!values.password) {
-    errors.password = 'Required';
+    errors.password = messages.required;
   } else if (values.password.length < 8) {
     errors.password = messages.minChar(8);
   }

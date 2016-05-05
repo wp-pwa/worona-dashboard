@@ -23,9 +23,9 @@ const Login = ({ fields: { email, password }, handleSubmit, waiting, statusMessa
     />
 
     <section className="hero-content">
-      <div className={cn('container', styles.login)}>
+      <div className="container is-text-centered">
 
-        <form onSubmit={handleSubmit(submit)}>
+        <form onSubmit={handleSubmit(submit)} className={styles.box}>
           <Input type="email" placeholder="Email" icon="envelope" {...email}
             help={cn(email.touched && email.error)}
             color={cn(email.touched && email.error && 'danger')}
@@ -34,23 +34,24 @@ const Login = ({ fields: { email, password }, handleSubmit, waiting, statusMessa
             help={cn(password.touched && password.error)}
             color={cn(password.touched && password.error && 'danger')}
           />
-          <Button color="success" center
-            size="medium" loading={waiting} disabled={waiting}
+          <Button color="success" center className={styles.button} size="medium" loading={waiting}
+            disabled={waiting}
           >
             Let me in!
           </Button>
+
+          <div className={cn('help', styles.status)}>
+            {statusMessage}
+          </div>
+
+          <div className={cn('help', 'is-danger', styles.status)}>
+            {errorMessage.reason}
+          </div>
         </form>
 
-        <div className={`help is-danger is-text-centered ${styles.status}`}>
-          {statusMessage}
-          {errorMessage.reason}
-        </div>
-
-        <div className={styles.account}>
+        <div className={styles.link}>
           <Link to="/register">
-            <Button color="info" outlined center>
-              Wait... I don't you have an account yet!
-            </Button>
+            I don't you have an account yet
           </Link>
         </div>
 

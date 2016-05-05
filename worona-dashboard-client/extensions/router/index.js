@@ -60,7 +60,7 @@ export const routes = (store) => (
     <IndexRoute component={HomeEntry} onEnter={requireAuth(store)} />
     <Route path="login" component={LoginEntry} onEnter={dontRequireAuth(store)} />
     <Route path="register" component={RegisterEntry} onEnter={dontRequireAuth(store)} />
-    <Route path="create-first-app" component={CreateFirstAppEntry} />
+    <Route path="create-first-app" component={CreateFirstAppEntry} onEnter={requireAuth(store)} />
     <Route path="profile" component={ProfileEntry} onEnter={requireAuth(store)} />
     <Route path="sites" component={SitesEntry} onEnter={requireAuth(store)} />
     <Route path="site/:siteId" component={SiteEntry} onEnter={requireAuth(store)}>

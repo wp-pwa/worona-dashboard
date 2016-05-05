@@ -1,13 +1,15 @@
-@import "../../variables.css";
-
-.login {
-  max-width: var(--width, 400px);
+.box {
+  composes: loginAndRegisterBox from "../../common.css";
 }
 
-.account {
-  margin-top: 50px;
+.button {
+  composes: loginAndRegisterButton from "../../common.css";
+}
+
+.link {
+  composes: loginAndRegisterLink from "../../common.css";
 }
 
 .status {
-  margin-top: 20px;
+  composes: loginAndRegisterStatus from "../../common.css";
 }

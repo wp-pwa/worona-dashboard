@@ -2,10 +2,11 @@ import React from 'react';
 import cx from 'classnames';
 
 const Button = ({
-  children, onClick, color, size, outlined, center, loading, disabled, animate,
+  children, onClick, color, size, outlined, center, loading, disabled, animate, className,
 }) => {
   const buttonClass = cx(
     'button',
+    className,
     color && `is-${color}`,
     size && `is-${size}`,
     loading && 'is-loading',
@@ -32,6 +33,7 @@ Button.propTypes = {
   loading: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   animate: React.PropTypes.string,
+  className: React.PropTypes.string,
 };
 
 export default Button;

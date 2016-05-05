@@ -1,16 +1,18 @@
 import { takeEvery } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import { CREATE_SITE_REQUESTED } from '../actiontypes';
-import { createSiteSucceed, createSiteFailed } from '../actiontypes';
+import { CREATING_SITE } from '../messages';
+import { createSiteSucceed, createSiteFailed, createSiteStatusChanged } from '../actions';
 import { createSite } from '../libs';
 
 export function* createSiteSaga(action) {
   const { name, url, _id } = action;
   try {
-    yield call(createSite, { name, url, _id });
-    yield put(createSiteSucceed());
+    yield put(createSiteStatusChanged(CREATING_SITE));
+    const siteId = yield call(createSite, { name, url, _id });
+    yield put(createSiteSucceed(siteId));
   } catch (error) {
-    yield put(createSiteFailed());
+    yield put(createSiteFailed(error));
   }
 }
 

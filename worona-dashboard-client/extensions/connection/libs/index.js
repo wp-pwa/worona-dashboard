@@ -47,7 +47,17 @@ export class Connection {
   }
 
   call(...params) {
-    return this._client.call(...params);
+    return new Promise((resolve, reject) => {
+      this._client.call(...params)
+      .then(result => {
+        if (typeof result === 'object' && result.errorType === 'Meteor.Error') {
+          reject(result);
+        } else {
+          resolve(result);
+        }
+      })
+      .catch(error => reject(error));
+    });
   }
 
   loginWithPassword(email, password) {

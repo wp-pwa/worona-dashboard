@@ -70,7 +70,7 @@ var exports = function(options) {
     devtool: '#eval-source-map',
     devServer: {
   		contentBase: path.join(__dirname, options.folder, 'dev'),
-  		noInfo: true,
+  		noInfo: false,
   		hot: true,
   		inline: true,
       port: options.port,

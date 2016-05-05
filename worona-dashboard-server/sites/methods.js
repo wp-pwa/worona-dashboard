@@ -9,14 +9,15 @@ Meteor.methods({
     check(url, String);
     check(_id, Match.OneOf(String, undefined));
 
+    if (process.env.NODE_ENV === 'development') Meteor._sleepForMs(2000);
+
     if (!this.userId) {
-      return false;
+      return new Meteor.Error('User is not logged in.');
     }
 
     const userId = this.userId;
-    const data = !!_id ? { name, url, userId, _id } : { name, url, userId };
-
-    Meteor._sleepForMs(2000);
+    const data = { name, url, userIds: [userId] };
+    if (!!_id) data._id = _id;
 
     return sites.insert(data);
   },

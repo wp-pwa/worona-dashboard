@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import cn from 'classnames';
+import styles from './style.css';
 
 const ExtLink = props => (
   <a {...props}>
@@ -14,27 +15,23 @@ ExtLink.propTypes = {
 export const MenuItem = ({ type, name, url, target, link, action, icon }) => {
   const Anchor = !link ? ExtLink : Link;
   const onClick = !!action ? e => { e.preventDefault(); action(); } : null;
-  const anchorClass = cn(type === 'button' && 'button is-info is-outlined is-inverted',
-    type === 'text' && (window.location.pathname === url ? 'header-item is-active' : 'header-item')
+  const anchorClass = cn(
+    type === 'button' && 'button is-info is-outlined is-inverted',
+    type === 'text' && window.location.pathname === url && styles.active,
+    styles.item
   );
-  const component = (
-    <Anchor className={anchorClass} href={url} to={link} target={target} onClick={onClick}>
-      {type === 'button' && icon ? (
-        <span className="icon">
-          <i className={`fa fa-${icon}`}></i>
-        </span>
-      ) : null}
-      {name}
-    </Anchor>
+  return (
+    <span className="header-item is-info">
+      <Anchor className={anchorClass} href={url} to={link} target={target} onClick={onClick}>
+        {type === 'button' && icon ? (
+          <span className="icon">
+            <i className={`fa fa-${icon}`}></i>
+          </span>
+        ) : null}
+        {name}
+      </Anchor>
+    </span>
   );
-  if (type === 'button') {
-    return (
-      <span className="header-item">
-        {component}
-      </span>
-    );
-  }
-  return component;
 };
 MenuItem.propTypes = {
   type: React.PropTypes.string.isRequired,
@@ -45,3 +42,5 @@ MenuItem.propTypes = {
   target: React.PropTypes.string,
   icon: React.PropTypes.string,
 };
+
+export default MenuItem;
