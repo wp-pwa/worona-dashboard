@@ -82,6 +82,13 @@ storiesOf('Button', module)
       </Button>
     </Center>
   ))
+  .add('inverted', () => (
+    <Center inverted>
+      <Button inverted outlined color="primary">
+        The inverted outlined primary button
+      </Button>
+    </Center>
+  ))
   .add('outlined color="primary"', () => (
     <Center>
       <Button outlined color="primary">

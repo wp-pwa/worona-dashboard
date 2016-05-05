@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 
 const Button = ({
-  children, onClick, color, size, outlined, center, loading, disabled, animate, className,
+  children, onClick, color, size, outlined, center, loading, disabled, animate, className, inverted,
 }) => {
   const buttonClass = cx(
     'button',
@@ -11,15 +11,16 @@ const Button = ({
     size && `is-${size}`,
     loading && 'is-loading',
     outlined && 'is-outlined',
+    inverted && 'is-inverted',
     disabled && 'is-disabled',
     animate && `animated ${animate}`
   );
   return (
-    <div className={cx(center && 'is-text-centered')}>
+    <span className={cx(center && 'is-text-centered')}>
       <button className={buttonClass} onClick={onClick}>
         {children}
       </button>
-    </div>
+    </span>
   );
 };
 
@@ -29,6 +30,7 @@ Button.propTypes = {
   color: React.PropTypes.string,
   size: React.PropTypes.string,
   outlined: React.PropTypes.bool,
+  inverted: React.PropTypes.bool,
   center: React.PropTypes.bool,
   loading: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
