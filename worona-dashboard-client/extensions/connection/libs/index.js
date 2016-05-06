@@ -89,6 +89,10 @@ export class Connection {
   logout() {
     return this._client.logout();
   }
+
+  subscribe(...params) {
+    return this._client.subscribe(...params);
+  }
 }
 
 const connection = new Connection();
@@ -101,6 +105,7 @@ export const loginWithPassword = connection.loginWithPassword.bind(connection);
 export const loggedInEventChannel = connection.loggedInEventChannel.bind(connection);
 export const loggedOutEventChannel = connection.loggedOutEventChannel.bind(connection);
 export const logout = connection.logout.bind(connection);
+export const subscribe = connection.subscribe.bind(connection);
 export default connection;
 
 if (typeof window !== 'undefined') window.connection = connection;

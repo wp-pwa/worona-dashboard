@@ -107,3 +107,11 @@ test('loggedOutEventChannel', t => {
   channel.close();
   t.true(connection._client.removeListener.calledWith('loggedOut'));
 });
+
+test('subscribe', t => {
+  connection.start();
+  sinon.spy(connection._client, 'subscribe');
+  const params = {};
+  connection.subscribe(params);
+  t.true(connection._client.subscribe.calledWith(params));
+});

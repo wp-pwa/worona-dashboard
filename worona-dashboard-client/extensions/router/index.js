@@ -1,9 +1,8 @@
 /* eslint-disable react/prefer-stateless-function, react/no-multi-comp, react/prop-types */
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute, IndexRedirect } from 'react-router';
 import {
   Theme,
-  Home,
   Login,
   Register,
   CreateFirstApp,
@@ -15,9 +14,6 @@ import {
 
 class ThemeEntry extends React.Component {
   render() { return <Theme children={this.props.children} />; }
-}
-class HomeEntry extends React.Component {
-  render() { return <Home />; }
 }
 class LoginEntry extends React.Component {
   render() { return <Login />; }
@@ -57,7 +53,7 @@ const dontRequireAuth = (store) => (nextState, replace) => {
 
 export const routes = (store) => (
   <Route path="/" component={ThemeEntry} >
-    <IndexRoute component={HomeEntry} onEnter={requireAuth(store)} />
+    <IndexRedirect to="sites" />
     <Route path="login" component={LoginEntry} onEnter={dontRequireAuth(store)} />
     <Route path="register" component={RegisterEntry} onEnter={dontRequireAuth(store)} />
     <Route path="create-first-app" component={CreateFirstAppEntry} onEnter={requireAuth(store)} />
