@@ -93,6 +93,40 @@ export class Connection {
   subscribe(...params) {
     return this._client.subscribe(...params);
   }
+
+  collectionEventChannel(selectedCollection) {
+    return eventChannel(listener => {
+      const added = this._client.ddp.on('added', ({ collection, id, fields }) => {
+        if (collection === selectedCollection) {
+          console.log(`Element added to collection ${collection}`);
+          console.log(id);
+          console.log(fields);
+          listener({ event: 'added', id, fields });
+        }
+      });
+      const changed = this._client.ddp.on('changed', ({ collection, id, fields }) => {
+        if (collection === selectedCollection) {
+          console.log(`Element added to collection ${collection}`);
+          console.log(id);
+          console.log(fields);
+          listener({ event: 'changed', id, fields });
+        }
+      });
+      const removed = this._client.ddp.on('removed', ({ collection, id, fields }) => {
+        if (collection === selectedCollection) {
+          console.log(`Element added to collection ${collection}`);
+          console.log(id);
+          console.log(fields);
+          listener({ event: 'removed', id, fields });
+        }
+      });
+      return () => {
+        this._client.ddp.removeListener('added', added);
+        this._client.ddp.removeListener('changed', changed);
+        this._client.ddp.removeListener('removed', removed);
+      };
+    });
+  }
 }
 
 const connection = new Connection();
@@ -106,6 +140,7 @@ export const loggedInEventChannel = connection.loggedInEventChannel.bind(connect
 export const loggedOutEventChannel = connection.loggedOutEventChannel.bind(connection);
 export const logout = connection.logout.bind(connection);
 export const subscribe = connection.subscribe.bind(connection);
+export const collectionEventChannel = connection.collectionEventChannel.bind(connection);
 export default connection;
 
 if (typeof window !== 'undefined') window.connection = connection;

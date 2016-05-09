@@ -1,8 +1,11 @@
 import test from 'ava';
-import { call, put } from 'redux-saga/effects';
+import { call, put, take } from 'redux-saga/effects';
+import { eventChannel } from 'redux-saga';
 import { createSiteSaga } from '../sagas/createSite';
-import { createSite } from '../libs';
-import { createSiteSucceed, createSiteFailed, createSiteStatusChanged } from '../actions';
+import { sitesCollectionWatcher } from '../sagas/sitesCollection';
+import { createSite, collectionEventChannel, subscribe } from '../libs';
+import { createSiteSucceed, createSiteFailed, createSiteStatusChanged, siteCollectionModified }
+  from '../actions';
 import { CREATING_SITE } from '../messages';
 
 test('createSiteSaga succeed', t => {
@@ -23,4 +26,15 @@ test('createSiteSaga failed', t => {
   t.deepEqual(gen.next().value, call(createSite, action));
   t.deepEqual(gen.throw(error).value, put(createSiteFailed(error)));
   t.true(gen.next().done);
+});
+
+test('sitesCollectionWatcher', t => {
+  const gen = sitesCollectionWatcher();
+  const channel = eventChannel(() => {});
+  const event = { event: 'event', id: 'id', fields: 'fields' };
+  t.deepEqual(gen.next().value, call(subscribe, 'sites'));
+  t.deepEqual(gen.next().value, call(collectionEventChannel, 'sites'));
+  t.deepEqual(gen.next(channel).value, take(channel));
+  t.deepEqual(gen.next(event).value, put(siteCollectionModified('event', 'id', 'fields')));
+  t.deepEqual(gen.next(channel).value, take(channel));
 });

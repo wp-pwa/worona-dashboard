@@ -8,3 +8,10 @@ test('createSite with id', t => {
   createSite(Object.assign({}, action, { caller }));
   t.true(caller.calledWith('createSite', action));
 });
+
+test('createSite without id', t => {
+  const caller = sinon.stub();
+  const action = { name: 'name', url: 'url', _id: undefined };
+  createSite(Object.assign({}, action, { caller }));
+  t.true(caller.calledWith('createSite', action));
+});

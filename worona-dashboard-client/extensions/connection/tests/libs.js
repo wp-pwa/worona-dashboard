@@ -115,3 +115,17 @@ test('subscribe', t => {
   connection.subscribe(params);
   t.true(connection._client.subscribe.calledWith(params));
 });
+
+test('collectionEventChannel', t => {
+  connection.start();
+  sinon.spy(connection._client.ddp, 'on');
+  sinon.spy(connection._client.ddp, 'removeListener');
+  const channel = connection.collectionEventChannel('somecollection');
+  t.true(connection._client.ddp.on.calledWith('added'));
+  t.true(connection._client.ddp.on.calledWith('changed'));
+  t.true(connection._client.ddp.on.calledWith('removed'));
+  channel.close();
+  t.true(connection._client.ddp.removeListener.calledWith('added'));
+  t.true(connection._client.ddp.removeListener.calledWith('changed'));
+  t.true(connection._client.ddp.removeListener.calledWith('removed'));
+});

@@ -16,7 +16,9 @@ Meteor.methods({
     }
 
     const userId = this.userId;
-    const data = { name, url, userIds: [userId] };
+    const createdAt = new Date();
+    const modifiedAt = new Date();
+    const data = { name, url, userIds: [userId], createdAt, modifiedAt };
     if (!!_id) data._id = _id;
 
     return sites.insert(data);

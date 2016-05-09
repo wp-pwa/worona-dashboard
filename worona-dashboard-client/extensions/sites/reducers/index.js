@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
+import findIndex from 'lodash/findIndex';
 import { CREATE_SITE_REQUESTED, CREATE_SITE_STATUS_CHANGED, CREATE_SITE_SUCCEED,
-  CREATE_SITE_FAILED } from '../actiontypes';
+  CREATE_SITE_FAILED, SITES_COLLECTION_MODIFIED } from '../actiontypes';
 import { METEOR_USER_NOT_LOGGED_IN, YOU_ARE_NOT_LOGGED_IN } from '../errors';
 
 export const isCreatingSite = (state = false, action) => {
@@ -43,8 +44,25 @@ export const createSiteError = (state = false, action) => {
   }
 };
 
+export const items = (state = [], action) => {
+  if (action.type === SITES_COLLECTION_MODIFIED) {
+    switch (action.event) {
+      case 'added':
+        const index = findIndex(state, { id: action.id });
+        
+        return;
+      case 'changed':
+        return;
+      case 'removed':
+        return;
+      default:
+    }
+  }
+};
+
 export default combineReducers({
   isCreatingSite,
   createSiteStatus,
   createSiteError,
+  items,
 });
