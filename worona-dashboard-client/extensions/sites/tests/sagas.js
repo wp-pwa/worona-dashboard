@@ -1,12 +1,13 @@
 import test from 'ava';
-import { call, put, take } from 'redux-saga/effects';
+import { call, put, take, race } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 import { createSiteSaga } from '../sagas/createSite';
-import { sitesCollectionWatcher } from '../sagas/sitesCollection';
-import { createSite, collectionEventChannel, subscribe } from '../libs';
-import { createSiteSucceed, createSiteFailed, createSiteStatusChanged, siteCollectionModified }
+import { sitesCollectionSaga, sitesCollectionWatcher } from '../sagas/sitesCollection';
+import { createSite, collectionEventChannel, subscribe, unsubscribe } from '../libs';
+import { createSiteSucceed, createSiteFailed, createSiteStatusChanged, sitesCollectionModified }
   from '../actions';
 import { CREATING_SITE } from '../messages';
+import { LOGIN_SUCCEED, LOGOUT_SUCCEED } from '../actiontypes';
 
 test('createSiteSaga succeed', t => {
   const action = { name: 'name', url: 'url', _id: '1234' };
@@ -28,13 +29,38 @@ test('createSiteSaga failed', t => {
   t.true(gen.next().done);
 });
 
-test('sitesCollectionWatcher', t => {
-  const gen = sitesCollectionWatcher();
+test('sitesCollectionSaga, data-in loop', t => {
   const channel = eventChannel(() => {});
-  const event = { event: 'event', id: 'id', fields: 'fields' };
-  t.deepEqual(gen.next().value, call(subscribe, 'sites'));
-  t.deepEqual(gen.next().value, call(collectionEventChannel, 'sites'));
-  t.deepEqual(gen.next(channel).value, take(channel));
-  t.deepEqual(gen.next(event).value, put(siteCollectionModified('event', 'id', 'fields')));
-  t.deepEqual(gen.next(channel).value, take(channel));
+  const gen = sitesCollectionSaga(channel);
+  const data = { event: 'event', id: 'id', fields: 'fields' };
+  t.deepEqual(gen.next().value, race({
+    data: take(channel),
+    logout: take(LOGOUT_SUCCEED),
+  }));
+  t.deepEqual(gen.next({ data }).value, put(sitesCollectionModified('event', 'id', 'fields')));
+  t.deepEqual(gen.next().value, race({
+    data: take(channel),
+    logout: take(LOGOUT_SUCCEED),
+  }));
+});
+
+test('sitesCollectionSaga, logout loop', t => {
+  const channel = eventChannel(() => {});
+  const gen = sitesCollectionSaga(channel);
+  t.deepEqual(gen.next().value, race({
+    data: take(channel),
+    logout: take(LOGOUT_SUCCEED),
+  }));
+  t.true(gen.next({ logout: true }).done);
+});
+
+test('sitesCollectionWatcher', t => {
+  const channel = eventChannel(() => {});
+  const gen = sitesCollectionWatcher();
+  gen.next();
+  t.deepEqual(gen.next(channel).value, take(LOGIN_SUCCEED));
+  gen.next();
+  t.deepEqual(gen.next({ id: 1 }).value, call(sitesCollectionSaga, channel));
+  gen.next();
+  t.deepEqual(gen.next().value, take(LOGIN_SUCCEED));
 });

@@ -1,4 +1,5 @@
 export const isLoggedIn = state => state.accounts.isLoggedIn;
+export const userId = state => state.accounts.userId;
 export const isLoggingIn = state => state.accounts.isLoggingIn;
 export const loginStatus = state => state.accounts.loginStatus;
 export const loginError = state => state.accounts.loginError;

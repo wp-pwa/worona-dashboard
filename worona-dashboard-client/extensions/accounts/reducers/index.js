@@ -15,6 +15,17 @@ export const isLoggedIn = (state = false, action) => {
   }
 };
 
+export const userId = (state = null, action) => {
+  switch (action.type) {
+    case LOGIN_SUCCEED:
+      return action.userId;
+    case LOGOUT_SUCCEED:
+      return null;
+    default:
+      return state;
+  }
+};
+
 export const isLoggingIn = (state = false, action) => {
   switch (action.type) {
     case LOGIN_REQUESTED:
@@ -137,6 +148,7 @@ export const isFirstLogin = (state = false, action) => {
 
 export default combineReducers({
   isLoggedIn,
+  userId,
   isLoggingIn,
   loginError,
   loginStatus,

@@ -94,6 +94,10 @@ export class Connection {
     return this._client.subscribe(...params);
   }
 
+  unsubscribe(id) {
+    this._client.unsubscribe(id);
+  }
+
   collectionEventChannel(selectedCollection) {
     return eventChannel(listener => {
       const added = this._client.ddp.on('added', ({ collection, id, fields }) => {
@@ -140,6 +144,7 @@ export const loggedInEventChannel = connection.loggedInEventChannel.bind(connect
 export const loggedOutEventChannel = connection.loggedOutEventChannel.bind(connection);
 export const logout = connection.logout.bind(connection);
 export const subscribe = connection.subscribe.bind(connection);
+export const unsubscribe = connection.unsubscribe.bind(connection);
 export const collectionEventChannel = connection.collectionEventChannel.bind(connection);
 export default connection;
 

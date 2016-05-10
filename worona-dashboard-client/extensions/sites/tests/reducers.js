@@ -1,4 +1,5 @@
 import test from 'ava';
+import deepFreeze from 'deep-freeze';
 import { isCreatingSite, createSiteStatus, createSiteError, items } from '../reducers';
 import { createSiteRequested, createSiteFailed, createSiteSucceed, createSiteStatusChanged,
   sitesCollectionModified } from '../actions';
@@ -26,27 +27,59 @@ test('createSiteError', t => {
   t.false(createSiteError(error, createSiteSucceed()));
 });
 
-test('items', t => {
+test('items should init to []', t => {
   t.deepEqual(items(undefined, {}), []);
-  const site1 = { name: 'site1', url: 'url1' };
-  const site2 = { name: 'site2', url: 'url2' };
-  t.deepEqual(
-    items([], sitesCollectionModified('added', 1, site1)),
-    [{ id: 1, name: site1.name, url: site1.url }]
-  );
-  t.deepEqual(
-    items([{ id: 1, name: site1.name, url: site1.url }],
-      sitesCollectionModified('added', 2, site2)), [
-        { id: 1, name: site1.name, url: site1.url },
-        { id: 2, name: site2.name, url: site2.url },
-      ]
-  );
-  t.deepEqual(
-    items([{ id: 1, name: site1.name, url: site1.url }],
-      sitesCollectionModified('changed', 1, { name: 'otherName' })),
-      [{ id: 1, name: 'otherName', url: site1.url }]
-  );
-  t.deepEqual(
-    items([{ id: 1, name: site1.name, url: site1.url }],
-      sitesCollectionModified('removed', 1)), []);
+});
+
+test('items should add arrays when empty', t => {
+  const itemsBefore = [];
+  const newItem = { id: 1, name: 'site1', url: 'url1' };
+  const itemsAfter = [newItem];
+  deepFreeze(itemsBefore);
+  t.deepEqual(items(itemsBefore,
+    sitesCollectionModified('added', newItem.id, { name: newItem.name, url: newItem.url })),
+    itemsAfter);
+});
+
+test('items should add arrays when not empty', t => {
+  const oldItem = { id: 1, name: 'site1', url: 'url1' };
+  const itemsBefore = [oldItem];
+  const newItem = { id: 2, name: 'site2', url: 'url2' };
+  const itemsAfter = [oldItem, newItem];
+  deepFreeze(itemsBefore);
+  t.deepEqual(items(itemsBefore,
+    sitesCollectionModified('added', newItem.id, { name: newItem.name, url: newItem.url })),
+    itemsAfter);
+});
+
+test('items should substitute item when existing', t => {
+  const oldItem = { id: 1, name: 'site1', url: 'url1' };
+  const itemsBefore = [oldItem];
+  const newItem = { id: 1, name: 'site2', url: 'url2' };
+  const itemsAfter = [newItem];
+  deepFreeze(itemsBefore);
+  t.deepEqual(items(itemsBefore,
+    sitesCollectionModified('added', newItem.id, { name: newItem.name, url: newItem.url })),
+    itemsAfter);
+});
+
+test('items should change existing item', t => {
+  const oldItem = { id: 1, name: 'site1', url: 'url1' };
+  const itemsBefore = [oldItem];
+  const newItem = { id: 1, name: 'site1', url: 'url2' };
+  const itemsAfter = [newItem];
+  deepFreeze(itemsBefore);
+  t.deepEqual(items(itemsBefore,
+    sitesCollectionModified('changed', newItem.id, { url: newItem.url })),
+    itemsAfter);
+});
+
+test('items should remove existing item', t => {
+  const oldItem = { id: 1, name: 'site1', url: 'url1' };
+  const itemsBefore = [oldItem];
+  const itemsAfter = [];
+  deepFreeze(itemsBefore);
+  t.deepEqual(items(itemsBefore,
+    sitesCollectionModified('removed', 1)),
+    itemsAfter);
 });

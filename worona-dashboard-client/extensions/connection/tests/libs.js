@@ -116,6 +116,14 @@ test('subscribe', t => {
   t.true(connection._client.subscribe.calledWith(params));
 });
 
+test('unsubscribe', t => {
+  connection.start();
+  sinon.spy(connection._client, 'unsubscribe');
+  const id = {};
+  connection.unsubscribe(id);
+  t.true(connection._client.unsubscribe.calledWith(id));
+});
+
 test('collectionEventChannel', t => {
   connection.start();
   sinon.spy(connection._client.ddp, 'on');

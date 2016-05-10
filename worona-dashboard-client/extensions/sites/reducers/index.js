@@ -44,20 +44,26 @@ export const createSiteError = (state = false, action) => {
   }
 };
 
+const newItem = (id, fields) => Object.assign({}, { id }, fields);
+
 export const items = (state = [], action) => {
-  if (action.type === SITES_COLLECTION_MODIFIED) {
+  if (action.type === SITES_COLLECTION_MODIFIED) {
+    const { id, fields } = action;
     switch (action.event) {
-      case 'added':
-        const index = findIndex(state, { id: action.id });
-        
-        return;
+      case 'added': {
+        const index = findIndex(state, { id });
+        if (index === -1) return [...state, newItem(id, fields)];
+        return state.map((item, i) => (i === index ? newItem(id, fields) : item));
+      }
       case 'changed':
-        return;
+        return state.map(item => (item.id === id ? Object.assign({}, item, fields) : item));
       case 'removed':
-        return;
+        return state.filter(item => item.id !== id);
       default:
+        return state;
     }
   }
+  return state;
 };
 
 export default combineReducers({
