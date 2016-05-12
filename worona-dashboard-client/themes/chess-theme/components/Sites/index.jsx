@@ -6,9 +6,9 @@ import Button from '../elements/Button';
 import styles from './style.css';
 
 const Site = ({ name, url, date }) => (
-  <div className="column is-4">
-    <div className="card">
-      <header className="card-header is-centered">
+  <div className="column is-4 is-centered">
+    <div className={cn('card', styles.card)}>
+      <header className="card-header">
         <a href="#" className="card-header-title is-info">
           {name}
         </a>

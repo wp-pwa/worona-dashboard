@@ -102,25 +102,16 @@ export class Connection {
     return eventChannel(listener => {
       const added = this._client.ddp.on('added', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
-          console.log(`Element added to collection ${collection}`);
-          console.log(id);
-          console.log(fields);
           listener({ event: 'added', id, fields });
         }
       });
       const changed = this._client.ddp.on('changed', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
-          console.log(`Element added to collection ${collection}`);
-          console.log(id);
-          console.log(fields);
           listener({ event: 'changed', id, fields });
         }
       });
       const removed = this._client.ddp.on('removed', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
-          console.log(`Element added to collection ${collection}`);
-          console.log(id);
-          console.log(fields);
           listener({ event: 'removed', id, fields });
         }
       });
@@ -128,6 +119,28 @@ export class Connection {
         this._client.ddp.removeListener('added', added);
         this._client.ddp.removeListener('changed', changed);
         this._client.ddp.removeListener('removed', removed);
+      };
+    });
+  }
+
+  readyEventChannel(subscription) {
+    return eventChannel(listener => {
+      const ready = subscription.on('ready', () => {
+        listener('ready');
+      });
+      return () => {
+        subscription.removeListener('ready', ready);
+      };
+    });
+  }
+
+  errorEventChannel(subscription) {
+    return eventChannel(listener => {
+      const error = subscription.on('error', err => {
+        listener(err);
+      });
+      return () => {
+        subscription.removeListener('error', error);
       };
     });
   }
@@ -146,6 +159,8 @@ export const logout = connection.logout.bind(connection);
 export const subscribe = connection.subscribe.bind(connection);
 export const unsubscribe = connection.unsubscribe.bind(connection);
 export const collectionEventChannel = connection.collectionEventChannel.bind(connection);
+export const readyEventChannel = connection.readyEventChannel.bind(connection);
+export const errorEventChannel = connection.errorEventChannel.bind(connection);
 export default connection;
 
 if (typeof window !== 'undefined') window.connection = connection;

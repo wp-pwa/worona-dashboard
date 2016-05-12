@@ -137,3 +137,21 @@ test('collectionEventChannel', t => {
   t.true(connection._client.ddp.removeListener.calledWith('changed'));
   t.true(connection._client.ddp.removeListener.calledWith('removed'));
 });
+
+test('readyEventChannel', t => {
+  connection.start();
+  const subscription = { on: sinon.stub(), removeListener: sinon.stub() };
+  const channel = connection.readyEventChannel(subscription);
+  t.true(subscription.on.calledWith('ready'));
+  channel.close();
+  t.true(subscription.removeListener.calledWith('ready'));
+});
+
+test('errorEventChannel', t => {
+  connection.start();
+  const subscription = { on: sinon.stub(), removeListener: sinon.stub() };
+  const channel = connection.errorEventChannel(subscription);
+  t.true(subscription.on.calledWith('error'));
+  channel.close();
+  t.true(subscription.removeListener.calledWith('error'));
+});
