@@ -4,7 +4,7 @@ import { SUBSCRIPTION_MODIFIED, SUBSCRIPTION_READY, SUBSCRIPTION_STOPPED } from 
 const newItem = (id, fields) => Object.assign({}, { id }, fields);
 const changeItem = (oldFields, newFields) => Object.assign({}, oldFields, newFields);
 
-export const items = collection => (state = [], action) => {
+export const collectionCreator = collection => (state = [], action) => {
   if ((action.type === SUBSCRIPTION_MODIFIED) && (action.collection === collection)) {
     const { id, fields } = action;
     switch (action.event) {
@@ -23,7 +23,7 @@ export const items = collection => (state = [], action) => {
   return state;
 };
 
-export const isReady = collection => (state = false, action) => {
+export const isReadyCreator = collection => (state = false, action) => {
   if (action.collection === collection) {
     switch (action.type) {
       case SUBSCRIPTION_READY:

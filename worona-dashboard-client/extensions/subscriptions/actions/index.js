@@ -1,9 +1,10 @@
 import { SUBSCRIPTION_MODIFIED, SUBSCRIPTION_STARTED, SUBSCRIPTION_READY, SUBSCRIPTION_FAILED,
   SUBSCRIPTION_STOPPED } from '../actiontypes';
 
-export const subscriptionStarted = () => ({ type: SUBSCRIPTION_STARTED });
-export const subscriptionModified = ({ event, collection, id, fields }) =>
-  ({ type: SUBSCRIPTION_MODIFIED, event, collection, id, fields });
-export const subscriptionReady = () => ({ type: SUBSCRIPTION_READY });
-export const subscriptionFailed = error => ({ type: SUBSCRIPTION_FAILED, error });
-export const subscriptionStopped = () => ({ type: SUBSCRIPTION_STOPPED });
+export const subscriptionStarted = collection => ({ type: SUBSCRIPTION_STARTED, collection });
+export const subscriptionModified = (collection, event, id, fields) =>
+  ({ type: SUBSCRIPTION_MODIFIED, collection, event, id, fields });
+export const subscriptionReady = collection => ({ type: SUBSCRIPTION_READY, collection });
+export const subscriptionFailed = (collection, error) =>
+  ({ type: SUBSCRIPTION_FAILED, collection, error });
+export const subscriptionStopped = collection => ({ type: SUBSCRIPTION_STOPPED, collection });

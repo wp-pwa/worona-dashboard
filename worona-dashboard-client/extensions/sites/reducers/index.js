@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import findIndex from 'lodash/findIndex';
 import { CREATE_SITE_REQUESTED, CREATE_SITE_STATUS_CHANGED, CREATE_SITE_SUCCEED,
-  CREATE_SITE_FAILED, SITES_COLLECTION_MODIFIED } from '../actiontypes';
+  CREATE_SITE_FAILED } from '../actiontypes';
 import { METEOR_USER_NOT_LOGGED_IN, YOU_ARE_NOT_LOGGED_IN } from '../errors';
+import { collectionCreator, isReadyCreator } from '../dependencies';
 
 export const isCreatingSite = (state = false, action) => {
   switch (action.type) {
@@ -44,31 +44,13 @@ export const createSiteError = (state = false, action) => {
   }
 };
 
-const newItem = (id, fields) => Object.assign({}, { id }, fields);
-
-export const items = (state = [], action) => {
-  if (action.type === SITES_COLLECTION_MODIFIED) {
-    const { id, fields } = action;
-    switch (action.event) {
-      case 'added': {
-        const index = findIndex(state, { id });
-        if (index === -1) return [...state, newItem(id, fields)];
-        return state.map((item, i) => (i === index ? newItem(id, fields) : item));
-      }
-      case 'changed':
-        return state.map(item => (item.id === id ? Object.assign({}, item, fields) : item));
-      case 'removed':
-        return state.filter(item => item.id !== id);
-      default:
-        return state;
-    }
-  }
-  return state;
-};
+const collection = collectionCreator('sites');
+const isReady = isReadyCreator('sites');
 
 export default combineReducers({
   isCreatingSite,
   createSiteStatus,
   createSiteError,
-  items,
+  collection,
+  isReady,
 });

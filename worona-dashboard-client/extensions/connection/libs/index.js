@@ -102,17 +102,17 @@ export class Connection {
     return eventChannel(listener => {
       const added = this._client.ddp.on('added', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
-          listener({ event: 'added', id, fields });
+          listener({ collection, event: 'added', id, fields });
         }
       });
       const changed = this._client.ddp.on('changed', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
-          listener({ event: 'changed', id, fields });
+          listener({ collection, event: 'changed', id, fields });
         }
       });
       const removed = this._client.ddp.on('removed', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
-          listener({ event: 'removed', id, fields });
+          listener({ collection, event: 'removed', id, fields });
         }
       });
       return () => {
