@@ -6,6 +6,7 @@ i18next.init({
     en: {
       translation: {
         key: 'hello world',
+        MySites: 'My Sites',
       },
     },
   },

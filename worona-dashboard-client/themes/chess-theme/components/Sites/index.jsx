@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 import Button from '../../elements/Button';
 import Site from './Site';
 
-const Sites = ({ sites }) => (
+const Sites = ({ sites, t }) => (
   <div>
     <section className="hero is-info">
       <div className="hero-content">
@@ -11,7 +12,7 @@ const Sites = ({ sites }) => (
           <div className="columns">
             <div className="column is-10">
               <p className="title">
-                My sites
+                {t('MySites')}
               </p>
               <p className="subtitle">
                 Configure your sites here or add a new one.
@@ -37,6 +38,7 @@ const Sites = ({ sites }) => (
 );
 Sites.propTypes = {
   sites: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  t: React.PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -45,4 +47,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps
-)(Sites);
+)(translate()(Sites));
