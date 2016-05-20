@@ -1,3 +1,3 @@
 export { call } from 'connection/libs';
-export { subscription } from 'subscriptions/libs';
-export { collectionCreator, isReadyCreator } from 'subsriptions/reducerCreators';
+export { collectionCreator, isReadyCreator } from 'subscriptions/reducerCreators';
+export { subscriptionWatcherCreator } from 'subscriptions/sagaCreators';

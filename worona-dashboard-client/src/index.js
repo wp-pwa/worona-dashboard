@@ -1,4 +1,5 @@
 /* eslint-disable react/prefer-stateless-function */
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { syncHistoryWithStore } from 'react-router-redux';

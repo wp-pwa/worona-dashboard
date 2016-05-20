@@ -14,10 +14,10 @@ test('collections should add arrays when empty', t => {
   const collectionBefore = [];
   const newDoc = { id: 1, name: 'site1', url: 'url1' };
   const collectionAfter = [newDoc];
+  const action = { collection: 'test', event: 'added', id: newDoc.id,
+    fields: { name: newDoc.name, url: newDoc.url } };
   deepFreeze(collectionBefore);
-  t.deepEqual(collection(collectionBefore,
-    subscriptionModified('test', 'added', newDoc.id, { name: newDoc.name, url: newDoc.url })),
-    collectionAfter);
+  t.deepEqual(collection(collectionBefore, subscriptionModified(action)), collectionAfter);
 });
 
 test('collections should add arrays when not empty', t => {
@@ -26,10 +26,10 @@ test('collections should add arrays when not empty', t => {
   const collectionBefore = [oldDoc];
   const newDoc = { id: 2, name: 'site2', url: 'url2' };
   const collectionAfter = [oldDoc, newDoc];
+  const action = { collection: 'test', event: 'added', id: newDoc.id,
+    fields: { name: newDoc.name, url: newDoc.url } };
   deepFreeze(collectionBefore);
-  t.deepEqual(collection(collectionBefore,
-    subscriptionModified('test', 'added', newDoc.id, { name: newDoc.name, url: newDoc.url })),
-    collectionAfter);
+  t.deepEqual(collection(collectionBefore, subscriptionModified(action)), collectionAfter);
 });
 
 test('collections should substitute item when existing', t => {
@@ -38,10 +38,10 @@ test('collections should substitute item when existing', t => {
   const collectionBefore = [oldDoc];
   const newDoc = { id: 1, name: 'site2', url: 'url2' };
   const collectionAfter = [newDoc];
+  const action = { collection: 'test', event: 'added', id: newDoc.id,
+    fields: { name: newDoc.name, url: newDoc.url } };
   deepFreeze(collectionBefore);
-  t.deepEqual(collection(collectionBefore,
-    subscriptionModified('test', 'added', newDoc.id, { name: newDoc.name, url: newDoc.url })),
-    collectionAfter);
+  t.deepEqual(collection(collectionBefore, subscriptionModified(action)), collectionAfter);
 });
 
 test('collections should change existing item', t => {
@@ -50,10 +50,10 @@ test('collections should change existing item', t => {
   const collectionBefore = [oldDoc];
   const newDoc = { id: 1, name: 'site1', url: 'url2' };
   const collectionAfter = [newDoc];
+  const action = { collection: 'test', event: 'changed', id: newDoc.id,
+    fields: { url: newDoc.url } };
   deepFreeze(collectionBefore);
-  t.deepEqual(collection(collectionBefore,
-    subscriptionModified('test', 'changed', newDoc.id, { url: newDoc.url })),
-    collectionAfter);
+  t.deepEqual(collection(collectionBefore, subscriptionModified(action)), collectionAfter);
 });
 
 test('collections should remove existing item', t => {
@@ -61,10 +61,9 @@ test('collections should remove existing item', t => {
   const oldDoc = { id: 1, name: 'site1', url: 'url1' };
   const collectionBefore = [oldDoc];
   const collectionAfter = [];
+  const action = { collection: 'test', event: 'removed', id: 1 };
   deepFreeze(collectionBefore);
-  t.deepEqual(collection(collectionBefore,
-    subscriptionModified('test', 'removed', 1)),
-    collectionAfter);
+  t.deepEqual(collection(collectionBefore, subscriptionModified(action)), collectionAfter);
 });
 
 test('isReadyCreator', t => {

@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import { fork } from 'redux-saga/effects';
 import accounts from 'accounts/sagas';
 import connection from 'connection/sagas';
