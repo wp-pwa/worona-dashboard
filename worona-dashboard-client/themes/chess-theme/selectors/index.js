@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { initialHeaderItems, loggedInItems } from '../config';
+import { initialHeaderItems, loggedInItems } from './initialState';
 
 export const formFailed = state => state.theme.forms.register.failed;
 
@@ -7,6 +7,3 @@ export const headerItems = createSelector(
   state => state.accounts.isLoggedIn,
   isLoggedIn => (isLoggedIn ? [...initialHeaderItems, ...loggedInItems] : initialHeaderItems)
 );
-
-export { createAccountStatus, createAccountError, isCreatingAccount, isLoggingIn, loginStatus,
-  loginError, isCreatingSite, createSiteStatus, createSiteError } from '../dependencies';

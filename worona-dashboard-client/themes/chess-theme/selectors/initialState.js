@@ -1,4 +1,4 @@
-import { logoutRequested } from '../actions';
+import { logoutRequested } from '../dependencies';
 import store from 'store';
 
 export const initialHeaderItems = [

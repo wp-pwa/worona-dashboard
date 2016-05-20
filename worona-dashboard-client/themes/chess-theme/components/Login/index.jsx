@@ -2,11 +2,10 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 import cn from 'classnames';
-import Hero from '../elements/Hero';
-import Input from '../elements/Input';
-import Button from '../elements/Button';
-import { isLoggingIn, loginStatus, loginError } from '../../selectors';
-import { loginRequested } from '../../actions';
+import Hero from '../../elements/Hero';
+import Input from '../../elements/Input';
+import Button from '../../elements/Button';
+import { loginRequested, isLoggingIn, loginStatus, loginError } from '../../dependencies';
 import { validate } from './validate';
 import styles from './styles.css';
 

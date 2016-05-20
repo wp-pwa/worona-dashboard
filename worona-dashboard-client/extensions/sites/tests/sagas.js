@@ -4,6 +4,7 @@ import { createSiteSaga } from '../sagas/createSite';
 import { createSite } from '../libs';
 import { createSiteSucceed, createSiteFailed, createSiteStatusChanged } from '../actions';
 import { CREATING_SITE } from '../messages';
+import { browserHistory } from '../dependencies';
 
 test('createSiteSaga succeed', t => {
   const action = { name: 'name', url: 'url', _id: '1234' };
@@ -12,6 +13,7 @@ test('createSiteSaga succeed', t => {
   t.deepEqual(gen.next().value, put(createSiteStatusChanged(CREATING_SITE)));
   t.deepEqual(gen.next().value, call(createSite, action));
   t.deepEqual(gen.next(siteId).value, put(createSiteSucceed(siteId)));
+  t.deepEqual(gen.next().value, call(browserHistory.push, '/'));
   t.true(gen.next().done);
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuItem from '../elements/MenuItem';
+import MenuItem from '../../elements/MenuItem';
 
 export const Menu = ({ items, active }) => (
   <div className={`header-right header-menu ${(active ? 'is-active' : '')}`}>
