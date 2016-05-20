@@ -2,12 +2,11 @@ import React from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
-import Hero from '../elements/Hero';
-import Input from '../elements/Input';
-import Button from '../elements/Button';
-import { createSiteRequested } from '../../actions';
-import { createSiteStatus, createSiteError, isCreatingSite }
-  from '../../selectors';
+import Hero from '../../elements/Hero';
+import Input from '../../elements/Input';
+import Button from '../../elements/Button';
+import { createSiteRequested, createSiteStatus, createSiteError, isCreatingSite }
+  from '../../dependencies';
 import { validate } from './validate';
 import styles from './style.css';
 
