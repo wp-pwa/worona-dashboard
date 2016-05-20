@@ -4,14 +4,14 @@ import { select, put, take, call, race } from 'redux-saga/effects';
 import { createAccountSaga } from '../sagas/createAccount';
 import { loginRequestedSaga, loginEvent, logoutEvent } from '../sagas/login';
 import { logoutRequestedSaga } from '../sagas/logout';
-import { isConnected } from '../selectors';
 import { createAccountFailed, createAccountSucceed, createAccountStatusChanged, loginRequested,
   loginStatusChanged, loginSucceed, loginFailed, logoutSucceed, logoutFailed } from '../actions';
-import { CONNECTION_SUCCEED, LOGIN_REQUESTED, LOGIN_SUCCEED, LOGIN_FAILED, LOGOUT_REQUESTED,
-  LOGOUT_SUCCEED, LOGOUT_FAILED } from '../actiontypes';
+import { LOGIN_REQUESTED, LOGIN_SUCCEED, LOGIN_FAILED, LOGOUT_REQUESTED, LOGOUT_SUCCEED,
+  LOGOUT_FAILED } from '../actiontypes';
 import { NOT_CONNECTED, CREATING_ACCOUNT, CONNECTED_CREATING_ACCOUNT, CONNECTED_LOGIN_IN, LOGIN_IN }
   from '../messages';
-import { createAccount, loginWithPassword, logout } from '../libs';
+import { createAccount } from '../libs';
+import { CONNECTION_SUCCEED, isConnected, loginWithPassword, logout } from '../dependencies';
 
 test('createAccountSaga not connected', t => {
   const action = { name: 'name', email: 'email', password: 'pass' };
@@ -26,14 +26,14 @@ test('createAccountSaga not connected', t => {
 });
 
 test('createAccountSaga connected and succeed', t => {
-  const actn = { name: 'name', email: 'email', password: 'pass' };
+  const action = { name: 'name', email: 'email', password: 'pass' };
   const userId = {};
-  const gen = createAccountSaga(actn);
+  const gen = createAccountSaga(action);
   t.deepEqual(gen.next().value, select(isConnected));
   t.deepEqual(gen.next(true).value, put(createAccountStatusChanged(CREATING_ACCOUNT)));
-  t.deepEqual(gen.next().value, call(createAccount, actn.name, actn.email, actn.password));
+  t.deepEqual(gen.next().value, call(createAccount, action.name, action.email, action.password));
   t.deepEqual(gen.next(userId).value, put(createAccountSucceed(userId)));
-  t.deepEqual(gen.next().value, put(loginRequested(actn.email, actn.password)));
+  t.deepEqual(gen.next().value, put(loginRequested(action.email, action.password)));
   t.is(gen.next().done, true);
 });
 

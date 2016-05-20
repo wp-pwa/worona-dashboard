@@ -2,7 +2,7 @@ import { takeLatest } from 'redux-saga';
 import { fork, call, put } from 'redux-saga/effects';
 import { LOGOUT_REQUESTED, LOGOUT_SUCCEED } from '../actiontypes';
 import { logoutSucceed, logoutFailed } from '../actions';
-import { logout, browserHistory } from '../libs';
+import { browserHistory, logout } from '../dependencies';
 
 export function* logoutRequestedSaga() {
   try {

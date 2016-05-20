@@ -8,5 +8,3 @@ export const isCreatingAccount = state => state.accounts.isCreatingAccount;
 export const createAccountStatus = state => state.accounts.createAccountStatus;
 export const createAccountError = state => state.accounts.createAccountError;
 export const isFirstLogin = state => state.accounts.isFirstLogin;
-
-export { isConnected } from '../dependencies';

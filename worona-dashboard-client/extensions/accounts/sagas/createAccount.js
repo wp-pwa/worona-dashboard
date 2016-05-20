@@ -3,9 +3,9 @@ import { fork, call, put, select, take } from 'redux-saga/effects';
 import { createAccount } from '../libs';
 import { createAccountSucceed, createAccountStatusChanged, loginRequested, createAccountFailed }
   from '../actions';
-import { CREATE_ACCOUNT_REQUESTED, CONNECTION_SUCCEED } from '../actiontypes';
-import { isConnected } from '../selectors';
+import { CREATE_ACCOUNT_REQUESTED } from '../actiontypes';
 import { NOT_CONNECTED, CREATING_ACCOUNT, CONNECTED_CREATING_ACCOUNT } from '../messages';
+import { CONNECTION_SUCCEED, isConnected } from '../dependencies';
 
 export function* createAccountSaga({ name, email, password }) {
   if (yield select(isConnected)) {

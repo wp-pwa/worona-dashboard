@@ -1,13 +1,13 @@
 /* eslint-disable no-constant-condition */
 import { call, take, put, select, race, fork } from 'redux-saga/effects';
 import { takeLatest } from 'redux-saga';
-import { isConnected, isFirstLogin } from '../selectors';
-import { loginWithPassword, loggedInEventChannel, loggedOutEventChannel, browserHistory }
-  from '../libs';
+import { isFirstLogin } from '../selectors';
 import { loginStatusChanged, loginSucceed, loginFailed, logoutSucceed } from '../actions';
-import { LOGIN_SUCCEED, LOGIN_REQUESTED, CONNECTION_SUCCEED, LOGIN_FAILED, LOGOUT_REQUESTED,
-  LOGOUT_SUCCEED, LOGOUT_FAILED } from '../actiontypes';
+import { LOGIN_SUCCEED, LOGIN_REQUESTED, LOGIN_FAILED, LOGOUT_REQUESTED, LOGOUT_SUCCEED,
+  LOGOUT_FAILED } from '../actiontypes';
 import { NOT_CONNECTED, LOGIN_IN, CONNECTED_LOGIN_IN } from '../messages';
+import { CONNECTION_SUCCEED, isConnected, browserHistory, loginWithPassword, loggedInEventChannel,
+  loggedOutEventChannel } from '../dependencies';
 
 export function* loginRequestedSaga({ email, password }) {
   if (yield select(isConnected)) {
