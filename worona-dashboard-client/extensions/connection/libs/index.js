@@ -126,7 +126,7 @@ export class Connection {
   readyEventChannel(subscription) {
     return eventChannel(listener => {
       const ready = subscription.on('ready', () => {
-        listener('ready');
+        listener(subscription.name);
       });
       return () => {
         subscription.removeListener('ready', ready);
@@ -137,7 +137,7 @@ export class Connection {
   errorEventChannel(subscription) {
     return eventChannel(listener => {
       const error = subscription.on('error', err => {
-        listener(err);
+        listener(subscription.name, err);
       });
       return () => {
         subscription.removeListener('error', error);
