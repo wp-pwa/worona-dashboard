@@ -56,6 +56,10 @@ var exports = function(options) {
           test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
           loader: "file-loader?name=fonts/[name].[hash].[ext]"
         },
+        {
+          test: /\.json/,
+          loader: "json-loader"
+        }
       ],
     },
     resolve: {
