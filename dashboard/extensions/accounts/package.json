@@ -1,0 +1,54 @@
+{
+  "name": "accounts-worona-dashboard-extension",
+  "version": "1.0.0",
+  "description": "Extension for the Worona Dashboard in charge of the accounts system.",
+  "main": "index.js",
+  "worona": {
+    "namespace": "accounts"
+  },
+  "scripts": {
+    "clean": "rimraf ../../dist/accounts",
+    "build": "npm run clean && webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/worona/worona.git"
+  },
+  "keywords": [
+    "Worona",
+    "extension",
+    "accounts"
+  ],
+  "author": "Worona Labs SL | Luis Herranz, @luisherranz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/worona/worona/issues"
+  },
+  "homepage": "https://github.com/worona/worona#readme",
+  "dependencies": {
+    "asteroid": "^2.0.2"
+  },
+  "devDependencies": {
+    "ava": "^0.15.0",
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "deep-freeze": "0.0.1",
+    "eslint": "^2.10.2",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-react": "^5.1.1",
+    "file-loader": "^0.8.5",
+    "json-loader": "^0.5.4",
+    "nyc": "^6.4.4",
+    "postcss": "^5.0.21",
+    "postcss-cssnext": "^2.5.2",
+    "postcss-loader": "^0.9.1",
+    "sinon": "^1.17.4",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
+  }
+}

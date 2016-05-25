@@ -4,7 +4,14 @@
   "description": "Worona dashboard client core package",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean:dev:vendors": "rimraf dev/vendors",
+    "clean:prod:vendors": "rimraf prod/vendors",
+    "clean:dev:core": "rimraf dev/core",
+    "clean:prod:core": "rimraf prod/core",
+    "build:dev:vendors": "npm run clean:dev:vendors && webpack --config webpack.dev.vendors.js --progress",
+    "build:prod:vendors": "npm run clean:prod:vendors && webpack --config webpack.prod.vendors.js --progress -p",
+    "build:dev:core": "npm run clean:dev:core && webpack --config webpack.dev.core.js --progress",
+    "build:prod:core": "npm run clean:prod:core && webpack --config webpack.prod.core.js --progress -p"
   },
   "repository": {
     "type": "git",
@@ -25,16 +32,11 @@
   },
   "homepage": "https://github.com/worona/worona-core#readme",
   "dependencies": {
-    "animate.css": "^3.5.1",
-    "asteroid": "^2.0.2",
     "babel-polyfill": "^6.7.4",
-    "bulma": "0.0.17",
     "classnames": "^2.2.3",
     "fastclick": "^1.0.6",
-    "font-awesome": "^4.5.0",
     "i18next": "^3.1.0",
-    "lodash": "^4.12.0",
-    "moment": "^2.13.0",
+    "i18next-xhr-backend": "^0.5.4",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-i18next": "^1.4.1",
@@ -42,11 +44,11 @@
     "react-router": "^2.0.1",
     "react-router-redux": "^4.0.1",
     "redux": "^3.3.1",
-    "redux-form": "^4.2.2",
     "redux-saga": "^0.10.0",
-    "reselect": "^2.5.1",
-    "url-regexp": "^1.0.2",
-    "velocity-react": "^1.1.5"
+    "reselect": "^2.5.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "rimraf": "^2.5.2",
+    "webpack": "^1.13.1"
+  }
 }

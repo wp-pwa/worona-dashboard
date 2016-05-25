@@ -6,9 +6,9 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { I18nextProvider } from 'react-i18next';
-import store from 'store';
+import store from './stores';
 import i18n from 'i18n';
-import { routes } from 'router';
+import { routes } from './theme/routes';
 import FastClick from 'fastclick';
 
 const history = syncHistoryWithStore(browserHistory, store);

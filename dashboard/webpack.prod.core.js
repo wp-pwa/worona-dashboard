@@ -6,40 +6,18 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    'dashboard': [
-      'webpack/hot/dev-server',
-      path.join(__dirname, 'src', 'index.js')
-    ],
-    vendor: [
-      'babel-polyfill',
-      'react',
-      'react-dom',
-      'react-router',
-      'classnames',
-      'redux',
-      'react-redux',
-      'redux-saga',
-      'reselect',
-      'react-router',
-      'react-router-redux',
-      'react-i18next',
-      'i18next',
-      'fastclick',
-    ],
+    'dashboard': path.join(__dirname, 'src', 'index.js'),
   },
   output: {
-    path: path.join(__dirname, '..', 'dev'),
+    path: path.join(__dirname, 'prod'),
     publicPath: '/',
-    filename: 'js/[name].core.[hash].js',
+    filename: 'core/dashboard.core.[hash].js',
   },
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        query: {
-          presets: ['react-hmre'],
-        },
         exclude: /(node_modules)/,
       },
       {
@@ -72,7 +50,7 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        loader: 'file-loader?name=[name].[ext]!json-loader'
+        loader: 'json-loader'
       }
     ],
   },
@@ -84,11 +62,10 @@ module.exports = {
     ],
     extensions: ['', '.js', '.jsx'],
   },
-  devtool: '#eval-source-map',
   devServer: {
-		contentBase: path.join(__dirname, 'dev'),
-		noInfo: false,
-		hot: true,
+		contentBase: path.join(__dirname, 'prod'),
+		noInfo: true,
+		hot: false,
 		inline: true,
     port: 4000,
     historyApiFallback: true,
@@ -97,16 +74,20 @@ module.exports = {
     return [require('postcss-cssnext')()];
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' }),
-    new webpack.optimize.CommonsChunkPlugin(
-      'vendor', 'js/dashboard.vendor.[hash].js'),
+    new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
+    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'index.html'),
-      favicon: path.join(__dirname, 'src', 'favicon.png'),
+      template: path.join(__dirname, 'src', 'index.prod.html'),
+      favicon: path.join(__dirname, 'src', 'favicon.prod.png'),
     }),
-    new CopyWebpackPlugin([
-      { from: '**/locales/*.json', to: 'locales', flatten: true },
-    ]),
+    new webpack.DllReferencePlugin({
+      context: path.join(__dirname),
+      manifest: require('./prod/vendors/vendors-manifest.json')
+    }),
+    // new CopyWebpackPlugin([
+    //   { from: '**/locales/*.json', to: 'locales', flatten: true },
+    // ]),
   ]
 };
