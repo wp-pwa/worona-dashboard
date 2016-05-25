@@ -47,4 +47,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps
-)(translate()(Sites));
+)(translate('chess-theme')(Sites));

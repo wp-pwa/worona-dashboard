@@ -1,18 +1,20 @@
 import i18next from 'i18next';
+import XHR from 'i18next-xhr-backend';
 
-i18next.init({
-  lng: 'en',
-  resources: {
-    en: {
-      translation: {
-        key: 'hello world',
-        MySites: 'My Sites',
-      },
+i18next
+  .use(XHR)
+  .init({
+    lng: 'es',
+    fallbackLng: 'en',
+    ns: 'connection',
+    debug: true,
+    interpolation: {
+      escapeValue: false,
     },
-  },
-}, (err, t) => {
-  const hw = i18next.t('key');
-  console.log(hw);
-});
+    backend: {
+      loadPath: '/locales/{{ns}}.{{lng}}.json',
+      allowMultiLoading: false,
+    },
+  });
 
 export default i18next;
