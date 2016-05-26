@@ -1,0 +1,30 @@
+{
+  "name": "bulma-worona-dashboard-theme",
+  "version": "1.0.0",
+  "description": "Theme for the Worona Dashboard based on Bulma CSS.",
+  "main": "index.js",
+  "worona": {
+    "namespace": "bulma",
+    "type": "theme"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/worona/worona.git"
+  },
+  "keywords": [
+    "Worona",
+    "theme",
+    "bulma"
+  ],
+  "author": "Worona Labs SL | Luis Herranz, @luisherranz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/worona/worona/issues"
+  },
+  "homepage": "https://github.com/worona/worona#readme",
+  "dependencies": {
+    "redux-form": "^5.2.4"
+  },
+  "devDependencies": {}
+}

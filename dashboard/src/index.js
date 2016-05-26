@@ -6,9 +6,9 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { I18nextProvider } from 'react-i18next';
-import store from './stores';
+import store from './store';
 import i18n from 'i18n';
-import { routes } from './theme/routes';
+import routes from '../themes/base';
 import FastClick from 'fastclick';
 
 const history = syncHistoryWithStore(browserHistory, store);
@@ -25,13 +25,11 @@ class Dashboard extends React.Component {
   }
 }
 
+if ('ontouchstart' in window) {
+  window.addEventListener('load', () => FastClick.attach(document.body));
+}
+
 ReactDOM.render(
   <Dashboard />,
   document.getElementById('root')
 );
-
-if ('ontouchstart' in window) {
-  window.addEventListener('load', () => {
-    FastClick.attach(document.body);
-  });
-}

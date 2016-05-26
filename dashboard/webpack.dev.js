@@ -1,20 +1,21 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
+var vendors_hash = require('./dist/dev/vendors/vendors-hash.json');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+// var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    'dashboard': [
+    dashboard: [
       'webpack/hot/dev-server',
       path.join(__dirname, 'src', 'index.js')
     ],
   },
   output: {
-    path: path.join(__dirname, 'dev'),
+    path: path.join(__dirname, 'dist', 'dev'),
     publicPath: '/',
-    filename: 'js/[name].core.[hash].js',
+    filename: 'core/dashboard.core.[hash].js',
   },
   module: {
     loaders: [
@@ -56,7 +57,7 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        loader: 'file-loader?name=[name].[ext]!json-loader'
+        loader: 'json-loader'
       }
     ],
   },
@@ -70,7 +71,7 @@ module.exports = {
   },
   devtool: '#eval-source-map',
   devServer: {
-		contentBase: path.join(__dirname, 'dev'),
+		contentBase: path.join(__dirname, 'dist', 'dev'),
 		noInfo: false,
 		hot: true,
 		inline: true,
@@ -84,11 +85,16 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('development') } }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'index.html'),
-      favicon: path.join(__dirname, 'src', 'favicon.png'),
+      template: path.join(__dirname, 'src', 'index.dev.html'),
+      favicon: path.join(__dirname, 'src', 'favicon.dev.png'),
+      vendors_hash: vendors_hash.vendors.js,
     }),
-    new CopyWebpackPlugin([
-      { from: '**/locales/*.json', to: 'locales', flatten: true },
-    ]),
+    new webpack.DllReferencePlugin({
+      context: path.join(__dirname),
+      manifest: require('./dist/dev/vendors/vendors-manifest.json')
+    }),
+    // new CopyWebpackPlugin([
+    //   { from: '**/locales/*.json', to: 'locales', flatten: true },
+    // ]),
   ]
 };

@@ -5,3 +5,4 @@ npm-debug.log
 **/dev/**/fonts
 **/dev/**/images
 .nyc_output*
+dashboard/dist

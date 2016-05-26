@@ -1,12 +1,15 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
+var vendors_hash = require('./dist/prod/vendors/vendors-hash.json');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    'dashboard': path.join(__dirname, 'src', 'index.js'),
+    dashboard: [
+      path.join(__dirname, 'src', 'index.js'),
+    ],
   },
   output: {
     path: path.join(__dirname, 'prod'),
@@ -81,10 +84,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.prod.html'),
       favicon: path.join(__dirname, 'src', 'favicon.prod.png'),
+      vendors_hash: vendors_hash.vendors.js,
     }),
     new webpack.DllReferencePlugin({
       context: path.join(__dirname),
-      manifest: require('./prod/vendors/vendors-manifest.json')
+      manifest: require('./dist/prod/vendors/vendors-manifest.json')
     }),
     // new CopyWebpackPlugin([
     //   { from: '**/locales/*.json', to: 'locales', flatten: true },

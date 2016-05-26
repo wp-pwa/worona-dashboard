@@ -1,7 +1,10 @@
 /* eslint-disable react/prefer-stateless-function, react/no-multi-comp, react/prop-types */
+/* eslint-disable prefer-template */
 import React from 'react';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
-import {
+import themes from 'themes/themes.json';
+
+const {
   Theme,
   Login,
   Register,
@@ -10,7 +13,7 @@ import {
   Sites,
   Site,
   SiteHome,
-} from 'Theme';
+} = require('themes/' + themes[0] + '/index.js');
 
 class ThemeEntry extends React.Component {
   render() { return <Theme children={this.props.children} />; }
