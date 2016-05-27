@@ -9,13 +9,13 @@ module.exports = {
     vendors: vendors,
   },
   output: {
-    path: path.join(__dirname, '..', 'dist', 'dev', 'vendors'),
+    path: path.join(__dirname, '../../dist/client/dev/vendors'),
     filename: 'dashboard.vendors.[hash].js',
     library: 'worona_vendors',
   },
   plugins: [
     new webpack.DllPlugin({
-      path: path.join(__dirname, '..', 'dist', 'dev', 'vendors', 'vendors-manifest.json'),
+      path: path.join(__dirname, '../../dist/client/dev/vendors/vendors-manifest.json'),
       name: 'worona_vendors',
     }),
     new webpack.DefinePlugin({
@@ -25,7 +25,7 @@ module.exports = {
     }),
     new AssetsPlugin({
       filename: 'vendors-hash.json',
-      path: path.join(__dirname, '..', 'dist', 'dev', 'vendors'),
+      path: path.join(__dirname, '../../dist/client/dev/vendors'),
     }),
   ],
 };

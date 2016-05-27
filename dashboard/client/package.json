@@ -1,0 +1,74 @@
+{
+  "name": "worona-dashboard-client",
+  "version": "1.0.0",
+  "description": "Worona dashboard client core package",
+  "main": "index.js",
+  "scripts": {
+    "clean:vendors:dev": "rimraf ../dist/dev/client/vendors",
+    "clean:vendors:prod": "rimraf ../dist/prod/client/vendors",
+    "clean:dev": "rimraf ../dist/client/dev",
+    "clean:prod": "rimraf ../dist/client/prod",
+    "build:vendors:dev": "npm run clean:vendors:dev && (cd vendors && webpack --config webpack.vendors.dev.js --progress)",
+    "build:vendors:prod": "npm run clean:vendors:prod && (cd vendors && webpack --config webpack.vendors.prod.js --progress -p)",
+    "build:dev": "npm run clean:dev && npm run build:vendors:dev && webpack --config webpack.dev.js --progress",
+    "build:prod": "npm run clean:prod && npm run build:vendors:prod && webpack --config webpack.prod.js --progress -p",
+    "start:dev": "webpack-dev-server --config webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/worona/worona-core.git"
+  },
+  "keywords": [
+    "worona",
+    "wordpress",
+    "amp",
+    "app",
+    "mobile",
+    "fbia"
+  ],
+  "author": "Worona Labs SL",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/worona/worona-core/issues"
+  },
+  "homepage": "https://github.com/worona/worona-core#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.7.4",
+    "classnames": "^2.2.3",
+    "fastclick": "^1.0.6",
+    "i18next": "^3.1.0",
+    "i18next-xhr-backend": "^0.5.4",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "react-i18next": "^1.4.1",
+    "react-redux": "^4.4.1",
+    "react-router": "^2.0.1",
+    "react-router-redux": "^4.0.1",
+    "redux": "^3.3.1",
+    "redux-saga": "^0.10.0",
+    "reselect": "^2.5.1"
+  },
+  "devDependencies": {
+    "assets-webpack-plugin": "^3.4.0",
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "bundle-loader": "^0.5.4",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.17.0",
+    "json-loader": "^0.5.4",
+    "node-sass": "^3.7.0",
+    "postcss": "^5.0.21",
+    "postcss-cssnext": "^2.5.2",
+    "postcss-loader": "^0.9.1",
+    "rimraf": "^2.5.2",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

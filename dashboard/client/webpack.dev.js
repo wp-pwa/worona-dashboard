@@ -1,7 +1,7 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
-var vendors_hash = require('./dist/dev/vendors/vendors-hash.json');
+var vendors_hash = require('../dist/client/dev/vendors/vendors-hash.json');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 // var CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -9,11 +9,11 @@ module.exports = {
   entry: {
     dashboard: [
       'webpack/hot/dev-server',
-      path.join(__dirname, 'src', 'index.js')
+      path.join(__dirname, 'index.js')
     ],
   },
   output: {
-    path: path.join(__dirname, 'dist', 'dev'),
+    path: path.join(__dirname, '..', 'dist', 'client', 'dev'),
     publicPath: '/',
     filename: 'core/dashboard.core.[hash].js',
   },
@@ -71,7 +71,7 @@ module.exports = {
   },
   devtool: '#eval-source-map',
   devServer: {
-		contentBase: path.join(__dirname, 'dist', 'dev'),
+		contentBase: path.join(__dirname, '..', 'dist', 'client', 'dev'),
 		noInfo: false,
 		hot: true,
 		inline: true,
@@ -85,13 +85,13 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('development') } }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'index.dev.html'),
-      favicon: path.join(__dirname, 'src', 'favicon.dev.png'),
+      template: path.join(__dirname, 'includes', 'index.dev.html'),
+      favicon: path.join(__dirname, 'includes', 'favicon.dev.png'),
       vendors_hash: vendors_hash.vendors.js,
     }),
     new webpack.DllReferencePlugin({
       context: path.join(__dirname),
-      manifest: require('./dist/dev/vendors/vendors-manifest.json')
+      manifest: require('../dist/client/dev/vendors/vendors-manifest.json')
     }),
     // new CopyWebpackPlugin([
     //   { from: '**/locales/*.json', to: 'locales', flatten: true },

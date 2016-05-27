@@ -8,7 +8,7 @@ import { Router, browserHistory } from 'react-router';
 import { I18nextProvider } from 'react-i18next';
 import store from './store';
 import i18n from 'i18n';
-import routes from '../themes/base';
+import routes from '../themes/base/routes';
 import FastClick from 'fastclick';
 
 const history = syncHistoryWithStore(browserHistory, store);

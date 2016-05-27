@@ -2,18 +2,22 @@
 /* eslint-disable prefer-template */
 import React from 'react';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
-import themes from 'themes/themes.json';
+import themes from '../themes.json';
 
-const {
-  Theme,
-  Login,
-  Register,
-  CreateFirstApp,
-  Profile,
-  Sites,
-  Site,
-  SiteHome,
-} = require('themes/' + themes[0] + '/index.js');
+const loadTheme = require('bundle?name=theme!../' + themes[0] + '/theme.js');
+
+loadTheme(theme => {
+  const {
+    Theme,
+    Login,
+    Register,
+    CreateFirstApp,
+    Profile,
+    Sites,
+    Site,
+    SiteHome,
+  } = theme;
+});
 
 class ThemeEntry extends React.Component {
   render() { return <Theme children={this.props.children} />; }

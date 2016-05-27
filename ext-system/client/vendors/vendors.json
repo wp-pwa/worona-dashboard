@@ -1,0 +1,17 @@
+[
+  "babel-polyfill",
+  "react",
+  "react-dom",
+  "react-router",
+  "classnames",
+  "redux",
+  "react-redux",
+  "redux-saga",
+  "reselect",
+  "react-router",
+  "react-router-redux",
+  "react-i18next",
+  "i18next",
+  "i18next-xhr-backend",
+  "fastclick"
+]
