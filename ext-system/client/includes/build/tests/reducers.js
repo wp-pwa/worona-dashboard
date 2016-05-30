@@ -10,10 +10,10 @@ test('themes.isLoading', t => {
   t.false(themes.isLoading(true, a.themeLoadFailed()));
 });
 
-test('themes.isLoaded', t => {
-  t.false(themes.isLoaded(undefined, {}));
-  t.true(themes.isLoaded(false, a.themeLoadSucceed()));
-  t.false(themes.isLoaded(true, a.themeLoadRequested()));
+test('themes.isReady', t => {
+  t.false(themes.isReady(undefined, {}));
+  t.true(themes.isReady(false, a.themeLoadSucceed()));
+  t.false(themes.isReady(true, a.themeLoadRequested()));
 });
 
 test('extensions.isLoading', t => {
@@ -23,8 +23,8 @@ test('extensions.isLoading', t => {
   t.false(extensions.isLoading(true, a.extensionLoadFailed()));
 });
 
-test('extensions.isLoaded', t => {
-  t.false(extensions.isLoaded(undefined, {}));
-  t.true(extensions.isLoaded(false, a.extensionLoadSucceed()));
-  t.false(extensions.isLoaded(true, a.extensionLoadRequested()));
+test('extensions.isReady', t => {
+  t.false(extensions.isReady(undefined, {}));
+  t.true(extensions.isReady(false, a.extensionLoadSucceed()));
+  t.false(extensions.isReady(true, a.extensionLoadRequested()));
 });

@@ -16,9 +16,19 @@ module.exports = {
     path: path.join(__dirname, '..', 'dist', 'client', 'dev'),
     publicPath: '/',
     filename: 'core/dashboard.core.[hash].js',
+    chunkFilename: 'extensions/[name]/[name].[hash].js'
   },
   module: {
     loaders: [
+      {
+        test: /extension\.js$/,
+        loader: 'bundle',
+        query: {
+          lazy: true,
+          name: '[1]',
+          regExp: '([\\w\\.]+)\\/[\\w\\.]+$'
+        }
+      },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
@@ -68,6 +78,9 @@ module.exports = {
       'node_modules',
     ],
     extensions: ['', '.js', '.jsx'],
+    alias: {
+      'worona': path.join(__dirname, 'worona.js'),
+    }
   },
   devtool: '#eval-source-map',
   devServer: {

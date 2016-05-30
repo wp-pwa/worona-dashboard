@@ -1,6 +1,8 @@
-import * as reducers from '../reducers/extensions';
+import _ from 'lodash';
+import * as reducers from '../reducers';
 
-const extensions = {};
-reducers.forEach(reducer => { extensions[reducer] = state => state.build.extensions[reducer]; });
+const selectors = {};
+_(reducers).omit('default').keys()
+  .forEach(reducer => { selectors[reducer] = state => state.extensions[reducer]; });
 
-export default extensions;
+export default selectors;

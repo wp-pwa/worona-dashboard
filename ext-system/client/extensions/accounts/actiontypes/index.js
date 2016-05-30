@@ -1,0 +1,12 @@
+export const LOGIN_REQUESTED = 'accounts/LOGIN_REQUESTED';
+export const LOGIN_STATUS_CHANGED = 'accounts/LOGIN_STATUS_CHANGED';
+export const LOGIN_FAILED = 'accounts/LOGIN_FAILED';
+export const LOGIN_SUCCEED = 'accounts/LOGIN_SUCCEED';
+export const LOGOUT_REQUESTED = 'accounts/LOGOUT_REQUESTED';
+export const LOGOUT_STATUS_CHANGED = 'accounts/LOGOUT_STATUS_CHANGED';
+export const LOGOUT_FAILED = 'accounts/LOGOUT_FAILED';
+export const LOGOUT_SUCCEED = 'accounts/LOGOUT_SUCCEED';
+export const CREATE_ACCOUNT_REQUESTED = 'accounts/CREATE_ACCOUNT_REQUESTED';
+export const CREATE_ACCOUNT_STATUS_CHANGED = 'accounts/CREATE_ACCOUNT_STATUS_CHANGED';
+export const CREATE_ACCOUNT_FAILED = 'accounts/CREATE_ACCOUNT_FAILED';
+export const CREATE_ACCOUNT_SUCCEED = 'accounts/CREATE_ACCOUNT_SUCCEED';

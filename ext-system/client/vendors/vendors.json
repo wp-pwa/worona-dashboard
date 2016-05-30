@@ -13,5 +13,6 @@
   "react-i18next",
   "i18next",
   "i18next-xhr-backend",
-  "fastclick"
+  "fastclick",
+  "lodash"
 ]

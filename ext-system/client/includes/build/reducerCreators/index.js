@@ -1,4 +1,4 @@
-export const isLoadingCreator = (requested, succeed, failed) => (state = false, action) => {
+export const isLoadingCreator = ({ requested, succeed, failed }) => (state = false, action) => {
   switch (action.type) {
     case requested:
       return true;
@@ -10,7 +10,7 @@ export const isLoadingCreator = (requested, succeed, failed) => (state = false, 
   }
 };
 
-export const isLoadedCreator = (requested, succeed) => (state = false, action) => {
+export const isReadyCreator = ({ requested, succeed }) => (state = false, action) => {
   switch (action.type) {
     case succeed:
       return true;

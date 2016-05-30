@@ -5,17 +5,17 @@ import extensions from './extensions';
 const isLoading = createSelector(
   themes.isLoading,
   extensions.isLoading,
-  themesIsLoading => themesIsLoading
+  (themesIsLoading, extensionsIsLoading) => themesIsLoading && extensionsIsLoading
 );
 
-const isLoaded = createSelector(
-  themes.isLoaded,
-  extensions.isLoaded,
-  themesIsLoaded => themesIsLoaded
+const isReady = createSelector(
+  themes.isReady,
+  extensions.isReady,
+  (themesIsReady, extensionsIsReady) => themesIsReady && extensionsIsReady
 );
 
 export default {
   isLoading,
-  isLoaded,
+  isReady,
   themes,
 };

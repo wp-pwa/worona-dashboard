@@ -1,6 +1,8 @@
-import * as reducers from '../reducers/themes';
+import _ from 'lodash';
+import * as reducers from '../reducers';
 
-const themes = {};
-reducers.forEach(reducer => { themes[reducer] = state => state.build.themes[reducer]; });
+const selectors = {};
+_(reducers).omit('default').keys()
+  .forEach(reducer => { selectors[reducer] = state => state.themes[reducer]; });
 
-export default themes;
+export default selectors;

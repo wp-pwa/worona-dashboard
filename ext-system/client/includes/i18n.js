@@ -2,7 +2,7 @@ import i18next from 'i18next';
 import XHR from 'i18next-xhr-backend';
 
 i18next
-  .use(XHR)
+  // .use(XHR)
   .init({
     lng: 'es',
     fallbackLng: 'en',
@@ -11,10 +11,10 @@ i18next
     interpolation: {
       escapeValue: false,
     },
-    backend: {
-      loadPath: '/locales/{{ns}}.{{lng}}.json',
-      allowMultiLoading: false,
-    },
+    // backend: {
+    //   loadPath: '/locales/{{ns}}.{{lng}}.json',
+    //   allowMultiLoading: false,
+    // },
   });
 
 export default i18next;

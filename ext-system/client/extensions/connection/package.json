@@ -1,0 +1,47 @@
+{
+  "name": "connection-worona-dashboard-extension",
+  "version": "1.0.0",
+  "description": "Extension for the Worona Dashboard in charge of the connection to the server.",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf ../../dist/connection",
+    "build": "npm run clean && webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/worona/worona.git"
+  },
+  "keywords": [
+    "Worona",
+    "extension",
+    "connection"
+  ],
+  "author": "Worona Labs SL | Luis Herranz, @luisherranz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/worona/worona/issues"
+  },
+  "homepage": "https://github.com/worona/worona#readme",
+  "worona": {
+    "name": "Connection",
+    "namespace": "connection",
+    "type": "extension",
+    "service": "dashboard",
+    "main": {
+      "filename": "connection.1231241231231231.js",
+      "hash": "1231241231231231"
+    },
+    "files": [
+      {
+        "file": "connection.1231241231231231.js",
+        "hash": "1231241231231231"
+      }
+    ]
+  },
+  "dependencies": {
+    "asteroid": "^2.0.2"
+  },
+  "devDependencies": {
+    "ws": "^1.1.0"
+  }
+}
