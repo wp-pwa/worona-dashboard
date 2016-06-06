@@ -7,9 +7,9 @@ export default (req, res) => {
     core: 1,
   }, {
     fields: {
-      // name: 1,
-      // main: 1,
-      // type: 1,
+      name: 1,
+      main: 1,
+      type: 1,
     },
   }).toArray((error, docs) => {
     if (error) throw new Error('Error retrieving docs from extensions');
