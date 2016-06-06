@@ -16,7 +16,7 @@ module.exports = {
     path: path.join(__dirname, '..', 'dist', 'client', 'dev'),
     publicPath: '/',
     filename: 'core/dashboard.core.[hash].js',
-    chunkFilename: 'extensions/[name]/[name].[hash].js'
+    chunkFilename: '[name].[hash].js'
   },
   module: {
     loaders: [
@@ -25,7 +25,16 @@ module.exports = {
         loader: 'bundle',
         query: {
           lazy: true,
-          name: '[1]',
+          name: 'extensions/[1]/[1]',
+          regExp: '([\\w\\.]+)\\/[\\w\\.]+$'
+        }
+      },
+      {
+        test: /theme\.js$/,
+        loader: 'bundle',
+        query: {
+          lazy: true,
+          name: 'themes/[1]/[1]',
           regExp: '([\\w\\.]+)\\/[\\w\\.]+$'
         }
       },

@@ -6,7 +6,7 @@ export const reducerCreators = {};
 export const sagaCreators = {};
 export const messages = {};
 
-export default {
+const worona = {
   actions,
   actiontypes,
   selectors,
@@ -15,3 +15,7 @@ export default {
   sagaCreators,
   messages,
 };
+
+export default worona;
+
+if (typeof window !== 'undefined') window.worona = worona;
