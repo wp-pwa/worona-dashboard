@@ -1,11 +1,12 @@
 import express from 'express';
-import extensions from './extensions';
+import settings from './settings';
 
 const app = express();
 
-app.use('/extensions', extensions);
-app.get('/', function (req, res) {
-  res.send('The CDN is working');
+app.use('/settings', settings);
+
+app.get('/', (req, res) => {
+  res.send('Worona CDN working.');
 });
 
 export default app;
