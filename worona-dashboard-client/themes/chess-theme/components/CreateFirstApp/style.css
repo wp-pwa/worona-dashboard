@@ -1,0 +1,15 @@
+.box {
+  composes: loginAndRegisterBox from "../../common.css";
+}
+
+.button {
+  composes: loginAndRegisterButton from "../../common.css";
+}
+
+.link {
+  composes: loginAndRegisterLink from "../../common.css";
+}
+
+.status {
+  composes: loginAndRegisterStatus from "../../common.css";
+}

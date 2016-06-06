@@ -1,0 +1,19 @@
+@import "./variables.css";
+
+.loginAndRegisterLink {
+  margin-top: 30px;
+  text-decoration: underline;
+}
+
+.loginAndRegisterButton {
+  margin-top: 10px;
+}
+
+.loginAndRegisterBox {
+  max-width: var(--width, 400px);
+  margin: 0 auto 0 auto;
+}
+
+.loginAndRegisterStatus {
+  margin-top: 20px;
+}

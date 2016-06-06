@@ -23,7 +23,7 @@ curl https://install.meteor.com/ | sh
 
 ----
 
-Finally, run `npm run install` (not `npm install`) to install all the dependencies of each core module.
+Finally, run `npm run install:all` (not `npm install`) to install all the dependencies of each core module.
 
 ```bash
 npm run install
@@ -41,6 +41,12 @@ Open another terminal and run the dashboard and app clients.
 
 ```bash
 npm run client
+```
+
+Open another terminal and run the tests watcher.
+
+```bash
+npm test
 ```
 
 ---
