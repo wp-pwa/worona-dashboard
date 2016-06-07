@@ -1,20 +1,20 @@
 {
-  "name": "accounts-worona-dashboard-extension",
+  "name": "accounts-dashboard-extension-worona",
   "version": "1.0.0",
   "description": "Extension for the Worona Dashboard in charge of the accounts system.",
-  "main": "index.js",
+  "main": "extension.js",
   "scripts": {
-    "clean": "rimraf ../../dist/accounts",
-    "build": "npm run clean && webpack"
+    "build": "webpack -p --progress"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/worona/worona.git"
   },
   "keywords": [
-    "Worona",
+    "worona",
     "extension",
-    "accounts"
+    "accounts",
+    "dashboard"
   ],
   "author": "Worona Labs SL | Luis Herranz, @luisherranz",
   "license": "MIT",
@@ -24,18 +24,18 @@
   "homepage": "https://github.com/worona/worona#readme",
   "worona": {
     "name": "Accounts",
-    "namespace": "accounts",
+    "slug": "accounts",
     "type": "extension",
     "service": "dashboard",
-    "main": {
-      "filename": "accounts.1231241231231231.js",
-      "hash": "1231241231231231"
-    },
-    "files": [
-      {
-        "file": "accounts.1231241231231231.js",
-        "hash": "1231241231231231"
-      }
-    ]
+    "default": 1,
+    "core": 1,
+    "listed": 0,
+    "deactivable": 0
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^3.0.1",
+    "rimraf": "^2.5.2",
+    "webpack": "^1.13.1",
+    "webpack-stats-plugin": "^0.1.1"
   }
 }

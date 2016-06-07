@@ -1,21 +1,24 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
-var vendors = require('../../vendors.json');
+var vendors = require('../../vendors/vendors.json');
 var worona = require('./package.json').worona;
-// var CopyWebpackPlugin = require('copy-webpack-plugin');
+var rimraf = require('rimraf');
+var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+
+var finalPath = path.join(__dirname, '../../../dist', worona.type + 's', worona.slug);
+rimraf.sync(finalPath);
 
 module.exports = {
   entry: {
-    [worona.namespace]: [
-      path.join(__dirname, 'index.js'),
-    ],
+    main: path.join(__dirname, 'extension.js'),
   },
   output: {
-    path: path.join(__dirname, '..', '..', 'dist'),
-    publicPath: '/',
-    filename: '[name]/js/[name].js',
-    library: '[name]',
+    path: finalPath + '/[hash]',
+    publicPath: 'https://cdn.worona.io/' + worona.type + 's/' + worona.service + '/' + worona.slug + '/[hash]/',
+    filename: worona.type + '.js',
+    library: worona.slug,
     libraryTarget: 'commonjs2',
   },
   module: {
@@ -27,15 +30,15 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader?name=images/[name].[hash].[ext]'
+        loader: 'file-loader?name=images/[filename]'
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[hash].[ext]'
+        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[filename]'
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=fonts/[name].[hash].[ext]'
+        loader: 'file-loader?name=fonts/[filename]'
       },
       {
         test: /\.json$/,
@@ -46,26 +49,25 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  externals: vendors.map(function(vendor){
-    return { [vendor]: 'var window.worona_vendors["' + vendor + '"]' };
-  }),
-  // devtool: '#eval-source-map',
-  devServer: {
-		contentBase: path.join(__dirname, '..', '..', 'dist', worona.namespace),
-		noInfo: false,
-		hot: true,
-		inline: true,
-    port: 4000,
-    historyApiFallback: true,
-	},
   postcss: function () {
     return [require('postcss-cssnext')()];
   },
   plugins: [
-    // new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' }),
-    // new CopyWebpackPlugin([
-    //   { from: '**/locales/*.json', to: 'locales', flatten: true },
-    // ]),
+    new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
+    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.DllReferencePlugin({
+      context: path.join(__dirname),
+      manifest: require('../../../dist/client/prod/vendors/vendors-manifest.json')
+    }),
+    new StatsWriterPlugin({
+      filename: 'stats.json',
+      fields: null,
+      transform: function (data) {
+        return JSON.stringify(data, null, 2);
+      }
+    }),
+    new CopyWebpackPlugin([{ from: 'package.json' }]),
   ]
 };

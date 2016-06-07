@@ -15,8 +15,8 @@ module.exports = {
   output: {
     path: path.join(__dirname, '..', 'dist', 'client', 'dev'),
     publicPath: '/',
-    filename: 'core/dashboard.core.[hash].js',
-    chunkFilename: '[name].[hash].js'
+    filename: 'core/dashboard.core.[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js'
   },
   module: {
     loaders: [
@@ -64,15 +64,15 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader?name=images/[name].[hash].[ext]'
+        loader: 'file-loader?name=images/[name].[chunkhash].[ext]'
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[hash].[ext]'
+        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[chunkhash].[ext]'
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=fonts/[name].[hash].[ext]'
+        loader: 'file-loader?name=fonts/[name].[chunkhash].[ext]'
       },
       {
         test: /\.json$/,
