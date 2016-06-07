@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "express": "^4.13.4",
+    "express-mongo-db": "^2.0.3",
     "mongodb": "^2.1.21"
   }
 }

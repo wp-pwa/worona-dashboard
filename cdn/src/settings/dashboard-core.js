@@ -1,7 +1,5 @@
-import { get } from '../mongo';
-
 export default (req, res) => {
-  const extensions = get().collection('extensions');
+  const extensions = req.db.collection('extensions');
   extensions.find({
     service: 'dashboard',
     core: 1,
