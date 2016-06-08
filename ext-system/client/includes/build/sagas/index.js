@@ -4,12 +4,12 @@ import defaultExtensions from '../../../extensions/extensions.json';
 import worona from 'worona';
 
 const requireExtension = name => new Promise(resolve => {
-  const req = require(`../../../extensions/${name}/extension.js`);
+  const req = require(`../../../extensions/${name}/src/index.js`);
   req(extension => resolve(extension));
 });
 
 const requireTheme = name => new Promise(resolve => {
-  const req = require(`../../../themes/${name}/theme.js`);
+  const req = require(`../../../themes/${name}/src/index.js`);
   req(theme => resolve(theme));
 });
 

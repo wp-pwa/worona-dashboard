@@ -2,23 +2,23 @@
 var path = require('path');
 var webpack = require('webpack');
 var vendors = require('../../vendors/vendors.json');
-var worona = require('./package.json').worona;
+var packageJson = require('./package.json');
+var worona = packageJson.worona;
+var packageName = packageJson.name;
 var rimraf = require('rimraf');
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
-var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-var finalPath = path.join(__dirname, '../../../dist', worona.type + 's', worona.slug);
-rimraf.sync(finalPath);
+rimraf.sync('./dist');
 
 module.exports = {
   entry: {
-    main: path.join(__dirname, 'extension.js'),
+    main: path.join(__dirname, 'src', 'index.js'),
   },
   output: {
-    path: finalPath + '/[hash]',
-    publicPath: 'https://cdn.worona.io/' + worona.type + 's/' + worona.service + '/' + worona.slug + '/[hash]/',
-    filename: worona.type + '.js',
-    library: worona.slug,
+    path: path.join(__dirname, 'dist'),
+    publicPath: 'https://cdn.worona.io/packages/' + packageName + '/dist/',
+    filename: 'js/index.[chunkhash].js',
+    library: packageName,
     libraryTarget: 'commonjs2',
   },
   module: {
@@ -30,15 +30,15 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader?name=images/[filename]'
+        loader: 'file-loader?name=images/[name].[chunkhash].[ext]'
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[filename]'
+        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[chunkhash].[ext]'
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=fonts/[filename]'
+        loader: 'file-loader?name=fonts/[name].[chunkhash].[ext]'
       },
       {
         test: /\.json$/,
@@ -62,12 +62,17 @@ module.exports = {
       manifest: require('../../../dist/client/prod/vendors/vendors-manifest.json')
     }),
     new StatsWriterPlugin({
-      filename: 'stats.json',
-      fields: null,
+      filename: 'manifest.json',
+      fields: ['chunks'],
       transform: function (data) {
-        return JSON.stringify(data, null, 2);
+        const manifest = [];
+        data.chunks.forEach(chunk => chunk.files.forEach((file, index) => manifest.push(
+          { file: packageName + '/' + file,
+            hash: chunk.hash,
+            name: chunk.names[index] }
+        )));
+        return JSON.stringify(manifest, null, 2);
       }
-    }),
-    new CopyWebpackPlugin([{ from: 'package.json' }]),
+    })
   ]
 };

@@ -30,10 +30,10 @@
     "default": 1,
     "core": 1,
     "listed": 0,
-    "deactivable": 0
+    "deactivable": 0,
+    "public": 1
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^3.0.1",
     "rimraf": "^2.5.2",
     "webpack": "^1.13.1",
     "webpack-stats-plugin": "^0.1.1"
