@@ -1,8 +1,5 @@
 .DS_Store
 node_modules
 npm-debug.log
-**/dev/**/js
-**/dev/**/fonts
-**/dev/**/images
 .nyc_output*
 dashboard/dist

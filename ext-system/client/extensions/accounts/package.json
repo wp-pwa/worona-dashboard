@@ -2,9 +2,9 @@
   "name": "accounts-dashboard-extension-worona",
   "version": "1.0.0",
   "description": "Extension for the Worona Dashboard in charge of the accounts system.",
-  "main": "extension.js",
+  "main": "dist/prod/js/accounts.dashboard.extension.d599c55e89c3f1ef9b4b.js",
   "scripts": {
-    "build": "webpack -p --progress"
+    "build": "webpack -p --progress --config webpack.prod.js && webpack --progress --config webpack.dev.js"
   },
   "repository": {
     "type": "git",
@@ -27,15 +27,41 @@
     "slug": "accounts",
     "type": "extension",
     "service": "dashboard",
+    "authors": [
+      "luis@worona.org"
+    ],
     "default": 1,
     "core": 1,
     "listed": 0,
     "deactivable": 0,
-    "public": 1
+    "public": 1,
+    "prod": {
+      "files": [
+        {
+          "file": "accounts-dashboard-extension-worona/dist/prod/js/accounts.dashboard.extension.d599c55e89c3f1ef9b4b.js",
+          "hash": "d599c55e89c3f1ef9b4b",
+          "chunkName": "main"
+        }
+      ],
+      "main": "dist/prod/js/accounts.dashboard.extension.d599c55e89c3f1ef9b4b.js"
+    },
+    "dev": {
+      "files": [
+        {
+          "file": "accounts-dashboard-extension-worona/dist/dev/js/accounts.dashboard.extension.5c42038baf525672e7fb.js",
+          "hash": "5c42038baf525672e7fb",
+          "chunkName": "main"
+        }
+      ],
+      "main": "dist/dev/js/accounts.dashboard.extension.5c42038baf525672e7fb.js"
+    }
   },
   "devDependencies": {
     "rimraf": "^2.5.2",
     "webpack": "^1.13.1",
     "webpack-stats-plugin": "^0.1.1"
+  },
+  "dependencies": {
+    "vendors-dashboard-worona": "1.0.4"
   }
 }

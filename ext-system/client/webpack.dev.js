@@ -1,9 +1,10 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
-var vendors_hash = require('../dist/client/dev/vendors/vendors-hash.json');
+var vendors = require('vendors-dashboard-worona/package.json').worona.dev.main;
+var vendors_file = './node_modules/vendors-dashboard-worona/' + vendors;
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-// var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -109,14 +110,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'includes', 'index.dev.html'),
       favicon: path.join(__dirname, 'includes', 'favicon.dev.png'),
-      vendors_hash: vendors_hash.vendors.js,
+      vendors_hash: vendors,
     }),
     new webpack.DllReferencePlugin({
       context: path.join(__dirname),
       manifest: require('../dist/client/dev/vendors/vendors-manifest.json')
     }),
-    // new CopyWebpackPlugin([
-    //   { from: '**/locales/*.json', to: 'locales', flatten: true },
-    // ]),
+    new CopyWebpackPlugin([
+      { from: '**/locales/*.json', to: 'locales', flatten: true },
+    ]),
   ]
 };

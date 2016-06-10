@@ -1,5 +1,6 @@
 /*eslint-disable */
 var path = require('path');
+var fs = require('fs');
 var webpack = require('webpack');
 var vendors = require('../../vendors/vendors.json');
 var packageJson = require('./package.json');
@@ -30,20 +31,20 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader?name=images/[name].[chunkhash].[ext]'
+        loader: 'file-loader?name=images/[name].[chunkhash].[ext]',
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[chunkhash].[ext]'
+        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[chunkhash].[ext]',
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=fonts/[name].[chunkhash].[ext]'
+        loader: 'file-loader?name=fonts/[name].[chunkhash].[ext]',
       },
       {
         test: /\.json$/,
-        loader: 'json-loader'
-      }
+        loader: 'json-loader?name=jsons/[name].[chunkhash].[ext]',
+      },
     ],
   },
   resolve: {
@@ -59,19 +60,25 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DllReferencePlugin({
       context: path.join(__dirname),
-      manifest: require('../../../dist/client/prod/vendors/vendors-manifest.json')
+      manifest: require('../../../dist/client/prod/vendors/vendors-manifest.json'),
     }),
     new StatsWriterPlugin({
-      filename: 'manifest.json',
+      filename: '../package.json',
       fields: ['chunks'],
       transform: function (data) {
-        const manifest = [];
-        data.chunks.forEach(chunk => chunk.files.forEach((file, index) => manifest.push(
-          { file: packageName + '/' + file,
-            hash: chunk.hash,
-            name: chunk.names[index] }
-        )));
-        return JSON.stringify(manifest, null, 2);
+        packageJson.worona.files = [];
+        data.chunks.forEach(chunk => chunk.files.forEach((file, index) => {
+            const chunkName = chunk.names[index];
+            if (chunkName === 'main') {
+              packageJson.main = 'dist/' + file;
+            }
+            worona.files.push({
+              file: packageName + '/dist/' + file,
+              hash: chunk.hash,
+              chunkName: chunkName,
+            });
+          }));
+        return JSON.stringify(packageJson, null, 2);
       }
     })
   ]

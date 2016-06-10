@@ -1,0 +1,63 @@
+{
+  "name": "vendors-dashboard-worona",
+  "version": "1.0.5",
+  "description": "Package to store the Worona vendors in Webpack's DLL format",
+  "main": "dist/prod/vendors.dashboard.056b4a0c76bfda9b53cea590cf5abf1e.js",
+  "scripts": {
+    "build": "webpack -p --progress --config webpack.prod.js && webpack --progress --config webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/worona/worona.git"
+  },
+  "keywords": [
+    "worona",
+    "dashboard",
+    "vendors"
+  ],
+  "author": "Worona Labs SL | Luis Herranz, @luisherranz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/worona/worona/issues"
+  },
+  "homepage": "https://github.com/worona/worona#readme",
+  "worona": {
+    "niceName": "Vendors",
+    "slug": "vendors",
+    "type": "vendor",
+    "service": "dashboard",
+    "authors": [
+      "luis@worona.org"
+    ],
+    "default": 1,
+    "core": 1,
+    "listed": 0,
+    "deactivable": 0,
+    "public": 1,
+    "dev": {
+      "files": [
+        {
+          "file": "vendors-dashboard-worona/dist/dev/vendors.dashboard.5de91a0d34ff4a55cbb124852eb3c159.js",
+          "hash": "5de91a0d34ff4a55cbb124852eb3c159",
+          "chunkName": "main"
+        }
+      ],
+      "main": "dist/dev/vendors.dashboard.5de91a0d34ff4a55cbb124852eb3c159.js"
+    },
+    "prod": {
+      "files": [
+        {
+          "file": "vendors-dashboard-worona/dist/prod/vendors.dashboard.056b4a0c76bfda9b53cea590cf5abf1e.js",
+          "hash": "056b4a0c76bfda9b53cea590cf5abf1e",
+          "chunkName": "main"
+        }
+      ],
+      "main": "dist/prod/vendors.dashboard.056b4a0c76bfda9b53cea590cf5abf1e.js"
+    }
+  },
+  "devDependencies": {
+    "rimraf": "^2.5.2",
+    "webpack": "^1.13.1",
+    "webpack-stats-plugin": "^0.1.1"
+  }
+}

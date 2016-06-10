@@ -1,20 +1,20 @@
 {
-  "name": "connection-worona-dashboard-extension",
+  "name": "connection-dashboard-extension-worona",
   "version": "1.0.0",
   "description": "Extension for the Worona Dashboard in charge of the connection to the server.",
-  "main": "index.js",
+  "main": "dist/js/index.71f0c1edee534f53061d.js",
   "scripts": {
-    "clean": "rimraf ../../dist/connection",
-    "build": "npm run clean && webpack"
+    "build": "webpack -p --progress"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/worona/worona.git"
   },
   "keywords": [
-    "Worona",
+    "worona",
     "extension",
-    "connection"
+    "connection",
+    "dashboard"
   ],
   "author": "Worona Labs SL | Luis Herranz, @luisherranz",
   "license": "MIT",
@@ -24,17 +24,19 @@
   "homepage": "https://github.com/worona/worona#readme",
   "worona": {
     "name": "Connection",
-    "namespace": "connection",
+    "slug": "connection",
     "type": "extension",
     "service": "dashboard",
-    "main": {
-      "filename": "connection.1231241231231231.js",
-      "hash": "1231241231231231"
-    },
+    "default": 1,
+    "core": 1,
+    "listed": 0,
+    "deactivable": 0,
+    "public": 1,
     "files": [
       {
-        "file": "connection.1231241231231231.js",
-        "hash": "1231241231231231"
+        "file": "connection-dashboard-extension-worona/dist/js/index.71f0c1edee534f53061d.js",
+        "hash": "71f0c1edee534f53061d",
+        "chunkName": "main"
       }
     ]
   },
@@ -42,6 +44,9 @@
     "asteroid": "^2.0.2"
   },
   "devDependencies": {
-    "ws": "^1.1.0"
+    "ws": "^1.1.0",
+    "rimraf": "^2.5.2",
+    "webpack": "^1.13.1",
+    "webpack-stats-plugin": "^0.1.1"
   }
 }

@@ -1,0 +1,13 @@
+[
+  "babel-polyfill",
+  "react",
+  "react-dom",
+  "react-redux",
+  "react-router",
+  "react-router-redux",
+  "redux",
+  "redux-saga",
+  "reselect",
+  "classnames",
+  "lodash"
+]
