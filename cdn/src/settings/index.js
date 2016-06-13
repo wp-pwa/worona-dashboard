@@ -4,5 +4,5 @@ import dashboardCore from './dashboard-core';
 
 export default express.Router()
   .get('/', (req, res) => res.send('Worona CDN working.'))
-  .get('/dashboard-core.json', dashboardCore)
+  .get('/:environment/dashboard-core.json', dashboardCore)
 ;
