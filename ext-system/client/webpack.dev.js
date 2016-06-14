@@ -1,23 +1,24 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
-var vendors = require('vendors-dashboard-worona/package.json').worona.dev.main;
-var vendors_file = './node_modules/vendors-dashboard-worona/' + vendors;
+var vendors = require('./vendors/package.json').worona.dev.main;
+var vendors_file = /^.+\/(.+)\.js$/.exec(vendors)[1];
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    dashboard: [
+    core: [
       'webpack/hot/dev-server',
-      path.join(__dirname, 'index.js')
+      path.join(__dirname, 'src', 'index.js')
     ],
   },
   output: {
-    path: path.join(__dirname, '..', 'dist', 'client', 'dev'),
+    path: path.join(__dirname, 'dist', 'dev'),
     publicPath: '/',
-    filename: 'core/dashboard.core.[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].js'
+    filename: 'core/js/core.dashboard.[hash].js',
+    chunkFilename: '[name].[chunkhash].js',
+    hashDigestLength: 32,
   },
   module: {
     loaders: [
@@ -82,24 +83,20 @@ module.exports = {
     ],
   },
   resolve: {
-    modulesDirectories: [
-      'themes',
-      'extensions',
-      'node_modules',
-    ],
     extensions: ['', '.js', '.jsx'],
     alias: {
       'worona': path.join(__dirname, 'worona.js'),
     }
   },
-  devtool: '#eval-source-map',
+  // devtool: '#eval-source-map',
   devServer: {
-		contentBase: path.join(__dirname, '..', 'dist', 'client', 'dev'),
+		contentBase: path.join(__dirname, 'dist', 'dev'),
+    // outputPath: path.join(__dirname),
 		noInfo: false,
 		hot: true,
 		inline: true,
     port: 4000,
-    historyApiFallback: true,
+    // historyApiFallback: true,
 	},
   postcss: function () {
     return [require('postcss-cssnext')()];
@@ -108,16 +105,18 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('development') } }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'includes', 'index.dev.html'),
-      favicon: path.join(__dirname, 'includes', 'favicon.dev.png'),
-      vendors_hash: vendors,
+      template: path.join(__dirname, 'src', 'index.dev.html'),
+      favicon: path.join(__dirname, 'src', 'favicon.dev.png'),
+      vendors_file: '/vendors/js/' + vendors_file,
     }),
     new webpack.DllReferencePlugin({
-      context: path.join(__dirname),
-      manifest: require('../dist/client/dev/vendors/vendors-manifest.json')
+      context: '.',
+      manifest: require('./vendors/dist/dev/vendors-manifest.json'),
     }),
     new CopyWebpackPlugin([
-      { from: '**/locales/*.json', to: 'locales', flatten: true },
-    ]),
+      { from: './vendors/' + vendors, to: 'vendors/js', flatten: true },
+    ], {
+      copyUnmodified: true,
+    }),
   ]
 };

@@ -1,7 +1,7 @@
 import { put, fork, call } from 'redux-saga/effects';
 import { extensionLoadRequested } from '../actions';
 import defaultExtensions from '../../../extensions/extensions.json';
-import worona from 'worona';
+import worona from '../../worona';
 
 const requireExtension = name => new Promise(resolve => {
   const req = require(`../../../extensions/${name}/src/index.js`);

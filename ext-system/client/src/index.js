@@ -6,11 +6,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 // import { Router, browserHistory } from 'react-router';
 import { I18nextProvider } from 'react-i18next';
-import store from './includes/store';
-import i18n from './includes/i18n';
+import store from './store';
+import i18n from './i18n';
 // import routes from './themes/base/routes';
 import FastClick from 'fastclick';
-import Loading from './includes/components/Loading';
+import Loading from './components/Loading';
 
 // const history = syncHistoryWithStore(browserHistory, store);
 

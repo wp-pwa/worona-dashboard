@@ -1,20 +1,23 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
-var vendors_hash = require('./dist/prod/vendors/vendors-hash.json');
+var vendors = require('./vendors/package.json').worona.prod.main;
+var vendors_file = /^.+\/(.+)\.js$/.exec(vendors)[1];
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    dashboard: [
+    core: [
       path.join(__dirname, 'src', 'index.js'),
     ],
   },
   output: {
-    path: path.join(__dirname, 'prod'),
+    path: path.join(__dirname, 'dist', 'prod'),
     publicPath: '/',
-    filename: 'core/dashboard.core.[hash].js',
+    filename: 'core/js/dashboard.core.[hash].js',
+    chunkFilename: '[name].[chunkhash].js',
+    hashDigestLength: 32,
   },
   module: {
     loaders: [
@@ -66,7 +69,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx'],
   },
   devServer: {
-		contentBase: path.join(__dirname, 'prod'),
+		contentBase: path.join(__dirname, 'dist', 'prod'),
 		noInfo: true,
 		hot: false,
 		inline: true,
@@ -84,14 +87,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.prod.html'),
       favicon: path.join(__dirname, 'src', 'favicon.prod.png'),
-      vendors_hash: vendors_hash.vendors.js,
+      vendors_file: '/vendors/js/' + vendors_file,
     }),
     new webpack.DllReferencePlugin({
-      context: path.join(__dirname),
-      manifest: require('./dist/prod/vendors/vendors-manifest.json')
+      context: '.',
+      manifest: require('./vendors/dist/prod/vendors-manifest.json'),
     }),
-    // new CopyWebpackPlugin([
-    //   { from: '**/locales/*.json', to: 'locales', flatten: true },
-    // ]),
+    new CopyWebpackPlugin([
+      { from: './vendors/' + vendors, to: 'vendors/js', flatten: true },
+    ], {
+      copyUnmodified: true,
+    }),
   ]
 };

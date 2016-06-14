@@ -1,8 +1,8 @@
 {
   "name": "vendors-dashboard-worona",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Package to store the Worona vendors in Webpack's DLL format",
-  "main": "dist/prod/vendors.dashboard.056b4a0c76bfda9b53cea590cf5abf1e.js",
+  "main": "dist/prod/js/vendors.dashboard.045e0a8bbaa10a17ad7787acd7fb17af.js",
   "scripts": {
     "build": "webpack -p --progress --config webpack.prod.js && webpack --progress --config webpack.dev.js"
   },
@@ -37,27 +37,40 @@
     "dev": {
       "files": [
         {
-          "file": "vendors-dashboard-worona/dist/dev/vendors.dashboard.5de91a0d34ff4a55cbb124852eb3c159.js",
-          "hash": "5de91a0d34ff4a55cbb124852eb3c159",
+          "file": "vendors-dashboard-worona/dist/dev/js/vendors.dashboard.e04627a269db7c7fdc215bda1c7fddcf.js",
+          "hash": "e04627a269db7c7fdc215bda1c7fddcf",
           "chunkName": "main"
         }
       ],
-      "main": "dist/dev/vendors.dashboard.5de91a0d34ff4a55cbb124852eb3c159.js"
+      "main": "dist/dev/js/vendors.dashboard.e04627a269db7c7fdc215bda1c7fddcf.js"
     },
     "prod": {
       "files": [
         {
-          "file": "vendors-dashboard-worona/dist/prod/vendors.dashboard.056b4a0c76bfda9b53cea590cf5abf1e.js",
-          "hash": "056b4a0c76bfda9b53cea590cf5abf1e",
+          "file": "vendors-dashboard-worona/dist/prod/js/vendors.dashboard.045e0a8bbaa10a17ad7787acd7fb17af.js",
+          "hash": "045e0a8bbaa10a17ad7787acd7fb17af",
           "chunkName": "main"
         }
       ],
-      "main": "dist/prod/vendors.dashboard.056b4a0c76bfda9b53cea590cf5abf1e.js"
+      "main": "dist/prod/js/vendors.dashboard.045e0a8bbaa10a17ad7787acd7fb17af.js"
     }
   },
   "devDependencies": {
     "rimraf": "^2.5.2",
     "webpack": "^1.13.1",
     "webpack-stats-plugin": "^0.1.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.9.1",
+    "classnames": "^2.2.5",
+    "lodash": "^4.13.1",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.1",
+    "react-router-redux": "^4.0.5",
+    "redux": "^3.5.2",
+    "redux-saga": "^0.10.5",
+    "reselect": "^2.5.1"
   }
 }

@@ -16,6 +16,7 @@ module.exports = {
     filename: 'js/' + worona.slug + '.' + worona.service + '.' + worona.type + '.[chunkhash].js',
     library: worona.slug + '_' + worona.service + '_' + worona.type,
     libraryTarget: 'commonjs2',
+    hashDigestLength: 32,
   },
   module: {
     loaders: [

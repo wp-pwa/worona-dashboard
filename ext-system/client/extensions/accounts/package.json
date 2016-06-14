@@ -1,8 +1,8 @@
 {
   "name": "accounts-dashboard-extension-worona",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Extension for the Worona Dashboard in charge of the accounts system.",
-  "main": "dist/prod/js/accounts.dashboard.extension.d599c55e89c3f1ef9b4b.js",
+  "main": "dist/prod/js/accounts.dashboard.extension.d49d0be4ef883b5334bd9533538fc498.js",
   "scripts": {
     "build": "webpack -p --progress --config webpack.prod.js && webpack --progress --config webpack.dev.js"
   },
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/worona/worona#readme",
   "worona": {
-    "name": "Accounts",
+    "niceName": "Accounts",
     "slug": "accounts",
     "type": "extension",
     "service": "dashboard",
@@ -38,22 +38,22 @@
     "prod": {
       "files": [
         {
-          "file": "accounts-dashboard-extension-worona/dist/prod/js/accounts.dashboard.extension.d599c55e89c3f1ef9b4b.js",
-          "hash": "d599c55e89c3f1ef9b4b",
+          "file": "accounts-dashboard-extension-worona/dist/prod/js/accounts.dashboard.extension.d49d0be4ef883b5334bd9533538fc498.js",
+          "hash": "d49d0be4ef883b5334bd9533538fc498",
           "chunkName": "main"
         }
       ],
-      "main": "dist/prod/js/accounts.dashboard.extension.d599c55e89c3f1ef9b4b.js"
+      "main": "dist/prod/js/accounts.dashboard.extension.d49d0be4ef883b5334bd9533538fc498.js"
     },
     "dev": {
       "files": [
         {
-          "file": "accounts-dashboard-extension-worona/dist/dev/js/accounts.dashboard.extension.5c42038baf525672e7fb.js",
-          "hash": "5c42038baf525672e7fb",
+          "file": "accounts-dashboard-extension-worona/dist/dev/js/accounts.dashboard.extension.d3d1e0bedc63925265b277d9b4a7a681.js",
+          "hash": "d3d1e0bedc63925265b277d9b4a7a681",
           "chunkName": "main"
         }
       ],
-      "main": "dist/dev/js/accounts.dashboard.extension.5c42038baf525672e7fb.js"
+      "main": "dist/dev/js/accounts.dashboard.extension.d3d1e0bedc63925265b277d9b4a7a681.js"
     }
   },
   "devDependencies": {
@@ -62,6 +62,6 @@
     "webpack-stats-plugin": "^0.1.1"
   },
   "dependencies": {
-    "vendors-dashboard-worona": "1.0.4"
+    "vendors-dashboard-worona": "1.0.5"
   }
 }

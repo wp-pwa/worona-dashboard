@@ -13,8 +13,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist', 'dev'),
-    filename: 'vendors.dashboard.[chunkhash].js',
-    library: worona.slug + '_' + worona.service + '_' + worona.type,
+    filename: 'js/vendors.dashboard.[chunkhash].js',
+    library: 'vendors_dashboard_worona',
     hashDigestLength: 32,
   },
   plugins: [

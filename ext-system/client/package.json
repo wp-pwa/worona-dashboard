@@ -4,16 +4,13 @@
   "description": "Worona dashboard client core package",
   "main": "index.js",
   "scripts": {
-    "clean:vendors:dev": "rimraf ../dist/dev/client/vendors",
-    "clean:vendors:prod": "rimraf ../dist/prod/client/vendors",
-    "clean:dev": "rimraf ../dist/client/dev",
-    "clean:prod": "rimraf ../dist/client/prod",
-    "build:vendors:dev": "npm run clean:vendors:dev && (cd vendors && webpack --config webpack.vendors.dev.js --progress)",
-    "build:vendors:prod": "npm run clean:vendors:prod && (cd vendors && webpack --config webpack.vendors.prod.js --progress -p)",
-    "build:dev": "npm run clean:dev && npm run build:vendors:dev && webpack --config webpack.dev.js --progress",
-    "build:prod": "npm run clean:prod && npm run build:vendors:prod && webpack --config webpack.prod.js --progress -p",
+    "clean:dev": "rimraf dist/dev",
+    "clean:prod": "rimraf dist/prod",
+    "build:dev": "npm run clean:dev && webpack --config webpack.dev.js --progress",
+    "build:prod": "npm run clean:prod && webpack --config webpack.prod.js --progress -p",
     "start:dev": "webpack-dev-server --config webpack.dev.js",
-    "test": "ava **/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
+    "test": "ava **/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
+    "update:vendors": "npm install --save --save-exact vendors-dashboard-worona@latest"
   },
   "repository": {
     "type": "git",
@@ -33,9 +30,7 @@
     "url": "https://github.com/worona/worona-core/issues"
   },
   "homepage": "https://github.com/worona/worona-core#readme",
-  "dependencies": {
-    "vendors-dashboard-worona": "1.0.4"
-  },
+  "dependencies": {},
   "devDependencies": {
     "ava": "^0.15.1",
     "babel-core": "^6.9.0",
