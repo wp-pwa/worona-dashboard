@@ -2,7 +2,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var vendors = require('./vendors/package.json').worona.dev.main;
-var vendors_file = /^.+\/(.+)\.js$/.exec(vendors)[1];
+var vendors_file = /^.+\/(.+\.js)$/.exec(vendors)[1];
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -10,7 +10,7 @@ module.exports = {
   entry: {
     core: [
       'webpack/hot/dev-server',
-      path.join(__dirname, 'src', 'index.js')
+      path.join(__dirname, 'src', 'index.js'),
     ],
   },
   output: {
@@ -23,21 +23,21 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /extension\.js$/,
-        loader: 'bundle',
+        test: /extensions\/.+\/src\/index\.js$/,
+        loader: 'bundle-loader',
         query: {
           lazy: true,
-          name: 'extensions/[1]/[1]',
-          regExp: '([\\w\\.]+)\\/[\\w\\.]+$'
+          name: 'extensions/[1]/js/[1]',
+          regExp: 'extensions\\/([\\w\\.]+)'
         }
       },
       {
-        test: /theme\.js$/,
-        loader: 'bundle',
+        test: /themes\/.+\/src\/index\.js$/,
+        loader: 'bundle-loader',
         query: {
           lazy: true,
-          name: 'themes/[1]/[1]',
-          regExp: '([\\w\\.]+)\\/[\\w\\.]+$'
+          name: 'themes/[1]/js/[1]',
+          regExp: 'themes\\/([\\w\\.]+)'
         }
       },
       {
@@ -91,12 +91,13 @@ module.exports = {
   // devtool: '#eval-source-map',
   devServer: {
 		contentBase: path.join(__dirname, 'dist', 'dev'),
-    // outputPath: path.join(__dirname),
+    outputPath: path.join(__dirname),
 		noInfo: false,
 		hot: true,
 		inline: true,
     port: 4000,
-    // historyApiFallback: true,
+    https: true,
+    historyApiFallback: true,
 	},
   postcss: function () {
     return [require('postcss-cssnext')()];
@@ -105,8 +106,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('development') } }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'index.dev.html'),
-      favicon: path.join(__dirname, 'src', 'favicon.dev.png'),
+      template: path.join(__dirname, 'src/html', 'index.dev.html'),
+      favicon: path.join(__dirname, 'src/html', 'favicon.dev.png'),
       vendors_file: '/vendors/js/' + vendors_file,
     }),
     new webpack.DllReferencePlugin({

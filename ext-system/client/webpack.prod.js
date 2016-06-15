@@ -2,7 +2,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var vendors = require('./vendors/package.json').worona.prod.main;
-var vendors_file = /^.+\/(.+)\.js$/.exec(vendors)[1];
+var vendors_file = /^.+\/(.+\.js)$/.exec(vendors)[1];
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -21,6 +21,24 @@ module.exports = {
   },
   module: {
     loaders: [
+      {
+        test: /extensions\/.+\/src\/index\.js$/,
+        loader: 'bundle-loader',
+        query: {
+          lazy: true,
+          name: 'extensions/[1]/js/[1]',
+          regExp: 'extensions\\/([\\w\\.]+)'
+        }
+      },
+      {
+        test: /themes\/.+\/src\/index\.js$/,
+        loader: 'bundle-loader',
+        query: {
+          lazy: true,
+          name: 'themes/[1]/js/[1]',
+          regExp: 'themes\\/([\\w\\.]+)'
+        }
+      },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
@@ -74,6 +92,7 @@ module.exports = {
 		hot: false,
 		inline: true,
     port: 4000,
+    https: true,
     historyApiFallback: true,
 	},
   postcss: function () {
@@ -85,8 +104,8 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'index.prod.html'),
-      favicon: path.join(__dirname, 'src', 'favicon.prod.png'),
+      template: path.join(__dirname, 'src/html', 'index.prod.html'),
+      favicon: path.join(__dirname, 'src/html', 'favicon.prod.png'),
       vendors_file: '/vendors/js/' + vendors_file,
     }),
     new webpack.DllReferencePlugin({

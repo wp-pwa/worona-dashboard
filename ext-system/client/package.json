@@ -8,6 +8,9 @@
     "clean:prod": "rimraf dist/prod",
     "build:dev": "npm run clean:dev && webpack --config webpack.dev.js --progress",
     "build:prod": "npm run clean:prod && webpack --config webpack.prod.js --progress -p",
+    "build:dev:modules": "npm run clean:dev && webpack --config webpack.dev.js --progress --display-modules",
+    "build:prod:modules": "npm run clean:prod && webpack --config webpack.prod.js --progress -p --display-modules",
+    "build": "npm run build:dev && npm run build:prod",
     "start:dev": "webpack-dev-server --config webpack.dev.js",
     "test": "ava **/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
     "update:vendors": "npm install --save --save-exact vendors-dashboard-worona@latest"
@@ -30,7 +33,23 @@
     "url": "https://github.com/worona/worona-core/issues"
   },
   "homepage": "https://github.com/worona/worona-core#readme",
-  "dependencies": {},
+  "dependencies": {
+    "babel-polyfill": "^6.9.1",
+    "classnames": "^2.2.5",
+    "fastclick": "^1.0.6",
+    "i18next": "^3.2.0",
+    "i18next-xhr-backend": "^0.6.0",
+    "lodash": "^4.13.1",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-i18next": "^1.5.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.1",
+    "react-router-redux": "^4.0.5",
+    "redux": "^3.5.2",
+    "redux-saga": "^0.10.5",
+    "reselect": "^2.5.1"
+  },
   "devDependencies": {
     "ava": "^0.15.1",
     "babel-core": "^6.9.0",
@@ -48,7 +67,6 @@
     "postcss": "^5.0.21",
     "postcss-cssnext": "^2.5.2",
     "postcss-loader": "^0.9.1",
-    "promise-loader": "^1.0.0",
     "rimraf": "^2.5.2",
     "sass-loader": "^3.2.0",
     "sinon": "^1.17.4",

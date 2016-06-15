@@ -43,10 +43,5 @@
   "dependencies": {
     "asteroid": "^2.0.2"
   },
-  "devDependencies": {
-    "ws": "^1.1.0",
-    "rimraf": "^2.5.2",
-    "webpack": "^1.13.1",
-    "webpack-stats-plugin": "^0.1.1"
-  }
+  "devDependencies": {}
 }

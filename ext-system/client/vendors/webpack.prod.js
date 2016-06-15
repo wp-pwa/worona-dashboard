@@ -6,9 +6,6 @@ var packageJson = require('./package.json');
 var worona = packageJson.worona;
 var packageName = packageJson.name;
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
-var rimraf = require('rimraf');
-
-rimraf.sync('./dist');
 
 module.exports = {
   entry: {

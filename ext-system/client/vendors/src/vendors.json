@@ -7,6 +7,7 @@
   "react-router-redux",
   "redux",
   "redux-saga",
+  "redux-saga/effects",
   "reselect",
   "classnames",
   "lodash"

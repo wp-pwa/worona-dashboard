@@ -56,12 +56,6 @@
       "main": "dist/dev/js/accounts.dashboard.extension.d3d1e0bedc63925265b277d9b4a7a681.js"
     }
   },
-  "devDependencies": {
-    "rimraf": "^2.5.2",
-    "webpack": "^1.13.1",
-    "webpack-stats-plugin": "^0.1.1"
-  },
-  "dependencies": {
-    "vendors-dashboard-worona": "1.0.5"
-  }
+  "devDependencies": {},
+  "dependencies": {}
 }
