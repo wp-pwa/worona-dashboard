@@ -14,9 +14,9 @@ module.exports = {
     ],
   },
   output: {
-    path: path.join(__dirname, 'dist', 'prod', 'packages'),
-    publicPath: config.publicPath + '/packages',
-    filename: 'core-dashboard-worona/dist/prod/js/core.[hash].js',
+    path: path.join(__dirname, 'dist', 'prod'),
+    publicPath: config.publicPath + '/',
+    filename: 'packages/core-dashboard-worona/dist/prod/js/core.[hash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 32,
   },
@@ -27,7 +27,7 @@ module.exports = {
         loader: 'bundle-loader',
         query: {
           lazy: true,
-          name: '[1][2]/dist/prod/js/[1]',
+          name: 'packages/[1][2]/dist/prod/js/[1]',
           regExp: 'packages\\/([\\w]+)([\\w\\-]+)'
         },
         exclude: /(core-dashboard-worona|vendors-dashboard-worona)/,

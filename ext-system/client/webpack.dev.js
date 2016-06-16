@@ -15,9 +15,9 @@ module.exports = {
     ],
   },
   output: {
-    path: path.join(__dirname, 'dist', 'dev', 'packages'),
-    publicPath: config.publicPath + '/packages',
-    filename: 'core-dashboard-worona/dist/dev/js/core.[hash].js',
+    path: path.join(__dirname, 'dist', 'dev'),
+    publicPath: config.publicPath + '/',
+    filename: 'packages/core-dashboard-worona/dist/dev/js/core.[hash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 32,
   },
@@ -28,7 +28,7 @@ module.exports = {
         loader: 'bundle-loader',
         query: {
           lazy: true,
-          name: '[1][2]/dist/dev/js/[1]',
+          name: 'packages/[1][2]/dist/dev/js/[1]',
           regExp: 'packages\\/([\\w]+)([\\w\\-]+)'
         },
         exclude: /(core-dashboard-worona|vendors-dashboard-worona)/,
@@ -80,8 +80,7 @@ module.exports = {
   },
   devtool: '#eval-source-map',
   devServer: {
-		contentBase: path.join(__dirname, 'dist', 'dev', 'packages'),
-    outputPath: path.join(__dirname),
+		contentBase: path.join(__dirname, 'dist', 'dev'),
 		noInfo: false,
 		hot: true,
 		inline: true,
@@ -105,7 +104,7 @@ module.exports = {
       manifest: require('./packages/vendors-dashboard-worona/dist/dev/vendors-manifest.json'),
     }),
     new CopyWebpackPlugin([
-      { from: './packages/vendors-dashboard-worona/' + vendors, to: 'vendors-dashboard-worona/dist/dev/js', flatten: true },
+      { from: './packages/vendors-dashboard-worona/' + vendors, to: 'packages/vendors-dashboard-worona/dist/dev/js', flatten: true },
     ], {
       copyUnmodified: true,
     }),
