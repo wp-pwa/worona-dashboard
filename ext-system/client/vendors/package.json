@@ -1,14 +1,16 @@
 {
   "name": "vendors-dashboard-worona",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Package to store the Worona vendors in Webpack's DLL format",
-  "main": "dist/prod/js/vendors.dashboard.efb8941912328db1e2c33ef5da012539.js",
+  "main": "dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js",
   "scripts": {
     "clean": "rimraf dist",
     "clean:dev": "rimraf dist/dev",
     "clean:prod": "rimraf dist/prod",
-    "build:dev": "npm run clean:dev && webpack --progress --config webpack.dev.js --display-modules",
-    "build:prod": "npm run clean:prod && webpack -p --progress --config webpack.prod.js --display-modules",
+    "build:dev": "npm run clean:dev && webpack --progress --config webpack.dev.js",
+    "build:prod": "npm run clean:prod && webpack -p --progress --config webpack.prod.js",
+    "build:dev:modules": "npm run clean:dev && webpack --progress --config webpack.dev.js --display-modules",
+    "build:prod:modules": "npm run clean:prod && webpack -p --progress --config webpack.prod.js --display-modules",
     "build": "npm run build:dev && npm run build:prod"
   },
   "repository": {
@@ -42,22 +44,22 @@
     "dev": {
       "files": [
         {
-          "file": "vendors-dashboard-worona/dist/dev/js/vendors.dashboard.804dce3952a2f4169f284009646d4601.js",
-          "hash": "804dce3952a2f4169f284009646d4601",
+          "file": "vendors-dashboard-worona/dist/dev/js/vendors.dashboard.bcb2fbd098fd021d03a0cf063b5f283d.js",
+          "hash": "bcb2fbd098fd021d03a0cf063b5f283d",
           "chunkName": "main"
         }
       ],
-      "main": "dist/dev/js/vendors.dashboard.804dce3952a2f4169f284009646d4601.js"
+      "main": "dist/dev/js/vendors.dashboard.bcb2fbd098fd021d03a0cf063b5f283d.js"
     },
     "prod": {
       "files": [
         {
-          "file": "vendors-dashboard-worona/dist/prod/js/vendors.dashboard.efb8941912328db1e2c33ef5da012539.js",
-          "hash": "efb8941912328db1e2c33ef5da012539",
+          "file": "vendors-dashboard-worona/dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js",
+          "hash": "2c7650aea216ec9bf4efad8aff5e9600",
           "chunkName": "main"
         }
       ],
-      "main": "dist/prod/js/vendors.dashboard.efb8941912328db1e2c33ef5da012539.js"
+      "main": "dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js"
     }
   },
   "devDependencies": {
