@@ -1,7 +1,7 @@
 {
   "name": "worona-dashboard-client",
   "version": "1.0.0",
-  "description": "Worona dashboard client core package",
+  "description": "Worona dashboard client",
   "main": "index.js",
   "scripts": {
     "clean:dev": "rimraf dist/dev",
@@ -10,6 +10,8 @@
     "build:prod": "npm run clean:prod && webpack --config webpack.prod.js --progress -p",
     "build:dev:modules": "npm run clean:dev && webpack --config webpack.dev.js --progress --display-modules",
     "build:prod:modules": "npm run clean:prod && webpack --config webpack.prod.js --progress -p --display-modules",
+    "build:dev:reasons": "npm run clean:dev && webpack --config webpack.dev.js --progress --display-modules --display-reasons",
+    "build:prod:reasons": "npm run clean:prod && webpack --config webpack.prod.js --progress -p --display-modules --display-reasons",
     "build": "npm run build:dev && npm run build:prod",
     "start:dev": "webpack-dev-server --config webpack.dev.js",
     "test": "ava **/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
@@ -36,13 +38,9 @@
   "dependencies": {
     "babel-polyfill": "^6.9.1",
     "classnames": "^2.2.5",
-    "fastclick": "^1.0.6",
-    "i18next": "^3.2.0",
-    "i18next-xhr-backend": "^0.6.0",
     "lodash": "^4.13.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-i18next": "^1.5.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "react-router-redux": "^4.0.5",

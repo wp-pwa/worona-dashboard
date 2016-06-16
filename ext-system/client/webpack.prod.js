@@ -1,7 +1,8 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
-var vendors = require('./vendors/package.json').worona.prod.main;
+var config = require('./config.json');
+var vendors = require('./packages/vendors-dashboard-worona/package.json').worona.prod.main;
 var vendors_file = /^.+\/(.+\.js)$/.exec(vendors)[1];
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -9,39 +10,34 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: {
     core: [
-      path.join(__dirname, 'src', 'index.js'),
+      path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'index.js'),
     ],
   },
   output: {
-    path: path.join(__dirname, 'dist', 'prod'),
-    publicPath: '/',
-    filename: 'core/js/dashboard.core.[hash].js',
+    path: path.join(__dirname, 'dist', 'prod', 'packages'),
+    publicPath: config.publicPath + '/packages',
+    filename: 'core-dashboard-worona/dist/prod/js/core.[hash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 32,
   },
   module: {
     loaders: [
       {
-        test: /extensions\/.+\/src\/index\.js$/,
+        test: /packages\/.+-worona\/src\/index\.js$/,
         loader: 'bundle-loader',
         query: {
           lazy: true,
-          name: 'extensions/[1]/js/[1]',
-          regExp: 'extensions\\/([\\w\\.]+)'
-        }
-      },
-      {
-        test: /themes\/.+\/src\/index\.js$/,
-        loader: 'bundle-loader',
-        query: {
-          lazy: true,
-          name: 'themes/[1]/js/[1]',
-          regExp: 'themes\\/([\\w\\.]+)'
-        }
+          name: '[1][2]/dist/prod/js/[1]',
+          regExp: 'packages\\/([\\w]+)([\\w\\-]+)'
+        },
+        exclude: /(core-dashboard-worona|vendors-dashboard-worona)/,
       },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
+        query: {
+          presets: ['react-hmre'],
+        },
         exclude: /(node_modules)/,
       },
       {
@@ -62,15 +58,15 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader?name=images/[name].[hash].[ext]'
+        loader: 'file-loader?name=images/[name].[chunkhash].[ext]'
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[hash].[ext]'
+        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[chunkhash].[ext]'
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=fonts/[name].[hash].[ext]'
+        loader: 'file-loader?name=fonts/[name].[chunkhash].[ext]'
       },
       {
         test: /\.json$/,
@@ -79,17 +75,13 @@ module.exports = {
     ],
   },
   resolve: {
-    modulesDirectories: [
-      'themes',
-      'extensions',
-      'node_modules',
-    ],
     extensions: ['', '.js', '.jsx'],
   },
   devServer: {
-		contentBase: path.join(__dirname, 'dist', 'prod'),
-		noInfo: true,
-		hot: false,
+		contentBase: path.join(__dirname, 'dist', 'prod', 'packages'),
+    outputPath: path.join(__dirname),
+		noInfo: false,
+		hot: true,
 		inline: true,
     port: 4000,
     https: true,
@@ -104,18 +96,18 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src/html', 'index.prod.html'),
-      favicon: path.join(__dirname, 'src/html', 'favicon.prod.png'),
-      vendors_file: '/vendors/js/' + vendors_file,
+      template: path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'html', 'index.prod.html'),
+      favicon: path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'html', 'favicon.prod.png'),
+      vendors_file: config.publicPath + '/packages/vendors-dashboard-worona/dist/prod/js/' + vendors_file,
     }),
     new webpack.DllReferencePlugin({
       context: '.',
-      manifest: require('./vendors/dist/prod/vendors-manifest.json'),
+      manifest: require('./packages/vendors-dashboard-worona/dist/prod/vendors-manifest.json'),
     }),
     new CopyWebpackPlugin([
-      { from: './vendors/' + vendors, to: 'vendors/js', flatten: true },
+      { from: './packages/vendors-dashboard-worona/' + vendors, to: 'vendors-dashboard-worona/dist/prod/js', flatten: true },
     ], {
       copyUnmodified: true,
     }),
-  ]
+  ],
 };

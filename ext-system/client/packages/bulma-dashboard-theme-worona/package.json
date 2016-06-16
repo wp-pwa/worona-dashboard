@@ -1,0 +1,41 @@
+{
+  "name": "bulma-dashboard-theme-worona",
+  "version": "1.0.1",
+  "description": "Theme for the Worona Dashboard.",
+  "main": "dist/prod/js/accounts.dashboard.extension.d49d0be4ef883b5334bd9533538fc498.js",
+  "scripts": {
+    "build": "webpack -p --progress --config webpack.prod.js && webpack --progress --config webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/worona/worona.git"
+  },
+  "keywords": [
+    "worona",
+    "theme",
+    "bulma",
+    "dashboard"
+  ],
+  "author": "Worona Labs SL | Luis Herranz, @luisherranz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/worona/worona/issues"
+  },
+  "homepage": "https://github.com/worona/worona#readme",
+  "worona": {
+    "niceName": "Bulma",
+    "slug": "bulma",
+    "type": "theme",
+    "service": "dashboard",
+    "authors": [
+      "luis@worona.org"
+    ],
+    "default": 1,
+    "core": 1,
+    "listed": 0,
+    "deactivable": 0,
+    "public": 1
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
