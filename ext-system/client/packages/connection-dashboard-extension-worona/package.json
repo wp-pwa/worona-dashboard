@@ -2,7 +2,7 @@
   "name": "connection-dashboard-extension-worona",
   "version": "1.0.0",
   "description": "Extension for the Worona Dashboard in charge of the connection to the server.",
-  "main": "dist/js/index.71f0c1edee534f53061d.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "webpack -p --progress"
   },
@@ -44,5 +44,7 @@
   "dependencies": {
     "asteroid": "^2.0.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "ws": "^1.1.0"
+  }
 }

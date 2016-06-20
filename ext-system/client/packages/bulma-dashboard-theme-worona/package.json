@@ -37,5 +37,7 @@
     "public": 1
   },
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "url-regexp": "^1.0.2"
+  }
 }

@@ -1,4 +1,5 @@
 import test from 'ava';
+import { load } from 'worona';
 import { eventChannel } from 'redux-saga';
 import { select, put, take, call, race } from 'redux-saga/effects';
 import { createAccountSaga } from '../sagas/createAccount';
@@ -12,6 +13,8 @@ import { NOT_CONNECTED, CREATING_ACCOUNT, CONNECTED_CREATING_ACCOUNT, CONNECTED_
   from '../messages';
 import { createAccount } from '../libs';
 import { CONNECTION_SUCCEED, isConnected, loginWithPassword, logout } from '../dependencies';
+
+load('connection', require('../../../connection-dashboard-extension-worona'));
 
 test('createAccountSaga not connected', t => {
   const action = { name: 'name', email: 'email', password: 'pass' };

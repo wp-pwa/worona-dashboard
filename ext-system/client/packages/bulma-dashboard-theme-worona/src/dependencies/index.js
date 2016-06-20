@@ -1,21 +1,25 @@
-export const store = window.worona.store;
+import worona from 'worona';
 
-export const LOGOUT_SUCCEED = window.worona.accounts.actiontypes.LOGOUT_SUCCEED;
+module.exports = {
+  get store() { return worona.store; },
 
-export const createAccountRequested = window.worona.accounts.actions.createAccountRequested;
-export const loginRequested = window.worona.accounts.actions.loginRequested;
-export const logoutRequested = window.worona.accounts.actions.logoutRequested;
-export const logoutSucceed = window.worona.accounts.actions.logoutSucceed;
+  get LOGOUT_SUCCEED() { return worona.accounts.actiontypes.LOGOUT_SUCCEED; },
 
-export const createAccountStatus = window.worona.accounts.selectors.createAccountStatus;
-export const createAccountError = window.worona.accounts.selectors.createAccountError;
-export const isCreatingAccount = window.worona.accounts.selectors.isCreatingAccount;
-export const isLoggingIn = window.worona.accounts.selectors.isLoggingIn;
-export const loginStatus = window.worona.accounts.selectors.loginStatus;
-export const loginError = window.worona.accounts.selectors.loginError;
+  get createAccountRequested() { return worona.accounts.actions.createAccountRequested; },
+  get loginRequested() { return worona.accounts.actions.loginRequested; },
+  get logoutRequested() { return worona.accounts.actions.logoutRequested; },
+  get logoutSucceed() { return worona.accounts.actions.logoutSucceed; },
 
-export const createSiteRequested = window.worona.sites.actions.createSiteRequested;
+  get createAccountStatus() { return worona.accounts.selectors.createAccountStatus; },
+  get createAccountError() { return worona.accounts.selectors.createAccountError; },
+  get isCreatingAccount() { return worona.accounts.selectors.isCreatingAccount; },
+  get isLoggingIn() { return worona.accounts.selectors.isLoggingIn; },
+  get loginStatus() { return worona.accounts.selectors.loginStatus; },
+  get loginError() { return worona.accounts.selectors.loginError; },
 
-export const isCreatingSite = window.worona.sites.selectors.isCreatingSite;
-export const createSiteStatus = window.worona.sites.selectors.createSiteStatus;
-export const createSiteError = window.worona.sites.selectors.createSiteError;
+  get createSiteRequested() { return worona.sites.actions.createSiteRequested; },
+
+  get isCreatingSite() { return worona.sites.selectors.isCreatingSite; },
+  get createSiteStatus() { return worona.sites.selectors.createSiteStatus; },
+  get createSiteError() { return worona.sites.selectors.createSiteError; },
+};

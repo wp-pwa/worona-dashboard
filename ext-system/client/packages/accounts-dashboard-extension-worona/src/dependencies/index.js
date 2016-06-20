@@ -1,11 +1,12 @@
-export const call = window.worona.connection.libs.call;
-export const loginWithPassword = window.worona.connection.libs.call;
-export const loggedInEventChannel = window.worona.connection.libs.call;
-export const loggedOutEventChannel = window.worona.connection.libs.call;
-export const logout = window.worona.connection.libs.call;
+import worona from 'worona';
 
-export const CONNECTION_SUCCEED = window.worona.connection.actiontypes.CONNECTION_SUCCEED;
-
-export const isConnected = window.worona.connection.selectors.isConnected;
-
-export const browserHistory = window.worona.router.browserHistory;
+module.exports = {
+  get call() { return worona.connection.libs.call; },
+  get loginWithPassword() { return worona.connection.libs.loginWithPassword; },
+  get loggedInEventChannel() { return worona.connection.libs.loggedInEventChannel; },
+  get loggedOutEventChannel() { return worona.connection.libs.loggedOutEventChannel; },
+  get logout() { return worona.connection.libs.logout; },
+  get CONNECTION_SUCCEED() { return worona.connection.actiontypes.CONNECTION_SUCCEED; },
+  get isConnected() { return worona.connection.selectors.isConnected; },
+  get browserHistory() { return worona.router.browserHistory; },
+};

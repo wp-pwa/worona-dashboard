@@ -78,7 +78,10 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  devtool: '#eval-source-map',
+  // externals: {
+  //   'worona': 'worona'
+  // },
+  // devtool: '#eval-source-map',
   devServer: {
 		contentBase: path.join(__dirname, 'dist', 'dev'),
 		noInfo: false,

@@ -2,7 +2,7 @@
   "name": "accounts-dashboard-extension-worona",
   "version": "1.0.1",
   "description": "Extension for the Worona Dashboard in charge of the accounts system.",
-  "main": "dist/prod/js/accounts.dashboard.extension.d49d0be4ef883b5334bd9533538fc498.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "webpack -p --progress --config webpack.prod.js && webpack --progress --config webpack.dev.js"
   },

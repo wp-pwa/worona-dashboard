@@ -77,6 +77,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
+  externals: {
+    'worona': 'var worona'
+  },
   devServer: {
 		contentBase: path.join(__dirname, 'dist', 'prod', 'packages'),
     outputPath: path.join(__dirname),
