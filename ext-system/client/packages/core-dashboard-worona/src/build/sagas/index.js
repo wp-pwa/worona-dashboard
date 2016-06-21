@@ -1,6 +1,10 @@
-import { put, fork, call } from 'redux-saga/effects';
-import * as a from '../actions';
+/* eslint-disable no-constant-condition */
 import worona from 'worona';
+import { put, fork, call, take, race } from 'redux-saga/effects';
+import _ from 'lodash';
+import * as a from '../actions';
+import * as t from '../actiontypes';
+
 
 const defaultExtensions = [
   'accounts',
@@ -34,13 +38,45 @@ export function* loadTheme(name) {
   }
 }
 
-export function* loadDefaultExtensions() {
-  yield defaultExtensions.map(name => fork(loadExtension, name));
-  yield fork(loadTheme, defaultTheme);
+export function* extensionsSuccessWatcher() {
+  const extensionsLoaded = [];
+  while (true) {
+    const action = yield take(t.EXTENSION_LOAD_SUCCEED);
+    extensionsLoaded.push(action.name);
+    if (_.isEqual(defaultExtensions, extensionsLoaded)) return true;
+  }
+}
+
+export function* extensionsLoader(extensions) {
+  yield put(a.extensionsLoadRequested());
+  yield extensions.map(name => fork(loadExtension, name));
+  const { succeed } = yield race({
+    succeed: call(extensionsSuccessWatcher),
+    failure: take(t.EXTENSION_LOAD_FAILED),
+  });
+  if (succeed) {
+    yield put(a.extensionsLoadSucceed());
+  } else {
+    yield put(a.extensionsLoadFailed());
+  }
+}
+
+export function* themeLoader(theme) {
+  yield fork(loadTheme, theme);
+}
+
+export function* init() {
+  yield [
+    take(t.EXTENSIONS_LOAD_SUCCEED),
+    take(t.THEME_LOAD_SUCCEED),
+  ];
+  yield put({ type: 'WORONA_INIT' });
 }
 
 export default function* sagas() {
   yield [
-    fork(loadDefaultExtensions),
+    fork(extensionsLoader, defaultExtensions),
+    fork(themeLoader, defaultTheme),
+    fork(init),
   ];
 }
