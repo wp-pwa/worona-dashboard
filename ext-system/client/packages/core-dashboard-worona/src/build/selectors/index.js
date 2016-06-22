@@ -1,22 +1,18 @@
-import { createSelector } from 'reselect';
-import themes from './themes';
-import extensions from './extensions';
+import _ from 'lodash';
+import * as indexReducers from '../reducers';
+import * as themesReducers from '../reducers/themes';
+import * as extensionsReducers from '../reducers/extensions';
 
-export const isLoading = createSelector(
-  state => state.build.themes.isLoading,
-  state => state.build.extensions.isLoading,
-  (themesIsLoading, extensionsIsLoading) => themesIsLoading && extensionsIsLoading
-);
+const selectors = {};
+_(indexReducers).omit('default').keys()
+  .forEach(reducer => { selectors[reducer] = state => state.build[reducer]; });
 
-export const isReady = createSelector(
-  state => state.build.themes.isReady,
-  state => state.build.extensions.isReady,
-  (themesIsReady, extensionsIsReady) => themesIsReady && extensionsIsReady
-);
+selectors.themes = {};
+_(themesReducers).omit('default').keys()
+  .forEach(reducer => { selectors.themes[reducer] = state => state.build.extensions[reducer]; });
 
-export default {
-  isLoading,
-  isReady,
-  themes,
-  extensions,
-};
+selectors.extensions = {};
+_(extensionsReducers).omit('default').keys()
+  .forEach(reducer => { selectors.extensions[reducer] = state => state.build.themes[reducer]; });
+
+module.exports = selectors;

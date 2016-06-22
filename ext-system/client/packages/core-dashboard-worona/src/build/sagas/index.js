@@ -1,6 +1,7 @@
 /* eslint-disable no-constant-condition */
 import worona from 'worona';
 import { put, fork, call, take, race } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import _ from 'lodash';
 import * as a from '../actions';
 import * as t from '../actiontypes';
@@ -21,6 +22,7 @@ export const requirePackage = name => new Promise(resolve => {
 export function* loadExtension(name) {
   yield put(a.extensionLoadRequested(name));
   try {
+    yield call(delay, 1000);
     worona[name] = yield call(requirePackage, `${name}-dashboard-extension`);
     yield put(a.extensionLoadSucceed(name));
   } catch (error) {
@@ -31,6 +33,7 @@ export function* loadExtension(name) {
 export function* loadTheme(name) {
   yield put(a.themeLoadRequested(name));
   try {
+    yield call(delay, 1500);
     worona[name] = yield call(requirePackage, `${name}-dashboard-theme`);
     yield put(a.themeLoadSucceed(name));
   } catch (error) {
@@ -66,17 +69,23 @@ export function* themeLoader(theme) {
 }
 
 export function* init() {
-  yield [
-    take(t.EXTENSIONS_LOAD_SUCCEED),
-    take(t.THEME_LOAD_SUCCEED),
-  ];
-  yield put({ type: 'WORONA_INIT' });
+  yield put(a.packagesLoadRequested());
+  const { succeed } = yield race({
+    succeed: [
+      take(t.EXTENSIONS_LOAD_SUCCEED),
+      take(t.THEME_LOAD_SUCCEED),
+    ],
+    failed1: take(t.EXTENSIONS_LOAD_FAILED),
+    failed2: take(t.THEME_LOAD_FAILED),
+  });
+  if (succeed) yield put(a.packagesLoadSucceed());
+  else yield put(a.packagesLoadFailed());
 }
 
 export default function* sagas() {
   yield [
+    fork(init),
     fork(extensionsLoader, defaultExtensions),
     fork(themeLoader, defaultTheme),
-    fork(init),
   ];
 }

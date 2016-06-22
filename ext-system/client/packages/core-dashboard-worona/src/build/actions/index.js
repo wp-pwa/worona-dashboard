@@ -11,3 +11,7 @@ export const extensionLoadFailed = error => ({ type: t.EXTENSION_LOAD_FAILED, er
 export const extensionsLoadRequested = name => ({ type: t.EXTENSIONS_LOAD_REQUESTED, name });
 export const extensionsLoadSucceed = name => ({ type: t.EXTENSIONS_LOAD_SUCCEED, name });
 export const extensionsLoadFailed = error => ({ type: t.EXTENSIONS_LOAD_FAILED, error });
+
+export const packagesLoadRequested = name => ({ type: t.PACKAGES_LOAD_REQUESTED, name });
+export const packagesLoadSucceed = name => ({ type: t.PACKAGES_LOAD_SUCCEED, name });
+export const packagesLoadFailed = error => ({ type: t.PACKAGES_LOAD_FAILED, error });

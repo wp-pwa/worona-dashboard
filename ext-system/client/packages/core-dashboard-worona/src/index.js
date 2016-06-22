@@ -10,7 +10,7 @@ import store from './store';
 import i18n from './i18n';
 // import routes from './themes/base/routes';
 import FastClick from 'fastclick';
-import Loading from './components/Loading';
+import Loading from './build/components/Loading';
 
 // const history = syncHistoryWithStore(browserHistory, store);
 
