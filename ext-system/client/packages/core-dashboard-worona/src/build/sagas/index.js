@@ -1,7 +1,6 @@
 /* eslint-disable no-constant-condition */
 import worona from 'worona';
 import { put, fork, call, take, race } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
 import _ from 'lodash';
 import * as a from '../actions';
 import * as t from '../actiontypes';
@@ -22,7 +21,6 @@ export const requirePackage = name => new Promise(resolve => {
 export function* loadExtension(name) {
   yield put(a.extensionLoadRequested(name));
   try {
-    yield call(delay, 1000);
     worona[name] = yield call(requirePackage, `${name}-dashboard-extension`);
     yield put(a.extensionLoadSucceed(name));
   } catch (error) {
@@ -33,7 +31,6 @@ export function* loadExtension(name) {
 export function* loadTheme(name) {
   yield put(a.themeLoadRequested(name));
   try {
-    yield call(delay, 1500);
     worona[name] = yield call(requirePackage, `${name}-dashboard-theme`);
     yield put(a.themeLoadSucceed(name));
   } catch (error) {
