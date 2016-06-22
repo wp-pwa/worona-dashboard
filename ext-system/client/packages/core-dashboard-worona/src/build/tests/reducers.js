@@ -18,13 +18,13 @@ test('themes.isReady', t => {
 
 test('extensions.isLoading', t => {
   t.false(extensions.isLoading(undefined, {}));
-  t.true(extensions.isLoading(false, a.extensionLoadRequested()));
-  t.false(extensions.isLoading(true, a.extensionLoadSucceed()));
-  t.false(extensions.isLoading(true, a.extensionLoadFailed()));
+  t.true(extensions.isLoading(false, a.extensionsLoadRequested()));
+  t.false(extensions.isLoading(true, a.extensionsLoadSucceed()));
+  t.false(extensions.isLoading(true, a.extensionsLoadFailed()));
 });
 
 test('extensions.isReady', t => {
   t.false(extensions.isReady(undefined, {}));
-  t.true(extensions.isReady(false, a.extensionLoadSucceed()));
-  t.false(extensions.isReady(true, a.extensionLoadRequested()));
+  t.true(extensions.isReady(false, a.extensionsLoadSucceed()));
+  t.false(extensions.isReady(true, a.extensionsLoadRequested()));
 });

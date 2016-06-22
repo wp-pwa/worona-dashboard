@@ -2,15 +2,15 @@ import { createSelector } from 'reselect';
 import themes from './themes';
 import extensions from './extensions';
 
-const isLoading = createSelector(
-  themes.isLoading,
-  extensions.isLoading,
+export const isLoading = createSelector(
+  state => state.build.themes.isLoading,
+  state => state.build.extensions.isLoading,
   (themesIsLoading, extensionsIsLoading) => themesIsLoading && extensionsIsLoading
 );
 
-const isReady = createSelector(
-  themes.isReady,
-  extensions.isReady,
+export const isReady = createSelector(
+  state => state.build.themes.isReady,
+  state => state.build.extensions.isReady,
   (themesIsReady, extensionsIsReady) => themesIsReady && extensionsIsReady
 );
 
@@ -18,4 +18,5 @@ export default {
   isLoading,
   isReady,
   themes,
+  extensions,
 };
