@@ -38,6 +38,12 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "url-regexp": "^1.0.2"
+    "animate.css": "^3.5.1",
+    "bulma": "0.0.28",
+    "font-awesome": "^4.6.3",
+    "moment": "^2.13.0",
+    "redux-form": "^5.2.5",
+    "url-regexp": "^1.0.2",
+    "velocity-react": "^1.1.5"
   }
 }

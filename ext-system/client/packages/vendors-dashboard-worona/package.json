@@ -1,6 +1,6 @@
 {
   "name": "vendors-dashboard-worona",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Package to store the Worona vendors in Webpack's DLL format",
   "main": "",
   "scripts": {
@@ -47,24 +47,28 @@
     "dev": {
       "files": [
         {
-          "file": "vendors-dashboard-worona/dist/dev/js/vendors.dashboard.bcb2fbd098fd021d03a0cf063b5f283d.js",
-          "hash": "bcb2fbd098fd021d03a0cf063b5f283d",
+          "file": "vendors-dashboard-worona/dist/dev/js/vendors.17a101203cf63f60945b16224470a4f7.js",
+          "hash": "17a101203cf63f60945b16224470a4f7",
           "chunkName": "main"
         }
       ],
-      "main": "dist/dev/js/vendors.dashboard.bcb2fbd098fd021d03a0cf063b5f283d.js"
+      "main": "dist/dev/js/vendors.17a101203cf63f60945b16224470a4f7.js"
     },
     "prod": {
       "files": [
         {
-          "file": "vendors-dashboard-worona/dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js",
-          "hash": "2c7650aea216ec9bf4efad8aff5e9600",
+          "file": "vendors-dashboard-worona/dist/prod/js/vendors.28ca2f200fb735b38976011af5700852.js",
+          "hash": "28ca2f200fb735b38976011af5700852",
           "chunkName": "main"
         }
       ],
-      "main": "dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js"
+      "main": "dist/prod/js/vendors.28ca2f200fb735b38976011af5700852.js"
     }
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "rimraf": "^2.5.2",
+    "webpack": "^1.13.1",
+    "webpack-stats-plugin": "^0.1.1"
+  },
   "dependencies": {}
 }

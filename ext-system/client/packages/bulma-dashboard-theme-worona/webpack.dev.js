@@ -27,22 +27,22 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader?name=images/[name].[chunkhash].[ext]',
+        loader: 'file-loader?name=images/[name].[hash].[ext]',
         exclude: /(node_modules)/,
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[chunkhash].[ext]',
+        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[hash].[ext]',
         exclude: /(node_modules)/,
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=fonts/[name].[chunkhash].[ext]',
+        loader: 'file-loader?name=fonts/[name].[hash].[ext]',
         exclude: /(node_modules)/,
       },
       {
         test: /\.json$/,
-        loader: 'json-loader?name=jsons/[name].[chunkhash].[ext]',
+        loader: 'json-loader?name=jsons/[name].[hash].[ext]',
         exclude: /(node_modules)/,
       },
     ],

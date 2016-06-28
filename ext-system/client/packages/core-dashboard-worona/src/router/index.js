@@ -6,18 +6,14 @@ import { connect } from 'react-redux';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
 import { themeName } from './dependencies';
 
-const addClass = Component => React.createClass({
-  render() { return <Component {...this.props} />; },
-});
-
 const mapStateToProps = state => ({
   name: themeName(state),
 });
 
 class Theme extends React.Component {
   render() {
-    const Header = addClass(worona[this.props.name].components.Header);
-    const Footer = addClass(worona[this.props.name].components.Footer);
+    const Header = worona[this.props.name].components.Header;
+    const Footer = worona[this.props.name].components.Footer;
     return (
       <div>
         <Header />
@@ -31,7 +27,9 @@ Theme = connect(mapStateToProps)(Theme);
 
 class Entry extends React.Component {
   render() {
-    const Component = addClass(worona[this.props.name].components[this.props.route.wrapped]);
+    const Component = worona[this.props.name].components[this.props.route.wrapped] ?
+      worona[this.props.name].components[this.props.route.wrapped] :
+      worona[this.props.name].components.Home;
     return <Component {...this.props} />;
   }
 }
@@ -39,17 +37,17 @@ Entry = connect(mapStateToProps)(Entry);
 
 const requireAuth = (store) => (nextState, replace) => {
   const accounts = store.getState().accounts;
-  if (accounts && !accounts.isLoggedIn) replace({ pathname: '/login' });
+  if (!accounts || !accounts.isLoggedIn) replace({ pathname: '/login' });
 };
 
 const dontRequireAuth = (store) => (nextState, replace) => {
   const accounts = store.getState().accounts;
-  if (accounts && accounts.isLoggedIn) replace({ pathname: '/' });
+  if (accounts && accounts.isLoggedIn) replace({ pathname: '/sites' });
 };
 
 export const routes = (store) => (
   <Route path="/" component={Theme} >
-    <IndexRoute component={Entry} wrapped="Home" />
+    <IndexRedirect to="login" />
     <Route path="login" component={Entry} wrapped="Login" onEnter={dontRequireAuth(store)} />
     <Route path="register" component={Entry} wrapped="Register" onEnter={dontRequireAuth(store)} />
     <Route path="create-first-app" component={Entry} wrapped="CreateFirstApp"

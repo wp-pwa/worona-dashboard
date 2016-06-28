@@ -5,6 +5,7 @@
   "react-redux",
   "react-router",
   "react-router-redux",
+  "react-i18next",
   "redux",
   "redux-saga",
   "redux-saga/effects",

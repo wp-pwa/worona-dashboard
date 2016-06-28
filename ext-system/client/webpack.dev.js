@@ -59,15 +59,15 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader?name=images/[name].[hash].[ext]'
+        loader: 'name-loader!file-loader?name=[path][name].[hash].[ext]'
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[chunkhash].[ext]'
+        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=[path][name].[hash].[ext]'
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=fonts/[name].[chunkhash].[ext]'
+        loader: 'file-loader?name=[path][name].[hash].[ext]'
       },
       {
         test: /\.json$/,
@@ -78,9 +78,6 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  // externals: {
-  //   'worona': 'worona'
-  // },
   // devtool: '#eval-source-map',
   devServer: {
 		contentBase: path.join(__dirname, 'dist', 'dev'),
