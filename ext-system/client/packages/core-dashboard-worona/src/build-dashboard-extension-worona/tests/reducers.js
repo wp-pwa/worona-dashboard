@@ -1,7 +1,7 @@
 import test from 'ava';
 import * as a from '../actions';
 import * as reducers from '../reducers';
-import * as themes from '../reducers/themes';
+import * as theme from '../reducers/theme';
 import * as extensions from '../reducers/extensions';
 
 test('isLoading', t => {
@@ -17,17 +17,17 @@ test('isReady', t => {
   t.false(reducers.isReady(true, a.packagesLoadRequested()));
 });
 
-test('themes.isLoading', t => {
-  t.false(themes.isLoading(undefined, {}));
-  t.true(themes.isLoading(false, a.themeLoadRequested()));
-  t.false(themes.isLoading(true, a.themeLoadSucceed()));
-  t.false(themes.isLoading(true, a.themeLoadFailed()));
+test('theme.isLoading', t => {
+  t.false(theme.isLoading(undefined, {}));
+  t.true(theme.isLoading(false, a.themeLoadRequested()));
+  t.false(theme.isLoading(true, a.themeLoadSucceed()));
+  t.false(theme.isLoading(true, a.themeLoadFailed()));
 });
 
-test('themes.isReady', t => {
-  t.false(themes.isReady(undefined, {}));
-  t.true(themes.isReady(false, a.themeLoadSucceed()));
-  t.false(themes.isReady(true, a.themeLoadRequested()));
+test('theme.isReady', t => {
+  t.false(theme.isReady(undefined, {}));
+  t.true(theme.isReady(false, a.themeLoadSucceed()));
+  t.false(theme.isReady(true, a.themeLoadRequested()));
 });
 
 test('extensions.isLoading', t => {

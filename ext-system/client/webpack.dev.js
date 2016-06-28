@@ -59,7 +59,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader?name=images/[name].[chunkhash].[ext]'
+        loader: 'file-loader?name=images/[name].[hash].[ext]'
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,

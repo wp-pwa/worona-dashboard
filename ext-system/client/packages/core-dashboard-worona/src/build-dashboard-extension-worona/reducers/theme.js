@@ -13,7 +13,15 @@ export const isReady = rC.isReadyCreator({
   succeed: t.THEME_LOAD_SUCCEED,
 });
 
+export const name = (state = 'loading', action) => {
+  if (action.type === t.THEME_LOAD_SUCCEED) {
+    return action.name;
+  }
+  return state;
+};
+
 export default combineReducers({
   isLoading,
   isReady,
+  name,
 });

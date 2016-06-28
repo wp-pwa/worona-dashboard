@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import * as rC from '../reducerCreators';
 import * as t from '../actiontypes';
-import themes from './themes';
+import theme from './theme';
 import extensions from './extensions';
 
 export const isLoading = rC.isLoadingCreator({
@@ -18,6 +18,6 @@ export const isReady = rC.isReadyCreator({
 export default combineReducers({
   isLoading,
   isReady,
-  themes,
+  theme,
   extensions,
 });
