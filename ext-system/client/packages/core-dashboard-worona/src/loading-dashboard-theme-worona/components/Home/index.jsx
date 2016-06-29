@@ -1,11 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { isReady, isLoading } from '../../dependencies';
+import style from './style.css';
 
-export const Home = ({ ready, loading }) => (
+export const Home = () => (
   <div>
-    {loading ? (<div>Loading extensions...</div>) : null}
-    {ready ? (<div>Ready!!</div>) : null}
+      <div className={style.messages}>
+        <div className={style.spinner}>
+          <div className={style.bounce1}></div>
+          <div className={style.bounce2}></div>
+          <div className={style.bounce3}></div>
+        </div>
+    </div>
   </div>
 );
 Home.propTypes = {

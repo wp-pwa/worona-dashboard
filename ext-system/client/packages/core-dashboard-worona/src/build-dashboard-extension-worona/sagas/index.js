@@ -5,7 +5,6 @@ import _ from 'lodash';
 import * as a from '../actions';
 import * as t from '../actiontypes';
 
-
 const defaultExtensions = [
   'accounts',
   'connection',
@@ -18,10 +17,16 @@ export const requirePackage = name => new Promise(resolve => {
   req(extension => resolve(extension));
 });
 
+function reloadReducers() {
+  require('../../store').reloadReducers();
+}
+
 export function* loadExtension(name) {
   yield put(a.extensionLoadRequested(name));
   try {
     worona[name] = yield call(requirePackage, `${name}-dashboard-extension`);
+    worona.reducers[name] = worona[name].reducers.default;
+    reloadReducers();
     yield put(a.extensionLoadSucceed(name));
   } catch (error) {
     yield put(a.extensionLoadFailed(name));
@@ -32,6 +37,8 @@ export function* loadTheme(name) {
   yield put(a.themeLoadRequested(name));
   try {
     worona[name] = yield call(requirePackage, `${name}-dashboard-theme`);
+    worona.reducers[name] = worona[name].reducers.default;
+    reloadReducers();
     yield put(a.themeLoadSucceed(name));
   } catch (error) {
     yield put(a.themeLoadFailed(name));
@@ -83,6 +90,6 @@ export default function* sagas() {
   yield [
     fork(init),
     fork(extensionsLoader, defaultExtensions),
-    // fork(themeLoader, defaultTheme),
+    fork(themeLoader, defaultTheme),
   ];
 }

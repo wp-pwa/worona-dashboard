@@ -50,7 +50,7 @@ Header.propTypes = {
 
 const mapStateToProps = state => ({
   items: headerItems(state),
-  active: state.theme.header.showingMobileMenu,
+  active: state.bulma.header.showingMobileMenu,
 });
 
 const mapDispatchToProps = (dispatch) => ({
