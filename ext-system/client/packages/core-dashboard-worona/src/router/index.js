@@ -15,7 +15,7 @@ class Theme extends React.Component {
     const Header = worona[this.props.name].components.Header;
     const Footer = worona[this.props.name].components.Footer;
     return (
-      <div>
+      <div className="flexboxParent">
         <Header />
         {this.props.children}
         <Footer />
