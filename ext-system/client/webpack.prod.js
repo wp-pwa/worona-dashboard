@@ -35,9 +35,6 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        query: {
-          presets: ['react-hmre'],
-        },
         exclude: /(node_modules)/,
       },
       {
@@ -47,6 +44,7 @@ module.exports = {
           'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
           'postcss-loader',
         ],
+        exclude: /(node_modules)/,
       },
       {
         test: /\.s[ac]ss$/,
@@ -58,15 +56,29 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader?name=images/[name].[chunkhash].[ext]'
+        loader: 'file-loader',
+        query: {
+          name: 'packages/[1]/dist/prod/images/[name].[hash].[ext]',
+          regExp: 'packages\\/([^\\/]+)\\/',
+        },
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[chunkhash].[ext]'
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          minetype: 'application/font-woff',
+          name: 'packages/[1]/dist/prod/fonts/[name].[hash].[ext]',
+          regExp: 'packages\\/([^\\/]+)\\/',
+        },
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=fonts/[name].[chunkhash].[ext]'
+        loader: 'file-loader',
+        query: {
+          name: 'packages/[1]/dist/prod/fonts/[name].[hash].[ext]',
+          regExp: 'packages\\/([^\\/]+)\\/',
+        },
       },
       {
         test: /\.json$/,
@@ -77,15 +89,12 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  externals: {
-    'worona': 'var worona'
-  },
   devServer: {
-		contentBase: path.join(__dirname, 'dist', 'prod', 'packages'),
+		contentBase: path.join(__dirname, 'dist', 'prod'),
     outputPath: path.join(__dirname),
 		noInfo: false,
-		hot: true,
-		inline: true,
+		hot: false,
+		inline: false,
     port: 4000,
     https: true,
     historyApiFallback: true,
@@ -108,7 +117,7 @@ module.exports = {
       manifest: require('./packages/vendors-dashboard-worona/dist/prod/vendors-manifest.json'),
     }),
     new CopyWebpackPlugin([
-      { from: './packages/vendors-dashboard-worona/' + vendors, to: 'vendors-dashboard-worona/dist/prod/js', flatten: true },
+      { from: './packages/vendors-dashboard-worona/' + vendors, to: 'packages/vendors-dashboard-worona/dist/prod/js', flatten: true },
     ], {
       copyUnmodified: true,
     }),

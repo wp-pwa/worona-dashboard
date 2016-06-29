@@ -48,6 +48,7 @@ module.exports = {
           'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
           'postcss-loader',
         ],
+        exclude: /(node_modules)/,
       },
       {
         test: /\.s[ac]ss$/,
@@ -59,15 +60,29 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'name-loader!file-loader?name=[path][name].[hash].[ext]'
+        loader: 'file-loader',
+        query: {
+          name: 'packages/[1]/dist/dev/images/[name].[hash].[ext]',
+          regExp: 'packages\\/([^\\/]+)\\/',
+        },
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=[path][name].[hash].[ext]'
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          minetype: 'application/font-woff',
+          name: 'packages/[1]/dist/dev/fonts/[name].[hash].[ext]',
+          regExp: 'packages\\/([^\\/]+)\\/',
+        },
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=[path][name].[hash].[ext]'
+        loader: 'file-loader',
+        query: {
+          name: 'packages/[1]/dist/dev/fonts/[name].[hash].[ext]',
+          regExp: 'packages\\/([^\\/]+)\\/',
+        },
       },
       {
         test: /\.json$/,
