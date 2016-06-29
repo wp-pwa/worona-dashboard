@@ -4,7 +4,6 @@ import { put, fork, call, take, race } from 'redux-saga/effects';
 import _ from 'lodash';
 import * as a from '../actions';
 import * as t from '../actiontypes';
-import { reloadReducers } from '../../store';
 
 const defaultExtensions = [
   'accounts',
@@ -18,11 +17,15 @@ export const requirePackage = name => new Promise(resolve => {
   req(extension => resolve(extension));
 });
 
+function reloadReducers() {
+  require('../../store').reloadReducers();
+}
+
 export function* loadExtension(name) {
   yield put(a.extensionLoadRequested(name));
   try {
     worona[name] = yield call(requirePackage, `${name}-dashboard-extension`);
-    worona.reducers[name] = worona[name].reducers;
+    worona.reducers[name] = worona[name].reducers.default;
     reloadReducers();
     yield put(a.extensionLoadSucceed(name));
   } catch (error) {
@@ -34,6 +37,8 @@ export function* loadTheme(name) {
   yield put(a.themeLoadRequested(name));
   try {
     worona[name] = yield call(requirePackage, `${name}-dashboard-theme`);
+    worona.reducers[name] = worona[name].reducers.default;
+    reloadReducers();
     yield put(a.themeLoadSucceed(name));
   } catch (error) {
     yield put(a.themeLoadFailed(name));
