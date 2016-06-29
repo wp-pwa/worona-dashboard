@@ -1,5 +1,5 @@
 /* Global */
-:global .flexboxParent {
+:global #app {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,12 +9,12 @@
   height:100vh;
 }
 
-:global .body {
+:global body {
   margin: 0;
   padding: 0;
 }
 
-:global .html {
+:global html {
   margin: 0;
   padding: 0;
 }
