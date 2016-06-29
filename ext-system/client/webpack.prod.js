@@ -97,6 +97,7 @@ module.exports = {
 		inline: false,
     port: 4000,
     https: true,
+    compress: true,
     historyApiFallback: true,
 	},
   postcss: function () {

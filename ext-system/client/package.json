@@ -14,6 +14,7 @@
     "build:prod:reasons": "npm run clean:prod && webpack --config webpack.prod.js --progress -p --display-modules --display-reasons",
     "build": "npm run build:dev && npm run build:prod",
     "start:dev": "webpack-dev-server --config webpack.dev.js",
+    "start:prod": "webpack-dev-server --config webpack.prod.js -p",
     "test": "ava **/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
     "update:vendors": "npm install --save --save-exact vendors-dashboard-worona@latest"
   },

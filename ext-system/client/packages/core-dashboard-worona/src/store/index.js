@@ -2,22 +2,30 @@ import 'worona';
 import { compose, createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import reducers from './reducers';
+import createReducers from './reducers';
 import rootSaga from './sagas';
 
-const sageMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  reducers,
+  createReducers(),
   compose(
-    applyMiddleware(sageMiddleware),
+    applyMiddleware(sagaMiddleware),
     typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
 
-sageMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
 export default store;
+
+export function reloadReducers() {
+  store.replaceReducer(createReducers());
+}
+
+export function loadSaga(saga) {
+  sagaMiddleware.run(saga);
+}
 
 if (module.hot) {
   module.hot.accept('./reducers', () => {

@@ -4,7 +4,7 @@ import { put, fork, call, take, race } from 'redux-saga/effects';
 import _ from 'lodash';
 import * as a from '../actions';
 import * as t from '../actiontypes';
-
+import { reloadReducers } from '../../store';
 
 const defaultExtensions = [
   'accounts',
@@ -22,6 +22,8 @@ export function* loadExtension(name) {
   yield put(a.extensionLoadRequested(name));
   try {
     worona[name] = yield call(requirePackage, `${name}-dashboard-extension`);
+    worona.reducers[name] = worona[name].reducers;
+    reloadReducers();
     yield put(a.extensionLoadSucceed(name));
   } catch (error) {
     yield put(a.extensionLoadFailed(name));
@@ -83,6 +85,6 @@ export default function* sagas() {
   yield [
     fork(init),
     fork(extensionsLoader, defaultExtensions),
-    // fork(themeLoader, defaultTheme),
+    fork(themeLoader, defaultTheme),
   ];
 }
