@@ -72,8 +72,12 @@ const mapStateToProps = state => ({
   errorMessage: loginError(state),
 });
 
-export default reduxForm({
-  form: 'login',
-  fields: ['email', 'password'],
-  validate,
-}, mapStateToProps)(Login);
+// export default reduxForm({
+//   form: 'login',
+//   fields: ['email', 'password'],
+//   validate,
+// }, mapStateToProps)(Login);
+
+export default () => (
+  <div>HOLA!</div>
+);
