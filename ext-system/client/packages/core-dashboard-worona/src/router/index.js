@@ -10,20 +10,13 @@ const mapStateToProps = state => ({
   name: themeName(state),
 });
 
-class Theme extends React.Component {
+class ThemeLoader extends React.Component {
   render() {
-    const Header = worona[this.props.name].components.Header;
-    const Footer = worona[this.props.name].components.Footer;
-    return (
-      <div id="app">
-        <Header />
-        {this.props.children}
-        <Footer />
-      </div>
-    );
+    const Theme = worona[this.props.name].components.Theme;
+    return <Theme {...this.props} />;
   }
 }
-Theme = connect(mapStateToProps)(Theme);
+ThemeLoader = connect(mapStateToProps)(ThemeLoader);
 
 class Entry extends React.Component {
   render() {
@@ -46,7 +39,7 @@ const dontRequireAuth = (store) => (nextState, replace) => {
 };
 
 export const routes = (store) => (
-  <Route path="/" component={Theme} >
+  <Route path="/" component={ThemeLoader} >
     <IndexRedirect to="login" />
     <Route path="login" component={Entry} wrapped="Login" onEnter={dontRequireAuth(store)} />
     <Route path="register" component={Entry} wrapped="Register" onEnter={dontRequireAuth(store)} />

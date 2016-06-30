@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { isReady, isLoading } from '../../dependencies';
 import style from './style.css';
 
 export const Home = () => (
@@ -14,14 +12,5 @@ export const Home = () => (
     </div>
   </div>
 );
-Home.propTypes = {
-  loading: React.PropTypes.bool.isRequired,
-  ready: React.PropTypes.bool.isRequired,
-};
 
-const mapStateToProps = state => ({
-  ready: isReady(state),
-  loading: isLoading(state),
-});
-
-export default connect(mapStateToProps)(Home);
+export default Home;
