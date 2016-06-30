@@ -39,7 +39,7 @@
   "devDependencies": {},
   "dependencies": {
     "animate.css": "^3.5.1",
-    "bulma": "0.0.28",
+    "bulma": "^0.1.0",
     "font-awesome": "^4.6.3",
     "moment": "^2.13.0",
     "redux-form": "^5.2.5",

@@ -21,7 +21,7 @@ export const MenuItem = ({ type, name, url, target, link, action, icon }) => {
     styles.item
   );
   return (
-    <span className="header-item is-info">
+    <span className="nav-item is-info">
       <Anchor className={anchorClass} href={url} to={link} target={target} onClick={onClick}>
         {type === 'button' && icon ? (
           <span className="icon">

@@ -9,19 +9,17 @@ import { headerItems } from '../../selectors';
 
 const Header = ({ items, toggle, active }) => (
   <section className="hero is-info">
-    <header className="header">
-      <div className="container">
+    <div className="hero-head">
+      <nav className="nav is-info">
         {/* Left side*/}
-        <div className="header-left">
-          <a className="header-item" href="/">
-            <img src={worona} alt="Logo" />
+        <div className="nav-left">
+          <a className="nav-item" href="/">
+            <img src={worona} alt="Worona" />
           </a>
         </div>
 
         {/* Hamburger menu (on mobile) */}
-        <span className={`header-toggle ${(active ? 'is-active' : '')}`}
-          onClick={toggle}
-        >
+        <span className={`nav-toggle ${(active ? 'is-active' : '')}`} onClick={toggle}>
           <span></span>
           <span></span>
           <span></span>
@@ -38,8 +36,8 @@ const Header = ({ items, toggle, active }) => (
         >
           {active ? <Menu items={items} active={active} /> : null}
         </VelocityTransitionGroup>
-      </div>
-    </header>
+      </nav>
+    </div>
   </section>
 );
 Header.propTypes = {

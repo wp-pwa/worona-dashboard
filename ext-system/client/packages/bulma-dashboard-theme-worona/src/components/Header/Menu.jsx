@@ -1,8 +1,8 @@
 import React from 'react';
-import MenuItem from '../../elements/MenuItem';
+import MenuItem from './MenuItem';
 
 export const Menu = ({ items, active }) => (
-  <div className={`header-right header-menu ${(active ? 'is-active' : '')}`}>
+  <div className={`nav-right nav-menu ${(active ? 'is-active' : '')}`}>
     {items.map((item, index) =>
       (<MenuItem key={index} {...item} />)
     )}

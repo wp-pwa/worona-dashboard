@@ -90,6 +90,6 @@ export default function* sagas() {
   yield [
     fork(init),
     fork(extensionsLoader, defaultExtensions),
-    // fork(themeLoader, defaultTheme),
+    fork(themeLoader, defaultTheme),
   ];
 }
