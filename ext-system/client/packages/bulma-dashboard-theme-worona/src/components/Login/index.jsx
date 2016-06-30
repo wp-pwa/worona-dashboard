@@ -21,8 +21,8 @@ const Login = ({ fields: { email, password }, handleSubmit, waiting, statusMessa
       subtitle="Welcome to Worona. You are only one step away to start making apps."
     />
 
-    <section className="hero-content">
-      <div className="container is-text-centered">
+    <section className="hero-body">
+      <div className="container has-text-centered">
 
         <form onSubmit={handleSubmit(submit)} className={styles.box}>
           <Input type="email" placeholder="Email" icon="envelope" {...email}
@@ -72,12 +72,13 @@ const mapStateToProps = state => ({
   errorMessage: loginError(state),
 });
 
-// export default reduxForm({
-//   form: 'login',
-//   fields: ['email', 'password'],
-//   validate,
-// }, mapStateToProps)(Login);
+export default reduxForm({
+  form: 'login',
+  fields: ['email', 'password'],
+  validate,
+  getFormState: state => state.bulma.reduxForm,
+}, mapStateToProps)(Login);
 
-export default () => (
-  <div>HOLA!</div>
-);
+// export default () => (
+//   <div>HOLA!</div>
+// );

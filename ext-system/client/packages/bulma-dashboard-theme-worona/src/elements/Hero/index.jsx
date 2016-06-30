@@ -1,9 +1,9 @@
 import React from 'react';
-import cx from 'classnames';
+import cn from 'classnames';
 
 const Hero = ({ title, subtitle, color = 'primary', gradient = false }) => (
-  <section className={cx('hero', `is-${color}`, gradient && 'is-bold')}>
-    <div className="hero-content">
+  <section className={cn('hero', `is-${color}`, gradient && 'is-bold')}>
+    <div className="hero-body">
       <div className="container">
         <h1 className="title">
           {title}

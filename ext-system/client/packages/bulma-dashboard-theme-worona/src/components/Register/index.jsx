@@ -22,8 +22,8 @@ const Register = ({ fields: { name, email, password }, handleSubmit, waiting, fa
       subtitle="Welcome to Worona. You are only one step away to start making apps."
     />
 
-    <section className="hero-content">
-      <div className="container is-text-centered">
+  <section className="hero-body">
+      <div className="container has-text-centered">
 
         <form onSubmit={handleSubmit(submit)} className={styles.box}>
           <Input type="text" placeholder="My name is..." icon="user" {...name}
@@ -85,4 +85,5 @@ export default reduxForm({
   form: 'register',
   fields: ['name', 'email', 'password'],
   validate,
+  getFormState: state => state.bulma.reduxForm,
 }, mapStateToProps)(Register);
