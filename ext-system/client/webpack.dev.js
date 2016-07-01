@@ -111,8 +111,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('development') } }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'html', 'index.dev.html'),
-      favicon: path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'html', 'favicon.dev.png'),
+      template: path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'includes', 'index.dev.html'),
+      favicon: path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'includes', 'favicon.dev.png'),
       vendors_file: config.publicPath + '/packages/vendors-dashboard-worona/dist/dev/js/' + vendors_file,
     }),
     new webpack.DllReferencePlugin({

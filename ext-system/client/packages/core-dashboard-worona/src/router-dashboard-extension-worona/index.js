@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function, react/no-multi-comp, react/prop-types */
 /* eslint-disable prefer-template, react/prefer-es6-class */
 import React from 'react';
-import worona from 'worona';
+import { dep } from 'worona-deps';
 import { connect } from 'react-redux';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
 import { themeName } from './dependencies';
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 
 class ThemeLoader extends React.Component {
   render() {
-    const Theme = worona[this.props.name].components.Theme;
+    const Theme = dep(this.props.name, 'components', 'Theme');
     return <Theme {...this.props} />;
   }
 }
@@ -20,9 +20,9 @@ ThemeLoader = connect(mapStateToProps)(ThemeLoader);
 
 class Entry extends React.Component {
   render() {
-    const Component = worona[this.props.name].components[this.props.route.wrapped] ?
-      worona[this.props.name].components[this.props.route.wrapped] :
-      worona[this.props.name].components.Home;
+    const Component = dep(this.props.name, 'components', this.props.route.wrapped) ?
+      dep(this.props.name, 'components', this.props.route.wrapped) :
+      dep(this.props.name, 'components', 'Home');
     return <Component {...this.props} />;
   }
 }

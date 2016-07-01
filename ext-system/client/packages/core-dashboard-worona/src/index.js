@@ -9,7 +9,7 @@ import { Router, browserHistory } from 'react-router';
 import { I18nextProvider } from 'react-i18next';
 import store from './store-dashboard-extension-worona';
 import i18n from './i18n-dashboard-extension-worona';
-import routes from './router';
+import routes from './router-dashboard-extension-worona';
 import FastClick from 'fastclick';
 
 const history = syncHistoryWithStore(browserHistory, store);

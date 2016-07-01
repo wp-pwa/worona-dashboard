@@ -109,8 +109,8 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'html', 'index.prod.html'),
-      favicon: path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'html', 'favicon.prod.png'),
+      template: path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'includes', 'index.prod.html'),
+      favicon: path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'includes', 'favicon.prod.png'),
       vendors_file: config.publicPath + '/packages/vendors-dashboard-worona/dist/prod/js/' + vendors_file,
     }),
     new webpack.DllReferencePlugin({

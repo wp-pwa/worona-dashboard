@@ -1,25 +1,22 @@
-import worona from 'worona';
+import { dep } from 'worona-deps';
 
-module.exports = {
-  get store() { return worona.store; },
+export const dispatch = () => dep('store', 'dispatch');
+export const LOGOUT_SUCCEED = () => dep('accounts', 'actiontypes', 'LOGOUT_SUCCEED');
 
-  get LOGOUT_SUCCEED() { return worona.accounts.actiontypes.LOGOUT_SUCCEED; },
+export const createAccountRequested = () => dep('accounts', 'actions', 'createAccountRequested');
+export const loginRequested = () => dep('accounts', 'actions', 'loginRequested');
+export const logoutRequested = () => dep('accounts', 'actions', 'logoutRequested');
+export const logoutSucceed = () => dep('accounts', 'actions', 'logoutSucceed');
 
-  get createAccountRequested() { return worona.accounts.actions.createAccountRequested; },
-  get loginRequested() { return worona.accounts.actions.loginRequested; },
-  get logoutRequested() { return worona.accounts.actions.logoutRequested; },
-  get logoutSucceed() { return worona.accounts.actions.logoutSucceed; },
+export const createAccountStatus = () => dep('accounts', 'selectors', 'createAccountStatus');
+export const createAccountError = () => dep('accounts', 'selectors', 'createAccountError');
+export const isCreatingAccount = () => dep('accounts', 'selectors', 'isCreatingAccount');
+export const isLoggingIn = () => dep('accounts', 'selectors', 'isLoggingIn');
+export const loginStatus = () => dep('accounts', 'selectors', 'loginStatus');
+export const loginError = () => dep('accounts', 'selectors', 'loginError');
 
-  get createAccountStatus() { return worona.accounts.selectors.createAccountStatus; },
-  get createAccountError() { return worona.accounts.selectors.createAccountError; },
-  get isCreatingAccount() { return worona.accounts.selectors.isCreatingAccount; },
-  get isLoggingIn() { return worona.accounts.selectors.isLoggingIn; },
-  get loginStatus() { return worona.accounts.selectors.loginStatus; },
-  get loginError() { return worona.accounts.selectors.loginError; },
+export const createSiteRequested = () => dep('sites', 'actions', 'createSiteRequested');
 
-  get createSiteRequested() { return worona.sites.actions.createSiteRequested; },
-
-  get isCreatingSite() { return worona.sites.selectors.isCreatingSite; },
-  get createSiteStatus() { return worona.sites.selectors.createSiteStatus; },
-  get createSiteError() { return worona.sites.selectors.createSiteError; },
-};
+export const isCreatingSite = () => dep('sites', 'selectors', 'isCreatingSite');
+export const createSiteStatus = () => dep('sites', 'selectors', 'createSiteStatus');
+export const createSiteError = () => dep('sites', 'selectors', 'createSiteError');

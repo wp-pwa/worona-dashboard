@@ -1,15 +1,15 @@
 import * as actions from './actions';
-import * as actiontypes from './actiontypes';
+import * as types from './types';
 import * as reducerCreators from './reducerCreators';
 import * as reducers from './reducers';
-import * as sagas from './sagas';
+import * as store from './store';
 import * as selectors from './selectors';
 
 export {
   actions,
-  actiontypes,
+  types,
   reducerCreators,
   reducers,
-  sagas,
+  store,
   selectors,
 };

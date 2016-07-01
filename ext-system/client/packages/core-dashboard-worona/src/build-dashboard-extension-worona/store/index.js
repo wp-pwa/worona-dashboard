@@ -1,14 +1,13 @@
-import worona from 'worona';
+import { getReducers } from 'worona-deps';
 import { compose, createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import * as actions from './actions';
-import * as actiontypes from './actiontypes';
-import * as sagas from './sagas';
+import sagas from '../sagas';
+import { default as build } from '../reducers';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(
-  combineReducers(worona.reducers),
+export const store = createStore(
+  combineReducers({ build }),
   compose(
     applyMiddleware(sagaMiddleware),
     typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : f => f
@@ -17,17 +16,13 @@ const store = createStore(
 
 sagaMiddleware.run(sagas);
 
-export default store;
-
-export {
-  actions,
-  actiontypes,
-  sagas,
-};
+export const dispatch = action => store.dispatch(action);
+export const replaceReducer = reducers => store.replaceReducer(combineReducers(reducers));
+export const runSaga = saga => sagaMiddleware.run(saga);
 
 if (module.hot) {
   module.hot.accept(() => {
-    store.replaceReducer(combineReducers(worona.reducers));
+    replaceReducer(getReducers());
   });
   module.hot.decline('./sagas');
 }

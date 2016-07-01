@@ -1,65 +1,74 @@
 /* eslint-disable no-constant-condition */
-import worona from 'worona';
+import { addPackage } from 'worona-deps';
 import { put, fork, call, take, race, spawn } from 'redux-saga/effects';
 import _ from 'lodash';
-import * as a from '../actions';
-import * as t from '../actiontypes';
-import { reloadReducersRequested } from '../dependencies';
-
-const defaultExtensions = [
-  'accounts',
-  'connection',
-];
-
-const defaultTheme = 'bulma';
+import defaultExtensions from '../../includes/extensions.js';
+import defaultTheme from '../../includes/theme.js';
+import * as actions from '../actions';
+import * as types from '../types';
+import * as deps from '../deps';
 
 export const requirePackage = name => new Promise(resolve => {
   const req = require(`../../../../${name}-worona/src/index.js`);
   req(extension => resolve(extension));
 });
 
-export function* loadExtension(name) {
-  yield put(a.extensionLoadRequested(name));
+export function* reloadReducers() {
+  while (true) {
+    const action = yield take(RELOAD_REDUCERS_REQUESTED);
+    try {
+      yield call(store.replaceReducer, combineReducers(getReducers()));
+      yield put(reloadReducersSucceed(action.name));
+    } catch (error) {
+      yield put(reloadReducersFailed(action.name));
+    }
+  }
+}
+
+export function* downloadExtension(name) {
+  yield put(actions.extensionLoadRequested(name));
   try {
-    worona[name] = yield call(requirePackage, `${name}-dashboard-extension`);
-    yield put(reloadReducersRequested(name));
-    yield put(a.extensionLoadSucceed(name));
+    const pkg = yield call(requirePackage, `${name}-dashboard-extension`);
+    yield call(addPackage, name, pkg);
+    yield put(deps.reloadReducersRequested(name));
+    yield put(actions.extensionLoadSucceed(name));
   } catch (error) {
-    yield put(a.extensionLoadFailed(name));
+    yield put(actions.extensionLoadFailed(name));
   }
 }
 
 export function* loadTheme(name) {
-  yield put(a.themeLoadRequested(name));
+  yield put(actions.themeLoadRequested(name));
   try {
-    worona[name] = yield call(requirePackage, `${name}-dashboard-theme`);
-    yield put(reloadReducersRequested(name));
-    yield put(a.themeLoadSucceed(name));
+    const pkg = yield call(requirePackage, `${name}-dashboard-theme`);
+    yield call(addPackage, name, pkg);
+    yield put(deps.reloadReducersRequested(name));
+    yield put(actions.themeLoadSucceed(name));
   } catch (error) {
-    yield put(a.themeLoadFailed(name));
+    yield put(actions.themeLoadFailed(name));
   }
 }
 
 export function* extensionsSuccessWatcher() {
   const extensionsLoaded = [];
   while (true) {
-    const action = yield take(t.EXTENSION_LOAD_SUCCEED);
+    const action = yield take(types.EXTENSION_LOAD_SUCCEED);
     extensionsLoaded.push(action.name);
     if (_.isEqual(defaultExtensions, extensionsLoaded)) return true;
   }
 }
 
 export function* extensionsLoader(extensions) {
-  yield put(a.extensionsLoadRequested());
+  yield put(actions.extensionsLoadRequested());
   yield extensions.map(name => fork(loadExtension, name));
   const { succeed } = yield race({
     succeed: call(extensionsSuccessWatcher),
-    failure: take(t.EXTENSION_LOAD_FAILED),
+    failure: take(types.EXTENSION_LOAD_FAILED),
   });
   if (succeed) {
-    yield put(a.extensionsLoadSucceed());
+    yield put(actions.extensionsLoadSucceed());
   } else {
-    yield put(a.extensionsLoadFailed());
+    yield put(actions.extensionsLoadFailed());
   }
 }
 
@@ -68,17 +77,17 @@ export function* themeLoader(theme) {
 }
 
 export function* init() {
-  yield put(a.packagesLoadRequested());
+  yield put(actions.packagesLoadRequested());
   const { succeed } = yield race({
     succeed: [
-      take(t.EXTENSIONS_LOAD_SUCCEED),
-      take(t.THEME_LOAD_SUCCEED),
+      take(types.EXTENSIONS_LOAD_SUCCEED),
+      take(types.THEME_LOAD_SUCCEED),
     ],
-    failed1: take(t.EXTENSIONS_LOAD_FAILED),
-    failed2: take(t.THEME_LOAD_FAILED),
+    failed1: take(types.EXTENSIONS_LOAD_FAILED),
+    failed2: take(types.THEME_LOAD_FAILED),
   });
-  if (succeed) yield put(a.packagesLoadSucceed());
-  else yield put(a.packagesLoadFailed());
+  if (succeed) yield put(actions.packagesLoadSucceed());
+  else yield put(actions.packagesLoadFailed());
 }
 
 export default function* sagas() {

@@ -11,5 +11,6 @@
   "redux-saga/effects",
   "reselect",
   "classnames",
-  "lodash"
+  "lodash",
+  "worona-deps"
 ]
