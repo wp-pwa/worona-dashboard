@@ -3,6 +3,7 @@ import * as reducerCreators from '../reducerCreators';
 import * as types from '../types';
 import theme from './theme';
 import extensions from './extensions';
+import packages from './packages';
 
 export const isLoading = reducerCreators.isLoadingCreator({
   requested: types.PACKAGES_LOAD_REQUESTED,
@@ -20,4 +21,5 @@ export default combineReducers({
   isReady,
   theme,
   extensions,
+  packages,
 });

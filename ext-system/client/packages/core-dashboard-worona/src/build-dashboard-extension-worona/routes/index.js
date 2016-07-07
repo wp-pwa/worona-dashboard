@@ -4,15 +4,15 @@ import React from 'react';
 import { dep } from 'worona-deps';
 import { connect } from 'react-redux';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
-import { themeName } from './dependencies';
+import { theme } from '../selectors';
 
 const mapStateToProps = state => ({
-  name: themeName(state),
+  currentTheme: theme.current(state),
 });
 
 class ThemeLoader extends React.Component {
   render() {
-    const Theme = dep(this.props.name, 'components', 'Theme');
+    const Theme = dep(this.props.currentTheme, 'components', 'Theme');
     return <Theme {...this.props} />;
   }
 }
@@ -20,10 +20,13 @@ ThemeLoader = connect(mapStateToProps)(ThemeLoader);
 
 class Entry extends React.Component {
   render() {
-    const Component = dep(this.props.name, 'components', this.props.route.wrapped) ?
-      dep(this.props.name, 'components', this.props.route.wrapped) :
-      dep(this.props.name, 'components', 'Home');
-    return <Component {...this.props} />;
+    try {
+      const Component = dep(this.props.currentTheme, 'components', this.props.route.wrapped);
+      return <Component {...this.props} />;
+    } catch (error) {
+      const Component = dep(this.props.currentTheme, 'components', 'Home');
+      return <Component {...this.props} />;
+    }
   }
 }
 Entry = connect(mapStateToProps)(Entry);

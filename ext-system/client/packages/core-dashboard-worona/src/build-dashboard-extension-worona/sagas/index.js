@@ -6,7 +6,6 @@ import defaultExtensions from '../../includes/extensions.js';
 import defaultTheme from '../../includes/theme.js';
 import * as actions from '../actions';
 import * as types from '../types';
-import * as deps from '../deps';
 
 export const requirePackage = name => new Promise(resolve => {
   const req = require(`../../../../${name}-worona/src/index.js`);
@@ -30,7 +29,7 @@ export function* downloadExtension(name) {
   try {
     const pkg = yield call(requirePackage, `${name}-dashboard-extension`);
     yield call(addPackage, name, pkg);
-    yield put(deps.reloadReducersRequested(name));
+    yield put(actions.reloadReducersRequested(name));
     yield put(actions.extensionLoadSucceed(name));
   } catch (error) {
     yield put(actions.extensionLoadFailed(name));

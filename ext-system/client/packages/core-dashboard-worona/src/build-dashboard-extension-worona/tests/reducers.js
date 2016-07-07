@@ -3,6 +3,7 @@ import * as a from '../actions';
 import * as reducers from '../reducers';
 import * as theme from '../reducers/theme';
 import * as extensions from '../reducers/extensions';
+import * as packages from '../reducers/packages';
 
 test('isLoading', t => {
   t.false(reducers.isLoading(undefined, {}));
@@ -41,4 +42,8 @@ test('extensions.isReady', t => {
   t.false(extensions.isReady(undefined, {}));
   t.true(extensions.isReady(false, a.extensionsLoadSucceed()));
   t.false(extensions.isReady(true, a.extensionsLoadRequested()));
+});
+
+test('packages.isDownloading', t => {
+  t.false(packages.isDownloading(undefined, {}));
 });
