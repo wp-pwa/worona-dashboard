@@ -3,6 +3,7 @@ import * as types from './types';
 import * as reducerCreators from './reducerCreators';
 import * as reducers from './reducers';
 import * as store from './store';
+import * as routes from './routes';
 import * as selectors from './selectors';
 
 export {
@@ -12,4 +13,5 @@ export {
   reducers,
   store,
   selectors,
+  routes,
 };
