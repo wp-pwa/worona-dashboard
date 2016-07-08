@@ -1,4 +1,4 @@
-/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/prefer-stateless-function, camelcase, no-undef */
 import 'babel-polyfill';
 import './packages';
 import React from 'react';
@@ -11,6 +11,8 @@ import store from './build-dashboard-extension-worona/store';
 import routes from './build-dashboard-extension-worona/routes';
 import i18n from './i18n-dashboard-extension-worona';
 import FastClick from 'fastclick';
+
+__webpack_public_path__ = window.publicPath;
 
 const history = syncHistoryWithStore(browserHistory, store);
 

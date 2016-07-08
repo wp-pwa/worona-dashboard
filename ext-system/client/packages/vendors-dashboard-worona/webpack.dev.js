@@ -21,6 +21,7 @@ module.exports = {
     new webpack.DllPlugin({
       path: path.join(__dirname, 'dist', 'dev', 'vendors-manifest.json'),
       name: 'vendors_dashboard_worona',
+      context: path.join(__dirname, '..', '..'),
     }),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('development') } }),
     new StatsWriterPlugin({

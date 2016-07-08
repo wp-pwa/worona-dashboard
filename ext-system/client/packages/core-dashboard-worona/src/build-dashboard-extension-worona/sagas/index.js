@@ -2,8 +2,8 @@
 import { addPackage } from 'worona-deps';
 import { put, fork, call, take, race, spawn } from 'redux-saga/effects';
 import _ from 'lodash';
-import defaultExtensions from '../../includes/extensions.js';
-import defaultTheme from '../../includes/theme.js';
+import defaultExtensions from '../default/extensions.js';
+import defaultTheme from '../default/theme.js';
 import * as actions from '../actions';
 import * as types from '../types';
 

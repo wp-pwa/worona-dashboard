@@ -1,6 +1,6 @@
 {
   "name": "vendors-dashboard-worona",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Package to store the Worona vendors in Webpack's DLL format",
   "main": "",
   "scripts": {

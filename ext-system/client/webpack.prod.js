@@ -1,9 +1,8 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
-var config = require('./config.json');
 var vendors = require('./packages/vendors-dashboard-worona/package.json').worona.prod.main;
-var vendors_file = /^.+\/(.+\.js)$/.exec(vendors)[1];
+var vendorsFile = /^.+\/(.+\.js)$/.exec(vendors)[1];
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -15,7 +14,6 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist', 'prod'),
-    publicPath: config.publicPath + '/',
     filename: 'packages/core-dashboard-worona/dist/prod/js/core.[hash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 32,
@@ -109,9 +107,16 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'includes', 'index.prod.html'),
-      favicon: path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'includes', 'favicon.prod.png'),
-      vendors_file: config.publicPath + '/packages/vendors-dashboard-worona/dist/prod/js/' + vendors_file,
+      inject: false,
+      title: 'Worona Dashboard (PROD)',
+      template: path.join(__dirname, 'includes', 'index.html'),
+      favicon: path.join(__dirname, 'includes', 'favicon.png'),
+      vendorsFile: 'packages/vendors-dashboard-worona/dist/prod/js/' + vendorsFile,
+      window: {
+        publicPath: 'https://localhost:4000/',
+      },
+      appMountId: 'root',
+      minify: { preserveLineBreaks: true, collapseWhitespace: true },
     }),
     new webpack.DllReferencePlugin({
       context: '.',
