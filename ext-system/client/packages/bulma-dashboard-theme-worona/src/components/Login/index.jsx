@@ -5,12 +5,12 @@ import cn from 'classnames';
 import Hero from '../../elements/Hero';
 import Input from '../../elements/Input';
 import Button from '../../elements/Button';
-import { loginRequested, isLoggingIn, loginStatus, loginError } from '../../dependencies';
+import * as deps from '../../dependencies';
 import { validate } from './validate';
 import styles from './styles.css';
 
 const submit = (values, dispatch) => {
-  dispatch(loginRequested(values.email, values.password));
+  dispatch(deps.actions.loginRequested(values.email, values.password));
 };
 
 const Login = ({ fields: { email, password }, handleSubmit, waiting, statusMessage,
@@ -50,7 +50,7 @@ const Login = ({ fields: { email, password }, handleSubmit, waiting, statusMessa
 
         <div className={styles.link}>
           <Link to="/register">
-            I don't you have an account yet
+            I don't have an account yet
           </Link>
         </div>
 
@@ -67,9 +67,9 @@ Login.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  waiting: isLoggingIn(state),
-  statusMessage: loginStatus(state),
-  errorMessage: loginError(state),
+  waiting: deps.selectors.isLoggingIn(state),
+  statusMessage: deps.selectors.loginStatus(state),
+  errorMessage: deps.selectors.loginError(state),
 });
 
 export default reduxForm({

@@ -1,14 +1,13 @@
 import { dep } from 'worona-deps';
 
-export const call = dep('connection', 'libs', 'call');
-export const loginWithPassword = dep('connection', 'libs', 'loginWithPassword');
-export const loggedInEventChannel = dep('connection', 'libs', 'loggedInEventChannel');
-export const loggedOutEventChannel = dep('connection', 'libs', 'loggedOutEventChannel');
-export const logout = dep('connection', 'libs', 'logout');
-export const CONNECTION_SUCCEED = dep('connection', 'types', 'CONNECTION_SUCCEED');
-export const isConnected = dep('connection', 'selectors', 'isConnected');
-export const push = dep('router', 'libs', 'push');
-
+// export const call = dep('connection', 'libs', 'call');
+// export const loginWithPassword = dep('connection', 'libs', 'loginWithPassword');
+// export const loggedInEventChannel = dep('connection', 'libs', 'loggedInEventChannel');
+// export const loggedOutEventChannel = dep('connection', 'libs', 'loggedOutEventChannel');
+// export const logout = dep('connection', 'libs', 'logout');
+// export const CONNECTION_SUCCEED = dep('connection', 'types', 'CONNECTION_SUCCEED');
+// export const isConnected = dep('connection', 'selectors', 'isConnected');
+// export const push = dep('router', 'libs', 'push');
 
 export const libs = {
   get call() { return dep('connection', 'libs', 'call'); },

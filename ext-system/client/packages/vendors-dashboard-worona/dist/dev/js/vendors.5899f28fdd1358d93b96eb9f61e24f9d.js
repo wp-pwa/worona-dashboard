@@ -28779,6 +28779,15 @@ var vendors_dashboard_worona =
 	  });
 	}
 
+	Worona.prototype.getSagas = function(pkgName) {
+	  if ((typeof this._packages[pkgName] !== 'undefined') &&
+	  (typeof this._packages[pkgName].sagas !== 'undefined') &&
+	  (typeof this._packages[pkgName].sagas.default !== 'undefined')) {
+	    return this._packages[pkgName].sagas.default;
+	  }
+	  return false;
+	}
+
 	var checkPackage = function(pkgName, obj) {
 	  if (typeof pkgName === 'undefined')
 	    throw new Error('Dependecy failed. You have to specify at least package name');
@@ -28830,6 +28839,7 @@ var vendors_dashboard_worona =
 	  Worona: Worona,
 	  addPackage: worona.addPackage.bind(worona),
 	  getReducers: worona.getReducers.bind(worona),
+	  getSagas: worona.getSagas.bind(worona),
 	  dep: worona.dep.bind(worona),
 	};
 

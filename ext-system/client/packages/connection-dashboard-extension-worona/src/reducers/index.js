@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import * as t from '../actiontypes';
+import * as types from '../types';
 
 export const isConnected = (state = false, action) => {
   switch (action.type) {
-    case t.CONNECTION_SUCCEED:
+    case types.CONNECTION_SUCCEED:
       return true;
-    case t.DISCONNECTED:
+    case types.DISCONNECTED:
       return false;
     default:
       return state;
@@ -14,16 +14,15 @@ export const isConnected = (state = false, action) => {
 
 export const isConnecting = (state = false, action) => {
   switch (action.type) {
-    case t.CONNECTION_REQUESTED:
+    case types.CONNECTION_REQUESTED:
       return true;
-    case t.CONNECTION_SUCCEED:
-    case t.CONNECTION_FAILED:
+    case types.CONNECTION_SUCCEED:
+    case types.CONNECTION_FAILED:
       return false;
     default:
       return state;
   }
 };
-
 
 export default combineReducers({
   isConnected,

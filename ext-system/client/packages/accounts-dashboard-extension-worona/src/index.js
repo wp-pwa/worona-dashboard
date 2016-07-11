@@ -1,13 +1,13 @@
-import packageJson from '../package.json';
 import * as actions from './actions';
 import * as types from './types';
 import * as reducers from './reducers';
 import * as selectors from './selectors';
+import * as sagas from './sagas';
 
 export {
-  packageJson,
   actions,
   types,
   reducers,
   selectors,
+  sagas,
 };

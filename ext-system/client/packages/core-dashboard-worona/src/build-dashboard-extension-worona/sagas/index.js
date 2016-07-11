@@ -1,5 +1,5 @@
-/* eslint-disable no-constant-condition */
-import { addPackage } from 'worona-deps';
+/* eslint-disable no-constant-condition, array-callback-return */
+import { addPackage, getSagas } from 'worona-deps';
 import { takeEvery } from 'redux-saga';
 import { put, fork, call, take, race } from 'redux-saga/effects';
 import _ from 'lodash';
@@ -7,6 +7,7 @@ import defaultExtensions from '../default/extensions.js';
 import defaultTheme from '../default/theme.js';
 import * as actions from '../actions';
 import * as types from '../types';
+import { reloadReducers, runSaga } from '../store';
 
 export const requirePackage = name => new Promise(resolve => {
   const req = require(`../../../../${name}-worona/src/index.js`);
@@ -76,13 +77,41 @@ export function* packagesAdditionSaga({ theme, extensions, uid }) {
   }
 }
 
+export function* loadPackage(name, uid) {
+  try {
+    const newSagas = getSagas(name);
+    if (newSagas) yield call(runSaga, newSagas);
+  } catch (error) {
+    yield put(actions.packagesLoadFailed({ error, name, uid }));
+  }
+}
+
+export function* packagesLoadSaga({ theme, extensions, uid }) {
+  reloadReducers();
+  yield extensions.map(extension => call(loadPackage, extension, uid));
+  yield call(loadPackage, theme, uid);
+  yield put(actions.packagesLoadSucceed({ theme, extensions, uid }));
+}
+
 export function* init() {
   yield put(actions.packagesAdditionRequested(
-    { theme: defaultTheme, extensions: defaultExtensions }
+    { theme: defaultTheme, extensions: defaultExtensions, uid: 'core' }
   ));
-  // yield put(actions.packagesAdditionRequested(
-  //   { theme: 'non' }
-  // ));
+}
+
+export function* loadCoreTheme() {
+  while (true) {
+    const action = yield take(types.PACKAGES_LOAD_SUCCEED);
+    if (action.uid === 'core') {
+      try {
+        yield put(actions.themeChangeRequested({ name: action.theme, uid: 'core' }));
+        yield put(actions.themeChangeSucceed({ name: action.theme, uid: 'core' }));
+      } catch (error) {
+        yield put(actions.themeChangeFailed({ error, name: action.theme, uid: 'core' }));
+      }
+      break;
+    }
+  }
 }
 
 export default function* sagas() {
@@ -94,6 +123,8 @@ export default function* sagas() {
       packagesDownloadFailedWatcher),
     takeEvery(types.THEME_DOWNLOAD_REQUESTED, themeDownloadSaga),
     takeEvery(types.EXTENSION_DOWNLOAD_REQUESTED, extensionDownloadSaga),
+    takeEvery(types.PACKAGES_LOAD_REQUESTED, packagesLoadSaga),
+    fork(loadCoreTheme),
     fork(init),
   ];
 }

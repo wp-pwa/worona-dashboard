@@ -1,27 +1,27 @@
 import { takeLatest } from 'redux-saga';
 import { fork, call, put } from 'redux-saga/effects';
-import { LOGOUT_REQUESTED, LOGOUT_SUCCEED } from '../actiontypes';
-import { logoutSucceed, logoutFailed } from '../actions';
-import { browserHistory, logout } from '../dependencies';
+import * as types from '../types';
+import * as actions from '../actions';
+import * as deps from '../dependencies';
 
 export function* logoutRequestedSaga() {
   try {
-    yield call(logout);
-    yield put(logoutSucceed());
+    yield call(deps.libs.logout);
+    yield put(actions.logoutSucceed());
   } catch (error) {
-    yield put(logoutFailed(error));
+    yield put(actions.logoutFailed(error));
   }
 }
 export function* logoutRequestedWatcher() {
-  yield* takeLatest(LOGOUT_REQUESTED, logoutRequestedSaga);
+  yield* takeLatest(types.LOGOUT_REQUESTED, logoutRequestedSaga);
 }
 
 export function* logoutSucceedSaga() {
   // Redirect the user to the home after a successful logout.
-  yield call(browserHistory.push, '/login');
+  yield call(deps.libs.push, '/login');
 }
 export function* logoutSucceedWatcher() {
-  yield* takeLatest(LOGOUT_SUCCEED, logoutSucceedSaga);
+  yield* takeLatest(types.LOGOUT_SUCCEED, logoutSucceedSaga);
 }
 
 export default function* logoutSagas() {

@@ -162,5 +162,3 @@ export const collectionEventChannel = connection.collectionEventChannel.bind(con
 export const readyEventChannel = connection.readyEventChannel.bind(connection);
 export const errorEventChannel = connection.errorEventChannel.bind(connection);
 export default connection;
-
-if (typeof window !== 'undefined') window.connection = connection;

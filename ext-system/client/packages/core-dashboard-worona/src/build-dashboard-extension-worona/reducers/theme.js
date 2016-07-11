@@ -19,7 +19,7 @@ export const isReady = rC.isReadyCreator({
   succeed: t.THEME_LOAD_SUCCEED,
 });
 
-export const requested = (state = false, action) => {
+export const requested = (state = 'loading', action) => {
   if (action.type === t.THEME_CHANGE_REQUESTED) {
     return action.name;
   }
@@ -28,13 +28,6 @@ export const requested = (state = false, action) => {
 
 export const downloaded = (state = [], action) => {
   if (action.type === t.THEME_DOWNLOAD_SUCCEED) {
-    return [...state, action.name];
-  }
-  return state;
-};
-
-export const loaded = (state = [], action) => {
-  if (action.type === t.THEME_LOAD_SUCCEED) {
     return [...state, action.name];
   }
   return state;
@@ -52,6 +45,5 @@ export default combineReducers({
   isReady,
   current,
   downloaded,
-  loaded,
   requested,
 });

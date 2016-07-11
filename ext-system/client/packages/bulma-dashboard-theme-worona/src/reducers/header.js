@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { TOGGLE_MOBILE_MENU } from '../actiontypes';
+import { TOGGLE_MOBILE_MENU } from '../types';
 import { LOGOUT_SUCCEED } from '../dependencies';
 
 export const showingMobileMenu = (state = false, action) => {

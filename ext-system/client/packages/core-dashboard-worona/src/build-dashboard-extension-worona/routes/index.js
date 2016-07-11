@@ -7,12 +7,12 @@ import { Route, IndexRoute, IndexRedirect } from 'react-router';
 import { theme } from '../selectors';
 
 const mapStateToProps = state => ({
-  currentTheme: theme.current(state),
+  theme: theme.requested(state),
 });
 
 class ThemeLoader extends React.Component {
   render() {
-    const Theme = dep(this.props.currentTheme, 'components', 'Theme');
+    const Theme = dep(this.props.theme, 'components', 'Theme');
     return <Theme {...this.props} />;
   }
 }
@@ -21,10 +21,10 @@ ThemeLoader = connect(mapStateToProps)(ThemeLoader);
 class Entry extends React.Component {
   render() {
     try {
-      const Component = dep(this.props.currentTheme, 'components', this.props.route.wrapped);
+      const Component = dep(this.props.theme, 'components', this.props.route.wrapped);
       return <Component {...this.props} />;
     } catch (error) {
-      const Component = dep(this.props.currentTheme, 'components', 'Home');
+      const Component = dep(this.props.theme, 'components', 'Home');
       return <Component {...this.props} />;
     }
   }

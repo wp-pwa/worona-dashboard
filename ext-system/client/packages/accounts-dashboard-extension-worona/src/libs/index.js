@@ -1,4 +1,4 @@
-import { call } from '../dependencies';
+import * as deps from '../dependencies';
 
-export const createAccount = (name, email, password, api = call) =>
+export const createAccount = (name, email, password, api = deps.libs.call) =>
   api('createAccount', name, email, password);

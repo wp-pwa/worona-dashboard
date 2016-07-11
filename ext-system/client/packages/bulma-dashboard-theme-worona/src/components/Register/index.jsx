@@ -5,14 +5,13 @@ import { reduxForm } from 'redux-form';
 import Hero from '../../elements/Hero';
 import Input from '../../elements/Input';
 import Button from '../../elements/Button';
-import { createAccountRequested, createAccountStatus, createAccountError, isCreatingAccount }
-  from '../../dependencies';
+import * as deps from '../../dependencies';
 import { formFailed } from '../../selectors';
 import { validate } from './validate';
 import styles from './style.css';
 
 const submit = (values, dispatch) => {
-  dispatch(createAccountRequested(values.name, values.email, values.password));
+  dispatch(deps.actions.createAccountRequested(values.name, values.email, values.password));
 };
 
 const Register = ({ fields: { name, email, password }, handleSubmit, waiting, failed, statusMessage,
@@ -56,7 +55,7 @@ const Register = ({ fields: { name, email, password }, handleSubmit, waiting, fa
 
         <div className={styles.link}>
           <Link to="/login">
-            I already have an account
+            I do have an account
           </Link>
         </div>
 
@@ -75,9 +74,9 @@ Register.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  waiting: isCreatingAccount(state),
-  statusMessage: createAccountStatus(state),
-  errorMessage: createAccountError(state),
+  waiting: deps.selectors.isCreatingAccount(state),
+  statusMessage: deps.selectors.createAccountStatus(state),
+  errorMessage: deps.selectors.createAccountError(state),
   failed: formFailed(state),
 });
 

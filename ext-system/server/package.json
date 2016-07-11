@@ -1,0 +1,27 @@
+{
+  "name": "worona-dashboard-server",
+  "version": "1.0.0",
+  "description": "Worona dashboard server core package",
+  "main": "index.js",
+  "scripts": {
+    "start": "meteor"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/worona/worona-core.git"
+  },
+  "keywords": [
+    "worona",
+    "wordpress",
+    "amp",
+    "app",
+    "mobile",
+    "fbia"
+  ],
+  "author": "Worona Labs SL",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/worona/worona-core/issues"
+  },
+  "homepage": "https://github.com/worona/worona-core#readme"
+}

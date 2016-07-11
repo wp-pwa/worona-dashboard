@@ -1,14 +1,14 @@
 import './style.sass';
 
 import * as actions from './actions';
-import * as actiontypes from './actiontypes';
+import * as types from './types';
 import * as selectors from './selectors';
 import * as reducers from './reducers';
 import * as components from './components';
 
 export {
   actions,
-  actiontypes,
+  types,
   selectors,
   reducers,
   components,
