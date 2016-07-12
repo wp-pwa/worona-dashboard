@@ -83,9 +83,17 @@ module.exports = {
         },
       },
       {
+        test: /locales\/.+\.json$/,
+        loader: 'bundle-loader',
+        query: {
+          name: 'packages/[1]/dist/dev/locales/[name]',
+          regExp: 'packages\\/([^\\/]+)\\/',
+        }
+      },
+      {
         test: /\.json$/,
         loader: 'json-loader'
-      }
+      },
     ],
   },
   resolve: {
