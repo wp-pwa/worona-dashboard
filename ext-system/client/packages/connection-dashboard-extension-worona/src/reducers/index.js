@@ -24,7 +24,7 @@ export const isConnecting = (state = false, action) => {
   }
 };
 
-export default combineReducers({
+export default () => combineReducers({
   isConnected,
   isConnecting,
 });

@@ -143,7 +143,7 @@ export const isFirstLogin = (state = false, action) => {
   }
 };
 
-export default combineReducers({
+export default () => combineReducers({
   isLoggedIn,
   userId,
   isLoggingIn,

@@ -9,7 +9,7 @@ import * as build from './build-dashboard-extension-worona';
 
 addPackage('build', build);
 addPackage('loading', loading);
-addPackage('routing', { reducers: { default: routing } });
+addPackage('routing', { reducers: { default: () => routing } });
 
 import React from 'react';
 import ReactDOM from 'react-dom';

@@ -7,7 +7,7 @@ import { default as build } from '../reducers';
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(
-  combineReducers({ build, routing }),
+  combineReducers({ build: build(), routing }),
   compose(
     applyMiddleware(sagaMiddleware),
     typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : f => f

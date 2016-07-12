@@ -15,7 +15,7 @@ export const libs = {
   get loggedInEventChannel() { return dep('connection', 'libs', 'loggedInEventChannel'); },
   get loggedOutEventChannel() { return dep('connection', 'libs', 'loggedOutEventChannel'); },
   get logout() { return dep('connection', 'libs', 'logout'); },
-  get push() { return dep('router', 'libs', 'push'); },
+  get push() { return dep('build', 'libs', 'push'); },
 };
 
 export const types = {

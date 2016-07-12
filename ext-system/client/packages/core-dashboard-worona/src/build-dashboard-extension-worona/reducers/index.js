@@ -16,7 +16,7 @@ export const isReady = reducerCreators.isReadyCreator({
   succeed: types.PACKAGES_LOAD_SUCCEED,
 });
 
-export default combineReducers({
+export default () => combineReducers({
   isLoading,
   isReady,
   theme,
