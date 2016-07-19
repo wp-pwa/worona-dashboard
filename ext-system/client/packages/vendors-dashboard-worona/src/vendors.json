@@ -10,6 +10,9 @@
   "redux-saga",
   "redux-saga/effects",
   "reselect",
+  "i18next",
+  "i18next-xhr-backend",
+  "fastclick",
   "classnames",
   "lodash",
   "worona-deps"
