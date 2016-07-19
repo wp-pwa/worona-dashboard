@@ -28850,6 +28850,7 @@ var vendors_dashboard_worona =
 	  Worona: Worona,
 	  addPackage: worona.addPackage.bind(worona),
 	  getReducers: worona.getReducers.bind(worona),
+	  getLocales: worona.getLocales.bind(worona),
 	  getSagas: worona.getSagas.bind(worona),
 	  dep: worona.dep.bind(worona),
 	};
