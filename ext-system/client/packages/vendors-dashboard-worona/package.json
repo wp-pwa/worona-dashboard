@@ -47,22 +47,22 @@
     "dev": {
       "files": [
         {
-          "file": "vendors-dashboard-worona/dist/dev/js/vendors.08c41645751042553468ed5ae97fd96e.js",
-          "hash": "08c41645751042553468ed5ae97fd96e",
+          "file": "vendors-dashboard-worona/dist/dev/js/vendors.613694915cab34e140cd7f710bcb600a.js",
+          "hash": "613694915cab34e140cd7f710bcb600a",
           "chunkName": "main"
         }
       ],
-      "main": "dist/dev/js/vendors.08c41645751042553468ed5ae97fd96e.js"
+      "main": "dist/dev/js/vendors.613694915cab34e140cd7f710bcb600a.js"
     },
     "prod": {
       "files": [
         {
-          "file": "vendors-dashboard-worona/dist/prod/js/vendors.1d4238a7d97bd629948d720344df510b.js",
-          "hash": "1d4238a7d97bd629948d720344df510b",
+          "file": "vendors-dashboard-worona/dist/prod/js/vendors.32937c818d2dc7f5947bb5f12e0c56b9.js",
+          "hash": "32937c818d2dc7f5947bb5f12e0c56b9",
           "chunkName": "main"
         }
       ],
-      "main": "dist/prod/js/vendors.1d4238a7d97bd629948d720344df510b.js"
+      "main": "dist/prod/js/vendors.32937c818d2dc7f5947bb5f12e0c56b9.js"
     }
   },
   "devDependencies": {
