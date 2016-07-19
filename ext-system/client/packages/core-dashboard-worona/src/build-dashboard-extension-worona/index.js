@@ -7,6 +7,7 @@ import * as store from './store';
 import * as sagas from './sagas';
 import * as routes from './routes';
 import * as selectors from './selectors';
+const locales = lang => require(`./locales/${lang}.json`);
 
 export {
   actions,
@@ -18,4 +19,5 @@ export {
   sagas,
   selectors,
   routes,
+  locales,
 };

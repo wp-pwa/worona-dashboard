@@ -1,4 +1,4 @@
-import { logoutRequested, dispatch } from '../dependencies';
+import * as deps from '../dependencies';
 
 export const initialHeaderItems = [
   {
@@ -36,6 +36,6 @@ export const loggedInItems = [
     name: 'Logout',
     type: 'button',
     icon: 'sign-out',
-    action: () => dispatch(logoutRequested()),
+    action: () => deps.store.dispatch(deps.actions.logoutRequested()),
   },
 ];

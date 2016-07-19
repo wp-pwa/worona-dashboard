@@ -1,4 +1,5 @@
 import React from 'react';
+import { translate } from 'react-i18next';
 import { reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 import cn from 'classnames';
@@ -14,10 +15,9 @@ const submit = (values, dispatch) => {
 };
 
 const Login = ({ fields: { email, password }, handleSubmit, waiting, statusMessage,
-  errorMessage }) => (
+  errorMessage, t }) => (
   <div>
-
-    <Hero title="Login" color="info"
+    <Hero title={t('Login')} color="info"
       subtitle="Welcome to Worona. You are only one step away to start making apps."
     />
 
@@ -64,6 +64,7 @@ Login.propTypes = {
   waiting: React.PropTypes.bool.isRequired,
   statusMessage: React.PropTypes.any.isRequired,
   errorMessage: React.PropTypes.any.isRequired,
+  t: React.PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -72,13 +73,11 @@ const mapStateToProps = state => ({
   errorMessage: deps.selectors.loginError(state),
 });
 
+const LoginTranslated = translate('bulma')(Login);
+
 export default reduxForm({
   form: 'login',
   fields: ['email', 'password'],
   validate,
   getFormState: state => state.bulma.reduxForm,
-}, mapStateToProps)(Login);
-
-// export default () => (
-//   <div>HOLA!</div>
-// );
+}, mapStateToProps)(LoginTranslated);

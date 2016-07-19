@@ -5,13 +5,12 @@ import { reduxForm } from 'redux-form';
 import Hero from '../../elements/Hero';
 import Input from '../../elements/Input';
 import Button from '../../elements/Button';
-import { createSiteRequested, createSiteStatus, createSiteError, isCreatingSite }
-  from '../../dependencies';
+import * as deps from '../../dependencies';
 import { validate } from './validate';
 import styles from './style.css';
 
 const submit = (values, dispatch) => {
-  dispatch(createSiteRequested(values.title, values.url));
+  dispatch(deps.actions.createSiteRequested(values.title, values.url));
 };
 
 const CreateFirstApp = ({ fields: { title, url }, handleSubmit, waiting, statusMessage,
@@ -21,8 +20,8 @@ const CreateFirstApp = ({ fields: { title, url }, handleSubmit, waiting, statusM
       subtitle="Just enter the title and your WordPress url and we will do the rest."
     />
 
-    <section className="hero-content">
-      <div className="container is-text-centered">
+    <section className="hero-body">
+      <div className="container has-text-centered">
 
         <form onSubmit={handleSubmit(submit)} className={styles.box}>
           <Input type="text" placeholder="App Title" icon="info-circle" {...title}
@@ -70,13 +69,14 @@ CreateFirstApp.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  waiting: isCreatingSite(state),
-  statusMessage: createSiteStatus(state),
-  errorMessage: createSiteError(state),
+  waiting: deps.selectors.isCreatingSite(state),
+  statusMessage: deps.selectors.createSiteStatus(state),
+  errorMessage: deps.selectors.createSiteError(state),
 });
 
 export default reduxForm({
   form: 'createFirstApp',
   fields: ['title', 'url'],
   validate,
+  getFormState: state => state.bulma.reduxForm,
 }, mapStateToProps)(CreateFirstApp);

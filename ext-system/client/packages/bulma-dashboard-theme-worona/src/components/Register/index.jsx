@@ -21,7 +21,7 @@ const Register = ({ fields: { name, email, password }, handleSubmit, waiting, fa
       subtitle="Welcome to Worona. You are only one step away to start making apps."
     />
 
-  <section className="hero-body">
+    <section className="hero-body">
       <div className="container has-text-centered">
 
         <form onSubmit={handleSubmit(submit)} className={styles.box}>

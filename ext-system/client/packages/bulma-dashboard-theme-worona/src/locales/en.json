@@ -1,9 +1,11 @@
 {
-  "Websiste": "Website",
+  "Login": "Login",
+  "Website": "Website",
   "Documentation": "Documentation",
   "Forums": "Forums",
   "Support": "Support",
   "EditProfile": "Edit profile",
   "Logout": "Logout",
-  "MySites": "My Sitessssss!!!"
+  "MySites": "My Sites",
+  "NewThing2": "New thing"
 }

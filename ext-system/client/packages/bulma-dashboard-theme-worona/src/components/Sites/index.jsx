@@ -7,7 +7,7 @@ import Site from './Site';
 const Sites = ({ sites, t }) => (
   <div>
     <section className="hero is-info">
-      <div className="hero-content">
+      <div className="hero-body">
         <div className="container is-text-left">
           <div className="columns">
             <div className="column is-10">
@@ -45,6 +45,4 @@ const mapStateToProps = state => ({
   sites: state.sites.collection,
 });
 
-export default connect(
-  mapStateToProps
-)(translate('chess-theme')(Sites));
+export default connect(mapStateToProps)(translate('bulma', { wait: true })(Sites));

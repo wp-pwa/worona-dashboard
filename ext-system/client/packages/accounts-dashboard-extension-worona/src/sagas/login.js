@@ -31,7 +31,7 @@ export function* loginSucceedSaga() {
   if (yield select(selectors.isFirstLogin)) {
     yield call(deps.libs.push, '/create-first-app');
   } else {
-    yield call(deps.libs.push, '/');
+    yield call(deps.libs.push, '/sites');
   }
 }
 export function* loginSucceedWatcher() {

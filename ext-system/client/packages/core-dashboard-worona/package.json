@@ -46,9 +46,5 @@
     "public": 1
   },
   "devDependencies": {},
-  "dependencies": {
-    "fastclick": "^1.0.6",
-    "i18next": "^3.2.0",
-    "react-i18next": "^1.5.0"
-  }
+  "dependencies": {}
 }
