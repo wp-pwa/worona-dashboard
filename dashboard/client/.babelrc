@@ -2,8 +2,5 @@
   "presets": [
     "es2015",
     "react"
-  ],
-  /*"plugins": [
-    [ "resolver", { "resolveDirs": [ "extensions", "themes" ] } ]
-  ]*/
+  ]
 }

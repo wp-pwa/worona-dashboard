@@ -1,23 +1,35 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
-var vendors_hash = require('./dist/prod/vendors/vendors-hash.json');
+var vendors = require('./packages/vendors-dashboard-worona/package.json').worona.prod.main;
+var vendorsFile = /^.+\/(.+\.js)$/.exec(vendors)[1];
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    dashboard: [
-      path.join(__dirname, 'src', 'index.js'),
+    core: [
+      path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'index.js'),
     ],
   },
   output: {
-    path: path.join(__dirname, 'prod'),
-    publicPath: '/',
-    filename: 'core/dashboard.core.[hash].js',
+    path: path.join(__dirname, 'dist', 'prod'),
+    filename: 'packages/core-dashboard-worona/dist/prod/js/core.[hash].js',
+    chunkFilename: '[name].[chunkhash].js',
+    hashDigestLength: 32,
   },
   module: {
     loaders: [
+      {
+        test: /packages\/.+-worona\/src\/index\.js$/,
+        loader: 'bundle-loader',
+        query: {
+          lazy: true,
+          name: 'packages/[1][2]/dist/prod/js/[1]',
+          regExp: 'packages\\/([\\w]+)([\\w\\-]+)'
+        },
+        exclude: /(core-dashboard-worona|vendors-dashboard-worona)/,
+      },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
@@ -30,6 +42,7 @@ module.exports = {
           'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
           'postcss-loader',
         ],
+        exclude: /(node_modules)/,
       },
       {
         test: /\.s[ac]ss$/,
@@ -41,36 +54,56 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader?name=images/[name].[hash].[ext]'
+        loader: 'file-loader',
+        query: {
+          name: 'packages/[1]/dist/prod/images/[name].[hash].[ext]',
+          regExp: 'packages\\/([^\\/]+)\\/',
+        },
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&minetype=application/font-woff&name=fonts/[name].[hash].[ext]'
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          minetype: 'application/font-woff',
+          name: 'packages/[1]/dist/prod/fonts/[name].[hash].[ext]',
+          regExp: 'packages\\/([^\\/]+)\\/',
+        },
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=fonts/[name].[hash].[ext]'
+        loader: 'file-loader',
+        query: {
+          name: 'packages/[1]/dist/prod/fonts/[name].[hash].[ext]',
+          regExp: 'packages\\/([^\\/]+)\\/',
+        },
+      },
+      {
+        test: /locales\/.+\.json$/,
+        loader: 'bundle-loader',
+        query: {
+          name: 'packages/[1]/dist/prod/locales/[name]',
+          regExp: 'packages\\/([^\\/]+)\\/',
+        }
       },
       {
         test: /\.json$/,
         loader: 'json-loader'
-      }
+      },
     ],
   },
   resolve: {
-    modulesDirectories: [
-      'themes',
-      'extensions',
-      'node_modules',
-    ],
     extensions: ['', '.js', '.jsx'],
   },
   devServer: {
-		contentBase: path.join(__dirname, 'prod'),
-		noInfo: true,
+		contentBase: path.join(__dirname, 'dist', 'prod'),
+    outputPath: path.join(__dirname),
+		noInfo: false,
 		hot: false,
-		inline: true,
+		inline: false,
     port: 4000,
+    https: true,
+    compress: true,
     historyApiFallback: true,
 	},
   postcss: function () {
@@ -82,16 +115,25 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'index.prod.html'),
-      favicon: path.join(__dirname, 'src', 'favicon.prod.png'),
-      vendors_hash: vendors_hash.vendors.js,
+      inject: false,
+      title: 'Worona Dashboard (PROD)',
+      template: path.join(__dirname, 'includes', 'index.html'),
+      favicon: path.join(__dirname, 'includes', 'favicon.png'),
+      vendorsFile: 'packages/vendors-dashboard-worona/dist/prod/js/' + vendorsFile,
+      window: {
+        publicPath: 'https://localhost:4000/',
+      },
+      appMountId: 'root',
+      minify: { preserveLineBreaks: true, collapseWhitespace: true },
     }),
     new webpack.DllReferencePlugin({
-      context: path.join(__dirname),
-      manifest: require('./dist/prod/vendors/vendors-manifest.json')
+      context: '.',
+      manifest: require('./packages/vendors-dashboard-worona/dist/prod/vendors-manifest.json'),
     }),
-    // new CopyWebpackPlugin([
-    //   { from: '**/locales/*.json', to: 'locales', flatten: true },
-    // ]),
-  ]
+    new CopyWebpackPlugin([
+      { from: './packages/vendors-dashboard-worona/' + vendors, to: 'packages/vendors-dashboard-worona/dist/prod/js', flatten: true },
+    ], {
+      copyUnmodified: true,
+    }),
+  ],
 };
