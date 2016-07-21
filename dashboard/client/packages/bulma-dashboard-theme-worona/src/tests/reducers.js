@@ -1,19 +1,18 @@
 import test from 'ava';
-import { toggleMobileMenu } from '../actions';
+import { mock } from 'worona-deps';
 import { showingMobileMenu } from '../reducers/header';
 import { validationFailed } from '../reducers/forms';
-import { logoutSucceed } from '../dependencies';
-import { load } from 'worona';
+import * as actions from '../actions';
+import * as deps from '../dependencies';
 
-test.before(() => {
-  load('accounts', require('../../../accounts-dashboard-extension-worona'));
-});
+mock(deps);
+deps.actions.logoutSucceed = () => ({ type: deps.types.LOGOUT_SUCCEED });
 
 test('header.showingMobileMenu', t => {
   t.false(showingMobileMenu(undefined, {}));
-  t.true(showingMobileMenu(false, toggleMobileMenu()));
-  t.false(showingMobileMenu(true, toggleMobileMenu()));
-  t.false(showingMobileMenu(true, logoutSucceed()));
+  t.true(showingMobileMenu(false, actions.toggleMobileMenu()));
+  t.false(showingMobileMenu(true, actions.toggleMobileMenu()));
+  t.false(showingMobileMenu(true, deps.actions.logoutSucceed()));
 });
 
 test('forms.register.validationFailed', t => {

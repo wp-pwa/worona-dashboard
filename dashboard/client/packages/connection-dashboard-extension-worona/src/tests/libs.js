@@ -1,13 +1,13 @@
 import test from 'ava';
 import sinon from 'sinon';
-import { Connection } from '../libs';
+import * as libs from '../libs';
 
 global.WebSocket = require('ws'); // Import WebSocket in node.
 
 let connection = null;
 
 test.beforeEach(() => {
-  connection = new Connection({ url: 'ws://test' });
+  connection = new libs.Connection({ url: 'ws://test' });
 });
 
 test.afterEach(() => {

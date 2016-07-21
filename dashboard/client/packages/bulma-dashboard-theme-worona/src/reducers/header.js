@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import { TOGGLE_MOBILE_MENU } from '../types';
-import { LOGOUT_SUCCEED } from '../dependencies';
+import * as types from '../types';
+import * as deps from '../dependencies';
 
 export const showingMobileMenu = (state = false, action) => {
   switch (action.type) {
-    case TOGGLE_MOBILE_MENU:
+    case types.TOGGLE_MOBILE_MENU:
       return !state;
-    case LOGOUT_SUCCEED:
+    case deps.types.LOGOUT_SUCCEED:
       return false;
     default:
       return state;

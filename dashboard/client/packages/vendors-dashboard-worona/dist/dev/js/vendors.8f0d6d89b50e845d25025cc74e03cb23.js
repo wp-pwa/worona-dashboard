@@ -55,9 +55,9 @@ var vendors_dashboard_worona =
 
 	__webpack_require__(2);
 
-	__webpack_require__(294);
+	__webpack_require__(293);
 
-	__webpack_require__(296);
+	__webpack_require__(295);
 
 	/* eslint max-len: 0 */
 
@@ -114,23 +114,24 @@ var vendors_dashboard_worona =
 	__webpack_require__(85);
 	__webpack_require__(87);
 	__webpack_require__(89);
+	__webpack_require__(92);
 	__webpack_require__(93);
 	__webpack_require__(94);
 	__webpack_require__(95);
-	__webpack_require__(96);
+	__webpack_require__(97);
 	__webpack_require__(98);
 	__webpack_require__(99);
 	__webpack_require__(100);
 	__webpack_require__(101);
 	__webpack_require__(102);
 	__webpack_require__(103);
-	__webpack_require__(104);
+	__webpack_require__(105);
 	__webpack_require__(106);
 	__webpack_require__(107);
-	__webpack_require__(108);
+	__webpack_require__(109);
 	__webpack_require__(110);
 	__webpack_require__(111);
-	__webpack_require__(112);
+	__webpack_require__(113);
 	__webpack_require__(114);
 	__webpack_require__(115);
 	__webpack_require__(116);
@@ -144,13 +145,13 @@ var vendors_dashboard_worona =
 	__webpack_require__(124);
 	__webpack_require__(125);
 	__webpack_require__(126);
-	__webpack_require__(127);
+	__webpack_require__(131);
 	__webpack_require__(132);
-	__webpack_require__(133);
+	__webpack_require__(136);
 	__webpack_require__(137);
 	__webpack_require__(138);
 	__webpack_require__(139);
-	__webpack_require__(140);
+	__webpack_require__(141);
 	__webpack_require__(142);
 	__webpack_require__(143);
 	__webpack_require__(144);
@@ -167,36 +168,35 @@ var vendors_dashboard_worona =
 	__webpack_require__(155);
 	__webpack_require__(156);
 	__webpack_require__(157);
-	__webpack_require__(158);
+	__webpack_require__(159);
 	__webpack_require__(160);
-	__webpack_require__(161);
+	__webpack_require__(166);
 	__webpack_require__(167);
-	__webpack_require__(168);
+	__webpack_require__(169);
 	__webpack_require__(170);
 	__webpack_require__(171);
-	__webpack_require__(172);
+	__webpack_require__(175);
 	__webpack_require__(176);
 	__webpack_require__(177);
 	__webpack_require__(178);
 	__webpack_require__(179);
-	__webpack_require__(180);
+	__webpack_require__(181);
 	__webpack_require__(182);
 	__webpack_require__(183);
 	__webpack_require__(184);
-	__webpack_require__(185);
-	__webpack_require__(188);
+	__webpack_require__(187);
+	__webpack_require__(189);
 	__webpack_require__(190);
 	__webpack_require__(191);
-	__webpack_require__(192);
-	__webpack_require__(194);
-	__webpack_require__(196);
+	__webpack_require__(193);
+	__webpack_require__(195);
+	__webpack_require__(197);
 	__webpack_require__(198);
 	__webpack_require__(199);
-	__webpack_require__(200);
+	__webpack_require__(201);
 	__webpack_require__(202);
 	__webpack_require__(203);
 	__webpack_require__(204);
-	__webpack_require__(205);
 	__webpack_require__(211);
 	__webpack_require__(214);
 	__webpack_require__(215);
@@ -204,6 +204,7 @@ var vendors_dashboard_worona =
 	__webpack_require__(218);
 	__webpack_require__(221);
 	__webpack_require__(222);
+	__webpack_require__(224);
 	__webpack_require__(225);
 	__webpack_require__(226);
 	__webpack_require__(227);
@@ -222,13 +223,13 @@ var vendors_dashboard_worona =
 	__webpack_require__(240);
 	__webpack_require__(241);
 	__webpack_require__(242);
-	__webpack_require__(243);
+	__webpack_require__(244);
 	__webpack_require__(245);
 	__webpack_require__(246);
 	__webpack_require__(247);
 	__webpack_require__(248);
 	__webpack_require__(249);
-	__webpack_require__(250);
+	__webpack_require__(251);
 	__webpack_require__(252);
 	__webpack_require__(253);
 	__webpack_require__(254);
@@ -236,13 +237,13 @@ var vendors_dashboard_worona =
 	__webpack_require__(256);
 	__webpack_require__(257);
 	__webpack_require__(258);
-	__webpack_require__(259);
+	__webpack_require__(260);
 	__webpack_require__(261);
-	__webpack_require__(262);
+	__webpack_require__(263);
 	__webpack_require__(264);
 	__webpack_require__(265);
 	__webpack_require__(266);
-	__webpack_require__(267);
+	__webpack_require__(269);
 	__webpack_require__(270);
 	__webpack_require__(271);
 	__webpack_require__(272);
@@ -250,7 +251,7 @@ var vendors_dashboard_worona =
 	__webpack_require__(274);
 	__webpack_require__(275);
 	__webpack_require__(276);
-	__webpack_require__(277);
+	__webpack_require__(278);
 	__webpack_require__(279);
 	__webpack_require__(280);
 	__webpack_require__(281);
@@ -261,9 +262,8 @@ var vendors_dashboard_worona =
 	__webpack_require__(286);
 	__webpack_require__(287);
 	__webpack_require__(288);
-	__webpack_require__(289);
+	__webpack_require__(291);
 	__webpack_require__(292);
-	__webpack_require__(293);
 	module.exports = __webpack_require__(9);
 
 /***/ },
@@ -1134,6 +1134,7 @@ var vendors_dashboard_worona =
 	  // Thrash, waste and sodomy: IE GC bug
 	  var iframe = __webpack_require__(15)('iframe')
 	    , i      = enumBugKeys.length
+	    , lt     = '<'
 	    , gt     = '>'
 	    , iframeDocument;
 	  iframe.style.display = 'none';
@@ -1143,7 +1144,7 @@ var vendors_dashboard_worona =
 	  // html.removeChild(iframe);
 	  iframeDocument = iframe.contentWindow.document;
 	  iframeDocument.open();
-	  iframeDocument.write('<script>document.F=Object</script' + gt);
+	  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
 	  iframeDocument.close();
 	  createDict = iframeDocument.F;
 	  while(i--)delete createDict[PROTOTYPE][enumBugKeys[i]];
@@ -1161,6 +1162,7 @@ var vendors_dashboard_worona =
 	  } else result = createDict();
 	  return Properties === undefined ? result : dPs(result, Properties);
 	};
+
 
 /***/ },
 /* 47 */
@@ -1875,10 +1877,9 @@ var vendors_dashboard_worona =
 
 	'use strict';
 	var $export      = __webpack_require__(8)
-	  , anInstance   = __webpack_require__(90)
 	  , toInteger    = __webpack_require__(38)
-	  , aNumberValue = __webpack_require__(91)
-	  , repeat       = __webpack_require__(92)
+	  , aNumberValue = __webpack_require__(90)
+	  , repeat       = __webpack_require__(91)
 	  , $toFixed     = 1..toFixed
 	  , floor        = Math.floor
 	  , data         = [0, 0, 0, 0, 0, 0]
@@ -1990,16 +1991,6 @@ var vendors_dashboard_worona =
 
 /***/ },
 /* 90 */
-/***/ function(module, exports) {
-
-	module.exports = function(it, Constructor, name, forbiddenField){
-	  if(!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)){
-	    throw TypeError(name + ': incorrect invocation!');
-	  } return it;
-	};
-
-/***/ },
-/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var cof = __webpack_require__(34);
@@ -2009,7 +2000,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 92 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2026,13 +2017,13 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 93 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var $export      = __webpack_require__(8)
 	  , $fails       = __webpack_require__(7)
-	  , aNumberValue = __webpack_require__(91)
+	  , aNumberValue = __webpack_require__(90)
 	  , $toPrecision = 1..toPrecision;
 
 	$export($export.P + $export.F * ($fails(function(){
@@ -2049,7 +2040,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 94 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.1.2.1 Number.EPSILON
@@ -2058,7 +2049,7 @@ var vendors_dashboard_worona =
 	$export($export.S, 'Number', {EPSILON: Math.pow(2, -52)});
 
 /***/ },
-/* 95 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.1.2.2 Number.isFinite(number)
@@ -2072,16 +2063,16 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 96 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.1.2.3 Number.isInteger(number)
 	var $export = __webpack_require__(8);
 
-	$export($export.S, 'Number', {isInteger: __webpack_require__(97)});
+	$export($export.S, 'Number', {isInteger: __webpack_require__(96)});
 
 /***/ },
-/* 97 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.1.2.3 Number.isInteger(number)
@@ -2092,7 +2083,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 98 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.1.2.4 Number.isNaN(number)
@@ -2105,12 +2096,12 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 99 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.1.2.5 Number.isSafeInteger(number)
 	var $export   = __webpack_require__(8)
-	  , isInteger = __webpack_require__(97)
+	  , isInteger = __webpack_require__(96)
 	  , abs       = Math.abs;
 
 	$export($export.S, 'Number', {
@@ -2120,7 +2111,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 100 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.1.2.6 Number.MAX_SAFE_INTEGER
@@ -2129,7 +2120,7 @@ var vendors_dashboard_worona =
 	$export($export.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
 
 /***/ },
-/* 101 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.1.2.10 Number.MIN_SAFE_INTEGER
@@ -2138,7 +2129,7 @@ var vendors_dashboard_worona =
 	$export($export.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
 
 /***/ },
-/* 102 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $export     = __webpack_require__(8)
@@ -2147,7 +2138,7 @@ var vendors_dashboard_worona =
 	$export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', {parseFloat: $parseFloat});
 
 /***/ },
-/* 103 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $export   = __webpack_require__(8)
@@ -2156,12 +2147,12 @@ var vendors_dashboard_worona =
 	$export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', {parseInt: $parseInt});
 
 /***/ },
-/* 104 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.3 Math.acosh(x)
 	var $export = __webpack_require__(8)
-	  , log1p   = __webpack_require__(105)
+	  , log1p   = __webpack_require__(104)
 	  , sqrt    = Math.sqrt
 	  , $acosh  = Math.acosh;
 
@@ -2179,7 +2170,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 105 */
+/* 104 */
 /***/ function(module, exports) {
 
 	// 20.2.2.20 Math.log1p(x)
@@ -2188,7 +2179,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 106 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.5 Math.asinh(x)
@@ -2203,7 +2194,7 @@ var vendors_dashboard_worona =
 	$export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', {asinh: asinh});
 
 /***/ },
-/* 107 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.7 Math.atanh(x)
@@ -2218,12 +2209,12 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 108 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.9 Math.cbrt(x)
 	var $export = __webpack_require__(8)
-	  , sign    = __webpack_require__(109);
+	  , sign    = __webpack_require__(108);
 
 	$export($export.S, 'Math', {
 	  cbrt: function cbrt(x){
@@ -2232,7 +2223,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 109 */
+/* 108 */
 /***/ function(module, exports) {
 
 	// 20.2.2.28 Math.sign(x)
@@ -2241,7 +2232,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 110 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.11 Math.clz32(x)
@@ -2254,7 +2245,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 111 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.12 Math.cosh(x)
@@ -2268,17 +2259,17 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 112 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.14 Math.expm1(x)
 	var $export = __webpack_require__(8)
-	  , $expm1  = __webpack_require__(113);
+	  , $expm1  = __webpack_require__(112);
 
 	$export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', {expm1: $expm1});
 
 /***/ },
-/* 113 */
+/* 112 */
 /***/ function(module, exports) {
 
 	// 20.2.2.14 Math.expm1(x)
@@ -2293,12 +2284,12 @@ var vendors_dashboard_worona =
 	} : $expm1;
 
 /***/ },
-/* 114 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.16 Math.fround(x)
 	var $export   = __webpack_require__(8)
-	  , sign      = __webpack_require__(109)
+	  , sign      = __webpack_require__(108)
 	  , pow       = Math.pow
 	  , EPSILON   = pow(2, -52)
 	  , EPSILON32 = pow(2, -23)
@@ -2324,7 +2315,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 115 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
@@ -2354,7 +2345,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 116 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.18 Math.imul(x, y)
@@ -2376,7 +2367,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 117 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.21 Math.log10(x)
@@ -2389,16 +2380,16 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 118 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.20 Math.log1p(x)
 	var $export = __webpack_require__(8);
 
-	$export($export.S, 'Math', {log1p: __webpack_require__(105)});
+	$export($export.S, 'Math', {log1p: __webpack_require__(104)});
 
 /***/ },
-/* 119 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.22 Math.log2(x)
@@ -2411,21 +2402,21 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 120 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.28 Math.sign(x)
 	var $export = __webpack_require__(8);
 
-	$export($export.S, 'Math', {sign: __webpack_require__(109)});
+	$export($export.S, 'Math', {sign: __webpack_require__(108)});
 
 /***/ },
-/* 121 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.30 Math.sinh(x)
 	var $export = __webpack_require__(8)
-	  , expm1   = __webpack_require__(113)
+	  , expm1   = __webpack_require__(112)
 	  , exp     = Math.exp;
 
 	// V8 near Chromium 38 has a problem with very small numbers
@@ -2440,12 +2431,12 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 122 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.33 Math.tanh(x)
 	var $export = __webpack_require__(8)
-	  , expm1   = __webpack_require__(113)
+	  , expm1   = __webpack_require__(112)
 	  , exp     = Math.exp;
 
 	$export($export.S, 'Math', {
@@ -2457,7 +2448,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 123 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.2.2.34 Math.trunc(x)
@@ -2470,7 +2461,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 124 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $export        = __webpack_require__(8)
@@ -2498,7 +2489,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 125 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $export   = __webpack_require__(8)
@@ -2521,7 +2512,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 126 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2533,14 +2524,14 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 127 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var $at  = __webpack_require__(128)(true);
+	var $at  = __webpack_require__(127)(true);
 
 	// 21.1.3.27 String.prototype[@@iterator]()
-	__webpack_require__(129)(String, 'String', function(iterated){
+	__webpack_require__(128)(String, 'String', function(iterated){
 	  this._t = String(iterated); // target
 	  this._i = 0;                // next index
 	// 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -2555,7 +2546,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 128 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var toInteger = __webpack_require__(38)
@@ -2577,7 +2568,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 129 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2586,8 +2577,8 @@ var vendors_dashboard_worona =
 	  , redefine       = __webpack_require__(18)
 	  , hide           = __webpack_require__(10)
 	  , has            = __webpack_require__(5)
-	  , Iterators      = __webpack_require__(130)
-	  , $iterCreate    = __webpack_require__(131)
+	  , Iterators      = __webpack_require__(129)
+	  , $iterCreate    = __webpack_require__(130)
 	  , setToStringTag = __webpack_require__(24)
 	  , getPrototypeOf = __webpack_require__(59)
 	  , ITERATOR       = __webpack_require__(25)('iterator')
@@ -2652,13 +2643,13 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 130 */
+/* 129 */
 /***/ function(module, exports) {
 
 	module.exports = {};
 
 /***/ },
-/* 131 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2676,12 +2667,12 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 132 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var $export = __webpack_require__(8)
-	  , $at     = __webpack_require__(128)(false);
+	  , $at     = __webpack_require__(127)(false);
 	$export($export.P, 'String', {
 	  // 21.1.3.3 String.prototype.codePointAt(pos)
 	  codePointAt: function codePointAt(pos){
@@ -2690,18 +2681,18 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 133 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 21.1.3.6 String.prototype.endsWith(searchString [, endPosition])
 	'use strict';
 	var $export   = __webpack_require__(8)
 	  , toLength  = __webpack_require__(37)
-	  , context   = __webpack_require__(134)
+	  , context   = __webpack_require__(133)
 	  , ENDS_WITH = 'endsWith'
 	  , $endsWith = ''[ENDS_WITH];
 
-	$export($export.P + $export.F * __webpack_require__(136)(ENDS_WITH), 'String', {
+	$export($export.P + $export.F * __webpack_require__(135)(ENDS_WITH), 'String', {
 	  endsWith: function endsWith(searchString /*, endPosition = @length */){
 	    var that = context(this, searchString, ENDS_WITH)
 	      , endPosition = arguments.length > 1 ? arguments[1] : undefined
@@ -2715,11 +2706,11 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 134 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// helper for String#{startsWith, endsWith, includes}
-	var isRegExp = __webpack_require__(135)
+	var isRegExp = __webpack_require__(134)
 	  , defined  = __webpack_require__(35);
 
 	module.exports = function(that, searchString, NAME){
@@ -2728,7 +2719,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 135 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.2.8 IsRegExp(argument)
@@ -2741,7 +2732,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 136 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var MATCH = __webpack_require__(25)('match');
@@ -2758,16 +2749,16 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 137 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 21.1.3.7 String.prototype.includes(searchString, position = 0)
 	'use strict';
 	var $export  = __webpack_require__(8)
-	  , context  = __webpack_require__(134)
+	  , context  = __webpack_require__(133)
 	  , INCLUDES = 'includes';
 
-	$export($export.P + $export.F * __webpack_require__(136)(INCLUDES), 'String', {
+	$export($export.P + $export.F * __webpack_require__(135)(INCLUDES), 'String', {
 	  includes: function includes(searchString /*, position = 0 */){
 	    return !!~context(this, searchString, INCLUDES)
 	      .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
@@ -2775,29 +2766,29 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 138 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $export = __webpack_require__(8);
 
 	$export($export.P, 'String', {
 	  // 21.1.3.13 String.prototype.repeat(count)
-	  repeat: __webpack_require__(92)
+	  repeat: __webpack_require__(91)
 	});
 
 /***/ },
-/* 139 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 21.1.3.18 String.prototype.startsWith(searchString [, position ])
 	'use strict';
 	var $export     = __webpack_require__(8)
 	  , toLength    = __webpack_require__(37)
-	  , context     = __webpack_require__(134)
+	  , context     = __webpack_require__(133)
 	  , STARTS_WITH = 'startsWith'
 	  , $startsWith = ''[STARTS_WITH];
 
-	$export($export.P + $export.F * __webpack_require__(136)(STARTS_WITH), 'String', {
+	$export($export.P + $export.F * __webpack_require__(135)(STARTS_WITH), 'String', {
 	  startsWith: function startsWith(searchString /*, position = 0 */){
 	    var that   = context(this, searchString, STARTS_WITH)
 	      , index  = toLength(Math.min(arguments.length > 1 ? arguments[1] : undefined, that.length))
@@ -2809,19 +2800,19 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 140 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// B.2.3.2 String.prototype.anchor(name)
-	__webpack_require__(141)('anchor', function(createHTML){
+	__webpack_require__(140)('anchor', function(createHTML){
 	  return function anchor(name){
 	    return createHTML(this, 'a', 'name', name);
 	  }
 	});
 
 /***/ },
-/* 141 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $export = __webpack_require__(8)
@@ -2845,14 +2836,26 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 142 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// B.2.3.3 String.prototype.big()
-	__webpack_require__(141)('big', function(createHTML){
+	__webpack_require__(140)('big', function(createHTML){
 	  return function big(){
 	    return createHTML(this, 'big', '', '');
+	  }
+	});
+
+/***/ },
+/* 142 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	// B.2.3.4 String.prototype.blink()
+	__webpack_require__(140)('blink', function(createHTML){
+	  return function blink(){
+	    return createHTML(this, 'blink', '', '');
 	  }
 	});
 
@@ -2861,10 +2864,10 @@ var vendors_dashboard_worona =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	// B.2.3.4 String.prototype.blink()
-	__webpack_require__(141)('blink', function(createHTML){
-	  return function blink(){
-	    return createHTML(this, 'blink', '', '');
+	// B.2.3.5 String.prototype.bold()
+	__webpack_require__(140)('bold', function(createHTML){
+	  return function bold(){
+	    return createHTML(this, 'b', '', '');
 	  }
 	});
 
@@ -2873,10 +2876,10 @@ var vendors_dashboard_worona =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	// B.2.3.5 String.prototype.bold()
-	__webpack_require__(141)('bold', function(createHTML){
-	  return function bold(){
-	    return createHTML(this, 'b', '', '');
+	// B.2.3.6 String.prototype.fixed()
+	__webpack_require__(140)('fixed', function(createHTML){
+	  return function fixed(){
+	    return createHTML(this, 'tt', '', '');
 	  }
 	});
 
@@ -2885,10 +2888,10 @@ var vendors_dashboard_worona =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	// B.2.3.6 String.prototype.fixed()
-	__webpack_require__(141)('fixed', function(createHTML){
-	  return function fixed(){
-	    return createHTML(this, 'tt', '', '');
+	// B.2.3.7 String.prototype.fontcolor(color)
+	__webpack_require__(140)('fontcolor', function(createHTML){
+	  return function fontcolor(color){
+	    return createHTML(this, 'font', 'color', color);
 	  }
 	});
 
@@ -2897,10 +2900,10 @@ var vendors_dashboard_worona =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	// B.2.3.7 String.prototype.fontcolor(color)
-	__webpack_require__(141)('fontcolor', function(createHTML){
-	  return function fontcolor(color){
-	    return createHTML(this, 'font', 'color', color);
+	// B.2.3.8 String.prototype.fontsize(size)
+	__webpack_require__(140)('fontsize', function(createHTML){
+	  return function fontsize(size){
+	    return createHTML(this, 'font', 'size', size);
 	  }
 	});
 
@@ -2909,10 +2912,10 @@ var vendors_dashboard_worona =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	// B.2.3.8 String.prototype.fontsize(size)
-	__webpack_require__(141)('fontsize', function(createHTML){
-	  return function fontsize(size){
-	    return createHTML(this, 'font', 'size', size);
+	// B.2.3.9 String.prototype.italics()
+	__webpack_require__(140)('italics', function(createHTML){
+	  return function italics(){
+	    return createHTML(this, 'i', '', '');
 	  }
 	});
 
@@ -2921,10 +2924,10 @@ var vendors_dashboard_worona =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	// B.2.3.9 String.prototype.italics()
-	__webpack_require__(141)('italics', function(createHTML){
-	  return function italics(){
-	    return createHTML(this, 'i', '', '');
+	// B.2.3.10 String.prototype.link(url)
+	__webpack_require__(140)('link', function(createHTML){
+	  return function link(url){
+	    return createHTML(this, 'a', 'href', url);
 	  }
 	});
 
@@ -2933,10 +2936,10 @@ var vendors_dashboard_worona =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	// B.2.3.10 String.prototype.link(url)
-	__webpack_require__(141)('link', function(createHTML){
-	  return function link(url){
-	    return createHTML(this, 'a', 'href', url);
+	// B.2.3.11 String.prototype.small()
+	__webpack_require__(140)('small', function(createHTML){
+	  return function small(){
+	    return createHTML(this, 'small', '', '');
 	  }
 	});
 
@@ -2945,10 +2948,10 @@ var vendors_dashboard_worona =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	// B.2.3.11 String.prototype.small()
-	__webpack_require__(141)('small', function(createHTML){
-	  return function small(){
-	    return createHTML(this, 'small', '', '');
+	// B.2.3.12 String.prototype.strike()
+	__webpack_require__(140)('strike', function(createHTML){
+	  return function strike(){
+	    return createHTML(this, 'strike', '', '');
 	  }
 	});
 
@@ -2957,10 +2960,10 @@ var vendors_dashboard_worona =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	// B.2.3.12 String.prototype.strike()
-	__webpack_require__(141)('strike', function(createHTML){
-	  return function strike(){
-	    return createHTML(this, 'strike', '', '');
+	// B.2.3.13 String.prototype.sub()
+	__webpack_require__(140)('sub', function(createHTML){
+	  return function sub(){
+	    return createHTML(this, 'sub', '', '');
 	  }
 	});
 
@@ -2969,27 +2972,15 @@ var vendors_dashboard_worona =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	// B.2.3.13 String.prototype.sub()
-	__webpack_require__(141)('sub', function(createHTML){
-	  return function sub(){
-	    return createHTML(this, 'sub', '', '');
-	  }
-	});
-
-/***/ },
-/* 153 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
 	// B.2.3.14 String.prototype.sup()
-	__webpack_require__(141)('sup', function(createHTML){
+	__webpack_require__(140)('sup', function(createHTML){
 	  return function sup(){
 	    return createHTML(this, 'sup', '', '');
 	  }
 	});
 
 /***/ },
-/* 154 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 20.3.3.1 / 15.9.4.4 Date.now()
@@ -2998,7 +2989,7 @@ var vendors_dashboard_worona =
 	$export($export.S, 'Date', {now: function(){ return new Date().getTime(); }});
 
 /***/ },
-/* 155 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3017,7 +3008,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 156 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3050,7 +3041,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 157 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var DateProto    = Date.prototype
@@ -3066,16 +3057,16 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 158 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var TO_PRIMITIVE = __webpack_require__(25)('toPrimitive')
 	  , proto        = Date.prototype;
 
-	if(!(TO_PRIMITIVE in proto))__webpack_require__(10)(proto, TO_PRIMITIVE, __webpack_require__(159));
+	if(!(TO_PRIMITIVE in proto))__webpack_require__(10)(proto, TO_PRIMITIVE, __webpack_require__(158));
 
 /***/ },
-/* 159 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3089,7 +3080,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 160 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
@@ -3098,20 +3089,20 @@ var vendors_dashboard_worona =
 	$export($export.S, 'Array', {isArray: __webpack_require__(45)});
 
 /***/ },
-/* 161 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var ctx            = __webpack_require__(20)
 	  , $export        = __webpack_require__(8)
 	  , toObject       = __webpack_require__(58)
-	  , call           = __webpack_require__(162)
-	  , isArrayIter    = __webpack_require__(163)
+	  , call           = __webpack_require__(161)
+	  , isArrayIter    = __webpack_require__(162)
 	  , toLength       = __webpack_require__(37)
-	  , createProperty = __webpack_require__(164)
-	  , getIterFn      = __webpack_require__(165);
+	  , createProperty = __webpack_require__(163)
+	  , getIterFn      = __webpack_require__(164);
 
-	$export($export.S + $export.F * !__webpack_require__(166)(function(iter){ Array.from(iter); }), 'Array', {
+	$export($export.S + $export.F * !__webpack_require__(165)(function(iter){ Array.from(iter); }), 'Array', {
 	  // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
 	  from: function from(arrayLike/*, mapfn = undefined, thisArg = undefined*/){
 	    var O       = toObject(arrayLike)
@@ -3141,7 +3132,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 162 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// call something on iterator step with safe closing on error
@@ -3158,11 +3149,11 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 163 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// check on default Array iterator
-	var Iterators  = __webpack_require__(130)
+	var Iterators  = __webpack_require__(129)
 	  , ITERATOR   = __webpack_require__(25)('iterator')
 	  , ArrayProto = Array.prototype;
 
@@ -3171,7 +3162,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 164 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3184,12 +3175,12 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 165 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var classof   = __webpack_require__(75)
 	  , ITERATOR  = __webpack_require__(25)('iterator')
-	  , Iterators = __webpack_require__(130);
+	  , Iterators = __webpack_require__(129);
 	module.exports = __webpack_require__(9).getIteratorMethod = function(it){
 	  if(it != undefined)return it[ITERATOR]
 	    || it['@@iterator']
@@ -3197,7 +3188,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 166 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var ITERATOR     = __webpack_require__(25)('iterator')
@@ -3223,12 +3214,12 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 167 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var $export        = __webpack_require__(8)
-	  , createProperty = __webpack_require__(164);
+	  , createProperty = __webpack_require__(163);
 
 	// WebKit Array.of isn't generic
 	$export($export.S + $export.F * __webpack_require__(7)(function(){
@@ -3247,7 +3238,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 168 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3257,14 +3248,14 @@ var vendors_dashboard_worona =
 	  , arrayJoin = [].join;
 
 	// fallback for not array-like strings
-	$export($export.P + $export.F * (__webpack_require__(33) != Object || !__webpack_require__(169)(arrayJoin)), 'Array', {
+	$export($export.P + $export.F * (__webpack_require__(33) != Object || !__webpack_require__(168)(arrayJoin)), 'Array', {
 	  join: function join(separator){
 	    return arrayJoin.call(toIObject(this), separator === undefined ? ',' : separator);
 	  }
 	});
 
 /***/ },
-/* 169 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var fails = __webpack_require__(7);
@@ -3276,7 +3267,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 170 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3309,7 +3300,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 171 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3327,7 +3318,7 @@ var vendors_dashboard_worona =
 	  // V8 bug
 	  test.sort(null);
 	  // Old WebKit
-	}) || !__webpack_require__(169)($sort)), 'Array', {
+	}) || !__webpack_require__(168)($sort)), 'Array', {
 	  // 22.1.3.25 Array.prototype.sort(comparefn)
 	  sort: function sort(comparefn){
 	    return comparefn === undefined
@@ -3337,13 +3328,13 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 172 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var $export  = __webpack_require__(8)
-	  , $forEach = __webpack_require__(173)(0)
-	  , STRICT   = __webpack_require__(169)([].forEach, true);
+	  , $forEach = __webpack_require__(172)(0)
+	  , STRICT   = __webpack_require__(168)([].forEach, true);
 
 	$export($export.P + $export.F * !STRICT, 'Array', {
 	  // 22.1.3.10 / 15.4.4.18 Array.prototype.forEach(callbackfn [, thisArg])
@@ -3353,7 +3344,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 173 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 0 -> Array#forEach
@@ -3367,7 +3358,7 @@ var vendors_dashboard_worona =
 	  , IObject  = __webpack_require__(33)
 	  , toObject = __webpack_require__(58)
 	  , toLength = __webpack_require__(37)
-	  , asc      = __webpack_require__(174);
+	  , asc      = __webpack_require__(173);
 	module.exports = function(TYPE, $create){
 	  var IS_MAP        = TYPE == 1
 	    , IS_FILTER     = TYPE == 2
@@ -3402,18 +3393,18 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 174 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-	var speciesConstructor = __webpack_require__(175);
+	var speciesConstructor = __webpack_require__(174);
 
 	module.exports = function(original, length){
 	  return new (speciesConstructor(original))(length);
 	};
 
 /***/ },
-/* 175 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isObject = __webpack_require__(13)
@@ -3434,17 +3425,32 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	var $export = __webpack_require__(8)
+	  , $map    = __webpack_require__(172)(1);
+
+	$export($export.P + $export.F * !__webpack_require__(168)([].map, true), 'Array', {
+	  // 22.1.3.15 / 15.4.4.19 Array.prototype.map(callbackfn [, thisArg])
+	  map: function map(callbackfn /* , thisArg */){
+	    return $map(this, callbackfn, arguments[1]);
+	  }
+	});
+
+/***/ },
 /* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var $export = __webpack_require__(8)
-	  , $map    = __webpack_require__(173)(1);
+	  , $filter = __webpack_require__(172)(2);
 
-	$export($export.P + $export.F * !__webpack_require__(169)([].map, true), 'Array', {
-	  // 22.1.3.15 / 15.4.4.19 Array.prototype.map(callbackfn [, thisArg])
-	  map: function map(callbackfn /* , thisArg */){
-	    return $map(this, callbackfn, arguments[1]);
+	$export($export.P + $export.F * !__webpack_require__(168)([].filter, true), 'Array', {
+	  // 22.1.3.7 / 15.4.4.20 Array.prototype.filter(callbackfn [, thisArg])
+	  filter: function filter(callbackfn /* , thisArg */){
+	    return $filter(this, callbackfn, arguments[1]);
 	  }
 	});
 
@@ -3454,12 +3460,12 @@ var vendors_dashboard_worona =
 
 	'use strict';
 	var $export = __webpack_require__(8)
-	  , $filter = __webpack_require__(173)(2);
+	  , $some   = __webpack_require__(172)(3);
 
-	$export($export.P + $export.F * !__webpack_require__(169)([].filter, true), 'Array', {
-	  // 22.1.3.7 / 15.4.4.20 Array.prototype.filter(callbackfn [, thisArg])
-	  filter: function filter(callbackfn /* , thisArg */){
-	    return $filter(this, callbackfn, arguments[1]);
+	$export($export.P + $export.F * !__webpack_require__(168)([].some, true), 'Array', {
+	  // 22.1.3.23 / 15.4.4.17 Array.prototype.some(callbackfn [, thisArg])
+	  some: function some(callbackfn /* , thisArg */){
+	    return $some(this, callbackfn, arguments[1]);
 	  }
 	});
 
@@ -3469,12 +3475,12 @@ var vendors_dashboard_worona =
 
 	'use strict';
 	var $export = __webpack_require__(8)
-	  , $some   = __webpack_require__(173)(3);
+	  , $every  = __webpack_require__(172)(4);
 
-	$export($export.P + $export.F * !__webpack_require__(169)([].some, true), 'Array', {
-	  // 22.1.3.23 / 15.4.4.17 Array.prototype.some(callbackfn [, thisArg])
-	  some: function some(callbackfn /* , thisArg */){
-	    return $some(this, callbackfn, arguments[1]);
+	$export($export.P + $export.F * !__webpack_require__(168)([].every, true), 'Array', {
+	  // 22.1.3.5 / 15.4.4.16 Array.prototype.every(callbackfn [, thisArg])
+	  every: function every(callbackfn /* , thisArg */){
+	    return $every(this, callbackfn, arguments[1]);
 	  }
 	});
 
@@ -3484,24 +3490,9 @@ var vendors_dashboard_worona =
 
 	'use strict';
 	var $export = __webpack_require__(8)
-	  , $every  = __webpack_require__(173)(4);
+	  , $reduce = __webpack_require__(180);
 
-	$export($export.P + $export.F * !__webpack_require__(169)([].every, true), 'Array', {
-	  // 22.1.3.5 / 15.4.4.16 Array.prototype.every(callbackfn [, thisArg])
-	  every: function every(callbackfn /* , thisArg */){
-	    return $every(this, callbackfn, arguments[1]);
-	  }
-	});
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	var $export = __webpack_require__(8)
-	  , $reduce = __webpack_require__(181);
-
-	$export($export.P + $export.F * !__webpack_require__(169)([].reduce, true), 'Array', {
+	$export($export.P + $export.F * !__webpack_require__(168)([].reduce, true), 'Array', {
 	  // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
 	  reduce: function reduce(callbackfn /* , initialValue */){
 	    return $reduce(this, callbackfn, arguments.length, arguments[1], false);
@@ -3509,7 +3500,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 181 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var aFunction = __webpack_require__(21)
@@ -3542,14 +3533,14 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 182 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var $export = __webpack_require__(8)
-	  , $reduce = __webpack_require__(181);
+	  , $reduce = __webpack_require__(180);
 
-	$export($export.P + $export.F * !__webpack_require__(169)([].reduceRight, true), 'Array', {
+	$export($export.P + $export.F * !__webpack_require__(168)([].reduceRight, true), 'Array', {
 	  // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
 	  reduceRight: function reduceRight(callbackfn /* , initialValue */){
 	    return $reduce(this, callbackfn, arguments.length, arguments[1], true);
@@ -3557,7 +3548,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3566,7 +3557,7 @@ var vendors_dashboard_worona =
 	  , $native       = [].indexOf
 	  , NEGATIVE_ZERO = !!$native && 1 / [1].indexOf(1, -0) < 0;
 
-	$export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(169)($native)), 'Array', {
+	$export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(168)($native)), 'Array', {
 	  // 22.1.3.11 / 15.4.4.14 Array.prototype.indexOf(searchElement [, fromIndex])
 	  indexOf: function indexOf(searchElement /*, fromIndex = 0 */){
 	    return NEGATIVE_ZERO
@@ -3577,7 +3568,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3588,7 +3579,7 @@ var vendors_dashboard_worona =
 	  , $native       = [].lastIndexOf
 	  , NEGATIVE_ZERO = !!$native && 1 / [1].lastIndexOf(1, -0) < 0;
 
-	$export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(169)($native)), 'Array', {
+	$export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(168)($native)), 'Array', {
 	  // 22.1.3.14 / 15.4.4.15 Array.prototype.lastIndexOf(searchElement [, fromIndex])
 	  lastIndexOf: function lastIndexOf(searchElement /*, fromIndex = @[*-1] */){
 	    // convert -0 to +0
@@ -3604,18 +3595,18 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 185 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 	var $export = __webpack_require__(8);
 
-	$export($export.P, 'Array', {copyWithin: __webpack_require__(186)});
+	$export($export.P, 'Array', {copyWithin: __webpack_require__(185)});
 
-	__webpack_require__(187)('copyWithin');
+	__webpack_require__(186)('copyWithin');
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
@@ -3646,7 +3637,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 187 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 22.1.3.31 Array.prototype[@@unscopables]
@@ -3658,18 +3649,18 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 188 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 	var $export = __webpack_require__(8);
 
-	$export($export.P, 'Array', {fill: __webpack_require__(189)});
+	$export($export.P, 'Array', {fill: __webpack_require__(188)});
 
-	__webpack_require__(187)('fill');
+	__webpack_require__(186)('fill');
 
 /***/ },
-/* 189 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
@@ -3689,13 +3680,13 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 190 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// 22.1.3.8 Array.prototype.find(predicate, thisArg = undefined)
 	var $export = __webpack_require__(8)
-	  , $find   = __webpack_require__(173)(5)
+	  , $find   = __webpack_require__(172)(5)
 	  , KEY     = 'find'
 	  , forced  = true;
 	// Shouldn't skip holes
@@ -3705,16 +3696,16 @@ var vendors_dashboard_worona =
 	    return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
 	  }
 	});
-	__webpack_require__(187)(KEY);
+	__webpack_require__(186)(KEY);
 
 /***/ },
-/* 191 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// 22.1.3.9 Array.prototype.findIndex(predicate, thisArg = undefined)
 	var $export = __webpack_require__(8)
-	  , $find   = __webpack_require__(173)(6)
+	  , $find   = __webpack_require__(172)(6)
 	  , KEY     = 'findIndex'
 	  , forced  = true;
 	// Shouldn't skip holes
@@ -3724,16 +3715,16 @@ var vendors_dashboard_worona =
 	    return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
 	  }
 	});
-	__webpack_require__(187)(KEY);
+	__webpack_require__(186)(KEY);
+
+/***/ },
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(192)('Array');
 
 /***/ },
 /* 192 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(193)('Array');
-
-/***/ },
-/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3751,20 +3742,20 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 194 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var addToUnscopables = __webpack_require__(187)
-	  , step             = __webpack_require__(195)
-	  , Iterators        = __webpack_require__(130)
+	var addToUnscopables = __webpack_require__(186)
+	  , step             = __webpack_require__(194)
+	  , Iterators        = __webpack_require__(129)
 	  , toIObject        = __webpack_require__(32);
 
 	// 22.1.3.4 Array.prototype.entries()
 	// 22.1.3.13 Array.prototype.keys()
 	// 22.1.3.29 Array.prototype.values()
 	// 22.1.3.30 Array.prototype[@@iterator]()
-	module.exports = __webpack_require__(129)(Array, 'Array', function(iterated, kind){
+	module.exports = __webpack_require__(128)(Array, 'Array', function(iterated, kind){
 	  this._t = toIObject(iterated); // target
 	  this._i = 0;                   // next index
 	  this._k = kind;                // kind
@@ -3790,7 +3781,7 @@ var vendors_dashboard_worona =
 	addToUnscopables('entries');
 
 /***/ },
-/* 195 */
+/* 194 */
 /***/ function(module, exports) {
 
 	module.exports = function(done, value){
@@ -3798,15 +3789,15 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 196 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var global            = __webpack_require__(4)
 	  , inheritIfRequired = __webpack_require__(88)
 	  , dP                = __webpack_require__(11).f
 	  , gOPN              = __webpack_require__(50).f
-	  , isRegExp          = __webpack_require__(135)
-	  , $flags            = __webpack_require__(197)
+	  , isRegExp          = __webpack_require__(134)
+	  , $flags            = __webpack_require__(196)
 	  , $RegExp           = global.RegExp
 	  , Base              = $RegExp
 	  , proto             = $RegExp.prototype
@@ -3843,10 +3834,10 @@ var vendors_dashboard_worona =
 	  __webpack_require__(18)(global, 'RegExp', $RegExp);
 	}
 
-	__webpack_require__(193)('RegExp');
+	__webpack_require__(192)('RegExp');
 
 /***/ },
-/* 197 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3864,13 +3855,13 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 198 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	__webpack_require__(199);
+	__webpack_require__(198);
 	var anObject    = __webpack_require__(12)
-	  , $flags      = __webpack_require__(197)
+	  , $flags      = __webpack_require__(196)
 	  , DESCRIPTORS = __webpack_require__(6)
 	  , TO_STRING   = 'toString'
 	  , $toString   = /./[TO_STRING];
@@ -3894,21 +3885,21 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 199 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 21.2.5.3 get RegExp.prototype.flags()
 	if(__webpack_require__(6) && /./g.flags != 'g')__webpack_require__(11).f(RegExp.prototype, 'flags', {
 	  configurable: true,
-	  get: __webpack_require__(197)
+	  get: __webpack_require__(196)
 	});
 
 /***/ },
-/* 200 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// @@match logic
-	__webpack_require__(201)('match', 1, function(defined, MATCH, $match){
+	__webpack_require__(200)('match', 1, function(defined, MATCH, $match){
 	  // 21.1.3.11 String.prototype.match(regexp)
 	  return [function match(regexp){
 	    'use strict';
@@ -3919,7 +3910,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 201 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3952,11 +3943,11 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 202 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// @@replace logic
-	__webpack_require__(201)('replace', 2, function(defined, REPLACE, $replace){
+	__webpack_require__(200)('replace', 2, function(defined, REPLACE, $replace){
 	  // 21.1.3.14 String.prototype.replace(searchValue, replaceValue)
 	  return [function replace(searchValue, replaceValue){
 	    'use strict';
@@ -3969,11 +3960,11 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 203 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// @@search logic
-	__webpack_require__(201)('search', 1, function(defined, SEARCH, $search){
+	__webpack_require__(200)('search', 1, function(defined, SEARCH, $search){
 	  // 21.1.3.15 String.prototype.search(regexp)
 	  return [function search(regexp){
 	    'use strict';
@@ -3984,13 +3975,13 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 204 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// @@split logic
-	__webpack_require__(201)('split', 2, function(defined, SPLIT, $split){
+	__webpack_require__(200)('split', 2, function(defined, SPLIT, $split){
 	  'use strict';
-	  var isRegExp   = __webpack_require__(135)
+	  var isRegExp   = __webpack_require__(134)
 	    , _split     = $split
 	    , $push      = [].push
 	    , $SPLIT     = 'split'
@@ -4059,7 +4050,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 205 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4069,11 +4060,9 @@ var vendors_dashboard_worona =
 	  , classof            = __webpack_require__(75)
 	  , $export            = __webpack_require__(8)
 	  , isObject           = __webpack_require__(13)
-	  , anObject           = __webpack_require__(12)
 	  , aFunction          = __webpack_require__(21)
-	  , anInstance         = __webpack_require__(90)
+	  , anInstance         = __webpack_require__(205)
 	  , forOf              = __webpack_require__(206)
-	  , setProto           = __webpack_require__(73).set
 	  , speciesConstructor = __webpack_require__(207)
 	  , task               = __webpack_require__(208).set
 	  , microtask          = __webpack_require__(209)()
@@ -4295,7 +4284,7 @@ var vendors_dashboard_worona =
 
 	$export($export.G + $export.W + $export.F * !USE_NATIVE, {Promise: $Promise});
 	__webpack_require__(24)($Promise, PROMISE);
-	__webpack_require__(193)(PROMISE);
+	__webpack_require__(192)(PROMISE);
 	Wrapper = __webpack_require__(9)[PROMISE];
 
 	// statics
@@ -4319,7 +4308,7 @@ var vendors_dashboard_worona =
 	    return capability.promise;
 	  }
 	});
-	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(166)(function(iter){
+	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(165)(function(iter){
 	  $Promise.all(iter)['catch'](empty);
 	})), PROMISE, {
 	  // 25.4.4.1 Promise.all(iterable)
@@ -4365,15 +4354,25 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
+/* 205 */
+/***/ function(module, exports) {
+
+	module.exports = function(it, Constructor, name, forbiddenField){
+	  if(!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)){
+	    throw TypeError(name + ': incorrect invocation!');
+	  } return it;
+	};
+
+/***/ },
 /* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var ctx         = __webpack_require__(20)
-	  , call        = __webpack_require__(162)
-	  , isArrayIter = __webpack_require__(163)
+	  , call        = __webpack_require__(161)
+	  , isArrayIter = __webpack_require__(162)
 	  , anObject    = __webpack_require__(12)
 	  , toLength    = __webpack_require__(37)
-	  , getIterFn   = __webpack_require__(165)
+	  , getIterFn   = __webpack_require__(164)
 	  , BREAK       = {}
 	  , RETURN      = {};
 	var exports = module.exports = function(iterable, entries, fn, that, ITERATOR){
@@ -4599,15 +4598,14 @@ var vendors_dashboard_worona =
 	'use strict';
 	var dP          = __webpack_require__(11).f
 	  , create      = __webpack_require__(46)
-	  , hide        = __webpack_require__(10)
 	  , redefineAll = __webpack_require__(210)
 	  , ctx         = __webpack_require__(20)
-	  , anInstance  = __webpack_require__(90)
+	  , anInstance  = __webpack_require__(205)
 	  , defined     = __webpack_require__(35)
 	  , forOf       = __webpack_require__(206)
-	  , $iterDefine = __webpack_require__(129)
-	  , step        = __webpack_require__(195)
-	  , setSpecies  = __webpack_require__(193)
+	  , $iterDefine = __webpack_require__(128)
+	  , step        = __webpack_require__(194)
+	  , setSpecies  = __webpack_require__(192)
 	  , DESCRIPTORS = __webpack_require__(6)
 	  , fastKey     = __webpack_require__(22).fastKey
 	  , SIZE        = DESCRIPTORS ? '_s' : 'size';
@@ -4751,10 +4749,10 @@ var vendors_dashboard_worona =
 	  , redefineAll       = __webpack_require__(210)
 	  , meta              = __webpack_require__(22)
 	  , forOf             = __webpack_require__(206)
-	  , anInstance        = __webpack_require__(90)
+	  , anInstance        = __webpack_require__(205)
 	  , isObject          = __webpack_require__(13)
 	  , fails             = __webpack_require__(7)
-	  , $iterDetect       = __webpack_require__(166)
+	  , $iterDetect       = __webpack_require__(165)
 	  , setToStringTag    = __webpack_require__(24)
 	  , inheritIfRequired = __webpack_require__(88);
 
@@ -4852,13 +4850,12 @@ var vendors_dashboard_worona =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var each         = __webpack_require__(173)(0)
+	var each         = __webpack_require__(172)(0)
 	  , redefine     = __webpack_require__(18)
 	  , meta         = __webpack_require__(22)
 	  , assign       = __webpack_require__(69)
 	  , weak         = __webpack_require__(216)
 	  , isObject     = __webpack_require__(13)
-	  , has          = __webpack_require__(5)
 	  , getWeak      = meta.getWeak
 	  , isExtensible = Object.isExtensible
 	  , uncaughtFrozenStore = weak.ufstore
@@ -4918,9 +4915,9 @@ var vendors_dashboard_worona =
 	  , getWeak           = __webpack_require__(22).getWeak
 	  , anObject          = __webpack_require__(12)
 	  , isObject          = __webpack_require__(13)
-	  , anInstance        = __webpack_require__(90)
+	  , anInstance        = __webpack_require__(205)
 	  , forOf             = __webpack_require__(206)
-	  , createArrayMethod = __webpack_require__(173)
+	  , createArrayMethod = __webpack_require__(172)
 	  , $has              = __webpack_require__(5)
 	  , arrayFind         = createArrayMethod(5)
 	  , arrayFindIndex    = createArrayMethod(6)
@@ -5026,7 +5023,6 @@ var vendors_dashboard_worona =
 	  , toIndex      = __webpack_require__(39)
 	  , toLength     = __webpack_require__(37)
 	  , isObject     = __webpack_require__(13)
-	  , TYPED_ARRAY  = __webpack_require__(25)('typed_array')
 	  , ArrayBuffer  = __webpack_require__(4).ArrayBuffer
 	  , speciesConstructor = __webpack_require__(207)
 	  , $ArrayBuffer = buffer.ArrayBuffer
@@ -5064,7 +5060,7 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	__webpack_require__(193)(ARRAY_BUFFER);
+	__webpack_require__(192)(ARRAY_BUFFER);
 
 /***/ },
 /* 219 */
@@ -5109,12 +5105,12 @@ var vendors_dashboard_worona =
 	  , hide           = __webpack_require__(10)
 	  , redefineAll    = __webpack_require__(210)
 	  , fails          = __webpack_require__(7)
-	  , anInstance     = __webpack_require__(90)
+	  , anInstance     = __webpack_require__(205)
 	  , toInteger      = __webpack_require__(38)
 	  , toLength       = __webpack_require__(37)
 	  , gOPN           = __webpack_require__(50).f
 	  , dP             = __webpack_require__(11).f
-	  , arrayFill      = __webpack_require__(189)
+	  , arrayFill      = __webpack_require__(188)
 	  , setToStringTag = __webpack_require__(24)
 	  , ARRAY_BUFFER   = 'ArrayBuffer'
 	  , DATA_VIEW      = 'DataView'
@@ -5124,13 +5120,11 @@ var vendors_dashboard_worona =
 	  , $ArrayBuffer   = global[ARRAY_BUFFER]
 	  , $DataView      = global[DATA_VIEW]
 	  , Math           = global.Math
-	  , parseInt       = global.parseInt
 	  , RangeError     = global.RangeError
 	  , Infinity       = global.Infinity
 	  , BaseBuffer     = $ArrayBuffer
 	  , abs            = Math.abs
 	  , pow            = Math.pow
-	  , min            = Math.min
 	  , floor          = Math.floor
 	  , log            = Math.log
 	  , LN2            = Math.LN2
@@ -5409,11 +5403,10 @@ var vendors_dashboard_worona =
 	    , $typed              = __webpack_require__(219)
 	    , $buffer             = __webpack_require__(220)
 	    , ctx                 = __webpack_require__(20)
-	    , anInstance          = __webpack_require__(90)
+	    , anInstance          = __webpack_require__(205)
 	    , propertyDesc        = __webpack_require__(17)
 	    , hide                = __webpack_require__(10)
 	    , redefineAll         = __webpack_require__(210)
-	    , isInteger           = __webpack_require__(97)
 	    , toInteger           = __webpack_require__(38)
 	    , toLength            = __webpack_require__(37)
 	    , toIndex             = __webpack_require__(39)
@@ -5423,23 +5416,22 @@ var vendors_dashboard_worona =
 	    , classof             = __webpack_require__(75)
 	    , isObject            = __webpack_require__(13)
 	    , toObject            = __webpack_require__(58)
-	    , isArrayIter         = __webpack_require__(163)
+	    , isArrayIter         = __webpack_require__(162)
 	    , create              = __webpack_require__(46)
 	    , getPrototypeOf      = __webpack_require__(59)
 	    , gOPN                = __webpack_require__(50).f
-	    , isIterable          = __webpack_require__(224)
-	    , getIterFn           = __webpack_require__(165)
+	    , getIterFn           = __webpack_require__(164)
 	    , uid                 = __webpack_require__(19)
 	    , wks                 = __webpack_require__(25)
-	    , createArrayMethod   = __webpack_require__(173)
+	    , createArrayMethod   = __webpack_require__(172)
 	    , createArrayIncludes = __webpack_require__(36)
 	    , speciesConstructor  = __webpack_require__(207)
-	    , ArrayIterators      = __webpack_require__(194)
-	    , Iterators           = __webpack_require__(130)
-	    , $iterDetect         = __webpack_require__(166)
-	    , setSpecies          = __webpack_require__(193)
-	    , arrayFill           = __webpack_require__(189)
-	    , arrayCopyWithin     = __webpack_require__(186)
+	    , ArrayIterators      = __webpack_require__(193)
+	    , Iterators           = __webpack_require__(129)
+	    , $iterDetect         = __webpack_require__(165)
+	    , setSpecies          = __webpack_require__(192)
+	    , arrayFill           = __webpack_require__(188)
+	    , arrayCopyWithin     = __webpack_require__(185)
 	    , $DP                 = __webpack_require__(11)
 	    , $GOPD               = __webpack_require__(51)
 	    , dP                  = $DP.f
@@ -5886,20 +5878,6 @@ var vendors_dashboard_worona =
 /* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var classof   = __webpack_require__(75)
-	  , ITERATOR  = __webpack_require__(25)('iterator')
-	  , Iterators = __webpack_require__(130);
-	module.exports = __webpack_require__(9).isIterable = function(it){
-	  var O = Object(it);
-	  return O[ITERATOR] !== undefined
-	    || '@@iterator' in O
-	    || Iterators.hasOwnProperty(classof(O));
-	};
-
-/***/ },
-/* 225 */
-/***/ function(module, exports, __webpack_require__) {
-
 	__webpack_require__(223)('Uint8', 1, function(init){
 	  return function Uint8Array(data, byteOffset, length){
 	    return init(this, data, byteOffset, length);
@@ -5907,7 +5885,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 226 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(223)('Uint8', 1, function(init){
@@ -5917,7 +5895,7 @@ var vendors_dashboard_worona =
 	}, true);
 
 /***/ },
-/* 227 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(223)('Int16', 2, function(init){
@@ -5927,7 +5905,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 228 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(223)('Uint16', 2, function(init){
@@ -5937,7 +5915,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 229 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(223)('Int32', 4, function(init){
@@ -5947,7 +5925,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 230 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(223)('Uint32', 4, function(init){
@@ -5957,7 +5935,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 231 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(223)('Float32', 4, function(init){
@@ -5967,7 +5945,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 232 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(223)('Float64', 8, function(init){
@@ -5977,43 +5955,56 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 233 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
 	var $export   = __webpack_require__(8)
 	  , aFunction = __webpack_require__(21)
 	  , anObject  = __webpack_require__(12)
-	  , _apply    = Function.apply;
-
-	$export($export.S, 'Reflect', {
+	  , rApply    = (__webpack_require__(4).Reflect || {}).apply
+	  , fApply    = Function.apply;
+	// MS Edge argumentsList argument is optional
+	$export($export.S + $export.F * !__webpack_require__(7)(function(){
+	  rApply(function(){});
+	}), 'Reflect', {
 	  apply: function apply(target, thisArgument, argumentsList){
-	    return _apply.call(aFunction(target), thisArgument, anObject(argumentsList));
+	    var T = aFunction(target)
+	      , L = anObject(argumentsList);
+	    return rApply ? rApply(T, thisArgument, L) : fApply.call(T, thisArgument, L);
 	  }
 	});
 
 /***/ },
-/* 234 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
-	var $export   = __webpack_require__(8)
-	  , create    = __webpack_require__(46)
-	  , aFunction = __webpack_require__(21)
-	  , anObject  = __webpack_require__(12)
-	  , isObject  = __webpack_require__(13)
-	  , bind      = __webpack_require__(77);
+	var $export    = __webpack_require__(8)
+	  , create     = __webpack_require__(46)
+	  , aFunction  = __webpack_require__(21)
+	  , anObject   = __webpack_require__(12)
+	  , isObject   = __webpack_require__(13)
+	  , fails      = __webpack_require__(7)
+	  , bind       = __webpack_require__(77)
+	  , rConstruct = (__webpack_require__(4).Reflect || {}).construct;
 
-	// MS Edge supports only 2 arguments
+	// MS Edge supports only 2 arguments and argumentsList argument is optional
 	// FF Nightly sets third argument as `new.target`, but does not create `this` from it
-	$export($export.S + $export.F * __webpack_require__(7)(function(){
+	var NEW_TARGET_BUG = fails(function(){
 	  function F(){}
-	  return !(Reflect.construct(function(){}, [], F) instanceof F);
-	}), 'Reflect', {
+	  return !(rConstruct(function(){}, [], F) instanceof F);
+	});
+	var ARGS_BUG = !fails(function(){
+	  rConstruct(function(){});
+	});
+
+	$export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
 	  construct: function construct(Target, args /*, newTarget*/){
 	    aFunction(Target);
 	    anObject(args);
 	    var newTarget = arguments.length < 3 ? Target : aFunction(arguments[2]);
+	    if(ARGS_BUG && !NEW_TARGET_BUG)return rConstruct(Target, args, newTarget);
 	    if(Target == newTarget){
 	      // w/o altered newTarget, optimization for 0-4 arguments
 	      switch(args.length){
@@ -6037,7 +6028,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 235 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
@@ -6064,7 +6055,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 236 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.4 Reflect.deleteProperty(target, propertyKey)
@@ -6080,7 +6071,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 237 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6094,7 +6085,7 @@ var vendors_dashboard_worona =
 	    , key;
 	  for(key in iterated)keys.push(key);
 	};
-	__webpack_require__(131)(Enumerate, 'Object', function(){
+	__webpack_require__(130)(Enumerate, 'Object', function(){
 	  var that = this
 	    , keys = that._k
 	    , key;
@@ -6111,7 +6102,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 238 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.6 Reflect.get(target, propertyKey [, receiver])
@@ -6137,7 +6128,7 @@ var vendors_dashboard_worona =
 	$export($export.S, 'Reflect', {get: get});
 
 /***/ },
-/* 239 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
@@ -6152,7 +6143,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 240 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.8 Reflect.getPrototypeOf(target)
@@ -6167,7 +6158,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 241 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.9 Reflect.has(target, propertyKey)
@@ -6180,7 +6171,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 242 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.10 Reflect.isExtensible(target)
@@ -6196,16 +6187,16 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 243 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.11 Reflect.ownKeys(target)
 	var $export = __webpack_require__(8);
 
-	$export($export.S, 'Reflect', {ownKeys: __webpack_require__(244)});
+	$export($export.S, 'Reflect', {ownKeys: __webpack_require__(243)});
 
 /***/ },
-/* 244 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// all object keys, includes non-enumerable and symbols
@@ -6220,7 +6211,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 245 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.12 Reflect.preventExtensions(target)
@@ -6241,7 +6232,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 246 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
@@ -6277,7 +6268,7 @@ var vendors_dashboard_worona =
 	$export($export.S, 'Reflect', {set: set});
 
 /***/ },
-/* 247 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 26.1.14 Reflect.setPrototypeOf(target, proto)
@@ -6297,7 +6288,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 248 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6311,16 +6302,16 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	__webpack_require__(187)('includes');
+	__webpack_require__(186)('includes');
 
 /***/ },
-/* 249 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// https://github.com/mathiasbynens/String.prototype.at
 	var $export = __webpack_require__(8)
-	  , $at     = __webpack_require__(128)(true);
+	  , $at     = __webpack_require__(127)(true);
 
 	$export($export.P, 'String', {
 	  at: function at(pos){
@@ -6329,13 +6320,13 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 250 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// https://github.com/tc39/proposal-string-pad-start-end
 	var $export = __webpack_require__(8)
-	  , $pad    = __webpack_require__(251);
+	  , $pad    = __webpack_require__(250);
 
 	$export($export.P, 'String', {
 	  padStart: function padStart(maxLength /*, fillString = ' ' */){
@@ -6344,12 +6335,12 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 251 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/tc39/proposal-string-pad-start-end
 	var toLength = __webpack_require__(37)
-	  , repeat   = __webpack_require__(92)
+	  , repeat   = __webpack_require__(91)
 	  , defined  = __webpack_require__(35);
 
 	module.exports = function(that, maxLength, fillString, left){
@@ -6366,13 +6357,13 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 252 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// https://github.com/tc39/proposal-string-pad-start-end
 	var $export = __webpack_require__(8)
-	  , $pad    = __webpack_require__(251);
+	  , $pad    = __webpack_require__(250);
 
 	$export($export.P, 'String', {
 	  padEnd: function padEnd(maxLength /*, fillString = ' ' */){
@@ -6381,7 +6372,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 253 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6393,7 +6384,7 @@ var vendors_dashboard_worona =
 	}, 'trimStart');
 
 /***/ },
-/* 254 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6405,7 +6396,7 @@ var vendors_dashboard_worona =
 	}, 'trimEnd');
 
 /***/ },
-/* 255 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6413,8 +6404,8 @@ var vendors_dashboard_worona =
 	var $export     = __webpack_require__(8)
 	  , defined     = __webpack_require__(35)
 	  , toLength    = __webpack_require__(37)
-	  , isRegExp    = __webpack_require__(135)
-	  , getFlags    = __webpack_require__(197)
+	  , isRegExp    = __webpack_require__(134)
+	  , getFlags    = __webpack_require__(196)
 	  , RegExpProto = RegExp.prototype;
 
 	var $RegExpStringIterator = function(regexp, string){
@@ -6422,7 +6413,7 @@ var vendors_dashboard_worona =
 	  this._s = string;
 	};
 
-	__webpack_require__(131)($RegExpStringIterator, 'RegExp String', function next(){
+	__webpack_require__(130)($RegExpStringIterator, 'RegExp String', function next(){
 	  var match = this._r.exec(this._s);
 	  return {value: match, done: match === null};
 	});
@@ -6440,27 +6431,27 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 256 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(27)('asyncIterator');
 
 /***/ },
-/* 257 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(27)('observable');
 
 /***/ },
-/* 258 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/tc39/proposal-object-getownpropertydescriptors
 	var $export        = __webpack_require__(8)
-	  , ownKeys        = __webpack_require__(244)
+	  , ownKeys        = __webpack_require__(243)
 	  , toIObject      = __webpack_require__(32)
 	  , gOPD           = __webpack_require__(51)
-	  , createProperty = __webpack_require__(164);
+	  , createProperty = __webpack_require__(163);
 
 	$export($export.S, 'Object', {
 	  getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object){
@@ -6469,19 +6460,19 @@ var vendors_dashboard_worona =
 	      , keys    = ownKeys(O)
 	      , result  = {}
 	      , i       = 0
-	      , key, D;
+	      , key;
 	    while(keys.length > i)createProperty(result, key = keys[i++], getDesc(O, key));
 	    return result;
 	  }
 	});
 
 /***/ },
-/* 259 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/tc39/proposal-object-values-entries
 	var $export = __webpack_require__(8)
-	  , $values = __webpack_require__(260)(false);
+	  , $values = __webpack_require__(259)(false);
 
 	$export($export.S, 'Object', {
 	  values: function values(it){
@@ -6490,7 +6481,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 260 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var getKeys   = __webpack_require__(30)
@@ -6511,12 +6502,12 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 261 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/tc39/proposal-object-values-entries
 	var $export  = __webpack_require__(8)
-	  , $entries = __webpack_require__(260)(true);
+	  , $entries = __webpack_require__(259)(true);
 
 	$export($export.S, 'Object', {
 	  entries: function entries(it){
@@ -6525,7 +6516,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 262 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6535,14 +6526,14 @@ var vendors_dashboard_worona =
 	  , $defineProperty = __webpack_require__(11);
 
 	// B.2.2.2 Object.prototype.__defineGetter__(P, getter)
-	__webpack_require__(6) && $export($export.P + __webpack_require__(263), 'Object', {
+	__webpack_require__(6) && $export($export.P + __webpack_require__(262), 'Object', {
 	  __defineGetter__: function __defineGetter__(P, getter){
 	    $defineProperty.f(toObject(this), P, {get: aFunction(getter), enumerable: true, configurable: true});
 	  }
 	});
 
 /***/ },
-/* 263 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Forced replacement prototype accessors methods
@@ -6554,7 +6545,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 264 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6564,9 +6555,32 @@ var vendors_dashboard_worona =
 	  , $defineProperty = __webpack_require__(11);
 
 	// B.2.2.3 Object.prototype.__defineSetter__(P, setter)
-	__webpack_require__(6) && $export($export.P + __webpack_require__(263), 'Object', {
+	__webpack_require__(6) && $export($export.P + __webpack_require__(262), 'Object', {
 	  __defineSetter__: function __defineSetter__(P, setter){
 	    $defineProperty.f(toObject(this), P, {set: aFunction(setter), enumerable: true, configurable: true});
+	  }
+	});
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	var $export                  = __webpack_require__(8)
+	  , toObject                 = __webpack_require__(58)
+	  , toPrimitive              = __webpack_require__(16)
+	  , getPrototypeOf           = __webpack_require__(59)
+	  , getOwnPropertyDescriptor = __webpack_require__(51).f;
+
+	// B.2.2.4 Object.prototype.__lookupGetter__(P)
+	__webpack_require__(6) && $export($export.P + __webpack_require__(262), 'Object', {
+	  __lookupGetter__: function __lookupGetter__(P){
+	    var O = toObject(this)
+	      , K = toPrimitive(P, true)
+	      , D;
+	    do {
+	      if(D = getOwnPropertyDescriptor(O, K))return D.get;
+	    } while(O = getPrototypeOf(O));
 	  }
 	});
 
@@ -6581,31 +6595,8 @@ var vendors_dashboard_worona =
 	  , getPrototypeOf           = __webpack_require__(59)
 	  , getOwnPropertyDescriptor = __webpack_require__(51).f;
 
-	// B.2.2.4 Object.prototype.__lookupGetter__(P)
-	__webpack_require__(6) && $export($export.P + __webpack_require__(263), 'Object', {
-	  __lookupGetter__: function __lookupGetter__(P){
-	    var O = toObject(this)
-	      , K = toPrimitive(P, true)
-	      , D;
-	    do {
-	      if(D = getOwnPropertyDescriptor(O, K))return D.get;
-	    } while(O = getPrototypeOf(O));
-	  }
-	});
-
-/***/ },
-/* 266 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	var $export                  = __webpack_require__(8)
-	  , toObject                 = __webpack_require__(58)
-	  , toPrimitive              = __webpack_require__(16)
-	  , getPrototypeOf           = __webpack_require__(59)
-	  , getOwnPropertyDescriptor = __webpack_require__(51).f;
-
 	// B.2.2.5 Object.prototype.__lookupSetter__(P)
-	__webpack_require__(6) && $export($export.P + __webpack_require__(263), 'Object', {
+	__webpack_require__(6) && $export($export.P + __webpack_require__(262), 'Object', {
 	  __lookupSetter__: function __lookupSetter__(P){
 	    var O = toObject(this)
 	      , K = toPrimitive(P, true)
@@ -6617,21 +6608,21 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 267 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/DavidBruant/Map-Set.prototype.toJSON
 	var $export  = __webpack_require__(8);
 
-	$export($export.P + $export.R, 'Map', {toJSON: __webpack_require__(268)('Map')});
+	$export($export.P + $export.R, 'Map', {toJSON: __webpack_require__(267)('Map')});
 
 /***/ },
-/* 268 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/DavidBruant/Map-Set.prototype.toJSON
 	var classof = __webpack_require__(75)
-	  , from    = __webpack_require__(269);
+	  , from    = __webpack_require__(268);
 	module.exports = function(NAME){
 	  return function toJSON(){
 	    if(classof(this) != NAME)throw TypeError(NAME + "#toJSON isn't generic");
@@ -6640,7 +6631,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 269 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var forOf = __webpack_require__(206);
@@ -6653,16 +6644,16 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 270 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/DavidBruant/Map-Set.prototype.toJSON
 	var $export  = __webpack_require__(8);
 
-	$export($export.P + $export.R, 'Set', {toJSON: __webpack_require__(268)('Set')});
+	$export($export.P + $export.R, 'Set', {toJSON: __webpack_require__(267)('Set')});
 
 /***/ },
-/* 271 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/ljharb/proposal-global
@@ -6671,7 +6662,7 @@ var vendors_dashboard_worona =
 	$export($export.S, 'System', {global: __webpack_require__(4)});
 
 /***/ },
-/* 272 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/ljharb/proposal-is-error
@@ -6685,7 +6676,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 273 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -6701,7 +6692,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 274 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -6717,7 +6708,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 275 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -6738,7 +6729,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 276 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -6759,10 +6750,10 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 277 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var metadata                  = __webpack_require__(278)
+	var metadata                  = __webpack_require__(277)
 	  , anObject                  = __webpack_require__(12)
 	  , toMetaKey                 = metadata.key
 	  , ordinaryDefineOwnMetadata = metadata.set;
@@ -6772,7 +6763,7 @@ var vendors_dashboard_worona =
 	}});
 
 /***/ },
-/* 278 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Map     = __webpack_require__(211)
@@ -6828,10 +6819,10 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 279 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var metadata               = __webpack_require__(278)
+	var metadata               = __webpack_require__(277)
 	  , anObject               = __webpack_require__(12)
 	  , toMetaKey              = metadata.key
 	  , getOrCreateMetadataMap = metadata.map
@@ -6848,10 +6839,10 @@ var vendors_dashboard_worona =
 	}});
 
 /***/ },
-/* 280 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var metadata               = __webpack_require__(278)
+	var metadata               = __webpack_require__(277)
 	  , anObject               = __webpack_require__(12)
 	  , getPrototypeOf         = __webpack_require__(59)
 	  , ordinaryHasOwnMetadata = metadata.has
@@ -6870,12 +6861,12 @@ var vendors_dashboard_worona =
 	}});
 
 /***/ },
-/* 281 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Set                     = __webpack_require__(214)
-	  , from                    = __webpack_require__(269)
-	  , metadata                = __webpack_require__(278)
+	  , from                    = __webpack_require__(268)
+	  , metadata                = __webpack_require__(277)
 	  , anObject                = __webpack_require__(12)
 	  , getPrototypeOf          = __webpack_require__(59)
 	  , ordinaryOwnMetadataKeys = metadata.keys
@@ -6894,10 +6885,10 @@ var vendors_dashboard_worona =
 	}});
 
 /***/ },
-/* 282 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var metadata               = __webpack_require__(278)
+	var metadata               = __webpack_require__(277)
 	  , anObject               = __webpack_require__(12)
 	  , ordinaryGetOwnMetadata = metadata.get
 	  , toMetaKey              = metadata.key;
@@ -6908,10 +6899,10 @@ var vendors_dashboard_worona =
 	}});
 
 /***/ },
-/* 283 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var metadata                = __webpack_require__(278)
+	var metadata                = __webpack_require__(277)
 	  , anObject                = __webpack_require__(12)
 	  , ordinaryOwnMetadataKeys = metadata.keys
 	  , toMetaKey               = metadata.key;
@@ -6921,10 +6912,10 @@ var vendors_dashboard_worona =
 	}});
 
 /***/ },
-/* 284 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var metadata               = __webpack_require__(278)
+	var metadata               = __webpack_require__(277)
 	  , anObject               = __webpack_require__(12)
 	  , getPrototypeOf         = __webpack_require__(59)
 	  , ordinaryHasOwnMetadata = metadata.has
@@ -6942,10 +6933,10 @@ var vendors_dashboard_worona =
 	}});
 
 /***/ },
-/* 285 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var metadata               = __webpack_require__(278)
+	var metadata               = __webpack_require__(277)
 	  , anObject               = __webpack_require__(12)
 	  , ordinaryHasOwnMetadata = metadata.has
 	  , toMetaKey              = metadata.key;
@@ -6956,10 +6947,10 @@ var vendors_dashboard_worona =
 	}});
 
 /***/ },
-/* 286 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var metadata                  = __webpack_require__(278)
+	var metadata                  = __webpack_require__(277)
 	  , anObject                  = __webpack_require__(12)
 	  , aFunction                 = __webpack_require__(21)
 	  , toMetaKey                 = metadata.key
@@ -6976,7 +6967,7 @@ var vendors_dashboard_worona =
 	}});
 
 /***/ },
-/* 287 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
@@ -6993,7 +6984,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 288 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7005,7 +6996,7 @@ var vendors_dashboard_worona =
 	  , OBSERVABLE  = __webpack_require__(25)('observable')
 	  , aFunction   = __webpack_require__(21)
 	  , anObject    = __webpack_require__(12)
-	  , anInstance  = __webpack_require__(90)
+	  , anInstance  = __webpack_require__(205)
 	  , redefineAll = __webpack_require__(210)
 	  , hide        = __webpack_require__(10)
 	  , forOf       = __webpack_require__(206)
@@ -7194,17 +7185,17 @@ var vendors_dashboard_worona =
 
 	$export($export.G, {Observable: $Observable});
 
-	__webpack_require__(193)('Observable');
+	__webpack_require__(192)('Observable');
 
 /***/ },
-/* 289 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// ie9- setTimeout & setInterval additional parameters fix
 	var global     = __webpack_require__(4)
 	  , $export    = __webpack_require__(8)
 	  , invoke     = __webpack_require__(78)
-	  , partial    = __webpack_require__(290)
+	  , partial    = __webpack_require__(289)
 	  , navigator  = global.navigator
 	  , MSIE       = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
 	var wrap = function(set){
@@ -7222,11 +7213,11 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 290 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var path      = __webpack_require__(291)
+	var path      = __webpack_require__(290)
 	  , invoke    = __webpack_require__(78)
 	  , aFunction = __webpack_require__(21);
 	module.exports = function(/* ...pargs */){
@@ -7250,13 +7241,13 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 291 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(4);
 
 /***/ },
-/* 292 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $export = __webpack_require__(8)
@@ -7267,14 +7258,14 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 293 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $iterators    = __webpack_require__(194)
+	var $iterators    = __webpack_require__(193)
 	  , redefine      = __webpack_require__(18)
 	  , global        = __webpack_require__(4)
 	  , hide          = __webpack_require__(10)
-	  , Iterators     = __webpack_require__(130)
+	  , Iterators     = __webpack_require__(129)
 	  , wks           = __webpack_require__(25)
 	  , ITERATOR      = wks('iterator')
 	  , TO_STRING_TAG = wks('toStringTag')
@@ -7294,7 +7285,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 294 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {/**
@@ -7966,10 +7957,10 @@ var vendors_dashboard_worona =
 	  typeof self === "object" ? self : this
 	);
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(295)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(294)))
 
 /***/ },
-/* 295 */
+/* 294 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -8094,25 +8085,25 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 296 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(297);
+	__webpack_require__(296);
 	module.exports = __webpack_require__(9).RegExp.escape;
 
 /***/ },
-/* 297 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/benjamingr/RexExp.escape
 	var $export = __webpack_require__(8)
-	  , $re     = __webpack_require__(298)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+	  , $re     = __webpack_require__(297)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
 	$export($export.S, 'RegExp', {escape: function escape(it){ return $re(it); }});
 
 
 /***/ },
-/* 298 */
+/* 297 */
 /***/ function(module, exports) {
 
 	module.exports = function(regExp, replace){
@@ -8125,16 +8116,16 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 299 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = __webpack_require__(300);
+	module.exports = __webpack_require__(299);
 
 
 /***/ },
-/* 300 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8150,18 +8141,17 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _assign = __webpack_require__(300);
 
-	var ReactChildren = __webpack_require__(302);
+	var ReactChildren = __webpack_require__(301);
 	var ReactComponent = __webpack_require__(313);
-	var ReactClass = __webpack_require__(324);
-	var ReactDOMFactories = __webpack_require__(329);
+	var ReactClass = __webpack_require__(316);
+	var ReactDOMFactories = __webpack_require__(321);
 	var ReactElement = __webpack_require__(305);
-	var ReactElementValidator = __webpack_require__(330);
-	var ReactPropTypes = __webpack_require__(332);
-	var ReactVersion = __webpack_require__(333);
+	var ReactPropTypes = __webpack_require__(326);
+	var ReactVersion = __webpack_require__(327);
 
-	var onlyChild = __webpack_require__(334);
+	var onlyChild = __webpack_require__(328);
 	var warning = __webpack_require__(307);
 
 	var createElement = ReactElement.createElement;
@@ -8169,6 +8159,7 @@ var vendors_dashboard_worona =
 	var cloneElement = ReactElement.cloneElement;
 
 	if (true) {
+	  var ReactElementValidator = __webpack_require__(323);
 	  createElement = ReactElementValidator.createElement;
 	  createFactory = ReactElementValidator.createFactory;
 	  cloneElement = ReactElementValidator.cloneElement;
@@ -8226,7 +8217,7 @@ var vendors_dashboard_worona =
 	module.exports = React;
 
 /***/ },
-/* 301 */
+/* 300 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8315,7 +8306,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 302 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8331,7 +8322,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var PooledClass = __webpack_require__(303);
+	var PooledClass = __webpack_require__(302);
 	var ReactElement = __webpack_require__(305);
 
 	var emptyFunction = __webpack_require__(308);
@@ -8511,7 +8502,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactChildren;
 
 /***/ },
-/* 303 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8526,6 +8517,8 @@ var vendors_dashboard_worona =
 	 */
 
 	'use strict';
+
+	var _prodInvariant = __webpack_require__(303);
 
 	var invariant = __webpack_require__(304);
 
@@ -8593,7 +8586,7 @@ var vendors_dashboard_worona =
 
 	var standardReleaser = function (instance) {
 	  var Klass = this;
-	  !(instance instanceof Klass) ?  true ? invariant(false, 'Trying to release an instance into a pool of a different type.') : invariant(false) : void 0;
+	  !(instance instanceof Klass) ?  true ? invariant(false, 'Trying to release an instance into a pool of a different type.') : _prodInvariant('25') : void 0;
 	  instance.destructor();
 	  if (Klass.instancePool.length < Klass.poolSize) {
 	    Klass.instancePool.push(instance);
@@ -8607,7 +8600,7 @@ var vendors_dashboard_worona =
 	 * Augments `CopyConstructor` to be a poolable class, augmenting only the class
 	 * itself (statically) not adding any prototypical fields. Any CopyConstructor
 	 * you give this may have a `poolSize` property, and will look for a
-	 * prototypical `destructor` on instances (optional).
+	 * prototypical `destructor` on instances.
 	 *
 	 * @param {Function} CopyConstructor Constructor that can be used to reset.
 	 * @param {Function} pooler Customizable pooler.
@@ -8633,6 +8626,50 @@ var vendors_dashboard_worona =
 	};
 
 	module.exports = PooledClass;
+
+/***/ },
+/* 303 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule reactProdInvariant
+	 * 
+	 */
+	'use strict';
+
+	/**
+	 * WARNING: DO NOT manually require this module.
+	 * This is a replacement for `invariant(...)` used by the error code system
+	 * and will _only_ be required by the corresponding babel pass.
+	 * It always throws.
+	 */
+
+	function reactProdInvariant(code) {
+	  var argCount = arguments.length - 1;
+
+	  var message = 'Minified React error #' + code + '; visit ' + 'http://facebook.github.io/react/docs/error-decoder.html?invariant=' + code;
+
+	  for (var argIdx = 0; argIdx < argCount; argIdx++) {
+	    message += '&args[]=' + encodeURIComponent(arguments[argIdx + 1]);
+	  }
+
+	  message += ' for the full message or use the non-minified dev environment' + ' for full errors and additional helpful warnings.';
+
+	  var error = new Error(message);
+	  error.name = 'Invariant Violation';
+	  error.framesToPop = 1; // we don't care about reactProdInvariant's own frame
+
+	  throw error;
+	}
+
+	module.exports = reactProdInvariant;
 
 /***/ },
 /* 304 */
@@ -8705,12 +8742,13 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _assign = __webpack_require__(300);
 
 	var ReactCurrentOwner = __webpack_require__(306);
 
 	var warning = __webpack_require__(307);
 	var canDefineProperty = __webpack_require__(309);
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 	// The Symbol used to tag the ReactElement type. If there is no native Symbol
 	// nor polyfill, then a plain number is used for performance.
@@ -8724,6 +8762,30 @@ var vendors_dashboard_worona =
 	};
 
 	var specialPropKeyWarningShown, specialPropRefWarningShown;
+
+	function hasValidRef(config) {
+	  if (true) {
+	    if (hasOwnProperty.call(config, 'ref')) {
+	      var getter = Object.getOwnPropertyDescriptor(config, 'ref').get;
+	      if (getter && getter.isReactWarning) {
+	        return false;
+	      }
+	    }
+	  }
+	  return config.ref !== undefined;
+	}
+
+	function hasValidKey(config) {
+	  if (true) {
+	    if (hasOwnProperty.call(config, 'key')) {
+	      var getter = Object.getOwnPropertyDescriptor(config, 'key').get;
+	      if (getter && getter.isReactWarning) {
+	        return false;
+	      }
+	    }
+	  }
+	  return config.key !== undefined;
+	}
 
 	/**
 	 * Factory method to create a new React element. This no longer adheres to
@@ -8829,17 +8891,20 @@ var vendors_dashboard_worona =
 	      config.__proto__ == null || config.__proto__ === Object.prototype,
 	      /* eslint-enable no-proto */
 	      'React.createElement(...): Expected props argument to be a plain object. ' + 'Properties defined in its prototype chain will be ignored.') : void 0;
-	      ref = !config.hasOwnProperty('ref') || Object.getOwnPropertyDescriptor(config, 'ref').get ? null : config.ref;
-	      key = !config.hasOwnProperty('key') || Object.getOwnPropertyDescriptor(config, 'key').get ? null : '' + config.key;
-	    } else {
-	      ref = config.ref === undefined ? null : config.ref;
-	      key = config.key === undefined ? null : '' + config.key;
 	    }
+
+	    if (hasValidRef(config)) {
+	      ref = config.ref;
+	    }
+	    if (hasValidKey(config)) {
+	      key = '' + config.key;
+	    }
+
 	    self = config.__self === undefined ? null : config.__self;
 	    source = config.__source === undefined ? null : config.__source;
 	    // Remaining properties are added to a new props object
 	    for (propName in config) {
-	      if (config.hasOwnProperty(propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+	      if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
 	        props[propName] = config[propName];
 	      }
 	    }
@@ -8868,30 +8933,37 @@ var vendors_dashboard_worona =
 	    }
 	  }
 	  if (true) {
-	    // Create dummy `key` and `ref` property to `props` to warn users
-	    // against its use
+	    var displayName = typeof type === 'function' ? type.displayName || type.name || 'Unknown' : type;
+
+	    // Create dummy `key` and `ref` property to `props` to warn users against its use
+	    var warnAboutAccessingKey = function () {
+	      if (!specialPropKeyWarningShown) {
+	        specialPropKeyWarningShown = true;
+	         true ? warning(false, '%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName) : void 0;
+	      }
+	      return undefined;
+	    };
+	    warnAboutAccessingKey.isReactWarning = true;
+
+	    var warnAboutAccessingRef = function () {
+	      if (!specialPropRefWarningShown) {
+	        specialPropRefWarningShown = true;
+	         true ? warning(false, '%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName) : void 0;
+	      }
+	      return undefined;
+	    };
+	    warnAboutAccessingRef.isReactWarning = true;
+
 	    if (typeof props.$$typeof === 'undefined' || props.$$typeof !== REACT_ELEMENT_TYPE) {
 	      if (!props.hasOwnProperty('key')) {
 	        Object.defineProperty(props, 'key', {
-	          get: function () {
-	            if (!specialPropKeyWarningShown) {
-	              specialPropKeyWarningShown = true;
-	               true ? warning(false, '%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', typeof type === 'function' && 'displayName' in type ? type.displayName : 'Element') : void 0;
-	            }
-	            return undefined;
-	          },
+	          get: warnAboutAccessingKey,
 	          configurable: true
 	        });
 	      }
 	      if (!props.hasOwnProperty('ref')) {
 	        Object.defineProperty(props, 'ref', {
-	          get: function () {
-	            if (!specialPropRefWarningShown) {
-	              specialPropRefWarningShown = true;
-	               true ? warning(false, '%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', typeof type === 'function' && 'displayName' in type ? type.displayName : 'Element') : void 0;
-	            }
-	            return undefined;
-	          },
+	          get: warnAboutAccessingRef,
 	          configurable: true
 	        });
 	      }
@@ -8952,21 +9024,23 @@ var vendors_dashboard_worona =
 	      /* eslint-enable no-proto */
 	      'React.cloneElement(...): Expected props argument to be a plain object. ' + 'Properties defined in its prototype chain will be ignored.') : void 0;
 	    }
-	    if (config.ref !== undefined) {
+
+	    if (hasValidRef(config)) {
 	      // Silently steal the ref from the parent.
 	      ref = config.ref;
 	      owner = ReactCurrentOwner.current;
 	    }
-	    if (config.key !== undefined) {
+	    if (hasValidKey(config)) {
 	      key = '' + config.key;
 	    }
+
 	    // Remaining properties override existing props
 	    var defaultProps;
 	    if (element.type && element.type.defaultProps) {
 	      defaultProps = element.type.defaultProps;
 	    }
 	    for (propName in config) {
-	      if (config.hasOwnProperty(propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+	      if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
 	        if (config[propName] === undefined && defaultProps !== undefined) {
 	          // Resolve default props
 	          props[propName] = defaultProps[propName];
@@ -9003,6 +9077,8 @@ var vendors_dashboard_worona =
 	ReactElement.isValidElement = function (object) {
 	  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
 	};
+
+	ReactElement.REACT_ELEMENT_TYPE = REACT_ELEMENT_TYPE;
 
 	module.exports = ReactElement;
 
@@ -9192,6 +9268,8 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
+	var _prodInvariant = __webpack_require__(303);
+
 	var ReactCurrentOwner = __webpack_require__(306);
 	var ReactElement = __webpack_require__(305);
 
@@ -9305,7 +9383,7 @@ var vendors_dashboard_worona =
 	        }
 	      }
 	      var childrenString = String(children);
-	       true ?  true ? invariant(false, 'Objects are not valid as a React child (found: %s).%s', childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString, addendum) : invariant(false) : void 0;
+	       true ?  true ? invariant(false, 'Objects are not valid as a React child (found: %s).%s', childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString, addendum) : _prodInvariant('31', childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString, addendum) : void 0;
 	    }
 	  }
 
@@ -9351,6 +9429,7 @@ var vendors_dashboard_worona =
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule getIteratorFn
+	 * 
 	 */
 
 	'use strict';
@@ -9396,6 +9475,7 @@ var vendors_dashboard_worona =
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule KeyEscapeUtils
+	 * 
 	 */
 
 	'use strict';
@@ -9403,7 +9483,7 @@ var vendors_dashboard_worona =
 	/**
 	 * Escape and wrap key so it is safe to use as a reactid
 	 *
-	 * @param {*} key to be escaped.
+	 * @param {string} key to be escaped.
 	 * @return {string} the escaped key.
 	 */
 
@@ -9463,11 +9543,12 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
+	var _prodInvariant = __webpack_require__(303);
+
 	var ReactNoopUpdateQueue = __webpack_require__(314);
-	var ReactInstrumentation = __webpack_require__(315);
 
 	var canDefineProperty = __webpack_require__(309);
-	var emptyObject = __webpack_require__(323);
+	var emptyObject = __webpack_require__(315);
 	var invariant = __webpack_require__(304);
 	var warning = __webpack_require__(307);
 
@@ -9511,11 +9592,7 @@ var vendors_dashboard_worona =
 	 * @protected
 	 */
 	ReactComponent.prototype.setState = function (partialState, callback) {
-	  !(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null) ?  true ? invariant(false, 'setState(...): takes an object of state variables to update or a ' + 'function which returns an object of state variables.') : invariant(false) : void 0;
-	  if (true) {
-	    ReactInstrumentation.debugTool.onSetState();
-	     true ? warning(partialState != null, 'setState(...): You passed an undefined or null state object; ' + 'instead, use forceUpdate().') : void 0;
-	  }
+	  !(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null) ?  true ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : _prodInvariant('85') : void 0;
 	  this.updater.enqueueSetState(this, partialState);
 	  if (callback) {
 	    this.updater.enqueueCallback(this, callback, 'setState');
@@ -9591,9 +9668,10 @@ var vendors_dashboard_worona =
 
 	var warning = __webpack_require__(307);
 
-	function warnTDZ(publicInstance, callerName) {
+	function warnNoop(publicInstance, callerName) {
 	  if (true) {
-	     true ? warning(false, '%s(...): Can only update a mounted or mounting component. ' + 'This usually means you called %s() on an unmounted component. ' + 'This is a no-op. Please check the code for the %s component.', callerName, callerName, publicInstance.constructor && publicInstance.constructor.displayName || '') : void 0;
+	    var constructor = publicInstance.constructor;
+	     true ? warning(false, '%s(...): Can only update a mounted or mounting component. ' + 'This usually means you called %s() on an unmounted component. ' + 'This is a no-op. Please check the code for the %s component.', callerName, callerName, constructor && (constructor.displayName || constructor.name) || 'ReactClass') : void 0;
 	  }
 	}
 
@@ -9637,7 +9715,7 @@ var vendors_dashboard_worona =
 	   * @internal
 	   */
 	  enqueueForceUpdate: function (publicInstance) {
-	    warnTDZ(publicInstance, 'forceUpdate');
+	    warnNoop(publicInstance, 'forceUpdate');
 	  },
 
 	  /**
@@ -9652,7 +9730,7 @@ var vendors_dashboard_worona =
 	   * @internal
 	   */
 	  enqueueReplaceState: function (publicInstance, completeState) {
-	    warnTDZ(publicInstance, 'replaceState');
+	    warnNoop(publicInstance, 'replaceState');
 	  },
 
 	  /**
@@ -9666,7 +9744,7 @@ var vendors_dashboard_worona =
 	   * @internal
 	   */
 	  enqueueSetState: function (publicInstance, partialState) {
-	    warnTDZ(publicInstance, 'setState');
+	    warnNoop(publicInstance, 'setState');
 	  }
 	};
 
@@ -9674,620 +9752,6 @@ var vendors_dashboard_worona =
 
 /***/ },
 /* 315 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2016-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactInstrumentation
-	 */
-
-	'use strict';
-
-	var ReactDebugTool = __webpack_require__(316);
-
-	module.exports = { debugTool: ReactDebugTool };
-
-/***/ },
-/* 316 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2016-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactDebugTool
-	 */
-
-	'use strict';
-
-	var ExecutionEnvironment = __webpack_require__(317);
-
-	var performanceNow = __webpack_require__(318);
-	var warning = __webpack_require__(307);
-
-	var eventHandlers = [];
-	var handlerDoesThrowForEvent = {};
-
-	function emitEvent(handlerFunctionName, arg1, arg2, arg3, arg4, arg5) {
-	  if (true) {
-	    eventHandlers.forEach(function (handler) {
-	      try {
-	        if (handler[handlerFunctionName]) {
-	          handler[handlerFunctionName](arg1, arg2, arg3, arg4, arg5);
-	        }
-	      } catch (e) {
-	         true ? warning(!handlerDoesThrowForEvent[handlerFunctionName], 'exception thrown by devtool while handling %s: %s', handlerFunctionName, e.message) : void 0;
-	        handlerDoesThrowForEvent[handlerFunctionName] = true;
-	      }
-	    });
-	  }
-	}
-
-	var isProfiling = false;
-	var flushHistory = [];
-	var currentFlushNesting = 0;
-	var currentFlushMeasurements = null;
-	var currentFlushStartTime = null;
-	var currentTimerDebugID = null;
-	var currentTimerStartTime = null;
-	var currentTimerType = null;
-
-	function clearHistory() {
-	  ReactComponentTreeDevtool.purgeUnmountedComponents();
-	  ReactNativeOperationHistoryDevtool.clearHistory();
-	}
-
-	function getTreeSnapshot(registeredIDs) {
-	  return registeredIDs.reduce(function (tree, id) {
-	    var ownerID = ReactComponentTreeDevtool.getOwnerID(id);
-	    var parentID = ReactComponentTreeDevtool.getParentID(id);
-	    tree[id] = {
-	      displayName: ReactComponentTreeDevtool.getDisplayName(id),
-	      text: ReactComponentTreeDevtool.getText(id),
-	      updateCount: ReactComponentTreeDevtool.getUpdateCount(id),
-	      childIDs: ReactComponentTreeDevtool.getChildIDs(id),
-	      // Text nodes don't have owners but this is close enough.
-	      ownerID: ownerID || ReactComponentTreeDevtool.getOwnerID(parentID),
-	      parentID: parentID
-	    };
-	    return tree;
-	  }, {});
-	}
-
-	function resetMeasurements() {
-	  if (true) {
-	    var previousStartTime = currentFlushStartTime;
-	    var previousMeasurements = currentFlushMeasurements || [];
-	    var previousOperations = ReactNativeOperationHistoryDevtool.getHistory();
-
-	    if (!isProfiling || currentFlushNesting === 0) {
-	      currentFlushStartTime = null;
-	      currentFlushMeasurements = null;
-	      clearHistory();
-	      return;
-	    }
-
-	    if (previousMeasurements.length || previousOperations.length) {
-	      var registeredIDs = ReactComponentTreeDevtool.getRegisteredIDs();
-	      flushHistory.push({
-	        duration: performanceNow() - previousStartTime,
-	        measurements: previousMeasurements || [],
-	        operations: previousOperations || [],
-	        treeSnapshot: getTreeSnapshot(registeredIDs)
-	      });
-	    }
-
-	    clearHistory();
-	    currentFlushStartTime = performanceNow();
-	    currentFlushMeasurements = [];
-	  }
-	}
-
-	function checkDebugID(debugID) {
-	   true ? warning(debugID, 'ReactDebugTool: debugID may not be empty.') : void 0;
-	}
-
-	var ReactDebugTool = {
-	  addDevtool: function (devtool) {
-	    eventHandlers.push(devtool);
-	  },
-	  removeDevtool: function (devtool) {
-	    for (var i = 0; i < eventHandlers.length; i++) {
-	      if (eventHandlers[i] === devtool) {
-	        eventHandlers.splice(i, 1);
-	        i--;
-	      }
-	    }
-	  },
-	  beginProfiling: function () {
-	    if (true) {
-	      if (isProfiling) {
-	        return;
-	      }
-
-	      isProfiling = true;
-	      flushHistory.length = 0;
-	      resetMeasurements();
-	    }
-	  },
-	  endProfiling: function () {
-	    if (true) {
-	      if (!isProfiling) {
-	        return;
-	      }
-
-	      isProfiling = false;
-	      resetMeasurements();
-	    }
-	  },
-	  getFlushHistory: function () {
-	    if (true) {
-	      return flushHistory;
-	    }
-	  },
-	  onBeginFlush: function () {
-	    if (true) {
-	      currentFlushNesting++;
-	      resetMeasurements();
-	    }
-	    emitEvent('onBeginFlush');
-	  },
-	  onEndFlush: function () {
-	    if (true) {
-	      resetMeasurements();
-	      currentFlushNesting--;
-	    }
-	    emitEvent('onEndFlush');
-	  },
-	  onBeginLifeCycleTimer: function (debugID, timerType) {
-	    checkDebugID(debugID);
-	    emitEvent('onBeginLifeCycleTimer', debugID, timerType);
-	    if (true) {
-	      if (isProfiling && currentFlushNesting > 0) {
-	         true ? warning(!currentTimerType, 'There is an internal error in the React performance measurement code. ' + 'Did not expect %s timer to start while %s timer is still in ' + 'progress for %s instance.', timerType, currentTimerType || 'no', debugID === currentTimerDebugID ? 'the same' : 'another') : void 0;
-	        currentTimerStartTime = performanceNow();
-	        currentTimerDebugID = debugID;
-	        currentTimerType = timerType;
-	      }
-	    }
-	  },
-	  onEndLifeCycleTimer: function (debugID, timerType) {
-	    checkDebugID(debugID);
-	    if (true) {
-	      if (isProfiling && currentFlushNesting > 0) {
-	         true ? warning(currentTimerType === timerType, 'There is an internal error in the React performance measurement code. ' + 'We did not expect %s timer to stop while %s timer is still in ' + 'progress for %s instance. Please report this as a bug in React.', timerType, currentTimerType || 'no', debugID === currentTimerDebugID ? 'the same' : 'another') : void 0;
-	        currentFlushMeasurements.push({
-	          timerType: timerType,
-	          instanceID: debugID,
-	          duration: performanceNow() - currentTimerStartTime
-	        });
-	        currentTimerStartTime = null;
-	        currentTimerDebugID = null;
-	        currentTimerType = null;
-	      }
-	    }
-	    emitEvent('onEndLifeCycleTimer', debugID, timerType);
-	  },
-	  onBeginReconcilerTimer: function (debugID, timerType) {
-	    checkDebugID(debugID);
-	    emitEvent('onBeginReconcilerTimer', debugID, timerType);
-	  },
-	  onEndReconcilerTimer: function (debugID, timerType) {
-	    checkDebugID(debugID);
-	    emitEvent('onEndReconcilerTimer', debugID, timerType);
-	  },
-	  onBeginProcessingChildContext: function () {
-	    emitEvent('onBeginProcessingChildContext');
-	  },
-	  onEndProcessingChildContext: function () {
-	    emitEvent('onEndProcessingChildContext');
-	  },
-	  onNativeOperation: function (debugID, type, payload) {
-	    checkDebugID(debugID);
-	    emitEvent('onNativeOperation', debugID, type, payload);
-	  },
-	  onSetState: function () {
-	    emitEvent('onSetState');
-	  },
-	  onSetDisplayName: function (debugID, displayName) {
-	    checkDebugID(debugID);
-	    emitEvent('onSetDisplayName', debugID, displayName);
-	  },
-	  onSetChildren: function (debugID, childDebugIDs) {
-	    checkDebugID(debugID);
-	    emitEvent('onSetChildren', debugID, childDebugIDs);
-	  },
-	  onSetOwner: function (debugID, ownerDebugID) {
-	    checkDebugID(debugID);
-	    emitEvent('onSetOwner', debugID, ownerDebugID);
-	  },
-	  onSetText: function (debugID, text) {
-	    checkDebugID(debugID);
-	    emitEvent('onSetText', debugID, text);
-	  },
-	  onMountRootComponent: function (debugID) {
-	    checkDebugID(debugID);
-	    emitEvent('onMountRootComponent', debugID);
-	  },
-	  onMountComponent: function (debugID) {
-	    checkDebugID(debugID);
-	    emitEvent('onMountComponent', debugID);
-	  },
-	  onUpdateComponent: function (debugID) {
-	    checkDebugID(debugID);
-	    emitEvent('onUpdateComponent', debugID);
-	  },
-	  onUnmountComponent: function (debugID) {
-	    checkDebugID(debugID);
-	    emitEvent('onUnmountComponent', debugID);
-	  }
-	};
-
-	if (true) {
-	  var ReactInvalidSetStateWarningDevTool = __webpack_require__(320);
-	  var ReactNativeOperationHistoryDevtool = __webpack_require__(321);
-	  var ReactComponentTreeDevtool = __webpack_require__(322);
-	  ReactDebugTool.addDevtool(ReactInvalidSetStateWarningDevTool);
-	  ReactDebugTool.addDevtool(ReactComponentTreeDevtool);
-	  ReactDebugTool.addDevtool(ReactNativeOperationHistoryDevtool);
-	  var url = ExecutionEnvironment.canUseDOM && window.location.href || '';
-	  if (/[?&]react_perf\b/.test(url)) {
-	    ReactDebugTool.beginProfiling();
-	  }
-	}
-
-	module.exports = ReactDebugTool;
-
-/***/ },
-/* 317 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 */
-
-	'use strict';
-
-	var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-
-	/**
-	 * Simple, lightweight module assisting with the detection and context of
-	 * Worker. Helps avoid circular dependencies and allows code to reason about
-	 * whether or not they are in a Worker, even if they never include the main
-	 * `ReactWorker` dependency.
-	 */
-	var ExecutionEnvironment = {
-
-	  canUseDOM: canUseDOM,
-
-	  canUseWorkers: typeof Worker !== 'undefined',
-
-	  canUseEventListeners: canUseDOM && !!(window.addEventListener || window.attachEvent),
-
-	  canUseViewport: canUseDOM && !!window.screen,
-
-	  isInWorker: !canUseDOM // For now, this is true - might change in the future.
-
-	};
-
-	module.exports = ExecutionEnvironment;
-
-/***/ },
-/* 318 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @typechecks
-	 */
-
-	var performance = __webpack_require__(319);
-
-	var performanceNow;
-
-	/**
-	 * Detect if we can use `window.performance.now()` and gracefully fallback to
-	 * `Date.now()` if it doesn't exist. We need to support Firefox < 15 for now
-	 * because of Facebook's testing infrastructure.
-	 */
-	if (performance.now) {
-	  performanceNow = function performanceNow() {
-	    return performance.now();
-	  };
-	} else {
-	  performanceNow = function performanceNow() {
-	    return Date.now();
-	  };
-	}
-
-	module.exports = performanceNow;
-
-/***/ },
-/* 319 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @typechecks
-	 */
-
-	'use strict';
-
-	var ExecutionEnvironment = __webpack_require__(317);
-
-	var performance;
-
-	if (ExecutionEnvironment.canUseDOM) {
-	  performance = window.performance || window.msPerformance || window.webkitPerformance;
-	}
-
-	module.exports = performance || {};
-
-/***/ },
-/* 320 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2016-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactInvalidSetStateWarningDevTool
-	 */
-
-	'use strict';
-
-	var warning = __webpack_require__(307);
-
-	if (true) {
-	  var processingChildContext = false;
-
-	  var warnInvalidSetState = function () {
-	     true ? warning(!processingChildContext, 'setState(...): Cannot call setState() inside getChildContext()') : void 0;
-	  };
-	}
-
-	var ReactInvalidSetStateWarningDevTool = {
-	  onBeginProcessingChildContext: function () {
-	    processingChildContext = true;
-	  },
-	  onEndProcessingChildContext: function () {
-	    processingChildContext = false;
-	  },
-	  onSetState: function () {
-	    warnInvalidSetState();
-	  }
-	};
-
-	module.exports = ReactInvalidSetStateWarningDevTool;
-
-/***/ },
-/* 321 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2016-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactNativeOperationHistoryDevtool
-	 */
-
-	'use strict';
-
-	var history = [];
-
-	var ReactNativeOperationHistoryDevtool = {
-	  onNativeOperation: function (debugID, type, payload) {
-	    history.push({
-	      instanceID: debugID,
-	      type: type,
-	      payload: payload
-	    });
-	  },
-	  clearHistory: function () {
-	    if (ReactNativeOperationHistoryDevtool._preventClearing) {
-	      // Should only be used for tests.
-	      return;
-	    }
-
-	    history = [];
-	  },
-	  getHistory: function () {
-	    return history;
-	  }
-	};
-
-	module.exports = ReactNativeOperationHistoryDevtool;
-
-/***/ },
-/* 322 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2016-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactComponentTreeDevtool
-	 */
-
-	'use strict';
-
-	var invariant = __webpack_require__(304);
-
-	var tree = {};
-	var rootIDs = [];
-
-	function updateTree(id, update) {
-	  if (!tree[id]) {
-	    tree[id] = {
-	      parentID: null,
-	      ownerID: null,
-	      text: null,
-	      childIDs: [],
-	      displayName: 'Unknown',
-	      isMounted: false,
-	      updateCount: 0
-	    };
-	  }
-	  update(tree[id]);
-	}
-
-	function purgeDeep(id) {
-	  var item = tree[id];
-	  if (item) {
-	    var childIDs = item.childIDs;
-
-	    delete tree[id];
-	    childIDs.forEach(purgeDeep);
-	  }
-	}
-
-	var ReactComponentTreeDevtool = {
-	  onSetDisplayName: function (id, displayName) {
-	    updateTree(id, function (item) {
-	      return item.displayName = displayName;
-	    });
-	  },
-	  onSetChildren: function (id, nextChildIDs) {
-	    updateTree(id, function (item) {
-	      var prevChildIDs = item.childIDs;
-	      item.childIDs = nextChildIDs;
-
-	      nextChildIDs.forEach(function (nextChildID) {
-	        var nextChild = tree[nextChildID];
-	        !nextChild ?  true ? invariant(false, 'Expected devtool events to fire for the child ' + 'before its parent includes it in onSetChildren().') : invariant(false) : void 0;
-	        !(nextChild.displayName != null) ?  true ? invariant(false, 'Expected onSetDisplayName() to fire for the child ' + 'before its parent includes it in onSetChildren().') : invariant(false) : void 0;
-	        !(nextChild.childIDs != null || nextChild.text != null) ?  true ? invariant(false, 'Expected onSetChildren() or onSetText() to fire for the child ' + 'before its parent includes it in onSetChildren().') : invariant(false) : void 0;
-	        !nextChild.isMounted ?  true ? invariant(false, 'Expected onMountComponent() to fire for the child ' + 'before its parent includes it in onSetChildren().') : invariant(false) : void 0;
-
-	        if (prevChildIDs.indexOf(nextChildID) === -1) {
-	          nextChild.parentID = id;
-	        }
-	      });
-	    });
-	  },
-	  onSetOwner: function (id, ownerID) {
-	    updateTree(id, function (item) {
-	      return item.ownerID = ownerID;
-	    });
-	  },
-	  onSetText: function (id, text) {
-	    updateTree(id, function (item) {
-	      return item.text = text;
-	    });
-	  },
-	  onMountComponent: function (id) {
-	    updateTree(id, function (item) {
-	      return item.isMounted = true;
-	    });
-	  },
-	  onMountRootComponent: function (id) {
-	    rootIDs.push(id);
-	  },
-	  onUpdateComponent: function (id) {
-	    updateTree(id, function (item) {
-	      return item.updateCount++;
-	    });
-	  },
-	  onUnmountComponent: function (id) {
-	    updateTree(id, function (item) {
-	      return item.isMounted = false;
-	    });
-	    rootIDs = rootIDs.filter(function (rootID) {
-	      return rootID !== id;
-	    });
-	  },
-	  purgeUnmountedComponents: function () {
-	    if (ReactComponentTreeDevtool._preventPurging) {
-	      // Should only be used for testing.
-	      return;
-	    }
-
-	    Object.keys(tree).filter(function (id) {
-	      return !tree[id].isMounted;
-	    }).forEach(purgeDeep);
-	  },
-	  isMounted: function (id) {
-	    var item = tree[id];
-	    return item ? item.isMounted : false;
-	  },
-	  getChildIDs: function (id) {
-	    var item = tree[id];
-	    return item ? item.childIDs : [];
-	  },
-	  getDisplayName: function (id) {
-	    var item = tree[id];
-	    return item ? item.displayName : 'Unknown';
-	  },
-	  getOwnerID: function (id) {
-	    var item = tree[id];
-	    return item ? item.ownerID : null;
-	  },
-	  getParentID: function (id) {
-	    var item = tree[id];
-	    return item ? item.parentID : null;
-	  },
-	  getText: function (id) {
-	    var item = tree[id];
-	    return item ? item.text : null;
-	  },
-	  getUpdateCount: function (id) {
-	    var item = tree[id];
-	    return item ? item.updateCount : 0;
-	  },
-	  getRootIDs: function () {
-	    return rootIDs;
-	  },
-	  getRegisteredIDs: function () {
-	    return Object.keys(tree);
-	  }
-	};
-
-	module.exports = ReactComponentTreeDevtool;
-
-/***/ },
-/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -10311,7 +9775,7 @@ var vendors_dashboard_worona =
 	module.exports = emptyObject;
 
 /***/ },
-/* 324 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -10327,18 +9791,19 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _prodInvariant = __webpack_require__(303),
+	    _assign = __webpack_require__(300);
 
 	var ReactComponent = __webpack_require__(313);
 	var ReactElement = __webpack_require__(305);
-	var ReactPropTypeLocations = __webpack_require__(325);
-	var ReactPropTypeLocationNames = __webpack_require__(327);
+	var ReactPropTypeLocations = __webpack_require__(317);
+	var ReactPropTypeLocationNames = __webpack_require__(319);
 	var ReactNoopUpdateQueue = __webpack_require__(314);
 
-	var emptyObject = __webpack_require__(323);
+	var emptyObject = __webpack_require__(315);
 	var invariant = __webpack_require__(304);
-	var keyMirror = __webpack_require__(326);
-	var keyOf = __webpack_require__(328);
+	var keyMirror = __webpack_require__(318);
+	var keyOf = __webpack_require__(320);
 	var warning = __webpack_require__(307);
 
 	var MIXINS_KEY = keyOf({ mixins: null });
@@ -10372,7 +9837,7 @@ var vendors_dashboard_worona =
 
 	/**
 	 * Composite components are higher-level components that compose other composite
-	 * or native components.
+	 * or host components.
 	 *
 	 * To create a new type of `ReactClass`, pass a specification of
 	 * your new class to `React.createClass`. The only requirement of your class
@@ -10685,12 +10150,12 @@ var vendors_dashboard_worona =
 
 	  // Disallow overriding of base class methods unless explicitly allowed.
 	  if (ReactClassMixin.hasOwnProperty(name)) {
-	    !(specPolicy === SpecPolicy.OVERRIDE_BASE) ?  true ? invariant(false, 'ReactClassInterface: You are attempting to override ' + '`%s` from your class specification. Ensure that your method names ' + 'do not overlap with React methods.', name) : invariant(false) : void 0;
+	    !(specPolicy === SpecPolicy.OVERRIDE_BASE) ?  true ? invariant(false, 'ReactClassInterface: You are attempting to override `%s` from your class specification. Ensure that your method names do not overlap with React methods.', name) : _prodInvariant('73', name) : void 0;
 	  }
 
 	  // Disallow defining methods more than once unless explicitly allowed.
 	  if (isAlreadyDefined) {
-	    !(specPolicy === SpecPolicy.DEFINE_MANY || specPolicy === SpecPolicy.DEFINE_MANY_MERGED) ?  true ? invariant(false, 'ReactClassInterface: You are attempting to define ' + '`%s` on your component more than once. This conflict may be due ' + 'to a mixin.', name) : invariant(false) : void 0;
+	    !(specPolicy === SpecPolicy.DEFINE_MANY || specPolicy === SpecPolicy.DEFINE_MANY_MERGED) ?  true ? invariant(false, 'ReactClassInterface: You are attempting to define `%s` on your component more than once. This conflict may be due to a mixin.', name) : _prodInvariant('74', name) : void 0;
 	  }
 	}
 
@@ -10703,8 +10168,8 @@ var vendors_dashboard_worona =
 	    return;
 	  }
 
-	  !(typeof spec !== 'function') ?  true ? invariant(false, 'ReactClass: You\'re attempting to ' + 'use a component class or function as a mixin. Instead, just use a ' + 'regular object.') : invariant(false) : void 0;
-	  !!ReactElement.isValidElement(spec) ?  true ? invariant(false, 'ReactClass: You\'re attempting to ' + 'use a component as a mixin. Instead, just use a regular object.') : invariant(false) : void 0;
+	  !(typeof spec !== 'function') ?  true ? invariant(false, 'ReactClass: You\'re attempting to use a component class or function as a mixin. Instead, just use a regular object.') : _prodInvariant('75') : void 0;
+	  !!ReactElement.isValidElement(spec) ?  true ? invariant(false, 'ReactClass: You\'re attempting to use a component as a mixin. Instead, just use a regular object.') : _prodInvariant('76') : void 0;
 
 	  var proto = Constructor.prototype;
 	  var autoBindPairs = proto.__reactAutoBindPairs;
@@ -10749,7 +10214,7 @@ var vendors_dashboard_worona =
 	          var specPolicy = ReactClassInterface[name];
 
 	          // These cases should already be caught by validateMethodOverride.
-	          !(isReactClassMethod && (specPolicy === SpecPolicy.DEFINE_MANY_MERGED || specPolicy === SpecPolicy.DEFINE_MANY)) ?  true ? invariant(false, 'ReactClass: Unexpected spec policy %s for key %s ' + 'when mixing in component specs.', specPolicy, name) : invariant(false) : void 0;
+	          !(isReactClassMethod && (specPolicy === SpecPolicy.DEFINE_MANY_MERGED || specPolicy === SpecPolicy.DEFINE_MANY)) ?  true ? invariant(false, 'ReactClass: Unexpected spec policy %s for key %s when mixing in component specs.', specPolicy, name) : _prodInvariant('77', specPolicy, name) : void 0;
 
 	          // For methods which are defined more than once, call the existing
 	          // methods before calling the new property, merging if appropriate.
@@ -10784,10 +10249,10 @@ var vendors_dashboard_worona =
 	    }
 
 	    var isReserved = name in RESERVED_SPEC_KEYS;
-	    !!isReserved ?  true ? invariant(false, 'ReactClass: You are attempting to define a reserved ' + 'property, `%s`, that shouldn\'t be on the "statics" key. Define it ' + 'as an instance property instead; it will still be accessible on the ' + 'constructor.', name) : invariant(false) : void 0;
+	    !!isReserved ?  true ? invariant(false, 'ReactClass: You are attempting to define a reserved property, `%s`, that shouldn\'t be on the "statics" key. Define it as an instance property instead; it will still be accessible on the constructor.', name) : _prodInvariant('78', name) : void 0;
 
 	    var isInherited = name in Constructor;
-	    !!isInherited ?  true ? invariant(false, 'ReactClass: You are attempting to define ' + '`%s` on your component more than once. This conflict may be ' + 'due to a mixin.', name) : invariant(false) : void 0;
+	    !!isInherited ?  true ? invariant(false, 'ReactClass: You are attempting to define `%s` on your component more than once. This conflict may be due to a mixin.', name) : _prodInvariant('79', name) : void 0;
 	    Constructor[name] = property;
 	  }
 	}
@@ -10800,11 +10265,11 @@ var vendors_dashboard_worona =
 	 * @return {object} one after it has been mutated to contain everything in two.
 	 */
 	function mergeIntoWithNoDuplicateKeys(one, two) {
-	  !(one && two && typeof one === 'object' && typeof two === 'object') ?  true ? invariant(false, 'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.') : invariant(false) : void 0;
+	  !(one && two && typeof one === 'object' && typeof two === 'object') ?  true ? invariant(false, 'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.') : _prodInvariant('80') : void 0;
 
 	  for (var key in two) {
 	    if (two.hasOwnProperty(key)) {
-	      !(one[key] === undefined) ?  true ? invariant(false, 'mergeIntoWithNoDuplicateKeys(): ' + 'Tried to merge two objects with the same key: `%s`. This conflict ' + 'may be due to a mixin; in particular, this may be caused by two ' + 'getInitialState() or getDefaultProps() methods returning objects ' + 'with clashing keys.', key) : invariant(false) : void 0;
+	      !(one[key] === undefined) ?  true ? invariant(false, 'mergeIntoWithNoDuplicateKeys(): Tried to merge two objects with the same key: `%s`. This conflict may be due to a mixin; in particular, this may be caused by two getInitialState() or getDefaultProps() methods returning objects with clashing keys.', key) : _prodInvariant('81', key) : void 0;
 	      one[key] = two[key];
 	    }
 	  }
@@ -10982,7 +10447,7 @@ var vendors_dashboard_worona =
 	          initialState = null;
 	        }
 	      }
-	      !(typeof initialState === 'object' && !Array.isArray(initialState)) ?  true ? invariant(false, '%s.getInitialState(): must return an object or null', Constructor.displayName || 'ReactCompositeComponent') : invariant(false) : void 0;
+	      !(typeof initialState === 'object' && !Array.isArray(initialState)) ?  true ? invariant(false, '%s.getInitialState(): must return an object or null', Constructor.displayName || 'ReactCompositeComponent') : _prodInvariant('82', Constructor.displayName || 'ReactCompositeComponent') : void 0;
 
 	      this.state = initialState;
 	    };
@@ -11012,7 +10477,7 @@ var vendors_dashboard_worona =
 	      }
 	    }
 
-	    !Constructor.prototype.render ?  true ? invariant(false, 'createClass(...): Class specification must implement a `render` method.') : invariant(false) : void 0;
+	    !Constructor.prototype.render ?  true ? invariant(false, 'createClass(...): Class specification must implement a `render` method.') : _prodInvariant('83') : void 0;
 
 	    if (true) {
 	       true ? warning(!Constructor.prototype.componentShouldUpdate, '%s has a method called ' + 'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' + 'The name is phrased as a question because the function is ' + 'expected to return a value.', spec.displayName || 'A component') : void 0;
@@ -11040,7 +10505,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactClass;
 
 /***/ },
-/* 325 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -11056,7 +10521,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var keyMirror = __webpack_require__(326);
+	var keyMirror = __webpack_require__(318);
 
 	var ReactPropTypeLocations = keyMirror({
 	  prop: null,
@@ -11067,7 +10532,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactPropTypeLocations;
 
 /***/ },
-/* 326 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -11119,7 +10584,7 @@ var vendors_dashboard_worona =
 	module.exports = keyMirror;
 
 /***/ },
-/* 327 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -11148,7 +10613,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactPropTypeLocationNames;
 
 /***/ },
-/* 328 */
+/* 320 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -11187,7 +10652,7 @@ var vendors_dashboard_worona =
 	module.exports = keyOf;
 
 /***/ },
-/* 329 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -11204,9 +10669,8 @@ var vendors_dashboard_worona =
 	'use strict';
 
 	var ReactElement = __webpack_require__(305);
-	var ReactElementValidator = __webpack_require__(330);
 
-	var mapObject = __webpack_require__(331);
+	var mapObject = __webpack_require__(322);
 
 	/**
 	 * Create a factory that creates HTML tag elements.
@@ -11216,6 +10680,7 @@ var vendors_dashboard_worona =
 	 */
 	function createDOMFactory(tag) {
 	  if (true) {
+	    var ReactElementValidator = __webpack_require__(323);
 	    return ReactElementValidator.createFactory(tag);
 	  }
 	  return ReactElement.createFactory(tag);
@@ -11368,7 +10833,62 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMFactories;
 
 /***/ },
-/* 330 */
+/* 322 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 */
+
+	'use strict';
+
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+	/**
+	 * Executes the provided `callback` once for each enumerable own property in the
+	 * object and constructs a new object from the results. The `callback` is
+	 * invoked with three arguments:
+	 *
+	 *  - the property value
+	 *  - the property name
+	 *  - the object being traversed
+	 *
+	 * Properties that are added after the call to `mapObject` will not be visited
+	 * by `callback`. If the values of existing properties are changed, the value
+	 * passed to `callback` will be the value at the time `mapObject` visits them.
+	 * Properties that are deleted before being visited are not visited.
+	 *
+	 * @grep function objectMap()
+	 * @grep function objMap()
+	 *
+	 * @param {?object} object
+	 * @param {function} callback
+	 * @param {*} context
+	 * @return {?object}
+	 */
+	function mapObject(object, callback, context) {
+	  if (!object) {
+	    return null;
+	  }
+	  var result = {};
+	  for (var name in object) {
+	    if (hasOwnProperty.call(object, name)) {
+	      result[name] = callback.call(context, object[name], name, object);
+	    }
+	  }
+	  return result;
+	}
+
+	module.exports = mapObject;
+
+/***/ },
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -11391,14 +10911,15 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactElement = __webpack_require__(305);
-	var ReactPropTypeLocations = __webpack_require__(325);
-	var ReactPropTypeLocationNames = __webpack_require__(327);
 	var ReactCurrentOwner = __webpack_require__(306);
+	var ReactComponentTreeDevtool = __webpack_require__(324);
+	var ReactElement = __webpack_require__(305);
+	var ReactPropTypeLocations = __webpack_require__(317);
+
+	var checkReactTypeSpec = __webpack_require__(325);
 
 	var canDefineProperty = __webpack_require__(309);
 	var getIteratorFn = __webpack_require__(311);
-	var invariant = __webpack_require__(304);
 	var warning = __webpack_require__(307);
 
 	function getDeclarationErrorAddendum() {
@@ -11418,13 +10939,24 @@ var vendors_dashboard_worona =
 	 */
 	var ownerHasKeyUseWarning = {};
 
-	var loggedTypeFailures = {};
+	function getCurrentComponentErrorInfo(parentType) {
+	  var info = getDeclarationErrorAddendum();
+
+	  if (!info) {
+	    var parentName = typeof parentType === 'string' ? parentType : parentType.displayName || parentType.name;
+	    if (parentName) {
+	      info = ' Check the top-level render call using <' + parentName + '>.';
+	    }
+	  }
+	  return info;
+	}
 
 	/**
 	 * Warn if the element doesn't have an explicit key assigned to it.
 	 * This element is in an array. The array could grow and shrink or be
 	 * reordered. All children that haven't already been validated are required to
-	 * have a "key" property assigned to it.
+	 * have a "key" property assigned to it. Error statuses are cached so a warning
+	 * will only be shown once.
 	 *
 	 * @internal
 	 * @param {ReactElement} element Element that requires a key.
@@ -11436,54 +10968,24 @@ var vendors_dashboard_worona =
 	  }
 	  element._store.validated = true;
 
-	  var addenda = getAddendaForKeyUse('uniqueKey', element, parentType);
-	  if (addenda === null) {
-	    // we already showed the warning
+	  var memoizer = ownerHasKeyUseWarning.uniqueKey || (ownerHasKeyUseWarning.uniqueKey = {});
+
+	  var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
+	  if (memoizer[currentComponentErrorInfo]) {
 	    return;
 	  }
-	   true ? warning(false, 'Each child in an array or iterator should have a unique "key" prop.' + '%s%s%s', addenda.parentOrOwner || '', addenda.childOwner || '', addenda.url || '') : void 0;
-	}
-
-	/**
-	 * Shared warning and monitoring code for the key warnings.
-	 *
-	 * @internal
-	 * @param {string} messageType A key used for de-duping warnings.
-	 * @param {ReactElement} element Component that requires a key.
-	 * @param {*} parentType element's parent's type.
-	 * @returns {?object} A set of addenda to use in the warning message, or null
-	 * if the warning has already been shown before (and shouldn't be shown again).
-	 */
-	function getAddendaForKeyUse(messageType, element, parentType) {
-	  var addendum = getDeclarationErrorAddendum();
-	  if (!addendum) {
-	    var parentName = typeof parentType === 'string' ? parentType : parentType.displayName || parentType.name;
-	    if (parentName) {
-	      addendum = ' Check the top-level render call using <' + parentName + '>.';
-	    }
-	  }
-
-	  var memoizer = ownerHasKeyUseWarning[messageType] || (ownerHasKeyUseWarning[messageType] = {});
-	  if (memoizer[addendum]) {
-	    return null;
-	  }
-	  memoizer[addendum] = true;
-
-	  var addenda = {
-	    parentOrOwner: addendum,
-	    url: ' See https://fb.me/react-warning-keys for more information.',
-	    childOwner: null
-	  };
+	  memoizer[currentComponentErrorInfo] = true;
 
 	  // Usually the current owner is the offender, but if it accepts children as a
 	  // property, it may be the creator of the child that's responsible for
 	  // assigning it a key.
+	  var childOwner = '';
 	  if (element && element._owner && element._owner !== ReactCurrentOwner.current) {
 	    // Give the component that originally created this child.
-	    addenda.childOwner = ' It was passed a child from ' + element._owner.getName() + '.';
+	    childOwner = ' It was passed a child from ' + element._owner.getName() + '.';
 	  }
 
-	  return addenda;
+	   true ? warning(false, 'Each child in an array or iterator should have a unique "key" prop.' + '%s%s See https://fb.me/react-warning-keys for more information.%s', currentComponentErrorInfo, childOwner, ReactComponentTreeDevtool.getCurrentStackAddendum(element)) : void 0;
 	}
 
 	/**
@@ -11529,43 +11031,6 @@ var vendors_dashboard_worona =
 	}
 
 	/**
-	 * Assert that the props are valid
-	 *
-	 * @param {string} componentName Name of the component for error messages.
-	 * @param {object} propTypes Map of prop name to a ReactPropType
-	 * @param {object} props
-	 * @param {string} location e.g. "prop", "context", "child context"
-	 * @private
-	 */
-	function checkPropTypes(componentName, propTypes, props, location) {
-	  for (var propName in propTypes) {
-	    if (propTypes.hasOwnProperty(propName)) {
-	      var error;
-	      // Prop type validation may throw. In case they do, we don't want to
-	      // fail the render phase where it didn't fail before. So we log it.
-	      // After these have been cleaned up, we'll let them throw.
-	      try {
-	        // This is intentionally an invariant that gets caught. It's the same
-	        // behavior as without this statement except with a better message.
-	        !(typeof propTypes[propName] === 'function') ?  true ? invariant(false, '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', componentName || 'React class', ReactPropTypeLocationNames[location], propName) : invariant(false) : void 0;
-	        error = propTypes[propName](props, propName, componentName, location);
-	      } catch (ex) {
-	        error = ex;
-	      }
-	       true ? warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', ReactPropTypeLocationNames[location], propName, typeof error) : void 0;
-	      if (error instanceof Error && !(error.message in loggedTypeFailures)) {
-	        // Only monitor this failure once because there tends to be a lot of the
-	        // same error.
-	        loggedTypeFailures[error.message] = true;
-
-	        var addendum = getDeclarationErrorAddendum();
-	         true ? warning(false, 'Failed propType: %s%s', error.message, addendum) : void 0;
-	      }
-	    }
-	  }
-	}
-
-	/**
 	 * Given an element, validate that its props follow the propTypes definition,
 	 * provided by the type.
 	 *
@@ -11578,7 +11043,7 @@ var vendors_dashboard_worona =
 	  }
 	  var name = componentClass.displayName || componentClass.name;
 	  if (componentClass.propTypes) {
-	    checkPropTypes(name, componentClass.propTypes, element.props, ReactPropTypeLocations.prop);
+	    checkReactTypeSpec(componentClass.propTypes, element.props, ReactPropTypeLocations.prop, name, element, null);
 	  }
 	  if (typeof componentClass.getDefaultProps === 'function') {
 	     true ? warning(componentClass.getDefaultProps.isReactClassApproved, 'getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.') : void 0;
@@ -11654,62 +11119,308 @@ var vendors_dashboard_worona =
 	module.exports = ReactElementValidator;
 
 /***/ },
-/* 331 */
-/***/ function(module, exports) {
+/* 324 */
+/***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Copyright (c) 2013-present, Facebook, Inc.
+	 * Copyright 2016-present, Facebook, Inc.
 	 * All rights reserved.
 	 *
 	 * This source code is licensed under the BSD-style license found in the
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
+	 * @providesModule ReactComponentTreeDevtool
 	 */
 
 	'use strict';
 
-	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var _prodInvariant = __webpack_require__(303);
 
-	/**
-	 * Executes the provided `callback` once for each enumerable own property in the
-	 * object and constructs a new object from the results. The `callback` is
-	 * invoked with three arguments:
-	 *
-	 *  - the property value
-	 *  - the property name
-	 *  - the object being traversed
-	 *
-	 * Properties that are added after the call to `mapObject` will not be visited
-	 * by `callback`. If the values of existing properties are changed, the value
-	 * passed to `callback` will be the value at the time `mapObject` visits them.
-	 * Properties that are deleted before being visited are not visited.
-	 *
-	 * @grep function objectMap()
-	 * @grep function objMap()
-	 *
-	 * @param {?object} object
-	 * @param {function} callback
-	 * @param {*} context
-	 * @return {?object}
-	 */
-	function mapObject(object, callback, context) {
-	  if (!object) {
-	    return null;
+	var ReactCurrentOwner = __webpack_require__(306);
+
+	var invariant = __webpack_require__(304);
+	var warning = __webpack_require__(307);
+
+	var tree = {};
+	var unmountedIDs = {};
+	var rootIDs = {};
+
+	function updateTree(id, update) {
+	  if (!tree[id]) {
+	    tree[id] = {
+	      element: null,
+	      parentID: null,
+	      ownerID: null,
+	      text: null,
+	      childIDs: [],
+	      displayName: 'Unknown',
+	      isMounted: false,
+	      updateCount: 0
+	    };
 	  }
-	  var result = {};
-	  for (var name in object) {
-	    if (hasOwnProperty.call(object, name)) {
-	      result[name] = callback.call(context, object[name], name, object);
-	    }
-	  }
-	  return result;
+	  update(tree[id]);
 	}
 
-	module.exports = mapObject;
+	function purgeDeep(id) {
+	  var item = tree[id];
+	  if (item) {
+	    var childIDs = item.childIDs;
+
+	    delete tree[id];
+	    childIDs.forEach(purgeDeep);
+	  }
+	}
+
+	function describeComponentFrame(name, source, ownerName) {
+	  return '\n    in ' + name + (source ? ' (at ' + source.fileName.replace(/^.*[\\\/]/, '') + ':' + source.lineNumber + ')' : ownerName ? ' (created by ' + ownerName + ')' : '');
+	}
+
+	function describeID(id) {
+	  var name = ReactComponentTreeDevtool.getDisplayName(id);
+	  var element = ReactComponentTreeDevtool.getElement(id);
+	  var ownerID = ReactComponentTreeDevtool.getOwnerID(id);
+	  var ownerName;
+	  if (ownerID) {
+	    ownerName = ReactComponentTreeDevtool.getDisplayName(ownerID);
+	  }
+	   true ? warning(element, 'ReactComponentTreeDevtool: Missing React element for debugID %s when ' + 'building stack', id) : void 0;
+	  return describeComponentFrame(name, element && element._source, ownerName);
+	}
+
+	var ReactComponentTreeDevtool = {
+	  onSetDisplayName: function (id, displayName) {
+	    updateTree(id, function (item) {
+	      return item.displayName = displayName;
+	    });
+	  },
+	  onSetChildren: function (id, nextChildIDs) {
+	    updateTree(id, function (item) {
+	      item.childIDs = nextChildIDs;
+
+	      nextChildIDs.forEach(function (nextChildID) {
+	        var nextChild = tree[nextChildID];
+	        !nextChild ?  true ? invariant(false, 'Expected devtool events to fire for the child before its parent includes it in onSetChildren().') : _prodInvariant('68') : void 0;
+	        !(nextChild.displayName != null) ?  true ? invariant(false, 'Expected onSetDisplayName() to fire for the child before its parent includes it in onSetChildren().') : _prodInvariant('69') : void 0;
+	        !(nextChild.childIDs != null || nextChild.text != null) ?  true ? invariant(false, 'Expected onSetChildren() or onSetText() to fire for the child before its parent includes it in onSetChildren().') : _prodInvariant('70') : void 0;
+	        !nextChild.isMounted ?  true ? invariant(false, 'Expected onMountComponent() to fire for the child before its parent includes it in onSetChildren().') : _prodInvariant('71') : void 0;
+	        if (nextChild.parentID == null) {
+	          nextChild.parentID = id;
+	          // TODO: This shouldn't be necessary but mounting a new root during in
+	          // componentWillMount currently causes not-yet-mounted components to
+	          // be purged from our tree data so their parent ID is missing.
+	        }
+	        !(nextChild.parentID === id) ?  true ? invariant(false, 'Expected onSetParent() and onSetChildren() to be consistent (%s has parents %s and %s).', nextChildID, nextChild.parentID, id) : _prodInvariant('72', nextChildID, nextChild.parentID, id) : void 0;
+	      });
+	    });
+	  },
+	  onSetOwner: function (id, ownerID) {
+	    updateTree(id, function (item) {
+	      return item.ownerID = ownerID;
+	    });
+	  },
+	  onSetParent: function (id, parentID) {
+	    updateTree(id, function (item) {
+	      return item.parentID = parentID;
+	    });
+	  },
+	  onSetText: function (id, text) {
+	    updateTree(id, function (item) {
+	      return item.text = text;
+	    });
+	  },
+	  onBeforeMountComponent: function (id, element) {
+	    updateTree(id, function (item) {
+	      return item.element = element;
+	    });
+	  },
+	  onBeforeUpdateComponent: function (id, element) {
+	    updateTree(id, function (item) {
+	      return item.element = element;
+	    });
+	  },
+	  onMountComponent: function (id) {
+	    updateTree(id, function (item) {
+	      return item.isMounted = true;
+	    });
+	  },
+	  onMountRootComponent: function (id) {
+	    rootIDs[id] = true;
+	  },
+	  onUpdateComponent: function (id) {
+	    updateTree(id, function (item) {
+	      return item.updateCount++;
+	    });
+	  },
+	  onUnmountComponent: function (id) {
+	    updateTree(id, function (item) {
+	      return item.isMounted = false;
+	    });
+	    unmountedIDs[id] = true;
+	    delete rootIDs[id];
+	  },
+	  purgeUnmountedComponents: function () {
+	    if (ReactComponentTreeDevtool._preventPurging) {
+	      // Should only be used for testing.
+	      return;
+	    }
+
+	    for (var id in unmountedIDs) {
+	      purgeDeep(id);
+	    }
+	    unmountedIDs = {};
+	  },
+	  isMounted: function (id) {
+	    var item = tree[id];
+	    return item ? item.isMounted : false;
+	  },
+	  getCurrentStackAddendum: function (topElement) {
+	    var info = '';
+	    if (topElement) {
+	      var type = topElement.type;
+	      var name = typeof type === 'function' ? type.displayName || type.name : type;
+	      var owner = topElement._owner;
+	      info += describeComponentFrame(name || 'Unknown', topElement._source, owner && owner.getName());
+	    }
+
+	    var currentOwner = ReactCurrentOwner.current;
+	    var id = currentOwner && currentOwner._debugID;
+
+	    info += ReactComponentTreeDevtool.getStackAddendumByID(id);
+	    return info;
+	  },
+	  getStackAddendumByID: function (id) {
+	    var info = '';
+	    while (id) {
+	      info += describeID(id);
+	      id = ReactComponentTreeDevtool.getParentID(id);
+	    }
+	    return info;
+	  },
+	  getChildIDs: function (id) {
+	    var item = tree[id];
+	    return item ? item.childIDs : [];
+	  },
+	  getDisplayName: function (id) {
+	    var item = tree[id];
+	    return item ? item.displayName : 'Unknown';
+	  },
+	  getElement: function (id) {
+	    var item = tree[id];
+	    return item ? item.element : null;
+	  },
+	  getOwnerID: function (id) {
+	    var item = tree[id];
+	    return item ? item.ownerID : null;
+	  },
+	  getParentID: function (id) {
+	    var item = tree[id];
+	    return item ? item.parentID : null;
+	  },
+	  getSource: function (id) {
+	    var item = tree[id];
+	    var element = item ? item.element : null;
+	    var source = element != null ? element._source : null;
+	    return source;
+	  },
+	  getText: function (id) {
+	    var item = tree[id];
+	    return item ? item.text : null;
+	  },
+	  getUpdateCount: function (id) {
+	    var item = tree[id];
+	    return item ? item.updateCount : 0;
+	  },
+	  getRootIDs: function () {
+	    return Object.keys(rootIDs);
+	  },
+	  getRegisteredIDs: function () {
+	    return Object.keys(tree);
+	  }
+	};
+
+	module.exports = ReactComponentTreeDevtool;
 
 /***/ },
-/* 332 */
+/* 325 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule checkReactTypeSpec
+	 */
+
+	'use strict';
+
+	var _prodInvariant = __webpack_require__(303);
+
+	var ReactPropTypeLocationNames = __webpack_require__(319);
+
+	var invariant = __webpack_require__(304);
+	var warning = __webpack_require__(307);
+
+	var loggedTypeFailures = {};
+
+	/**
+	 * Assert that the values match with the type specs.
+	 * Error messages are memorized and will only be shown once.
+	 *
+	 * @param {object} typeSpecs Map of name to a ReactPropType
+	 * @param {object} values Runtime values that need to be type-checked
+	 * @param {string} location e.g. "prop", "context", "child context"
+	 * @param {string} componentName Name of the component for error messages.
+	 * @param {?object} element The React element that is being type-checked
+	 * @param {?number} debugID The React component instance that is being type-checked
+	 * @private
+	 */
+	function checkReactTypeSpec(typeSpecs, values, location, componentName, element, debugID) {
+	  for (var typeSpecName in typeSpecs) {
+	    if (typeSpecs.hasOwnProperty(typeSpecName)) {
+	      var error;
+	      // Prop type validation may throw. In case they do, we don't want to
+	      // fail the render phase where it didn't fail before. So we log it.
+	      // After these have been cleaned up, we'll let them throw.
+	      try {
+	        // This is intentionally an invariant that gets caught. It's the same
+	        // behavior as without this statement except with a better message.
+	        !(typeof typeSpecs[typeSpecName] === 'function') ?  true ? invariant(false, '%s: %s type `%s` is invalid; it must be a function, usually from React.PropTypes.', componentName || 'React class', ReactPropTypeLocationNames[location], typeSpecName) : _prodInvariant('84', componentName || 'React class', ReactPropTypeLocationNames[location], typeSpecName) : void 0;
+	        error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location);
+	      } catch (ex) {
+	        error = ex;
+	      }
+	       true ? warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', ReactPropTypeLocationNames[location], typeSpecName, typeof error) : void 0;
+	      if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+	        // Only monitor this failure once because there tends to be a lot of the
+	        // same error.
+	        loggedTypeFailures[error.message] = true;
+
+	        var componentStackInfo = '';
+
+	        if (true) {
+	          var ReactComponentTreeDevtool = __webpack_require__(324);
+	          if (debugID !== null) {
+	            componentStackInfo = ReactComponentTreeDevtool.getStackAddendumByID(debugID);
+	          } else if (element !== null) {
+	            componentStackInfo = ReactComponentTreeDevtool.getCurrentStackAddendum(element);
+	          }
+	        }
+
+	         true ? warning(false, 'Failed %s type: %s%s', location, error.message, componentStackInfo) : void 0;
+	      }
+	    }
+	  }
+	}
+
+	module.exports = checkReactTypeSpec;
+
+/***/ },
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -11726,7 +11437,7 @@ var vendors_dashboard_worona =
 	'use strict';
 
 	var ReactElement = __webpack_require__(305);
-	var ReactPropTypeLocationNames = __webpack_require__(327);
+	var ReactPropTypeLocationNames = __webpack_require__(319);
 
 	var emptyFunction = __webpack_require__(308);
 	var getIteratorFn = __webpack_require__(311);
@@ -11787,6 +11498,7 @@ var vendors_dashboard_worona =
 	  number: createPrimitiveTypeChecker('number'),
 	  object: createPrimitiveTypeChecker('object'),
 	  string: createPrimitiveTypeChecker('string'),
+	  symbol: createPrimitiveTypeChecker('symbol'),
 
 	  any: createAnyTypeChecker(),
 	  arrayOf: createArrayOfTypeChecker,
@@ -12054,6 +11766,25 @@ var vendors_dashboard_worona =
 	  }
 	}
 
+	function isSymbol(propType, propValue) {
+	  // Native Symbol.
+	  if (propType === 'symbol') {
+	    return true;
+	  }
+
+	  // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+	  if (propValue['@@toStringTag'] === 'Symbol') {
+	    return true;
+	  }
+
+	  // Fallback for non-spec compliant Symbols which are polyfilled.
+	  if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+	    return true;
+	  }
+
+	  return false;
+	}
+
 	// Equivalent of `typeof` but with special handling for array and regexp.
 	function getPropType(propValue) {
 	  var propType = typeof propValue;
@@ -12065,6 +11796,9 @@ var vendors_dashboard_worona =
 	    // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
 	    // passes PropTypes.object.
 	    return 'object';
+	  }
+	  if (isSymbol(propType, propValue)) {
+	    return 'symbol';
 	  }
 	  return propType;
 	}
@@ -12094,7 +11828,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactPropTypes;
 
 /***/ },
-/* 333 */
+/* 327 */
 /***/ function(module, exports) {
 
 	/**
@@ -12110,10 +11844,10 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	module.exports = '15.1.0';
+	module.exports = '15.2.1';
 
 /***/ },
-/* 334 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12127,6 +11861,8 @@ var vendors_dashboard_worona =
 	 * @providesModule onlyChild
 	 */
 	'use strict';
+
+	var _prodInvariant = __webpack_require__(303);
 
 	var ReactElement = __webpack_require__(305);
 
@@ -12147,14 +11883,14 @@ var vendors_dashboard_worona =
 	 * structure.
 	 */
 	function onlyChild(children) {
-	  !ReactElement.isValidElement(children) ?  true ? invariant(false, 'onlyChild must be passed a children with exactly one child.') : invariant(false) : void 0;
+	  !ReactElement.isValidElement(children) ?  true ? invariant(false, 'onlyChild must be passed a children with exactly one child.') : _prodInvariant('23') : void 0;
 	  return children;
 	}
 
 	module.exports = onlyChild;
 
 /***/ },
-/* 335 */
+/* 329 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12186,8 +11922,8 @@ var vendors_dashboard_worona =
 	    })) {
 	      return lastResult;
 	    }
-	    lastArgs = args;
 	    lastResult = func.apply(undefined, args);
+	    lastArgs = args;
 	    return lastResult;
 	  };
 	}
@@ -12274,14 +12010,14 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 336 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(337).default;
+	module.exports = __webpack_require__(331).default;
 
 
 /***/ },
-/* 337 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12290,7 +12026,7 @@ var vendors_dashboard_worona =
 	  value: true
 	});
 
-	var _i18next = __webpack_require__(338);
+	var _i18next = __webpack_require__(332);
 
 	var _i18next2 = _interopRequireDefault(_i18next);
 
@@ -12299,7 +12035,7 @@ var vendors_dashboard_worona =
 	exports.default = _i18next2.default;
 
 /***/ },
-/* 338 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12312,49 +12048,49 @@ var vendors_dashboard_worona =
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _logger = __webpack_require__(339);
+	var _logger = __webpack_require__(333);
 
 	var _logger2 = _interopRequireDefault(_logger);
 
-	var _EventEmitter2 = __webpack_require__(340);
+	var _EventEmitter2 = __webpack_require__(334);
 
 	var _EventEmitter3 = _interopRequireDefault(_EventEmitter2);
 
-	var _ResourceStore = __webpack_require__(341);
+	var _ResourceStore = __webpack_require__(335);
 
 	var _ResourceStore2 = _interopRequireDefault(_ResourceStore);
 
-	var _Translator = __webpack_require__(343);
+	var _Translator = __webpack_require__(337);
 
 	var _Translator2 = _interopRequireDefault(_Translator);
 
-	var _LanguageUtils = __webpack_require__(346);
+	var _LanguageUtils = __webpack_require__(340);
 
 	var _LanguageUtils2 = _interopRequireDefault(_LanguageUtils);
 
-	var _PluralResolver = __webpack_require__(347);
+	var _PluralResolver = __webpack_require__(341);
 
 	var _PluralResolver2 = _interopRequireDefault(_PluralResolver);
 
-	var _Interpolator = __webpack_require__(348);
+	var _Interpolator = __webpack_require__(342);
 
 	var _Interpolator2 = _interopRequireDefault(_Interpolator);
 
-	var _BackendConnector = __webpack_require__(349);
+	var _BackendConnector = __webpack_require__(343);
 
 	var _BackendConnector2 = _interopRequireDefault(_BackendConnector);
 
-	var _CacheConnector = __webpack_require__(350);
+	var _CacheConnector = __webpack_require__(344);
 
 	var _CacheConnector2 = _interopRequireDefault(_CacheConnector);
 
-	var _defaults2 = __webpack_require__(351);
+	var _defaults2 = __webpack_require__(345);
 
-	var _postProcessor = __webpack_require__(344);
+	var _postProcessor = __webpack_require__(338);
 
 	var _postProcessor2 = _interopRequireDefault(_postProcessor);
 
-	var _v = __webpack_require__(345);
+	var _v = __webpack_require__(339);
 
 	var compat = _interopRequireWildcard(_v);
 
@@ -12696,7 +12432,7 @@ var vendors_dashboard_worona =
 	exports.default = new I18n();
 
 /***/ },
-/* 339 */
+/* 333 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12793,7 +12529,7 @@ var vendors_dashboard_worona =
 	exports.default = new Logger();
 
 /***/ },
-/* 340 */
+/* 334 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12865,7 +12601,7 @@ var vendors_dashboard_worona =
 	exports.default = EventEmitter;
 
 /***/ },
-/* 341 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12876,11 +12612,11 @@ var vendors_dashboard_worona =
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _EventEmitter2 = __webpack_require__(340);
+	var _EventEmitter2 = __webpack_require__(334);
 
 	var _EventEmitter3 = _interopRequireDefault(_EventEmitter2);
 
-	var _utils = __webpack_require__(342);
+	var _utils = __webpack_require__(336);
 
 	var utils = _interopRequireWildcard(_utils);
 
@@ -13027,7 +12763,7 @@ var vendors_dashboard_worona =
 	exports.default = ResourceStore;
 
 /***/ },
-/* 342 */
+/* 336 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -13149,7 +12885,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 343 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13162,23 +12898,23 @@ var vendors_dashboard_worona =
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	var _logger = __webpack_require__(339);
+	var _logger = __webpack_require__(333);
 
 	var _logger2 = _interopRequireDefault(_logger);
 
-	var _EventEmitter2 = __webpack_require__(340);
+	var _EventEmitter2 = __webpack_require__(334);
 
 	var _EventEmitter3 = _interopRequireDefault(_EventEmitter2);
 
-	var _postProcessor = __webpack_require__(344);
+	var _postProcessor = __webpack_require__(338);
 
 	var _postProcessor2 = _interopRequireDefault(_postProcessor);
 
-	var _v = __webpack_require__(345);
+	var _v = __webpack_require__(339);
 
 	var compat = _interopRequireWildcard(_v);
 
-	var _utils = __webpack_require__(342);
+	var _utils = __webpack_require__(336);
 
 	var utils = _interopRequireWildcard(_utils);
 
@@ -13462,7 +13198,7 @@ var vendors_dashboard_worona =
 	exports.default = Translator;
 
 /***/ },
-/* 344 */
+/* 338 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -13489,7 +13225,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 345 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13502,7 +13238,7 @@ var vendors_dashboard_worona =
 	exports.convertTOptions = convertTOptions;
 	exports.appendBackwardsAPI = appendBackwardsAPI;
 
-	var _logger = __webpack_require__(339);
+	var _logger = __webpack_require__(333);
 
 	var _logger2 = _interopRequireDefault(_logger);
 
@@ -13648,7 +13384,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 346 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13657,7 +13393,7 @@ var vendors_dashboard_worona =
 	  value: true
 	});
 
-	var _logger = __webpack_require__(339);
+	var _logger = __webpack_require__(333);
 
 	var _logger2 = _interopRequireDefault(_logger);
 
@@ -13765,7 +13501,7 @@ var vendors_dashboard_worona =
 	exports.default = LanguageUtil;
 
 /***/ },
-/* 347 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13776,7 +13512,7 @@ var vendors_dashboard_worona =
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	var _logger = __webpack_require__(339);
+	var _logger = __webpack_require__(333);
 
 	var _logger2 = _interopRequireDefault(_logger);
 
@@ -13969,7 +13705,7 @@ var vendors_dashboard_worona =
 	exports.default = PluralResolver;
 
 /***/ },
-/* 348 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13978,11 +13714,11 @@ var vendors_dashboard_worona =
 	  value: true
 	});
 
-	var _utils = __webpack_require__(342);
+	var _utils = __webpack_require__(336);
 
 	var utils = _interopRequireWildcard(_utils);
 
-	var _logger = __webpack_require__(339);
+	var _logger = __webpack_require__(333);
 
 	var _logger2 = _interopRequireDefault(_logger);
 
@@ -14138,7 +13874,7 @@ var vendors_dashboard_worona =
 	exports.default = Interpolator;
 
 /***/ },
-/* 349 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14151,15 +13887,15 @@ var vendors_dashboard_worona =
 
 	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-	var _utils = __webpack_require__(342);
+	var _utils = __webpack_require__(336);
 
 	var utils = _interopRequireWildcard(_utils);
 
-	var _logger = __webpack_require__(339);
+	var _logger = __webpack_require__(333);
 
 	var _logger2 = _interopRequireDefault(_logger);
 
-	var _EventEmitter2 = __webpack_require__(340);
+	var _EventEmitter2 = __webpack_require__(334);
 
 	var _EventEmitter3 = _interopRequireDefault(_EventEmitter2);
 
@@ -14472,7 +14208,7 @@ var vendors_dashboard_worona =
 	exports.default = Connector;
 
 /***/ },
-/* 350 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14483,15 +14219,15 @@ var vendors_dashboard_worona =
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _utils = __webpack_require__(342);
+	var _utils = __webpack_require__(336);
 
 	var utils = _interopRequireWildcard(_utils);
 
-	var _logger = __webpack_require__(339);
+	var _logger = __webpack_require__(333);
 
 	var _logger2 = _interopRequireDefault(_logger);
 
-	var _EventEmitter2 = __webpack_require__(340);
+	var _EventEmitter2 = __webpack_require__(334);
 
 	var _EventEmitter3 = _interopRequireDefault(_EventEmitter2);
 
@@ -14565,7 +14301,7 @@ var vendors_dashboard_worona =
 	exports.default = Connector;
 
 /***/ },
-/* 351 */
+/* 345 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14646,14 +14382,14 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 352 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(353).default;
+	module.exports = __webpack_require__(347).default;
 
 
 /***/ },
-/* 353 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14666,7 +14402,7 @@ var vendors_dashboard_worona =
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	var _utils = __webpack_require__(354);
+	var _utils = __webpack_require__(348);
 
 	var utils = _interopRequireWildcard(_utils);
 
@@ -14828,7 +14564,7 @@ var vendors_dashboard_worona =
 	exports.default = Backend;
 
 /***/ },
-/* 354 */
+/* 348 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -14865,7 +14601,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 355 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
@@ -15712,7 +15448,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 356 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15766,7 +15502,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 357 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -32174,10 +31910,10 @@ var vendors_dashboard_worona =
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(358)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(352)(module), (function() { return this; }())))
 
 /***/ },
-/* 358 */
+/* 352 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -32193,12 +31929,12 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 359 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var mapValues = __webpack_require__(360);
-	var omitBy = __webpack_require__(464);
-	var map = __webpack_require__(476);
+	var mapValues = __webpack_require__(354);
+	var omitBy = __webpack_require__(458);
+	var map = __webpack_require__(470);
 
 	var Worona = function() {
 	  this._packages = {};
@@ -32281,6 +32017,17 @@ var vendors_dashboard_worona =
 	  return nextDep(pkgName, this._packages[pkgName], propName, nextArgs);
 	}
 
+	Worona.prototype.mock = function(deps) {
+	  var mockedDeps = {};
+	  for (var sub in deps) {
+	    mockedDeps[sub] = {};
+	    for (var subsub in deps[sub]) {
+	      mockedDeps[sub][subsub] = function(){};
+	    }
+	  }
+	  return mockedDeps;
+	}
+
 	var worona = new Worona();
 
 	if (typeof window !== 'undefined') window.worona = worona;
@@ -32295,15 +32042,16 @@ var vendors_dashboard_worona =
 	  getLocale: worona.getLocale.bind(worona),
 	  getSagas: worona.getSagas.bind(worona),
 	  dep: worona.dep.bind(worona),
+	  mock: worona.mock,
 	};
 
 
 /***/ },
-/* 360 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseForOwn = __webpack_require__(361),
-	    baseIteratee = __webpack_require__(383);
+	var baseForOwn = __webpack_require__(355),
+	    baseIteratee = __webpack_require__(377);
 
 	/**
 	 * Creates an object with the same keys as `object` and values generated
@@ -32348,11 +32096,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 361 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseFor = __webpack_require__(362),
-	    keys = __webpack_require__(364);
+	var baseFor = __webpack_require__(356),
+	    keys = __webpack_require__(358);
 
 	/**
 	 * The base implementation of `_.forOwn` without support for iteratee shorthands.
@@ -32370,10 +32118,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 362 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var createBaseFor = __webpack_require__(363);
+	var createBaseFor = __webpack_require__(357);
 
 	/**
 	 * The base implementation of `baseForOwn` which iterates over `object`
@@ -32392,7 +32140,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 363 */
+/* 357 */
 /***/ function(module, exports) {
 
 	/**
@@ -32423,15 +32171,15 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 364 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseHas = __webpack_require__(365),
-	    baseKeys = __webpack_require__(367),
-	    indexKeys = __webpack_require__(368),
-	    isArrayLike = __webpack_require__(372),
-	    isIndex = __webpack_require__(381),
-	    isPrototype = __webpack_require__(382);
+	var baseHas = __webpack_require__(359),
+	    baseKeys = __webpack_require__(361),
+	    indexKeys = __webpack_require__(362),
+	    isArrayLike = __webpack_require__(366),
+	    isIndex = __webpack_require__(375),
+	    isPrototype = __webpack_require__(376);
 
 	/**
 	 * Creates an array of the own enumerable property names of `object`.
@@ -32485,10 +32233,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 365 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getPrototype = __webpack_require__(366);
+	var getPrototype = __webpack_require__(360);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -32517,7 +32265,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 366 */
+/* 360 */
 /***/ function(module, exports) {
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
@@ -32538,7 +32286,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 367 */
+/* 361 */
 /***/ function(module, exports) {
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
@@ -32560,14 +32308,14 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 368 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseTimes = __webpack_require__(369),
-	    isArguments = __webpack_require__(370),
-	    isArray = __webpack_require__(379),
-	    isLength = __webpack_require__(377),
-	    isString = __webpack_require__(380);
+	var baseTimes = __webpack_require__(363),
+	    isArguments = __webpack_require__(364),
+	    isArray = __webpack_require__(373),
+	    isLength = __webpack_require__(371),
+	    isString = __webpack_require__(374);
 
 	/**
 	 * Creates an array of index keys for `object` values of arrays,
@@ -32590,7 +32338,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 369 */
+/* 363 */
 /***/ function(module, exports) {
 
 	/**
@@ -32616,10 +32364,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 370 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArrayLikeObject = __webpack_require__(371);
+	var isArrayLikeObject = __webpack_require__(365);
 
 	/** `Object#toString` result references. */
 	var argsTag = '[object Arguments]';
@@ -32668,11 +32416,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 371 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArrayLike = __webpack_require__(372),
-	    isObjectLike = __webpack_require__(378);
+	var isArrayLike = __webpack_require__(366),
+	    isObjectLike = __webpack_require__(372);
 
 	/**
 	 * This method is like `_.isArrayLike` except that it also checks if `value`
@@ -32707,12 +32455,12 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 372 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getLength = __webpack_require__(373),
-	    isFunction = __webpack_require__(375),
-	    isLength = __webpack_require__(377);
+	var getLength = __webpack_require__(367),
+	    isFunction = __webpack_require__(369),
+	    isLength = __webpack_require__(371);
 
 	/**
 	 * Checks if `value` is array-like. A value is considered array-like if it's
@@ -32747,10 +32495,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 373 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseProperty = __webpack_require__(374);
+	var baseProperty = __webpack_require__(368);
 
 	/**
 	 * Gets the "length" property value of `object`.
@@ -32769,7 +32517,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 374 */
+/* 368 */
 /***/ function(module, exports) {
 
 	/**
@@ -32789,10 +32537,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 375 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(376);
+	var isObject = __webpack_require__(370);
 
 	/** `Object#toString` result references. */
 	var funcTag = '[object Function]',
@@ -32838,7 +32586,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 376 */
+/* 370 */
 /***/ function(module, exports) {
 
 	/**
@@ -32875,7 +32623,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 377 */
+/* 371 */
 /***/ function(module, exports) {
 
 	/** Used as references for various `Number` constants. */
@@ -32917,7 +32665,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 378 */
+/* 372 */
 /***/ function(module, exports) {
 
 	/**
@@ -32952,7 +32700,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 379 */
+/* 373 */
 /***/ function(module, exports) {
 
 	/**
@@ -32986,11 +32734,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 380 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArray = __webpack_require__(379),
-	    isObjectLike = __webpack_require__(378);
+	var isArray = __webpack_require__(373),
+	    isObjectLike = __webpack_require__(372);
 
 	/** `Object#toString` result references. */
 	var stringTag = '[object String]';
@@ -33032,7 +32780,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 381 */
+/* 375 */
 /***/ function(module, exports) {
 
 	/** Used as references for various `Number` constants. */
@@ -33060,7 +32808,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 382 */
+/* 376 */
 /***/ function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -33084,14 +32832,14 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 383 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseMatches = __webpack_require__(384),
-	    baseMatchesProperty = __webpack_require__(447),
-	    identity = __webpack_require__(461),
-	    isArray = __webpack_require__(379),
-	    property = __webpack_require__(462);
+	var baseMatches = __webpack_require__(378),
+	    baseMatchesProperty = __webpack_require__(441),
+	    identity = __webpack_require__(455),
+	    isArray = __webpack_require__(373),
+	    property = __webpack_require__(456);
 
 	/**
 	 * The base implementation of `_.iteratee`.
@@ -33121,12 +32869,12 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 384 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsMatch = __webpack_require__(385),
-	    getMatchData = __webpack_require__(444),
-	    matchesStrictComparable = __webpack_require__(446);
+	var baseIsMatch = __webpack_require__(379),
+	    getMatchData = __webpack_require__(438),
+	    matchesStrictComparable = __webpack_require__(440);
 
 	/**
 	 * The base implementation of `_.matches` which doesn't clone `source`.
@@ -33149,11 +32897,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 385 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Stack = __webpack_require__(386),
-	    baseIsEqual = __webpack_require__(425);
+	var Stack = __webpack_require__(380),
+	    baseIsEqual = __webpack_require__(419);
 
 	/** Used to compose bitmasks for comparison styles. */
 	var UNORDERED_COMPARE_FLAG = 1,
@@ -33217,15 +32965,15 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 386 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ListCache = __webpack_require__(387),
-	    stackClear = __webpack_require__(395),
-	    stackDelete = __webpack_require__(396),
-	    stackGet = __webpack_require__(397),
-	    stackHas = __webpack_require__(398),
-	    stackSet = __webpack_require__(399);
+	var ListCache = __webpack_require__(381),
+	    stackClear = __webpack_require__(389),
+	    stackDelete = __webpack_require__(390),
+	    stackGet = __webpack_require__(391),
+	    stackHas = __webpack_require__(392),
+	    stackSet = __webpack_require__(393);
 
 	/**
 	 * Creates a stack cache object to store key-value pairs.
@@ -33249,14 +32997,14 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 387 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var listCacheClear = __webpack_require__(388),
-	    listCacheDelete = __webpack_require__(389),
-	    listCacheGet = __webpack_require__(392),
-	    listCacheHas = __webpack_require__(393),
-	    listCacheSet = __webpack_require__(394);
+	var listCacheClear = __webpack_require__(382),
+	    listCacheDelete = __webpack_require__(383),
+	    listCacheGet = __webpack_require__(386),
+	    listCacheHas = __webpack_require__(387),
+	    listCacheSet = __webpack_require__(388);
 
 	/**
 	 * Creates an list cache object.
@@ -33287,7 +33035,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 388 */
+/* 382 */
 /***/ function(module, exports) {
 
 	/**
@@ -33305,10 +33053,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 389 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(390);
+	var assocIndexOf = __webpack_require__(384);
 
 	/** Used for built-in method references. */
 	var arrayProto = Array.prototype;
@@ -33345,10 +33093,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 390 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var eq = __webpack_require__(391);
+	var eq = __webpack_require__(385);
 
 	/**
 	 * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -33372,7 +33120,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 391 */
+/* 385 */
 /***/ function(module, exports) {
 
 	/**
@@ -33415,10 +33163,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 392 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(390);
+	var assocIndexOf = __webpack_require__(384);
 
 	/**
 	 * Gets the list cache value for `key`.
@@ -33440,10 +33188,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 393 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(390);
+	var assocIndexOf = __webpack_require__(384);
 
 	/**
 	 * Checks if a list cache value for `key` exists.
@@ -33462,10 +33210,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 394 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(390);
+	var assocIndexOf = __webpack_require__(384);
 
 	/**
 	 * Sets the list cache `key` to `value`.
@@ -33493,10 +33241,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 395 */
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ListCache = __webpack_require__(387);
+	var ListCache = __webpack_require__(381);
 
 	/**
 	 * Removes all key-value entries from the stack.
@@ -33513,7 +33261,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 396 */
+/* 390 */
 /***/ function(module, exports) {
 
 	/**
@@ -33533,7 +33281,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 397 */
+/* 391 */
 /***/ function(module, exports) {
 
 	/**
@@ -33553,7 +33301,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 398 */
+/* 392 */
 /***/ function(module, exports) {
 
 	/**
@@ -33573,11 +33321,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 399 */
+/* 393 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ListCache = __webpack_require__(387),
-	    MapCache = __webpack_require__(400);
+	var ListCache = __webpack_require__(381),
+	    MapCache = __webpack_require__(394);
 
 	/** Used as the size to enable large array optimizations. */
 	var LARGE_ARRAY_SIZE = 200;
@@ -33605,14 +33353,14 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 400 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var mapCacheClear = __webpack_require__(401),
-	    mapCacheDelete = __webpack_require__(419),
-	    mapCacheGet = __webpack_require__(422),
-	    mapCacheHas = __webpack_require__(423),
-	    mapCacheSet = __webpack_require__(424);
+	var mapCacheClear = __webpack_require__(395),
+	    mapCacheDelete = __webpack_require__(413),
+	    mapCacheGet = __webpack_require__(416),
+	    mapCacheHas = __webpack_require__(417),
+	    mapCacheSet = __webpack_require__(418);
 
 	/**
 	 * Creates a map cache object to store key-value pairs.
@@ -33643,12 +33391,12 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 401 */
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Hash = __webpack_require__(402),
-	    ListCache = __webpack_require__(387),
-	    Map = __webpack_require__(418);
+	var Hash = __webpack_require__(396),
+	    ListCache = __webpack_require__(381),
+	    Map = __webpack_require__(412);
 
 	/**
 	 * Removes all key-value entries from the map.
@@ -33669,14 +33417,14 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 402 */
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var hashClear = __webpack_require__(403),
-	    hashDelete = __webpack_require__(414),
-	    hashGet = __webpack_require__(415),
-	    hashHas = __webpack_require__(416),
-	    hashSet = __webpack_require__(417);
+	var hashClear = __webpack_require__(397),
+	    hashDelete = __webpack_require__(408),
+	    hashGet = __webpack_require__(409),
+	    hashHas = __webpack_require__(410),
+	    hashSet = __webpack_require__(411);
 
 	/**
 	 * Creates a hash object.
@@ -33707,10 +33455,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 403 */
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(404);
+	var nativeCreate = __webpack_require__(398);
 
 	/**
 	 * Removes all key-value entries from the hash.
@@ -33727,10 +33475,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 404 */
+/* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(405);
+	var getNative = __webpack_require__(399);
 
 	/* Built-in method references that are verified to be native. */
 	var nativeCreate = getNative(Object, 'create');
@@ -33739,11 +33487,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 405 */
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsNative = __webpack_require__(406),
-	    getValue = __webpack_require__(413);
+	var baseIsNative = __webpack_require__(400),
+	    getValue = __webpack_require__(407);
 
 	/**
 	 * Gets the native function at `key` of `object`.
@@ -33762,14 +33510,14 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 406 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isFunction = __webpack_require__(375),
-	    isHostObject = __webpack_require__(407),
-	    isMasked = __webpack_require__(408),
-	    isObject = __webpack_require__(376),
-	    toSource = __webpack_require__(412);
+	var isFunction = __webpack_require__(369),
+	    isHostObject = __webpack_require__(401),
+	    isMasked = __webpack_require__(402),
+	    isObject = __webpack_require__(370),
+	    toSource = __webpack_require__(406);
 
 	/**
 	 * Used to match `RegExp`
@@ -33815,7 +33563,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 407 */
+/* 401 */
 /***/ function(module, exports) {
 
 	/**
@@ -33841,10 +33589,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 408 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var coreJsData = __webpack_require__(409);
+	var coreJsData = __webpack_require__(403);
 
 	/** Used to detect methods masquerading as native. */
 	var maskSrcKey = (function() {
@@ -33867,10 +33615,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 409 */
+/* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(410);
+	var root = __webpack_require__(404);
 
 	/** Used to detect overreaching core-js shims. */
 	var coreJsData = root['__core-js_shared__'];
@@ -33879,10 +33627,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 410 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var checkGlobal = __webpack_require__(411);
+	/* WEBPACK VAR INJECTION */(function(global) {var checkGlobal = __webpack_require__(405);
 
 	/** Detect free variable `global` from Node.js. */
 	var freeGlobal = checkGlobal(typeof global == 'object' && global);
@@ -33901,7 +33649,7 @@ var vendors_dashboard_worona =
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 411 */
+/* 405 */
 /***/ function(module, exports) {
 
 	/**
@@ -33919,7 +33667,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 412 */
+/* 406 */
 /***/ function(module, exports) {
 
 	/** Used to resolve the decompiled source of functions. */
@@ -33948,7 +33696,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 413 */
+/* 407 */
 /***/ function(module, exports) {
 
 	/**
@@ -33967,7 +33715,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 414 */
+/* 408 */
 /***/ function(module, exports) {
 
 	/**
@@ -33988,10 +33736,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 415 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(404);
+	var nativeCreate = __webpack_require__(398);
 
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -34024,10 +33772,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 416 */
+/* 410 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(404);
+	var nativeCreate = __webpack_require__(398);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -34053,10 +33801,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 417 */
+/* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(404);
+	var nativeCreate = __webpack_require__(398);
 
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -34081,11 +33829,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 418 */
+/* 412 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(405),
-	    root = __webpack_require__(410);
+	var getNative = __webpack_require__(399),
+	    root = __webpack_require__(404);
 
 	/* Built-in method references that are verified to be native. */
 	var Map = getNative(root, 'Map');
@@ -34094,10 +33842,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 419 */
+/* 413 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(420);
+	var getMapData = __webpack_require__(414);
 
 	/**
 	 * Removes `key` and its value from the map.
@@ -34116,10 +33864,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 420 */
+/* 414 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isKeyable = __webpack_require__(421);
+	var isKeyable = __webpack_require__(415);
 
 	/**
 	 * Gets the data for `map`.
@@ -34140,7 +33888,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 421 */
+/* 415 */
 /***/ function(module, exports) {
 
 	/**
@@ -34161,10 +33909,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 422 */
+/* 416 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(420);
+	var getMapData = __webpack_require__(414);
 
 	/**
 	 * Gets the map value for `key`.
@@ -34183,10 +33931,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 423 */
+/* 417 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(420);
+	var getMapData = __webpack_require__(414);
 
 	/**
 	 * Checks if a map value for `key` exists.
@@ -34205,10 +33953,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 424 */
+/* 418 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(420);
+	var getMapData = __webpack_require__(414);
 
 	/**
 	 * Sets the map `key` to `value`.
@@ -34229,12 +33977,12 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 425 */
+/* 419 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsEqualDeep = __webpack_require__(426),
-	    isObject = __webpack_require__(376),
-	    isObjectLike = __webpack_require__(378);
+	var baseIsEqualDeep = __webpack_require__(420),
+	    isObject = __webpack_require__(370),
+	    isObjectLike = __webpack_require__(372);
 
 	/**
 	 * The base implementation of `_.isEqual` which supports partial comparisons
@@ -34265,17 +34013,17 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 426 */
+/* 420 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Stack = __webpack_require__(386),
-	    equalArrays = __webpack_require__(427),
-	    equalByTag = __webpack_require__(432),
-	    equalObjects = __webpack_require__(437),
-	    getTag = __webpack_require__(438),
-	    isArray = __webpack_require__(379),
-	    isHostObject = __webpack_require__(407),
-	    isTypedArray = __webpack_require__(443);
+	var Stack = __webpack_require__(380),
+	    equalArrays = __webpack_require__(421),
+	    equalByTag = __webpack_require__(426),
+	    equalObjects = __webpack_require__(431),
+	    getTag = __webpack_require__(432),
+	    isArray = __webpack_require__(373),
+	    isHostObject = __webpack_require__(401),
+	    isTypedArray = __webpack_require__(437);
 
 	/** Used to compose bitmasks for comparison styles. */
 	var PARTIAL_COMPARE_FLAG = 2;
@@ -34353,11 +34101,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 427 */
+/* 421 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var SetCache = __webpack_require__(428),
-	    arraySome = __webpack_require__(431);
+	var SetCache = __webpack_require__(422),
+	    arraySome = __webpack_require__(425);
 
 	/** Used to compose bitmasks for comparison styles. */
 	var UNORDERED_COMPARE_FLAG = 1,
@@ -34440,12 +34188,12 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 428 */
+/* 422 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var MapCache = __webpack_require__(400),
-	    setCacheAdd = __webpack_require__(429),
-	    setCacheHas = __webpack_require__(430);
+	var MapCache = __webpack_require__(394),
+	    setCacheAdd = __webpack_require__(423),
+	    setCacheHas = __webpack_require__(424);
 
 	/**
 	 *
@@ -34473,7 +34221,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 429 */
+/* 423 */
 /***/ function(module, exports) {
 
 	/** Used to stand-in for `undefined` hash values. */
@@ -34498,7 +34246,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 430 */
+/* 424 */
 /***/ function(module, exports) {
 
 	/**
@@ -34518,7 +34266,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 431 */
+/* 425 */
 /***/ function(module, exports) {
 
 	/**
@@ -34547,14 +34295,14 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 432 */
+/* 426 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(433),
-	    Uint8Array = __webpack_require__(434),
-	    equalArrays = __webpack_require__(427),
-	    mapToArray = __webpack_require__(435),
-	    setToArray = __webpack_require__(436);
+	var Symbol = __webpack_require__(427),
+	    Uint8Array = __webpack_require__(428),
+	    equalArrays = __webpack_require__(421),
+	    mapToArray = __webpack_require__(429),
+	    setToArray = __webpack_require__(430);
 
 	/** Used to compose bitmasks for comparison styles. */
 	var UNORDERED_COMPARE_FLAG = 1,
@@ -34667,10 +34415,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 433 */
+/* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(410);
+	var root = __webpack_require__(404);
 
 	/** Built-in value references. */
 	var Symbol = root.Symbol;
@@ -34679,10 +34427,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 434 */
+/* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(410);
+	var root = __webpack_require__(404);
 
 	/** Built-in value references. */
 	var Uint8Array = root.Uint8Array;
@@ -34691,7 +34439,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 435 */
+/* 429 */
 /***/ function(module, exports) {
 
 	/**
@@ -34715,7 +34463,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 436 */
+/* 430 */
 /***/ function(module, exports) {
 
 	/**
@@ -34739,11 +34487,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 437 */
+/* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseHas = __webpack_require__(365),
-	    keys = __webpack_require__(364);
+	var baseHas = __webpack_require__(359),
+	    keys = __webpack_require__(358);
 
 	/** Used to compose bitmasks for comparison styles. */
 	var PARTIAL_COMPARE_FLAG = 2;
@@ -34828,15 +34576,15 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 438 */
+/* 432 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var DataView = __webpack_require__(439),
-	    Map = __webpack_require__(418),
-	    Promise = __webpack_require__(440),
-	    Set = __webpack_require__(441),
-	    WeakMap = __webpack_require__(442),
-	    toSource = __webpack_require__(412);
+	var DataView = __webpack_require__(433),
+	    Map = __webpack_require__(412),
+	    Promise = __webpack_require__(434),
+	    Set = __webpack_require__(435),
+	    WeakMap = __webpack_require__(436),
+	    toSource = __webpack_require__(406);
 
 	/** `Object#toString` result references. */
 	var mapTag = '[object Map]',
@@ -34904,11 +34652,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 439 */
+/* 433 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(405),
-	    root = __webpack_require__(410);
+	var getNative = __webpack_require__(399),
+	    root = __webpack_require__(404);
 
 	/* Built-in method references that are verified to be native. */
 	var DataView = getNative(root, 'DataView');
@@ -34917,11 +34665,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 440 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(405),
-	    root = __webpack_require__(410);
+	var getNative = __webpack_require__(399),
+	    root = __webpack_require__(404);
 
 	/* Built-in method references that are verified to be native. */
 	var Promise = getNative(root, 'Promise');
@@ -34930,11 +34678,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 441 */
+/* 435 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(405),
-	    root = __webpack_require__(410);
+	var getNative = __webpack_require__(399),
+	    root = __webpack_require__(404);
 
 	/* Built-in method references that are verified to be native. */
 	var Set = getNative(root, 'Set');
@@ -34943,11 +34691,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 442 */
+/* 436 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(405),
-	    root = __webpack_require__(410);
+	var getNative = __webpack_require__(399),
+	    root = __webpack_require__(404);
 
 	/* Built-in method references that are verified to be native. */
 	var WeakMap = getNative(root, 'WeakMap');
@@ -34956,11 +34704,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 443 */
+/* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isLength = __webpack_require__(377),
-	    isObjectLike = __webpack_require__(378);
+	var isLength = __webpack_require__(371),
+	    isObjectLike = __webpack_require__(372);
 
 	/** `Object#toString` result references. */
 	var argsTag = '[object Arguments]',
@@ -35042,11 +34790,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 444 */
+/* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isStrictComparable = __webpack_require__(445),
-	    keys = __webpack_require__(364);
+	var isStrictComparable = __webpack_require__(439),
+	    keys = __webpack_require__(358);
 
 	/**
 	 * Gets the property names, values, and compare flags of `object`.
@@ -35072,10 +34820,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 445 */
+/* 439 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(376);
+	var isObject = __webpack_require__(370);
 
 	/**
 	 * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
@@ -35093,7 +34841,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 446 */
+/* 440 */
 /***/ function(module, exports) {
 
 	/**
@@ -35119,16 +34867,16 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 447 */
+/* 441 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsEqual = __webpack_require__(425),
-	    get = __webpack_require__(448),
-	    hasIn = __webpack_require__(458),
-	    isKey = __webpack_require__(456),
-	    isStrictComparable = __webpack_require__(445),
-	    matchesStrictComparable = __webpack_require__(446),
-	    toKey = __webpack_require__(457);
+	var baseIsEqual = __webpack_require__(419),
+	    get = __webpack_require__(442),
+	    hasIn = __webpack_require__(452),
+	    isKey = __webpack_require__(450),
+	    isStrictComparable = __webpack_require__(439),
+	    matchesStrictComparable = __webpack_require__(440),
+	    toKey = __webpack_require__(451);
 
 	/** Used to compose bitmasks for comparison styles. */
 	var UNORDERED_COMPARE_FLAG = 1,
@@ -35158,10 +34906,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 448 */
+/* 442 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGet = __webpack_require__(449);
+	var baseGet = __webpack_require__(443);
 
 	/**
 	 * Gets the value at `path` of `object`. If the resolved value is
@@ -35197,12 +34945,12 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 449 */
+/* 443 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var castPath = __webpack_require__(450),
-	    isKey = __webpack_require__(456),
-	    toKey = __webpack_require__(457);
+	var castPath = __webpack_require__(444),
+	    isKey = __webpack_require__(450),
+	    toKey = __webpack_require__(451);
 
 	/**
 	 * The base implementation of `_.get` without support for default values.
@@ -35228,11 +34976,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 450 */
+/* 444 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArray = __webpack_require__(379),
-	    stringToPath = __webpack_require__(451);
+	var isArray = __webpack_require__(373),
+	    stringToPath = __webpack_require__(445);
 
 	/**
 	 * Casts `value` to a path array if it's not one.
@@ -35249,11 +34997,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 451 */
+/* 445 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var memoize = __webpack_require__(452),
-	    toString = __webpack_require__(453);
+	var memoize = __webpack_require__(446),
+	    toString = __webpack_require__(447);
 
 	/** Used to match property names within property paths. */
 	var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(\.|\[\])(?:\4|$))/g;
@@ -35280,10 +35028,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 452 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var MapCache = __webpack_require__(400);
+	var MapCache = __webpack_require__(394);
 
 	/** Used as the `TypeError` message for "Functions" methods. */
 	var FUNC_ERROR_TEXT = 'Expected a function';
@@ -35359,10 +35107,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 453 */
+/* 447 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseToString = __webpack_require__(454);
+	var baseToString = __webpack_require__(448);
 
 	/**
 	 * Converts `value` to a string. An empty string is returned for `null`
@@ -35393,11 +35141,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 454 */
+/* 448 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(433),
-	    isSymbol = __webpack_require__(455);
+	var Symbol = __webpack_require__(427),
+	    isSymbol = __webpack_require__(449);
 
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -35430,10 +35178,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 455 */
+/* 449 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObjectLike = __webpack_require__(378);
+	var isObjectLike = __webpack_require__(372);
 
 	/** `Object#toString` result references. */
 	var symbolTag = '[object Symbol]';
@@ -35475,11 +35223,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 456 */
+/* 450 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArray = __webpack_require__(379),
-	    isSymbol = __webpack_require__(455);
+	var isArray = __webpack_require__(373),
+	    isSymbol = __webpack_require__(449);
 
 	/** Used to match property names within property paths. */
 	var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -35510,10 +35258,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 457 */
+/* 451 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isSymbol = __webpack_require__(455);
+	var isSymbol = __webpack_require__(449);
 
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -35537,11 +35285,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 458 */
+/* 452 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseHasIn = __webpack_require__(459),
-	    hasPath = __webpack_require__(460);
+	var baseHasIn = __webpack_require__(453),
+	    hasPath = __webpack_require__(454);
 
 	/**
 	 * Checks if `path` is a direct or inherited property of `object`.
@@ -35577,7 +35325,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 459 */
+/* 453 */
 /***/ function(module, exports) {
 
 	/**
@@ -35596,17 +35344,17 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 460 */
+/* 454 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var castPath = __webpack_require__(450),
-	    isArguments = __webpack_require__(370),
-	    isArray = __webpack_require__(379),
-	    isIndex = __webpack_require__(381),
-	    isKey = __webpack_require__(456),
-	    isLength = __webpack_require__(377),
-	    isString = __webpack_require__(380),
-	    toKey = __webpack_require__(457);
+	var castPath = __webpack_require__(444),
+	    isArguments = __webpack_require__(364),
+	    isArray = __webpack_require__(373),
+	    isIndex = __webpack_require__(375),
+	    isKey = __webpack_require__(450),
+	    isLength = __webpack_require__(371),
+	    isString = __webpack_require__(374),
+	    toKey = __webpack_require__(451);
 
 	/**
 	 * Checks if `path` exists on `object`.
@@ -35643,7 +35391,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 461 */
+/* 455 */
 /***/ function(module, exports) {
 
 	/**
@@ -35670,13 +35418,13 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 462 */
+/* 456 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseProperty = __webpack_require__(374),
-	    basePropertyDeep = __webpack_require__(463),
-	    isKey = __webpack_require__(456),
-	    toKey = __webpack_require__(457);
+	var baseProperty = __webpack_require__(368),
+	    basePropertyDeep = __webpack_require__(457),
+	    isKey = __webpack_require__(450),
+	    toKey = __webpack_require__(451);
 
 	/**
 	 * Creates a function that returns the value at `path` of a given object.
@@ -35708,10 +35456,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 463 */
+/* 457 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGet = __webpack_require__(449);
+	var baseGet = __webpack_require__(443);
 
 	/**
 	 * A specialized version of `baseProperty` which supports deep paths.
@@ -35730,11 +35478,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 464 */
+/* 458 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIteratee = __webpack_require__(383),
-	    basePickBy = __webpack_require__(465);
+	var baseIteratee = __webpack_require__(377),
+	    basePickBy = __webpack_require__(459);
 
 	/**
 	 * The opposite of `_.pickBy`; this method creates an object composed of
@@ -35768,10 +35516,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 465 */
+/* 459 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getAllKeysIn = __webpack_require__(466);
+	var getAllKeysIn = __webpack_require__(460);
 
 	/**
 	 * The base implementation of  `_.pickBy` without support for iteratee shorthands.
@@ -35802,12 +35550,12 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 466 */
+/* 460 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetAllKeys = __webpack_require__(467),
-	    getSymbolsIn = __webpack_require__(469),
-	    keysIn = __webpack_require__(472);
+	var baseGetAllKeys = __webpack_require__(461),
+	    getSymbolsIn = __webpack_require__(463),
+	    keysIn = __webpack_require__(466);
 
 	/**
 	 * Creates an array of own and inherited enumerable property names and
@@ -35825,11 +35573,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 467 */
+/* 461 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayPush = __webpack_require__(468),
-	    isArray = __webpack_require__(379);
+	var arrayPush = __webpack_require__(462),
+	    isArray = __webpack_require__(373);
 
 	/**
 	 * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -35851,7 +35599,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 468 */
+/* 462 */
 /***/ function(module, exports) {
 
 	/**
@@ -35877,12 +35625,12 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 469 */
+/* 463 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayPush = __webpack_require__(468),
-	    getPrototype = __webpack_require__(366),
-	    getSymbols = __webpack_require__(470);
+	var arrayPush = __webpack_require__(462),
+	    getPrototype = __webpack_require__(360),
+	    getSymbols = __webpack_require__(464);
 
 	/** Built-in value references. */
 	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
@@ -35908,10 +35656,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 470 */
+/* 464 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var stubArray = __webpack_require__(471);
+	var stubArray = __webpack_require__(465);
 
 	/** Built-in value references. */
 	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
@@ -35938,7 +35686,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 471 */
+/* 465 */
 /***/ function(module, exports) {
 
 	/**
@@ -35967,13 +35715,13 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 472 */
+/* 466 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseKeysIn = __webpack_require__(473),
-	    indexKeys = __webpack_require__(368),
-	    isIndex = __webpack_require__(381),
-	    isPrototype = __webpack_require__(382);
+	var baseKeysIn = __webpack_require__(467),
+	    indexKeys = __webpack_require__(362),
+	    isIndex = __webpack_require__(375),
+	    isPrototype = __webpack_require__(376);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -36028,11 +35776,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 473 */
+/* 467 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Reflect = __webpack_require__(474),
-	    iteratorToArray = __webpack_require__(475);
+	var Reflect = __webpack_require__(468),
+	    iteratorToArray = __webpack_require__(469);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -36070,10 +35818,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 474 */
+/* 468 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(410);
+	var root = __webpack_require__(404);
 
 	/** Built-in value references. */
 	var Reflect = root.Reflect;
@@ -36082,7 +35830,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 475 */
+/* 469 */
 /***/ function(module, exports) {
 
 	/**
@@ -36106,13 +35854,13 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 476 */
+/* 470 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayMap = __webpack_require__(477),
-	    baseIteratee = __webpack_require__(383),
-	    baseMap = __webpack_require__(478),
-	    isArray = __webpack_require__(379);
+	var arrayMap = __webpack_require__(471),
+	    baseIteratee = __webpack_require__(377),
+	    baseMap = __webpack_require__(472),
+	    isArray = __webpack_require__(373);
 
 	/**
 	 * Creates an array of values by running each element in `collection` thru
@@ -36166,7 +35914,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 477 */
+/* 471 */
 /***/ function(module, exports) {
 
 	/**
@@ -36193,11 +35941,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 478 */
+/* 472 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseEach = __webpack_require__(479),
-	    isArrayLike = __webpack_require__(372);
+	var baseEach = __webpack_require__(473),
+	    isArrayLike = __webpack_require__(366);
 
 	/**
 	 * The base implementation of `_.map` without support for iteratee shorthands.
@@ -36221,11 +35969,11 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 479 */
+/* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseForOwn = __webpack_require__(361),
-	    createBaseEach = __webpack_require__(480);
+	var baseForOwn = __webpack_require__(355),
+	    createBaseEach = __webpack_require__(474);
 
 	/**
 	 * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -36241,10 +35989,10 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 480 */
+/* 474 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArrayLike = __webpack_require__(372);
+	var isArrayLike = __webpack_require__(366);
 
 	/**
 	 * Creates a `baseEach` or `baseEachRight` function.
@@ -36279,16 +36027,16 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 481 */
+/* 475 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = __webpack_require__(482);
+	module.exports = __webpack_require__(476);
 
 
 /***/ },
-/* 482 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36306,16 +36054,16 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactDefaultInjection = __webpack_require__(486);
-	var ReactMount = __webpack_require__(603);
-	var ReactReconciler = __webpack_require__(505);
-	var ReactUpdates = __webpack_require__(502);
-	var ReactVersion = __webpack_require__(333);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactDefaultInjection = __webpack_require__(480);
+	var ReactMount = __webpack_require__(606);
+	var ReactReconciler = __webpack_require__(500);
+	var ReactUpdates = __webpack_require__(497);
+	var ReactVersion = __webpack_require__(327);
 
-	var findDOMNode = __webpack_require__(608);
-	var getNativeComponentFromComposite = __webpack_require__(609);
-	var renderSubtreeIntoContainer = __webpack_require__(610);
+	var findDOMNode = __webpack_require__(611);
+	var getHostComponentFromComposite = __webpack_require__(612);
+	var renderSubtreeIntoContainer = __webpack_require__(613);
 	var warning = __webpack_require__(307);
 
 	ReactDefaultInjection.inject();
@@ -36341,7 +36089,7 @@ var vendors_dashboard_worona =
 	      getNodeFromInstance: function (inst) {
 	        // inst is an internal instance (but could be a composite)
 	        if (inst._renderedComponent) {
-	          inst = getNativeComponentFromComposite(inst);
+	          inst = getHostComponentFromComposite(inst);
 	        }
 	        if (inst) {
 	          return ReactDOMComponentTree.getNodeFromInstance(inst);
@@ -36356,7 +36104,7 @@ var vendors_dashboard_worona =
 	}
 
 	if (true) {
-	  var ExecutionEnvironment = __webpack_require__(317);
+	  var ExecutionEnvironment = __webpack_require__(490);
 	  if (ExecutionEnvironment.canUseDOM && window.top === window.self) {
 
 	    // First check if devtools is not installed
@@ -36394,7 +36142,7 @@ var vendors_dashboard_worona =
 	module.exports = React;
 
 /***/ },
-/* 483 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36410,8 +36158,10 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(484);
-	var ReactDOMComponentFlags = __webpack_require__(485);
+	var _prodInvariant = __webpack_require__(303);
+
+	var DOMProperty = __webpack_require__(478);
+	var ReactDOMComponentFlags = __webpack_require__(479);
 
 	var invariant = __webpack_require__(304);
 
@@ -36421,13 +36171,13 @@ var vendors_dashboard_worona =
 	var internalInstanceKey = '__reactInternalInstance$' + Math.random().toString(36).slice(2);
 
 	/**
-	 * Drill down (through composites and empty components) until we get a native or
-	 * native text component.
+	 * Drill down (through composites and empty components) until we get a host or
+	 * host text component.
 	 *
 	 * This is pretty polymorphic but unavoidable with the current structure we have
 	 * for `_renderedChildren`.
 	 */
-	function getRenderedNativeOrTextFromComponent(component) {
+	function getRenderedHostOrTextFromComponent(component) {
 	  var rendered;
 	  while (rendered = component._renderedComponent) {
 	    component = rendered;
@@ -36436,25 +36186,25 @@ var vendors_dashboard_worona =
 	}
 
 	/**
-	 * Populate `_nativeNode` on the rendered native/text component with the given
+	 * Populate `_hostNode` on the rendered host/text component with the given
 	 * DOM node. The passed `inst` can be a composite.
 	 */
 	function precacheNode(inst, node) {
-	  var nativeInst = getRenderedNativeOrTextFromComponent(inst);
-	  nativeInst._nativeNode = node;
-	  node[internalInstanceKey] = nativeInst;
+	  var hostInst = getRenderedHostOrTextFromComponent(inst);
+	  hostInst._hostNode = node;
+	  node[internalInstanceKey] = hostInst;
 	}
 
 	function uncacheNode(inst) {
-	  var node = inst._nativeNode;
+	  var node = inst._hostNode;
 	  if (node) {
 	    delete node[internalInstanceKey];
-	    inst._nativeNode = null;
+	    inst._hostNode = null;
 	  }
 	}
 
 	/**
-	 * Populate `_nativeNode` on each child of `inst`, assuming that the children
+	 * Populate `_hostNode` on each child of `inst`, assuming that the children
 	 * match up with the DOM (element) children of `node`.
 	 *
 	 * We cache entire levels at once to avoid an n^2 problem where we access the
@@ -36478,7 +36228,7 @@ var vendors_dashboard_worona =
 	      continue;
 	    }
 	    var childInst = children[name];
-	    var childID = getRenderedNativeOrTextFromComponent(childInst)._domID;
+	    var childID = getRenderedHostOrTextFromComponent(childInst)._domID;
 	    if (childID == null) {
 	      // We're currently unmounting this child in ReactMultiChild; skip it.
 	      continue;
@@ -36491,7 +36241,7 @@ var vendors_dashboard_worona =
 	      }
 	    }
 	    // We reached the end of the DOM children without finding an ID match.
-	     true ?  true ? invariant(false, 'Unable to find element with ID %s.', childID) : invariant(false) : void 0;
+	     true ?  true ? invariant(false, 'Unable to find element with ID %s.', childID) : _prodInvariant('32', childID) : void 0;
 	  }
 	  inst._flags |= Flags.hasCachedChildNodes;
 	}
@@ -36536,7 +36286,7 @@ var vendors_dashboard_worona =
 	 */
 	function getInstanceFromNode(node) {
 	  var inst = getClosestInstanceFromNode(node);
-	  if (inst != null && inst._nativeNode === node) {
+	  if (inst != null && inst._hostNode === node) {
 	    return inst;
 	  } else {
 	    return null;
@@ -36550,27 +36300,27 @@ var vendors_dashboard_worona =
 	function getNodeFromInstance(inst) {
 	  // Without this first invariant, passing a non-DOM-component triggers the next
 	  // invariant for a missing parent, which is super confusing.
-	  !(inst._nativeNode !== undefined) ?  true ? invariant(false, 'getNodeFromInstance: Invalid argument.') : invariant(false) : void 0;
+	  !(inst._hostNode !== undefined) ?  true ? invariant(false, 'getNodeFromInstance: Invalid argument.') : _prodInvariant('33') : void 0;
 
-	  if (inst._nativeNode) {
-	    return inst._nativeNode;
+	  if (inst._hostNode) {
+	    return inst._hostNode;
 	  }
 
 	  // Walk up the tree until we find an ancestor whose DOM node we have cached.
 	  var parents = [];
-	  while (!inst._nativeNode) {
+	  while (!inst._hostNode) {
 	    parents.push(inst);
-	    !inst._nativeParent ?  true ? invariant(false, 'React DOM tree root should always have a node reference.') : invariant(false) : void 0;
-	    inst = inst._nativeParent;
+	    !inst._hostParent ?  true ? invariant(false, 'React DOM tree root should always have a node reference.') : _prodInvariant('34') : void 0;
+	    inst = inst._hostParent;
 	  }
 
 	  // Now parents contains each ancestor that does *not* have a cached native
 	  // node, and `inst` is the deepest ancestor that does.
 	  for (; parents.length; inst = parents.pop()) {
-	    precacheChildNodes(inst, inst._nativeNode);
+	    precacheChildNodes(inst, inst._hostNode);
 	  }
 
-	  return inst._nativeNode;
+	  return inst._hostNode;
 	}
 
 	var ReactDOMComponentTree = {
@@ -36585,7 +36335,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMComponentTree;
 
 /***/ },
-/* 484 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36601,6 +36351,8 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
+	var _prodInvariant = __webpack_require__(303);
+
 	var invariant = __webpack_require__(304);
 
 	function checkMask(value, bitmask) {
@@ -36613,7 +36365,6 @@ var vendors_dashboard_worona =
 	   * specifies how the associated DOM property should be accessed or rendered.
 	   */
 	  MUST_USE_PROPERTY: 0x1,
-	  HAS_SIDE_EFFECTS: 0x2,
 	  HAS_BOOLEAN_VALUE: 0x4,
 	  HAS_NUMERIC_VALUE: 0x8,
 	  HAS_POSITIVE_NUMERIC_VALUE: 0x10 | 0x8,
@@ -36660,7 +36411,7 @@ var vendors_dashboard_worona =
 	    }
 
 	    for (var propName in Properties) {
-	      !!DOMProperty.properties.hasOwnProperty(propName) ?  true ? invariant(false, 'injectDOMPropertyConfig(...): You\'re trying to inject DOM property ' + '\'%s\' which has already been injected. You may be accidentally ' + 'injecting the same DOM property config twice, or you may be ' + 'injecting two configs that have conflicting property names.', propName) : invariant(false) : void 0;
+	      !!DOMProperty.properties.hasOwnProperty(propName) ?  true ? invariant(false, 'injectDOMPropertyConfig(...): You\'re trying to inject DOM property \'%s\' which has already been injected. You may be accidentally injecting the same DOM property config twice, or you may be injecting two configs that have conflicting property names.', propName) : _prodInvariant('48', propName) : void 0;
 
 	      var lowerCased = propName.toLowerCase();
 	      var propConfig = Properties[propName];
@@ -36672,15 +36423,12 @@ var vendors_dashboard_worona =
 	        mutationMethod: null,
 
 	        mustUseProperty: checkMask(propConfig, Injection.MUST_USE_PROPERTY),
-	        hasSideEffects: checkMask(propConfig, Injection.HAS_SIDE_EFFECTS),
 	        hasBooleanValue: checkMask(propConfig, Injection.HAS_BOOLEAN_VALUE),
 	        hasNumericValue: checkMask(propConfig, Injection.HAS_NUMERIC_VALUE),
 	        hasPositiveNumericValue: checkMask(propConfig, Injection.HAS_POSITIVE_NUMERIC_VALUE),
 	        hasOverloadedBooleanValue: checkMask(propConfig, Injection.HAS_OVERLOADED_BOOLEAN_VALUE)
 	      };
-
-	      !(propertyInfo.mustUseProperty || !propertyInfo.hasSideEffects) ?  true ? invariant(false, 'DOMProperty: Properties that have side effects must use property: %s', propName) : invariant(false) : void 0;
-	      !(propertyInfo.hasBooleanValue + propertyInfo.hasNumericValue + propertyInfo.hasOverloadedBooleanValue <= 1) ?  true ? invariant(false, 'DOMProperty: Value can be one of boolean, overloaded boolean, or ' + 'numeric value, but not a combination: %s', propName) : invariant(false) : void 0;
+	      !(propertyInfo.hasBooleanValue + propertyInfo.hasNumericValue + propertyInfo.hasOverloadedBooleanValue <= 1) ?  true ? invariant(false, 'DOMProperty: Value can be one of boolean, overloaded boolean, or numeric value, but not a combination: %s', propName) : _prodInvariant('50', propName) : void 0;
 
 	      if (true) {
 	        DOMProperty.getPossibleStandardName[lowerCased] = propName;
@@ -36734,7 +36482,7 @@ var vendors_dashboard_worona =
 	  ROOT_ATTRIBUTE_NAME: 'data-reactroot',
 
 	  ATTRIBUTE_NAME_START_CHAR: ATTRIBUTE_NAME_START_CHAR,
-	  ATTRIBUTE_NAME_CHAR: ATTRIBUTE_NAME_START_CHAR + '\\-.0-9\\uB7\\u0300-\\u036F\\u203F-\\u2040',
+	  ATTRIBUTE_NAME_CHAR: ATTRIBUTE_NAME_START_CHAR + '\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040',
 
 	  /**
 	   * Map from property "standard name" to an object with info about how to set
@@ -36751,11 +36499,6 @@ var vendors_dashboard_worona =
 	   *   initial render.
 	   * mustUseProperty:
 	   *   Whether the property must be accessed and mutated as an object property.
-	   * hasSideEffects:
-	   *   Whether or not setting a value causes side effects such as triggering
-	   *   resources to be loaded or text selection changes. If true, we read from
-	   *   the DOM before updating to ensure that the value is only set if it has
-	   *   changed.
 	   * hasBooleanValue:
 	   *   Whether the property should be removed when set to a falsey value.
 	   * hasNumericValue:
@@ -36803,7 +36546,7 @@ var vendors_dashboard_worona =
 	module.exports = DOMProperty;
 
 /***/ },
-/* 485 */
+/* 479 */
 /***/ function(module, exports) {
 
 	/**
@@ -36826,7 +36569,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMComponentFlags;
 
 /***/ },
-/* 486 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36842,24 +36585,24 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var BeforeInputEventPlugin = __webpack_require__(487);
-	var ChangeEventPlugin = __webpack_require__(501);
-	var DefaultEventPluginOrder = __webpack_require__(512);
-	var EnterLeaveEventPlugin = __webpack_require__(513);
-	var HTMLDOMPropertyConfig = __webpack_require__(518);
-	var ReactComponentBrowserEnvironment = __webpack_require__(519);
-	var ReactDOMComponent = __webpack_require__(533);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactDOMEmptyComponent = __webpack_require__(574);
-	var ReactDOMTreeTraversal = __webpack_require__(575);
-	var ReactDOMTextComponent = __webpack_require__(576);
-	var ReactDefaultBatchingStrategy = __webpack_require__(577);
-	var ReactEventListener = __webpack_require__(578);
-	var ReactInjection = __webpack_require__(581);
-	var ReactReconcileTransaction = __webpack_require__(582);
-	var SVGDOMPropertyConfig = __webpack_require__(590);
-	var SelectEventPlugin = __webpack_require__(591);
-	var SimpleEventPlugin = __webpack_require__(592);
+	var BeforeInputEventPlugin = __webpack_require__(481);
+	var ChangeEventPlugin = __webpack_require__(496);
+	var DefaultEventPluginOrder = __webpack_require__(513);
+	var EnterLeaveEventPlugin = __webpack_require__(514);
+	var HTMLDOMPropertyConfig = __webpack_require__(519);
+	var ReactComponentBrowserEnvironment = __webpack_require__(520);
+	var ReactDOMComponent = __webpack_require__(534);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactDOMEmptyComponent = __webpack_require__(577);
+	var ReactDOMTreeTraversal = __webpack_require__(578);
+	var ReactDOMTextComponent = __webpack_require__(579);
+	var ReactDefaultBatchingStrategy = __webpack_require__(580);
+	var ReactEventListener = __webpack_require__(581);
+	var ReactInjection = __webpack_require__(584);
+	var ReactReconcileTransaction = __webpack_require__(585);
+	var SVGDOMPropertyConfig = __webpack_require__(593);
+	var SelectEventPlugin = __webpack_require__(594);
+	var SimpleEventPlugin = __webpack_require__(595);
 
 	var alreadyInjected = false;
 
@@ -36893,9 +36636,9 @@ var vendors_dashboard_worona =
 	    BeforeInputEventPlugin: BeforeInputEventPlugin
 	  });
 
-	  ReactInjection.NativeComponent.injectGenericComponentClass(ReactDOMComponent);
+	  ReactInjection.HostComponent.injectGenericComponentClass(ReactDOMComponent);
 
-	  ReactInjection.NativeComponent.injectTextComponentClass(ReactDOMTextComponent);
+	  ReactInjection.HostComponent.injectTextComponentClass(ReactDOMTextComponent);
 
 	  ReactInjection.DOMProperty.injectDOMPropertyConfig(HTMLDOMPropertyConfig);
 	  ReactInjection.DOMProperty.injectDOMPropertyConfig(SVGDOMPropertyConfig);
@@ -36915,7 +36658,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 487 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36931,14 +36674,14 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var EventConstants = __webpack_require__(488);
-	var EventPropagators = __webpack_require__(489);
-	var ExecutionEnvironment = __webpack_require__(317);
-	var FallbackCompositionState = __webpack_require__(496);
-	var SyntheticCompositionEvent = __webpack_require__(498);
-	var SyntheticInputEvent = __webpack_require__(500);
+	var EventConstants = __webpack_require__(482);
+	var EventPropagators = __webpack_require__(483);
+	var ExecutionEnvironment = __webpack_require__(490);
+	var FallbackCompositionState = __webpack_require__(491);
+	var SyntheticCompositionEvent = __webpack_require__(493);
+	var SyntheticInputEvent = __webpack_require__(495);
 
-	var keyOf = __webpack_require__(328);
+	var keyOf = __webpack_require__(320);
 
 	var END_KEYCODES = [9, 13, 27, 32]; // Tab, Return, Esc, Space
 	var START_KEYCODE = 229;
@@ -37308,7 +37051,7 @@ var vendors_dashboard_worona =
 	module.exports = BeforeInputEventPlugin;
 
 /***/ },
-/* 488 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -37324,7 +37067,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var keyMirror = __webpack_require__(326);
+	var keyMirror = __webpack_require__(318);
 
 	var PropagationPhases = keyMirror({ bubbled: null, captured: null });
 
@@ -37410,7 +37153,7 @@ var vendors_dashboard_worona =
 	module.exports = EventConstants;
 
 /***/ },
-/* 489 */
+/* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -37426,12 +37169,12 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var EventConstants = __webpack_require__(488);
-	var EventPluginHub = __webpack_require__(490);
-	var EventPluginUtils = __webpack_require__(492);
+	var EventConstants = __webpack_require__(482);
+	var EventPluginHub = __webpack_require__(484);
+	var EventPluginUtils = __webpack_require__(486);
 
-	var accumulateInto = __webpack_require__(494);
-	var forEachAccumulated = __webpack_require__(495);
+	var accumulateInto = __webpack_require__(488);
+	var forEachAccumulated = __webpack_require__(489);
 	var warning = __webpack_require__(307);
 
 	var PropagationPhases = EventConstants.PropagationPhases;
@@ -37552,7 +37295,7 @@ var vendors_dashboard_worona =
 	module.exports = EventPropagators;
 
 /***/ },
-/* 490 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -37568,12 +37311,14 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var EventPluginRegistry = __webpack_require__(491);
-	var EventPluginUtils = __webpack_require__(492);
-	var ReactErrorUtils = __webpack_require__(493);
+	var _prodInvariant = __webpack_require__(303);
 
-	var accumulateInto = __webpack_require__(494);
-	var forEachAccumulated = __webpack_require__(495);
+	var EventPluginRegistry = __webpack_require__(485);
+	var EventPluginUtils = __webpack_require__(486);
+	var ReactErrorUtils = __webpack_require__(487);
+
+	var accumulateInto = __webpack_require__(488);
+	var forEachAccumulated = __webpack_require__(489);
 	var invariant = __webpack_require__(304);
 
 	/**
@@ -37660,7 +37405,7 @@ var vendors_dashboard_worona =
 	   * @param {function} listener The callback to store.
 	   */
 	  putListener: function (inst, registrationName, listener) {
-	    !(typeof listener === 'function') ?  true ? invariant(false, 'Expected %s listener to be a function, instead got type %s', registrationName, typeof listener) : invariant(false) : void 0;
+	    !(typeof listener === 'function') ?  true ? invariant(false, 'Expected %s listener to be a function, instead got type %s', registrationName, typeof listener) : _prodInvariant('94', registrationName, typeof listener) : void 0;
 
 	    var bankForRegistrationName = listenerBank[registrationName] || (listenerBank[registrationName] = {});
 	    bankForRegistrationName[inst._rootNodeID] = listener;
@@ -37707,6 +37452,10 @@ var vendors_dashboard_worona =
 	   */
 	  deleteAllListeners: function (inst) {
 	    for (var registrationName in listenerBank) {
+	      if (!listenerBank.hasOwnProperty(registrationName)) {
+	        continue;
+	      }
+
 	      if (!listenerBank[registrationName][inst._rootNodeID]) {
 	        continue;
 	      }
@@ -37771,7 +37520,7 @@ var vendors_dashboard_worona =
 	    } else {
 	      forEachAccumulated(processingEventQueue, executeDispatchesAndReleaseTopLevel);
 	    }
-	    !!eventQueue ?  true ? invariant(false, 'processEventQueue(): Additional events were enqueued while processing ' + 'an event queue. Support for this has not yet been implemented.') : invariant(false) : void 0;
+	    !!eventQueue ?  true ? invariant(false, 'processEventQueue(): Additional events were enqueued while processing an event queue. Support for this has not yet been implemented.') : _prodInvariant('95') : void 0;
 	    // This would be a good time to rethrow if any of the event handlers threw.
 	    ReactErrorUtils.rethrowCaughtError();
 	  },
@@ -37792,7 +37541,7 @@ var vendors_dashboard_worona =
 	module.exports = EventPluginHub;
 
 /***/ },
-/* 491 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -37807,6 +37556,8 @@ var vendors_dashboard_worona =
 	 */
 
 	'use strict';
+
+	var _prodInvariant = __webpack_require__(303);
 
 	var invariant = __webpack_require__(304);
 
@@ -37833,15 +37584,15 @@ var vendors_dashboard_worona =
 	  for (var pluginName in namesToPlugins) {
 	    var PluginModule = namesToPlugins[pluginName];
 	    var pluginIndex = EventPluginOrder.indexOf(pluginName);
-	    !(pluginIndex > -1) ?  true ? invariant(false, 'EventPluginRegistry: Cannot inject event plugins that do not exist in ' + 'the plugin ordering, `%s`.', pluginName) : invariant(false) : void 0;
+	    !(pluginIndex > -1) ?  true ? invariant(false, 'EventPluginRegistry: Cannot inject event plugins that do not exist in the plugin ordering, `%s`.', pluginName) : _prodInvariant('96', pluginName) : void 0;
 	    if (EventPluginRegistry.plugins[pluginIndex]) {
 	      continue;
 	    }
-	    !PluginModule.extractEvents ?  true ? invariant(false, 'EventPluginRegistry: Event plugins must implement an `extractEvents` ' + 'method, but `%s` does not.', pluginName) : invariant(false) : void 0;
+	    !PluginModule.extractEvents ?  true ? invariant(false, 'EventPluginRegistry: Event plugins must implement an `extractEvents` method, but `%s` does not.', pluginName) : _prodInvariant('97', pluginName) : void 0;
 	    EventPluginRegistry.plugins[pluginIndex] = PluginModule;
 	    var publishedEvents = PluginModule.eventTypes;
 	    for (var eventName in publishedEvents) {
-	      !publishEventForPlugin(publishedEvents[eventName], PluginModule, eventName) ?  true ? invariant(false, 'EventPluginRegistry: Failed to publish event `%s` for plugin `%s`.', eventName, pluginName) : invariant(false) : void 0;
+	      !publishEventForPlugin(publishedEvents[eventName], PluginModule, eventName) ?  true ? invariant(false, 'EventPluginRegistry: Failed to publish event `%s` for plugin `%s`.', eventName, pluginName) : _prodInvariant('98', eventName, pluginName) : void 0;
 	    }
 	  }
 	}
@@ -37855,7 +37606,7 @@ var vendors_dashboard_worona =
 	 * @private
 	 */
 	function publishEventForPlugin(dispatchConfig, PluginModule, eventName) {
-	  !!EventPluginRegistry.eventNameDispatchConfigs.hasOwnProperty(eventName) ?  true ? invariant(false, 'EventPluginHub: More than one plugin attempted to publish the same ' + 'event name, `%s`.', eventName) : invariant(false) : void 0;
+	  !!EventPluginRegistry.eventNameDispatchConfigs.hasOwnProperty(eventName) ?  true ? invariant(false, 'EventPluginHub: More than one plugin attempted to publish the same event name, `%s`.', eventName) : _prodInvariant('99', eventName) : void 0;
 	  EventPluginRegistry.eventNameDispatchConfigs[eventName] = dispatchConfig;
 
 	  var phasedRegistrationNames = dispatchConfig.phasedRegistrationNames;
@@ -37883,13 +37634,17 @@ var vendors_dashboard_worona =
 	 * @private
 	 */
 	function publishRegistrationName(registrationName, PluginModule, eventName) {
-	  !!EventPluginRegistry.registrationNameModules[registrationName] ?  true ? invariant(false, 'EventPluginHub: More than one plugin attempted to publish the same ' + 'registration name, `%s`.', registrationName) : invariant(false) : void 0;
+	  !!EventPluginRegistry.registrationNameModules[registrationName] ?  true ? invariant(false, 'EventPluginHub: More than one plugin attempted to publish the same registration name, `%s`.', registrationName) : _prodInvariant('100', registrationName) : void 0;
 	  EventPluginRegistry.registrationNameModules[registrationName] = PluginModule;
 	  EventPluginRegistry.registrationNameDependencies[registrationName] = PluginModule.eventTypes[eventName].dependencies;
 
 	  if (true) {
 	    var lowerCasedName = registrationName.toLowerCase();
 	    EventPluginRegistry.possibleRegistrationNames[lowerCasedName] = registrationName;
+
+	    if (registrationName === 'onDoubleClick') {
+	      EventPluginRegistry.possibleRegistrationNames.ondblclick = registrationName;
+	    }
 	  }
 	}
 
@@ -37938,7 +37693,7 @@ var vendors_dashboard_worona =
 	   * @see {EventPluginHub.injection.injectEventPluginOrder}
 	   */
 	  injectEventPluginOrder: function (InjectedEventPluginOrder) {
-	    !!EventPluginOrder ?  true ? invariant(false, 'EventPluginRegistry: Cannot inject event plugin ordering more than ' + 'once. You are likely trying to load more than one copy of React.') : invariant(false) : void 0;
+	    !!EventPluginOrder ?  true ? invariant(false, 'EventPluginRegistry: Cannot inject event plugin ordering more than once. You are likely trying to load more than one copy of React.') : _prodInvariant('101') : void 0;
 	    // Clone the ordering so it cannot be dynamically mutated.
 	    EventPluginOrder = Array.prototype.slice.call(InjectedEventPluginOrder);
 	    recomputePluginOrdering();
@@ -37962,7 +37717,7 @@ var vendors_dashboard_worona =
 	      }
 	      var PluginModule = injectedNamesToPlugins[pluginName];
 	      if (!namesToPlugins.hasOwnProperty(pluginName) || namesToPlugins[pluginName] !== PluginModule) {
-	        !!namesToPlugins[pluginName] ?  true ? invariant(false, 'EventPluginRegistry: Cannot inject two different event plugins ' + 'using the same name, `%s`.', pluginName) : invariant(false) : void 0;
+	        !!namesToPlugins[pluginName] ?  true ? invariant(false, 'EventPluginRegistry: Cannot inject two different event plugins using the same name, `%s`.', pluginName) : _prodInvariant('102', pluginName) : void 0;
 	        namesToPlugins[pluginName] = PluginModule;
 	        isOrderingDirty = true;
 	      }
@@ -38038,7 +37793,7 @@ var vendors_dashboard_worona =
 	module.exports = EventPluginRegistry;
 
 /***/ },
-/* 492 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38054,8 +37809,10 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var EventConstants = __webpack_require__(488);
-	var ReactErrorUtils = __webpack_require__(493);
+	var _prodInvariant = __webpack_require__(303);
+
+	var EventConstants = __webpack_require__(482);
+	var ReactErrorUtils = __webpack_require__(487);
 
 	var invariant = __webpack_require__(304);
 	var warning = __webpack_require__(307);
@@ -38212,7 +37969,7 @@ var vendors_dashboard_worona =
 	  }
 	  var dispatchListener = event._dispatchListeners;
 	  var dispatchInstance = event._dispatchInstances;
-	  !!Array.isArray(dispatchListener) ?  true ? invariant(false, 'executeDirectDispatch(...): Invalid `event`.') : invariant(false) : void 0;
+	  !!Array.isArray(dispatchListener) ?  true ? invariant(false, 'executeDirectDispatch(...): Invalid `event`.') : _prodInvariant('103') : void 0;
 	  event.currentTarget = dispatchListener ? EventPluginUtils.getNodeFromInstance(dispatchInstance) : null;
 	  var res = dispatchListener ? dispatchListener(event) : null;
 	  event.currentTarget = null;
@@ -38270,7 +38027,7 @@ var vendors_dashboard_worona =
 	module.exports = EventPluginUtils;
 
 /***/ },
-/* 493 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38351,7 +38108,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactErrorUtils;
 
 /***/ },
-/* 494 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38363,14 +38120,16 @@ var vendors_dashboard_worona =
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule accumulateInto
+	 * 
 	 */
 
 	'use strict';
 
+	var _prodInvariant = __webpack_require__(303);
+
 	var invariant = __webpack_require__(304);
 
 	/**
-	 *
 	 * Accumulates items that must not be null or undefined into the first one. This
 	 * is used to conserve memory by avoiding array allocations, and thus sacrifices
 	 * API cleanness. Since `current` can be null before being passed in and not
@@ -38384,27 +38143,24 @@ var vendors_dashboard_worona =
 	 */
 
 	function accumulateInto(current, next) {
-	  !(next != null) ?  true ? invariant(false, 'accumulateInto(...): Accumulated items must not be null or undefined.') : invariant(false) : void 0;
+	  !(next != null) ?  true ? invariant(false, 'accumulateInto(...): Accumulated items must not be null or undefined.') : _prodInvariant('30') : void 0;
+
 	  if (current == null) {
 	    return next;
 	  }
 
 	  // Both are not empty. Warning: Never call x.concat(y) when you are not
 	  // certain that x is an Array (x could be a string with concat method).
-	  var currentIsArray = Array.isArray(current);
-	  var nextIsArray = Array.isArray(next);
-
-	  if (currentIsArray && nextIsArray) {
-	    current.push.apply(current, next);
-	    return current;
-	  }
-
-	  if (currentIsArray) {
+	  if (Array.isArray(current)) {
+	    if (Array.isArray(next)) {
+	      current.push.apply(current, next);
+	      return current;
+	    }
 	    current.push(next);
 	    return current;
 	  }
 
-	  if (nextIsArray) {
+	  if (Array.isArray(next)) {
 	    // A bit too dangerous to mutate `next`.
 	    return [current].concat(next);
 	  }
@@ -38415,7 +38171,7 @@ var vendors_dashboard_worona =
 	module.exports = accumulateInto;
 
 /***/ },
-/* 495 */
+/* 489 */
 /***/ function(module, exports) {
 
 	/**
@@ -38427,6 +38183,7 @@ var vendors_dashboard_worona =
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule forEachAccumulated
+	 * 
 	 */
 
 	'use strict';
@@ -38439,18 +38196,58 @@ var vendors_dashboard_worona =
 	 * allocate an array).
 	 */
 
-	var forEachAccumulated = function (arr, cb, scope) {
+	function forEachAccumulated(arr, cb, scope) {
 	  if (Array.isArray(arr)) {
 	    arr.forEach(cb, scope);
 	  } else if (arr) {
 	    cb.call(scope, arr);
 	  }
-	};
+	}
 
 	module.exports = forEachAccumulated;
 
 /***/ },
-/* 496 */
+/* 490 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 */
+
+	'use strict';
+
+	var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+	/**
+	 * Simple, lightweight module assisting with the detection and context of
+	 * Worker. Helps avoid circular dependencies and allows code to reason about
+	 * whether or not they are in a Worker, even if they never include the main
+	 * `ReactWorker` dependency.
+	 */
+	var ExecutionEnvironment = {
+
+	  canUseDOM: canUseDOM,
+
+	  canUseWorkers: typeof Worker !== 'undefined',
+
+	  canUseEventListeners: canUseDOM && !!(window.addEventListener || window.attachEvent),
+
+	  canUseViewport: canUseDOM && !!window.screen,
+
+	  isInWorker: !canUseDOM // For now, this is true - might change in the future.
+
+	};
+
+	module.exports = ExecutionEnvironment;
+
+/***/ },
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38466,11 +38263,11 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _assign = __webpack_require__(300);
 
-	var PooledClass = __webpack_require__(303);
+	var PooledClass = __webpack_require__(302);
 
-	var getTextContentAccessor = __webpack_require__(497);
+	var getTextContentAccessor = __webpack_require__(492);
 
 	/**
 	 * This helper class stores information about text content of a target node,
@@ -38550,7 +38347,7 @@ var vendors_dashboard_worona =
 	module.exports = FallbackCompositionState;
 
 /***/ },
-/* 497 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38566,7 +38363,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(317);
+	var ExecutionEnvironment = __webpack_require__(490);
 
 	var contentKey = null;
 
@@ -38588,7 +38385,7 @@ var vendors_dashboard_worona =
 	module.exports = getTextContentAccessor;
 
 /***/ },
-/* 498 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38604,7 +38401,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var SyntheticEvent = __webpack_require__(499);
+	var SyntheticEvent = __webpack_require__(494);
 
 	/**
 	 * @interface Event
@@ -38629,7 +38426,7 @@ var vendors_dashboard_worona =
 	module.exports = SyntheticCompositionEvent;
 
 /***/ },
-/* 499 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38645,9 +38442,9 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _assign = __webpack_require__(300);
 
-	var PooledClass = __webpack_require__(303);
+	var PooledClass = __webpack_require__(302);
 
 	var emptyFunction = __webpack_require__(308);
 	var warning = __webpack_require__(307);
@@ -38799,10 +38596,9 @@ var vendors_dashboard_worona =
 	      this[shouldBeReleasedProperties[i]] = null;
 	    }
 	    if (true) {
-	      var noop = __webpack_require__(308);
 	      Object.defineProperty(this, 'nativeEvent', getPooledWarningPropertyDefinition('nativeEvent', null));
-	      Object.defineProperty(this, 'preventDefault', getPooledWarningPropertyDefinition('preventDefault', noop));
-	      Object.defineProperty(this, 'stopPropagation', getPooledWarningPropertyDefinition('stopPropagation', noop));
+	      Object.defineProperty(this, 'preventDefault', getPooledWarningPropertyDefinition('preventDefault', emptyFunction));
+	      Object.defineProperty(this, 'stopPropagation', getPooledWarningPropertyDefinition('stopPropagation', emptyFunction));
 	    }
 	  }
 
@@ -38895,7 +38691,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 500 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38911,7 +38707,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var SyntheticEvent = __webpack_require__(499);
+	var SyntheticEvent = __webpack_require__(494);
 
 	/**
 	 * @interface Event
@@ -38937,7 +38733,7 @@ var vendors_dashboard_worona =
 	module.exports = SyntheticInputEvent;
 
 /***/ },
-/* 501 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38953,18 +38749,18 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var EventConstants = __webpack_require__(488);
-	var EventPluginHub = __webpack_require__(490);
-	var EventPropagators = __webpack_require__(489);
-	var ExecutionEnvironment = __webpack_require__(317);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactUpdates = __webpack_require__(502);
-	var SyntheticEvent = __webpack_require__(499);
+	var EventConstants = __webpack_require__(482);
+	var EventPluginHub = __webpack_require__(484);
+	var EventPropagators = __webpack_require__(483);
+	var ExecutionEnvironment = __webpack_require__(490);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactUpdates = __webpack_require__(497);
+	var SyntheticEvent = __webpack_require__(494);
 
-	var getEventTarget = __webpack_require__(509);
-	var isEventSupported = __webpack_require__(510);
-	var isTextInputElement = __webpack_require__(511);
-	var keyOf = __webpack_require__(328);
+	var getEventTarget = __webpack_require__(510);
+	var isEventSupported = __webpack_require__(511);
+	var isTextInputElement = __webpack_require__(512);
+	var keyOf = __webpack_require__(320);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -39267,7 +39063,7 @@ var vendors_dashboard_worona =
 	module.exports = ChangeEventPlugin;
 
 /***/ },
-/* 502 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -39283,14 +39079,14 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _prodInvariant = __webpack_require__(303),
+	    _assign = __webpack_require__(300);
 
-	var CallbackQueue = __webpack_require__(503);
-	var PooledClass = __webpack_require__(303);
-	var ReactFeatureFlags = __webpack_require__(504);
-	var ReactInstrumentation = __webpack_require__(315);
-	var ReactReconciler = __webpack_require__(505);
-	var Transaction = __webpack_require__(508);
+	var CallbackQueue = __webpack_require__(498);
+	var PooledClass = __webpack_require__(302);
+	var ReactFeatureFlags = __webpack_require__(499);
+	var ReactReconciler = __webpack_require__(500);
+	var Transaction = __webpack_require__(509);
 
 	var invariant = __webpack_require__(304);
 
@@ -39302,7 +39098,7 @@ var vendors_dashboard_worona =
 	var batchingStrategy = null;
 
 	function ensureInjected() {
-	  !(ReactUpdates.ReactReconcileTransaction && batchingStrategy) ?  true ? invariant(false, 'ReactUpdates: must inject a reconcile transaction class and batching ' + 'strategy') : invariant(false) : void 0;
+	  !(ReactUpdates.ReactReconcileTransaction && batchingStrategy) ?  true ? invariant(false, 'ReactUpdates: must inject a reconcile transaction class and batching strategy') : _prodInvariant('123') : void 0;
 	}
 
 	var NESTED_UPDATES = {
@@ -39383,7 +39179,7 @@ var vendors_dashboard_worona =
 
 	function runBatchedUpdates(transaction) {
 	  var len = transaction.dirtyComponentsLength;
-	  !(len === dirtyComponents.length) ?  true ? invariant(false, 'Expected flush transaction\'s stored dirty-components length (%s) to ' + 'match dirty-components array length (%s).', len, dirtyComponents.length) : invariant(false) : void 0;
+	  !(len === dirtyComponents.length) ?  true ? invariant(false, 'Expected flush transaction\'s stored dirty-components length (%s) to match dirty-components array length (%s).', len, dirtyComponents.length) : _prodInvariant('124', len, dirtyComponents.length) : void 0;
 
 	  // Since reconciling a component higher in the owner hierarchy usually (not
 	  // always -- see shouldComponentUpdate()) will reconcile children, reconcile
@@ -39435,10 +39231,6 @@ var vendors_dashboard_worona =
 	}
 
 	var flushBatchedUpdates = function () {
-	  if (true) {
-	    ReactInstrumentation.debugTool.onBeginFlush();
-	  }
-
 	  // ReactUpdatesFlushTransaction's wrappers will clear the dirtyComponents
 	  // array and perform any updates enqueued by mount-ready handlers (i.e.,
 	  // componentDidUpdate) but we need to check here too in order to catch
@@ -39458,10 +39250,6 @@ var vendors_dashboard_worona =
 	      CallbackQueue.release(queue);
 	    }
 	  }
-
-	  if (true) {
-	    ReactInstrumentation.debugTool.onEndFlush();
-	  }
 	};
 
 	/**
@@ -39474,7 +39262,7 @@ var vendors_dashboard_worona =
 	  // Various parts of our code (such as ReactCompositeComponent's
 	  // _renderValidatedComponent) assume that calls to render aren't nested;
 	  // verify that that's the case. (This is called by each top-level update
-	  // function, like setProps, setState, forceUpdate, etc.; creation and
+	  // function, like setState, forceUpdate, etc.; creation and
 	  // destruction of top-level components is guarded in ReactMount.)
 
 	  if (!batchingStrategy.isBatchingUpdates) {
@@ -39493,21 +39281,21 @@ var vendors_dashboard_worona =
 	 * if no updates are currently being performed.
 	 */
 	function asap(callback, context) {
-	  !batchingStrategy.isBatchingUpdates ?  true ? invariant(false, 'ReactUpdates.asap: Can\'t enqueue an asap callback in a context where' + 'updates are not being batched.') : invariant(false) : void 0;
+	  !batchingStrategy.isBatchingUpdates ?  true ? invariant(false, 'ReactUpdates.asap: Can\'t enqueue an asap callback in a context whereupdates are not being batched.') : _prodInvariant('125') : void 0;
 	  asapCallbackQueue.enqueue(callback, context);
 	  asapEnqueued = true;
 	}
 
 	var ReactUpdatesInjection = {
 	  injectReconcileTransaction: function (ReconcileTransaction) {
-	    !ReconcileTransaction ?  true ? invariant(false, 'ReactUpdates: must provide a reconcile transaction class') : invariant(false) : void 0;
+	    !ReconcileTransaction ?  true ? invariant(false, 'ReactUpdates: must provide a reconcile transaction class') : _prodInvariant('126') : void 0;
 	    ReactUpdates.ReactReconcileTransaction = ReconcileTransaction;
 	  },
 
 	  injectBatchingStrategy: function (_batchingStrategy) {
-	    !_batchingStrategy ?  true ? invariant(false, 'ReactUpdates: must provide a batching strategy') : invariant(false) : void 0;
-	    !(typeof _batchingStrategy.batchedUpdates === 'function') ?  true ? invariant(false, 'ReactUpdates: must provide a batchedUpdates() function') : invariant(false) : void 0;
-	    !(typeof _batchingStrategy.isBatchingUpdates === 'boolean') ?  true ? invariant(false, 'ReactUpdates: must provide an isBatchingUpdates boolean attribute') : invariant(false) : void 0;
+	    !_batchingStrategy ?  true ? invariant(false, 'ReactUpdates: must provide a batching strategy') : _prodInvariant('127') : void 0;
+	    !(typeof _batchingStrategy.batchedUpdates === 'function') ?  true ? invariant(false, 'ReactUpdates: must provide a batchedUpdates() function') : _prodInvariant('128') : void 0;
+	    !(typeof _batchingStrategy.isBatchingUpdates === 'boolean') ?  true ? invariant(false, 'ReactUpdates: must provide an isBatchingUpdates boolean attribute') : _prodInvariant('129') : void 0;
 	    batchingStrategy = _batchingStrategy;
 	  }
 	};
@@ -39531,7 +39319,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactUpdates;
 
 /***/ },
-/* 503 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -39547,9 +39335,10 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _prodInvariant = __webpack_require__(303),
+	    _assign = __webpack_require__(300);
 
-	var PooledClass = __webpack_require__(303);
+	var PooledClass = __webpack_require__(302);
 
 	var invariant = __webpack_require__(304);
 
@@ -39595,7 +39384,7 @@ var vendors_dashboard_worona =
 	    var callbacks = this._callbacks;
 	    var contexts = this._contexts;
 	    if (callbacks) {
-	      !(callbacks.length === contexts.length) ?  true ? invariant(false, 'Mismatched list of contexts in callback queue') : invariant(false) : void 0;
+	      !(callbacks.length === contexts.length) ?  true ? invariant(false, 'Mismatched list of contexts in callback queue') : _prodInvariant('24') : void 0;
 	      this._callbacks = null;
 	      this._contexts = null;
 	      for (var i = 0; i < callbacks.length; i++) {
@@ -39641,7 +39430,7 @@ var vendors_dashboard_worona =
 	module.exports = CallbackQueue;
 
 /***/ },
-/* 504 */
+/* 499 */
 /***/ function(module, exports) {
 
 	/**
@@ -39653,6 +39442,7 @@ var vendors_dashboard_worona =
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule ReactFeatureFlags
+	 * 
 	 */
 
 	'use strict';
@@ -39667,7 +39457,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactFeatureFlags;
 
 /***/ },
-/* 505 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -39683,8 +39473,10 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactRef = __webpack_require__(506);
-	var ReactInstrumentation = __webpack_require__(315);
+	var _prodInvariant = __webpack_require__(303);
+
+	var ReactRef = __webpack_require__(501);
+	var ReactInstrumentation = __webpack_require__(503);
 
 	var invariant = __webpack_require__(304);
 
@@ -39703,19 +39495,20 @@ var vendors_dashboard_worona =
 	   *
 	   * @param {ReactComponent} internalInstance
 	   * @param {ReactReconcileTransaction|ReactServerRenderingTransaction} transaction
-	   * @param {?object} the containing native component instance
-	   * @param {?object} info about the native container
+	   * @param {?object} the containing host component instance
+	   * @param {?object} info about the host container
 	   * @return {?string} Rendered markup to be inserted into the DOM.
 	   * @final
 	   * @internal
 	   */
-	  mountComponent: function (internalInstance, transaction, nativeParent, nativeContainerInfo, context) {
+	  mountComponent: function (internalInstance, transaction, hostParent, hostContainerInfo, context) {
 	    if (true) {
 	      if (internalInstance._debugID !== 0) {
+	        ReactInstrumentation.debugTool.onBeforeMountComponent(internalInstance._debugID, internalInstance._currentElement);
 	        ReactInstrumentation.debugTool.onBeginReconcilerTimer(internalInstance._debugID, 'mountComponent');
 	      }
 	    }
-	    var markup = internalInstance.mountComponent(transaction, nativeParent, nativeContainerInfo, context);
+	    var markup = internalInstance.mountComponent(transaction, hostParent, hostContainerInfo, context);
 	    if (internalInstance._currentElement && internalInstance._currentElement.ref != null) {
 	      transaction.getReactMountReady().enqueue(attachRefs, internalInstance);
 	    }
@@ -39732,8 +39525,8 @@ var vendors_dashboard_worona =
 	   * Returns a value that can be passed to
 	   * ReactComponentEnvironment.replaceNodeWithMarkup.
 	   */
-	  getNativeNode: function (internalInstance) {
-	    return internalInstance.getNativeNode();
+	  getHostNode: function (internalInstance) {
+	    return internalInstance.getHostNode();
 	  },
 
 	  /**
@@ -39786,6 +39579,7 @@ var vendors_dashboard_worona =
 
 	    if (true) {
 	      if (internalInstance._debugID !== 0) {
+	        ReactInstrumentation.debugTool.onBeforeUpdateComponent(internalInstance._debugID, nextElement);
 	        ReactInstrumentation.debugTool.onBeginReconcilerTimer(internalInstance._debugID, 'receiveComponent');
 	      }
 	    }
@@ -39821,12 +39615,13 @@ var vendors_dashboard_worona =
 	    if (internalInstance._updateBatchNumber !== updateBatchNumber) {
 	      // The component's enqueued batch number should always be the current
 	      // batch or the following one.
-	      !(internalInstance._updateBatchNumber == null || internalInstance._updateBatchNumber === updateBatchNumber + 1) ?  true ? invariant(false, 'performUpdateIfNecessary: Unexpected batch number (current %s, ' + 'pending %s)', updateBatchNumber, internalInstance._updateBatchNumber) : invariant(false) : void 0;
+	      !(internalInstance._updateBatchNumber == null || internalInstance._updateBatchNumber === updateBatchNumber + 1) ?  true ? invariant(false, 'performUpdateIfNecessary: Unexpected batch number (current %s, pending %s)', updateBatchNumber, internalInstance._updateBatchNumber) : _prodInvariant('121', updateBatchNumber, internalInstance._updateBatchNumber) : void 0;
 	      return;
 	    }
 	    if (true) {
 	      if (internalInstance._debugID !== 0) {
 	        ReactInstrumentation.debugTool.onBeginReconcilerTimer(internalInstance._debugID, 'performUpdateIfNecessary');
+	        ReactInstrumentation.debugTool.onBeforeUpdateComponent(internalInstance._debugID, internalInstance._currentElement);
 	      }
 	    }
 	    internalInstance.performUpdateIfNecessary(transaction);
@@ -39843,7 +39638,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactReconciler;
 
 /***/ },
-/* 506 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -39859,7 +39654,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactOwner = __webpack_require__(507);
+	var ReactOwner = __webpack_require__(502);
 
 	var ReactRef = {};
 
@@ -39926,7 +39721,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactRef;
 
 /***/ },
-/* 507 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -39941,6 +39736,8 @@ var vendors_dashboard_worona =
 	 */
 
 	'use strict';
+
+	var _prodInvariant = __webpack_require__(303);
 
 	var invariant = __webpack_require__(304);
 
@@ -39995,7 +39792,7 @@ var vendors_dashboard_worona =
 	   * @internal
 	   */
 	  addComponentAsRefTo: function (component, ref, owner) {
-	    !ReactOwner.isValidOwner(owner) ?  true ? invariant(false, 'addComponentAsRefTo(...): Only a ReactOwner can have refs. You might ' + 'be adding a ref to a component that was not created inside a component\'s ' + '`render` method, or you have multiple copies of React loaded ' + '(details: https://fb.me/react-refs-must-have-owner).') : invariant(false) : void 0;
+	    !ReactOwner.isValidOwner(owner) ?  true ? invariant(false, 'addComponentAsRefTo(...): Only a ReactOwner can have refs. You might be adding a ref to a component that was not created inside a component\'s `render` method, or you have multiple copies of React loaded (details: https://fb.me/react-refs-must-have-owner).') : _prodInvariant('119') : void 0;
 	    owner.attachRef(ref, component);
 	  },
 
@@ -40009,7 +39806,7 @@ var vendors_dashboard_worona =
 	   * @internal
 	   */
 	  removeComponentAsRefFrom: function (component, ref, owner) {
-	    !ReactOwner.isValidOwner(owner) ?  true ? invariant(false, 'removeComponentAsRefFrom(...): Only a ReactOwner can have refs. You might ' + 'be removing a ref to a component that was not created inside a component\'s ' + '`render` method, or you have multiple copies of React loaded ' + '(details: https://fb.me/react-refs-must-have-owner).') : invariant(false) : void 0;
+	    !ReactOwner.isValidOwner(owner) ?  true ? invariant(false, 'removeComponentAsRefFrom(...): Only a ReactOwner can have refs. You might be removing a ref to a component that was not created inside a component\'s `render` method, or you have multiple copies of React loaded (details: https://fb.me/react-refs-must-have-owner).') : _prodInvariant('120') : void 0;
 	    var ownerPublicInstance = owner.getPublicInstance();
 	    // Check that `component`'s owner is still alive and that `component` is still the current ref
 	    // because we do not want to detach the ref if another component stole it.
@@ -40023,7 +39820,489 @@ var vendors_dashboard_worona =
 	module.exports = ReactOwner;
 
 /***/ },
+/* 503 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2016-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactInstrumentation
+	 */
+
+	'use strict';
+
+	var debugTool = null;
+
+	if (true) {
+	  var ReactDebugTool = __webpack_require__(504);
+	  debugTool = ReactDebugTool;
+	}
+
+	module.exports = { debugTool: debugTool };
+
+/***/ },
+/* 504 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2016-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactDebugTool
+	 */
+
+	'use strict';
+
+	var ReactInvalidSetStateWarningDevTool = __webpack_require__(505);
+	var ReactHostOperationHistoryDevtool = __webpack_require__(506);
+	var ReactComponentTreeDevtool = __webpack_require__(324);
+	var ExecutionEnvironment = __webpack_require__(490);
+
+	var performanceNow = __webpack_require__(507);
+	var warning = __webpack_require__(307);
+
+	var eventHandlers = [];
+	var handlerDoesThrowForEvent = {};
+
+	function emitEvent(handlerFunctionName, arg1, arg2, arg3, arg4, arg5) {
+	  eventHandlers.forEach(function (handler) {
+	    try {
+	      if (handler[handlerFunctionName]) {
+	        handler[handlerFunctionName](arg1, arg2, arg3, arg4, arg5);
+	      }
+	    } catch (e) {
+	       true ? warning(handlerDoesThrowForEvent[handlerFunctionName], 'exception thrown by devtool while handling %s: %s', handlerFunctionName, e + '\n' + e.stack) : void 0;
+	      handlerDoesThrowForEvent[handlerFunctionName] = true;
+	    }
+	  });
+	}
+
+	var isProfiling = false;
+	var flushHistory = [];
+	var lifeCycleTimerStack = [];
+	var currentFlushNesting = 0;
+	var currentFlushMeasurements = null;
+	var currentFlushStartTime = null;
+	var currentTimerDebugID = null;
+	var currentTimerStartTime = null;
+	var currentTimerNestedFlushDuration = null;
+	var currentTimerType = null;
+
+	function clearHistory() {
+	  ReactComponentTreeDevtool.purgeUnmountedComponents();
+	  ReactHostOperationHistoryDevtool.clearHistory();
+	}
+
+	function getTreeSnapshot(registeredIDs) {
+	  return registeredIDs.reduce(function (tree, id) {
+	    var ownerID = ReactComponentTreeDevtool.getOwnerID(id);
+	    var parentID = ReactComponentTreeDevtool.getParentID(id);
+	    tree[id] = {
+	      displayName: ReactComponentTreeDevtool.getDisplayName(id),
+	      text: ReactComponentTreeDevtool.getText(id),
+	      updateCount: ReactComponentTreeDevtool.getUpdateCount(id),
+	      childIDs: ReactComponentTreeDevtool.getChildIDs(id),
+	      // Text nodes don't have owners but this is close enough.
+	      ownerID: ownerID || ReactComponentTreeDevtool.getOwnerID(parentID),
+	      parentID: parentID
+	    };
+	    return tree;
+	  }, {});
+	}
+
+	function resetMeasurements() {
+	  var previousStartTime = currentFlushStartTime;
+	  var previousMeasurements = currentFlushMeasurements || [];
+	  var previousOperations = ReactHostOperationHistoryDevtool.getHistory();
+
+	  if (currentFlushNesting === 0) {
+	    currentFlushStartTime = null;
+	    currentFlushMeasurements = null;
+	    clearHistory();
+	    return;
+	  }
+
+	  if (previousMeasurements.length || previousOperations.length) {
+	    var registeredIDs = ReactComponentTreeDevtool.getRegisteredIDs();
+	    flushHistory.push({
+	      duration: performanceNow() - previousStartTime,
+	      measurements: previousMeasurements || [],
+	      operations: previousOperations || [],
+	      treeSnapshot: getTreeSnapshot(registeredIDs)
+	    });
+	  }
+
+	  clearHistory();
+	  currentFlushStartTime = performanceNow();
+	  currentFlushMeasurements = [];
+	}
+
+	function checkDebugID(debugID) {
+	   true ? warning(debugID, 'ReactDebugTool: debugID may not be empty.') : void 0;
+	}
+
+	function beginLifeCycleTimer(debugID, timerType) {
+	  if (currentFlushNesting === 0) {
+	    return;
+	  }
+	   true ? warning(!currentTimerType, 'There is an internal error in the React performance measurement code. ' + 'Did not expect %s timer to start while %s timer is still in ' + 'progress for %s instance.', timerType, currentTimerType || 'no', debugID === currentTimerDebugID ? 'the same' : 'another') : void 0;
+	  currentTimerStartTime = performanceNow();
+	  currentTimerNestedFlushDuration = 0;
+	  currentTimerDebugID = debugID;
+	  currentTimerType = timerType;
+	}
+
+	function endLifeCycleTimer(debugID, timerType) {
+	  if (currentFlushNesting === 0) {
+	    return;
+	  }
+	   true ? warning(currentTimerType === timerType, 'There is an internal error in the React performance measurement code. ' + 'We did not expect %s timer to stop while %s timer is still in ' + 'progress for %s instance. Please report this as a bug in React.', timerType, currentTimerType || 'no', debugID === currentTimerDebugID ? 'the same' : 'another') : void 0;
+	  if (isProfiling) {
+	    currentFlushMeasurements.push({
+	      timerType: timerType,
+	      instanceID: debugID,
+	      duration: performanceNow() - currentTimerStartTime - currentTimerNestedFlushDuration
+	    });
+	  }
+	  currentTimerStartTime = null;
+	  currentTimerNestedFlushDuration = null;
+	  currentTimerDebugID = null;
+	  currentTimerType = null;
+	}
+
+	function pauseCurrentLifeCycleTimer() {
+	  var currentTimer = {
+	    startTime: currentTimerStartTime,
+	    nestedFlushStartTime: performanceNow(),
+	    debugID: currentTimerDebugID,
+	    timerType: currentTimerType
+	  };
+	  lifeCycleTimerStack.push(currentTimer);
+	  currentTimerStartTime = null;
+	  currentTimerNestedFlushDuration = null;
+	  currentTimerDebugID = null;
+	  currentTimerType = null;
+	}
+
+	function resumeCurrentLifeCycleTimer() {
+	  var _lifeCycleTimerStack$ = lifeCycleTimerStack.pop();
+
+	  var startTime = _lifeCycleTimerStack$.startTime;
+	  var nestedFlushStartTime = _lifeCycleTimerStack$.nestedFlushStartTime;
+	  var debugID = _lifeCycleTimerStack$.debugID;
+	  var timerType = _lifeCycleTimerStack$.timerType;
+
+	  var nestedFlushDuration = performanceNow() - nestedFlushStartTime;
+	  currentTimerStartTime = startTime;
+	  currentTimerNestedFlushDuration += nestedFlushDuration;
+	  currentTimerDebugID = debugID;
+	  currentTimerType = timerType;
+	}
+
+	var ReactDebugTool = {
+	  addDevtool: function (devtool) {
+	    eventHandlers.push(devtool);
+	  },
+	  removeDevtool: function (devtool) {
+	    for (var i = 0; i < eventHandlers.length; i++) {
+	      if (eventHandlers[i] === devtool) {
+	        eventHandlers.splice(i, 1);
+	        i--;
+	      }
+	    }
+	  },
+	  isProfiling: function () {
+	    return isProfiling;
+	  },
+	  beginProfiling: function () {
+	    if (isProfiling) {
+	      return;
+	    }
+
+	    isProfiling = true;
+	    flushHistory.length = 0;
+	    resetMeasurements();
+	    ReactDebugTool.addDevtool(ReactHostOperationHistoryDevtool);
+	  },
+	  endProfiling: function () {
+	    if (!isProfiling) {
+	      return;
+	    }
+
+	    isProfiling = false;
+	    resetMeasurements();
+	    ReactDebugTool.removeDevtool(ReactHostOperationHistoryDevtool);
+	  },
+	  getFlushHistory: function () {
+	    return flushHistory;
+	  },
+	  onBeginFlush: function () {
+	    currentFlushNesting++;
+	    resetMeasurements();
+	    pauseCurrentLifeCycleTimer();
+	    emitEvent('onBeginFlush');
+	  },
+	  onEndFlush: function () {
+	    resetMeasurements();
+	    currentFlushNesting--;
+	    resumeCurrentLifeCycleTimer();
+	    emitEvent('onEndFlush');
+	  },
+	  onBeginLifeCycleTimer: function (debugID, timerType) {
+	    checkDebugID(debugID);
+	    emitEvent('onBeginLifeCycleTimer', debugID, timerType);
+	    beginLifeCycleTimer(debugID, timerType);
+	  },
+	  onEndLifeCycleTimer: function (debugID, timerType) {
+	    checkDebugID(debugID);
+	    endLifeCycleTimer(debugID, timerType);
+	    emitEvent('onEndLifeCycleTimer', debugID, timerType);
+	  },
+	  onBeginReconcilerTimer: function (debugID, timerType) {
+	    checkDebugID(debugID);
+	    emitEvent('onBeginReconcilerTimer', debugID, timerType);
+	  },
+	  onEndReconcilerTimer: function (debugID, timerType) {
+	    checkDebugID(debugID);
+	    emitEvent('onEndReconcilerTimer', debugID, timerType);
+	  },
+	  onError: function (debugID) {
+	    if (currentTimerDebugID != null) {
+	      endLifeCycleTimer(currentTimerDebugID, currentTimerType);
+	    }
+	    emitEvent('onError', debugID);
+	  },
+	  onBeginProcessingChildContext: function () {
+	    emitEvent('onBeginProcessingChildContext');
+	  },
+	  onEndProcessingChildContext: function () {
+	    emitEvent('onEndProcessingChildContext');
+	  },
+	  onHostOperation: function (debugID, type, payload) {
+	    checkDebugID(debugID);
+	    emitEvent('onHostOperation', debugID, type, payload);
+	  },
+	  onSetState: function () {
+	    emitEvent('onSetState');
+	  },
+	  onSetDisplayName: function (debugID, displayName) {
+	    checkDebugID(debugID);
+	    emitEvent('onSetDisplayName', debugID, displayName);
+	  },
+	  onSetChildren: function (debugID, childDebugIDs) {
+	    checkDebugID(debugID);
+	    childDebugIDs.forEach(checkDebugID);
+	    emitEvent('onSetChildren', debugID, childDebugIDs);
+	  },
+	  onSetOwner: function (debugID, ownerDebugID) {
+	    checkDebugID(debugID);
+	    emitEvent('onSetOwner', debugID, ownerDebugID);
+	  },
+	  onSetParent: function (debugID, parentDebugID) {
+	    checkDebugID(debugID);
+	    emitEvent('onSetParent', debugID, parentDebugID);
+	  },
+	  onSetText: function (debugID, text) {
+	    checkDebugID(debugID);
+	    emitEvent('onSetText', debugID, text);
+	  },
+	  onMountRootComponent: function (debugID) {
+	    checkDebugID(debugID);
+	    emitEvent('onMountRootComponent', debugID);
+	  },
+	  onBeforeMountComponent: function (debugID, element) {
+	    checkDebugID(debugID);
+	    emitEvent('onBeforeMountComponent', debugID, element);
+	  },
+	  onMountComponent: function (debugID) {
+	    checkDebugID(debugID);
+	    emitEvent('onMountComponent', debugID);
+	  },
+	  onBeforeUpdateComponent: function (debugID, element) {
+	    checkDebugID(debugID);
+	    emitEvent('onBeforeUpdateComponent', debugID, element);
+	  },
+	  onUpdateComponent: function (debugID) {
+	    checkDebugID(debugID);
+	    emitEvent('onUpdateComponent', debugID);
+	  },
+	  onUnmountComponent: function (debugID) {
+	    checkDebugID(debugID);
+	    emitEvent('onUnmountComponent', debugID);
+	  },
+	  onTestEvent: function () {
+	    emitEvent('onTestEvent');
+	  }
+	};
+
+	ReactDebugTool.addDevtool(ReactInvalidSetStateWarningDevTool);
+	ReactDebugTool.addDevtool(ReactComponentTreeDevtool);
+	var url = ExecutionEnvironment.canUseDOM && window.location.href || '';
+	if (/[?&]react_perf\b/.test(url)) {
+	  ReactDebugTool.beginProfiling();
+	}
+
+	module.exports = ReactDebugTool;
+
+/***/ },
+/* 505 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2016-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactInvalidSetStateWarningDevTool
+	 */
+
+	'use strict';
+
+	var warning = __webpack_require__(307);
+
+	if (true) {
+	  var processingChildContext = false;
+
+	  var warnInvalidSetState = function () {
+	     true ? warning(!processingChildContext, 'setState(...): Cannot call setState() inside getChildContext()') : void 0;
+	  };
+	}
+
+	var ReactInvalidSetStateWarningDevTool = {
+	  onBeginProcessingChildContext: function () {
+	    processingChildContext = true;
+	  },
+	  onEndProcessingChildContext: function () {
+	    processingChildContext = false;
+	  },
+	  onSetState: function () {
+	    warnInvalidSetState();
+	  }
+	};
+
+	module.exports = ReactInvalidSetStateWarningDevTool;
+
+/***/ },
+/* 506 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2016-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactHostOperationHistoryDevtool
+	 */
+
+	'use strict';
+
+	var history = [];
+
+	var ReactHostOperationHistoryDevtool = {
+	  onHostOperation: function (debugID, type, payload) {
+	    history.push({
+	      instanceID: debugID,
+	      type: type,
+	      payload: payload
+	    });
+	  },
+	  clearHistory: function () {
+	    if (ReactHostOperationHistoryDevtool._preventClearing) {
+	      // Should only be used for tests.
+	      return;
+	    }
+
+	    history = [];
+	  },
+	  getHistory: function () {
+	    return history;
+	  }
+	};
+
+	module.exports = ReactHostOperationHistoryDevtool;
+
+/***/ },
+/* 507 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @typechecks
+	 */
+
+	var performance = __webpack_require__(508);
+
+	var performanceNow;
+
+	/**
+	 * Detect if we can use `window.performance.now()` and gracefully fallback to
+	 * `Date.now()` if it doesn't exist. We need to support Firefox < 15 for now
+	 * because of Facebook's testing infrastructure.
+	 */
+	if (performance.now) {
+	  performanceNow = function performanceNow() {
+	    return performance.now();
+	  };
+	} else {
+	  performanceNow = function performanceNow() {
+	    return Date.now();
+	  };
+	}
+
+	module.exports = performanceNow;
+
+/***/ },
 /* 508 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @typechecks
+	 */
+
+	'use strict';
+
+	var ExecutionEnvironment = __webpack_require__(490);
+
+	var performance;
+
+	if (ExecutionEnvironment.canUseDOM) {
+	  performance = window.performance || window.msPerformance || window.webkitPerformance;
+	}
+
+	module.exports = performance || {};
+
+/***/ },
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40038,6 +40317,8 @@ var vendors_dashboard_worona =
 	 */
 
 	'use strict';
+
+	var _prodInvariant = __webpack_require__(303);
 
 	var invariant = __webpack_require__(304);
 
@@ -40150,7 +40431,7 @@ var vendors_dashboard_worona =
 	   * @return {*} Return value from `method`.
 	   */
 	  perform: function (method, scope, a, b, c, d, e, f) {
-	    !!this.isInTransaction() ?  true ? invariant(false, 'Transaction.perform(...): Cannot initialize a transaction when there ' + 'is already an outstanding transaction.') : invariant(false) : void 0;
+	    !!this.isInTransaction() ?  true ? invariant(false, 'Transaction.perform(...): Cannot initialize a transaction when there is already an outstanding transaction.') : _prodInvariant('27') : void 0;
 	    var errorThrown;
 	    var ret;
 	    try {
@@ -40214,7 +40495,7 @@ var vendors_dashboard_worona =
 	   * invoked).
 	   */
 	  closeAll: function (startIndex) {
-	    !this.isInTransaction() ?  true ? invariant(false, 'Transaction.closeAll(): Cannot close transaction when none are open.') : invariant(false) : void 0;
+	    !this.isInTransaction() ?  true ? invariant(false, 'Transaction.closeAll(): Cannot close transaction when none are open.') : _prodInvariant('28') : void 0;
 	    var transactionWrappers = this.transactionWrappers;
 	    for (var i = startIndex; i < transactionWrappers.length; i++) {
 	      var wrapper = transactionWrappers[i];
@@ -40259,7 +40540,7 @@ var vendors_dashboard_worona =
 	module.exports = Transaction;
 
 /***/ },
-/* 509 */
+/* 510 */
 /***/ function(module, exports) {
 
 	/**
@@ -40299,7 +40580,7 @@ var vendors_dashboard_worona =
 	module.exports = getEventTarget;
 
 /***/ },
-/* 510 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40315,7 +40596,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(317);
+	var ExecutionEnvironment = __webpack_require__(490);
 
 	var useHasFeature;
 	if (ExecutionEnvironment.canUseDOM) {
@@ -40364,7 +40645,7 @@ var vendors_dashboard_worona =
 	module.exports = isEventSupported;
 
 /***/ },
-/* 511 */
+/* 512 */
 /***/ function(module, exports) {
 
 	/**
@@ -40376,6 +40657,7 @@ var vendors_dashboard_worona =
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule isTextInputElement
+	 * 
 	 */
 
 	'use strict';
@@ -40404,13 +40686,22 @@ var vendors_dashboard_worona =
 
 	function isTextInputElement(elem) {
 	  var nodeName = elem && elem.nodeName && elem.nodeName.toLowerCase();
-	  return nodeName && (nodeName === 'input' && supportedInputTypes[elem.type] || nodeName === 'textarea');
+
+	  if (nodeName === 'input') {
+	    return !!supportedInputTypes[elem.type];
+	  }
+
+	  if (nodeName === 'textarea') {
+	    return true;
+	  }
+
+	  return false;
 	}
 
 	module.exports = isTextInputElement;
 
 /***/ },
-/* 512 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40426,7 +40717,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var keyOf = __webpack_require__(328);
+	var keyOf = __webpack_require__(320);
 
 	/**
 	 * Module that is injectable into `EventPluginHub`, that specifies a
@@ -40442,7 +40733,7 @@ var vendors_dashboard_worona =
 	module.exports = DefaultEventPluginOrder;
 
 /***/ },
-/* 513 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40458,12 +40749,12 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var EventConstants = __webpack_require__(488);
-	var EventPropagators = __webpack_require__(489);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var SyntheticMouseEvent = __webpack_require__(514);
+	var EventConstants = __webpack_require__(482);
+	var EventPropagators = __webpack_require__(483);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var SyntheticMouseEvent = __webpack_require__(515);
 
-	var keyOf = __webpack_require__(328);
+	var keyOf = __webpack_require__(320);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -40552,7 +40843,7 @@ var vendors_dashboard_worona =
 	module.exports = EnterLeaveEventPlugin;
 
 /***/ },
-/* 514 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40568,10 +40859,10 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var SyntheticUIEvent = __webpack_require__(515);
-	var ViewportMetrics = __webpack_require__(516);
+	var SyntheticUIEvent = __webpack_require__(516);
+	var ViewportMetrics = __webpack_require__(517);
 
-	var getEventModifierState = __webpack_require__(517);
+	var getEventModifierState = __webpack_require__(518);
 
 	/**
 	 * @interface MouseEvent
@@ -40629,7 +40920,7 @@ var vendors_dashboard_worona =
 	module.exports = SyntheticMouseEvent;
 
 /***/ },
-/* 515 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40645,9 +40936,9 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var SyntheticEvent = __webpack_require__(499);
+	var SyntheticEvent = __webpack_require__(494);
 
-	var getEventTarget = __webpack_require__(509);
+	var getEventTarget = __webpack_require__(510);
 
 	/**
 	 * @interface UIEvent
@@ -40660,7 +40951,7 @@ var vendors_dashboard_worona =
 	    }
 
 	    var target = getEventTarget(event);
-	    if (target != null && target.window === target) {
+	    if (target.window === target) {
 	      // target is a window object
 	      return target;
 	    }
@@ -40693,7 +40984,7 @@ var vendors_dashboard_worona =
 	module.exports = SyntheticUIEvent;
 
 /***/ },
-/* 516 */
+/* 517 */
 /***/ function(module, exports) {
 
 	/**
@@ -40725,7 +41016,7 @@ var vendors_dashboard_worona =
 	module.exports = ViewportMetrics;
 
 /***/ },
-/* 517 */
+/* 518 */
 /***/ function(module, exports) {
 
 	/**
@@ -40773,7 +41064,7 @@ var vendors_dashboard_worona =
 	module.exports = getEventModifierState;
 
 /***/ },
-/* 518 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40789,11 +41080,10 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(484);
+	var DOMProperty = __webpack_require__(478);
 
 	var MUST_USE_PROPERTY = DOMProperty.injection.MUST_USE_PROPERTY;
 	var HAS_BOOLEAN_VALUE = DOMProperty.injection.HAS_BOOLEAN_VALUE;
-	var HAS_SIDE_EFFECTS = DOMProperty.injection.HAS_SIDE_EFFECTS;
 	var HAS_NUMERIC_VALUE = DOMProperty.injection.HAS_NUMERIC_VALUE;
 	var HAS_POSITIVE_NUMERIC_VALUE = DOMProperty.injection.HAS_POSITIVE_NUMERIC_VALUE;
 	var HAS_OVERLOADED_BOOLEAN_VALUE = DOMProperty.injection.HAS_OVERLOADED_BOOLEAN_VALUE;
@@ -40927,7 +41217,7 @@ var vendors_dashboard_worona =
 	    // Setting .type throws on non-<input> tags
 	    type: 0,
 	    useMap: 0,
-	    value: MUST_USE_PROPERTY | HAS_SIDE_EFFECTS,
+	    value: 0,
 	    width: 0,
 	    wmode: 0,
 	    wrap: 0,
@@ -40987,7 +41277,7 @@ var vendors_dashboard_worona =
 	module.exports = HTMLDOMPropertyConfig;
 
 /***/ },
-/* 519 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -41003,8 +41293,8 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var DOMChildrenOperations = __webpack_require__(520);
-	var ReactDOMIDOperations = __webpack_require__(532);
+	var DOMChildrenOperations = __webpack_require__(521);
+	var ReactDOMIDOperations = __webpack_require__(533);
 
 	/**
 	 * Abstracts away all functionality of the reconciler that requires knowledge of
@@ -41031,7 +41321,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactComponentBrowserEnvironment;
 
 /***/ },
-/* 520 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -41047,19 +41337,19 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var DOMLazyTree = __webpack_require__(521);
-	var Danger = __webpack_require__(527);
-	var ReactMultiChildUpdateTypes = __webpack_require__(531);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactInstrumentation = __webpack_require__(315);
+	var DOMLazyTree = __webpack_require__(522);
+	var Danger = __webpack_require__(528);
+	var ReactMultiChildUpdateTypes = __webpack_require__(532);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactInstrumentation = __webpack_require__(503);
 
-	var createMicrosoftUnsafeLocalFunction = __webpack_require__(523);
-	var setInnerHTML = __webpack_require__(526);
-	var setTextContent = __webpack_require__(524);
+	var createMicrosoftUnsafeLocalFunction = __webpack_require__(525);
+	var setInnerHTML = __webpack_require__(524);
+	var setTextContent = __webpack_require__(526);
 
 	function getNodeAfter(parentNode, node) {
 	  // Special case for text components, which return [open, close] comments
-	  // from getNativeNode.
+	  // from getHostNode.
 	  if (Array.isArray(node)) {
 	    node = node[1];
 	  }
@@ -41148,7 +41438,7 @@ var vendors_dashboard_worona =
 	  }
 
 	  if (true) {
-	    ReactInstrumentation.debugTool.onNativeOperation(ReactDOMComponentTree.getInstanceFromNode(openingComment)._debugID, 'replace text', stringText);
+	    ReactInstrumentation.debugTool.onHostOperation(ReactDOMComponentTree.getInstanceFromNode(openingComment)._debugID, 'replace text', stringText);
 	  }
 	}
 
@@ -41157,11 +41447,11 @@ var vendors_dashboard_worona =
 	  dangerouslyReplaceNodeWithMarkup = function (oldChild, markup, prevInstance) {
 	    Danger.dangerouslyReplaceNodeWithMarkup(oldChild, markup);
 	    if (prevInstance._debugID !== 0) {
-	      ReactInstrumentation.debugTool.onNativeOperation(prevInstance._debugID, 'replace with', markup.toString());
+	      ReactInstrumentation.debugTool.onHostOperation(prevInstance._debugID, 'replace with', markup.toString());
 	    } else {
 	      var nextInstance = ReactDOMComponentTree.getInstanceFromNode(markup.node);
 	      if (nextInstance._debugID !== 0) {
-	        ReactInstrumentation.debugTool.onNativeOperation(nextInstance._debugID, 'mount', markup.toString());
+	        ReactInstrumentation.debugTool.onHostOperation(nextInstance._debugID, 'mount', markup.toString());
 	      }
 	    }
 	  };
@@ -41194,31 +41484,31 @@ var vendors_dashboard_worona =
 	        case ReactMultiChildUpdateTypes.INSERT_MARKUP:
 	          insertLazyTreeChildAt(parentNode, update.content, getNodeAfter(parentNode, update.afterNode));
 	          if (true) {
-	            ReactInstrumentation.debugTool.onNativeOperation(parentNodeDebugID, 'insert child', { toIndex: update.toIndex, content: update.content.toString() });
+	            ReactInstrumentation.debugTool.onHostOperation(parentNodeDebugID, 'insert child', { toIndex: update.toIndex, content: update.content.toString() });
 	          }
 	          break;
 	        case ReactMultiChildUpdateTypes.MOVE_EXISTING:
 	          moveChild(parentNode, update.fromNode, getNodeAfter(parentNode, update.afterNode));
 	          if (true) {
-	            ReactInstrumentation.debugTool.onNativeOperation(parentNodeDebugID, 'move child', { fromIndex: update.fromIndex, toIndex: update.toIndex });
+	            ReactInstrumentation.debugTool.onHostOperation(parentNodeDebugID, 'move child', { fromIndex: update.fromIndex, toIndex: update.toIndex });
 	          }
 	          break;
 	        case ReactMultiChildUpdateTypes.SET_MARKUP:
 	          setInnerHTML(parentNode, update.content);
 	          if (true) {
-	            ReactInstrumentation.debugTool.onNativeOperation(parentNodeDebugID, 'replace children', update.content.toString());
+	            ReactInstrumentation.debugTool.onHostOperation(parentNodeDebugID, 'replace children', update.content.toString());
 	          }
 	          break;
 	        case ReactMultiChildUpdateTypes.TEXT_CONTENT:
 	          setTextContent(parentNode, update.content);
 	          if (true) {
-	            ReactInstrumentation.debugTool.onNativeOperation(parentNodeDebugID, 'replace text', update.content.toString());
+	            ReactInstrumentation.debugTool.onHostOperation(parentNodeDebugID, 'replace text', update.content.toString());
 	          }
 	          break;
 	        case ReactMultiChildUpdateTypes.REMOVE_NODE:
 	          removeChild(parentNode, update.fromNode);
 	          if (true) {
-	            ReactInstrumentation.debugTool.onNativeOperation(parentNodeDebugID, 'remove child', { fromIndex: update.fromIndex });
+	            ReactInstrumentation.debugTool.onHostOperation(parentNodeDebugID, 'remove child', { fromIndex: update.fromIndex });
 	          }
 	          break;
 	      }
@@ -41230,7 +41520,7 @@ var vendors_dashboard_worona =
 	module.exports = DOMChildrenOperations;
 
 /***/ },
-/* 521 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -41246,10 +41536,11 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var DOMNamespaces = __webpack_require__(522);
+	var DOMNamespaces = __webpack_require__(523);
+	var setInnerHTML = __webpack_require__(524);
 
-	var createMicrosoftUnsafeLocalFunction = __webpack_require__(523);
-	var setTextContent = __webpack_require__(524);
+	var createMicrosoftUnsafeLocalFunction = __webpack_require__(525);
+	var setTextContent = __webpack_require__(526);
 
 	var ELEMENT_NODE_TYPE = 1;
 	var DOCUMENT_FRAGMENT_NODE_TYPE = 11;
@@ -41278,7 +41569,7 @@ var vendors_dashboard_worona =
 	      insertTreeBefore(node, children[i], null);
 	    }
 	  } else if (tree.html != null) {
-	    node.innerHTML = tree.html;
+	    setInnerHTML(node, tree.html);
 	  } else if (tree.text != null) {
 	    setTextContent(node, tree.text);
 	  }
@@ -41317,7 +41608,7 @@ var vendors_dashboard_worona =
 	  if (enableLazy) {
 	    tree.html = html;
 	  } else {
-	    tree.node.innerHTML = html;
+	    setInnerHTML(tree.node, html);
 	  }
 	}
 
@@ -41352,7 +41643,7 @@ var vendors_dashboard_worona =
 	module.exports = DOMLazyTree;
 
 /***/ },
-/* 522 */
+/* 523 */
 /***/ function(module, exports) {
 
 	/**
@@ -41377,132 +41668,7 @@ var vendors_dashboard_worona =
 	module.exports = DOMNamespaces;
 
 /***/ },
-/* 523 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule createMicrosoftUnsafeLocalFunction
-	 */
-
-	/* globals MSApp */
-
-	'use strict';
-
-	/**
-	 * Create a function which has 'unsafe' privileges (required by windows8 apps)
-	 */
-
-	var createMicrosoftUnsafeLocalFunction = function (func) {
-	  if (typeof MSApp !== 'undefined' && MSApp.execUnsafeLocalFunction) {
-	    return function (arg0, arg1, arg2, arg3) {
-	      MSApp.execUnsafeLocalFunction(function () {
-	        return func(arg0, arg1, arg2, arg3);
-	      });
-	    };
-	  } else {
-	    return func;
-	  }
-	};
-
-	module.exports = createMicrosoftUnsafeLocalFunction;
-
-/***/ },
 /* 524 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule setTextContent
-	 */
-
-	'use strict';
-
-	var ExecutionEnvironment = __webpack_require__(317);
-	var escapeTextContentForBrowser = __webpack_require__(525);
-	var setInnerHTML = __webpack_require__(526);
-
-	/**
-	 * Set the textContent property of a node, ensuring that whitespace is preserved
-	 * even in IE8. innerText is a poor substitute for textContent and, among many
-	 * issues, inserts <br> instead of the literal newline chars. innerHTML behaves
-	 * as it should.
-	 *
-	 * @param {DOMElement} node
-	 * @param {string} text
-	 * @internal
-	 */
-	var setTextContent = function (node, text) {
-	  node.textContent = text;
-	};
-
-	if (ExecutionEnvironment.canUseDOM) {
-	  if (!('textContent' in document.documentElement)) {
-	    setTextContent = function (node, text) {
-	      setInnerHTML(node, escapeTextContentForBrowser(text));
-	    };
-	  }
-	}
-
-	module.exports = setTextContent;
-
-/***/ },
-/* 525 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule escapeTextContentForBrowser
-	 */
-
-	'use strict';
-
-	var ESCAPE_LOOKUP = {
-	  '&': '&amp;',
-	  '>': '&gt;',
-	  '<': '&lt;',
-	  '"': '&quot;',
-	  '\'': '&#x27;'
-	};
-
-	var ESCAPE_REGEX = /[&><"']/g;
-
-	function escaper(match) {
-	  return ESCAPE_LOOKUP[match];
-	}
-
-	/**
-	 * Escapes text to prevent scripting attacks.
-	 *
-	 * @param {*} text Text value to escape.
-	 * @return {string} An escaped string.
-	 */
-	function escapeTextContentForBrowser(text) {
-	  return ('' + text).replace(ESCAPE_REGEX, escaper);
-	}
-
-	module.exports = escapeTextContentForBrowser;
-
-/***/ },
-/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -41518,12 +41684,16 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(317);
+	var ExecutionEnvironment = __webpack_require__(490);
+	var DOMNamespaces = __webpack_require__(523);
 
 	var WHITESPACE_TEST = /^[ \r\n\t\f]/;
 	var NONVISIBLE_TEST = /<(!--|link|noscript|meta|script|style)[ \r\n\t\f\/>]/;
 
-	var createMicrosoftUnsafeLocalFunction = __webpack_require__(523);
+	var createMicrosoftUnsafeLocalFunction = __webpack_require__(525);
+
+	// SVG temp container for IE lacking innerHTML
+	var reusableSVGContainer;
 
 	/**
 	 * Set the innerHTML property of a node, ensuring that whitespace is preserved
@@ -41534,7 +41704,19 @@ var vendors_dashboard_worona =
 	 * @internal
 	 */
 	var setInnerHTML = createMicrosoftUnsafeLocalFunction(function (node, html) {
-	  node.innerHTML = html;
+	  // IE does not have innerHTML for SVG nodes, so instead we inject the
+	  // new markup in a temp node and then move the child nodes across into
+	  // the target node
+	  if (node.namespaceURI === DOMNamespaces.svg && !('innerHTML' in node)) {
+	    reusableSVGContainer = reusableSVGContainer || document.createElement('div');
+	    reusableSVGContainer.innerHTML = '<svg>' + html + '</svg>';
+	    var newNodes = reusableSVGContainer.firstChild.childNodes;
+	    for (var i = 0; i < newNodes.length; i++) {
+	      node.appendChild(newNodes[i]);
+	    }
+	  } else {
+	    node.innerHTML = html;
+	  }
 	});
 
 	if (ExecutionEnvironment.canUseDOM) {
@@ -41589,7 +41771,224 @@ var vendors_dashboard_worona =
 	module.exports = setInnerHTML;
 
 /***/ },
+/* 525 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule createMicrosoftUnsafeLocalFunction
+	 */
+
+	/* globals MSApp */
+
+	'use strict';
+
+	/**
+	 * Create a function which has 'unsafe' privileges (required by windows8 apps)
+	 */
+
+	var createMicrosoftUnsafeLocalFunction = function (func) {
+	  if (typeof MSApp !== 'undefined' && MSApp.execUnsafeLocalFunction) {
+	    return function (arg0, arg1, arg2, arg3) {
+	      MSApp.execUnsafeLocalFunction(function () {
+	        return func(arg0, arg1, arg2, arg3);
+	      });
+	    };
+	  } else {
+	    return func;
+	  }
+	};
+
+	module.exports = createMicrosoftUnsafeLocalFunction;
+
+/***/ },
+/* 526 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule setTextContent
+	 */
+
+	'use strict';
+
+	var ExecutionEnvironment = __webpack_require__(490);
+	var escapeTextContentForBrowser = __webpack_require__(527);
+	var setInnerHTML = __webpack_require__(524);
+
+	/**
+	 * Set the textContent property of a node, ensuring that whitespace is preserved
+	 * even in IE8. innerText is a poor substitute for textContent and, among many
+	 * issues, inserts <br> instead of the literal newline chars. innerHTML behaves
+	 * as it should.
+	 *
+	 * @param {DOMElement} node
+	 * @param {string} text
+	 * @internal
+	 */
+	var setTextContent = function (node, text) {
+	  if (text) {
+	    var firstChild = node.firstChild;
+
+	    if (firstChild && firstChild === node.lastChild && firstChild.nodeType === 3) {
+	      firstChild.nodeValue = text;
+	      return;
+	    }
+	  }
+	  node.textContent = text;
+	};
+
+	if (ExecutionEnvironment.canUseDOM) {
+	  if (!('textContent' in document.documentElement)) {
+	    setTextContent = function (node, text) {
+	      setInnerHTML(node, escapeTextContentForBrowser(text));
+	    };
+	  }
+	}
+
+	module.exports = setTextContent;
+
+/***/ },
 /* 527 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2016-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * Based on the escape-html library, which is used under the MIT License below:
+	 *
+	 * Copyright (c) 2012-2013 TJ Holowaychuk
+	 * Copyright (c) 2015 Andreas Lubbe
+	 * Copyright (c) 2015 Tiancheng "Timothy" Gu
+	 *
+	 * Permission is hereby granted, free of charge, to any person obtaining
+	 * a copy of this software and associated documentation files (the
+	 * 'Software'), to deal in the Software without restriction, including
+	 * without limitation the rights to use, copy, modify, merge, publish,
+	 * distribute, sublicense, and/or sell copies of the Software, and to
+	 * permit persons to whom the Software is furnished to do so, subject to
+	 * the following conditions:
+	 *
+	 * The above copyright notice and this permission notice shall be
+	 * included in all copies or substantial portions of the Software.
+	 *
+	 * THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+	 * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	 * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+	 * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+	 * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+	 * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+	 * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	 *
+	 * @providesModule escapeTextContentForBrowser
+	 */
+
+	'use strict';
+
+	// code copied and modified from escape-html
+	/**
+	 * Module variables.
+	 * @private
+	 */
+
+	var matchHtmlRegExp = /["'&<>]/;
+
+	/**
+	 * Escape special characters in the given string of html.
+	 *
+	 * @param  {string} string The string to escape for inserting into HTML
+	 * @return {string}
+	 * @public
+	 */
+
+	function escapeHtml(string) {
+	  var str = '' + string;
+	  var match = matchHtmlRegExp.exec(str);
+
+	  if (!match) {
+	    return str;
+	  }
+
+	  var escape;
+	  var html = '';
+	  var index = 0;
+	  var lastIndex = 0;
+
+	  for (index = match.index; index < str.length; index++) {
+	    switch (str.charCodeAt(index)) {
+	      case 34:
+	        // "
+	        escape = '&quot;';
+	        break;
+	      case 38:
+	        // &
+	        escape = '&amp;';
+	        break;
+	      case 39:
+	        // '
+	        escape = '&#x27;'; // modified from escape-html; used to be '&#39'
+	        break;
+	      case 60:
+	        // <
+	        escape = '&lt;';
+	        break;
+	      case 62:
+	        // >
+	        escape = '&gt;';
+	        break;
+	      default:
+	        continue;
+	    }
+
+	    if (lastIndex !== index) {
+	      html += str.substring(lastIndex, index);
+	    }
+
+	    lastIndex = index + 1;
+	    html += escape;
+	  }
+
+	  return lastIndex !== index ? html + str.substring(lastIndex, index) : html;
+	}
+	// end code copied and modified from escape-html
+
+	/**
+	 * Escapes text to prevent scripting attacks.
+	 *
+	 * @param {*} text Text value to escape.
+	 * @return {string} An escaped string.
+	 */
+	function escapeTextContentForBrowser(text) {
+	  if (typeof text === 'boolean' || typeof text === 'number') {
+	    // this shortcircuit helps perf for types that we know will never have
+	    // special characters, especially given that this function is used often
+	    // for numeric dom ids.
+	    return '' + text;
+	  }
+	  return escapeHtml(text);
+	}
+
+	module.exports = escapeTextContentForBrowser;
+
+/***/ },
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -41605,112 +42004,16 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var DOMLazyTree = __webpack_require__(521);
-	var ExecutionEnvironment = __webpack_require__(317);
+	var _prodInvariant = __webpack_require__(303);
 
-	var createNodesFromMarkup = __webpack_require__(528);
+	var DOMLazyTree = __webpack_require__(522);
+	var ExecutionEnvironment = __webpack_require__(490);
+
+	var createNodesFromMarkup = __webpack_require__(529);
 	var emptyFunction = __webpack_require__(308);
-	var getMarkupWrap = __webpack_require__(530);
 	var invariant = __webpack_require__(304);
 
-	var OPEN_TAG_NAME_EXP = /^(<[^ \/>]+)/;
-	var RESULT_INDEX_ATTR = 'data-danger-index';
-
-	/**
-	 * Extracts the `nodeName` from a string of markup.
-	 *
-	 * NOTE: Extracting the `nodeName` does not require a regular expression match
-	 * because we make assumptions about React-generated markup (i.e. there are no
-	 * spaces surrounding the opening tag and there is at least one attribute).
-	 *
-	 * @param {string} markup String of markup.
-	 * @return {string} Node name of the supplied markup.
-	 * @see http://jsperf.com/extract-nodename
-	 */
-	function getNodeName(markup) {
-	  return markup.substring(1, markup.indexOf(' '));
-	}
-
 	var Danger = {
-
-	  /**
-	   * Renders markup into an array of nodes. The markup is expected to render
-	   * into a list of root nodes. Also, the length of `resultList` and
-	   * `markupList` should be the same.
-	   *
-	   * @param {array<string>} markupList List of markup strings to render.
-	   * @return {array<DOMElement>} List of rendered nodes.
-	   * @internal
-	   */
-	  dangerouslyRenderMarkup: function (markupList) {
-	    !ExecutionEnvironment.canUseDOM ?  true ? invariant(false, 'dangerouslyRenderMarkup(...): Cannot render markup in a worker ' + 'thread. Make sure `window` and `document` are available globally ' + 'before requiring React when unit testing or use ' + 'ReactDOMServer.renderToString for server rendering.') : invariant(false) : void 0;
-	    var nodeName;
-	    var markupByNodeName = {};
-	    // Group markup by `nodeName` if a wrap is necessary, else by '*'.
-	    for (var i = 0; i < markupList.length; i++) {
-	      !markupList[i] ?  true ? invariant(false, 'dangerouslyRenderMarkup(...): Missing markup.') : invariant(false) : void 0;
-	      nodeName = getNodeName(markupList[i]);
-	      nodeName = getMarkupWrap(nodeName) ? nodeName : '*';
-	      markupByNodeName[nodeName] = markupByNodeName[nodeName] || [];
-	      markupByNodeName[nodeName][i] = markupList[i];
-	    }
-	    var resultList = [];
-	    var resultListAssignmentCount = 0;
-	    for (nodeName in markupByNodeName) {
-	      if (!markupByNodeName.hasOwnProperty(nodeName)) {
-	        continue;
-	      }
-	      var markupListByNodeName = markupByNodeName[nodeName];
-
-	      // This for-in loop skips the holes of the sparse array. The order of
-	      // iteration should follow the order of assignment, which happens to match
-	      // numerical index order, but we don't rely on that.
-	      var resultIndex;
-	      for (resultIndex in markupListByNodeName) {
-	        if (markupListByNodeName.hasOwnProperty(resultIndex)) {
-	          var markup = markupListByNodeName[resultIndex];
-
-	          // Push the requested markup with an additional RESULT_INDEX_ATTR
-	          // attribute.  If the markup does not start with a < character, it
-	          // will be discarded below (with an appropriate console.error).
-	          markupListByNodeName[resultIndex] = markup.replace(OPEN_TAG_NAME_EXP,
-	          // This index will be parsed back out below.
-	          '$1 ' + RESULT_INDEX_ATTR + '="' + resultIndex + '" ');
-	        }
-	      }
-
-	      // Render each group of markup with similar wrapping `nodeName`.
-	      var renderNodes = createNodesFromMarkup(markupListByNodeName.join(''), emptyFunction // Do nothing special with <script> tags.
-	      );
-
-	      for (var j = 0; j < renderNodes.length; ++j) {
-	        var renderNode = renderNodes[j];
-	        if (renderNode.hasAttribute && renderNode.hasAttribute(RESULT_INDEX_ATTR)) {
-
-	          resultIndex = +renderNode.getAttribute(RESULT_INDEX_ATTR);
-	          renderNode.removeAttribute(RESULT_INDEX_ATTR);
-
-	          !!resultList.hasOwnProperty(resultIndex) ?  true ? invariant(false, 'Danger: Assigning to an already-occupied result index.') : invariant(false) : void 0;
-
-	          resultList[resultIndex] = renderNode;
-
-	          // This should match resultList.length and markupList.length when
-	          // we're done.
-	          resultListAssignmentCount += 1;
-	        } else if (true) {
-	          console.error('Danger: Discarding unexpected node:', renderNode);
-	        }
-	      }
-	    }
-
-	    // Although resultList was populated out of order, it should now be a dense
-	    // array.
-	    !(resultListAssignmentCount === resultList.length) ?  true ? invariant(false, 'Danger: Did not assign to every index of resultList.') : invariant(false) : void 0;
-
-	    !(resultList.length === markupList.length) ?  true ? invariant(false, 'Danger: Expected markup to render %s nodes, but rendered %s.', markupList.length, resultList.length) : invariant(false) : void 0;
-
-	    return resultList;
-	  },
 
 	  /**
 	   * Replaces a node with a string of markup at its current position within its
@@ -41721,9 +42024,9 @@ var vendors_dashboard_worona =
 	   * @internal
 	   */
 	  dangerouslyReplaceNodeWithMarkup: function (oldChild, markup) {
-	    !ExecutionEnvironment.canUseDOM ?  true ? invariant(false, 'dangerouslyReplaceNodeWithMarkup(...): Cannot render markup in a ' + 'worker thread. Make sure `window` and `document` are available ' + 'globally before requiring React when unit testing or use ' + 'ReactDOMServer.renderToString() for server rendering.') : invariant(false) : void 0;
-	    !markup ?  true ? invariant(false, 'dangerouslyReplaceNodeWithMarkup(...): Missing markup.') : invariant(false) : void 0;
-	    !(oldChild.nodeName !== 'HTML') ?  true ? invariant(false, 'dangerouslyReplaceNodeWithMarkup(...): Cannot replace markup of the ' + '<html> node. This is because browser quirks make this unreliable ' + 'and/or slow. If you want to render to the root you must use ' + 'server rendering. See ReactDOMServer.renderToString().') : invariant(false) : void 0;
+	    !ExecutionEnvironment.canUseDOM ?  true ? invariant(false, 'dangerouslyReplaceNodeWithMarkup(...): Cannot render markup in a worker thread. Make sure `window` and `document` are available globally before requiring React when unit testing or use ReactDOMServer.renderToString() for server rendering.') : _prodInvariant('56') : void 0;
+	    !markup ?  true ? invariant(false, 'dangerouslyReplaceNodeWithMarkup(...): Missing markup.') : _prodInvariant('57') : void 0;
+	    !(oldChild.nodeName !== 'HTML') ?  true ? invariant(false, 'dangerouslyReplaceNodeWithMarkup(...): Cannot replace markup of the <html> node. This is because browser quirks make this unreliable and/or slow. If you want to render to the root you must use server rendering. See ReactDOMServer.renderToString().') : _prodInvariant('58') : void 0;
 
 	    if (typeof markup === 'string') {
 	      var newChild = createNodesFromMarkup(markup, emptyFunction)[0];
@@ -41738,7 +42041,7 @@ var vendors_dashboard_worona =
 	module.exports = Danger;
 
 /***/ },
-/* 528 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41756,10 +42059,10 @@ var vendors_dashboard_worona =
 
 	/*eslint-disable fb-www/unsafe-html*/
 
-	var ExecutionEnvironment = __webpack_require__(317);
+	var ExecutionEnvironment = __webpack_require__(490);
 
-	var createArrayFromMixed = __webpack_require__(529);
-	var getMarkupWrap = __webpack_require__(530);
+	var createArrayFromMixed = __webpack_require__(530);
+	var getMarkupWrap = __webpack_require__(531);
 	var invariant = __webpack_require__(304);
 
 	/**
@@ -41826,7 +42129,7 @@ var vendors_dashboard_worona =
 	module.exports = createNodesFromMarkup;
 
 /***/ },
-/* 529 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41957,7 +42260,7 @@ var vendors_dashboard_worona =
 	module.exports = createArrayFromMixed;
 
 /***/ },
-/* 530 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41974,7 +42277,7 @@ var vendors_dashboard_worona =
 
 	/*eslint-disable fb-www/unsafe-html */
 
-	var ExecutionEnvironment = __webpack_require__(317);
+	var ExecutionEnvironment = __webpack_require__(490);
 
 	var invariant = __webpack_require__(304);
 
@@ -42056,7 +42359,7 @@ var vendors_dashboard_worona =
 	module.exports = getMarkupWrap;
 
 /***/ },
-/* 531 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42072,7 +42375,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var keyMirror = __webpack_require__(326);
+	var keyMirror = __webpack_require__(318);
 
 	/**
 	 * When a component's children are updated, a series of update configuration
@@ -42093,7 +42396,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactMultiChildUpdateTypes;
 
 /***/ },
-/* 532 */
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42109,8 +42412,8 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var DOMChildrenOperations = __webpack_require__(520);
-	var ReactDOMComponentTree = __webpack_require__(483);
+	var DOMChildrenOperations = __webpack_require__(521);
+	var ReactDOMComponentTree = __webpack_require__(477);
 
 	/**
 	 * Operations used to process updates to DOM nodes.
@@ -42132,7 +42435,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMIDOperations;
 
 /***/ },
-/* 533 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42150,37 +42453,38 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _prodInvariant = __webpack_require__(303),
+	    _assign = __webpack_require__(300);
 
-	var AutoFocusUtils = __webpack_require__(534);
-	var CSSPropertyOperations = __webpack_require__(536);
-	var DOMLazyTree = __webpack_require__(521);
-	var DOMNamespaces = __webpack_require__(522);
-	var DOMProperty = __webpack_require__(484);
-	var DOMPropertyOperations = __webpack_require__(544);
-	var EventConstants = __webpack_require__(488);
-	var EventPluginHub = __webpack_require__(490);
-	var EventPluginRegistry = __webpack_require__(491);
-	var ReactBrowserEventEmitter = __webpack_require__(549);
-	var ReactComponentBrowserEnvironment = __webpack_require__(519);
-	var ReactDOMButton = __webpack_require__(552);
-	var ReactDOMComponentFlags = __webpack_require__(485);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactDOMInput = __webpack_require__(554);
-	var ReactDOMOption = __webpack_require__(556);
-	var ReactDOMSelect = __webpack_require__(557);
-	var ReactDOMTextarea = __webpack_require__(558);
-	var ReactInstrumentation = __webpack_require__(315);
-	var ReactMultiChild = __webpack_require__(559);
-	var ReactServerRenderingTransaction = __webpack_require__(571);
+	var AutoFocusUtils = __webpack_require__(535);
+	var CSSPropertyOperations = __webpack_require__(537);
+	var DOMLazyTree = __webpack_require__(522);
+	var DOMNamespaces = __webpack_require__(523);
+	var DOMProperty = __webpack_require__(478);
+	var DOMPropertyOperations = __webpack_require__(545);
+	var EventConstants = __webpack_require__(482);
+	var EventPluginHub = __webpack_require__(484);
+	var EventPluginRegistry = __webpack_require__(485);
+	var ReactBrowserEventEmitter = __webpack_require__(551);
+	var ReactComponentBrowserEnvironment = __webpack_require__(520);
+	var ReactDOMButton = __webpack_require__(554);
+	var ReactDOMComponentFlags = __webpack_require__(479);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactDOMInput = __webpack_require__(556);
+	var ReactDOMOption = __webpack_require__(558);
+	var ReactDOMSelect = __webpack_require__(559);
+	var ReactDOMTextarea = __webpack_require__(560);
+	var ReactInstrumentation = __webpack_require__(503);
+	var ReactMultiChild = __webpack_require__(561);
+	var ReactServerRenderingTransaction = __webpack_require__(572);
 
 	var emptyFunction = __webpack_require__(308);
-	var escapeTextContentForBrowser = __webpack_require__(525);
+	var escapeTextContentForBrowser = __webpack_require__(527);
 	var invariant = __webpack_require__(304);
-	var isEventSupported = __webpack_require__(510);
-	var keyOf = __webpack_require__(328);
-	var shallowEqual = __webpack_require__(572);
-	var validateDOMNesting = __webpack_require__(573);
+	var isEventSupported = __webpack_require__(511);
+	var keyOf = __webpack_require__(320);
+	var shallowEqual = __webpack_require__(575);
+	var validateDOMNesting = __webpack_require__(576);
 	var warning = __webpack_require__(307);
 
 	var Flags = ReactDOMComponentFlags;
@@ -42278,18 +42582,18 @@ var vendors_dashboard_worona =
 	  }
 	  // Note the use of `==` which checks for null or undefined.
 	  if (voidElementTags[component._tag]) {
-	    !(props.children == null && props.dangerouslySetInnerHTML == null) ?  true ? invariant(false, '%s is a void element tag and must not have `children` or ' + 'use `props.dangerouslySetInnerHTML`.%s', component._tag, component._currentElement._owner ? ' Check the render method of ' + component._currentElement._owner.getName() + '.' : '') : invariant(false) : void 0;
+	    !(props.children == null && props.dangerouslySetInnerHTML == null) ?  true ? invariant(false, '%s is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`.%s', component._tag, component._currentElement._owner ? ' Check the render method of ' + component._currentElement._owner.getName() + '.' : '') : _prodInvariant('137', component._tag, component._currentElement._owner ? ' Check the render method of ' + component._currentElement._owner.getName() + '.' : '') : void 0;
 	  }
 	  if (props.dangerouslySetInnerHTML != null) {
-	    !(props.children == null) ?  true ? invariant(false, 'Can only set one of `children` or `props.dangerouslySetInnerHTML`.') : invariant(false) : void 0;
-	    !(typeof props.dangerouslySetInnerHTML === 'object' && HTML in props.dangerouslySetInnerHTML) ?  true ? invariant(false, '`props.dangerouslySetInnerHTML` must be in the form `{__html: ...}`. ' + 'Please visit https://fb.me/react-invariant-dangerously-set-inner-html ' + 'for more information.') : invariant(false) : void 0;
+	    !(props.children == null) ?  true ? invariant(false, 'Can only set one of `children` or `props.dangerouslySetInnerHTML`.') : _prodInvariant('60') : void 0;
+	    !(typeof props.dangerouslySetInnerHTML === 'object' && HTML in props.dangerouslySetInnerHTML) ?  true ? invariant(false, '`props.dangerouslySetInnerHTML` must be in the form `{__html: ...}`. Please visit https://fb.me/react-invariant-dangerously-set-inner-html for more information.') : _prodInvariant('61') : void 0;
 	  }
 	  if (true) {
 	     true ? warning(props.innerHTML == null, 'Directly setting property `innerHTML` is not permitted. ' + 'For more information, lookup documentation on `dangerouslySetInnerHTML`.') : void 0;
 	     true ? warning(props.suppressContentEditableWarning || !props.contentEditable || props.children == null, 'A component is `contentEditable` and contains `children` managed by ' + 'React. It is now your responsibility to guarantee that none of ' + 'those nodes are unexpectedly modified or duplicated. This is ' + 'probably not intentional.') : void 0;
 	     true ? warning(props.onFocusIn == null && props.onFocusOut == null, 'React uses onFocus and onBlur instead of onFocusIn and onFocusOut. ' + 'All React events are normalized to bubble, so onFocusIn and onFocusOut ' + 'are not needed/supported by React.') : void 0;
 	  }
-	  !(props.style == null || typeof props.style === 'object') ?  true ? invariant(false, 'The `style` prop expects a mapping from style properties to values, ' + 'not a string. For example, style={{marginRight: spacing + \'em\'}} when ' + 'using JSX.%s', getDeclarationErrorAddendum(component)) : invariant(false) : void 0;
+	  !(props.style == null || typeof props.style === 'object') ?  true ? invariant(false, 'The `style` prop expects a mapping from style properties to values, not a string. For example, style={{marginRight: spacing + \'em\'}} when using JSX.%s', getDeclarationErrorAddendum(component)) : _prodInvariant('62', getDeclarationErrorAddendum(component)) : void 0;
 	}
 
 	function enqueuePutListener(inst, registrationName, listener, transaction) {
@@ -42301,7 +42605,7 @@ var vendors_dashboard_worona =
 	    // bubble.
 	     true ? warning(registrationName !== 'onScroll' || isEventSupported('scroll', true), 'This browser doesn\'t support the `onScroll` event') : void 0;
 	  }
-	  var containerInfo = inst._nativeContainerInfo;
+	  var containerInfo = inst._hostContainerInfo;
 	  var isDocumentFragment = containerInfo._node && containerInfo._node.nodeType === DOC_FRAGMENT_TYPE;
 	  var doc = isDocumentFragment ? containerInfo._node : containerInfo._ownerDocument;
 	  listenTo(registrationName, doc);
@@ -42317,6 +42621,16 @@ var vendors_dashboard_worona =
 	  EventPluginHub.putListener(listenerToPut.inst, listenerToPut.registrationName, listenerToPut.listener);
 	}
 
+	function inputPostMount() {
+	  var inst = this;
+	  ReactDOMInput.postMountWrapper(inst);
+	}
+
+	function textareaPostMount() {
+	  var inst = this;
+	  ReactDOMTextarea.postMountWrapper(inst);
+	}
+
 	function optionPostMount() {
 	  var inst = this;
 	  ReactDOMOption.postMountWrapper(inst);
@@ -42324,14 +42638,34 @@ var vendors_dashboard_worona =
 
 	var setContentChildForInstrumentation = emptyFunction;
 	if (true) {
-	  setContentChildForInstrumentation = function (contentToUse) {
+	  setContentChildForInstrumentation = function (content) {
+	    var hasExistingContent = this._contentDebugID != null;
 	    var debugID = this._debugID;
 	    var contentDebugID = debugID + '#text';
+
+	    if (content == null) {
+	      if (hasExistingContent) {
+	        ReactInstrumentation.debugTool.onUnmountComponent(this._contentDebugID);
+	      }
+	      this._contentDebugID = null;
+	      return;
+	    }
+
 	    this._contentDebugID = contentDebugID;
+	    var text = '' + content;
+
 	    ReactInstrumentation.debugTool.onSetDisplayName(contentDebugID, '#text');
-	    ReactInstrumentation.debugTool.onSetText(contentDebugID, '' + contentToUse);
-	    ReactInstrumentation.debugTool.onMountComponent(contentDebugID);
-	    ReactInstrumentation.debugTool.onSetChildren(debugID, [contentDebugID]);
+	    ReactInstrumentation.debugTool.onSetParent(contentDebugID, debugID);
+	    ReactInstrumentation.debugTool.onSetText(contentDebugID, text);
+
+	    if (hasExistingContent) {
+	      ReactInstrumentation.debugTool.onBeforeUpdateComponent(contentDebugID, content);
+	      ReactInstrumentation.debugTool.onUpdateComponent(contentDebugID);
+	    } else {
+	      ReactInstrumentation.debugTool.onBeforeMountComponent(contentDebugID, content);
+	      ReactInstrumentation.debugTool.onMountComponent(contentDebugID);
+	      ReactInstrumentation.debugTool.onSetChildren(debugID, [contentDebugID]);
+	    }
 	  };
 	}
 
@@ -42367,9 +42701,9 @@ var vendors_dashboard_worona =
 	  var inst = this;
 	  // If a component renders to null or if another component fatals and causes
 	  // the state of the tree to be corrupted, `node` here can be null.
-	  !inst._rootNodeID ?  true ? invariant(false, 'Must be mounted to trap events') : invariant(false) : void 0;
+	  !inst._rootNodeID ?  true ? invariant(false, 'Must be mounted to trap events') : _prodInvariant('63') : void 0;
 	  var node = getNode(inst);
-	  !node ?  true ? invariant(false, 'trapBubbledEvent(...): Requires node to be rendered.') : invariant(false) : void 0;
+	  !node ?  true ? invariant(false, 'trapBubbledEvent(...): Requires node to be rendered.') : _prodInvariant('64') : void 0;
 
 	  switch (inst._tag) {
 	    case 'iframe':
@@ -42386,7 +42720,9 @@ var vendors_dashboard_worona =
 	          inst._wrapperState.listeners.push(ReactBrowserEventEmitter.trapBubbledEvent(EventConstants.topLevelTypes[event], mediaEvents[event], node));
 	        }
 	      }
-
+	      break;
+	    case 'source':
+	      inst._wrapperState.listeners = [ReactBrowserEventEmitter.trapBubbledEvent(EventConstants.topLevelTypes.topError, 'error', node)];
 	      break;
 	    case 'img':
 	      inst._wrapperState.listeners = [ReactBrowserEventEmitter.trapBubbledEvent(EventConstants.topLevelTypes.topError, 'error', node), ReactBrowserEventEmitter.trapBubbledEvent(EventConstants.topLevelTypes.topLoad, 'load', node)];
@@ -42451,7 +42787,7 @@ var vendors_dashboard_worona =
 
 	function validateDangerousTag(tag) {
 	  if (!hasOwnProperty.call(validatedTagCache, tag)) {
-	    !VALID_TAG_REGEX.test(tag) ?  true ? invariant(false, 'Invalid tag: %s', tag) : invariant(false) : void 0;
+	    !VALID_TAG_REGEX.test(tag) ?  true ? invariant(false, 'Invalid tag: %s', tag) : _prodInvariant('65', tag) : void 0;
 	    validatedTagCache[tag] = true;
 	  }
 	}
@@ -42485,17 +42821,17 @@ var vendors_dashboard_worona =
 	  this._renderedChildren = null;
 	  this._previousStyle = null;
 	  this._previousStyleCopy = null;
-	  this._nativeNode = null;
-	  this._nativeParent = null;
+	  this._hostNode = null;
+	  this._hostParent = null;
 	  this._rootNodeID = null;
 	  this._domID = null;
-	  this._nativeContainerInfo = null;
+	  this._hostContainerInfo = null;
 	  this._wrapperState = null;
 	  this._topLevelWrapper = null;
 	  this._flags = 0;
 	  if (true) {
 	    this._ancestorInfo = null;
-	    this._contentDebugID = null;
+	    setContentChildForInstrumentation.call(this, null);
 	  }
 	}
 
@@ -42510,50 +42846,52 @@ var vendors_dashboard_worona =
 	   * @internal
 	   * @param {ReactReconcileTransaction|ReactServerRenderingTransaction} transaction
 	   * @param {?ReactDOMComponent} the containing DOM component instance
-	   * @param {?object} info about the native container
+	   * @param {?object} info about the host container
 	   * @param {object} context
 	   * @return {string} The computed markup.
 	   */
-	  mountComponent: function (transaction, nativeParent, nativeContainerInfo, context) {
+	  mountComponent: function (transaction, hostParent, hostContainerInfo, context) {
 	    this._rootNodeID = globalIdCounter++;
-	    this._domID = nativeContainerInfo._idCounter++;
-	    this._nativeParent = nativeParent;
-	    this._nativeContainerInfo = nativeContainerInfo;
+	    this._domID = hostContainerInfo._idCounter++;
+	    this._hostParent = hostParent;
+	    this._hostContainerInfo = hostContainerInfo;
 
 	    var props = this._currentElement.props;
 
 	    switch (this._tag) {
-	      case 'iframe':
-	      case 'object':
-	      case 'img':
-	      case 'form':
-	      case 'video':
 	      case 'audio':
+	      case 'form':
+	      case 'iframe':
+	      case 'img':
+	      case 'link':
+	      case 'object':
+	      case 'source':
+	      case 'video':
 	        this._wrapperState = {
 	          listeners: null
 	        };
 	        transaction.getReactMountReady().enqueue(trapBubbledEventsLocal, this);
 	        break;
 	      case 'button':
-	        props = ReactDOMButton.getNativeProps(this, props, nativeParent);
+	        props = ReactDOMButton.getHostProps(this, props, hostParent);
 	        break;
 	      case 'input':
-	        ReactDOMInput.mountWrapper(this, props, nativeParent);
-	        props = ReactDOMInput.getNativeProps(this, props);
+	        ReactDOMInput.mountWrapper(this, props, hostParent);
+	        props = ReactDOMInput.getHostProps(this, props);
 	        transaction.getReactMountReady().enqueue(trapBubbledEventsLocal, this);
 	        break;
 	      case 'option':
-	        ReactDOMOption.mountWrapper(this, props, nativeParent);
-	        props = ReactDOMOption.getNativeProps(this, props);
+	        ReactDOMOption.mountWrapper(this, props, hostParent);
+	        props = ReactDOMOption.getHostProps(this, props);
 	        break;
 	      case 'select':
-	        ReactDOMSelect.mountWrapper(this, props, nativeParent);
-	        props = ReactDOMSelect.getNativeProps(this, props);
+	        ReactDOMSelect.mountWrapper(this, props, hostParent);
+	        props = ReactDOMSelect.getHostProps(this, props);
 	        transaction.getReactMountReady().enqueue(trapBubbledEventsLocal, this);
 	        break;
 	      case 'textarea':
-	        ReactDOMTextarea.mountWrapper(this, props, nativeParent);
-	        props = ReactDOMTextarea.getNativeProps(this, props);
+	        ReactDOMTextarea.mountWrapper(this, props, hostParent);
+	        props = ReactDOMTextarea.getHostProps(this, props);
 	        transaction.getReactMountReady().enqueue(trapBubbledEventsLocal, this);
 	        break;
 	    }
@@ -42564,12 +42902,12 @@ var vendors_dashboard_worona =
 	    // tags get no namespace.
 	    var namespaceURI;
 	    var parentTag;
-	    if (nativeParent != null) {
-	      namespaceURI = nativeParent._namespaceURI;
-	      parentTag = nativeParent._tag;
-	    } else if (nativeContainerInfo._tag) {
-	      namespaceURI = nativeContainerInfo._namespaceURI;
-	      parentTag = nativeContainerInfo._tag;
+	    if (hostParent != null) {
+	      namespaceURI = hostParent._namespaceURI;
+	      parentTag = hostParent._tag;
+	    } else if (hostContainerInfo._tag) {
+	      namespaceURI = hostContainerInfo._namespaceURI;
+	      parentTag = hostContainerInfo._tag;
 	    }
 	    if (namespaceURI == null || namespaceURI === DOMNamespaces.svg && parentTag === 'foreignobject') {
 	      namespaceURI = DOMNamespaces.html;
@@ -42585,10 +42923,10 @@ var vendors_dashboard_worona =
 
 	    if (true) {
 	      var parentInfo;
-	      if (nativeParent != null) {
-	        parentInfo = nativeParent._ancestorInfo;
-	      } else if (nativeContainerInfo._tag) {
-	        parentInfo = nativeContainerInfo._ancestorInfo;
+	      if (hostParent != null) {
+	        parentInfo = hostParent._ancestorInfo;
+	      } else if (hostContainerInfo._tag) {
+	        parentInfo = hostContainerInfo._ancestorInfo;
 	      }
 	      if (parentInfo) {
 	        // parentInfo should always be present except for the top-level
@@ -42600,7 +42938,7 @@ var vendors_dashboard_worona =
 
 	    var mountImage;
 	    if (transaction.useCreateElement) {
-	      var ownerDocument = nativeContainerInfo._ownerDocument;
+	      var ownerDocument = hostContainerInfo._ownerDocument;
 	      var el;
 	      if (namespaceURI === DOMNamespaces.html) {
 	        if (this._tag === 'script') {
@@ -42610,15 +42948,20 @@ var vendors_dashboard_worona =
 	          var type = this._currentElement.type;
 	          div.innerHTML = '<' + type + '></' + type + '>';
 	          el = div.removeChild(div.firstChild);
+	        } else if (props.is) {
+	          el = ownerDocument.createElement(this._currentElement.type, props.is);
 	        } else {
-	          el = ownerDocument.createElement(this._currentElement.type, props.is || null);
+	          // Separate else branch instead of using `props.is || undefined` above becuase of a Firefox bug.
+	          // See discussion in https://github.com/facebook/react/pull/6896
+	          // and discussion in https://bugzilla.mozilla.org/show_bug.cgi?id=1276240
+	          el = ownerDocument.createElement(this._currentElement.type);
 	        }
 	      } else {
 	        el = ownerDocument.createElementNS(namespaceURI, this._currentElement.type);
 	      }
 	      ReactDOMComponentTree.precacheNode(this, el);
 	      this._flags |= Flags.hasCachedChildNodes;
-	      if (!this._nativeParent) {
+	      if (!this._hostParent) {
 	        DOMPropertyOperations.setAttributeForRoot(el);
 	      }
 	      this._updateDOMProperties(null, props, transaction);
@@ -42636,16 +42979,31 @@ var vendors_dashboard_worona =
 	    }
 
 	    switch (this._tag) {
-	      case 'button':
 	      case 'input':
-	      case 'select':
+	        transaction.getReactMountReady().enqueue(inputPostMount, this);
+	        if (props.autoFocus) {
+	          transaction.getReactMountReady().enqueue(AutoFocusUtils.focusDOMComponent, this);
+	        }
+	        break;
 	      case 'textarea':
+	        transaction.getReactMountReady().enqueue(textareaPostMount, this);
+	        if (props.autoFocus) {
+	          transaction.getReactMountReady().enqueue(AutoFocusUtils.focusDOMComponent, this);
+	        }
+	        break;
+	      case 'select':
+	        if (props.autoFocus) {
+	          transaction.getReactMountReady().enqueue(AutoFocusUtils.focusDOMComponent, this);
+	        }
+	        break;
+	      case 'button':
 	        if (props.autoFocus) {
 	          transaction.getReactMountReady().enqueue(AutoFocusUtils.focusDOMComponent, this);
 	        }
 	        break;
 	      case 'option':
 	        transaction.getReactMountReady().enqueue(optionPostMount, this);
+	        break;
 	    }
 
 	    return mountImage;
@@ -42710,7 +43068,7 @@ var vendors_dashboard_worona =
 	      return ret;
 	    }
 
-	    if (!this._nativeParent) {
+	    if (!this._hostParent) {
 	      ret += ' ' + DOMPropertyOperations.createMarkupForRoot();
 	    }
 	    ret += ' ' + DOMPropertyOperations.createMarkupForID(this._domID);
@@ -42806,7 +43164,7 @@ var vendors_dashboard_worona =
 	  },
 
 	  /**
-	   * Updates a native DOM component after it has already been allocated and
+	   * Updates a DOM component after it has already been allocated and
 	   * attached to the DOM. Reconciles the root DOM node, then recurses.
 	   *
 	   * @param {ReactReconcileTransaction} transaction
@@ -42821,26 +43179,26 @@ var vendors_dashboard_worona =
 
 	    switch (this._tag) {
 	      case 'button':
-	        lastProps = ReactDOMButton.getNativeProps(this, lastProps);
-	        nextProps = ReactDOMButton.getNativeProps(this, nextProps);
+	        lastProps = ReactDOMButton.getHostProps(this, lastProps);
+	        nextProps = ReactDOMButton.getHostProps(this, nextProps);
 	        break;
 	      case 'input':
 	        ReactDOMInput.updateWrapper(this);
-	        lastProps = ReactDOMInput.getNativeProps(this, lastProps);
-	        nextProps = ReactDOMInput.getNativeProps(this, nextProps);
+	        lastProps = ReactDOMInput.getHostProps(this, lastProps);
+	        nextProps = ReactDOMInput.getHostProps(this, nextProps);
 	        break;
 	      case 'option':
-	        lastProps = ReactDOMOption.getNativeProps(this, lastProps);
-	        nextProps = ReactDOMOption.getNativeProps(this, nextProps);
+	        lastProps = ReactDOMOption.getHostProps(this, lastProps);
+	        nextProps = ReactDOMOption.getHostProps(this, nextProps);
 	        break;
 	      case 'select':
-	        lastProps = ReactDOMSelect.getNativeProps(this, lastProps);
-	        nextProps = ReactDOMSelect.getNativeProps(this, nextProps);
+	        lastProps = ReactDOMSelect.getHostProps(this, lastProps);
+	        nextProps = ReactDOMSelect.getHostProps(this, nextProps);
 	        break;
 	      case 'textarea':
 	        ReactDOMTextarea.updateWrapper(this);
-	        lastProps = ReactDOMTextarea.getNativeProps(this, lastProps);
-	        nextProps = ReactDOMTextarea.getNativeProps(this, nextProps);
+	        lastProps = ReactDOMTextarea.getHostProps(this, lastProps);
+	        nextProps = ReactDOMTextarea.getHostProps(this, nextProps);
 	        break;
 	    }
 
@@ -42894,6 +43252,10 @@ var vendors_dashboard_worona =
 	          // else willDeleteListener gets called when there wasn't actually a
 	          // listener (e.g., onClick={null})
 	          deleteListener(this, propKey);
+	        }
+	      } else if (isCustomComponent(this._tag, lastProps)) {
+	        if (!RESERVED_PROPS.hasOwnProperty(propKey)) {
+	          DOMPropertyOperations.deleteValueForAttribute(getNode(this), propKey);
 	        }
 	      } else if (DOMProperty.properties[propKey] || DOMProperty.isCustomAttribute(propKey)) {
 	        DOMPropertyOperations.deleteValueForProperty(getNode(this), propKey);
@@ -42998,7 +43360,6 @@ var vendors_dashboard_worona =
 	      if (lastContent !== nextContent) {
 	        this.updateTextContent('' + nextContent);
 	        if (true) {
-	          this._contentDebugID = this._debugID + '#text';
 	          setContentChildForInstrumentation.call(this, nextContent);
 	        }
 	      }
@@ -43011,17 +43372,14 @@ var vendors_dashboard_worona =
 	      }
 	    } else if (nextChildren != null) {
 	      if (true) {
-	        if (this._contentDebugID) {
-	          ReactInstrumentation.debugTool.onUnmountComponent(this._contentDebugID);
-	          this._contentDebugID = null;
-	        }
+	        setContentChildForInstrumentation.call(this, null);
 	      }
 
 	      this.updateChildren(nextChildren, transaction, context);
 	    }
 	  },
 
-	  getNativeNode: function () {
+	  getHostNode: function () {
 	    return getNode(this);
 	  },
 
@@ -43033,12 +43391,14 @@ var vendors_dashboard_worona =
 	   */
 	  unmountComponent: function (safely) {
 	    switch (this._tag) {
-	      case 'iframe':
-	      case 'object':
-	      case 'img':
-	      case 'form':
-	      case 'video':
 	      case 'audio':
+	      case 'form':
+	      case 'iframe':
+	      case 'img':
+	      case 'link':
+	      case 'object':
+	      case 'source':
+	      case 'video':
 	        var listeners = this._wrapperState.listeners;
 	        if (listeners) {
 	          for (var i = 0; i < listeners.length; i++) {
@@ -43055,7 +43415,7 @@ var vendors_dashboard_worona =
 	         * take advantage of React's reconciliation for styling and <title>
 	         * management. So we just document it and throw in dangerous cases.
 	         */
-	         true ?  true ? invariant(false, '<%s> tried to unmount. Because of cross-browser quirks it is ' + 'impossible to unmount some top-level components (eg <html>, ' + '<head>, and <body>) reliably and efficiently. To fix this, have a ' + 'single top-level component that never unmounts render these ' + 'elements.', this._tag) : invariant(false) : void 0;
+	         true ?  true ? invariant(false, '<%s> tried to unmount. Because of cross-browser quirks it is impossible to unmount some top-level components (eg <html>, <head>, and <body>) reliably and efficiently. To fix this, have a single top-level component that never unmounts render these elements.', this._tag) : _prodInvariant('66', this._tag) : void 0;
 	        break;
 	    }
 
@@ -43068,10 +43428,7 @@ var vendors_dashboard_worona =
 	    this._wrapperState = null;
 
 	    if (true) {
-	      if (this._contentDebugID) {
-	        ReactInstrumentation.debugTool.onUnmountComponent(this._contentDebugID);
-	        this._contentDebugID = null;
-	      }
+	      setContentChildForInstrumentation.call(this, null);
 	    }
 	  },
 
@@ -43086,7 +43443,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMComponent;
 
 /***/ },
-/* 534 */
+/* 535 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -43102,9 +43459,9 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactDOMComponentTree = __webpack_require__(483);
+	var ReactDOMComponentTree = __webpack_require__(477);
 
-	var focusNode = __webpack_require__(535);
+	var focusNode = __webpack_require__(536);
 
 	var AutoFocusUtils = {
 	  focusDOMComponent: function () {
@@ -43115,7 +43472,7 @@ var vendors_dashboard_worona =
 	module.exports = AutoFocusUtils;
 
 /***/ },
-/* 535 */
+/* 536 */
 /***/ function(module, exports) {
 
 	/**
@@ -43146,7 +43503,7 @@ var vendors_dashboard_worona =
 	module.exports = focusNode;
 
 /***/ },
-/* 536 */
+/* 537 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -43162,14 +43519,14 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var CSSProperty = __webpack_require__(537);
-	var ExecutionEnvironment = __webpack_require__(317);
-	var ReactInstrumentation = __webpack_require__(315);
+	var CSSProperty = __webpack_require__(538);
+	var ExecutionEnvironment = __webpack_require__(490);
+	var ReactInstrumentation = __webpack_require__(503);
 
-	var camelizeStyleName = __webpack_require__(538);
-	var dangerousStyleValue = __webpack_require__(540);
-	var hyphenateStyleName = __webpack_require__(541);
-	var memoizeStringOnly = __webpack_require__(543);
+	var camelizeStyleName = __webpack_require__(539);
+	var dangerousStyleValue = __webpack_require__(541);
+	var hyphenateStyleName = __webpack_require__(542);
+	var memoizeStringOnly = __webpack_require__(544);
 	var warning = __webpack_require__(307);
 
 	var processStyleName = memoizeStringOnly(function (styleName) {
@@ -43319,7 +43676,7 @@ var vendors_dashboard_worona =
 	   */
 	  setValueForStyles: function (node, styles, component) {
 	    if (true) {
-	      ReactInstrumentation.debugTool.onNativeOperation(component._debugID, 'update styles', styles);
+	      ReactInstrumentation.debugTool.onHostOperation(component._debugID, 'update styles', styles);
 	    }
 
 	    var style = node.style;
@@ -43356,7 +43713,7 @@ var vendors_dashboard_worona =
 	module.exports = CSSPropertyOperations;
 
 /***/ },
-/* 537 */
+/* 538 */
 /***/ function(module, exports) {
 
 	/**
@@ -43509,7 +43866,7 @@ var vendors_dashboard_worona =
 	module.exports = CSSProperty;
 
 /***/ },
-/* 538 */
+/* 539 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -43525,7 +43882,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var camelize = __webpack_require__(539);
+	var camelize = __webpack_require__(540);
 
 	var msPattern = /^-ms-/;
 
@@ -43553,7 +43910,7 @@ var vendors_dashboard_worona =
 	module.exports = camelizeStyleName;
 
 /***/ },
-/* 539 */
+/* 540 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -43589,7 +43946,7 @@ var vendors_dashboard_worona =
 	module.exports = camelize;
 
 /***/ },
-/* 540 */
+/* 541 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -43605,7 +43962,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var CSSProperty = __webpack_require__(537);
+	var CSSProperty = __webpack_require__(538);
 	var warning = __webpack_require__(307);
 
 	var isUnitlessNumber = CSSProperty.isUnitlessNumber;
@@ -43644,7 +44001,9 @@ var vendors_dashboard_worona =
 
 	  if (typeof value === 'string') {
 	    if (true) {
-	      if (component) {
+	      // Allow '0' to pass through without warning. 0 is already special and
+	      // doesn't require units, so we don't need to warn about it.
+	      if (component && value !== '0') {
 	        var owner = component._currentElement._owner;
 	        var ownerName = owner ? owner.getName() : null;
 	        if (ownerName && !styleWarnings[ownerName]) {
@@ -43671,7 +44030,7 @@ var vendors_dashboard_worona =
 	module.exports = dangerousStyleValue;
 
 /***/ },
-/* 541 */
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -43687,7 +44046,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var hyphenate = __webpack_require__(542);
+	var hyphenate = __webpack_require__(543);
 
 	var msPattern = /^ms-/;
 
@@ -43714,7 +44073,7 @@ var vendors_dashboard_worona =
 	module.exports = hyphenateStyleName;
 
 /***/ },
-/* 542 */
+/* 543 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43751,7 +44110,7 @@ var vendors_dashboard_worona =
 	module.exports = hyphenate;
 
 /***/ },
-/* 543 */
+/* 544 */
 /***/ function(module, exports) {
 
 	/**
@@ -43785,7 +44144,7 @@ var vendors_dashboard_worona =
 	module.exports = memoizeStringOnly;
 
 /***/ },
-/* 544 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -43801,12 +44160,12 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(484);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactDOMInstrumentation = __webpack_require__(545);
-	var ReactInstrumentation = __webpack_require__(315);
+	var DOMProperty = __webpack_require__(478);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactDOMInstrumentation = __webpack_require__(546);
+	var ReactInstrumentation = __webpack_require__(503);
 
-	var quoteAttributeValueForBrowser = __webpack_require__(548);
+	var quoteAttributeValueForBrowser = __webpack_require__(550);
 	var warning = __webpack_require__(307);
 
 	var VALID_ATTRIBUTE_NAME_REGEX = new RegExp('^[' + DOMProperty.ATTRIBUTE_NAME_START_CHAR + '][' + DOMProperty.ATTRIBUTE_NAME_CHAR + ']*$');
@@ -43921,14 +44280,9 @@ var vendors_dashboard_worona =
 	        this.deleteValueForProperty(node, name);
 	        return;
 	      } else if (propertyInfo.mustUseProperty) {
-	        var propName = propertyInfo.propertyName;
-	        // Must explicitly cast values for HAS_SIDE_EFFECTS-properties to the
-	        // property type before comparing; only `value` does and is string.
-	        if (!propertyInfo.hasSideEffects || '' + node[propName] !== '' + value) {
-	          // Contrary to `setAttribute`, object properties are properly
-	          // `toString`ed by IE8/9.
-	          node[propName] = value;
-	        }
+	        // Contrary to `setAttribute`, object properties are properly
+	        // `toString`ed by IE8/9.
+	        node[propertyInfo.propertyName] = value;
 	      } else {
 	        var attributeName = propertyInfo.attributeName;
 	        var namespace = propertyInfo.attributeNamespace;
@@ -43951,7 +44305,7 @@ var vendors_dashboard_worona =
 	      ReactDOMInstrumentation.debugTool.onSetValueForProperty(node, name, value);
 	      var payload = {};
 	      payload[name] = value;
-	      ReactInstrumentation.debugTool.onNativeOperation(ReactDOMComponentTree.getInstanceFromNode(node)._debugID, 'update attribute', payload);
+	      ReactInstrumentation.debugTool.onHostOperation(ReactDOMComponentTree.getInstanceFromNode(node)._debugID, 'update attribute', payload);
 	    }
 	  },
 
@@ -43968,7 +44322,21 @@ var vendors_dashboard_worona =
 	    if (true) {
 	      var payload = {};
 	      payload[name] = value;
-	      ReactInstrumentation.debugTool.onNativeOperation(ReactDOMComponentTree.getInstanceFromNode(node)._debugID, 'update attribute', payload);
+	      ReactInstrumentation.debugTool.onHostOperation(ReactDOMComponentTree.getInstanceFromNode(node)._debugID, 'update attribute', payload);
+	    }
+	  },
+
+	  /**
+	   * Deletes an attributes from a node.
+	   *
+	   * @param {DOMElement} node
+	   * @param {string} name
+	   */
+	  deleteValueForAttribute: function (node, name) {
+	    node.removeAttribute(name);
+	    if (true) {
+	      ReactDOMInstrumentation.debugTool.onDeleteValueForProperty(node, name);
+	      ReactInstrumentation.debugTool.onHostOperation(ReactDOMComponentTree.getInstanceFromNode(node)._debugID, 'remove attribute', name);
 	    }
 	  },
 
@@ -43987,12 +44355,9 @@ var vendors_dashboard_worona =
 	      } else if (propertyInfo.mustUseProperty) {
 	        var propName = propertyInfo.propertyName;
 	        if (propertyInfo.hasBooleanValue) {
-	          // No HAS_SIDE_EFFECTS logic here, only `value` has it and is string.
 	          node[propName] = false;
 	        } else {
-	          if (!propertyInfo.hasSideEffects || '' + node[propName] !== '') {
-	            node[propName] = '';
-	          }
+	          node[propName] = '';
 	        }
 	      } else {
 	        node.removeAttribute(propertyInfo.attributeName);
@@ -44003,7 +44368,7 @@ var vendors_dashboard_worona =
 
 	    if (true) {
 	      ReactDOMInstrumentation.debugTool.onDeleteValueForProperty(node, name);
-	      ReactInstrumentation.debugTool.onNativeOperation(ReactDOMComponentTree.getInstanceFromNode(node)._debugID, 'remove attribute', name);
+	      ReactInstrumentation.debugTool.onHostOperation(ReactDOMComponentTree.getInstanceFromNode(node)._debugID, 'remove attribute', name);
 	    }
 	  }
 
@@ -44012,7 +44377,7 @@ var vendors_dashboard_worona =
 	module.exports = DOMPropertyOperations;
 
 /***/ },
-/* 545 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -44028,12 +44393,17 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactDOMDebugTool = __webpack_require__(546);
+	var debugTool = null;
 
-	module.exports = { debugTool: ReactDOMDebugTool };
+	if (true) {
+	  var ReactDOMDebugTool = __webpack_require__(547);
+	  debugTool = ReactDOMDebugTool;
+	}
+
+	module.exports = { debugTool: debugTool };
 
 /***/ },
-/* 546 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -44049,7 +44419,9 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactDOMUnknownPropertyDevtool = __webpack_require__(547);
+	var ReactDOMNullInputValuePropDevtool = __webpack_require__(548);
+	var ReactDOMUnknownPropertyDevtool = __webpack_require__(549);
+	var ReactDebugTool = __webpack_require__(504);
 
 	var warning = __webpack_require__(307);
 
@@ -44057,25 +44429,25 @@ var vendors_dashboard_worona =
 	var handlerDoesThrowForEvent = {};
 
 	function emitEvent(handlerFunctionName, arg1, arg2, arg3, arg4, arg5) {
-	  if (true) {
-	    eventHandlers.forEach(function (handler) {
-	      try {
-	        if (handler[handlerFunctionName]) {
-	          handler[handlerFunctionName](arg1, arg2, arg3, arg4, arg5);
-	        }
-	      } catch (e) {
-	         true ? warning(!handlerDoesThrowForEvent[handlerFunctionName], 'exception thrown by devtool while handling %s: %s', handlerFunctionName, e.message) : void 0;
-	        handlerDoesThrowForEvent[handlerFunctionName] = true;
+	  eventHandlers.forEach(function (handler) {
+	    try {
+	      if (handler[handlerFunctionName]) {
+	        handler[handlerFunctionName](arg1, arg2, arg3, arg4, arg5);
 	      }
-	    });
-	  }
+	    } catch (e) {
+	       true ? warning(handlerDoesThrowForEvent[handlerFunctionName], 'exception thrown by devtool while handling %s: %s', handlerFunctionName, e + '\n' + e.stack) : void 0;
+	      handlerDoesThrowForEvent[handlerFunctionName] = true;
+	    }
+	  });
 	}
 
 	var ReactDOMDebugTool = {
 	  addDevtool: function (devtool) {
+	    ReactDebugTool.addDevtool(devtool);
 	    eventHandlers.push(devtool);
 	  },
 	  removeDevtool: function (devtool) {
+	    ReactDebugTool.removeDevtool(devtool);
 	    for (var i = 0; i < eventHandlers.length; i++) {
 	      if (eventHandlers[i] === devtool) {
 	        eventHandlers.splice(i, 1);
@@ -44091,15 +44463,67 @@ var vendors_dashboard_worona =
 	  },
 	  onDeleteValueForProperty: function (node, name) {
 	    emitEvent('onDeleteValueForProperty', node, name);
+	  },
+	  onTestEvent: function () {
+	    emitEvent('onTestEvent');
 	  }
 	};
 
 	ReactDOMDebugTool.addDevtool(ReactDOMUnknownPropertyDevtool);
+	ReactDOMDebugTool.addDevtool(ReactDOMNullInputValuePropDevtool);
 
 	module.exports = ReactDOMDebugTool;
 
 /***/ },
-/* 547 */
+/* 548 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactDOMNullInputValuePropDevtool
+	 */
+
+	'use strict';
+
+	var ReactComponentTreeDevtool = __webpack_require__(324);
+
+	var warning = __webpack_require__(307);
+
+	var didWarnValueNull = false;
+
+	function handleElement(debugID, element) {
+	  if (element == null) {
+	    return;
+	  }
+	  if (element.type !== 'input' && element.type !== 'textarea' && element.type !== 'select') {
+	    return;
+	  }
+	  if (element.props != null && element.props.value === null && !didWarnValueNull) {
+	     true ? warning(false, '`value` prop on `%s` should not be null. ' + 'Consider using the empty string to clear the component or `undefined` ' + 'for uncontrolled components.%s', element.type, ReactComponentTreeDevtool.getStackAddendumByID(debugID)) : void 0;
+
+	    didWarnValueNull = true;
+	  }
+	}
+
+	var ReactDOMUnknownPropertyDevtool = {
+	  onBeforeMountComponent: function (debugID, element) {
+	    handleElement(debugID, element);
+	  },
+	  onBeforeUpdateComponent: function (debugID, element) {
+	    handleElement(debugID, element);
+	  }
+	};
+
+	module.exports = ReactDOMUnknownPropertyDevtool;
+
+/***/ },
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -44115,8 +44539,9 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(484);
-	var EventPluginRegistry = __webpack_require__(491);
+	var DOMProperty = __webpack_require__(478);
+	var EventPluginRegistry = __webpack_require__(485);
+	var ReactComponentTreeDevtool = __webpack_require__(324);
 
 	var warning = __webpack_require__(307);
 
@@ -44125,50 +44550,97 @@ var vendors_dashboard_worona =
 	    children: true,
 	    dangerouslySetInnerHTML: true,
 	    key: true,
-	    ref: true
+	    ref: true,
+
+	    autoFocus: true,
+	    defaultValue: true,
+	    valueLink: true,
+	    defaultChecked: true,
+	    checkedLink: true,
+	    innerHTML: true,
+	    suppressContentEditableWarning: true,
+	    onFocusIn: true,
+	    onFocusOut: true
 	  };
 	  var warnedProperties = {};
 
-	  var warnUnknownProperty = function (name) {
+	  var validateProperty = function (tagName, name, debugID) {
 	    if (DOMProperty.properties.hasOwnProperty(name) || DOMProperty.isCustomAttribute(name)) {
-	      return;
+	      return true;
 	    }
 	    if (reactProps.hasOwnProperty(name) && reactProps[name] || warnedProperties.hasOwnProperty(name) && warnedProperties[name]) {
-	      return;
+	      return true;
 	    }
-
+	    if (EventPluginRegistry.registrationNameModules.hasOwnProperty(name)) {
+	      return true;
+	    }
 	    warnedProperties[name] = true;
 	    var lowerCasedName = name.toLowerCase();
 
 	    // data-* attributes should be lowercase; suggest the lowercase version
 	    var standardName = DOMProperty.isCustomAttribute(lowerCasedName) ? lowerCasedName : DOMProperty.getPossibleStandardName.hasOwnProperty(lowerCasedName) ? DOMProperty.getPossibleStandardName[lowerCasedName] : null;
 
-	    // For now, only warn when we have a suggested correction. This prevents
-	    // logging too much when using transferPropsTo.
-	     true ? warning(standardName == null, 'Unknown DOM property %s. Did you mean %s?', name, standardName) : void 0;
-
 	    var registrationName = EventPluginRegistry.possibleRegistrationNames.hasOwnProperty(lowerCasedName) ? EventPluginRegistry.possibleRegistrationNames[lowerCasedName] : null;
 
-	     true ? warning(registrationName == null, 'Unknown event handler property %s. Did you mean `%s`?', name, registrationName) : void 0;
+	    if (standardName != null) {
+	       true ? warning(standardName == null, 'Unknown DOM property %s. Did you mean %s?%s', name, standardName, ReactComponentTreeDevtool.getStackAddendumByID(debugID)) : void 0;
+	      return true;
+	    } else if (registrationName != null) {
+	       true ? warning(registrationName == null, 'Unknown event handler property %s. Did you mean `%s`?%s', name, registrationName, ReactComponentTreeDevtool.getStackAddendumByID(debugID)) : void 0;
+	      return true;
+	    } else {
+	      // We were unable to guess which prop the user intended.
+	      // It is likely that the user was just blindly spreading/forwarding props
+	      // Components should be careful to only render valid props/attributes.
+	      // Warning will be invoked in warnUnknownProperties to allow grouping.
+	      return false;
+	    }
 	  };
 	}
 
+	var warnUnknownProperties = function (debugID, element) {
+	  var unknownProps = [];
+	  for (var key in element.props) {
+	    var isValid = validateProperty(element.type, key, debugID);
+	    if (!isValid) {
+	      unknownProps.push(key);
+	    }
+	  }
+
+	  var unknownPropString = unknownProps.map(function (prop) {
+	    return '`' + prop + '`';
+	  }).join(', ');
+
+	  if (unknownProps.length === 1) {
+	     true ? warning(false, 'Unknown prop %s on <%s> tag. Remove this prop from the element. ' + 'For details, see https://fb.me/react-unknown-prop%s', unknownPropString, element.type, ReactComponentTreeDevtool.getStackAddendumByID(debugID)) : void 0;
+	  } else if (unknownProps.length > 1) {
+	     true ? warning(false, 'Unknown props %s on <%s> tag. Remove these props from the element. ' + 'For details, see https://fb.me/react-unknown-prop%s', unknownPropString, element.type, ReactComponentTreeDevtool.getStackAddendumByID(debugID)) : void 0;
+	  }
+	};
+
+	function handleElement(debugID, element) {
+	  if (element == null || typeof element.type !== 'string') {
+	    return;
+	  }
+	  if (element.type.indexOf('-') >= 0 || element.props.is) {
+	    return;
+	  }
+	  warnUnknownProperties(debugID, element);
+	}
+
 	var ReactDOMUnknownPropertyDevtool = {
-	  onCreateMarkupForProperty: function (name, value) {
-	    warnUnknownProperty(name);
+	  onBeforeMountComponent: function (debugID, element) {
+	    handleElement(debugID, element);
 	  },
-	  onSetValueForProperty: function (node, name, value) {
-	    warnUnknownProperty(name);
-	  },
-	  onDeleteValueForProperty: function (node, name) {
-	    warnUnknownProperty(name);
+	  onBeforeUpdateComponent: function (debugID, element) {
+	    handleElement(debugID, element);
 	  }
 	};
 
 	module.exports = ReactDOMUnknownPropertyDevtool;
 
 /***/ },
-/* 548 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -44184,7 +44656,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var escapeTextContentForBrowser = __webpack_require__(525);
+	var escapeTextContentForBrowser = __webpack_require__(527);
 
 	/**
 	 * Escapes attribute value to prevent scripting attacks.
@@ -44199,7 +44671,7 @@ var vendors_dashboard_worona =
 	module.exports = quoteAttributeValueForBrowser;
 
 /***/ },
-/* 549 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -44215,15 +44687,15 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _assign = __webpack_require__(300);
 
-	var EventConstants = __webpack_require__(488);
-	var EventPluginRegistry = __webpack_require__(491);
-	var ReactEventEmitterMixin = __webpack_require__(550);
-	var ViewportMetrics = __webpack_require__(516);
+	var EventConstants = __webpack_require__(482);
+	var EventPluginRegistry = __webpack_require__(485);
+	var ReactEventEmitterMixin = __webpack_require__(552);
+	var ViewportMetrics = __webpack_require__(517);
 
-	var getVendorPrefixedEventName = __webpack_require__(551);
-	var isEventSupported = __webpack_require__(510);
+	var getVendorPrefixedEventName = __webpack_require__(553);
+	var isEventSupported = __webpack_require__(511);
 
 	/**
 	 * Summary of `ReactBrowserEventEmitter` event handling:
@@ -44521,7 +44993,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactBrowserEventEmitter;
 
 /***/ },
-/* 550 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -44537,7 +45009,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var EventPluginHub = __webpack_require__(490);
+	var EventPluginHub = __webpack_require__(484);
 
 	function runEventQueueInBatch(events) {
 	  EventPluginHub.enqueueEvents(events);
@@ -44559,7 +45031,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactEventEmitterMixin;
 
 /***/ },
-/* 551 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -44575,7 +45047,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(317);
+	var ExecutionEnvironment = __webpack_require__(490);
 
 	/**
 	 * Generate a mapping of standard vendor prefixes using the defined style property and event name.
@@ -44665,7 +45137,7 @@ var vendors_dashboard_worona =
 	module.exports = getVendorPrefixedEventName;
 
 /***/ },
-/* 552 */
+/* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -44681,20 +45153,20 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var DisabledInputUtils = __webpack_require__(553);
+	var DisabledInputUtils = __webpack_require__(555);
 
 	/**
-	 * Implements a <button> native component that does not receive mouse events
+	 * Implements a <button> host component that does not receive mouse events
 	 * when `disabled` is set.
 	 */
 	var ReactDOMButton = {
-	  getNativeProps: DisabledInputUtils.getNativeProps
+	  getHostProps: DisabledInputUtils.getHostProps
 	};
 
 	module.exports = ReactDOMButton;
 
 /***/ },
-/* 553 */
+/* 555 */
 /***/ function(module, exports) {
 
 	/**
@@ -44725,31 +45197,31 @@ var vendors_dashboard_worona =
 	};
 
 	/**
-	 * Implements a native component that does not receive mouse events
+	 * Implements a host component that does not receive mouse events
 	 * when `disabled` is set.
 	 */
 	var DisabledInputUtils = {
-	  getNativeProps: function (inst, props) {
+	  getHostProps: function (inst, props) {
 	    if (!props.disabled) {
 	      return props;
 	    }
 
 	    // Copy the props, except the mouse listeners
-	    var nativeProps = {};
+	    var hostProps = {};
 	    for (var key in props) {
 	      if (!disableableMouseListenerNames[key] && props.hasOwnProperty(key)) {
-	        nativeProps[key] = props[key];
+	        hostProps[key] = props[key];
 	      }
 	    }
 
-	    return nativeProps;
+	    return hostProps;
 	  }
 	};
 
 	module.exports = DisabledInputUtils;
 
 /***/ },
-/* 554 */
+/* 556 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -44765,20 +45237,20 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _prodInvariant = __webpack_require__(303),
+	    _assign = __webpack_require__(300);
 
-	var DisabledInputUtils = __webpack_require__(553);
-	var DOMPropertyOperations = __webpack_require__(544);
-	var LinkedValueUtils = __webpack_require__(555);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactUpdates = __webpack_require__(502);
+	var DisabledInputUtils = __webpack_require__(555);
+	var DOMPropertyOperations = __webpack_require__(545);
+	var LinkedValueUtils = __webpack_require__(557);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactUpdates = __webpack_require__(497);
 
 	var invariant = __webpack_require__(304);
 	var warning = __webpack_require__(307);
 
 	var didWarnValueLink = false;
 	var didWarnCheckedLink = false;
-	var didWarnValueNull = false;
 	var didWarnValueDefaultValue = false;
 	var didWarnCheckedDefaultChecked = false;
 	var didWarnControlledToUncontrolled = false;
@@ -44791,16 +45263,13 @@ var vendors_dashboard_worona =
 	  }
 	}
 
-	function warnIfValueIsNull(props) {
-	  if (props != null && props.value === null && !didWarnValueNull) {
-	     true ? warning(false, '`value` prop on `input` should not be null. ' + 'Consider using the empty string to clear the component or `undefined` ' + 'for uncontrolled components.') : void 0;
-
-	    didWarnValueNull = true;
-	  }
+	function isControlled(props) {
+	  var usesChecked = props.type === 'checkbox' || props.type === 'radio';
+	  return usesChecked ? props.checked !== undefined : props.value !== undefined;
 	}
 
 	/**
-	 * Implements an <input> native component that allows setting these optional
+	 * Implements an <input> host component that allows setting these optional
 	 * props: `checked`, `value`, `defaultChecked`, and `defaultValue`.
 	 *
 	 * If `checked` or `value` are not supplied (or null/undefined), user actions
@@ -44816,15 +45285,15 @@ var vendors_dashboard_worona =
 	 * @see http://www.w3.org/TR/2012/WD-html5-20121025/the-input-element.html
 	 */
 	var ReactDOMInput = {
-	  getNativeProps: function (inst, props) {
+	  getHostProps: function (inst, props) {
 	    var value = LinkedValueUtils.getValue(props);
 	    var checked = LinkedValueUtils.getChecked(props);
 
-	    var nativeProps = _assign({
+	    var hostProps = _assign({
 	      // Make sure we set .type before any other properties (setting .value
 	      // before .type means .value is lost in IE11 and below)
 	      type: undefined
-	    }, DisabledInputUtils.getNativeProps(inst, props), {
+	    }, DisabledInputUtils.getHostProps(inst, props), {
 	      defaultChecked: undefined,
 	      defaultValue: undefined,
 	      value: value != null ? value : inst._wrapperState.initialValue,
@@ -44832,7 +45301,7 @@ var vendors_dashboard_worona =
 	      onChange: inst._wrapperState.onChange
 	    });
 
-	    return nativeProps;
+	    return hostProps;
 	  },
 
 	  mountWrapper: function (inst, props) {
@@ -44857,19 +45326,18 @@ var vendors_dashboard_worona =
 	         true ? warning(false, '%s contains an input of type %s with both value and defaultValue props. ' + 'Input elements must be either controlled or uncontrolled ' + '(specify either the value prop, or the defaultValue prop, but not ' + 'both). Decide between using a controlled or uncontrolled input ' + 'element and remove one of these props. More info: ' + 'https://fb.me/react-controlled-components', owner && owner.getName() || 'A component', props.type) : void 0;
 	        didWarnValueDefaultValue = true;
 	      }
-	      warnIfValueIsNull(props);
 	    }
 
 	    var defaultValue = props.defaultValue;
 	    inst._wrapperState = {
-	      initialChecked: props.defaultChecked || false,
-	      initialValue: defaultValue != null ? defaultValue : null,
+	      initialChecked: props.checked != null ? props.checked : props.defaultChecked,
+	      initialValue: props.value != null ? props.value : defaultValue,
 	      listeners: null,
 	      onChange: _handleChange.bind(inst)
 	    };
 
 	    if (true) {
-	      inst._wrapperState.controlled = props.checked !== undefined || props.value !== undefined;
+	      inst._wrapperState.controlled = isControlled(props);
 	    }
 	  },
 
@@ -44877,18 +45345,14 @@ var vendors_dashboard_worona =
 	    var props = inst._currentElement.props;
 
 	    if (true) {
-	      warnIfValueIsNull(props);
-
-	      var initialValue = inst._wrapperState.initialChecked || inst._wrapperState.initialValue;
-	      var defaultValue = props.defaultChecked || props.defaultValue;
-	      var controlled = props.checked !== undefined || props.value !== undefined;
+	      var controlled = isControlled(props);
 	      var owner = inst._currentElement._owner;
 
-	      if ((initialValue || !inst._wrapperState.controlled) && controlled && !didWarnUncontrolledToControlled) {
+	      if (!inst._wrapperState.controlled && controlled && !didWarnUncontrolledToControlled) {
 	         true ? warning(false, '%s is changing an uncontrolled input of type %s to be controlled. ' + 'Input elements should not switch from uncontrolled to controlled (or vice versa). ' + 'Decide between using a controlled or uncontrolled input ' + 'element for the lifetime of the component. More info: https://fb.me/react-controlled-components', owner && owner.getName() || 'A component', props.type) : void 0;
 	        didWarnUncontrolledToControlled = true;
 	      }
-	      if (inst._wrapperState.controlled && (defaultValue || !controlled) && !didWarnControlledToUncontrolled) {
+	      if (inst._wrapperState.controlled && !controlled && !didWarnControlledToUncontrolled) {
 	         true ? warning(false, '%s is changing a controlled input of type %s to be uncontrolled. ' + 'Input elements should not switch from controlled to uncontrolled (or vice versa). ' + 'Decide between using a controlled or uncontrolled input ' + 'element for the lifetime of the component. More info: https://fb.me/react-controlled-components', owner && owner.getName() || 'A component', props.type) : void 0;
 	        didWarnControlledToUncontrolled = true;
 	      }
@@ -44900,11 +45364,57 @@ var vendors_dashboard_worona =
 	      DOMPropertyOperations.setValueForProperty(ReactDOMComponentTree.getNodeFromInstance(inst), 'checked', checked || false);
 	    }
 
+	    var node = ReactDOMComponentTree.getNodeFromInstance(inst);
 	    var value = LinkedValueUtils.getValue(props);
 	    if (value != null) {
+
 	      // Cast `value` to a string to ensure the value is set correctly. While
 	      // browsers typically do this as necessary, jsdom doesn't.
-	      DOMPropertyOperations.setValueForProperty(ReactDOMComponentTree.getNodeFromInstance(inst), 'value', '' + value);
+	      var newValue = '' + value;
+
+	      // To avoid side effects (such as losing text selection), only set value if changed
+	      if (newValue !== node.value) {
+	        node.value = newValue;
+	      }
+	    } else {
+	      if (props.value == null && props.defaultValue != null) {
+	        node.defaultValue = '' + props.defaultValue;
+	      }
+	      if (props.checked == null && props.defaultChecked != null) {
+	        node.defaultChecked = !!props.defaultChecked;
+	      }
+	    }
+	  },
+
+	  postMountWrapper: function (inst) {
+	    var props = inst._currentElement.props;
+
+	    // This is in postMount because we need access to the DOM node, which is not
+	    // available until after the component has mounted.
+	    var node = ReactDOMComponentTree.getNodeFromInstance(inst);
+
+	    // Detach value from defaultValue. We won't do anything if we're working on
+	    // submit or reset inputs as those values & defaultValues are linked. They
+	    // are not resetable nodes so this operation doesn't matter and actually
+	    // removes browser-default values (eg "Submit Query") when no value is
+	    // provided.
+	    if (props.type !== 'submit' && props.type !== 'reset') {
+	      node.value = node.value;
+	    }
+
+	    // Normally, we'd just do `node.checked = node.checked` upon initial mount, less this bug
+	    // this is needed to work around a chrome bug where setting defaultChecked
+	    // will sometimes influence the value of checked (even after detachment).
+	    // Reference: https://bugs.chromium.org/p/chromium/issues/detail?id=608416
+	    // We need to temporarily unset name to avoid disrupting radio button groups.
+	    var name = node.name;
+	    if (name !== '') {
+	      node.name = '';
+	    }
+	    node.defaultChecked = !node.defaultChecked;
+	    node.defaultChecked = !node.defaultChecked;
+	    if (name !== '') {
+	      node.name = name;
 	    }
 	  }
 	};
@@ -44946,7 +45456,7 @@ var vendors_dashboard_worona =
 	      // That's probably okay; we don't support it just as we don't support
 	      // mixing React radio buttons with non-React ones.
 	      var otherInstance = ReactDOMComponentTree.getInstanceFromNode(otherNode);
-	      !otherInstance ?  true ? invariant(false, 'ReactDOMInput: Mixing React and non-React radio inputs with the ' + 'same `name` is not supported.') : invariant(false) : void 0;
+	      !otherInstance ?  true ? invariant(false, 'ReactDOMInput: Mixing React and non-React radio inputs with the same `name` is not supported.') : _prodInvariant('90') : void 0;
 	      // If this is a controlled radio button group, forcing the input that
 	      // was previously checked to update will cause it to be come re-checked
 	      // as appropriate.
@@ -44960,7 +45470,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMInput;
 
 /***/ },
-/* 555 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -44976,8 +45486,10 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactPropTypes = __webpack_require__(332);
-	var ReactPropTypeLocations = __webpack_require__(325);
+	var _prodInvariant = __webpack_require__(303);
+
+	var ReactPropTypes = __webpack_require__(326);
+	var ReactPropTypeLocations = __webpack_require__(317);
 
 	var invariant = __webpack_require__(304);
 	var warning = __webpack_require__(307);
@@ -44993,16 +45505,16 @@ var vendors_dashboard_worona =
 	};
 
 	function _assertSingleLink(inputProps) {
-	  !(inputProps.checkedLink == null || inputProps.valueLink == null) ?  true ? invariant(false, 'Cannot provide a checkedLink and a valueLink. If you want to use ' + 'checkedLink, you probably don\'t want to use valueLink and vice versa.') : invariant(false) : void 0;
+	  !(inputProps.checkedLink == null || inputProps.valueLink == null) ?  true ? invariant(false, 'Cannot provide a checkedLink and a valueLink. If you want to use checkedLink, you probably don\'t want to use valueLink and vice versa.') : _prodInvariant('87') : void 0;
 	}
 	function _assertValueLink(inputProps) {
 	  _assertSingleLink(inputProps);
-	  !(inputProps.value == null && inputProps.onChange == null) ?  true ? invariant(false, 'Cannot provide a valueLink and a value or onChange event. If you want ' + 'to use value or onChange, you probably don\'t want to use valueLink.') : invariant(false) : void 0;
+	  !(inputProps.value == null && inputProps.onChange == null) ?  true ? invariant(false, 'Cannot provide a valueLink and a value or onChange event. If you want to use value or onChange, you probably don\'t want to use valueLink.') : _prodInvariant('88') : void 0;
 	}
 
 	function _assertCheckedLink(inputProps) {
 	  _assertSingleLink(inputProps);
-	  !(inputProps.checked == null && inputProps.onChange == null) ?  true ? invariant(false, 'Cannot provide a checkedLink and a checked property or onChange event. ' + 'If you want to use checked or onChange, you probably don\'t want to ' + 'use checkedLink') : invariant(false) : void 0;
+	  !(inputProps.checked == null && inputProps.onChange == null) ?  true ? invariant(false, 'Cannot provide a checkedLink and a checked property or onChange event. If you want to use checked or onChange, you probably don\'t want to use checkedLink') : _prodInvariant('89') : void 0;
 	}
 
 	var propTypes = {
@@ -45098,7 +45610,7 @@ var vendors_dashboard_worona =
 	module.exports = LinkedValueUtils;
 
 /***/ },
-/* 556 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -45114,19 +45626,40 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _assign = __webpack_require__(300);
 
-	var ReactChildren = __webpack_require__(302);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactDOMSelect = __webpack_require__(557);
+	var ReactChildren = __webpack_require__(301);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactDOMSelect = __webpack_require__(559);
 
 	var warning = __webpack_require__(307);
+	var didWarnInvalidOptionChildren = false;
+
+	function flattenChildren(children) {
+	  var content = '';
+
+	  // Flatten children and warn if they aren't strings or numbers;
+	  // invalid types are ignored.
+	  ReactChildren.forEach(children, function (child) {
+	    if (child == null) {
+	      return;
+	    }
+	    if (typeof child === 'string' || typeof child === 'number') {
+	      content += child;
+	    } else if (!didWarnInvalidOptionChildren) {
+	      didWarnInvalidOptionChildren = true;
+	       true ? warning(false, 'Only strings and numbers are supported as <option> children.') : void 0;
+	    }
+	  });
+
+	  return content;
+	}
 
 	/**
-	 * Implements an <option> native component that warns when `selected` is set.
+	 * Implements an <option> host component that warns when `selected` is set.
 	 */
 	var ReactDOMOption = {
-	  mountWrapper: function (inst, props, nativeParent) {
+	  mountWrapper: function (inst, props, hostParent) {
 	    // TODO (yungsters): Remove support for `selected` in <option>.
 	    if (true) {
 	       true ? warning(props.selected == null, 'Use the `defaultValue` or `value` props on <select> instead of ' + 'setting `selected` on <option>.') : void 0;
@@ -45134,11 +45667,11 @@ var vendors_dashboard_worona =
 
 	    // Look up whether this option is 'selected'
 	    var selectValue = null;
-	    if (nativeParent != null) {
-	      var selectParent = nativeParent;
+	    if (hostParent != null) {
+	      var selectParent = hostParent;
 
 	      if (selectParent._tag === 'optgroup') {
-	        selectParent = selectParent._nativeParent;
+	        selectParent = selectParent._hostParent;
 	      }
 
 	      if (selectParent != null && selectParent._tag === 'select') {
@@ -45150,17 +45683,23 @@ var vendors_dashboard_worona =
 	    // or missing (e.g., for <datalist>), we don't change props.selected
 	    var selected = null;
 	    if (selectValue != null) {
+	      var value;
+	      if (props.value != null) {
+	        value = props.value + '';
+	      } else {
+	        value = flattenChildren(props.children);
+	      }
 	      selected = false;
 	      if (Array.isArray(selectValue)) {
 	        // multiple
 	        for (var i = 0; i < selectValue.length; i++) {
-	          if ('' + selectValue[i] === '' + props.value) {
+	          if ('' + selectValue[i] === value) {
 	            selected = true;
 	            break;
 	          }
 	        }
 	      } else {
-	        selected = '' + selectValue === '' + props.value;
+	        selected = '' + selectValue === value;
 	      }
 	    }
 
@@ -45176,35 +45715,22 @@ var vendors_dashboard_worona =
 	    }
 	  },
 
-	  getNativeProps: function (inst, props) {
-	    var nativeProps = _assign({ selected: undefined, children: undefined }, props);
+	  getHostProps: function (inst, props) {
+	    var hostProps = _assign({ selected: undefined, children: undefined }, props);
 
 	    // Read state only from initial mount because <select> updates value
 	    // manually; we need the initial state only for server rendering
 	    if (inst._wrapperState.selected != null) {
-	      nativeProps.selected = inst._wrapperState.selected;
+	      hostProps.selected = inst._wrapperState.selected;
 	    }
 
-	    var content = '';
-
-	    // Flatten children and warn if they aren't strings or numbers;
-	    // invalid types are ignored.
-	    ReactChildren.forEach(props.children, function (child) {
-	      if (child == null) {
-	        return;
-	      }
-	      if (typeof child === 'string' || typeof child === 'number') {
-	        content += child;
-	      } else {
-	         true ? warning(false, 'Only strings and numbers are supported as <option> children.') : void 0;
-	      }
-	    });
+	    var content = flattenChildren(props.children);
 
 	    if (content) {
-	      nativeProps.children = content;
+	      hostProps.children = content;
 	    }
 
-	    return nativeProps;
+	    return hostProps;
 	  }
 
 	};
@@ -45212,7 +45738,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMOption;
 
 /***/ },
-/* 557 */
+/* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -45228,17 +45754,16 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _assign = __webpack_require__(300);
 
-	var DisabledInputUtils = __webpack_require__(553);
-	var LinkedValueUtils = __webpack_require__(555);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactUpdates = __webpack_require__(502);
+	var DisabledInputUtils = __webpack_require__(555);
+	var LinkedValueUtils = __webpack_require__(557);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactUpdates = __webpack_require__(497);
 
 	var warning = __webpack_require__(307);
 
 	var didWarnValueLink = false;
-	var didWarnValueNull = false;
 	var didWarnValueDefaultValue = false;
 
 	function updateOptionsIfPendingUpdateAndMounted() {
@@ -45262,14 +45787,6 @@ var vendors_dashboard_worona =
 	    }
 	  }
 	  return '';
-	}
-
-	function warnIfValueIsNull(props) {
-	  if (props != null && props.value === null && !didWarnValueNull) {
-	     true ? warning(false, '`value` prop on `select` should not be null. ' + 'Consider using the empty string to clear the component or `undefined` ' + 'for uncontrolled components.') : void 0;
-
-	    didWarnValueNull = true;
-	  }
 	}
 
 	var valuePropNames = ['value', 'defaultValue'];
@@ -45338,7 +45855,7 @@ var vendors_dashboard_worona =
 	}
 
 	/**
-	 * Implements a <select> native component that allows optionally setting the
+	 * Implements a <select> host component that allows optionally setting the
 	 * props `value` and `defaultValue`. If `multiple` is false, the prop must be a
 	 * stringable. If `multiple` is true, the prop must be an array of stringables.
 	 *
@@ -45353,8 +45870,8 @@ var vendors_dashboard_worona =
 	 * selected.
 	 */
 	var ReactDOMSelect = {
-	  getNativeProps: function (inst, props) {
-	    return _assign({}, DisabledInputUtils.getNativeProps(inst, props), {
+	  getHostProps: function (inst, props) {
+	    return _assign({}, DisabledInputUtils.getHostProps(inst, props), {
 	      onChange: inst._wrapperState.onChange,
 	      value: undefined
 	    });
@@ -45363,7 +45880,6 @@ var vendors_dashboard_worona =
 	  mountWrapper: function (inst, props) {
 	    if (true) {
 	      checkSelectPropTypes(inst, props);
-	      warnIfValueIsNull(props);
 	    }
 
 	    var value = LinkedValueUtils.getValue(props);
@@ -45389,9 +45905,6 @@ var vendors_dashboard_worona =
 
 	  postUpdateWrapper: function (inst) {
 	    var props = inst._currentElement.props;
-	    if (true) {
-	      warnIfValueIsNull(props);
-	    }
 
 	    // After the initial mount, we control selected-ness manually so don't pass
 	    // this value down
@@ -45430,7 +45943,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMSelect;
 
 /***/ },
-/* 558 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -45446,19 +45959,18 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _prodInvariant = __webpack_require__(303),
+	    _assign = __webpack_require__(300);
 
-	var DisabledInputUtils = __webpack_require__(553);
-	var DOMPropertyOperations = __webpack_require__(544);
-	var LinkedValueUtils = __webpack_require__(555);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactUpdates = __webpack_require__(502);
+	var DisabledInputUtils = __webpack_require__(555);
+	var LinkedValueUtils = __webpack_require__(557);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactUpdates = __webpack_require__(497);
 
 	var invariant = __webpack_require__(304);
 	var warning = __webpack_require__(307);
 
 	var didWarnValueLink = false;
-	var didWarnValueNull = false;
 	var didWarnValDefaultVal = false;
 
 	function forceUpdateIfMounted() {
@@ -45468,16 +45980,8 @@ var vendors_dashboard_worona =
 	  }
 	}
 
-	function warnIfValueIsNull(props) {
-	  if (props != null && props.value === null && !didWarnValueNull) {
-	     true ? warning(false, '`value` prop on `textarea` should not be null. ' + 'Consider using the empty string to clear the component or `undefined` ' + 'for uncontrolled components.') : void 0;
-
-	    didWarnValueNull = true;
-	  }
-	}
-
 	/**
-	 * Implements a <textarea> native component that allows setting `value`, and
+	 * Implements a <textarea> host component that allows setting `value`, and
 	 * `defaultValue`. This differs from the traditional DOM API because value is
 	 * usually set as PCDATA children.
 	 *
@@ -45492,19 +45996,22 @@ var vendors_dashboard_worona =
 	 * `defaultValue` if specified, or the children content (deprecated).
 	 */
 	var ReactDOMTextarea = {
-	  getNativeProps: function (inst, props) {
-	    !(props.dangerouslySetInnerHTML == null) ?  true ? invariant(false, '`dangerouslySetInnerHTML` does not make sense on <textarea>.') : invariant(false) : void 0;
+	  getHostProps: function (inst, props) {
+	    !(props.dangerouslySetInnerHTML == null) ?  true ? invariant(false, '`dangerouslySetInnerHTML` does not make sense on <textarea>.') : _prodInvariant('91') : void 0;
 
 	    // Always set children to the same thing. In IE9, the selection range will
-	    // get reset if `textContent` is mutated.
-	    var nativeProps = _assign({}, DisabledInputUtils.getNativeProps(inst, props), {
-	      defaultValue: undefined,
+	    // get reset if `textContent` is mutated.  We could add a check in setTextContent
+	    // to only set the value if/when the value differs from the node value (which would
+	    // completely solve this IE9 bug), but Sebastian+Ben seemed to like this solution.
+	    // The value can be a boolean or object so that's why it's forced to be a string.
+	    var hostProps = _assign({}, DisabledInputUtils.getHostProps(inst, props), {
 	      value: undefined,
-	      children: inst._wrapperState.initialValue,
+	      defaultValue: undefined,
+	      children: '' + inst._wrapperState.initialValue,
 	      onChange: inst._wrapperState.onChange
 	    });
 
-	    return nativeProps;
+	    return hostProps;
 	  },
 
 	  mountWrapper: function (inst, props) {
@@ -45518,34 +46025,36 @@ var vendors_dashboard_worona =
 	         true ? warning(false, 'Textarea elements must be either controlled or uncontrolled ' + '(specify either the value prop, or the defaultValue prop, but not ' + 'both). Decide between using a controlled or uncontrolled textarea ' + 'and remove one of these props. More info: ' + 'https://fb.me/react-controlled-components') : void 0;
 	        didWarnValDefaultVal = true;
 	      }
-	      warnIfValueIsNull(props);
 	    }
 
-	    var defaultValue = props.defaultValue;
-	    // TODO (yungsters): Remove support for children content in <textarea>.
-	    var children = props.children;
-	    if (children != null) {
-	      if (true) {
-	         true ? warning(false, 'Use the `defaultValue` or `value` props instead of setting ' + 'children on <textarea>.') : void 0;
-	      }
-	      !(defaultValue == null) ?  true ? invariant(false, 'If you supply `defaultValue` on a <textarea>, do not pass children.') : invariant(false) : void 0;
-	      if (Array.isArray(children)) {
-	        !(children.length <= 1) ?  true ? invariant(false, '<textarea> can only have at most one child.') : invariant(false) : void 0;
-	        children = children[0];
-	      }
-
-	      defaultValue = '' + children;
-	    }
-	    if (defaultValue == null) {
-	      defaultValue = '';
-	    }
 	    var value = LinkedValueUtils.getValue(props);
+	    var initialValue = value;
+
+	    // Only bother fetching default value if we're going to use it
+	    if (value == null) {
+	      var defaultValue = props.defaultValue;
+	      // TODO (yungsters): Remove support for children content in <textarea>.
+	      var children = props.children;
+	      if (children != null) {
+	        if (true) {
+	           true ? warning(false, 'Use the `defaultValue` or `value` props instead of setting ' + 'children on <textarea>.') : void 0;
+	        }
+	        !(defaultValue == null) ?  true ? invariant(false, 'If you supply `defaultValue` on a <textarea>, do not pass children.') : _prodInvariant('92') : void 0;
+	        if (Array.isArray(children)) {
+	          !(children.length <= 1) ?  true ? invariant(false, '<textarea> can only have at most one child.') : _prodInvariant('93') : void 0;
+	          children = children[0];
+	        }
+
+	        defaultValue = '' + children;
+	      }
+	      if (defaultValue == null) {
+	        defaultValue = '';
+	      }
+	      initialValue = defaultValue;
+	    }
+
 	    inst._wrapperState = {
-	      // We save the initial value so that `ReactDOMComponent` doesn't update
-	      // `textContent` (unnecessary since we update value).
-	      // The initial value can be a boolean or object so that's why it's
-	      // forced to be a string.
-	      initialValue: '' + (value != null ? value : defaultValue),
+	      initialValue: '' + initialValue,
 	      listeners: null,
 	      onChange: _handleChange.bind(inst)
 	    };
@@ -45554,16 +46063,33 @@ var vendors_dashboard_worona =
 	  updateWrapper: function (inst) {
 	    var props = inst._currentElement.props;
 
-	    if (true) {
-	      warnIfValueIsNull(props);
-	    }
-
+	    var node = ReactDOMComponentTree.getNodeFromInstance(inst);
 	    var value = LinkedValueUtils.getValue(props);
 	    if (value != null) {
 	      // Cast `value` to a string to ensure the value is set correctly. While
 	      // browsers typically do this as necessary, jsdom doesn't.
-	      DOMPropertyOperations.setValueForProperty(ReactDOMComponentTree.getNodeFromInstance(inst), 'value', '' + value);
+	      var newValue = '' + value;
+
+	      // To avoid side effects (such as losing text selection), only set value if changed
+	      if (newValue !== node.value) {
+	        node.value = newValue;
+	      }
+	      if (props.defaultValue == null) {
+	        node.defaultValue = newValue;
+	      }
 	    }
+	    if (props.defaultValue != null) {
+	      node.defaultValue = props.defaultValue;
+	    }
+	  },
+
+	  postMountWrapper: function (inst) {
+	    // This is in postMount because we need access to the DOM node, which is not
+	    // available until after the component has mounted.
+	    var node = ReactDOMComponentTree.getNodeFromInstance(inst);
+
+	    // Warning: node.value may be the empty string at this point (IE11) if placeholder is set.
+	    node.value = node.textContent; // Detach value from defaultValue
 	  }
 	};
 
@@ -45577,7 +46103,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMTextarea;
 
 /***/ },
-/* 559 */
+/* 561 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -45593,16 +46119,19 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactComponentEnvironment = __webpack_require__(560);
-	var ReactInstrumentation = __webpack_require__(315);
-	var ReactMultiChildUpdateTypes = __webpack_require__(531);
+	var _prodInvariant = __webpack_require__(303);
+
+	var ReactComponentEnvironment = __webpack_require__(562);
+	var ReactInstanceMap = __webpack_require__(563);
+	var ReactInstrumentation = __webpack_require__(503);
+	var ReactMultiChildUpdateTypes = __webpack_require__(532);
 
 	var ReactCurrentOwner = __webpack_require__(306);
-	var ReactReconciler = __webpack_require__(505);
-	var ReactChildReconciler = __webpack_require__(561);
+	var ReactReconciler = __webpack_require__(500);
+	var ReactChildReconciler = __webpack_require__(564);
 
 	var emptyFunction = __webpack_require__(308);
-	var flattenChildren = __webpack_require__(570);
+	var flattenChildren = __webpack_require__(571);
 	var invariant = __webpack_require__(304);
 
 	/**
@@ -45637,7 +46166,7 @@ var vendors_dashboard_worona =
 	    type: ReactMultiChildUpdateTypes.MOVE_EXISTING,
 	    content: null,
 	    fromIndex: child._mountIndex,
-	    fromNode: ReactReconciler.getNativeNode(child),
+	    fromNode: ReactReconciler.getHostNode(child),
 	    toIndex: toIndex,
 	    afterNode: afterNode
 	  };
@@ -45718,12 +46247,33 @@ var vendors_dashboard_worona =
 	  ReactComponentEnvironment.processChildrenUpdates(inst, updateQueue);
 	}
 
+	var setParentForInstrumentation = emptyFunction;
 	var setChildrenForInstrumentation = emptyFunction;
 	if (true) {
+	  var getDebugID = function (inst) {
+	    if (!inst._debugID) {
+	      // Check for ART-like instances. TODO: This is silly/gross.
+	      var internal;
+	      if (internal = ReactInstanceMap.get(inst)) {
+	        inst = internal;
+	      }
+	    }
+	    return inst._debugID;
+	  };
+	  setParentForInstrumentation = function (child) {
+	    if (child._debugID !== 0) {
+	      ReactInstrumentation.debugTool.onSetParent(child._debugID, getDebugID(this));
+	    }
+	  };
 	  setChildrenForInstrumentation = function (children) {
-	    ReactInstrumentation.debugTool.onSetChildren(this._debugID, children ? Object.keys(children).map(function (key) {
-	      return children[key]._debugID;
-	    }) : []);
+	    var debugID = getDebugID(this);
+	    // TODO: React Native empty components are also multichild.
+	    // This means they still get into this method but don't have _debugID.
+	    if (debugID !== 0) {
+	      ReactInstrumentation.debugTool.onSetChildren(debugID, children ? Object.keys(children).map(function (key) {
+	        return children[key]._debugID;
+	      }) : []);
+	    }
 	  };
 	}
 
@@ -45749,7 +46299,7 @@ var vendors_dashboard_worona =
 	        if (this._currentElement) {
 	          try {
 	            ReactCurrentOwner.current = this._currentElement._owner;
-	            return ReactChildReconciler.instantiateChildren(nestedChildren, transaction, context);
+	            return ReactChildReconciler.instantiateChildren(nestedChildren, transaction, context, this._debugID);
 	          } finally {
 	            ReactCurrentOwner.current = null;
 	          }
@@ -45764,7 +46314,7 @@ var vendors_dashboard_worona =
 	        if (this._currentElement) {
 	          try {
 	            ReactCurrentOwner.current = this._currentElement._owner;
-	            nextChildren = flattenChildren(nextNestedChildrenElements);
+	            nextChildren = flattenChildren(nextNestedChildrenElements, this._debugID);
 	          } finally {
 	            ReactCurrentOwner.current = null;
 	          }
@@ -45794,7 +46344,10 @@ var vendors_dashboard_worona =
 	      for (var name in children) {
 	        if (children.hasOwnProperty(name)) {
 	          var child = children[name];
-	          var mountImage = ReactReconciler.mountComponent(child, transaction, this, this._nativeContainerInfo, context);
+	          if (true) {
+	            setParentForInstrumentation.call(this, child);
+	          }
+	          var mountImage = ReactReconciler.mountComponent(child, transaction, this, this._hostContainerInfo, context);
 	          child._mountIndex = index++;
 	          mountImages.push(mountImage);
 	        }
@@ -45819,7 +46372,7 @@ var vendors_dashboard_worona =
 	      ReactChildReconciler.unmountChildren(prevChildren, false);
 	      for (var name in prevChildren) {
 	        if (prevChildren.hasOwnProperty(name)) {
-	           true ?  true ? invariant(false, 'updateTextContent called on non-empty component.') : invariant(false) : void 0;
+	           true ?  true ? invariant(false, 'updateTextContent called on non-empty component.') : _prodInvariant('118') : void 0;
 	        }
 	      }
 	      // Set new text content.
@@ -45839,7 +46392,7 @@ var vendors_dashboard_worona =
 	      ReactChildReconciler.unmountChildren(prevChildren, false);
 	      for (var name in prevChildren) {
 	        if (prevChildren.hasOwnProperty(name)) {
-	           true ?  true ? invariant(false, 'updateTextContent called on non-empty component.') : invariant(false) : void 0;
+	           true ?  true ? invariant(false, 'updateTextContent called on non-empty component.') : _prodInvariant('118') : void 0;
 	        }
 	      }
 	      var updates = [makeSetMarkup(nextMarkup)];
@@ -45898,7 +46451,7 @@ var vendors_dashboard_worona =
 	          updates = enqueue(updates, this._mountChildAtIndex(nextChild, lastPlacedNode, nextIndex, transaction, context));
 	        }
 	        nextIndex++;
-	        lastPlacedNode = ReactReconciler.getNativeNode(nextChild);
+	        lastPlacedNode = ReactReconciler.getHostNode(nextChild);
 	      }
 	      // Remove children that are no longer present.
 	      for (name in removedNodes) {
@@ -45979,7 +46532,7 @@ var vendors_dashboard_worona =
 	     * @private
 	     */
 	    _mountChildAtIndex: function (child, afterNode, index, transaction, context) {
-	      var mountImage = ReactReconciler.mountComponent(child, transaction, this, this._nativeContainerInfo, context);
+	      var mountImage = ReactReconciler.mountComponent(child, transaction, this, this._hostContainerInfo, context);
 	      child._mountIndex = index;
 	      return this.createChild(child, afterNode, mountImage);
 	    },
@@ -46005,7 +46558,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactMultiChild;
 
 /***/ },
-/* 560 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -46020,6 +46573,8 @@ var vendors_dashboard_worona =
 	 */
 
 	'use strict';
+
+	var _prodInvariant = __webpack_require__(303);
 
 	var invariant = __webpack_require__(304);
 
@@ -46048,7 +46603,7 @@ var vendors_dashboard_worona =
 
 	  injection: {
 	    injectEnvironment: function (environment) {
-	      !!injected ?  true ? invariant(false, 'ReactCompositeComponent: injectEnvironment() can only be called once.') : invariant(false) : void 0;
+	      !!injected ?  true ? invariant(false, 'ReactCompositeComponent: injectEnvironment() can only be called once.') : _prodInvariant('104') : void 0;
 	      ReactComponentEnvironment.unmountIDFromEnvironment = environment.unmountIDFromEnvironment;
 	      ReactComponentEnvironment.replaceNodeWithMarkup = environment.replaceNodeWithMarkup;
 	      ReactComponentEnvironment.processChildrenUpdates = environment.processChildrenUpdates;
@@ -46061,7 +46616,60 @@ var vendors_dashboard_worona =
 	module.exports = ReactComponentEnvironment;
 
 /***/ },
-/* 561 */
+/* 563 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactInstanceMap
+	 */
+
+	'use strict';
+
+	/**
+	 * `ReactInstanceMap` maintains a mapping from a public facing stateful
+	 * instance (key) and the internal representation (value). This allows public
+	 * methods to accept the user facing instance as an argument and map them back
+	 * to internal methods.
+	 */
+
+	// TODO: Replace this with ES6: var ReactInstanceMap = new Map();
+
+	var ReactInstanceMap = {
+
+	  /**
+	   * This API should be called `delete` but we'd have to make sure to always
+	   * transform these to strings for IE support. When this transform is fully
+	   * supported we can rename it.
+	   */
+	  remove: function (key) {
+	    key._reactInternalInstance = undefined;
+	  },
+
+	  get: function (key) {
+	    return key._reactInternalInstance;
+	  },
+
+	  has: function (key) {
+	    return key._reactInternalInstance !== undefined;
+	  },
+
+	  set: function (key, value) {
+	    key._reactInternalInstance = value;
+	  }
+
+	};
+
+	module.exports = ReactInstanceMap;
+
+/***/ },
+/* 564 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -46077,22 +46685,23 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactReconciler = __webpack_require__(505);
+	var ReactReconciler = __webpack_require__(500);
 
-	var instantiateReactComponent = __webpack_require__(562);
+	var instantiateReactComponent = __webpack_require__(565);
 	var KeyEscapeUtils = __webpack_require__(312);
-	var shouldUpdateReactComponent = __webpack_require__(567);
+	var shouldUpdateReactComponent = __webpack_require__(568);
 	var traverseAllChildren = __webpack_require__(310);
 	var warning = __webpack_require__(307);
 
-	function instantiateChild(childInstances, child, name) {
+	function instantiateChild(childInstances, child, name, selfDebugID) {
 	  // We found a component instance.
 	  var keyUnique = childInstances[name] === undefined;
 	  if (true) {
-	     true ? warning(keyUnique, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.', KeyEscapeUtils.unescape(name)) : void 0;
+	    var ReactComponentTreeDevtool = __webpack_require__(324);
+	     true ? warning(keyUnique, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.%s', KeyEscapeUtils.unescape(name), ReactComponentTreeDevtool.getStackAddendumByID(selfDebugID)) : void 0;
 	  }
 	  if (child != null && keyUnique) {
-	    childInstances[name] = instantiateReactComponent(child);
+	    childInstances[name] = instantiateReactComponent(child, true);
 	  }
 	}
 
@@ -46110,12 +46719,20 @@ var vendors_dashboard_worona =
 	   * @return {?object} A set of child instances.
 	   * @internal
 	   */
-	  instantiateChildren: function (nestedChildNodes, transaction, context) {
+	  instantiateChildren: function (nestedChildNodes, transaction, context, selfDebugID // __DEV__ only
+	  ) {
 	    if (nestedChildNodes == null) {
 	      return null;
 	    }
 	    var childInstances = {};
-	    traverseAllChildren(nestedChildNodes, instantiateChild, childInstances);
+
+	    if (true) {
+	      traverseAllChildren(nestedChildNodes, function (childInsts, child, name) {
+	        return instantiateChild(childInsts, child, name, selfDebugID);
+	      }, childInstances);
+	    } else {
+	      traverseAllChildren(nestedChildNodes, instantiateChild, childInstances);
+	    }
 	    return childInstances;
 	  },
 
@@ -46152,11 +46769,11 @@ var vendors_dashboard_worona =
 	        nextChildren[name] = prevChild;
 	      } else {
 	        if (prevChild) {
-	          removedNodes[name] = ReactReconciler.getNativeNode(prevChild);
+	          removedNodes[name] = ReactReconciler.getHostNode(prevChild);
 	          ReactReconciler.unmountComponent(prevChild, false);
 	        }
 	        // The child must be instantiated before it's mounted.
-	        var nextChildInstance = instantiateReactComponent(nextElement);
+	        var nextChildInstance = instantiateReactComponent(nextElement, true);
 	        nextChildren[name] = nextChildInstance;
 	      }
 	    }
@@ -46164,7 +46781,7 @@ var vendors_dashboard_worona =
 	    for (name in prevChildren) {
 	      if (prevChildren.hasOwnProperty(name) && !(nextChildren && nextChildren.hasOwnProperty(name))) {
 	        prevChild = prevChildren[name];
-	        removedNodes[name] = ReactReconciler.getNativeNode(prevChild);
+	        removedNodes[name] = ReactReconciler.getHostNode(prevChild);
 	        ReactReconciler.unmountComponent(prevChild, false);
 	      }
 	    }
@@ -46191,7 +46808,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactChildReconciler;
 
 /***/ },
-/* 562 */
+/* 565 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -46207,12 +46824,13 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _prodInvariant = __webpack_require__(303),
+	    _assign = __webpack_require__(300);
 
-	var ReactCompositeComponent = __webpack_require__(563);
-	var ReactEmptyComponent = __webpack_require__(568);
-	var ReactNativeComponent = __webpack_require__(569);
-	var ReactInstrumentation = __webpack_require__(315);
+	var ReactCompositeComponent = __webpack_require__(566);
+	var ReactEmptyComponent = __webpack_require__(569);
+	var ReactHostComponent = __webpack_require__(570);
+	var ReactInstrumentation = __webpack_require__(503);
 
 	var invariant = __webpack_require__(304);
 	var warning = __webpack_require__(307);
@@ -46267,38 +46885,43 @@ var vendors_dashboard_worona =
 	 * Given a ReactNode, create an instance that will actually be mounted.
 	 *
 	 * @param {ReactNode} node
+	 * @param {boolean} shouldHaveDebugID
 	 * @return {object} A new instance of the element's constructor.
 	 * @protected
 	 */
-	function instantiateReactComponent(node) {
+	function instantiateReactComponent(node, shouldHaveDebugID) {
 	  var instance;
 
-	  var isEmpty = node === null || node === false;
-	  if (isEmpty) {
+	  if (node === null || node === false) {
 	    instance = ReactEmptyComponent.create(instantiateReactComponent);
 	  } else if (typeof node === 'object') {
 	    var element = node;
-	    !(element && (typeof element.type === 'function' || typeof element.type === 'string')) ?  true ? invariant(false, 'Element type is invalid: expected a string (for built-in components) ' + 'or a class/function (for composite components) but got: %s.%s', element.type == null ? element.type : typeof element.type, getDeclarationErrorAddendum(element._owner)) : invariant(false) : void 0;
+	    !(element && (typeof element.type === 'function' || typeof element.type === 'string')) ?  true ? invariant(false, 'Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s', element.type == null ? element.type : typeof element.type, getDeclarationErrorAddendum(element._owner)) : _prodInvariant('130', element.type == null ? element.type : typeof element.type, getDeclarationErrorAddendum(element._owner)) : void 0;
 
 	    // Special case string values
 	    if (typeof element.type === 'string') {
-	      instance = ReactNativeComponent.createInternalComponent(element);
+	      instance = ReactHostComponent.createInternalComponent(element);
 	    } else if (isInternalComponentType(element.type)) {
 	      // This is temporarily available for custom components that are not string
 	      // representations. I.e. ART. Once those are updated to use the string
 	      // representation, we can drop this code path.
 	      instance = new element.type(element);
+
+	      // We renamed this. Allow the old name for compat. :(
+	      if (!instance.getHostNode) {
+	        instance.getHostNode = instance.getNativeNode;
+	      }
 	    } else {
 	      instance = new ReactCompositeComponentWrapper(element);
 	    }
 	  } else if (typeof node === 'string' || typeof node === 'number') {
-	    instance = ReactNativeComponent.createInstanceForText(node);
+	    instance = ReactHostComponent.createInstanceForText(node);
 	  } else {
-	     true ?  true ? invariant(false, 'Encountered invalid React node of type %s', typeof node) : invariant(false) : void 0;
+	     true ?  true ? invariant(false, 'Encountered invalid React node of type %s', typeof node) : _prodInvariant('131', typeof node) : void 0;
 	  }
 
 	  if (true) {
-	     true ? warning(typeof instance.mountComponent === 'function' && typeof instance.receiveComponent === 'function' && typeof instance.getNativeNode === 'function' && typeof instance.unmountComponent === 'function', 'Only React Components can be mounted.') : void 0;
+	     true ? warning(typeof instance.mountComponent === 'function' && typeof instance.receiveComponent === 'function' && typeof instance.getHostNode === 'function' && typeof instance.unmountComponent === 'function', 'Only React Components can be mounted.') : void 0;
 	  }
 
 	  // These two fields are used by the DOM and ART diffing algorithms
@@ -46308,21 +46931,17 @@ var vendors_dashboard_worona =
 	  instance._mountImage = null;
 
 	  if (true) {
-	    instance._isOwnerNecessary = false;
-	    instance._warnedAboutRefsInRender = false;
-	  }
-
-	  if (true) {
-	    var debugID = isEmpty ? 0 : nextDebugID++;
-	    instance._debugID = debugID;
-
-	    if (debugID !== 0) {
+	    if (shouldHaveDebugID) {
+	      var debugID = nextDebugID++;
+	      instance._debugID = debugID;
 	      var displayName = getDisplayName(instance);
 	      ReactInstrumentation.debugTool.onSetDisplayName(debugID, displayName);
 	      var owner = node && node._owner;
 	      if (owner) {
 	        ReactInstrumentation.debugTool.onSetOwner(debugID, owner._debugID);
 	      }
+	    } else {
+	      instance._debugID = 0;
 	    }
 	  }
 
@@ -46340,7 +46959,7 @@ var vendors_dashboard_worona =
 	module.exports = instantiateReactComponent;
 
 /***/ },
-/* 563 */
+/* 566 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -46356,35 +46975,25 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _prodInvariant = __webpack_require__(303),
+	    _assign = __webpack_require__(300);
 
-	var ReactComponentEnvironment = __webpack_require__(560);
+	var ReactComponentEnvironment = __webpack_require__(562);
 	var ReactCurrentOwner = __webpack_require__(306);
 	var ReactElement = __webpack_require__(305);
-	var ReactErrorUtils = __webpack_require__(493);
-	var ReactInstanceMap = __webpack_require__(564);
-	var ReactInstrumentation = __webpack_require__(315);
-	var ReactNodeTypes = __webpack_require__(565);
-	var ReactPropTypeLocations = __webpack_require__(325);
-	var ReactPropTypeLocationNames = __webpack_require__(327);
-	var ReactReconciler = __webpack_require__(505);
-	var ReactUpdateQueue = __webpack_require__(566);
+	var ReactErrorUtils = __webpack_require__(487);
+	var ReactInstanceMap = __webpack_require__(563);
+	var ReactInstrumentation = __webpack_require__(503);
+	var ReactNodeTypes = __webpack_require__(567);
+	var ReactPropTypeLocations = __webpack_require__(317);
+	var ReactReconciler = __webpack_require__(500);
 
-	var emptyObject = __webpack_require__(323);
+	var checkReactTypeSpec = __webpack_require__(325);
+
+	var emptyObject = __webpack_require__(315);
 	var invariant = __webpack_require__(304);
-	var shouldUpdateReactComponent = __webpack_require__(567);
+	var shouldUpdateReactComponent = __webpack_require__(568);
 	var warning = __webpack_require__(307);
-
-	function getDeclarationErrorAddendum(component) {
-	  var owner = component._currentElement._owner || null;
-	  if (owner) {
-	    var name = owner.getName();
-	    if (name) {
-	      return ' Check the render method of `' + name + '`.';
-	    }
-	  }
-	  return '';
-	}
 
 	function StatelessComponent(Component) {}
 	StatelessComponent.prototype.render = function () {
@@ -46397,6 +47006,7 @@ var vendors_dashboard_worona =
 	function warnIfInvalidElement(Component, element) {
 	  if (true) {
 	     true ? warning(element === null || element === false || ReactElement.isValidElement(element), '%s(...): A valid React element (or null) must be returned. You may have ' + 'returned undefined, an array or some other invalid object.', Component.displayName || Component.name || 'Component') : void 0;
+	     true ? warning(!Component.childContextTypes, '%s(...): childContextTypes cannot be defined on a functional component.', Component.displayName || Component.name || 'Component') : void 0;
 	  }
 	}
 
@@ -46477,8 +47087,8 @@ var vendors_dashboard_worona =
 	    this._currentElement = element;
 	    this._rootNodeID = null;
 	    this._instance = null;
-	    this._nativeParent = null;
-	    this._nativeContainerInfo = null;
+	    this._hostParent = null;
+	    this._hostContainerInfo = null;
 
 	    // See ReactUpdateQueue
 	    this._updateBatchNumber = null;
@@ -46498,39 +47108,45 @@ var vendors_dashboard_worona =
 
 	    // ComponentWillUnmount shall only be called once
 	    this._calledComponentWillUnmount = false;
+
+	    if (true) {
+	      this._warnedAboutRefsInRender = false;
+	    }
 	  },
 
 	  /**
 	   * Initializes the component, renders markup, and registers event listeners.
 	   *
 	   * @param {ReactReconcileTransaction|ReactServerRenderingTransaction} transaction
-	   * @param {?object} nativeParent
-	   * @param {?object} nativeContainerInfo
+	   * @param {?object} hostParent
+	   * @param {?object} hostContainerInfo
 	   * @param {?object} context
 	   * @return {?string} Rendered markup to be inserted into the DOM.
 	   * @final
 	   * @internal
 	   */
-	  mountComponent: function (transaction, nativeParent, nativeContainerInfo, context) {
+	  mountComponent: function (transaction, hostParent, hostContainerInfo, context) {
 	    this._context = context;
 	    this._mountOrder = nextMountID++;
-	    this._nativeParent = nativeParent;
-	    this._nativeContainerInfo = nativeContainerInfo;
+	    this._hostParent = hostParent;
+	    this._hostContainerInfo = hostContainerInfo;
 
-	    var publicProps = this._processProps(this._currentElement.props);
+	    var publicProps = this._currentElement.props;
 	    var publicContext = this._processContext(context);
 
 	    var Component = this._currentElement.type;
 
+	    var updateQueue = transaction.getUpdateQueue();
+
 	    // Initialize the public class
-	    var inst = this._constructComponent(publicProps, publicContext);
+	    var inst = this._constructComponent(publicProps, publicContext, updateQueue);
 	    var renderedElement;
 
 	    // Support functional components
 	    if (!shouldConstruct(Component) && (inst == null || inst.render == null)) {
 	      renderedElement = inst;
 	      warnIfInvalidElement(Component, renderedElement);
-	      !(inst === null || inst === false || ReactElement.isValidElement(inst)) ?  true ? invariant(false, '%s(...): A valid React element (or null) must be returned. You may have ' + 'returned undefined, an array or some other invalid object.', Component.displayName || Component.name || 'Component') : invariant(false) : void 0;
+	      !(inst === null || inst === false || ReactElement.isValidElement(inst)) ?  true ? invariant(false, '%s(...): A valid React element (or null) must be returned. You may have returned undefined, an array or some other invalid object.', Component.displayName || Component.name || 'Component') : _prodInvariant('105', Component.displayName || Component.name || 'Component') : void 0;
 	      inst = new StatelessComponent(Component);
 	    }
 
@@ -46552,7 +47168,7 @@ var vendors_dashboard_worona =
 	    inst.props = publicProps;
 	    inst.context = publicContext;
 	    inst.refs = emptyObject;
-	    inst.updater = ReactUpdateQueue;
+	    inst.updater = updateQueue;
 
 	    this._instance = inst;
 
@@ -46576,7 +47192,7 @@ var vendors_dashboard_worona =
 	    if (initialState === undefined) {
 	      inst.state = initialState = null;
 	    }
-	    !(typeof initialState === 'object' && !Array.isArray(initialState)) ?  true ? invariant(false, '%s.state: must be set to an object or null', this.getName() || 'ReactCompositeComponent') : invariant(false) : void 0;
+	    !(typeof initialState === 'object' && !Array.isArray(initialState)) ?  true ? invariant(false, '%s.state: must be set to an object or null', this.getName() || 'ReactCompositeComponent') : _prodInvariant('106', this.getName() || 'ReactCompositeComponent') : void 0;
 
 	    this._pendingStateQueue = null;
 	    this._pendingReplaceState = false;
@@ -46584,9 +47200,9 @@ var vendors_dashboard_worona =
 
 	    var markup;
 	    if (inst.unstable_handleError) {
-	      markup = this.performInitialMountWithErrorHandling(renderedElement, nativeParent, nativeContainerInfo, transaction, context);
+	      markup = this.performInitialMountWithErrorHandling(renderedElement, hostParent, hostContainerInfo, transaction, context);
 	    } else {
-	      markup = this.performInitialMount(renderedElement, nativeParent, nativeContainerInfo, transaction, context);
+	      markup = this.performInitialMount(renderedElement, hostParent, hostContainerInfo, transaction, context);
 	    }
 
 	    if (inst.componentDidMount) {
@@ -46600,20 +47216,20 @@ var vendors_dashboard_worona =
 	    return markup;
 	  },
 
-	  _constructComponent: function (publicProps, publicContext) {
+	  _constructComponent: function (publicProps, publicContext, updateQueue) {
 	    if (true) {
 	      ReactCurrentOwner.current = this;
 	      try {
-	        return this._constructComponentWithoutOwner(publicProps, publicContext);
+	        return this._constructComponentWithoutOwner(publicProps, publicContext, updateQueue);
 	      } finally {
 	        ReactCurrentOwner.current = null;
 	      }
 	    } else {
-	      return this._constructComponentWithoutOwner(publicProps, publicContext);
+	      return this._constructComponentWithoutOwner(publicProps, publicContext, updateQueue);
 	    }
 	  },
 
-	  _constructComponentWithoutOwner: function (publicProps, publicContext) {
+	  _constructComponentWithoutOwner: function (publicProps, publicContext, updateQueue) {
 	    var Component = this._currentElement.type;
 	    var instanceOrElement;
 	    if (shouldConstruct(Component)) {
@@ -46622,7 +47238,7 @@ var vendors_dashboard_worona =
 	          ReactInstrumentation.debugTool.onBeginLifeCycleTimer(this._debugID, 'ctor');
 	        }
 	      }
-	      instanceOrElement = new Component(publicProps, publicContext, ReactUpdateQueue);
+	      instanceOrElement = new Component(publicProps, publicContext, updateQueue);
 	      if (true) {
 	        if (this._debugID !== 0) {
 	          ReactInstrumentation.debugTool.onEndLifeCycleTimer(this._debugID, 'ctor');
@@ -46636,7 +47252,7 @@ var vendors_dashboard_worona =
 	          ReactInstrumentation.debugTool.onBeginLifeCycleTimer(this._debugID, 'render');
 	        }
 	      }
-	      instanceOrElement = Component(publicProps, publicContext, ReactUpdateQueue);
+	      instanceOrElement = Component(publicProps, publicContext, updateQueue);
 	      if (true) {
 	        if (this._debugID !== 0) {
 	          ReactInstrumentation.debugTool.onEndLifeCycleTimer(this._debugID, 'render');
@@ -46646,12 +47262,17 @@ var vendors_dashboard_worona =
 	    return instanceOrElement;
 	  },
 
-	  performInitialMountWithErrorHandling: function (renderedElement, nativeParent, nativeContainerInfo, transaction, context) {
+	  performInitialMountWithErrorHandling: function (renderedElement, hostParent, hostContainerInfo, transaction, context) {
 	    var markup;
 	    var checkpoint = transaction.checkpoint();
 	    try {
-	      markup = this.performInitialMount(renderedElement, nativeParent, nativeContainerInfo, transaction, context);
+	      markup = this.performInitialMount(renderedElement, hostParent, hostContainerInfo, transaction, context);
 	    } catch (e) {
+	      if (true) {
+	        if (this._debugID !== 0) {
+	          ReactInstrumentation.debugTool.onError();
+	        }
+	      }
 	      // Roll back to checkpoint, handle error (which may add items to the transaction), and take a new checkpoint
 	      transaction.rollback(checkpoint);
 	      this._instance.unstable_handleError(e);
@@ -46665,12 +47286,12 @@ var vendors_dashboard_worona =
 
 	      // Try again - we've informed the component about the error, so they can render an error message this time.
 	      // If this throws again, the error will bubble up (and can be caught by a higher error boundary).
-	      markup = this.performInitialMount(renderedElement, nativeParent, nativeContainerInfo, transaction, context);
+	      markup = this.performInitialMount(renderedElement, hostParent, hostContainerInfo, transaction, context);
 	    }
 	    return markup;
 	  },
 
-	  performInitialMount: function (renderedElement, nativeParent, nativeContainerInfo, transaction, context) {
+	  performInitialMount: function (renderedElement, hostParent, hostContainerInfo, transaction, context) {
 	    var inst = this._instance;
 	    if (inst.componentWillMount) {
 	      if (true) {
@@ -46696,22 +47317,30 @@ var vendors_dashboard_worona =
 	      renderedElement = this._renderValidatedComponent();
 	    }
 
-	    this._renderedNodeType = ReactNodeTypes.getType(renderedElement);
-	    this._renderedComponent = this._instantiateReactComponent(renderedElement);
+	    var nodeType = ReactNodeTypes.getType(renderedElement);
+	    this._renderedNodeType = nodeType;
+	    var child = this._instantiateReactComponent(renderedElement, nodeType !== ReactNodeTypes.EMPTY /* shouldHaveDebugID */
+	    );
+	    this._renderedComponent = child;
+	    if (true) {
+	      if (child._debugID !== 0 && this._debugID !== 0) {
+	        ReactInstrumentation.debugTool.onSetParent(child._debugID, this._debugID);
+	      }
+	    }
 
-	    var markup = ReactReconciler.mountComponent(this._renderedComponent, transaction, nativeParent, nativeContainerInfo, this._processChildContext(context));
+	    var markup = ReactReconciler.mountComponent(child, transaction, hostParent, hostContainerInfo, this._processChildContext(context));
 
 	    if (true) {
 	      if (this._debugID !== 0) {
-	        ReactInstrumentation.debugTool.onSetChildren(this._debugID, this._renderedComponent._debugID !== 0 ? [this._renderedComponent._debugID] : []);
+	        ReactInstrumentation.debugTool.onSetChildren(this._debugID, child._debugID !== 0 ? [child._debugID] : []);
 	      }
 	    }
 
 	    return markup;
 	  },
 
-	  getNativeNode: function () {
-	    return ReactReconciler.getNativeNode(this._renderedComponent);
+	  getHostNode: function () {
+	    return ReactReconciler.getHostNode(this._renderedComponent);
 	  },
 
 	  /**
@@ -46814,7 +47443,7 @@ var vendors_dashboard_worona =
 	    if (true) {
 	      var Component = this._currentElement.type;
 	      if (Component.contextTypes) {
-	        this._checkPropTypes(Component.contextTypes, maskedContext, ReactPropTypeLocations.context);
+	        this._checkContextTypes(Component.contextTypes, maskedContext, ReactPropTypeLocations.context);
 	      }
 	    }
 	    return maskedContext;
@@ -46836,12 +47465,12 @@ var vendors_dashboard_worona =
 	      ReactInstrumentation.debugTool.onEndProcessingChildContext();
 	    }
 	    if (childContext) {
-	      !(typeof Component.childContextTypes === 'object') ?  true ? invariant(false, '%s.getChildContext(): childContextTypes must be defined in order to ' + 'use getChildContext().', this.getName() || 'ReactCompositeComponent') : invariant(false) : void 0;
+	      !(typeof Component.childContextTypes === 'object') ?  true ? invariant(false, '%s.getChildContext(): childContextTypes must be defined in order to use getChildContext().', this.getName() || 'ReactCompositeComponent') : _prodInvariant('107', this.getName() || 'ReactCompositeComponent') : void 0;
 	      if (true) {
-	        this._checkPropTypes(Component.childContextTypes, childContext, ReactPropTypeLocations.childContext);
+	        this._checkContextTypes(Component.childContextTypes, childContext, ReactPropTypeLocations.childContext);
 	      }
 	      for (var name in childContext) {
-	        !(name in Component.childContextTypes) ?  true ? invariant(false, '%s.getChildContext(): key "%s" is not defined in childContextTypes.', this.getName() || 'ReactCompositeComponent', name) : invariant(false) : void 0;
+	        !(name in Component.childContextTypes) ?  true ? invariant(false, '%s.getChildContext(): key "%s" is not defined in childContextTypes.', this.getName() || 'ReactCompositeComponent', name) : _prodInvariant('108', this.getName() || 'ReactCompositeComponent', name) : void 0;
 	      }
 	      return _assign({}, currentContext, childContext);
 	    }
@@ -46849,62 +47478,15 @@ var vendors_dashboard_worona =
 	  },
 
 	  /**
-	   * Processes props by setting default values for unspecified props and
-	   * asserting that the props are valid. Does not mutate its argument; returns
-	   * a new props object with defaults merged in.
+	   * Assert that the context types are valid
 	   *
-	   * @param {object} newProps
-	   * @return {object}
-	   * @private
-	   */
-	  _processProps: function (newProps) {
-	    if (true) {
-	      var Component = this._currentElement.type;
-	      if (Component.propTypes) {
-	        this._checkPropTypes(Component.propTypes, newProps, ReactPropTypeLocations.prop);
-	      }
-	    }
-	    return newProps;
-	  },
-
-	  /**
-	   * Assert that the props are valid
-	   *
-	   * @param {object} propTypes Map of prop name to a ReactPropType
-	   * @param {object} props
+	   * @param {object} typeSpecs Map of context field to a ReactPropType
+	   * @param {object} values Runtime values that need to be type-checked
 	   * @param {string} location e.g. "prop", "context", "child context"
 	   * @private
 	   */
-	  _checkPropTypes: function (propTypes, props, location) {
-	    // TODO: Stop validating prop types here and only use the element
-	    // validation.
-	    var componentName = this.getName();
-	    for (var propName in propTypes) {
-	      if (propTypes.hasOwnProperty(propName)) {
-	        var error;
-	        try {
-	          // This is intentionally an invariant that gets caught. It's the same
-	          // behavior as without this statement except with a better message.
-	          !(typeof propTypes[propName] === 'function') ?  true ? invariant(false, '%s: %s type `%s` is invalid; it must be a function, usually ' + 'from React.PropTypes.', componentName || 'React class', ReactPropTypeLocationNames[location], propName) : invariant(false) : void 0;
-	          error = propTypes[propName](props, propName, componentName, location);
-	        } catch (ex) {
-	          error = ex;
-	        }
-	        if (error instanceof Error) {
-	          // We may want to extend this logic for similar errors in
-	          // top-level render calls, so I'm abstracting it away into
-	          // a function to minimize refactoring in the future
-	          var addendum = getDeclarationErrorAddendum(this);
-
-	          if (location === ReactPropTypeLocations.prop) {
-	            // Preface gives us something to blacklist in warning module
-	             true ? warning(false, 'Failed Composite propType: %s%s', error.message, addendum) : void 0;
-	          } else {
-	             true ? warning(false, 'Failed Context Types: %s%s', error.message, addendum) : void 0;
-	          }
-	        }
-	      }
-	    }
+	  _checkContextTypes: function (typeSpecs, values, location) {
+	    checkReactTypeSpec(typeSpecs, values, location, this.getName(), null, this._debugID);
 	  },
 
 	  receiveComponent: function (nextElement, transaction, nextContext) {
@@ -46950,6 +47532,8 @@ var vendors_dashboard_worona =
 	   */
 	  updateComponent: function (transaction, prevParentElement, nextParentElement, prevUnmaskedContext, nextUnmaskedContext) {
 	    var inst = this._instance;
+	    !(inst != null) ?  true ? invariant(false, 'Attempted to update component `%s` that has already been unmounted (or failed to mount).', this.getName() || 'ReactCompositeComponent') : _prodInvariant('136', this.getName() || 'ReactCompositeComponent') : void 0;
+
 	    var willReceive = false;
 	    var nextContext;
 	    var nextProps;
@@ -46962,13 +47546,10 @@ var vendors_dashboard_worona =
 	      willReceive = true;
 	    }
 
-	    // Distinguish between a props update versus a simple state update
-	    if (prevParentElement === nextParentElement) {
-	      // Skip checking prop types again -- we don't read inst.props to avoid
-	      // warning for DOM component props in this upgrade
-	      nextProps = nextParentElement.props;
-	    } else {
-	      nextProps = this._processProps(nextParentElement.props);
+	    nextProps = nextParentElement.props;
+
+	    // Not a simple state update but a props update
+	    if (prevParentElement !== nextParentElement) {
 	      willReceive = true;
 	    }
 
@@ -47119,21 +47700,29 @@ var vendors_dashboard_worona =
 	    if (shouldUpdateReactComponent(prevRenderedElement, nextRenderedElement)) {
 	      ReactReconciler.receiveComponent(prevComponentInstance, nextRenderedElement, transaction, this._processChildContext(context));
 	    } else {
-	      var oldNativeNode = ReactReconciler.getNativeNode(prevComponentInstance);
+	      var oldHostNode = ReactReconciler.getHostNode(prevComponentInstance);
 	      ReactReconciler.unmountComponent(prevComponentInstance, false);
 
-	      this._renderedNodeType = ReactNodeTypes.getType(nextRenderedElement);
-	      this._renderedComponent = this._instantiateReactComponent(nextRenderedElement);
-
-	      var nextMarkup = ReactReconciler.mountComponent(this._renderedComponent, transaction, this._nativeParent, this._nativeContainerInfo, this._processChildContext(context));
-
+	      var nodeType = ReactNodeTypes.getType(nextRenderedElement);
+	      this._renderedNodeType = nodeType;
+	      var child = this._instantiateReactComponent(nextRenderedElement, nodeType !== ReactNodeTypes.EMPTY /* shouldHaveDebugID */
+	      );
+	      this._renderedComponent = child;
 	      if (true) {
-	        if (this._debugID !== 0) {
-	          ReactInstrumentation.debugTool.onSetChildren(this._debugID, this._renderedComponent._debugID !== 0 ? [this._renderedComponent._debugID] : []);
+	        if (child._debugID !== 0 && this._debugID !== 0) {
+	          ReactInstrumentation.debugTool.onSetParent(child._debugID, this._debugID);
 	        }
 	      }
 
-	      this._replaceNodeWithMarkup(oldNativeNode, nextMarkup, prevComponentInstance);
+	      var nextMarkup = ReactReconciler.mountComponent(child, transaction, this._hostParent, this._hostContainerInfo, this._processChildContext(context));
+
+	      if (true) {
+	        if (this._debugID !== 0) {
+	          ReactInstrumentation.debugTool.onSetChildren(this._debugID, child._debugID !== 0 ? [child._debugID] : []);
+	        }
+	      }
+
+	      this._replaceNodeWithMarkup(oldHostNode, nextMarkup, prevComponentInstance);
 	    }
 	  },
 
@@ -47142,8 +47731,8 @@ var vendors_dashboard_worona =
 	   *
 	   * @protected
 	   */
-	  _replaceNodeWithMarkup: function (oldNativeNode, nextMarkup, prevInstance) {
-	    ReactComponentEnvironment.replaceNodeWithMarkup(oldNativeNode, nextMarkup, prevInstance);
+	  _replaceNodeWithMarkup: function (oldHostNode, nextMarkup, prevInstance) {
+	    ReactComponentEnvironment.replaceNodeWithMarkup(oldHostNode, nextMarkup, prevInstance);
 	  },
 
 	  /**
@@ -47189,7 +47778,7 @@ var vendors_dashboard_worona =
 	    }
 	    !(
 	    // TODO: An `isValidNode` function would probably be more appropriate
-	    renderedComponent === null || renderedComponent === false || ReactElement.isValidElement(renderedComponent)) ?  true ? invariant(false, '%s.render(): A valid React element (or null) must be returned. You may have ' + 'returned undefined, an array or some other invalid object.', this.getName() || 'ReactCompositeComponent') : invariant(false) : void 0;
+	    renderedComponent === null || renderedComponent === false || ReactElement.isValidElement(renderedComponent)) ?  true ? invariant(false, '%s.render(): A valid React element (or null) must be returned. You may have returned undefined, an array or some other invalid object.', this.getName() || 'ReactCompositeComponent') : _prodInvariant('109', this.getName() || 'ReactCompositeComponent') : void 0;
 
 	    return renderedComponent;
 	  },
@@ -47204,7 +47793,7 @@ var vendors_dashboard_worona =
 	   */
 	  attachRef: function (ref, component) {
 	    var inst = this.getPublicInstance();
-	    !(inst != null) ?  true ? invariant(false, 'Stateless function components cannot have refs.') : invariant(false) : void 0;
+	    !(inst != null) ?  true ? invariant(false, 'Stateless function components cannot have refs.') : _prodInvariant('110') : void 0;
 	    var publicComponentInstance = component.getPublicInstance();
 	    if (true) {
 	      var componentName = component && component.getName ? component.getName() : 'a component';
@@ -47268,60 +47857,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactCompositeComponent;
 
 /***/ },
-/* 564 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactInstanceMap
-	 */
-
-	'use strict';
-
-	/**
-	 * `ReactInstanceMap` maintains a mapping from a public facing stateful
-	 * instance (key) and the internal representation (value). This allows public
-	 * methods to accept the user facing instance as an argument and map them back
-	 * to internal methods.
-	 */
-
-	// TODO: Replace this with ES6: var ReactInstanceMap = new Map();
-
-	var ReactInstanceMap = {
-
-	  /**
-	   * This API should be called `delete` but we'd have to make sure to always
-	   * transform these to strings for IE support. When this transform is fully
-	   * supported we can rename it.
-	   */
-	  remove: function (key) {
-	    key._reactInternalInstance = undefined;
-	  },
-
-	  get: function (key) {
-	    return key._reactInternalInstance;
-	  },
-
-	  has: function (key) {
-	    return key._reactInternalInstance !== undefined;
-	  },
-
-	  set: function (key, value) {
-	    key._reactInternalInstance = value;
-	  }
-
-	};
-
-	module.exports = ReactInstanceMap;
-
-/***/ },
-/* 565 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -47333,16 +47869,19 @@ var vendors_dashboard_worona =
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule ReactNodeTypes
+	 * 
 	 */
 
 	'use strict';
+
+	var _prodInvariant = __webpack_require__(303);
 
 	var ReactElement = __webpack_require__(305);
 
 	var invariant = __webpack_require__(304);
 
 	var ReactNodeTypes = {
-	  NATIVE: 0,
+	  HOST: 0,
 	  COMPOSITE: 1,
 	  EMPTY: 2,
 
@@ -47353,17 +47892,487 @@ var vendors_dashboard_worona =
 	      if (typeof node.type === 'function') {
 	        return ReactNodeTypes.COMPOSITE;
 	      } else {
-	        return ReactNodeTypes.NATIVE;
+	        return ReactNodeTypes.HOST;
 	      }
 	    }
-	     true ?  true ? invariant(false, 'Unexpected node: %s', node) : invariant(false) : void 0;
+	     true ?  true ? invariant(false, 'Unexpected node: %s', node) : _prodInvariant('26', node) : void 0;
 	  }
 	};
 
 	module.exports = ReactNodeTypes;
 
 /***/ },
-/* 566 */
+/* 568 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule shouldUpdateReactComponent
+	 */
+
+	'use strict';
+
+	/**
+	 * Given a `prevElement` and `nextElement`, determines if the existing
+	 * instance should be updated as opposed to being destroyed or replaced by a new
+	 * instance. Both arguments are elements. This ensures that this logic can
+	 * operate on stateless trees without any backing instance.
+	 *
+	 * @param {?object} prevElement
+	 * @param {?object} nextElement
+	 * @return {boolean} True if the existing instance should be updated.
+	 * @protected
+	 */
+
+	function shouldUpdateReactComponent(prevElement, nextElement) {
+	  var prevEmpty = prevElement === null || prevElement === false;
+	  var nextEmpty = nextElement === null || nextElement === false;
+	  if (prevEmpty || nextEmpty) {
+	    return prevEmpty === nextEmpty;
+	  }
+
+	  var prevType = typeof prevElement;
+	  var nextType = typeof nextElement;
+	  if (prevType === 'string' || prevType === 'number') {
+	    return nextType === 'string' || nextType === 'number';
+	  } else {
+	    return nextType === 'object' && prevElement.type === nextElement.type && prevElement.key === nextElement.key;
+	  }
+	}
+
+	module.exports = shouldUpdateReactComponent;
+
+/***/ },
+/* 569 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2014-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactEmptyComponent
+	 */
+
+	'use strict';
+
+	var emptyComponentFactory;
+
+	var ReactEmptyComponentInjection = {
+	  injectEmptyComponentFactory: function (factory) {
+	    emptyComponentFactory = factory;
+	  }
+	};
+
+	var ReactEmptyComponent = {
+	  create: function (instantiate) {
+	    return emptyComponentFactory(instantiate);
+	  }
+	};
+
+	ReactEmptyComponent.injection = ReactEmptyComponentInjection;
+
+	module.exports = ReactEmptyComponent;
+
+/***/ },
+/* 570 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2014-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactHostComponent
+	 */
+
+	'use strict';
+
+	var _prodInvariant = __webpack_require__(303),
+	    _assign = __webpack_require__(300);
+
+	var invariant = __webpack_require__(304);
+
+	var genericComponentClass = null;
+	// This registry keeps track of wrapper classes around host tags.
+	var tagToComponentClass = {};
+	var textComponentClass = null;
+
+	var ReactHostComponentInjection = {
+	  // This accepts a class that receives the tag string. This is a catch all
+	  // that can render any kind of tag.
+	  injectGenericComponentClass: function (componentClass) {
+	    genericComponentClass = componentClass;
+	  },
+	  // This accepts a text component class that takes the text string to be
+	  // rendered as props.
+	  injectTextComponentClass: function (componentClass) {
+	    textComponentClass = componentClass;
+	  },
+	  // This accepts a keyed object with classes as values. Each key represents a
+	  // tag. That particular tag will use this class instead of the generic one.
+	  injectComponentClasses: function (componentClasses) {
+	    _assign(tagToComponentClass, componentClasses);
+	  }
+	};
+
+	/**
+	 * Get a host internal component class for a specific tag.
+	 *
+	 * @param {ReactElement} element The element to create.
+	 * @return {function} The internal class constructor function.
+	 */
+	function createInternalComponent(element) {
+	  !genericComponentClass ?  true ? invariant(false, 'There is no registered component for the tag %s', element.type) : _prodInvariant('111', element.type) : void 0;
+	  return new genericComponentClass(element);
+	}
+
+	/**
+	 * @param {ReactText} text
+	 * @return {ReactComponent}
+	 */
+	function createInstanceForText(text) {
+	  return new textComponentClass(text);
+	}
+
+	/**
+	 * @param {ReactComponent} component
+	 * @return {boolean}
+	 */
+	function isTextComponent(component) {
+	  return component instanceof textComponentClass;
+	}
+
+	var ReactHostComponent = {
+	  createInternalComponent: createInternalComponent,
+	  createInstanceForText: createInstanceForText,
+	  isTextComponent: isTextComponent,
+	  injection: ReactHostComponentInjection
+	};
+
+	module.exports = ReactHostComponent;
+
+/***/ },
+/* 571 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule flattenChildren
+	 * 
+	 */
+
+	'use strict';
+
+	var KeyEscapeUtils = __webpack_require__(312);
+	var traverseAllChildren = __webpack_require__(310);
+	var warning = __webpack_require__(307);
+
+	/**
+	 * @param {function} traverseContext Context passed through traversal.
+	 * @param {?ReactComponent} child React child component.
+	 * @param {!string} name String name of key path to child.
+	 * @param {number=} selfDebugID Optional debugID of the current internal instance.
+	 */
+	function flattenSingleChildIntoContext(traverseContext, child, name, selfDebugID) {
+	  // We found a component instance.
+	  if (traverseContext && typeof traverseContext === 'object') {
+	    var result = traverseContext;
+	    var keyUnique = result[name] === undefined;
+	    if (true) {
+	      var ReactComponentTreeDevtool = __webpack_require__(324);
+	       true ? warning(keyUnique, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.%s', KeyEscapeUtils.unescape(name), ReactComponentTreeDevtool.getStackAddendumByID(selfDebugID)) : void 0;
+	    }
+	    if (keyUnique && child != null) {
+	      result[name] = child;
+	    }
+	  }
+	}
+
+	/**
+	 * Flattens children that are typically specified as `props.children`. Any null
+	 * children will not be included in the resulting object.
+	 * @return {!object} flattened children keyed by name.
+	 */
+	function flattenChildren(children, selfDebugID) {
+	  if (children == null) {
+	    return children;
+	  }
+	  var result = {};
+
+	  if (true) {
+	    traverseAllChildren(children, function (traverseContext, child, name) {
+	      return flattenSingleChildIntoContext(traverseContext, child, name, selfDebugID);
+	    }, result);
+	  } else {
+	    traverseAllChildren(children, flattenSingleChildIntoContext, result);
+	  }
+	  return result;
+	}
+
+	module.exports = flattenChildren;
+
+/***/ },
+/* 572 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2014-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactServerRenderingTransaction
+	 */
+
+	'use strict';
+
+	var _assign = __webpack_require__(300);
+
+	var PooledClass = __webpack_require__(302);
+	var Transaction = __webpack_require__(509);
+	var ReactInstrumentation = __webpack_require__(503);
+	var ReactServerUpdateQueue = __webpack_require__(573);
+
+	/**
+	 * Executed within the scope of the `Transaction` instance. Consider these as
+	 * being member methods, but with an implied ordering while being isolated from
+	 * each other.
+	 */
+	var TRANSACTION_WRAPPERS = [];
+
+	if (true) {
+	  TRANSACTION_WRAPPERS.push({
+	    initialize: ReactInstrumentation.debugTool.onBeginFlush,
+	    close: ReactInstrumentation.debugTool.onEndFlush
+	  });
+	}
+
+	var noopCallbackQueue = {
+	  enqueue: function () {}
+	};
+
+	/**
+	 * @class ReactServerRenderingTransaction
+	 * @param {boolean} renderToStaticMarkup
+	 */
+	function ReactServerRenderingTransaction(renderToStaticMarkup) {
+	  this.reinitializeTransaction();
+	  this.renderToStaticMarkup = renderToStaticMarkup;
+	  this.useCreateElement = false;
+	  this.updateQueue = new ReactServerUpdateQueue(this);
+	}
+
+	var Mixin = {
+	  /**
+	   * @see Transaction
+	   * @abstract
+	   * @final
+	   * @return {array} Empty list of operation wrap procedures.
+	   */
+	  getTransactionWrappers: function () {
+	    return TRANSACTION_WRAPPERS;
+	  },
+
+	  /**
+	   * @return {object} The queue to collect `onDOMReady` callbacks with.
+	   */
+	  getReactMountReady: function () {
+	    return noopCallbackQueue;
+	  },
+
+	  /**
+	   * @return {object} The queue to collect React async events.
+	   */
+	  getUpdateQueue: function () {
+	    return this.updateQueue;
+	  },
+
+	  /**
+	   * `PooledClass` looks for this, and will invoke this before allowing this
+	   * instance to be reused.
+	   */
+	  destructor: function () {},
+
+	  checkpoint: function () {},
+
+	  rollback: function () {}
+	};
+
+	_assign(ReactServerRenderingTransaction.prototype, Transaction.Mixin, Mixin);
+
+	PooledClass.addPoolingTo(ReactServerRenderingTransaction);
+
+	module.exports = ReactServerRenderingTransaction;
+
+/***/ },
+/* 573 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2015-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactServerUpdateQueue
+	 * 
+	 */
+
+	'use strict';
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var ReactUpdateQueue = __webpack_require__(574);
+	var Transaction = __webpack_require__(509);
+	var warning = __webpack_require__(307);
+
+	function warnNoop(publicInstance, callerName) {
+	  if (true) {
+	    var constructor = publicInstance.constructor;
+	     true ? warning(false, '%s(...): Can only update a mounting component. ' + 'This usually means you called %s() outside componentWillMount() on the server. ' + 'This is a no-op. Please check the code for the %s component.', callerName, callerName, constructor && (constructor.displayName || constructor.name) || 'ReactClass') : void 0;
+	  }
+	}
+
+	/**
+	 * This is the update queue used for server rendering.
+	 * It delegates to ReactUpdateQueue while server rendering is in progress and
+	 * switches to ReactNoopUpdateQueue after the transaction has completed.
+	 * @class ReactServerUpdateQueue
+	 * @param {Transaction} transaction
+	 */
+
+	var ReactServerUpdateQueue = function () {
+	  /* :: transaction: Transaction; */
+
+	  function ReactServerUpdateQueue(transaction) {
+	    _classCallCheck(this, ReactServerUpdateQueue);
+
+	    this.transaction = transaction;
+	  }
+
+	  /**
+	   * Checks whether or not this composite component is mounted.
+	   * @param {ReactClass} publicInstance The instance we want to test.
+	   * @return {boolean} True if mounted, false otherwise.
+	   * @protected
+	   * @final
+	   */
+
+
+	  ReactServerUpdateQueue.prototype.isMounted = function isMounted(publicInstance) {
+	    return false;
+	  };
+
+	  /**
+	   * Enqueue a callback that will be executed after all the pending updates
+	   * have processed.
+	   *
+	   * @param {ReactClass} publicInstance The instance to use as `this` context.
+	   * @param {?function} callback Called after state is updated.
+	   * @internal
+	   */
+
+
+	  ReactServerUpdateQueue.prototype.enqueueCallback = function enqueueCallback(publicInstance, callback, callerName) {
+	    if (this.transaction.isInTransaction()) {
+	      ReactUpdateQueue.enqueueCallback(publicInstance, callback, callerName);
+	    }
+	  };
+
+	  /**
+	   * Forces an update. This should only be invoked when it is known with
+	   * certainty that we are **not** in a DOM transaction.
+	   *
+	   * You may want to call this when you know that some deeper aspect of the
+	   * component's state has changed but `setState` was not called.
+	   *
+	   * This will not invoke `shouldComponentUpdate`, but it will invoke
+	   * `componentWillUpdate` and `componentDidUpdate`.
+	   *
+	   * @param {ReactClass} publicInstance The instance that should rerender.
+	   * @internal
+	   */
+
+
+	  ReactServerUpdateQueue.prototype.enqueueForceUpdate = function enqueueForceUpdate(publicInstance) {
+	    if (this.transaction.isInTransaction()) {
+	      ReactUpdateQueue.enqueueForceUpdate(publicInstance);
+	    } else {
+	      warnNoop(publicInstance, 'forceUpdate');
+	    }
+	  };
+
+	  /**
+	   * Replaces all of the state. Always use this or `setState` to mutate state.
+	   * You should treat `this.state` as immutable.
+	   *
+	   * There is no guarantee that `this.state` will be immediately updated, so
+	   * accessing `this.state` after calling this method may return the old value.
+	   *
+	   * @param {ReactClass} publicInstance The instance that should rerender.
+	   * @param {object|function} completeState Next state.
+	   * @internal
+	   */
+
+
+	  ReactServerUpdateQueue.prototype.enqueueReplaceState = function enqueueReplaceState(publicInstance, completeState) {
+	    if (this.transaction.isInTransaction()) {
+	      ReactUpdateQueue.enqueueReplaceState(publicInstance, completeState);
+	    } else {
+	      warnNoop(publicInstance, 'replaceState');
+	    }
+	  };
+
+	  /**
+	   * Sets a subset of the state. This only exists because _pendingState is
+	   * internal. This provides a merging strategy that is not available to deep
+	   * properties which is confusing. TODO: Expose pendingState or don't use it
+	   * during the merge.
+	   *
+	   * @param {ReactClass} publicInstance The instance that should rerender.
+	   * @param {object|function} partialState Next partial state to be merged with state.
+	   * @internal
+	   */
+
+
+	  ReactServerUpdateQueue.prototype.enqueueSetState = function enqueueSetState(publicInstance, partialState) {
+	    if (this.transaction.isInTransaction()) {
+	      ReactUpdateQueue.enqueueSetState(publicInstance, partialState);
+	    } else {
+	      warnNoop(publicInstance, 'setState');
+	    }
+	  };
+
+	  return ReactServerUpdateQueue;
+	}();
+
+	module.exports = ReactServerUpdateQueue;
+
+/***/ },
+/* 574 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -47379,9 +48388,12 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
+	var _prodInvariant = __webpack_require__(303);
+
 	var ReactCurrentOwner = __webpack_require__(306);
-	var ReactInstanceMap = __webpack_require__(564);
-	var ReactUpdates = __webpack_require__(502);
+	var ReactInstanceMap = __webpack_require__(563);
+	var ReactInstrumentation = __webpack_require__(503);
+	var ReactUpdates = __webpack_require__(497);
 
 	var invariant = __webpack_require__(304);
 	var warning = __webpack_require__(307);
@@ -47557,6 +48569,11 @@ var vendors_dashboard_worona =
 	   * @internal
 	   */
 	  enqueueSetState: function (publicInstance, partialState) {
+	    if (true) {
+	      ReactInstrumentation.debugTool.onSetState();
+	       true ? warning(partialState != null, 'setState(...): You passed an undefined or null state object; ' + 'instead, use forceUpdate().') : void 0;
+	    }
+
 	    var internalInstance = getInternalInstanceReadyForUpdate(publicInstance, 'setState');
 
 	    if (!internalInstance) {
@@ -47569,13 +48586,15 @@ var vendors_dashboard_worona =
 	    enqueueUpdate(internalInstance);
 	  },
 
-	  enqueueElementInternal: function (internalInstance, newElement) {
-	    internalInstance._pendingElement = newElement;
+	  enqueueElementInternal: function (internalInstance, nextElement, nextContext) {
+	    internalInstance._pendingElement = nextElement;
+	    // TODO: introduce _pendingContext instead of setting it directly.
+	    internalInstance._context = nextContext;
 	    enqueueUpdate(internalInstance);
 	  },
 
 	  validateCallback: function (callback, callerName) {
-	    !(!callback || typeof callback === 'function') ?  true ? invariant(false, '%s(...): Expected the last optional `callback` argument to be a ' + 'function. Instead received: %s.', callerName, formatUnexpectedArgument(callback)) : invariant(false) : void 0;
+	    !(!callback || typeof callback === 'function') ?  true ? invariant(false, '%s(...): Expected the last optional `callback` argument to be a function. Instead received: %s.', callerName, formatUnexpectedArgument(callback)) : _prodInvariant('122', callerName, formatUnexpectedArgument(callback)) : void 0;
 	  }
 
 	};
@@ -47583,321 +48602,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactUpdateQueue;
 
 /***/ },
-/* 567 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule shouldUpdateReactComponent
-	 */
-
-	'use strict';
-
-	/**
-	 * Given a `prevElement` and `nextElement`, determines if the existing
-	 * instance should be updated as opposed to being destroyed or replaced by a new
-	 * instance. Both arguments are elements. This ensures that this logic can
-	 * operate on stateless trees without any backing instance.
-	 *
-	 * @param {?object} prevElement
-	 * @param {?object} nextElement
-	 * @return {boolean} True if the existing instance should be updated.
-	 * @protected
-	 */
-
-	function shouldUpdateReactComponent(prevElement, nextElement) {
-	  var prevEmpty = prevElement === null || prevElement === false;
-	  var nextEmpty = nextElement === null || nextElement === false;
-	  if (prevEmpty || nextEmpty) {
-	    return prevEmpty === nextEmpty;
-	  }
-
-	  var prevType = typeof prevElement;
-	  var nextType = typeof nextElement;
-	  if (prevType === 'string' || prevType === 'number') {
-	    return nextType === 'string' || nextType === 'number';
-	  } else {
-	    return nextType === 'object' && prevElement.type === nextElement.type && prevElement.key === nextElement.key;
-	  }
-	}
-
-	module.exports = shouldUpdateReactComponent;
-
-/***/ },
-/* 568 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2014-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactEmptyComponent
-	 */
-
-	'use strict';
-
-	var emptyComponentFactory;
-
-	var ReactEmptyComponentInjection = {
-	  injectEmptyComponentFactory: function (factory) {
-	    emptyComponentFactory = factory;
-	  }
-	};
-
-	var ReactEmptyComponent = {
-	  create: function (instantiate) {
-	    return emptyComponentFactory(instantiate);
-	  }
-	};
-
-	ReactEmptyComponent.injection = ReactEmptyComponentInjection;
-
-	module.exports = ReactEmptyComponent;
-
-/***/ },
-/* 569 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2014-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactNativeComponent
-	 */
-
-	'use strict';
-
-	var _assign = __webpack_require__(301);
-
-	var invariant = __webpack_require__(304);
-
-	var autoGenerateWrapperClass = null;
-	var genericComponentClass = null;
-	// This registry keeps track of wrapper classes around native tags.
-	var tagToComponentClass = {};
-	var textComponentClass = null;
-
-	var ReactNativeComponentInjection = {
-	  // This accepts a class that receives the tag string. This is a catch all
-	  // that can render any kind of tag.
-	  injectGenericComponentClass: function (componentClass) {
-	    genericComponentClass = componentClass;
-	  },
-	  // This accepts a text component class that takes the text string to be
-	  // rendered as props.
-	  injectTextComponentClass: function (componentClass) {
-	    textComponentClass = componentClass;
-	  },
-	  // This accepts a keyed object with classes as values. Each key represents a
-	  // tag. That particular tag will use this class instead of the generic one.
-	  injectComponentClasses: function (componentClasses) {
-	    _assign(tagToComponentClass, componentClasses);
-	  }
-	};
-
-	/**
-	 * Get a composite component wrapper class for a specific tag.
-	 *
-	 * @param {ReactElement} element The tag for which to get the class.
-	 * @return {function} The React class constructor function.
-	 */
-	function getComponentClassForElement(element) {
-	  if (typeof element.type === 'function') {
-	    return element.type;
-	  }
-	  var tag = element.type;
-	  var componentClass = tagToComponentClass[tag];
-	  if (componentClass == null) {
-	    tagToComponentClass[tag] = componentClass = autoGenerateWrapperClass(tag);
-	  }
-	  return componentClass;
-	}
-
-	/**
-	 * Get a native internal component class for a specific tag.
-	 *
-	 * @param {ReactElement} element The element to create.
-	 * @return {function} The internal class constructor function.
-	 */
-	function createInternalComponent(element) {
-	  !genericComponentClass ?  true ? invariant(false, 'There is no registered component for the tag %s', element.type) : invariant(false) : void 0;
-	  return new genericComponentClass(element);
-	}
-
-	/**
-	 * @param {ReactText} text
-	 * @return {ReactComponent}
-	 */
-	function createInstanceForText(text) {
-	  return new textComponentClass(text);
-	}
-
-	/**
-	 * @param {ReactComponent} component
-	 * @return {boolean}
-	 */
-	function isTextComponent(component) {
-	  return component instanceof textComponentClass;
-	}
-
-	var ReactNativeComponent = {
-	  getComponentClassForElement: getComponentClassForElement,
-	  createInternalComponent: createInternalComponent,
-	  createInstanceForText: createInstanceForText,
-	  isTextComponent: isTextComponent,
-	  injection: ReactNativeComponentInjection
-	};
-
-	module.exports = ReactNativeComponent;
-
-/***/ },
-/* 570 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule flattenChildren
-	 */
-
-	'use strict';
-
-	var KeyEscapeUtils = __webpack_require__(312);
-	var traverseAllChildren = __webpack_require__(310);
-	var warning = __webpack_require__(307);
-
-	/**
-	 * @param {function} traverseContext Context passed through traversal.
-	 * @param {?ReactComponent} child React child component.
-	 * @param {!string} name String name of key path to child.
-	 */
-	function flattenSingleChildIntoContext(traverseContext, child, name) {
-	  // We found a component instance.
-	  var result = traverseContext;
-	  var keyUnique = result[name] === undefined;
-	  if (true) {
-	     true ? warning(keyUnique, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.', KeyEscapeUtils.unescape(name)) : void 0;
-	  }
-	  if (keyUnique && child != null) {
-	    result[name] = child;
-	  }
-	}
-
-	/**
-	 * Flattens children that are typically specified as `props.children`. Any null
-	 * children will not be included in the resulting object.
-	 * @return {!object} flattened children keyed by name.
-	 */
-	function flattenChildren(children) {
-	  if (children == null) {
-	    return children;
-	  }
-	  var result = {};
-	  traverseAllChildren(children, flattenSingleChildIntoContext, result);
-	  return result;
-	}
-
-	module.exports = flattenChildren;
-
-/***/ },
-/* 571 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2014-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactServerRenderingTransaction
-	 */
-
-	'use strict';
-
-	var _assign = __webpack_require__(301);
-
-	var PooledClass = __webpack_require__(303);
-	var Transaction = __webpack_require__(508);
-
-	/**
-	 * Executed within the scope of the `Transaction` instance. Consider these as
-	 * being member methods, but with an implied ordering while being isolated from
-	 * each other.
-	 */
-	var TRANSACTION_WRAPPERS = [];
-
-	var noopCallbackQueue = {
-	  enqueue: function () {}
-	};
-
-	/**
-	 * @class ReactServerRenderingTransaction
-	 * @param {boolean} renderToStaticMarkup
-	 */
-	function ReactServerRenderingTransaction(renderToStaticMarkup) {
-	  this.reinitializeTransaction();
-	  this.renderToStaticMarkup = renderToStaticMarkup;
-	  this.useCreateElement = false;
-	}
-
-	var Mixin = {
-	  /**
-	   * @see Transaction
-	   * @abstract
-	   * @final
-	   * @return {array} Empty list of operation wrap procedures.
-	   */
-	  getTransactionWrappers: function () {
-	    return TRANSACTION_WRAPPERS;
-	  },
-
-	  /**
-	   * @return {object} The queue to collect `onDOMReady` callbacks with.
-	   */
-	  getReactMountReady: function () {
-	    return noopCallbackQueue;
-	  },
-
-	  /**
-	   * `PooledClass` looks for this, and will invoke this before allowing this
-	   * instance to be reused.
-	   */
-	  destructor: function () {},
-
-	  checkpoint: function () {},
-
-	  rollback: function () {}
-	};
-
-	_assign(ReactServerRenderingTransaction.prototype, Transaction.Mixin, Mixin);
-
-	PooledClass.addPoolingTo(ReactServerRenderingTransaction);
-
-	module.exports = ReactServerRenderingTransaction;
-
-/***/ },
-/* 572 */
+/* 575 */
 /***/ function(module, exports) {
 
 	/**
@@ -47968,7 +48673,7 @@ var vendors_dashboard_worona =
 	module.exports = shallowEqual;
 
 /***/ },
-/* 573 */
+/* 576 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -47984,7 +48689,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _assign = __webpack_require__(300);
 
 	var emptyFunction = __webpack_require__(308);
 	var warning = __webpack_require__(307);
@@ -48342,7 +49047,7 @@ var vendors_dashboard_worona =
 	module.exports = validateDOMNesting;
 
 /***/ },
-/* 574 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -48358,30 +49063,30 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _assign = __webpack_require__(300);
 
-	var DOMLazyTree = __webpack_require__(521);
-	var ReactDOMComponentTree = __webpack_require__(483);
+	var DOMLazyTree = __webpack_require__(522);
+	var ReactDOMComponentTree = __webpack_require__(477);
 
 	var ReactDOMEmptyComponent = function (instantiate) {
 	  // ReactCompositeComponent uses this:
 	  this._currentElement = null;
 	  // ReactDOMComponentTree uses these:
-	  this._nativeNode = null;
-	  this._nativeParent = null;
-	  this._nativeContainerInfo = null;
+	  this._hostNode = null;
+	  this._hostParent = null;
+	  this._hostContainerInfo = null;
 	  this._domID = null;
 	};
 	_assign(ReactDOMEmptyComponent.prototype, {
-	  mountComponent: function (transaction, nativeParent, nativeContainerInfo, context) {
-	    var domID = nativeContainerInfo._idCounter++;
+	  mountComponent: function (transaction, hostParent, hostContainerInfo, context) {
+	    var domID = hostContainerInfo._idCounter++;
 	    this._domID = domID;
-	    this._nativeParent = nativeParent;
-	    this._nativeContainerInfo = nativeContainerInfo;
+	    this._hostParent = hostParent;
+	    this._hostContainerInfo = hostContainerInfo;
 
 	    var nodeValue = ' react-empty: ' + this._domID + ' ';
 	    if (transaction.useCreateElement) {
-	      var ownerDocument = nativeContainerInfo._ownerDocument;
+	      var ownerDocument = hostContainerInfo._ownerDocument;
 	      var node = ownerDocument.createComment(nodeValue);
 	      ReactDOMComponentTree.precacheNode(this, node);
 	      return DOMLazyTree(node);
@@ -48396,7 +49101,7 @@ var vendors_dashboard_worona =
 	    }
 	  },
 	  receiveComponent: function () {},
-	  getNativeNode: function () {
+	  getHostNode: function () {
 	    return ReactDOMComponentTree.getNodeFromInstance(this);
 	  },
 	  unmountComponent: function () {
@@ -48407,7 +49112,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMEmptyComponent;
 
 /***/ },
-/* 575 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -48423,6 +49128,8 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
+	var _prodInvariant = __webpack_require__(303);
+
 	var invariant = __webpack_require__(304);
 
 	/**
@@ -48430,27 +49137,27 @@ var vendors_dashboard_worona =
 	 * different trees.
 	 */
 	function getLowestCommonAncestor(instA, instB) {
-	  !('_nativeNode' in instA) ?  true ? invariant(false, 'getNodeFromInstance: Invalid argument.') : invariant(false) : void 0;
-	  !('_nativeNode' in instB) ?  true ? invariant(false, 'getNodeFromInstance: Invalid argument.') : invariant(false) : void 0;
+	  !('_hostNode' in instA) ?  true ? invariant(false, 'getNodeFromInstance: Invalid argument.') : _prodInvariant('33') : void 0;
+	  !('_hostNode' in instB) ?  true ? invariant(false, 'getNodeFromInstance: Invalid argument.') : _prodInvariant('33') : void 0;
 
 	  var depthA = 0;
-	  for (var tempA = instA; tempA; tempA = tempA._nativeParent) {
+	  for (var tempA = instA; tempA; tempA = tempA._hostParent) {
 	    depthA++;
 	  }
 	  var depthB = 0;
-	  for (var tempB = instB; tempB; tempB = tempB._nativeParent) {
+	  for (var tempB = instB; tempB; tempB = tempB._hostParent) {
 	    depthB++;
 	  }
 
 	  // If A is deeper, crawl up.
 	  while (depthA - depthB > 0) {
-	    instA = instA._nativeParent;
+	    instA = instA._hostParent;
 	    depthA--;
 	  }
 
 	  // If B is deeper, crawl up.
 	  while (depthB - depthA > 0) {
-	    instB = instB._nativeParent;
+	    instB = instB._hostParent;
 	    depthB--;
 	  }
 
@@ -48460,8 +49167,8 @@ var vendors_dashboard_worona =
 	    if (instA === instB) {
 	      return instA;
 	    }
-	    instA = instA._nativeParent;
-	    instB = instB._nativeParent;
+	    instA = instA._hostParent;
+	    instB = instB._hostParent;
 	  }
 	  return null;
 	}
@@ -48470,14 +49177,14 @@ var vendors_dashboard_worona =
 	 * Return if A is an ancestor of B.
 	 */
 	function isAncestor(instA, instB) {
-	  !('_nativeNode' in instA) ?  true ? invariant(false, 'isAncestor: Invalid argument.') : invariant(false) : void 0;
-	  !('_nativeNode' in instB) ?  true ? invariant(false, 'isAncestor: Invalid argument.') : invariant(false) : void 0;
+	  !('_hostNode' in instA) ?  true ? invariant(false, 'isAncestor: Invalid argument.') : _prodInvariant('35') : void 0;
+	  !('_hostNode' in instB) ?  true ? invariant(false, 'isAncestor: Invalid argument.') : _prodInvariant('35') : void 0;
 
 	  while (instB) {
 	    if (instB === instA) {
 	      return true;
 	    }
-	    instB = instB._nativeParent;
+	    instB = instB._hostParent;
 	  }
 	  return false;
 	}
@@ -48486,9 +49193,9 @@ var vendors_dashboard_worona =
 	 * Return the parent instance of the passed-in instance.
 	 */
 	function getParentInstance(inst) {
-	  !('_nativeNode' in inst) ?  true ? invariant(false, 'getParentInstance: Invalid argument.') : invariant(false) : void 0;
+	  !('_hostNode' in inst) ?  true ? invariant(false, 'getParentInstance: Invalid argument.') : _prodInvariant('36') : void 0;
 
-	  return inst._nativeParent;
+	  return inst._hostParent;
 	}
 
 	/**
@@ -48498,7 +49205,7 @@ var vendors_dashboard_worona =
 	  var path = [];
 	  while (inst) {
 	    path.push(inst);
-	    inst = inst._nativeParent;
+	    inst = inst._hostParent;
 	  }
 	  var i;
 	  for (i = path.length; i-- > 0;) {
@@ -48521,12 +49228,12 @@ var vendors_dashboard_worona =
 	  var pathFrom = [];
 	  while (from && from !== common) {
 	    pathFrom.push(from);
-	    from = from._nativeParent;
+	    from = from._hostParent;
 	  }
 	  var pathTo = [];
 	  while (to && to !== common) {
 	    pathTo.push(to);
-	    to = to._nativeParent;
+	    to = to._hostParent;
 	  }
 	  var i;
 	  for (i = 0; i < pathFrom.length; i++) {
@@ -48546,7 +49253,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 576 */
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -48562,16 +49269,17 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _prodInvariant = __webpack_require__(303),
+	    _assign = __webpack_require__(300);
 
-	var DOMChildrenOperations = __webpack_require__(520);
-	var DOMLazyTree = __webpack_require__(521);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactInstrumentation = __webpack_require__(315);
+	var DOMChildrenOperations = __webpack_require__(521);
+	var DOMLazyTree = __webpack_require__(522);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactInstrumentation = __webpack_require__(503);
 
-	var escapeTextContentForBrowser = __webpack_require__(525);
+	var escapeTextContentForBrowser = __webpack_require__(527);
 	var invariant = __webpack_require__(304);
-	var validateDOMNesting = __webpack_require__(573);
+	var validateDOMNesting = __webpack_require__(576);
 
 	/**
 	 * Text nodes violate a couple assumptions that React makes about components:
@@ -48593,8 +49301,8 @@ var vendors_dashboard_worona =
 	  this._currentElement = text;
 	  this._stringText = '' + text;
 	  // ReactDOMComponentTree uses these:
-	  this._nativeNode = null;
-	  this._nativeParent = null;
+	  this._hostNode = null;
+	  this._hostParent = null;
 
 	  // Properties
 	  this._domID = null;
@@ -48613,15 +49321,15 @@ var vendors_dashboard_worona =
 	   * @return {string} Markup for this text node.
 	   * @internal
 	   */
-	  mountComponent: function (transaction, nativeParent, nativeContainerInfo, context) {
+	  mountComponent: function (transaction, hostParent, hostContainerInfo, context) {
 	    if (true) {
 	      ReactInstrumentation.debugTool.onSetText(this._debugID, this._stringText);
 
 	      var parentInfo;
-	      if (nativeParent != null) {
-	        parentInfo = nativeParent._ancestorInfo;
-	      } else if (nativeContainerInfo != null) {
-	        parentInfo = nativeContainerInfo._ancestorInfo;
+	      if (hostParent != null) {
+	        parentInfo = hostParent._ancestorInfo;
+	      } else if (hostContainerInfo != null) {
+	        parentInfo = hostContainerInfo._ancestorInfo;
 	      }
 	      if (parentInfo) {
 	        // parentInfo should always be present except for the top-level
@@ -48630,13 +49338,13 @@ var vendors_dashboard_worona =
 	      }
 	    }
 
-	    var domID = nativeContainerInfo._idCounter++;
+	    var domID = hostContainerInfo._idCounter++;
 	    var openingValue = ' react-text: ' + domID + ' ';
 	    var closingValue = ' /react-text ';
 	    this._domID = domID;
-	    this._nativeParent = nativeParent;
+	    this._hostParent = hostParent;
 	    if (transaction.useCreateElement) {
-	      var ownerDocument = nativeContainerInfo._ownerDocument;
+	      var ownerDocument = hostContainerInfo._ownerDocument;
 	      var openingComment = ownerDocument.createComment(openingValue);
 	      var closingComment = ownerDocument.createComment(closingValue);
 	      var lazyTree = DOMLazyTree(ownerDocument.createDocumentFragment());
@@ -48678,7 +49386,7 @@ var vendors_dashboard_worona =
 	        // and/or updateComponent to do the actual update for consistency with
 	        // other component types?
 	        this._stringText = nextStringText;
-	        var commentNodes = this.getNativeNode();
+	        var commentNodes = this.getHostNode();
 	        DOMChildrenOperations.replaceDelimitedText(commentNodes[0], commentNodes[1], nextStringText);
 
 	        if (true) {
@@ -48688,16 +49396,16 @@ var vendors_dashboard_worona =
 	    }
 	  },
 
-	  getNativeNode: function () {
-	    var nativeNode = this._commentNodes;
-	    if (nativeNode) {
-	      return nativeNode;
+	  getHostNode: function () {
+	    var hostNode = this._commentNodes;
+	    if (hostNode) {
+	      return hostNode;
 	    }
 	    if (!this._closingComment) {
 	      var openingComment = ReactDOMComponentTree.getNodeFromInstance(this);
 	      var node = openingComment.nextSibling;
 	      while (true) {
-	        !(node != null) ?  true ? invariant(false, 'Missing closing comment for text component %s', this._domID) : invariant(false) : void 0;
+	        !(node != null) ?  true ? invariant(false, 'Missing closing comment for text component %s', this._domID) : _prodInvariant('67', this._domID) : void 0;
 	        if (node.nodeType === 8 && node.nodeValue === ' /react-text ') {
 	          this._closingComment = node;
 	          break;
@@ -48705,9 +49413,9 @@ var vendors_dashboard_worona =
 	        node = node.nextSibling;
 	      }
 	    }
-	    nativeNode = [this._nativeNode, this._closingComment];
-	    this._commentNodes = nativeNode;
-	    return nativeNode;
+	    hostNode = [this._hostNode, this._closingComment];
+	    this._commentNodes = hostNode;
+	    return hostNode;
 	  },
 
 	  unmountComponent: function () {
@@ -48721,7 +49429,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMTextComponent;
 
 /***/ },
-/* 577 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -48737,10 +49445,10 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _assign = __webpack_require__(300);
 
-	var ReactUpdates = __webpack_require__(502);
-	var Transaction = __webpack_require__(508);
+	var ReactUpdates = __webpack_require__(497);
+	var Transaction = __webpack_require__(509);
 
 	var emptyFunction = __webpack_require__(308);
 
@@ -48794,7 +49502,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDefaultBatchingStrategy;
 
 /***/ },
-/* 578 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -48810,16 +49518,16 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _assign = __webpack_require__(300);
 
-	var EventListener = __webpack_require__(579);
-	var ExecutionEnvironment = __webpack_require__(317);
-	var PooledClass = __webpack_require__(303);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactUpdates = __webpack_require__(502);
+	var EventListener = __webpack_require__(582);
+	var ExecutionEnvironment = __webpack_require__(490);
+	var PooledClass = __webpack_require__(302);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactUpdates = __webpack_require__(497);
 
-	var getEventTarget = __webpack_require__(509);
-	var getUnboundedScrollPosition = __webpack_require__(580);
+	var getEventTarget = __webpack_require__(510);
+	var getUnboundedScrollPosition = __webpack_require__(583);
 
 	/**
 	 * Find the deepest React component completely containing the root of the
@@ -48830,8 +49538,8 @@ var vendors_dashboard_worona =
 	  // TODO: It may be a good idea to cache this to prevent unnecessary DOM
 	  // traversal, but caching is difficult to do correctly without using a
 	  // mutation observer to listen for all DOM changes.
-	  while (inst._nativeParent) {
-	    inst = inst._nativeParent;
+	  while (inst._hostParent) {
+	    inst = inst._hostParent;
 	  }
 	  var rootNode = ReactDOMComponentTree.getNodeFromInstance(inst);
 	  var container = rootNode.parentNode;
@@ -48956,7 +49664,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactEventListener;
 
 /***/ },
-/* 579 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49044,7 +49752,7 @@ var vendors_dashboard_worona =
 	module.exports = EventListener;
 
 /***/ },
-/* 580 */
+/* 583 */
 /***/ function(module, exports) {
 
 	/**
@@ -49087,7 +49795,7 @@ var vendors_dashboard_worona =
 	module.exports = getUnboundedScrollPosition;
 
 /***/ },
-/* 581 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -49103,15 +49811,15 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(484);
-	var EventPluginHub = __webpack_require__(490);
-	var EventPluginUtils = __webpack_require__(492);
-	var ReactComponentEnvironment = __webpack_require__(560);
-	var ReactClass = __webpack_require__(324);
-	var ReactEmptyComponent = __webpack_require__(568);
-	var ReactBrowserEventEmitter = __webpack_require__(549);
-	var ReactNativeComponent = __webpack_require__(569);
-	var ReactUpdates = __webpack_require__(502);
+	var DOMProperty = __webpack_require__(478);
+	var EventPluginHub = __webpack_require__(484);
+	var EventPluginUtils = __webpack_require__(486);
+	var ReactComponentEnvironment = __webpack_require__(562);
+	var ReactClass = __webpack_require__(316);
+	var ReactEmptyComponent = __webpack_require__(569);
+	var ReactBrowserEventEmitter = __webpack_require__(551);
+	var ReactHostComponent = __webpack_require__(570);
+	var ReactUpdates = __webpack_require__(497);
 
 	var ReactInjection = {
 	  Component: ReactComponentEnvironment.injection,
@@ -49121,14 +49829,14 @@ var vendors_dashboard_worona =
 	  EventPluginHub: EventPluginHub.injection,
 	  EventPluginUtils: EventPluginUtils.injection,
 	  EventEmitter: ReactBrowserEventEmitter.injection,
-	  NativeComponent: ReactNativeComponent.injection,
+	  HostComponent: ReactHostComponent.injection,
 	  Updates: ReactUpdates.injection
 	};
 
 	module.exports = ReactInjection;
 
 /***/ },
-/* 582 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -49144,13 +49852,15 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var _assign = __webpack_require__(301);
+	var _assign = __webpack_require__(300);
 
-	var CallbackQueue = __webpack_require__(503);
-	var PooledClass = __webpack_require__(303);
-	var ReactBrowserEventEmitter = __webpack_require__(549);
-	var ReactInputSelection = __webpack_require__(583);
-	var Transaction = __webpack_require__(508);
+	var CallbackQueue = __webpack_require__(498);
+	var PooledClass = __webpack_require__(302);
+	var ReactBrowserEventEmitter = __webpack_require__(551);
+	var ReactInputSelection = __webpack_require__(586);
+	var ReactInstrumentation = __webpack_require__(503);
+	var Transaction = __webpack_require__(509);
+	var ReactUpdateQueue = __webpack_require__(574);
 
 	/**
 	 * Ensures that, when possible, the selection range (currently selected text
@@ -49220,6 +49930,13 @@ var vendors_dashboard_worona =
 	 */
 	var TRANSACTION_WRAPPERS = [SELECTION_RESTORATION, EVENT_SUPPRESSION, ON_DOM_READY_QUEUEING];
 
+	if (true) {
+	  TRANSACTION_WRAPPERS.push({
+	    initialize: ReactInstrumentation.debugTool.onBeginFlush,
+	    close: ReactInstrumentation.debugTool.onEndFlush
+	  });
+	}
+
 	/**
 	 * Currently:
 	 * - The order that these are listed in the transaction is critical:
@@ -49240,7 +49957,7 @@ var vendors_dashboard_worona =
 	  // `ReactServerRendering`), but server-side uses
 	  // `ReactServerRenderingTransaction` instead. This option is here so that it's
 	  // accessible and defaults to false when `ReactDOMComponent` and
-	  // `ReactTextComponent` checks it in `mountComponent`.`
+	  // `ReactDOMTextComponent` checks it in `mountComponent`.`
 	  this.renderToStaticMarkup = false;
 	  this.reactMountReady = CallbackQueue.getPooled(null);
 	  this.useCreateElement = useCreateElement;
@@ -49263,6 +49980,13 @@ var vendors_dashboard_worona =
 	   */
 	  getReactMountReady: function () {
 	    return this.reactMountReady;
+	  },
+
+	  /**
+	   * @return {object} The queue to collect React async events.
+	   */
+	  getUpdateQueue: function () {
+	    return ReactUpdateQueue;
 	  },
 
 	  /**
@@ -49295,7 +50019,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactReconcileTransaction;
 
 /***/ },
-/* 583 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -49311,11 +50035,11 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactDOMSelection = __webpack_require__(584);
+	var ReactDOMSelection = __webpack_require__(587);
 
-	var containsNode = __webpack_require__(586);
-	var focusNode = __webpack_require__(535);
-	var getActiveElement = __webpack_require__(589);
+	var containsNode = __webpack_require__(589);
+	var focusNode = __webpack_require__(536);
+	var getActiveElement = __webpack_require__(592);
 
 	function isInDocument(node) {
 	  return containsNode(document.documentElement, node);
@@ -49424,7 +50148,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactInputSelection;
 
 /***/ },
-/* 584 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -49440,10 +50164,10 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(317);
+	var ExecutionEnvironment = __webpack_require__(490);
 
-	var getNodeForCharacterOffset = __webpack_require__(585);
-	var getTextContentAccessor = __webpack_require__(497);
+	var getNodeForCharacterOffset = __webpack_require__(588);
+	var getTextContentAccessor = __webpack_require__(492);
 
 	/**
 	 * While `isCollapsed` is available on the Selection object and `collapsed`
@@ -49641,7 +50365,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMSelection;
 
 /***/ },
-/* 585 */
+/* 588 */
 /***/ function(module, exports) {
 
 	/**
@@ -49720,7 +50444,7 @@ var vendors_dashboard_worona =
 	module.exports = getNodeForCharacterOffset;
 
 /***/ },
-/* 586 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49736,7 +50460,7 @@ var vendors_dashboard_worona =
 	 * 
 	 */
 
-	var isTextNode = __webpack_require__(587);
+	var isTextNode = __webpack_require__(590);
 
 	/*eslint-disable no-bitwise */
 
@@ -49764,7 +50488,7 @@ var vendors_dashboard_worona =
 	module.exports = containsNode;
 
 /***/ },
-/* 587 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49780,7 +50504,7 @@ var vendors_dashboard_worona =
 	 * @typechecks
 	 */
 
-	var isNode = __webpack_require__(588);
+	var isNode = __webpack_require__(591);
 
 	/**
 	 * @param {*} object The object to check.
@@ -49793,7 +50517,7 @@ var vendors_dashboard_worona =
 	module.exports = isTextNode;
 
 /***/ },
-/* 588 */
+/* 591 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -49820,7 +50544,7 @@ var vendors_dashboard_worona =
 	module.exports = isNode;
 
 /***/ },
-/* 589 */
+/* 592 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -49859,7 +50583,7 @@ var vendors_dashboard_worona =
 	module.exports = getActiveElement;
 
 /***/ },
-/* 590 */
+/* 593 */
 /***/ function(module, exports) {
 
 	/**
@@ -50164,7 +50888,7 @@ var vendors_dashboard_worona =
 	module.exports = SVGDOMPropertyConfig;
 
 /***/ },
-/* 591 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50180,17 +50904,17 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var EventConstants = __webpack_require__(488);
-	var EventPropagators = __webpack_require__(489);
-	var ExecutionEnvironment = __webpack_require__(317);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactInputSelection = __webpack_require__(583);
-	var SyntheticEvent = __webpack_require__(499);
+	var EventConstants = __webpack_require__(482);
+	var EventPropagators = __webpack_require__(483);
+	var ExecutionEnvironment = __webpack_require__(490);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactInputSelection = __webpack_require__(586);
+	var SyntheticEvent = __webpack_require__(494);
 
-	var getActiveElement = __webpack_require__(589);
-	var isTextInputElement = __webpack_require__(511);
-	var keyOf = __webpack_require__(328);
-	var shallowEqual = __webpack_require__(572);
+	var getActiveElement = __webpack_require__(592);
+	var isTextInputElement = __webpack_require__(512);
+	var keyOf = __webpack_require__(320);
+	var shallowEqual = __webpack_require__(575);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -50365,7 +51089,7 @@ var vendors_dashboard_worona =
 	module.exports = SelectEventPlugin;
 
 /***/ },
-/* 592 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50381,26 +51105,28 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var EventConstants = __webpack_require__(488);
-	var EventListener = __webpack_require__(579);
-	var EventPropagators = __webpack_require__(489);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var SyntheticAnimationEvent = __webpack_require__(593);
-	var SyntheticClipboardEvent = __webpack_require__(594);
-	var SyntheticEvent = __webpack_require__(499);
-	var SyntheticFocusEvent = __webpack_require__(595);
-	var SyntheticKeyboardEvent = __webpack_require__(596);
-	var SyntheticMouseEvent = __webpack_require__(514);
-	var SyntheticDragEvent = __webpack_require__(599);
-	var SyntheticTouchEvent = __webpack_require__(600);
-	var SyntheticTransitionEvent = __webpack_require__(601);
-	var SyntheticUIEvent = __webpack_require__(515);
-	var SyntheticWheelEvent = __webpack_require__(602);
+	var _prodInvariant = __webpack_require__(303);
+
+	var EventConstants = __webpack_require__(482);
+	var EventListener = __webpack_require__(582);
+	var EventPropagators = __webpack_require__(483);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var SyntheticAnimationEvent = __webpack_require__(596);
+	var SyntheticClipboardEvent = __webpack_require__(597);
+	var SyntheticEvent = __webpack_require__(494);
+	var SyntheticFocusEvent = __webpack_require__(598);
+	var SyntheticKeyboardEvent = __webpack_require__(599);
+	var SyntheticMouseEvent = __webpack_require__(515);
+	var SyntheticDragEvent = __webpack_require__(602);
+	var SyntheticTouchEvent = __webpack_require__(603);
+	var SyntheticTransitionEvent = __webpack_require__(604);
+	var SyntheticUIEvent = __webpack_require__(516);
+	var SyntheticWheelEvent = __webpack_require__(605);
 
 	var emptyFunction = __webpack_require__(308);
-	var getEventCharCode = __webpack_require__(597);
+	var getEventCharCode = __webpack_require__(600);
 	var invariant = __webpack_require__(304);
-	var keyOf = __webpack_require__(328);
+	var keyOf = __webpack_require__(320);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -50964,7 +51690,7 @@ var vendors_dashboard_worona =
 	        EventConstructor = SyntheticClipboardEvent;
 	        break;
 	    }
-	    !EventConstructor ?  true ? invariant(false, 'SimpleEventPlugin: Unhandled event type, `%s`.', topLevelType) : invariant(false) : void 0;
+	    !EventConstructor ?  true ? invariant(false, 'SimpleEventPlugin: Unhandled event type, `%s`.', topLevelType) : _prodInvariant('86', topLevelType) : void 0;
 	    var event = EventConstructor.getPooled(dispatchConfig, targetInst, nativeEvent, nativeEventTarget);
 	    EventPropagators.accumulateTwoPhaseDispatches(event);
 	    return event;
@@ -50997,7 +51723,7 @@ var vendors_dashboard_worona =
 	module.exports = SimpleEventPlugin;
 
 /***/ },
-/* 593 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51013,7 +51739,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var SyntheticEvent = __webpack_require__(499);
+	var SyntheticEvent = __webpack_require__(494);
 
 	/**
 	 * @interface Event
@@ -51041,7 +51767,7 @@ var vendors_dashboard_worona =
 	module.exports = SyntheticAnimationEvent;
 
 /***/ },
-/* 594 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51057,7 +51783,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var SyntheticEvent = __webpack_require__(499);
+	var SyntheticEvent = __webpack_require__(494);
 
 	/**
 	 * @interface Event
@@ -51084,7 +51810,7 @@ var vendors_dashboard_worona =
 	module.exports = SyntheticClipboardEvent;
 
 /***/ },
-/* 595 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51100,7 +51826,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var SyntheticUIEvent = __webpack_require__(515);
+	var SyntheticUIEvent = __webpack_require__(516);
 
 	/**
 	 * @interface FocusEvent
@@ -51125,7 +51851,7 @@ var vendors_dashboard_worona =
 	module.exports = SyntheticFocusEvent;
 
 /***/ },
-/* 596 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51141,11 +51867,11 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var SyntheticUIEvent = __webpack_require__(515);
+	var SyntheticUIEvent = __webpack_require__(516);
 
-	var getEventCharCode = __webpack_require__(597);
-	var getEventKey = __webpack_require__(598);
-	var getEventModifierState = __webpack_require__(517);
+	var getEventCharCode = __webpack_require__(600);
+	var getEventKey = __webpack_require__(601);
+	var getEventModifierState = __webpack_require__(518);
 
 	/**
 	 * @interface KeyboardEvent
@@ -51214,7 +51940,7 @@ var vendors_dashboard_worona =
 	module.exports = SyntheticKeyboardEvent;
 
 /***/ },
-/* 597 */
+/* 600 */
 /***/ function(module, exports) {
 
 	/**
@@ -51269,7 +51995,7 @@ var vendors_dashboard_worona =
 	module.exports = getEventCharCode;
 
 /***/ },
-/* 598 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51285,7 +52011,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var getEventCharCode = __webpack_require__(597);
+	var getEventCharCode = __webpack_require__(600);
 
 	/**
 	 * Normalization of deprecated HTML5 `key` values
@@ -51376,7 +52102,7 @@ var vendors_dashboard_worona =
 	module.exports = getEventKey;
 
 /***/ },
-/* 599 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51392,7 +52118,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var SyntheticMouseEvent = __webpack_require__(514);
+	var SyntheticMouseEvent = __webpack_require__(515);
 
 	/**
 	 * @interface DragEvent
@@ -51417,7 +52143,7 @@ var vendors_dashboard_worona =
 	module.exports = SyntheticDragEvent;
 
 /***/ },
-/* 600 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51433,9 +52159,9 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var SyntheticUIEvent = __webpack_require__(515);
+	var SyntheticUIEvent = __webpack_require__(516);
 
-	var getEventModifierState = __webpack_require__(517);
+	var getEventModifierState = __webpack_require__(518);
 
 	/**
 	 * @interface TouchEvent
@@ -51467,7 +52193,7 @@ var vendors_dashboard_worona =
 	module.exports = SyntheticTouchEvent;
 
 /***/ },
-/* 601 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51483,7 +52209,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var SyntheticEvent = __webpack_require__(499);
+	var SyntheticEvent = __webpack_require__(494);
 
 	/**
 	 * @interface Event
@@ -51511,7 +52237,7 @@ var vendors_dashboard_worona =
 	module.exports = SyntheticTransitionEvent;
 
 /***/ },
-/* 602 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51527,7 +52253,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var SyntheticMouseEvent = __webpack_require__(514);
+	var SyntheticMouseEvent = __webpack_require__(515);
 
 	/**
 	 * @interface WheelEvent
@@ -51570,7 +52296,7 @@ var vendors_dashboard_worona =
 	module.exports = SyntheticWheelEvent;
 
 /***/ },
-/* 603 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51586,26 +52312,29 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var DOMLazyTree = __webpack_require__(521);
-	var DOMProperty = __webpack_require__(484);
-	var ReactBrowserEventEmitter = __webpack_require__(549);
-	var ReactCurrentOwner = __webpack_require__(306);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactDOMContainerInfo = __webpack_require__(604);
-	var ReactDOMFeatureFlags = __webpack_require__(605);
-	var ReactElement = __webpack_require__(305);
-	var ReactFeatureFlags = __webpack_require__(504);
-	var ReactInstrumentation = __webpack_require__(315);
-	var ReactMarkupChecksum = __webpack_require__(606);
-	var ReactReconciler = __webpack_require__(505);
-	var ReactUpdateQueue = __webpack_require__(566);
-	var ReactUpdates = __webpack_require__(502);
+	var _prodInvariant = __webpack_require__(303);
 
-	var emptyObject = __webpack_require__(323);
-	var instantiateReactComponent = __webpack_require__(562);
+	var DOMLazyTree = __webpack_require__(522);
+	var DOMProperty = __webpack_require__(478);
+	var ReactBrowserEventEmitter = __webpack_require__(551);
+	var ReactCurrentOwner = __webpack_require__(306);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactDOMContainerInfo = __webpack_require__(607);
+	var ReactDOMFeatureFlags = __webpack_require__(608);
+	var ReactElement = __webpack_require__(305);
+	var ReactFeatureFlags = __webpack_require__(499);
+	var ReactInstanceMap = __webpack_require__(563);
+	var ReactInstrumentation = __webpack_require__(503);
+	var ReactMarkupChecksum = __webpack_require__(609);
+	var ReactReconciler = __webpack_require__(500);
+	var ReactUpdateQueue = __webpack_require__(574);
+	var ReactUpdates = __webpack_require__(497);
+
+	var emptyObject = __webpack_require__(315);
+	var instantiateReactComponent = __webpack_require__(565);
 	var invariant = __webpack_require__(304);
-	var setInnerHTML = __webpack_require__(526);
-	var shouldUpdateReactComponent = __webpack_require__(567);
+	var setInnerHTML = __webpack_require__(524);
+	var shouldUpdateReactComponent = __webpack_require__(568);
 	var warning = __webpack_require__(307);
 
 	var ATTR_NAME = DOMProperty.ID_ATTRIBUTE_NAME;
@@ -51709,7 +52438,13 @@ var vendors_dashboard_worona =
 	 * @see {ReactMount.unmountComponentAtNode}
 	 */
 	function unmountComponentFromNode(instance, container, safely) {
+	  if (true) {
+	    ReactInstrumentation.debugTool.onBeginFlush();
+	  }
 	  ReactReconciler.unmountComponent(instance, safely);
+	  if (true) {
+	    ReactInstrumentation.debugTool.onEndFlush();
+	  }
 
 	  if (container.nodeType === DOC_NODE_TYPE) {
 	    container = container.documentElement;
@@ -51735,19 +52470,19 @@ var vendors_dashboard_worona =
 	  var rootEl = getReactRootElementInContainer(container);
 	  if (rootEl) {
 	    var inst = ReactDOMComponentTree.getInstanceFromNode(rootEl);
-	    return !!(inst && inst._nativeParent);
+	    return !!(inst && inst._hostParent);
 	  }
 	}
 
-	function getNativeRootInstanceInContainer(container) {
+	function getHostRootInstanceInContainer(container) {
 	  var rootEl = getReactRootElementInContainer(container);
-	  var prevNativeInstance = rootEl && ReactDOMComponentTree.getInstanceFromNode(rootEl);
-	  return prevNativeInstance && !prevNativeInstance._nativeParent ? prevNativeInstance : null;
+	  var prevHostInstance = rootEl && ReactDOMComponentTree.getInstanceFromNode(rootEl);
+	  return prevHostInstance && !prevHostInstance._hostParent ? prevHostInstance : null;
 	}
 
 	function getTopLevelWrapperInContainer(container) {
-	  var root = getNativeRootInstanceInContainer(container);
-	  return root ? root._nativeContainerInfo._topLevelWrapper : null;
+	  var root = getHostRootInstanceInContainer(container);
+	  return root ? root._hostContainerInfo._topLevelWrapper : null;
 	}
 
 	/**
@@ -51814,9 +52549,9 @@ var vendors_dashboard_worona =
 	   * @param {DOMElement} container container to render into
 	   * @param {?function} callback function triggered on completion
 	   */
-	  _updateRootComponent: function (prevComponent, nextElement, container, callback) {
+	  _updateRootComponent: function (prevComponent, nextElement, nextContext, container, callback) {
 	    ReactMount.scrollMonitor(container, function () {
-	      ReactUpdateQueue.enqueueElementInternal(prevComponent, nextElement);
+	      ReactUpdateQueue.enqueueElementInternal(prevComponent, nextElement, nextContext);
 	      if (callback) {
 	        ReactUpdateQueue.enqueueCallbackInternal(prevComponent, callback);
 	      }
@@ -51834,25 +52569,15 @@ var vendors_dashboard_worona =
 	   * @return {ReactComponent} nextComponent
 	   */
 	  _renderNewRootComponent: function (nextElement, container, shouldReuseMarkup, context) {
-	    if (true) {
-	      ReactInstrumentation.debugTool.onBeginFlush();
-	    }
-
 	    // Various parts of our code (such as ReactCompositeComponent's
 	    // _renderValidatedComponent) assume that calls to render aren't nested;
 	    // verify that that's the case.
 	     true ? warning(ReactCurrentOwner.current == null, '_renderNewRootComponent(): Render methods should be a pure function ' + 'of props and state; triggering nested component updates from ' + 'render is not allowed. If necessary, trigger nested updates in ' + 'componentDidUpdate. Check the render method of %s.', ReactCurrentOwner.current && ReactCurrentOwner.current.getName() || 'ReactCompositeComponent') : void 0;
 
-	    !(container && (container.nodeType === ELEMENT_NODE_TYPE || container.nodeType === DOC_NODE_TYPE || container.nodeType === DOCUMENT_FRAGMENT_NODE_TYPE)) ?  true ? invariant(false, '_registerComponent(...): Target container is not a DOM element.') : invariant(false) : void 0;
+	    !(container && (container.nodeType === ELEMENT_NODE_TYPE || container.nodeType === DOC_NODE_TYPE || container.nodeType === DOCUMENT_FRAGMENT_NODE_TYPE)) ?  true ? invariant(false, '_registerComponent(...): Target container is not a DOM element.') : _prodInvariant('37') : void 0;
 
 	    ReactBrowserEventEmitter.ensureScrollValueMonitoring();
-	    var componentInstance = instantiateReactComponent(nextElement);
-
-	    if (true) {
-	      // Mute future events from the top level wrapper.
-	      // It is an implementation detail that devtools should not know about.
-	      componentInstance._debugID = 0;
-	    }
+	    var componentInstance = instantiateReactComponent(nextElement, false);
 
 	    // The initial render is synchronous but any updates that happen during
 	    // rendering, in componentWillMount or componentDidMount, will be batched
@@ -51866,7 +52591,6 @@ var vendors_dashboard_worona =
 	    if (true) {
 	      // The instance here is TopLevelWrapper so we report mount for its child.
 	      ReactInstrumentation.debugTool.onMountRootComponent(componentInstance._renderedComponent._debugID);
-	      ReactInstrumentation.debugTool.onEndFlush();
 	    }
 
 	    return componentInstance;
@@ -51886,7 +52610,7 @@ var vendors_dashboard_worona =
 	   * @return {ReactComponent} Component instance rendered in `container`.
 	   */
 	  renderSubtreeIntoContainer: function (parentComponent, nextElement, container, callback) {
-	    !(parentComponent != null && parentComponent._reactInternalInstance != null) ?  true ? invariant(false, 'parentComponent must be a valid React Component') : invariant(false) : void 0;
+	    !(parentComponent != null && ReactInstanceMap.has(parentComponent)) ?  true ? invariant(false, 'parentComponent must be a valid React Component') : _prodInvariant('38') : void 0;
 	    return ReactMount._renderSubtreeIntoContainer(parentComponent, nextElement, container, callback);
 	  },
 
@@ -51894,11 +52618,19 @@ var vendors_dashboard_worona =
 	    ReactUpdateQueue.validateCallback(callback, 'ReactDOM.render');
 	    !ReactElement.isValidElement(nextElement) ?  true ? invariant(false, 'ReactDOM.render(): Invalid component element.%s', typeof nextElement === 'string' ? ' Instead of passing a string like \'div\', pass ' + 'React.createElement(\'div\') or <div />.' : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' :
 	    // Check if it quacks like an element
-	    nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : invariant(false) : void 0;
+	    nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : _prodInvariant('39', typeof nextElement === 'string' ? ' Instead of passing a string like \'div\', pass ' + 'React.createElement(\'div\') or <div />.' : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' : nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : void 0;
 
 	     true ? warning(!container || !container.tagName || container.tagName.toUpperCase() !== 'BODY', 'render(): Rendering components directly into document.body is ' + 'discouraged, since its children are often manipulated by third-party ' + 'scripts and browser extensions. This may lead to subtle ' + 'reconciliation issues. Try rendering into a container element created ' + 'for your app.') : void 0;
 
 	    var nextWrappedElement = ReactElement(TopLevelWrapper, null, null, null, null, null, nextElement);
+
+	    var nextContext;
+	    if (parentComponent) {
+	      var parentInst = ReactInstanceMap.get(parentComponent);
+	      nextContext = parentInst._processChildContext(parentInst._context);
+	    } else {
+	      nextContext = emptyObject;
+	    }
 
 	    var prevComponent = getTopLevelWrapperInContainer(container);
 
@@ -51910,7 +52642,7 @@ var vendors_dashboard_worona =
 	        var updatedCallback = callback && function () {
 	          callback.call(publicInst);
 	        };
-	        ReactMount._updateRootComponent(prevComponent, nextWrappedElement, container, updatedCallback);
+	        ReactMount._updateRootComponent(prevComponent, nextWrappedElement, nextContext, container, updatedCallback);
 	        return publicInst;
 	      } else {
 	        ReactMount.unmountComponentAtNode(container);
@@ -51937,7 +52669,7 @@ var vendors_dashboard_worona =
 	    }
 
 	    var shouldReuseMarkup = containerHasReactMarkup && !prevComponent && !containerHasNonRootReactChild;
-	    var component = ReactMount._renderNewRootComponent(nextWrappedElement, container, shouldReuseMarkup, parentComponent != null ? parentComponent._reactInternalInstance._processChildContext(parentComponent._reactInternalInstance._context) : emptyObject)._renderedComponent.getPublicInstance();
+	    var component = ReactMount._renderNewRootComponent(nextWrappedElement, container, shouldReuseMarkup, nextContext)._renderedComponent.getPublicInstance();
 	    if (callback) {
 	      callback.call(component);
 	    }
@@ -51976,7 +52708,7 @@ var vendors_dashboard_worona =
 	    // render but we still don't expect to be in a render call here.)
 	     true ? warning(ReactCurrentOwner.current == null, 'unmountComponentAtNode(): Render methods should be a pure function ' + 'of props and state; triggering nested component updates from render ' + 'is not allowed. If necessary, trigger nested updates in ' + 'componentDidUpdate. Check the render method of %s.', ReactCurrentOwner.current && ReactCurrentOwner.current.getName() || 'ReactCompositeComponent') : void 0;
 
-	    !(container && (container.nodeType === ELEMENT_NODE_TYPE || container.nodeType === DOC_NODE_TYPE || container.nodeType === DOCUMENT_FRAGMENT_NODE_TYPE)) ?  true ? invariant(false, 'unmountComponentAtNode(...): Target container is not a DOM element.') : invariant(false) : void 0;
+	    !(container && (container.nodeType === ELEMENT_NODE_TYPE || container.nodeType === DOC_NODE_TYPE || container.nodeType === DOCUMENT_FRAGMENT_NODE_TYPE)) ?  true ? invariant(false, 'unmountComponentAtNode(...): Target container is not a DOM element.') : _prodInvariant('40') : void 0;
 
 	    var prevComponent = getTopLevelWrapperInContainer(container);
 	    if (!prevComponent) {
@@ -51999,7 +52731,7 @@ var vendors_dashboard_worona =
 	  },
 
 	  _mountImageIntoNode: function (markup, container, instance, shouldReuseMarkup, transaction) {
-	    !(container && (container.nodeType === ELEMENT_NODE_TYPE || container.nodeType === DOC_NODE_TYPE || container.nodeType === DOCUMENT_FRAGMENT_NODE_TYPE)) ?  true ? invariant(false, 'mountComponentIntoNode(...): Target container is not valid.') : invariant(false) : void 0;
+	    !(container && (container.nodeType === ELEMENT_NODE_TYPE || container.nodeType === DOC_NODE_TYPE || container.nodeType === DOCUMENT_FRAGMENT_NODE_TYPE)) ?  true ? invariant(false, 'mountComponentIntoNode(...): Target container is not valid.') : _prodInvariant('41') : void 0;
 
 	    if (shouldReuseMarkup) {
 	      var rootElement = getReactRootElementInContainer(container);
@@ -52036,7 +52768,7 @@ var vendors_dashboard_worona =
 	        var diffIndex = firstDifferenceIndex(normalizedMarkup, rootMarkup);
 	        var difference = ' (client) ' + normalizedMarkup.substring(diffIndex - 20, diffIndex + 20) + '\n (server) ' + rootMarkup.substring(diffIndex - 20, diffIndex + 20);
 
-	        !(container.nodeType !== DOC_NODE_TYPE) ?  true ? invariant(false, 'You\'re trying to render a component to the document using ' + 'server rendering but the checksum was invalid. This usually ' + 'means you rendered a different component type or props on ' + 'the client from the one on the server, or your render() ' + 'methods are impure. React cannot handle this case due to ' + 'cross-browser quirks by rendering at the document root. You ' + 'should look for environment dependent code in your components ' + 'and ensure the props are the same client and server side:\n%s', difference) : invariant(false) : void 0;
+	        !(container.nodeType !== DOC_NODE_TYPE) ?  true ? invariant(false, 'You\'re trying to render a component to the document using server rendering but the checksum was invalid. This usually means you rendered a different component type or props on the client from the one on the server, or your render() methods are impure. React cannot handle this case due to cross-browser quirks by rendering at the document root. You should look for environment dependent code in your components and ensure the props are the same client and server side:\n%s', difference) : _prodInvariant('42', difference) : void 0;
 
 	        if (true) {
 	           true ? warning(false, 'React attempted to reuse markup in a container but the ' + 'checksum was invalid. This generally means that you are ' + 'using server rendering and the markup generated on the ' + 'server was not what the client was expecting. React injected ' + 'new markup to compensate which works but you have lost many ' + 'of the benefits of server rendering. Instead, figure out ' + 'why the markup being generated is different on the client ' + 'or server:\n%s', difference) : void 0;
@@ -52044,7 +52776,7 @@ var vendors_dashboard_worona =
 	      }
 	    }
 
-	    !(container.nodeType !== DOC_NODE_TYPE) ?  true ? invariant(false, 'You\'re trying to render a component to the document but ' + 'you didn\'t use server rendering. We can\'t do this ' + 'without using server rendering due to cross-browser quirks. ' + 'See ReactDOMServer.renderToString() for server rendering.') : invariant(false) : void 0;
+	    !(container.nodeType !== DOC_NODE_TYPE) ?  true ? invariant(false, 'You\'re trying to render a component to the document but you didn\'t use server rendering. We can\'t do this without using server rendering due to cross-browser quirks. See ReactDOMServer.renderToString() for server rendering.') : _prodInvariant('43') : void 0;
 
 	    if (transaction.useCreateElement) {
 	      while (container.lastChild) {
@@ -52057,9 +52789,9 @@ var vendors_dashboard_worona =
 	    }
 
 	    if (true) {
-	      var nativeNode = ReactDOMComponentTree.getInstanceFromNode(container.firstChild);
-	      if (nativeNode._debugID !== 0) {
-	        ReactInstrumentation.debugTool.onNativeOperation(nativeNode._debugID, 'mount', markup.toString());
+	      var hostNode = ReactDOMComponentTree.getInstanceFromNode(container.firstChild);
+	      if (hostNode._debugID !== 0) {
+	        ReactInstrumentation.debugTool.onHostOperation(hostNode._debugID, 'mount', markup.toString());
 	      }
 	    }
 	  }
@@ -52068,7 +52800,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactMount;
 
 /***/ },
-/* 604 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52084,7 +52816,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var validateDOMNesting = __webpack_require__(573);
+	var validateDOMNesting = __webpack_require__(576);
 
 	var DOC_NODE_TYPE = 9;
 
@@ -52106,7 +52838,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMContainerInfo;
 
 /***/ },
-/* 605 */
+/* 608 */
 /***/ function(module, exports) {
 
 	/**
@@ -52129,7 +52861,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactDOMFeatureFlags;
 
 /***/ },
-/* 606 */
+/* 609 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52145,7 +52877,7 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var adler32 = __webpack_require__(607);
+	var adler32 = __webpack_require__(610);
 
 	var TAG_END = /\/?>/;
 	var COMMENT_START = /^<\!\-\-/;
@@ -52184,7 +52916,7 @@ var vendors_dashboard_worona =
 	module.exports = ReactMarkupChecksum;
 
 /***/ },
-/* 607 */
+/* 610 */
 /***/ function(module, exports) {
 
 	/**
@@ -52196,6 +52928,7 @@ var vendors_dashboard_worona =
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule adler32
+	 * 
 	 */
 
 	'use strict';
@@ -52232,7 +52965,7 @@ var vendors_dashboard_worona =
 	module.exports = adler32;
 
 /***/ },
-/* 608 */
+/* 611 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52248,11 +52981,13 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactCurrentOwner = __webpack_require__(306);
-	var ReactDOMComponentTree = __webpack_require__(483);
-	var ReactInstanceMap = __webpack_require__(564);
+	var _prodInvariant = __webpack_require__(303);
 
-	var getNativeComponentFromComposite = __webpack_require__(609);
+	var ReactCurrentOwner = __webpack_require__(306);
+	var ReactDOMComponentTree = __webpack_require__(477);
+	var ReactInstanceMap = __webpack_require__(563);
+
+	var getHostComponentFromComposite = __webpack_require__(612);
 	var invariant = __webpack_require__(304);
 	var warning = __webpack_require__(307);
 
@@ -52281,21 +53016,21 @@ var vendors_dashboard_worona =
 
 	  var inst = ReactInstanceMap.get(componentOrElement);
 	  if (inst) {
-	    inst = getNativeComponentFromComposite(inst);
+	    inst = getHostComponentFromComposite(inst);
 	    return inst ? ReactDOMComponentTree.getNodeFromInstance(inst) : null;
 	  }
 
 	  if (typeof componentOrElement.render === 'function') {
-	     true ?  true ? invariant(false, 'findDOMNode was called on an unmounted component.') : invariant(false) : void 0;
+	     true ?  true ? invariant(false, 'findDOMNode was called on an unmounted component.') : _prodInvariant('44') : void 0;
 	  } else {
-	     true ?  true ? invariant(false, 'Element appears to be neither ReactComponent nor DOMNode (keys: %s)', Object.keys(componentOrElement)) : invariant(false) : void 0;
+	     true ?  true ? invariant(false, 'Element appears to be neither ReactComponent nor DOMNode (keys: %s)', Object.keys(componentOrElement)) : _prodInvariant('45', Object.keys(componentOrElement)) : void 0;
 	  }
 	}
 
 	module.exports = findDOMNode;
 
 /***/ },
-/* 609 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52306,31 +53041,31 @@ var vendors_dashboard_worona =
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * @providesModule getNativeComponentFromComposite
+	 * @providesModule getHostComponentFromComposite
 	 */
 
 	'use strict';
 
-	var ReactNodeTypes = __webpack_require__(565);
+	var ReactNodeTypes = __webpack_require__(567);
 
-	function getNativeComponentFromComposite(inst) {
+	function getHostComponentFromComposite(inst) {
 	  var type;
 
 	  while ((type = inst._renderedNodeType) === ReactNodeTypes.COMPOSITE) {
 	    inst = inst._renderedComponent;
 	  }
 
-	  if (type === ReactNodeTypes.NATIVE) {
+	  if (type === ReactNodeTypes.HOST) {
 	    return inst._renderedComponent;
 	  } else if (type === ReactNodeTypes.EMPTY) {
 	    return null;
 	  }
 	}
 
-	module.exports = getNativeComponentFromComposite;
+	module.exports = getHostComponentFromComposite;
 
 /***/ },
-/* 610 */
+/* 613 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52346,12 +53081,12 @@ var vendors_dashboard_worona =
 
 	'use strict';
 
-	var ReactMount = __webpack_require__(603);
+	var ReactMount = __webpack_require__(606);
 
 	module.exports = ReactMount.renderSubtreeIntoContainer;
 
 /***/ },
-/* 611 */
+/* 614 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52359,11 +53094,11 @@ var vendors_dashboard_worona =
 	exports.__esModule = true;
 	exports.connect = exports.Provider = undefined;
 
-	var _Provider = __webpack_require__(612);
+	var _Provider = __webpack_require__(615);
 
 	var _Provider2 = _interopRequireDefault(_Provider);
 
-	var _connect = __webpack_require__(615);
+	var _connect = __webpack_require__(618);
 
 	var _connect2 = _interopRequireDefault(_connect);
 
@@ -52373,7 +53108,7 @@ var vendors_dashboard_worona =
 	exports.connect = _connect2["default"];
 
 /***/ },
-/* 612 */
+/* 615 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52381,13 +53116,13 @@ var vendors_dashboard_worona =
 	exports.__esModule = true;
 	exports["default"] = undefined;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
-	var _storeShape = __webpack_require__(613);
+	var _storeShape = __webpack_require__(616);
 
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 
-	var _warning = __webpack_require__(614);
+	var _warning = __webpack_require__(617);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -52456,14 +53191,14 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 613 */
+/* 616 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	exports["default"] = _react.PropTypes.shape({
 	  subscribe: _react.PropTypes.func.isRequired,
@@ -52472,7 +53207,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 614 */
+/* 617 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -52501,7 +53236,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 615 */
+/* 618 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52511,33 +53246,33 @@ var vendors_dashboard_worona =
 	exports.__esModule = true;
 	exports["default"] = connect;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
-	var _storeShape = __webpack_require__(613);
+	var _storeShape = __webpack_require__(616);
 
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 
-	var _shallowEqual = __webpack_require__(616);
+	var _shallowEqual = __webpack_require__(619);
 
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
-	var _wrapActionCreators = __webpack_require__(617);
+	var _wrapActionCreators = __webpack_require__(620);
 
 	var _wrapActionCreators2 = _interopRequireDefault(_wrapActionCreators);
 
-	var _warning = __webpack_require__(614);
+	var _warning = __webpack_require__(617);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _isPlainObject = __webpack_require__(620);
+	var _isPlainObject = __webpack_require__(623);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _hoistNonReactStatics = __webpack_require__(628);
+	var _hoistNonReactStatics = __webpack_require__(631);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -52899,7 +53634,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 616 */
+/* 619 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -52930,7 +53665,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 617 */
+/* 620 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52938,7 +53673,7 @@ var vendors_dashboard_worona =
 	exports.__esModule = true;
 	exports["default"] = wrapActionCreators;
 
-	var _redux = __webpack_require__(618);
+	var _redux = __webpack_require__(621);
 
 	function wrapActionCreators(actionCreators) {
 	  return function (dispatch) {
@@ -52947,7 +53682,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 618 */
+/* 621 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52955,27 +53690,27 @@ var vendors_dashboard_worona =
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 
-	var _createStore = __webpack_require__(619);
+	var _createStore = __webpack_require__(622);
 
 	var _createStore2 = _interopRequireDefault(_createStore);
 
-	var _combineReducers = __webpack_require__(623);
+	var _combineReducers = __webpack_require__(626);
 
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 
-	var _bindActionCreators = __webpack_require__(625);
+	var _bindActionCreators = __webpack_require__(628);
 
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 
-	var _applyMiddleware = __webpack_require__(626);
+	var _applyMiddleware = __webpack_require__(629);
 
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 
-	var _compose = __webpack_require__(627);
+	var _compose = __webpack_require__(630);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
-	var _warning = __webpack_require__(624);
+	var _warning = __webpack_require__(627);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -52998,7 +53733,7 @@ var vendors_dashboard_worona =
 	exports.compose = _compose2["default"];
 
 /***/ },
-/* 619 */
+/* 622 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53007,11 +53742,11 @@ var vendors_dashboard_worona =
 	exports.ActionTypes = undefined;
 	exports["default"] = createStore;
 
-	var _isPlainObject = __webpack_require__(620);
+	var _isPlainObject = __webpack_require__(623);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _symbolObservable = __webpack_require__(621);
+	var _symbolObservable = __webpack_require__(624);
 
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 
@@ -53265,12 +54000,12 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 620 */
+/* 623 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getPrototype = __webpack_require__(366),
-	    isHostObject = __webpack_require__(407),
-	    isObjectLike = __webpack_require__(378);
+	var getPrototype = __webpack_require__(360),
+	    isHostObject = __webpack_require__(401),
+	    isObjectLike = __webpack_require__(372);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -53341,18 +54076,18 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 621 */
+/* 624 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/* global window */
 	'use strict';
 
-	module.exports = __webpack_require__(622)(global || window || this);
+	module.exports = __webpack_require__(625)(global || window || this);
 
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 622 */
+/* 625 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53377,7 +54112,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 623 */
+/* 626 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53385,13 +54120,13 @@ var vendors_dashboard_worona =
 	exports.__esModule = true;
 	exports["default"] = combineReducers;
 
-	var _createStore = __webpack_require__(619);
+	var _createStore = __webpack_require__(622);
 
-	var _isPlainObject = __webpack_require__(620);
+	var _isPlainObject = __webpack_require__(623);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _warning = __webpack_require__(624);
+	var _warning = __webpack_require__(627);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -53509,7 +54244,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 624 */
+/* 627 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53539,7 +54274,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 625 */
+/* 628 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53595,7 +54330,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 626 */
+/* 629 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53606,7 +54341,7 @@ var vendors_dashboard_worona =
 
 	exports["default"] = applyMiddleware;
 
-	var _compose = __webpack_require__(627);
+	var _compose = __webpack_require__(630);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
@@ -53658,7 +54393,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 627 */
+/* 630 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -53703,7 +54438,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 628 */
+/* 631 */
 /***/ function(module, exports) {
 
 	/**
@@ -53732,9 +54467,17 @@ var vendors_dashboard_worona =
 	    arity: true
 	};
 
+	var isGetOwnPropertySymbolsAvailable = typeof Object.getOwnPropertySymbols === 'function';
+
 	module.exports = function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
 	    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
 	        var keys = Object.getOwnPropertyNames(sourceComponent);
+
+	        /* istanbul ignore else */
+	        if (isGetOwnPropertySymbolsAvailable) {
+	            keys = keys.concat(Object.getOwnPropertySymbols(sourceComponent));
+	        }
+
 	        for (var i = 0; i < keys.length; ++i) {
 	            if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]] && (!customStatics || !customStatics[keys[i]])) {
 	                try {
@@ -53751,7 +54494,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 629 */
+/* 632 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -53808,7 +54551,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 630 */
+/* 633 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53816,7 +54559,7 @@ var vendors_dashboard_worona =
 	exports.__esModule = true;
 	exports.createMemoryHistory = exports.hashHistory = exports.browserHistory = exports.applyRouterMiddleware = exports.formatPattern = exports.useRouterHistory = exports.match = exports.routerShape = exports.locationShape = exports.PropTypes = exports.RoutingContext = exports.RouterContext = exports.createRoutes = exports.useRoutes = exports.RouteContext = exports.Lifecycle = exports.History = exports.Route = exports.Redirect = exports.IndexRoute = exports.IndexRedirect = exports.withRouter = exports.IndexLink = exports.Link = exports.Router = undefined;
 
-	var _RouteUtils = __webpack_require__(631);
+	var _RouteUtils = __webpack_require__(634);
 
 	Object.defineProperty(exports, 'createRoutes', {
 	  enumerable: true,
@@ -53825,7 +54568,7 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	var _PropTypes2 = __webpack_require__(634);
+	var _PropTypes2 = __webpack_require__(635);
 
 	Object.defineProperty(exports, 'locationShape', {
 	  enumerable: true,
@@ -53840,7 +54583,7 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	var _PatternUtils = __webpack_require__(637);
+	var _PatternUtils = __webpack_require__(640);
 
 	Object.defineProperty(exports, 'formatPattern', {
 	  enumerable: true,
@@ -53849,85 +54592,85 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	var _Router2 = __webpack_require__(638);
+	var _Router2 = __webpack_require__(641);
 
 	var _Router3 = _interopRequireDefault(_Router2);
 
-	var _Link2 = __webpack_require__(667);
+	var _Link2 = __webpack_require__(672);
 
 	var _Link3 = _interopRequireDefault(_Link2);
 
-	var _IndexLink2 = __webpack_require__(668);
+	var _IndexLink2 = __webpack_require__(673);
 
 	var _IndexLink3 = _interopRequireDefault(_IndexLink2);
 
-	var _withRouter2 = __webpack_require__(669);
+	var _withRouter2 = __webpack_require__(674);
 
 	var _withRouter3 = _interopRequireDefault(_withRouter2);
 
-	var _IndexRedirect2 = __webpack_require__(670);
+	var _IndexRedirect2 = __webpack_require__(675);
 
 	var _IndexRedirect3 = _interopRequireDefault(_IndexRedirect2);
 
-	var _IndexRoute2 = __webpack_require__(672);
+	var _IndexRoute2 = __webpack_require__(677);
 
 	var _IndexRoute3 = _interopRequireDefault(_IndexRoute2);
 
-	var _Redirect2 = __webpack_require__(671);
+	var _Redirect2 = __webpack_require__(676);
 
 	var _Redirect3 = _interopRequireDefault(_Redirect2);
 
-	var _Route2 = __webpack_require__(673);
+	var _Route2 = __webpack_require__(678);
 
 	var _Route3 = _interopRequireDefault(_Route2);
 
-	var _History2 = __webpack_require__(674);
+	var _History2 = __webpack_require__(679);
 
 	var _History3 = _interopRequireDefault(_History2);
 
-	var _Lifecycle2 = __webpack_require__(675);
+	var _Lifecycle2 = __webpack_require__(680);
 
 	var _Lifecycle3 = _interopRequireDefault(_Lifecycle2);
 
-	var _RouteContext2 = __webpack_require__(676);
+	var _RouteContext2 = __webpack_require__(681);
 
 	var _RouteContext3 = _interopRequireDefault(_RouteContext2);
 
-	var _useRoutes2 = __webpack_require__(677);
+	var _useRoutes2 = __webpack_require__(682);
 
 	var _useRoutes3 = _interopRequireDefault(_useRoutes2);
 
-	var _RouterContext2 = __webpack_require__(664);
+	var _RouterContext2 = __webpack_require__(669);
 
 	var _RouterContext3 = _interopRequireDefault(_RouterContext2);
 
-	var _RoutingContext2 = __webpack_require__(678);
+	var _RoutingContext2 = __webpack_require__(683);
 
 	var _RoutingContext3 = _interopRequireDefault(_RoutingContext2);
 
 	var _PropTypes3 = _interopRequireDefault(_PropTypes2);
 
-	var _match2 = __webpack_require__(679);
+	var _match2 = __webpack_require__(684);
 
 	var _match3 = _interopRequireDefault(_match2);
 
-	var _useRouterHistory2 = __webpack_require__(683);
+	var _useRouterHistory2 = __webpack_require__(688);
 
 	var _useRouterHistory3 = _interopRequireDefault(_useRouterHistory2);
 
-	var _applyRouterMiddleware2 = __webpack_require__(684);
+	var _applyRouterMiddleware2 = __webpack_require__(689);
 
 	var _applyRouterMiddleware3 = _interopRequireDefault(_applyRouterMiddleware2);
 
-	var _browserHistory2 = __webpack_require__(685);
+	var _browserHistory2 = __webpack_require__(690);
 
 	var _browserHistory3 = _interopRequireDefault(_browserHistory2);
 
-	var _hashHistory2 = __webpack_require__(688);
+	var _hashHistory2 = __webpack_require__(693);
 
 	var _hashHistory3 = _interopRequireDefault(_hashHistory2);
 
-	var _createMemoryHistory2 = __webpack_require__(680);
+	var _createMemoryHistory2 = __webpack_require__(685);
 
 	var _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);
 
@@ -53969,7 +54712,7 @@ var vendors_dashboard_worona =
 	exports.createMemoryHistory = _createMemoryHistory3.default;
 
 /***/ },
-/* 631 */
+/* 634 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53983,13 +54726,9 @@ var vendors_dashboard_worona =
 	exports.createRoutesFromReactChildren = createRoutesFromReactChildren;
 	exports.createRoutes = createRoutes;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
-
-	var _routerWarning = __webpack_require__(632);
-
-	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54001,19 +54740,6 @@ var vendors_dashboard_worona =
 	  return isValidChild(object) || Array.isArray(object) && object.every(isValidChild);
 	}
 
-	function checkPropTypes(componentName, propTypes, props) {
-	  componentName = componentName || 'UnknownComponent';
-
-	  for (var propName in propTypes) {
-	    if (Object.prototype.hasOwnProperty.call(propTypes, propName)) {
-	      var error = propTypes[propName](props, propName, componentName);
-
-	      /* istanbul ignore if: error logging */
-	      if (error instanceof Error)  true ? (0, _routerWarning2.default)(false, error.message) : void 0;
-	    }
-	  }
-	}
-
 	function createRoute(defaultProps, props) {
 	  return _extends({}, defaultProps, props);
 	}
@@ -54021,8 +54747,6 @@ var vendors_dashboard_worona =
 	function createRouteFromReactElement(element) {
 	  var type = element.type;
 	  var route = createRoute(type.defaultProps, element.props);
-
-	  if (type.propTypes) checkPropTypes(type.displayName || type.name, type.propTypes, route);
 
 	  if (route.children) {
 	    var childRoutes = createRoutesFromReactChildren(route.children, route);
@@ -54041,7 +54765,7 @@ var vendors_dashboard_worona =
 	 * nested.
 	 *
 	 *   import { Route, createRoutesFromReactChildren } from 'react-router'
-	 *   
+	 *
 	 *   const routes = createRoutesFromReactChildren(
 	 *     <Route component={App}>
 	 *       <Route path="home" component={Dashboard}/>
@@ -54086,114 +54810,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 632 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.default = routerWarning;
-	exports._resetWarned = _resetWarned;
-
-	var _warning = __webpack_require__(633);
-
-	var _warning2 = _interopRequireDefault(_warning);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var warned = {};
-
-	function routerWarning(falseToWarn, message) {
-	  // Only issue deprecation warnings once.
-	  if (message.indexOf('deprecated') !== -1) {
-	    if (warned[message]) {
-	      return;
-	    }
-
-	    warned[message] = true;
-	  }
-
-	  message = '[react-router] ' + message;
-
-	  for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-	    args[_key - 2] = arguments[_key];
-	  }
-
-	  _warning2.default.apply(undefined, [falseToWarn, message].concat(args));
-	}
-
-	function _resetWarned() {
-	  warned = {};
-	}
-
-/***/ },
-/* 633 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2014-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 */
-
-	'use strict';
-
-	/**
-	 * Similar to invariant but only logs a warning if the condition is not met.
-	 * This can be used to log issues in development environments in critical
-	 * paths. Removing the logging code for production environments will keep the
-	 * same logic and follow the same code paths.
-	 */
-
-	var warning = function() {};
-
-	if (true) {
-	  warning = function(condition, format, args) {
-	    var len = arguments.length;
-	    args = new Array(len > 2 ? len - 2 : 0);
-	    for (var key = 2; key < len; key++) {
-	      args[key - 2] = arguments[key];
-	    }
-	    if (format === undefined) {
-	      throw new Error(
-	        '`warning(condition, format, ...args)` requires a warning ' +
-	        'message argument'
-	      );
-	    }
-
-	    if (format.length < 10 || (/^[s\W]*$/).test(format)) {
-	      throw new Error(
-	        'The warning format should be able to uniquely identify this ' +
-	        'warning. Please, use a more descriptive format than: ' + format
-	      );
-	    }
-
-	    if (!condition) {
-	      var argIndex = 0;
-	      var message = 'Warning: ' +
-	        format.replace(/%s/g, function() {
-	          return args[argIndex++];
-	        });
-	      if (typeof console !== 'undefined') {
-	        console.error(message);
-	      }
-	      try {
-	        // This error was thrown as a convenience so that you can use this stack
-	        // to find the callsite that caused this warning to fire.
-	        throw new Error(message);
-	      } catch(x) {}
-	    }
-	  };
-	}
-
-	module.exports = warning;
-
-
-/***/ },
-/* 634 */
+/* 635 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54201,17 +54818,17 @@ var vendors_dashboard_worona =
 	exports.__esModule = true;
 	exports.router = exports.routes = exports.route = exports.components = exports.component = exports.location = exports.history = exports.falsy = exports.locationShape = exports.routerShape = undefined;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
-	var _deprecateObjectProperties = __webpack_require__(635);
+	var _deprecateObjectProperties = __webpack_require__(636);
 
 	var _deprecateObjectProperties2 = _interopRequireDefault(_deprecateObjectProperties);
 
-	var _InternalPropTypes = __webpack_require__(636);
+	var _InternalPropTypes = __webpack_require__(639);
 
 	var InternalPropTypes = _interopRequireWildcard(_InternalPropTypes);
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
@@ -54299,7 +54916,7 @@ var vendors_dashboard_worona =
 	exports.default = defaultExport;
 
 /***/ },
-/* 635 */
+/* 636 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54307,7 +54924,7 @@ var vendors_dashboard_worona =
 	exports.__esModule = true;
 	exports.canUseMembrane = undefined;
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
@@ -54379,7 +54996,114 @@ var vendors_dashboard_worona =
 	exports.default = deprecateObjectProperties;
 
 /***/ },
-/* 636 */
+/* 637 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.default = routerWarning;
+	exports._resetWarned = _resetWarned;
+
+	var _warning = __webpack_require__(638);
+
+	var _warning2 = _interopRequireDefault(_warning);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var warned = {};
+
+	function routerWarning(falseToWarn, message) {
+	  // Only issue deprecation warnings once.
+	  if (message.indexOf('deprecated') !== -1) {
+	    if (warned[message]) {
+	      return;
+	    }
+
+	    warned[message] = true;
+	  }
+
+	  message = '[react-router] ' + message;
+
+	  for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+	    args[_key - 2] = arguments[_key];
+	  }
+
+	  _warning2.default.apply(undefined, [falseToWarn, message].concat(args));
+	}
+
+	function _resetWarned() {
+	  warned = {};
+	}
+
+/***/ },
+/* 638 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+
+	'use strict';
+
+	/**
+	 * Similar to invariant but only logs a warning if the condition is not met.
+	 * This can be used to log issues in development environments in critical
+	 * paths. Removing the logging code for production environments will keep the
+	 * same logic and follow the same code paths.
+	 */
+
+	var warning = function() {};
+
+	if (true) {
+	  warning = function(condition, format, args) {
+	    var len = arguments.length;
+	    args = new Array(len > 2 ? len - 2 : 0);
+	    for (var key = 2; key < len; key++) {
+	      args[key - 2] = arguments[key];
+	    }
+	    if (format === undefined) {
+	      throw new Error(
+	        '`warning(condition, format, ...args)` requires a warning ' +
+	        'message argument'
+	      );
+	    }
+
+	    if (format.length < 10 || (/^[s\W]*$/).test(format)) {
+	      throw new Error(
+	        'The warning format should be able to uniquely identify this ' +
+	        'warning. Please, use a more descriptive format than: ' + format
+	      );
+	    }
+
+	    if (!condition) {
+	      var argIndex = 0;
+	      var message = 'Warning: ' +
+	        format.replace(/%s/g, function() {
+	          return args[argIndex++];
+	        });
+	      if (typeof console !== 'undefined') {
+	        console.error(message);
+	      }
+	      try {
+	        // This error was thrown as a convenience so that you can use this stack
+	        // to find the callsite that caused this warning to fire.
+	        throw new Error(message);
+	      } catch(x) {}
+	    }
+	  };
+	}
+
+	module.exports = warning;
+
+
+/***/ },
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54388,7 +55112,7 @@ var vendors_dashboard_worona =
 	exports.routes = exports.route = exports.components = exports.component = exports.history = undefined;
 	exports.falsy = falsy;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var func = _react.PropTypes.func;
 	var object = _react.PropTypes.object;
@@ -54416,7 +55140,7 @@ var vendors_dashboard_worona =
 	var routes = exports.routes = oneOfType([route, arrayOf(route)]);
 
 /***/ },
-/* 637 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54428,7 +55152,7 @@ var vendors_dashboard_worona =
 	exports.getParams = getParams;
 	exports.formatPattern = formatPattern;
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -54633,7 +55357,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 638 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54642,33 +55366,37 @@ var vendors_dashboard_worona =
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _createHashHistory = __webpack_require__(639);
+	var _createHashHistory = __webpack_require__(642);
 
 	var _createHashHistory2 = _interopRequireDefault(_createHashHistory);
 
-	var _useQueries = __webpack_require__(654);
+	var _useQueries = __webpack_require__(658);
 
 	var _useQueries2 = _interopRequireDefault(_useQueries);
 
-	var _react = __webpack_require__(299);
+	var _invariant = __webpack_require__(632);
+
+	var _invariant2 = _interopRequireDefault(_invariant);
+
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _createTransitionManager = __webpack_require__(657);
+	var _createTransitionManager = __webpack_require__(661);
 
 	var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
-	var _InternalPropTypes = __webpack_require__(636);
+	var _InternalPropTypes = __webpack_require__(639);
 
-	var _RouterContext = __webpack_require__(664);
+	var _RouterContext = __webpack_require__(669);
 
 	var _RouterContext2 = _interopRequireDefault(_RouterContext);
 
-	var _RouteUtils = __webpack_require__(631);
+	var _RouteUtils = __webpack_require__(634);
 
-	var _RouterUtils = __webpack_require__(666);
+	var _RouterUtils = __webpack_require__(671);
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
@@ -54678,6 +55406,12 @@ var vendors_dashboard_worona =
 
 	function isDeprecatedHistory(history) {
 	  return !history || !history.__v2_compatible__;
+	}
+
+	/* istanbul ignore next: sanity check */
+	function isUnsupportedHistory(history) {
+	  // v3 histories expose getCurrentLocation, but aren't currently supported.
+	  return history && history.getCurrentLocation;
 	}
 
 	var _React$PropTypes = _react2.default.PropTypes;
@@ -54702,6 +55436,10 @@ var vendors_dashboard_worona =
 	    createElement: func,
 	    onError: func,
 	    onUpdate: func,
+
+	    // Deprecated:
+	    parseQueryString: func,
+	    stringifyQuery: func,
 
 	    // PRIVATE: For client-side rehydration of server match.
 	    matchContext: object
@@ -54769,6 +55507,8 @@ var vendors_dashboard_worona =
 	    var routes = _props2.routes;
 	    var children = _props2.children;
 
+
+	    !!isUnsupportedHistory(history) ?  true ? (0, _invariant2.default)(false, 'You have provided a history object created with history v3.x. ' + 'This version of React Router is not compatible with v3 history ' + 'objects. Please use history v2.x instead.') : (0, _invariant2.default)(false) : void 0;
 
 	    if (isDeprecatedHistory(history)) {
 	      history = this.wrapDeprecatedHistory(history);
@@ -54846,7 +55586,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 639 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54857,25 +55597,25 @@ var vendors_dashboard_worona =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(633);
+	var _warning = __webpack_require__(643);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Actions = __webpack_require__(640);
+	var _Actions = __webpack_require__(644);
 
-	var _PathUtils = __webpack_require__(641);
+	var _PathUtils = __webpack_require__(645);
 
-	var _ExecutionEnvironment = __webpack_require__(642);
+	var _ExecutionEnvironment = __webpack_require__(646);
 
-	var _DOMUtils = __webpack_require__(643);
+	var _DOMUtils = __webpack_require__(647);
 
-	var _DOMStateStorage = __webpack_require__(644);
+	var _DOMStateStorage = __webpack_require__(648);
 
-	var _createDOMHistory = __webpack_require__(645);
+	var _createDOMHistory = __webpack_require__(649);
 
 	var _createDOMHistory2 = _interopRequireDefault(_createDOMHistory);
 
@@ -55097,7 +55837,73 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 640 */
+/* 643 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+
+	'use strict';
+
+	/**
+	 * Similar to invariant but only logs a warning if the condition is not met.
+	 * This can be used to log issues in development environments in critical
+	 * paths. Removing the logging code for production environments will keep the
+	 * same logic and follow the same code paths.
+	 */
+
+	var warning = function() {};
+
+	if (true) {
+	  warning = function(condition, format, args) {
+	    var len = arguments.length;
+	    args = new Array(len > 2 ? len - 2 : 0);
+	    for (var key = 2; key < len; key++) {
+	      args[key - 2] = arguments[key];
+	    }
+	    if (format === undefined) {
+	      throw new Error(
+	        '`warning(condition, format, ...args)` requires a warning ' +
+	        'message argument'
+	      );
+	    }
+
+	    if (format.length < 10 || (/^[s\W]*$/).test(format)) {
+	      throw new Error(
+	        'The warning format should be able to uniquely identify this ' +
+	        'warning. Please, use a more descriptive format than: ' + format
+	      );
+	    }
+
+	    if (!condition) {
+	      var argIndex = 0;
+	      var message = 'Warning: ' +
+	        format.replace(/%s/g, function() {
+	          return args[argIndex++];
+	        });
+	      if (typeof console !== 'undefined') {
+	        console.error(message);
+	      }
+	      try {
+	        // This error was thrown as a convenience so that you can use this stack
+	        // to find the callsite that caused this warning to fire.
+	        throw new Error(message);
+	      } catch(x) {}
+	    }
+	  };
+	}
+
+	module.exports = warning;
+
+
+/***/ },
+/* 644 */
 /***/ function(module, exports) {
 
 	/**
@@ -55133,7 +55939,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 641 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55144,7 +55950,7 @@ var vendors_dashboard_worona =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(633);
+	var _warning = __webpack_require__(643);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -55185,7 +55991,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 642 */
+/* 646 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55195,7 +56001,7 @@ var vendors_dashboard_worona =
 	exports.canUseDOM = canUseDOM;
 
 /***/ },
-/* 643 */
+/* 647 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55275,7 +56081,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 644 */
+/* 648 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*eslint-disable no-empty */
@@ -55287,7 +56093,7 @@ var vendors_dashboard_worona =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(633);
+	var _warning = __webpack_require__(643);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -55353,7 +56159,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 645 */
+/* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55364,15 +56170,15 @@ var vendors_dashboard_worona =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _ExecutionEnvironment = __webpack_require__(642);
+	var _ExecutionEnvironment = __webpack_require__(646);
 
-	var _DOMUtils = __webpack_require__(643);
+	var _DOMUtils = __webpack_require__(647);
 
-	var _createHistory = __webpack_require__(646);
+	var _createHistory = __webpack_require__(650);
 
 	var _createHistory2 = _interopRequireDefault(_createHistory);
 
@@ -55398,7 +56204,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 646 */
+/* 650 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55409,29 +56215,29 @@ var vendors_dashboard_worona =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(633);
+	var _warning = __webpack_require__(643);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _deepEqual = __webpack_require__(647);
+	var _deepEqual = __webpack_require__(651);
 
 	var _deepEqual2 = _interopRequireDefault(_deepEqual);
 
-	var _PathUtils = __webpack_require__(641);
+	var _PathUtils = __webpack_require__(645);
 
-	var _AsyncUtils = __webpack_require__(650);
+	var _AsyncUtils = __webpack_require__(654);
 
-	var _Actions = __webpack_require__(640);
+	var _Actions = __webpack_require__(644);
 
-	var _createLocation2 = __webpack_require__(651);
+	var _createLocation2 = __webpack_require__(655);
 
 	var _createLocation3 = _interopRequireDefault(_createLocation2);
 
-	var _runTransitionHook = __webpack_require__(652);
+	var _runTransitionHook = __webpack_require__(656);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _deprecate = __webpack_require__(653);
+	var _deprecate = __webpack_require__(657);
 
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 
@@ -55691,12 +56497,12 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 647 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var pSlice = Array.prototype.slice;
-	var objectKeys = __webpack_require__(648);
-	var isArguments = __webpack_require__(649);
+	var objectKeys = __webpack_require__(652);
+	var isArguments = __webpack_require__(653);
 
 	var deepEqual = module.exports = function (actual, expected, opts) {
 	  if (!opts) opts = {};
@@ -55791,7 +56597,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 648 */
+/* 652 */
 /***/ function(module, exports) {
 
 	exports = module.exports = typeof Object.keys === 'function'
@@ -55806,7 +56612,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 649 */
+/* 653 */
 /***/ function(module, exports) {
 
 	var supportsArgumentsClass = (function(){
@@ -55832,7 +56638,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 650 */
+/* 654 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -55895,7 +56701,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 651 */
+/* 655 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55906,13 +56712,13 @@ var vendors_dashboard_worona =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(633);
+	var _warning = __webpack_require__(643);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _Actions = __webpack_require__(640);
+	var _Actions = __webpack_require__(644);
 
-	var _PathUtils = __webpack_require__(641);
+	var _PathUtils = __webpack_require__(645);
 
 	function createLocation() {
 	  var location = arguments.length <= 0 || arguments[0] === undefined ? '/' : arguments[0];
@@ -55951,7 +56757,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 652 */
+/* 656 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55960,7 +56766,7 @@ var vendors_dashboard_worona =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(633);
+	var _warning = __webpack_require__(643);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -55980,7 +56786,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 653 */
+/* 657 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55989,7 +56795,7 @@ var vendors_dashboard_worona =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(633);
+	var _warning = __webpack_require__(643);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -56004,7 +56810,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 654 */
+/* 658 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56015,19 +56821,19 @@ var vendors_dashboard_worona =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(633);
+	var _warning = __webpack_require__(643);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _queryString = __webpack_require__(655);
+	var _queryString = __webpack_require__(659);
 
-	var _runTransitionHook = __webpack_require__(652);
+	var _runTransitionHook = __webpack_require__(656);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _PathUtils = __webpack_require__(641);
+	var _PathUtils = __webpack_require__(645);
 
-	var _deprecate = __webpack_require__(653);
+	var _deprecate = __webpack_require__(657);
 
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 
@@ -56185,11 +56991,11 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 655 */
+/* 659 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var strictUriEncode = __webpack_require__(656);
+	var strictUriEncode = __webpack_require__(660);
 
 	exports.extract = function (str) {
 		return str.split('?')[1] || '';
@@ -56257,7 +57063,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 656 */
+/* 660 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -56269,7 +57075,7 @@ var vendors_dashboard_worona =
 
 
 /***/ },
-/* 657 */
+/* 661 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56280,27 +57086,27 @@ var vendors_dashboard_worona =
 
 	exports.default = createTransitionManager;
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _Actions = __webpack_require__(640);
+	var _Actions = __webpack_require__(644);
 
-	var _computeChangedRoutes2 = __webpack_require__(658);
+	var _computeChangedRoutes2 = __webpack_require__(662);
 
 	var _computeChangedRoutes3 = _interopRequireDefault(_computeChangedRoutes2);
 
-	var _TransitionUtils = __webpack_require__(659);
+	var _TransitionUtils = __webpack_require__(663);
 
-	var _isActive2 = __webpack_require__(661);
+	var _isActive2 = __webpack_require__(665);
 
 	var _isActive3 = _interopRequireDefault(_isActive2);
 
-	var _getComponents = __webpack_require__(662);
+	var _getComponents = __webpack_require__(666);
 
 	var _getComponents2 = _interopRequireDefault(_getComponents);
 
-	var _matchRoutes = __webpack_require__(663);
+	var _matchRoutes = __webpack_require__(668);
 
 	var _matchRoutes2 = _interopRequireDefault(_matchRoutes);
 
@@ -56365,7 +57171,7 @@ var vendors_dashboard_worona =
 	    var enterRoutes = _computeChangedRoutes.enterRoutes;
 
 
-	    (0, _TransitionUtils.runLeaveHooks)(leaveRoutes);
+	    (0, _TransitionUtils.runLeaveHooks)(leaveRoutes, state);
 
 	    // Tear down confirmation hooks for left routes
 	    leaveRoutes.filter(function (route) {
@@ -56490,9 +57296,9 @@ var vendors_dashboard_worona =
 	   * Registers the given hook function to run before leaving the given route.
 	   *
 	   * During a normal transition, the hook function receives the next location
-	   * as its only argument and must return either a) a prompt message to show
-	   * the user, to make sure they want to leave the page or b) false, to prevent
-	   * the transition.
+	   * as its only argument and can return either a prompt message (string) to show the user,
+	   * to make sure they want to leave the page; or `false`, to prevent the transition.
+	   * Any other return value will have no effect.
 	   *
 	   * During the beforeunload event (in browsers) the hook receives no arguments.
 	   * In this case it must return a prompt message to prevent the transition.
@@ -56581,14 +57387,14 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 658 */
+/* 662 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _PatternUtils = __webpack_require__(637);
+	var _PatternUtils = __webpack_require__(640);
 
 	function routeParamsChanged(route, prevState, nextState) {
 	  if (!route.path) return false;
@@ -56663,7 +57469,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 659 */
+/* 663 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56673,9 +57479,9 @@ var vendors_dashboard_worona =
 	exports.runChangeHooks = runChangeHooks;
 	exports.runLeaveHooks = runLeaveHooks;
 
-	var _AsyncUtils = __webpack_require__(660);
+	var _AsyncUtils = __webpack_require__(664);
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
@@ -56740,8 +57546,8 @@ var vendors_dashboard_worona =
 	      if (error || redirectInfo) {
 	        done(error, redirectInfo); // No need to continue.
 	      } else {
-	          next();
-	        }
+	        next();
+	      }
 	    });
 	  }, callback);
 	}
@@ -56783,14 +57589,14 @@ var vendors_dashboard_worona =
 	/**
 	 * Runs all onLeave hooks in the given array of routes in order.
 	 */
-	function runLeaveHooks(routes) {
+	function runLeaveHooks(routes, prevState) {
 	  for (var i = 0, len = routes.length; i < len; ++i) {
-	    if (routes[i].onLeave) routes[i].onLeave.call(routes[i]);
+	    if (routes[i].onLeave) routes[i].onLeave.call(routes[i], prevState);
 	  }
 	}
 
 /***/ },
-/* 660 */
+/* 664 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56883,7 +57689,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 661 */
+/* 665 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56894,7 +57700,7 @@ var vendors_dashboard_worona =
 
 	exports.default = isActive;
 
-	var _PatternUtils = __webpack_require__(637);
+	var _PatternUtils = __webpack_require__(640);
 
 	function deepEqual(a, b) {
 	  if (a == b) return true;
@@ -57040,22 +57846,18 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 662 */
+/* 666 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	var _AsyncUtils = __webpack_require__(664);
 
-	var _AsyncUtils = __webpack_require__(660);
+	var _makeStateWithLocation = __webpack_require__(667);
 
-	var _deprecateObjectProperties = __webpack_require__(635);
-
-	var _routerWarning = __webpack_require__(632);
-
-	var _routerWarning2 = _interopRequireDefault(_routerWarning);
+	var _makeStateWithLocation2 = _interopRequireDefault(_makeStateWithLocation);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57073,36 +57875,7 @@ var vendors_dashboard_worona =
 
 	  var location = nextState.location;
 
-	  var nextStateWithLocation = void 0;
-
-	  if (("development") !== 'production' && _deprecateObjectProperties.canUseMembrane) {
-	    nextStateWithLocation = _extends({}, nextState);
-
-	    // I don't use deprecateObjectProperties here because I want to keep the
-	    // same code path between development and production, in that we just
-	    // assign extra properties to the copy of the state object in both cases.
-
-	    var _loop = function _loop(prop) {
-	      if (!Object.prototype.hasOwnProperty.call(location, prop)) {
-	        return 'continue';
-	      }
-
-	      Object.defineProperty(nextStateWithLocation, prop, {
-	        get: function get() {
-	           true ? (0, _routerWarning2.default)(false, 'Accessing location properties from the first argument to `getComponent` and `getComponents` is deprecated. That argument is now the router state (`nextState`) rather than the location. To access the location, use `nextState.location`.') : void 0;
-	          return location[prop];
-	        }
-	      });
-	    };
-
-	    for (var prop in location) {
-	      var _ret = _loop(prop);
-
-	      if (_ret === 'continue') continue;
-	    }
-	  } else {
-	    nextStateWithLocation = _extends({}, nextState, location);
-	  }
+	  var nextStateWithLocation = (0, _makeStateWithLocation2.default)(nextState, location);
 
 	  getComponent.call(route, nextStateWithLocation, callback);
 	}
@@ -57124,7 +57897,61 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 663 */
+/* 667 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = makeStateWithLocation;
+
+	var _deprecateObjectProperties = __webpack_require__(636);
+
+	var _routerWarning = __webpack_require__(637);
+
+	var _routerWarning2 = _interopRequireDefault(_routerWarning);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function makeStateWithLocation(state, location) {
+	  if (("development") !== 'production' && _deprecateObjectProperties.canUseMembrane) {
+	    var stateWithLocation = _extends({}, state);
+
+	    // I don't use deprecateObjectProperties here because I want to keep the
+	    // same code path between development and production, in that we just
+	    // assign extra properties to the copy of the state object in both cases.
+
+	    var _loop = function _loop(prop) {
+	      if (!Object.prototype.hasOwnProperty.call(location, prop)) {
+	        return 'continue';
+	      }
+
+	      Object.defineProperty(stateWithLocation, prop, {
+	        get: function get() {
+	           true ? (0, _routerWarning2.default)(false, 'Accessing location properties directly from the first argument to `getComponent`, `getComponents`, `getChildRoutes`, and `getIndexRoute` is deprecated. That argument is now the router state (`nextState` or `partialNextState`) rather than the location. To access the location, use `nextState.location` or `partialNextState.location`.') : void 0;
+	          return location[prop];
+	        }
+	      });
+	    };
+
+	    for (var prop in location) {
+	      var _ret = _loop(prop);
+
+	      if (_ret === 'continue') continue;
+	    }
+
+	    return stateWithLocation;
+	  }
+
+	  return _extends({}, state, location);
+	}
+	module.exports = exports['default'];
+
+/***/ },
+/* 668 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57137,19 +57964,23 @@ var vendors_dashboard_worona =
 
 	exports.default = matchRoutes;
 
-	var _routerWarning = __webpack_require__(632);
+	var _AsyncUtils = __webpack_require__(664);
+
+	var _makeStateWithLocation = __webpack_require__(667);
+
+	var _makeStateWithLocation2 = _interopRequireDefault(_makeStateWithLocation);
+
+	var _PatternUtils = __webpack_require__(640);
+
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _AsyncUtils = __webpack_require__(660);
-
-	var _PatternUtils = __webpack_require__(637);
-
-	var _RouteUtils = __webpack_require__(631);
+	var _RouteUtils = __webpack_require__(634);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function getChildRoutes(route, location, callback) {
+	function getChildRoutes(route, location, paramNames, paramValues, callback) {
 	  if (route.childRoutes) {
 	    return [null, route.childRoutes];
 	  }
@@ -57160,7 +57991,14 @@ var vendors_dashboard_worona =
 	  var sync = true,
 	      result = void 0;
 
-	  route.getChildRoutes(location, function (error, childRoutes) {
+	  var partialNextState = {
+	    location: location,
+	    params: createParams(paramNames, paramValues)
+	  };
+
+	  var partialNextStateWithLocation = (0, _makeStateWithLocation2.default)(partialNextState, location);
+
+	  route.getChildRoutes(partialNextStateWithLocation, function (error, childRoutes) {
 	    childRoutes = !error && (0, _RouteUtils.createRoutes)(childRoutes);
 	    if (sync) {
 	      result = [error, childRoutes];
@@ -57174,11 +58012,18 @@ var vendors_dashboard_worona =
 	  return result; // Might be undefined.
 	}
 
-	function getIndexRoute(route, location, callback) {
+	function getIndexRoute(route, location, paramNames, paramValues, callback) {
 	  if (route.indexRoute) {
 	    callback(null, route.indexRoute);
 	  } else if (route.getIndexRoute) {
-	    route.getIndexRoute(location, function (error, indexRoute) {
+	    var partialNextState = {
+	      location: location,
+	      params: createParams(paramNames, paramValues)
+	    };
+
+	    var partialNextStateWithLocation = (0, _makeStateWithLocation2.default)(partialNextState, location);
+
+	    route.getIndexRoute(partialNextStateWithLocation, function (error, indexRoute) {
 	      callback(error, !error && (0, _RouteUtils.createRoutes)(indexRoute)[0]);
 	    });
 	  } else if (route.childRoutes) {
@@ -57188,7 +58033,7 @@ var vendors_dashboard_worona =
 	      });
 
 	      (0, _AsyncUtils.loopAsync)(pathless.length, function (index, next, done) {
-	        getIndexRoute(pathless[index], location, function (error, indexRoute) {
+	        getIndexRoute(pathless[index], location, paramNames, paramValues, function (error, indexRoute) {
 	          if (error || indexRoute) {
 	            var routes = [pathless[index]].concat(Array.isArray(indexRoute) ? indexRoute : [indexRoute]);
 	            done(error, routes);
@@ -57259,7 +58104,7 @@ var vendors_dashboard_worona =
 	          params: createParams(paramNames, paramValues)
 	        };
 
-	        getIndexRoute(route, location, function (error, indexRoute) {
+	        getIndexRoute(route, location, paramNames, paramValues, function (error, indexRoute) {
 	          if (error) {
 	            callback(error);
 	          } else {
@@ -57313,7 +58158,7 @@ var vendors_dashboard_worona =
 	      }
 	    };
 
-	    var result = getChildRoutes(route, location, onChildRoutes);
+	    var result = getChildRoutes(route, location, paramNames, paramValues, onChildRoutes);
 	    if (result) {
 	      onChildRoutes.apply(undefined, result);
 	    }
@@ -57362,7 +58207,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 664 */
+/* 669 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57373,25 +58218,25 @@ var vendors_dashboard_worona =
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _deprecateObjectProperties = __webpack_require__(635);
+	var _deprecateObjectProperties = __webpack_require__(636);
 
 	var _deprecateObjectProperties2 = _interopRequireDefault(_deprecateObjectProperties);
 
-	var _getRouteParams = __webpack_require__(665);
+	var _getRouteParams = __webpack_require__(670);
 
 	var _getRouteParams2 = _interopRequireDefault(_getRouteParams);
 
-	var _RouteUtils = __webpack_require__(631);
+	var _RouteUtils = __webpack_require__(634);
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
@@ -57523,14 +58368,14 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 665 */
+/* 670 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _PatternUtils = __webpack_require__(637);
+	var _PatternUtils = __webpack_require__(640);
 
 	/**
 	 * Extracts an object of params the given route cares about from
@@ -57541,13 +58386,11 @@ var vendors_dashboard_worona =
 
 	  if (!route.path) return routeParams;
 
-	  var paramNames = (0, _PatternUtils.getParamNames)(route.path);
-
-	  for (var p in params) {
-	    if (Object.prototype.hasOwnProperty.call(params, p) && paramNames.indexOf(p) !== -1) {
+	  (0, _PatternUtils.getParamNames)(route.path).forEach(function (p) {
+	    if (Object.prototype.hasOwnProperty.call(params, p)) {
 	      routeParams[p] = params[p];
 	    }
-	  }
+	  });
 
 	  return routeParams;
 	}
@@ -57556,7 +58399,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 666 */
+/* 671 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57568,7 +58411,7 @@ var vendors_dashboard_worona =
 	exports.createRouterObject = createRouterObject;
 	exports.createRoutingHistory = createRoutingHistory;
 
-	var _deprecateObjectProperties = __webpack_require__(635);
+	var _deprecateObjectProperties = __webpack_require__(636);
 
 	var _deprecateObjectProperties2 = _interopRequireDefault(_deprecateObjectProperties);
 
@@ -57593,7 +58436,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 667 */
+/* 672 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57602,15 +58445,19 @@ var vendors_dashboard_worona =
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _PropTypes = __webpack_require__(634);
+	var _invariant = __webpack_require__(632);
+
+	var _invariant2 = _interopRequireDefault(_invariant);
+
+	var _PropTypes = __webpack_require__(635);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57696,35 +58543,29 @@ var vendors_dashboard_worona =
 	    };
 	  },
 	  handleClick: function handleClick(event) {
-	    var allowTransition = true;
-
 	    if (this.props.onClick) this.props.onClick(event);
+
+	    if (event.defaultPrevented) return;
+
+	    !this.context.router ?  true ? (0, _invariant2.default)(false, '<Link>s rendered outside of a router context cannot navigate.') : (0, _invariant2.default)(false) : void 0;
 
 	    if (isModifiedEvent(event) || !isLeftClickEvent(event)) return;
 
-	    if (event.defaultPrevented === true) allowTransition = false;
-
-	    // If target prop is set (e.g. to "_blank") let browser handle link.
+	    // If target prop is set (e.g. to "_blank"), let browser handle link.
 	    /* istanbul ignore if: untestable with Karma */
-	    if (this.props.target) {
-	      if (!allowTransition) event.preventDefault();
-
-	      return;
-	    }
+	    if (this.props.target) return;
 
 	    event.preventDefault();
 
-	    if (allowTransition) {
-	      var _props = this.props;
-	      var to = _props.to;
-	      var query = _props.query;
-	      var hash = _props.hash;
-	      var state = _props.state;
+	    var _props = this.props;
+	    var to = _props.to;
+	    var query = _props.query;
+	    var hash = _props.hash;
+	    var state = _props.state;
 
-	      var location = createLocationDescriptor(to, { query: query, hash: hash, state: state });
+	    var location = createLocationDescriptor(to, { query: query, hash: hash, state: state });
 
-	      this.context.router.push(location);
-	    }
+	    this.context.router.push(location);
 	  },
 	  render: function render() {
 	    var _props2 = this.props;
@@ -57771,7 +58612,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 668 */
+/* 673 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57780,11 +58621,11 @@ var vendors_dashboard_worona =
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Link = __webpack_require__(667);
+	var _Link = __webpack_require__(672);
 
 	var _Link2 = _interopRequireDefault(_Link);
 
@@ -57804,7 +58645,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 669 */
+/* 674 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57815,15 +58656,15 @@ var vendors_dashboard_worona =
 
 	exports.default = withRouter;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _hoistNonReactStatics = __webpack_require__(628);
+	var _hoistNonReactStatics = __webpack_require__(631);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _PropTypes = __webpack_require__(634);
+	var _PropTypes = __webpack_require__(635);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57849,30 +58690,30 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 670 */
+/* 675 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Redirect = __webpack_require__(671);
+	var _Redirect = __webpack_require__(676);
 
 	var _Redirect2 = _interopRequireDefault(_Redirect);
 
-	var _InternalPropTypes = __webpack_require__(636);
+	var _InternalPropTypes = __webpack_require__(639);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57917,26 +58758,26 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 671 */
+/* 676 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _RouteUtils = __webpack_require__(631);
+	var _RouteUtils = __webpack_require__(634);
 
-	var _PatternUtils = __webpack_require__(637);
+	var _PatternUtils = __webpack_require__(640);
 
-	var _InternalPropTypes = __webpack_require__(636);
+	var _InternalPropTypes = __webpack_require__(639);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58024,28 +58865,28 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 672 */
+/* 677 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _RouteUtils = __webpack_require__(631);
+	var _RouteUtils = __webpack_require__(634);
 
-	var _InternalPropTypes = __webpack_require__(636);
+	var _InternalPropTypes = __webpack_require__(639);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58089,24 +58930,24 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 673 */
+/* 678 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _RouteUtils = __webpack_require__(631);
+	var _RouteUtils = __webpack_require__(634);
 
-	var _InternalPropTypes = __webpack_require__(636);
+	var _InternalPropTypes = __webpack_require__(639);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58151,18 +58992,18 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 674 */
+/* 679 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _InternalPropTypes = __webpack_require__(636);
+	var _InternalPropTypes = __webpack_require__(639);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58185,22 +59026,22 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 675 */
+/* 680 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -58258,18 +59099,18 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 676 */
+/* 681 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
@@ -58308,7 +59149,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 677 */
+/* 682 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58317,15 +59158,15 @@ var vendors_dashboard_worona =
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _useQueries = __webpack_require__(654);
+	var _useQueries = __webpack_require__(658);
 
 	var _useQueries2 = _interopRequireDefault(_useQueries);
 
-	var _createTransitionManager = __webpack_require__(657);
+	var _createTransitionManager = __webpack_require__(661);
 
 	var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
@@ -58364,22 +59205,22 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 678 */
+/* 683 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _RouterContext = __webpack_require__(664);
+	var _RouterContext = __webpack_require__(669);
 
 	var _RouterContext2 = _interopRequireDefault(_RouterContext);
 
-	var _routerWarning = __webpack_require__(632);
+	var _routerWarning = __webpack_require__(637);
 
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
@@ -58399,7 +59240,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 679 */
+/* 684 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58408,21 +59249,21 @@ var vendors_dashboard_worona =
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _createMemoryHistory = __webpack_require__(680);
+	var _createMemoryHistory = __webpack_require__(685);
 
 	var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
 
-	var _createTransitionManager = __webpack_require__(657);
+	var _createTransitionManager = __webpack_require__(661);
 
 	var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
-	var _RouteUtils = __webpack_require__(631);
+	var _RouteUtils = __webpack_require__(634);
 
-	var _RouterUtils = __webpack_require__(666);
+	var _RouterUtils = __webpack_require__(671);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58485,7 +59326,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 680 */
+/* 685 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58493,15 +59334,15 @@ var vendors_dashboard_worona =
 	exports.__esModule = true;
 	exports.default = createMemoryHistory;
 
-	var _useQueries = __webpack_require__(654);
+	var _useQueries = __webpack_require__(658);
 
 	var _useQueries2 = _interopRequireDefault(_useQueries);
 
-	var _useBasename = __webpack_require__(681);
+	var _useBasename = __webpack_require__(686);
 
 	var _useBasename2 = _interopRequireDefault(_useBasename);
 
-	var _createMemoryHistory = __webpack_require__(682);
+	var _createMemoryHistory = __webpack_require__(687);
 
 	var _createMemoryHistory2 = _interopRequireDefault(_createMemoryHistory);
 
@@ -58522,7 +59363,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 681 */
+/* 686 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58533,19 +59374,19 @@ var vendors_dashboard_worona =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(633);
+	var _warning = __webpack_require__(643);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _ExecutionEnvironment = __webpack_require__(642);
+	var _ExecutionEnvironment = __webpack_require__(646);
 
-	var _PathUtils = __webpack_require__(641);
+	var _PathUtils = __webpack_require__(645);
 
-	var _runTransitionHook = __webpack_require__(652);
+	var _runTransitionHook = __webpack_require__(656);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _deprecate = __webpack_require__(653);
+	var _deprecate = __webpack_require__(657);
 
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 
@@ -58685,7 +59526,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 682 */
+/* 687 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58696,19 +59537,19 @@ var vendors_dashboard_worona =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(633);
+	var _warning = __webpack_require__(643);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _PathUtils = __webpack_require__(641);
+	var _PathUtils = __webpack_require__(645);
 
-	var _Actions = __webpack_require__(640);
+	var _Actions = __webpack_require__(644);
 
-	var _createHistory = __webpack_require__(646);
+	var _createHistory = __webpack_require__(650);
 
 	var _createHistory2 = _interopRequireDefault(_createHistory);
 
@@ -58844,7 +59685,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 683 */
+/* 688 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58852,11 +59693,11 @@ var vendors_dashboard_worona =
 	exports.__esModule = true;
 	exports.default = useRouterHistory;
 
-	var _useQueries = __webpack_require__(654);
+	var _useQueries = __webpack_require__(658);
 
 	var _useQueries2 = _interopRequireDefault(_useQueries);
 
-	var _useBasename = __webpack_require__(681);
+	var _useBasename = __webpack_require__(686);
 
 	var _useBasename2 = _interopRequireDefault(_useBasename);
 
@@ -58872,7 +59713,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 684 */
+/* 689 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58881,11 +59722,11 @@ var vendors_dashboard_worona =
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _RouterContext = __webpack_require__(664);
+	var _RouterContext = __webpack_require__(669);
 
 	var _RouterContext2 = _interopRequireDefault(_RouterContext);
 
@@ -58927,18 +59768,18 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 685 */
+/* 690 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _createBrowserHistory = __webpack_require__(686);
+	var _createBrowserHistory = __webpack_require__(691);
 
 	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
 
-	var _createRouterHistory = __webpack_require__(687);
+	var _createRouterHistory = __webpack_require__(692);
 
 	var _createRouterHistory2 = _interopRequireDefault(_createRouterHistory);
 
@@ -58948,7 +59789,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 686 */
+/* 691 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58959,21 +59800,21 @@ var vendors_dashboard_worona =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(629);
+	var _invariant = __webpack_require__(632);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Actions = __webpack_require__(640);
+	var _Actions = __webpack_require__(644);
 
-	var _PathUtils = __webpack_require__(641);
+	var _PathUtils = __webpack_require__(645);
 
-	var _ExecutionEnvironment = __webpack_require__(642);
+	var _ExecutionEnvironment = __webpack_require__(646);
 
-	var _DOMUtils = __webpack_require__(643);
+	var _DOMUtils = __webpack_require__(647);
 
-	var _DOMStateStorage = __webpack_require__(644);
+	var _DOMStateStorage = __webpack_require__(648);
 
-	var _createDOMHistory = __webpack_require__(645);
+	var _createDOMHistory = __webpack_require__(649);
 
 	var _createDOMHistory2 = _interopRequireDefault(_createDOMHistory);
 
@@ -59133,7 +59974,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 687 */
+/* 692 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59146,7 +59987,7 @@ var vendors_dashboard_worona =
 	  return history;
 	};
 
-	var _useRouterHistory = __webpack_require__(683);
+	var _useRouterHistory = __webpack_require__(688);
 
 	var _useRouterHistory2 = _interopRequireDefault(_useRouterHistory);
 
@@ -59157,18 +59998,18 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 688 */
+/* 693 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _createHashHistory = __webpack_require__(639);
+	var _createHashHistory = __webpack_require__(642);
 
 	var _createHashHistory2 = _interopRequireDefault(_createHashHistory);
 
-	var _createRouterHistory = __webpack_require__(687);
+	var _createRouterHistory = __webpack_require__(692);
 
 	var _createRouterHistory2 = _interopRequireDefault(_createRouterHistory);
 
@@ -59178,7 +60019,7 @@ var vendors_dashboard_worona =
 	module.exports = exports['default'];
 
 /***/ },
-/* 689 */
+/* 694 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59188,7 +60029,7 @@ var vendors_dashboard_worona =
 	});
 	exports.routerMiddleware = exports.routerActions = exports.goForward = exports.goBack = exports.go = exports.replace = exports.push = exports.CALL_HISTORY_METHOD = exports.routerReducer = exports.LOCATION_CHANGE = exports.syncHistoryWithStore = undefined;
 
-	var _reducer = __webpack_require__(690);
+	var _reducer = __webpack_require__(695);
 
 	Object.defineProperty(exports, 'LOCATION_CHANGE', {
 	  enumerable: true,
@@ -59203,7 +60044,7 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	var _actions = __webpack_require__(691);
+	var _actions = __webpack_require__(696);
 
 	Object.defineProperty(exports, 'CALL_HISTORY_METHOD', {
 	  enumerable: true,
@@ -59248,11 +60089,11 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	var _sync = __webpack_require__(692);
+	var _sync = __webpack_require__(697);
 
 	var _sync2 = _interopRequireDefault(_sync);
 
-	var _middleware = __webpack_require__(693);
+	var _middleware = __webpack_require__(698);
 
 	var _middleware2 = _interopRequireDefault(_middleware);
 
@@ -59262,7 +60103,7 @@ var vendors_dashboard_worona =
 	exports.routerMiddleware = _middleware2['default'];
 
 /***/ },
-/* 690 */
+/* 695 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59306,7 +60147,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 691 */
+/* 696 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59348,7 +60189,7 @@ var vendors_dashboard_worona =
 	var routerActions = exports.routerActions = { push: push, replace: replace, go: go, goBack: goBack, goForward: goForward };
 
 /***/ },
-/* 692 */
+/* 697 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59361,7 +60202,7 @@ var vendors_dashboard_worona =
 
 	exports['default'] = syncHistoryWithStore;
 
-	var _reducer = __webpack_require__(690);
+	var _reducer = __webpack_require__(695);
 
 	var defaultSelectLocationState = function defaultSelectLocationState(state) {
 	  return state.routing;
@@ -59502,7 +60343,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 693 */
+/* 698 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59512,7 +60353,7 @@ var vendors_dashboard_worona =
 	});
 	exports['default'] = routerMiddleware;
 
-	var _actions = __webpack_require__(691);
+	var _actions = __webpack_require__(696);
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -59540,7 +60381,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 694 */
+/* 699 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59550,19 +60391,19 @@ var vendors_dashboard_worona =
 	});
 	exports.I18nextProvider = exports.Interpolate = exports.translate = exports.loadNamespaces = undefined;
 
-	var _translate = __webpack_require__(695);
+	var _translate = __webpack_require__(700);
 
 	var _translate2 = _interopRequireDefault(_translate);
 
-	var _interpolate = __webpack_require__(697);
+	var _interpolate = __webpack_require__(701);
 
 	var _interpolate2 = _interopRequireDefault(_interpolate);
 
-	var _I18nextProvider = __webpack_require__(698);
+	var _I18nextProvider = __webpack_require__(702);
 
 	var _I18nextProvider2 = _interopRequireDefault(_I18nextProvider);
 
-	var _loadNamespaces = __webpack_require__(699);
+	var _loadNamespaces = __webpack_require__(703);
 
 	var _loadNamespaces2 = _interopRequireDefault(_loadNamespaces);
 
@@ -59574,7 +60415,7 @@ var vendors_dashboard_worona =
 	exports.I18nextProvider = _I18nextProvider2.default;
 
 /***/ },
-/* 695 */
+/* 700 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59589,11 +60430,11 @@ var vendors_dashboard_worona =
 
 	exports.default = translate;
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _hoistNonReactStatics = __webpack_require__(696);
+	var _hoistNonReactStatics = __webpack_require__(631);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
@@ -59729,63 +60570,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 696 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2015, Yahoo! Inc.
-	 * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
-	 */
-	'use strict';
-
-	var REACT_STATICS = {
-	    childContextTypes: true,
-	    contextTypes: true,
-	    defaultProps: true,
-	    displayName: true,
-	    getDefaultProps: true,
-	    mixins: true,
-	    propTypes: true,
-	    type: true
-	};
-
-	var KNOWN_STATICS = {
-	    name: true,
-	    length: true,
-	    prototype: true,
-	    caller: true,
-	    arguments: true,
-	    arity: true
-	};
-
-	var isGetOwnPropertySymbolsAvailable = typeof Object.getOwnPropertySymbols === 'function';
-
-	module.exports = function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
-	    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
-	        var keys = Object.getOwnPropertyNames(sourceComponent);
-
-	        /* istanbul ignore else */
-	        if (isGetOwnPropertySymbolsAvailable) {
-	            keys = keys.concat(Object.getOwnPropertySymbols(sourceComponent));
-	        }
-
-	        for (var i = 0; i < keys.length; ++i) {
-	            if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]] && (!customStatics || !customStatics[keys[i]])) {
-	                try {
-	                    targetComponent[keys[i]] = sourceComponent[keys[i]];
-	                } catch (error) {
-
-	                }
-	            }
-	        }
-	    }
-
-	    return targetComponent;
-	};
-
-
-/***/ },
-/* 697 */
+/* 701 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59798,7 +60583,7 @@ var vendors_dashboard_worona =
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
@@ -59868,7 +60653,7 @@ var vendors_dashboard_worona =
 	exports.default = Interpolate;
 
 /***/ },
-/* 698 */
+/* 702 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59879,7 +60664,7 @@ var vendors_dashboard_worona =
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(299);
+	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
 
@@ -59939,7 +60724,7 @@ var vendors_dashboard_worona =
 	exports.default = I18nextProvider;
 
 /***/ },
-/* 699 */
+/* 703 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60018,7 +60803,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 700 */
+/* 704 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60028,7 +60813,7 @@ var vendors_dashboard_worona =
 	});
 	exports.utils = exports.effects = exports.CANCEL = exports.delay = exports.takeLatest = exports.takeEvery = exports.buffers = exports.channel = exports.eventChannel = exports.END = exports.runSaga = undefined;
 
-	var _runSaga = __webpack_require__(701);
+	var _runSaga = __webpack_require__(705);
 
 	Object.defineProperty(exports, 'runSaga', {
 	  enumerable: true,
@@ -60037,7 +60822,7 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	var _channel = __webpack_require__(706);
+	var _channel = __webpack_require__(710);
 
 	Object.defineProperty(exports, 'END', {
 	  enumerable: true,
@@ -60058,7 +60843,7 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	var _buffers = __webpack_require__(707);
+	var _buffers = __webpack_require__(711);
 
 	Object.defineProperty(exports, 'buffers', {
 	  enumerable: true,
@@ -60067,7 +60852,7 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	var _sagaHelpers = __webpack_require__(708);
+	var _sagaHelpers = __webpack_require__(712);
 
 	Object.defineProperty(exports, 'takeEvery', {
 	  enumerable: true,
@@ -60082,7 +60867,7 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	var _utils = __webpack_require__(702);
+	var _utils = __webpack_require__(706);
 
 	Object.defineProperty(exports, 'delay', {
 	  enumerable: true,
@@ -60097,15 +60882,15 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	var _middleware = __webpack_require__(709);
+	var _middleware = __webpack_require__(713);
 
 	var _middleware2 = _interopRequireDefault(_middleware);
 
-	var _effects = __webpack_require__(710);
+	var _effects = __webpack_require__(714);
 
 	var effects = _interopRequireWildcard(_effects);
 
-	var _utils2 = __webpack_require__(711);
+	var _utils2 = __webpack_require__(715);
 
 	var utils = _interopRequireWildcard(_utils2);
 
@@ -60118,7 +60903,7 @@ var vendors_dashboard_worona =
 	exports.utils = utils;
 
 /***/ },
-/* 701 */
+/* 705 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60128,9 +60913,9 @@ var vendors_dashboard_worona =
 	});
 	exports.runSaga = runSaga;
 
-	var _utils = __webpack_require__(702);
+	var _utils = __webpack_require__(706);
 
-	var _proc = __webpack_require__(703);
+	var _proc = __webpack_require__(707);
 
 	var _proc2 = _interopRequireDefault(_proc);
 
@@ -60148,7 +60933,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 702 */
+/* 706 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60347,7 +61132,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 703 */
+/* 707 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60358,17 +61143,17 @@ var vendors_dashboard_worona =
 	exports.TASK_CANCEL = exports.CHANNEL_END = exports.NOT_ITERATOR_ERROR = undefined;
 	exports.default = proc;
 
-	var _utils = __webpack_require__(702);
+	var _utils = __webpack_require__(706);
 
-	var _asap = __webpack_require__(704);
+	var _asap = __webpack_require__(708);
 
 	var _asap2 = _interopRequireDefault(_asap);
 
-	var _io = __webpack_require__(705);
+	var _io = __webpack_require__(709);
 
-	var _channel = __webpack_require__(706);
+	var _channel = __webpack_require__(710);
 
-	var _buffers = __webpack_require__(707);
+	var _buffers = __webpack_require__(711);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61049,7 +61834,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 704 */
+/* 708 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -61083,7 +61868,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 705 */
+/* 709 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61110,7 +61895,7 @@ var vendors_dashboard_worona =
 	exports.actionChannel = actionChannel;
 	exports.cancelled = cancelled;
 
-	var _utils = __webpack_require__(702);
+	var _utils = __webpack_require__(706);
 
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -61337,7 +62122,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 706 */
+/* 710 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61350,9 +62135,9 @@ var vendors_dashboard_worona =
 	exports.channel = channel;
 	exports.eventChannel = eventChannel;
 
-	var _utils = __webpack_require__(702);
+	var _utils = __webpack_require__(706);
 
-	var _buffers = __webpack_require__(707);
+	var _buffers = __webpack_require__(711);
 
 	var CHANNEL_END_TYPE = '@@redux-saga/CHANNEL_END';
 	var END = exports.END = { type: CHANNEL_END_TYPE };
@@ -61504,7 +62289,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 707 */
+/* 711 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61514,7 +62299,7 @@ var vendors_dashboard_worona =
 	});
 	exports.buffers = exports.BUFFER_OVERFLOW = undefined;
 
-	var _utils = __webpack_require__(702);
+	var _utils = __webpack_require__(706);
 
 	var BUFFER_OVERFLOW = exports.BUFFER_OVERFLOW = 'Channel\'s Buffer overflow!';
 
@@ -61574,7 +62359,7 @@ var vendors_dashboard_worona =
 	};
 
 /***/ },
-/* 708 */
+/* 712 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61588,11 +62373,11 @@ var vendors_dashboard_worona =
 	exports.takeEvery = takeEvery;
 	exports.takeLatest = takeLatest;
 
-	var _channel = __webpack_require__(706);
+	var _channel = __webpack_require__(710);
 
-	var _utils = __webpack_require__(702);
+	var _utils = __webpack_require__(706);
 
-	var _io = __webpack_require__(705);
+	var _io = __webpack_require__(709);
 
 	var done = { done: true, value: undefined };
 	var qEnd = {};
@@ -61704,7 +62489,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 709 */
+/* 713 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61714,13 +62499,13 @@ var vendors_dashboard_worona =
 	});
 	exports.default = sagaMiddlewareFactory;
 
-	var _utils = __webpack_require__(702);
+	var _utils = __webpack_require__(706);
 
-	var _proc = __webpack_require__(703);
+	var _proc = __webpack_require__(707);
 
 	var _proc2 = _interopRequireDefault(_proc);
 
-	var _channel = __webpack_require__(706);
+	var _channel = __webpack_require__(710);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61775,7 +62560,7 @@ var vendors_dashboard_worona =
 	}
 
 /***/ },
-/* 710 */
+/* 714 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61784,7 +62569,7 @@ var vendors_dashboard_worona =
 	  value: true
 	});
 
-	var _io = __webpack_require__(705);
+	var _io = __webpack_require__(709);
 
 	Object.defineProperty(exports, 'take', {
 	  enumerable: true,
@@ -61872,7 +62657,7 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 711 */
+/* 715 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61881,7 +62666,7 @@ var vendors_dashboard_worona =
 	  value: true
 	});
 
-	var _utils = __webpack_require__(702);
+	var _utils = __webpack_require__(706);
 
 	Object.defineProperty(exports, 'TASK', {
 	  enumerable: true,
@@ -61920,7 +62705,7 @@ var vendors_dashboard_worona =
 	  }
 	});
 
-	var _io = __webpack_require__(705);
+	var _io = __webpack_require__(709);
 
 	Object.defineProperty(exports, 'asEffect', {
 	  enumerable: true,
@@ -61930,10 +62715,10 @@ var vendors_dashboard_worona =
 	});
 
 /***/ },
-/* 712 */
+/* 716 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(710)
+	module.exports = __webpack_require__(714)
 
 /***/ }
 /******/ ]);
