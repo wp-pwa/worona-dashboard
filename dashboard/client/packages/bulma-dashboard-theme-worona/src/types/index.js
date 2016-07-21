@@ -1,0 +1,1 @@
+export const TOGGLE_MOBILE_MENU = 'bulma/TOGGLE_MOBILE_MENU';

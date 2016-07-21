@@ -1,8 +1,11 @@
 import express from 'express';
-import extensions from './extensions';
+import mongodb from 'express-mongo-db';
+import config from './config.json';
+import settings from './settings';
 
 const app = express();
 
-app.use('/extensions', extensions);
+app.use(mongodb(config.mongoUrl));
+app.use('/settings', settings);
 
 export default app;

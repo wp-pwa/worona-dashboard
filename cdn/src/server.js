@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import express from 'express';
-import { connect } from './mongo';
 import config from './config.json';
 
 function getApp() {
@@ -16,20 +15,13 @@ if (module.hot) {
   console.info('❌  Server-side HMR Not Supported.');
 }
 
-connect(config.mongoUrl, err => {
-  if (err) {
-    console.log('Unable to connect to Mongo.');
-    process.exit(1);
-  } else {
-    express()
-      .use((req, res) => getApp().handle(req, res))
-      .listen(config.port, error => {
-        if (error) {
-          console.error(err);
-          return;
-        }
-        console.log(`Listening at http://localhost:${config.port}`);
-      })
-    ;
-  }
-});
+export default express()
+  .use((req, res) => getApp().handle(req, res))
+  .listen(config.port, error => {
+    if (error) {
+      console.error(error);
+      return;
+    }
+    console.log(`Listening at http://localhost:${config.port}`);
+  })
+;
