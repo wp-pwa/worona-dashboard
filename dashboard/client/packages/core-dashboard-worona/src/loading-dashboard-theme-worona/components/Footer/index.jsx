@@ -6,10 +6,10 @@ export const Footer = () => (
     <title>Worona</title>
     <desc>Powered by Worona</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd">
+    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g id="iPhone-6" transform="translate(-111.000000, -609.000000)">
         <g id="Group" transform="translate(111.000000, 609.000000)">
-          <text id="powered-by-" fontFamily="Helvetica" fontSize="12" font-weight="normal" fill="#4A4A4A">
+          <text id="powered-by-" fontFamily="Helvetica" fontSize="12" fontWeight="normal" fill="#4A4A4A">
             <tspan x="0" y="18">powered by </tspan>
           </text>
           <g transform="translate(64.000000, 0.000000)">
