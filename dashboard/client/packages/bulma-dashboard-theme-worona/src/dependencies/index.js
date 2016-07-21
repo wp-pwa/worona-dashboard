@@ -5,7 +5,7 @@ export const store = {
 };
 
 export const types = {
-  get LOGOUT_SUCCEED() { return dep('accounts', 'actiontypes', 'LOGOUT_SUCCEED'); },
+  get LOGOUT_SUCCEED() { return dep('accounts', 'types', 'LOGOUT_SUCCEED'); },
 };
 
 export const actions = {
