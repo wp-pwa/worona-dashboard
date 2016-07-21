@@ -1,31 +1,11 @@
 {
   "name": "worona-core",
   "version": "1.0.0",
-  "description": "Worona core project",
-  "scripts": {
-    "start": "npm run client",
-    "server": "(cd worona-dashboard-server && meteor)",
-    "client": "node webpack-dev-server.js",
-    "dashboard": "(cd worona-dashboard-client && webpack-dev-server)",
-    "eslint": "eslint ./core ./dev --ext .js --ext .jsx",
-    "install:all": "npm install && npm run install:app-client && npm run install:dashboard-client && npm run install:dashboard-server",
-    "install:app-client": "(cd worona-app-client && npm install)",
-    "install:dashboard-client": "(cd worona-dashboard-client && npm install)",
-    "install:dashboard-server": "(cd worona-dashboard-server && npm install)",
-    "link": "npm run link:app-client && npm run link:dashboard-client && npm run link:dashboard-server",
-    "link:app-client": "(cd worona-app-client && npm link)",
-    "link:dashboard-client": "(cd worona-dashboard-client && npm link)",
-    "link:dashboard-server": "(cd worona-dashboard-server && npm link)",
-    "build:dashboard": "(cd worona-dashboard-client && webpack)",
-    "test": "ava worona*/**/tests/**/*.js --watch --verbose --require babel-register --require ./test-globals.js --require babel-polyfill",
-    "test-coverage": "ava worona*/**/tests/**/*.js --verbose --require babel-register --require ./test-globals.js --require babel-polyfill",
-    "coverage": "nyc --require babel-polyfill --require babel-register --cache npm run test-coverage",
-    "storybook": "start-storybook -p 9001",
-    "mongo": "(cd worona-dashboard-server && meteor mongo)"
-  },
+  "description": "Worona Project",
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/worona/worona-core.git"
+    "url": "git+https://github.com/worona/worona.git"
   },
   "keywords": [
     "worona",
@@ -35,12 +15,12 @@
     "mobile",
     "fbia"
   ],
-  "author": "Worona Labs SL",
+  "author": "Worona Labs SL | Luis Herranz @luisherranz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/worona/worona-core/issues"
+    "url": "https://github.com/worona/worona/issues"
   },
-  "homepage": "https://github.com/worona/worona-core#readme",
+  "homepage": "https://github.com/worona/worona#readme",
   "devDependencies": {
     "eslint": "^2.5.3",
     "eslint-config-airbnb": "^6.2.0",
