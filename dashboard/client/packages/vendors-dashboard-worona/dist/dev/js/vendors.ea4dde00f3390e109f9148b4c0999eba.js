@@ -32024,8 +32024,9 @@ var vendors_dashboard_worona =
 	    for (var subsub in deps[sub]) {
 	      mockedDeps[sub][subsub] = function(){};
 	    }
+	    deps[sub] = mockedDeps[sub];
 	  }
-	  return mockedDeps;
+	  return deps;
 	}
 
 	var worona = new Worona();
