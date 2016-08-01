@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import cn from 'classnames';
 import { Link } from 'react-router';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import Hero from '../../elements/Hero';
 import Input from '../../elements/Input';
 import Button from '../../elements/Button';
@@ -14,8 +15,7 @@ const submit = (values, dispatch) => {
   dispatch(deps.actions.createAccountRequested(values.name, values.email, values.password));
 };
 
-const Register = ({ fields: { name, email, password }, handleSubmit, waiting, failed, statusMessage,
-  errorMessage }) => (
+const Register = ({ handleSubmit, waiting, failed, statusMessage, errorMessage }) => (
   <div>
     <Hero title="Create an account" color="info"
       subtitle="Welcome to Worona. You are only one step away to start making apps."
@@ -25,21 +25,39 @@ const Register = ({ fields: { name, email, password }, handleSubmit, waiting, fa
       <div className="container has-text-centered">
 
         <form onSubmit={handleSubmit(submit)} className={styles.box}>
-          <Input type="text" placeholder="My name is..." icon="user" {...name}
-            help={cn(name.touched && name.error)}
-            color={cn(name.touched && name.error && 'danger')}
-          />
-          <Input type="email" placeholder="Email" icon="envelope" {...email}
-            help={cn(email.touched && email.error)}
-            color={cn(email.touched && email.error && 'danger')}
-          />
-          <Input type="password" placeholder="Password" icon="lock" {...password}
-            help={cn(password.touched && password.error)}
-            color={cn(password.touched && password.error && 'danger')}
+
+          <Field
+            name="name"
+            component={Input}
+            type="text"
+            placeholder="My name is..."
+            icon="user"
           />
 
-          <Button animate={cn(failed && 'shake')} color="success" center
-            size="medium" loading={waiting} disabled={waiting} className={styles.button}
+          <Field
+            name="email"
+            component={Input}
+            type="text"
+            placeholder="Email"
+            icon="envelope"
+          />
+
+          <Field
+            name="password"
+            component={Input}
+            type="password"
+            placeholder="Password"
+            icon="lock"
+          />
+
+          <Button
+            animate={cn(failed && 'shake')}
+            color="success"
+            center
+            size="medium"
+            loading={waiting}
+            disabled={waiting}
+            className={styles.button}
           >
             Create my account
           </Button>
@@ -65,7 +83,6 @@ const Register = ({ fields: { name, email, password }, handleSubmit, waiting, fa
 );
 
 Register.propTypes = {
-  fields: React.PropTypes.objectOf(React.PropTypes.object).isRequired,
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool,
   failed: React.PropTypes.bool,
@@ -73,16 +90,15 @@ Register.propTypes = {
   errorMessage: React.PropTypes.any,
 };
 
-const mapStateToProps = state => ({
+const RegisterWithForm = reduxForm({
+  form: 'register',
+  validate,
+  getFormState: state => state.bulma.reduxForm,
+})(Register);
+
+export default connect(state => ({
   waiting: deps.selectors.isCreatingAccount(state),
   statusMessage: deps.selectors.createAccountStatus(state),
   errorMessage: deps.selectors.createAccountError(state),
   failed: formFailed(state),
-});
-
-export default reduxForm({
-  form: 'register',
-  fields: ['name', 'email', 'password'],
-  validate,
-  getFormState: state => state.bulma.reduxForm,
-}, mapStateToProps)(Register);
+}))(RegisterWithForm);

@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router';
 import cn from 'classnames';
 import Hero from '../../elements/Hero';
@@ -14,8 +15,7 @@ const submit = (values, dispatch) => {
   dispatch(deps.actions.loginRequested(values.email, values.password));
 };
 
-const Login = ({ fields: { email, password }, handleSubmit, waiting, statusMessage,
-  errorMessage, t }) => (
+const Login = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) => (
   <div>
     <Hero title={t('Login')} color="info"
       subtitle="Welcome to Worona. You are only one step away to start making apps."
@@ -25,15 +25,29 @@ const Login = ({ fields: { email, password }, handleSubmit, waiting, statusMessa
       <div className="container has-text-centered">
 
         <form onSubmit={handleSubmit(submit)} className={styles.box}>
-          <Input type="email" placeholder="Email" icon="envelope" {...email}
-            help={cn(email.touched && email.error)}
-            color={cn(email.touched && email.error && 'danger')}
+
+          <Field
+            name="email"
+            component={Input}
+            type="text"
+            placeholder="Email"
+            icon="envelope"
           />
-          <Input type="password" placeholder="Password" icon="lock" {...password}
-            help={cn(password.touched && password.error)}
-            color={cn(password.touched && password.error && 'danger')}
+
+          <Field
+            name="password"
+            component={Input}
+            type="password"
+            placeholder="Password"
+            icon="lock"
           />
-          <Button color="success" center className={styles.button} size="medium" loading={waiting}
+
+          <Button
+            color="success"
+            center
+            className={styles.button}
+            size="medium"
+            loading={waiting}
             disabled={waiting}
           >
             Let me in!
@@ -59,7 +73,6 @@ const Login = ({ fields: { email, password }, handleSubmit, waiting, statusMessa
   </div>
 );
 Login.propTypes = {
-  fields: React.PropTypes.objectOf(React.PropTypes.object).isRequired,
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool.isRequired,
   statusMessage: React.PropTypes.any.isRequired,
@@ -67,17 +80,16 @@ Login.propTypes = {
   t: React.PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const LoginTranslated = translate('bulma')(Login);
+
+const LoginWithForm = reduxForm({
+  form: 'login',
+  validate,
+  getFormState: state => state.bulma.reduxForm,
+})(LoginTranslated);
+
+export default connect(state => ({
   waiting: deps.selectors.isLoggingIn(state),
   statusMessage: deps.selectors.loginStatus(state),
   errorMessage: deps.selectors.loginError(state),
-});
-
-const LoginTranslated = translate('bulma')(Login);
-
-export default reduxForm({
-  form: 'login',
-  fields: ['email', 'password'],
-  validate,
-  getFormState: state => state.bulma.reduxForm,
-}, mapStateToProps)(LoginTranslated);
+}))(LoginWithForm);

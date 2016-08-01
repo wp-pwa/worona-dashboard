@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import cn from 'classnames';
 import { Link } from 'react-router';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import Hero from '../../elements/Hero';
 import Input from '../../elements/Input';
 import Button from '../../elements/Button';
@@ -13,8 +14,7 @@ const submit = (values, dispatch) => {
   dispatch(deps.actions.createSiteRequested(values.title, values.url));
 };
 
-const CreateFirstApp = ({ fields: { title, url }, handleSubmit, waiting, statusMessage,
-  errorMessage }) => (
+const CreateFirstApp = ({ handleSubmit, waiting, statusMessage, errorMessage }) =>
   <div>
     <Hero title="Now, create your first app" color="info"
       subtitle="Just enter the title and your WordPress url and we will do the rest."
@@ -24,16 +24,29 @@ const CreateFirstApp = ({ fields: { title, url }, handleSubmit, waiting, statusM
       <div className="container has-text-centered">
 
         <form onSubmit={handleSubmit(submit)} className={styles.box}>
-          <Input type="text" placeholder="App Title" icon="info-circle" {...title}
-            help={cn(title.touched && title.error)}
-            color={cn(title.touched && title.error && 'danger')}
-          />
-          <Input type="url" placeholder="Your WordPress URL" icon="wordpress" {...url}
-            help={cn(url.touched && url.error)}
-            color={cn(url.touched && url.error && 'danger')}
+
+          <Field
+            name="title"
+            component={Input}
+            type="text"
+            placeholder="App Title"
+            icon="info-circle"
           />
 
-          <Button color="success" center size="medium" loading={waiting} disabled={waiting}
+          <Field
+            name="url"
+            component={Input}
+            type="text"
+            placeholder="Your WordPress URL"
+            icon="wordpress"
+          />
+
+          <Button
+            color="success"
+            center
+            size="medium"
+            loading={waiting}
+            disabled={waiting}
             className={styles.button}
           >
             Create the app
@@ -56,11 +69,9 @@ const CreateFirstApp = ({ fields: { title, url }, handleSubmit, waiting, statusM
 
       </div>
     </section>
-  </div>
-);
+  </div>;
 
 CreateFirstApp.propTypes = {
-  fields: React.PropTypes.objectOf(React.PropTypes.object).isRequired,
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool,
   failed: React.PropTypes.bool,
@@ -68,15 +79,15 @@ CreateFirstApp.propTypes = {
   errorMessage: React.PropTypes.any,
 };
 
-const mapStateToProps = state => ({
-  waiting: deps.selectors.isCreatingSite(state),
-  statusMessage: deps.selectors.createSiteStatus(state),
-  errorMessage: deps.selectors.createSiteError(state),
-});
-
-export default reduxForm({
+const CreateFirstAppWithForm = reduxForm({
   form: 'createFirstApp',
   fields: ['title', 'url'],
   validate,
   getFormState: state => state.bulma.reduxForm,
-}, mapStateToProps)(CreateFirstApp);
+})(CreateFirstApp);
+
+export default connect(state => ({
+  waiting: deps.selectors.isCreatingSite(state),
+  statusMessage: deps.selectors.createSiteStatus(state),
+  errorMessage: deps.selectors.createSiteError(state),
+}))(CreateFirstAppWithForm);
