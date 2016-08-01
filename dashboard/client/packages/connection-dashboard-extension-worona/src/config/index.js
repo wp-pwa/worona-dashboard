@@ -1,2 +1,2 @@
-export const url = 'ws://localhost:3000/websocket';
+export const url = 'wss://worona.eu.meteorapp.com/websocket';
 export const timeout = 10000;
