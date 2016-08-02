@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "source mongo.sh && meteor",
-    "deploy": "DEPLOY_HOSTNAME=eu-west-1.galaxy-deploy.meteor.com meteor deploy worona.eu.meteorapp.com --settings settings-production.json"
+    "deploy": "DEPLOY_HOSTNAME=eu-west-1.galaxy-deploy.meteor.com meteor deploy meteor.worona.io --settings settings-production.json"
   },
   "repository": {
     "type": "git",

@@ -119,8 +119,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       title: 'Worona Dashboard (DEV)',
-      template: path.join(__dirname, 'includes', 'index.html'),
-      favicon: path.join(__dirname, 'includes', 'favicon.png'),
+      template: path.join(__dirname, 'html', 'index.html'),
+      favicon: path.join(__dirname, 'html', 'favicon.png'),
       vendorsFile: 'packages/vendors-dashboard-worona/dist/dev/js/' + vendorsFile,
       devServer: 'https://localhost:4000',
       window: {

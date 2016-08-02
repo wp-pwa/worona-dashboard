@@ -1,20 +1,18 @@
-/*eslint-disable */
+/* eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
-var vendors = require('./packages/vendors-dashboard-worona/package.json').worona.prod.main;
-var vendorsFile = /^.+\/(.+\.js)$/.exec(vendors)[1];
+var packageJson = require('./package.json');
+var worona = packageJson.worona;
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 
 module.exports = {
   entry: {
-    core: [
-      path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'index.js'),
-    ],
+    main: ['./src/index.js'],
   },
   output: {
     path: path.join(__dirname, 'dist', 'prod'),
-    filename: 'packages/core-dashboard-worona/dist/prod/js/core.[hash].js',
+    filename: 'js/core.[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 32,
   },
@@ -22,13 +20,8 @@ module.exports = {
     loaders: [
       {
         test: /packages\/.+-worona\/src\/index\.js$/,
-        loader: 'bundle-loader',
-        query: {
-          lazy: true,
-          name: 'packages/[1][2]/dist/prod/js/[1]',
-          regExp: 'packages\\/([\\w]+)([\\w\\-]+)'
-        },
-        exclude: /(core-dashboard-worona|vendors-dashboard-worona)/,
+        loader: 'ignore-loader',
+        exclude: /(core-dashboard-worona)/,
       },
       {
         test: /\.jsx?$/,
@@ -56,8 +49,7 @@ module.exports = {
         test: /\.(png|jpg|gif)$/,
         loader: 'file-loader',
         query: {
-          name: 'packages/[1]/dist/prod/images/[name].[hash].[ext]',
-          regExp: 'packages\\/([^\\/]+)\\/',
+          name: 'images/[name].[hash].[ext]',
         },
       },
       {
@@ -66,24 +58,21 @@ module.exports = {
         query: {
           limit: 10000,
           minetype: 'application/font-woff',
-          name: 'packages/[1]/dist/prod/fonts/[name].[hash].[ext]',
-          regExp: 'packages\\/([^\\/]+)\\/',
+          name: 'fonts/[name].[hash].[ext]',
         },
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
         query: {
-          name: 'packages/[1]/dist/prod/fonts/[name].[hash].[ext]',
-          regExp: 'packages\\/([^\\/]+)\\/',
+          name: 'fonts/[name].[hash].[ext]',
         },
       },
       {
         test: /locales\/.+\.json$/,
         loader: 'bundle-loader',
         query: {
-          name: 'packages/[1]/dist/prod/locales/[name]',
-          regExp: 'packages\\/([^\\/]+)\\/',
+          name: 'locales/[name]',
         }
       },
       {
@@ -92,48 +81,49 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-  },
-  devServer: {
-		contentBase: path.join(__dirname, 'dist', 'prod'),
-    outputPath: path.join(__dirname),
-		noInfo: false,
-		hot: false,
-		inline: false,
-    port: 4000,
-    https: true,
-    compress: true,
-    historyApiFallback: true,
-	},
-  postcss: function () {
-    return [require('postcss-cssnext')()];
+  resolveLoader: {
+    root: path.join(__dirname, 'node_modules'),
   },
   plugins: [
+    new webpack.DllReferencePlugin({
+      context: '../..',
+      manifest: require('./dist/prod/vendors/vendors-manifest.json'),
+    }),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
       inject: false,
-      title: 'Worona Dashboard',
-      template: path.join(__dirname, 'html', 'index.html'),
-      favicon: path.join(__dirname, 'html', 'favicon.png'),
-      vendorsFile: 'packages/vendors-dashboard-worona/dist/prod/js/' + vendorsFile,
+      title: 'Worona Dashboard (DEV)',
+      template: path.join(__dirname, '..', '..', 'html', 'index.html'),
+      favicon: path.join(__dirname, '..', '..', 'html', 'favicon.png'),
+      chunkPrefix: 'packages/core-dashboard-worona/dist/dev/',
+      vendorsFile: 'packages/' + worona.prod.vendors.main,
       window: {
         publicPath: 'https://cdn.worona.io/',
       },
       appMountId: 'root',
       minify: { preserveLineBreaks: true, collapseWhitespace: true },
     }),
-    new webpack.DllReferencePlugin({
-      context: '.',
-      manifest: require('./packages/vendors-dashboard-worona/dist/prod/vendors-manifest.json'),
-    }),
-    new CopyWebpackPlugin([
-      { from: './packages/vendors-dashboard-worona/' + vendors, to: 'packages/vendors-dashboard-worona/dist/prod/js', flatten: true },
-    ], {
-      copyUnmodified: true,
+    new StatsWriterPlugin({
+      filename: '../../package.json',
+      fields: ['chunks'],
+      transform: function (data) {
+        worona.prod = worona.prod || {};
+        worona.prod.files = [ worona.prod.vendors.files[0] ];
+        data.chunks.forEach(chunk => chunk.files.forEach((file, index) => {
+            const chunkName = chunk.names[index];
+            if (chunkName === 'main') {
+              worona.prod.main = 'dist/prod/' + file;
+            }
+            worona.prod.files.push({
+              file: packageJson.name + '/dist/prod/' + file,
+              hash: chunk.hash,
+              chunkName: chunkName });
+          }));
+        return JSON.stringify(packageJson, null, 2);
+      }
     }),
   ],
 };
