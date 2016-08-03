@@ -29029,7 +29029,7 @@ var vendors_dashboard_worona =
 
 	var worona = new Worona();
 
-	if (typeof window !== 'undefined') window.worona = worona;
+	if (typeof window !== 'undefined') window.woronaDeps = worona;
 
 	module.exports = {
 	  default: worona,
