@@ -85,7 +85,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "https://cdn.worona.io/packages/core-dashboard-worona/dist/dev/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -196,10 +196,8 @@
 	  return function (Component) {
 	    return _UsersLuisherranzCodeWoronaDashboardClientNode_modulesReactTransformHmrLibIndexJs2(_UsersLuisherranzCodeWoronaDashboardClientNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
 	  };
-	}
-
-	/* eslint-disable react/prefer-stateless-function, camelcase, no-undef */
-	__webpack_require__.p = window.publicPath;
+	} /* eslint-disable react/prefer-stateless-function, camelcase, no-undef */
+	// __webpack_public_path__ = window.publicPath;
 
 	(0, _woronaDeps.addPackage)('build', build);
 	(0, _woronaDeps.addPackage)('loading', loading);

@@ -1,14 +1,14 @@
 {
   "name": "core-dashboard-worona",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "Core Package of Worona Dashboard",
   "main": "dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js",
   "scripts": {
     "clean": "rimraf dist",
     "clean:dev": "rimraf dist/dev",
     "clean:prod": "rimraf dist/prod",
-    "clean:core:dev": "rimraf dist/dev/js && rimraf dist/dev/locales",
-    "clean:core:prod": "rimraf dist/prod/js && rimraf dist/dev/locales",
+    "clean:core:dev": "rimraf dist/dev/js && rimraf dist/dev/locales && rimraf dist/dev/html",
+    "clean:core:prod": "rimraf dist/prod/js && rimraf dist/prod/locales && rimraf dist/prod/html",
     "clean:vendors:dev": "rimraf dist/dev/vendors",
     "clean:vendors:prod": "rimraf dist/prod/vendors",
     "build:core:dev": "npm run clean:core:dev && webpack --progress --config webpack.dev.js",
@@ -74,8 +74,8 @@
           "chunkName": "vendors"
         },
         {
-          "file": "core-dashboard-worona/dist/dev/js/core.75382dbed69f256c581356ae9b7344c2.js",
-          "hash": "75382dbed69f256c581356ae9b7344c2",
+          "file": "core-dashboard-worona/dist/dev/js/core.af867b8b41f82200b31c16928c04a965.js",
+          "hash": "af867b8b41f82200b31c16928c04a965",
           "chunkName": "main"
         },
         {
@@ -89,7 +89,7 @@
           "chunkName": "locales/es"
         }
       ],
-      "main": "dist/dev/js/core.75382dbed69f256c581356ae9b7344c2.js"
+      "main": "dist/dev/js/core.af867b8b41f82200b31c16928c04a965.js"
     },
     "prod": {
       "vendors": {
@@ -109,8 +109,8 @@
           "chunkName": "vendors"
         },
         {
-          "file": "core-dashboard-worona/dist/prod/js/core.97f2cbfcbbb502449f2447f19bf0501c.js",
-          "hash": "97f2cbfcbbb502449f2447f19bf0501c",
+          "file": "core-dashboard-worona/dist/prod/js/core.a931740e06f31aafc3b3e761284f3d41.js",
+          "hash": "a931740e06f31aafc3b3e761284f3d41",
           "chunkName": "main"
         },
         {
@@ -124,10 +124,11 @@
           "chunkName": "locales/en"
         }
       ],
-      "main": "dist/prod/js/core.97f2cbfcbbb502449f2447f19bf0501c.js"
+      "main": "dist/prod/js/core.a931740e06f31aafc3b3e761284f3d41.js"
     }
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^3.0.1",
     "html-webpack-plugin": "^2.22.0",
     "ignore-loader": "^0.1.1",
     "rimraf": "^2.5.4",

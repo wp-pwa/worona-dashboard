@@ -5,6 +5,7 @@ var packageJson = require('./package.json');
 var worona = packageJson.worona;
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -12,6 +13,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist', 'dev'),
+    publicPath: 'https://cdn.worona.io/packages/core-dashboard-worona/dist/dev/',
     filename: 'js/core.[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 32,
@@ -94,15 +96,11 @@ module.exports = {
     }),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('development') } }),
     new HtmlWebpackPlugin({
+      filename: 'html/index.html',
       inject: false,
       title: 'Worona Dashboard (DEV)',
-      template: path.join(__dirname, '..', '..', 'html', 'index.html'),
-      favicon: path.join(__dirname, '..', '..', 'html', 'favicon.png'),
-      chunkPrefix: 'packages/core-dashboard-worona/dist/dev/',
-      vendorsFile: 'packages/' + worona.dev.vendors.main,
-      window: {
-        publicPath: 'https://cdn.worona.io/',
-      },
+      template: path.join(__dirname, 'html', 'index.html'),
+      vendorsFile: 'https://cdn.worona.io/packages/' + worona.dev.vendors.main,
       appMountId: 'root',
       minify: { preserveLineBreaks: true, collapseWhitespace: true },
     }),
@@ -125,5 +123,6 @@ module.exports = {
         return JSON.stringify(packageJson, null, 2);
       }
     }),
+    new CopyWebpackPlugin([{ from: 'html/favicon.png', to: 'html/favicon.png' }]),
   ],
 };
