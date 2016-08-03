@@ -65,7 +65,7 @@
             "chunkName": "vendors"
           }
         ],
-        "main": "core-dashboard-worona/dist/dev/vendors/vendors.fb245b070431d7bbe2c2f9531c6051a6.js"
+        "main": "dist/dev/vendors/vendors.fb245b070431d7bbe2c2f9531c6051a6.js"
       },
       "files": [
         {
@@ -100,7 +100,7 @@
             "chunkName": "vendors"
           }
         ],
-        "main": "core-dashboard-worona/dist/prod/vendors/vendors.69ad6283db22367a408ad903354e6339.js"
+        "main": "dist/prod/vendors/vendors.69ad6283db22367a408ad903354e6339.js"
       },
       "files": [
         {

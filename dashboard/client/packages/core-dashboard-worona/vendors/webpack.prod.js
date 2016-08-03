@@ -38,7 +38,7 @@ module.exports = {
         data.chunks.forEach(chunk => chunk.files.forEach((file, index) => {
             const chunkName = chunk.names[index];
             if (chunkName === 'vendors') {
-              worona.prod.vendors.main = packageJson.name + '/dist/prod/' + file;
+              worona.prod.vendors.main = 'dist/prod/' + file;
             }
             worona.prod.vendors.files.push({
               file: packageJson.name + '/dist/prod/' + file,
