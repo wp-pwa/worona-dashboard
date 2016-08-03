@@ -102,6 +102,7 @@ module.exports = {
       template: path.join(__dirname, 'html', 'index.html'),
       vendorsFile: 'https://cdn.worona.io/packages/' + worona.prod.vendors.main,
       appMountId: 'root',
+      window: { __worona__: { prod: true, remote: true } },
       minify: { preserveLineBreaks: true, collapseWhitespace: true },
     }),
     new StatsWriterPlugin({

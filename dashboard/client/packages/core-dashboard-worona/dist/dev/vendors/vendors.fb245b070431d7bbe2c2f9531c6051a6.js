@@ -28934,8 +28934,27 @@ var vendors_dashboard_worona =
 	var omitBy = __webpack_require__(436);
 	var map = __webpack_require__(450);
 
+	function checkWindow(variable) {
+	  if (typeof window !== 'undefined')
+	    return !!window[variable];
+	  return false;
+	}
+
+	function checkWorona(variable) {
+	  if (typeof window !== 'undefined' && typeof window.__worona__ !== 'undefined')
+	    return !!window.__worona__[variable];
+	  return false;
+	}
+
 	var Worona = function() {
 	  this._packages = {};
+	  this.isTest = typeof window === 'undefined';
+	  this.isDev = !checkWorona('prod');
+	  this.isProd = checkWorona('prod');
+	  this.isLocal = !checkWorona('remote');
+	  this.isRemote = checkWorona('remote');
+	  this.isWeb = !checkWindow('cordova');
+	  this.isCordova = checkWindow('cordova');
 	}
 
 	Worona.prototype.addPackage = function(name, pkg) {
@@ -29029,7 +29048,7 @@ var vendors_dashboard_worona =
 
 	var worona = new Worona();
 
-	if (typeof window !== 'undefined') window.woronaDeps = worona;
+	if (typeof window !== 'undefined') window.worona = worona;
 
 	module.exports = {
 	  default: worona,
@@ -29042,6 +29061,13 @@ var vendors_dashboard_worona =
 	  getSagas: worona.getSagas.bind(worona),
 	  dep: worona.dep.bind(worona),
 	  mock: worona.mock,
+	  isTest: worona.isTest,
+	  isDev: worona.isDev,
+	  isProd: worona.isProd,
+	  isLocal: worona.isLocal,
+	  isRemote: worona.isRemote,
+	  isWeb: worona.isWeb,
+	  isCordova: worona.isCordova,
 	};
 
 
