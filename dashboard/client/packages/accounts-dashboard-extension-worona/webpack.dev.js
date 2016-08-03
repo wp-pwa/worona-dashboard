@@ -3,7 +3,6 @@ var path = require('path');
 var webpack = require('webpack');
 var packageJson = require('./package.json');
 var worona = packageJson.worona;
-var packageName = packageJson.name;
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 
 module.exports = {
@@ -12,7 +11,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist', 'dev'),
-    publicPath: 'https://cdn.worona.io/packages/' + packageName + '/dist/dev/',
+    publicPath: 'https://cdn.worona.io/packages/' + packageJson.name + '/dist/dev/',
     filename: 'js/' + worona.slug + '.' + worona.service + '.' + worona.type + '.[chunkhash].js',
     library: worona.slug + '_' + worona.service + '_' + worona.type,
     libraryTarget: 'commonjs2',
@@ -56,8 +55,8 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('development') } }),
     new webpack.DllReferencePlugin({
-      context: path.join(__dirname),
-      manifest: require('./node_modules/vendors-dashboard-worona/dist/dev/vendors-manifest.json')
+      context: '../..',
+      manifest: require('../core-dashboard-worona/dist/dev/vendors/vendors-manifest.json')
     }),
     new StatsWriterPlugin({
       filename: '../../package.json',
@@ -70,7 +69,7 @@ module.exports = {
               worona.dev.main = 'dist/dev/' + file;
             }
             worona.dev.files.push({
-              file: packageName + '/dist/dev/' + file,
+              file: packageJson.name + '/dist/dev/' + file,
               hash: chunk.hash,
               chunkName: chunkName });
           }));
