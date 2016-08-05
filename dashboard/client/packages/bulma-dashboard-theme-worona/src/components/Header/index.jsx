@@ -32,7 +32,6 @@ const Header = ({ items, toggle, active }) => (
         <VelocityTransitionGroup
           enter={{ animation: 'slideDown', duration: 150 }}
           leave={{ animation: 'slideUp', duration: 150 }}
-          duration={300}
         >
           {active ? <Menu items={items} active={active} /> : null}
         </VelocityTransitionGroup>
