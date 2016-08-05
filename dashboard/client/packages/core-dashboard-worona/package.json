@@ -1,6 +1,6 @@
 {
   "name": "core-dashboard-worona",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "Core Package of Worona Dashboard",
   "main": "dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js",
   "scripts": {
@@ -60,17 +60,17 @@
       "vendors": {
         "files": [
           {
-            "file": "core-dashboard-worona/dist/dev/vendors/vendors.20041cb18cb10c7f4a5f530238c43665.js",
-            "hash": "20041cb18cb10c7f4a5f530238c43665",
+            "file": "core-dashboard-worona/dist/dev/vendors/vendors.543d64e814291e9a6eefd3f86bd5d346.js",
+            "hash": "543d64e814291e9a6eefd3f86bd5d346",
             "chunkName": "vendors"
           }
         ],
-        "main": "core-dashboard-worona/dist/dev/vendors/vendors.20041cb18cb10c7f4a5f530238c43665.js"
+        "main": "core-dashboard-worona/dist/dev/vendors/vendors.543d64e814291e9a6eefd3f86bd5d346.js"
       },
       "files": [
         {
-          "file": "core-dashboard-worona/dist/dev/vendors/vendors.20041cb18cb10c7f4a5f530238c43665.js",
-          "hash": "20041cb18cb10c7f4a5f530238c43665",
+          "file": "core-dashboard-worona/dist/dev/vendors/vendors.543d64e814291e9a6eefd3f86bd5d346.js",
+          "hash": "543d64e814291e9a6eefd3f86bd5d346",
           "chunkName": "vendors"
         },
         {
@@ -95,17 +95,17 @@
       "vendors": {
         "files": [
           {
-            "file": "core-dashboard-worona/dist/prod/vendors/vendors.3da6ffe57984343b6c349ad1c3a747ad.js",
-            "hash": "3da6ffe57984343b6c349ad1c3a747ad",
+            "file": "core-dashboard-worona/dist/prod/vendors/vendors.b8023832f9df7e2fc1236ad08c666cb6.js",
+            "hash": "b8023832f9df7e2fc1236ad08c666cb6",
             "chunkName": "vendors"
           }
         ],
-        "main": "core-dashboard-worona/dist/prod/vendors/vendors.3da6ffe57984343b6c349ad1c3a747ad.js"
+        "main": "core-dashboard-worona/dist/prod/vendors/vendors.b8023832f9df7e2fc1236ad08c666cb6.js"
       },
       "files": [
         {
-          "file": "core-dashboard-worona/dist/prod/vendors/vendors.3da6ffe57984343b6c349ad1c3a747ad.js",
-          "hash": "3da6ffe57984343b6c349ad1c3a747ad",
+          "file": "core-dashboard-worona/dist/prod/vendors/vendors.b8023832f9df7e2fc1236ad08c666cb6.js",
+          "hash": "b8023832f9df7e2fc1236ad08c666cb6",
           "chunkName": "vendors"
         },
         {
