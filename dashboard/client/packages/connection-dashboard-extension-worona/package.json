@@ -70,6 +70,7 @@
   "devDependencies": {
     "rimraf": "^2.5.4",
     "webpack": "^1.13.1",
+    "worona-packages": "^1.0.0",
     "ws": "^1.1.0"
   }
 }
