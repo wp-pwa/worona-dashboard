@@ -131,7 +131,7 @@ module.exports = {
       manifest: require('./packages/vendors-dashboard-worona/dist/prod/vendors-manifest.json'),
     }),
     new CopyWebpackPlugin([
-      { from: './packages/vendors-dashboard-worona/' + vendors, to: 'packages/vendors-dashboard-worona/dist/prod/js', flatten: true },
+      { from: './packages/core-dashboard-worona/vendors' + vendors, to: 'packages/core-dashboard-worona/dist/prod/vendors', flatten: true },
     ], {
       copyUnmodified: true,
     }),

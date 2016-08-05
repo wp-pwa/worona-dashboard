@@ -1,7 +1,7 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
-var vendors = require('./packages/vendors-dashboard-worona/package.json').worona.dev.main;
+var vendors = require('./packages/core-dashboard-worona/package.json').worona.dev.vendors.main;
 var vendorsFile = /^.+\/(.+\.js)$/.exec(vendors)[1];
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -121,7 +121,7 @@ module.exports = {
       title: 'Worona Dashboard (DEV)',
       template: path.join(__dirname, 'html', 'index.html'),
       favicon: path.join(__dirname, 'html', 'favicon.png'),
-      vendorsFile: 'packages/vendors-dashboard-worona/dist/dev/js/' + vendorsFile,
+      vendorsFile: 'packages/core-dashboard-worona/dist/dev/vendors/' + vendorsFile,
       devServer: 'https://localhost:4000',
       window: {
         publicPath: 'https://localhost:4000/',
@@ -131,10 +131,10 @@ module.exports = {
     }),
     new webpack.DllReferencePlugin({
       context: '.',
-      manifest: require('./packages/vendors-dashboard-worona/dist/dev/vendors-manifest.json'),
+      manifest: require('./packages/core-dashboard-worona/dist/dev/vendors/vendors-manifest.json'),
     }),
     new CopyWebpackPlugin([
-      { from: './packages/vendors-dashboard-worona/' + vendors, to: 'packages/vendors-dashboard-worona/dist/dev/js', flatten: true },
+      { from: './packages/core-dashboard-worona/dist/dev/vendors/', to: 'packages/core-dashboard-worona/dist/dev/vendors' },
     ], {
       copyUnmodified: true,
     }),
