@@ -5,6 +5,7 @@ var vendors = require('./vendors.json');
 var packageJson = require('../package.json');
 var worona = packageJson.worona;
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
+var FixModuleIdAndChunkIdPlugin = require('fix-moduleid-and-chunkid-plugin');
 
 module.exports = {
   entry: {
@@ -29,6 +30,7 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new FixModuleIdAndChunkIdPlugin(),
     new StatsWriterPlugin({
       filename: '../../package.json',
       fields: ['chunks'],
@@ -38,7 +40,7 @@ module.exports = {
         data.chunks.forEach(chunk => chunk.files.forEach((file, index) => {
             const chunkName = chunk.names[index];
             if (chunkName === 'vendors') {
-              worona.prod.vendors.main = 'dist/prod/' + file;
+              worona.prod.vendors.main = packageJson.name + '/dist/prod/' + file;
             }
             worona.prod.vendors.files.push({
               file: packageJson.name + '/dist/prod/' + file,
