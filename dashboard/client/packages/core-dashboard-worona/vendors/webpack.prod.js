@@ -13,7 +13,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '..', 'dist', 'prod'),
-    filename: 'vendors/vendors.[chunkhash].js',
+    filename: 'vendors/vendors.dashboard.[chunkhash].js',
     library: 'vendors_dashboard_worona',
     hashDigestLength: 32,
   },

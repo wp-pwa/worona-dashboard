@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist', 'dev'),
     publicPath: 'https://cdn.worona.io/packages/core-dashboard-worona/dist/dev/',
-    filename: 'js/core.[chunkhash].js',
+    filename: 'js/core.dashboard.[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 32,
   },
@@ -114,7 +114,7 @@ module.exports = {
         data.chunks.forEach(chunk => chunk.files.forEach((file, index) => {
             const chunkName = chunk.names[index];
             if (chunkName === 'main') {
-              worona.dev.main = 'dist/dev/' + file;
+              worona.dev.main = packageJson.name + '/dist/dev/' + file;
             }
             worona.dev.files.push({
               file: packageJson.name + '/dist/dev/' + file,
