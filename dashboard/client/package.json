@@ -52,7 +52,7 @@
     "redux": "^3.5.2",
     "redux-saga": "^0.10.5",
     "reselect": "^2.5.1",
-    "worona-deps": "^1.4.0"
+    "worona-deps": "^1.4.1"
   },
   "devDependencies": {
     "ava": "^0.15.1",

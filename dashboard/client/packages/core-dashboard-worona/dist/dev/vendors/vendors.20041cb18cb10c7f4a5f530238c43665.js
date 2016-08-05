@@ -29281,7 +29281,7 @@ var vendors_dashboard_worona =
 	var omitBy = __webpack_require__("08fc70332265ca6fa7f08fafdb4ddadb");
 	var map = __webpack_require__("1d1e2fafdfa526e25062a685a208eb95");
 
-	function checkWindow(variable) {
+	function checkGlobal(variable) {
 	  if (typeof window !== 'undefined')
 	    return !!window[variable];
 	  return false;
@@ -29300,8 +29300,8 @@ var vendors_dashboard_worona =
 	  this.isProd = checkWorona('prod');
 	  this.isLocal = !checkWorona('remote');
 	  this.isRemote = checkWorona('remote');
-	  this.isWeb = !checkWindow('cordova');
-	  this.isCordova = checkWindow('cordova');
+	  this.isWeb = !checkGlobal('cordova');
+	  this.isCordova = checkGlobal('cordova');
 	}
 
 	Worona.prototype.addPackage = function(name, pkg) {
