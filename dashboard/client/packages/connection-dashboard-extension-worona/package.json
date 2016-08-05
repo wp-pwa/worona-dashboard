@@ -56,12 +56,12 @@
     "prod": {
       "files": [
         {
-          "file": "connection-dashboard-extension-worona/dist/prod/js/connection.dashboard.extension.ca918e5a272d41bc2966161002743950.js",
-          "hash": "ca918e5a272d41bc2966161002743950",
+          "file": "connection-dashboard-extension-worona/dist/prod/js/connection.dashboard.extension.ebd88843a27531c1134cd612c23c36fe.js",
+          "hash": "ebd88843a27531c1134cd612c23c36fe",
           "chunkName": "main"
         }
       ],
-      "main": "connection-dashboard-extension-worona/dist/prod/js/connection.dashboard.extension.ca918e5a272d41bc2966161002743950.js"
+      "main": "connection-dashboard-extension-worona/dist/prod/js/connection.dashboard.extension.ebd88843a27531c1134cd612c23c36fe.js"
     }
   },
   "dependencies": {
