@@ -18,7 +18,7 @@ Input.propTypes = {
   input: React.PropTypes.object,
   label: React.PropTypes.string,
   meta: React.PropTypes.shape({
-    error: React.PropTypes.bool,
+    error: React.PropTypes.string,
     touched: React.PropTypes.bool,
   }),
   size: React.PropTypes.string,
