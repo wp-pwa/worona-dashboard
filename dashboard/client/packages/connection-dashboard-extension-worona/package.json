@@ -1,6 +1,6 @@
 {
   "name": "connection-dashboard-extension-worona",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Extension for the Worona Dashboard in charge of the connection to the server.",
   "main": "src/index.js",
   "scripts": {
@@ -49,31 +49,28 @@
     "dev": {
       "files": [
         {
-          "file": "connection-dashboard-extension-worona/dist/dev/js/connection.dashboard.extension.8a6ce63eef2ae0e78f978129d44d26fb.js",
-          "hash": "8a6ce63eef2ae0e78f978129d44d26fb",
-          "chunkName": "main"
+          "file": "connection-dashboard-extension-worona/dist/dev/js/connection.dashboard.extension.f30ee1b3c76605f5fa2c510856347fe9.js",
+          "hash": "f30ee1b3c76605f5fa2c510856347fe9"
         }
       ],
-      "main": "connection-dashboard-extension-worona/dist/dev/js/connection.dashboard.extension.8a6ce63eef2ae0e78f978129d44d26fb.js"
+      "main": "connection-dashboard-extension-worona/dist/dev/js/connection.dashboard.extension.f30ee1b3c76605f5fa2c510856347fe9.js"
     },
     "prod": {
       "files": [
         {
-          "file": "connection-dashboard-extension-worona/dist/prod/js/connection.dashboard.extension.ebd88843a27531c1134cd612c23c36fe.js",
-          "hash": "ebd88843a27531c1134cd612c23c36fe",
-          "chunkName": "main"
+          "file": "connection-dashboard-extension-worona/dist/prod/js/connection.dashboard.extension.157eb1405379dbc9ae5935a0a1aef9bc.js",
+          "hash": "157eb1405379dbc9ae5935a0a1aef9bc"
         }
       ],
-      "main": "connection-dashboard-extension-worona/dist/prod/js/connection.dashboard.extension.ebd88843a27531c1134cd612c23c36fe.js"
+      "main": "connection-dashboard-extension-worona/dist/prod/js/connection.dashboard.extension.157eb1405379dbc9ae5935a0a1aef9bc.js"
     }
   },
-  "dependencies": {
-    "asteroid": "^2.0.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "rimraf": "^2.5.4",
     "webpack": "^1.13.1",
-    "worona-packages": "^1.0.0",
-    "ws": "^1.1.0"
+    "worona-packages": "^1.0.2",
+    "ws": "^1.1.0",
+    "asteroid": "^2.0.2"
   }
 }
