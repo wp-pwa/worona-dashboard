@@ -1,7 +1,35 @@
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	var parentJsonpFunction = window["webpackJsonpbulma_dashboard_theme"];
+/******/ 	window["webpackJsonpbulma_dashboard_theme"] = function webpackJsonpCallback(chunkIds, moreModules) {
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, callbacks = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId])
+/******/ 				callbacks.push.apply(callbacks, installedChunks[chunkId]);
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			modules[moduleId] = moreModules[moduleId];
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(chunkIds, moreModules);
+/******/ 		while(callbacks.length)
+/******/ 			callbacks.shift().call(null, __webpack_require__);
+
+/******/ 	};
+
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// "0" means "already loaded"
+/******/ 	// Array means "loading", array contains callbacks
+/******/ 	var installedChunks = {
+/******/ 		0:0
+/******/ 	};
 
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -27,6 +55,29 @@ module.exports =
 /******/ 		return module.exports;
 /******/ 	}
 
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId, callback) {
+/******/ 		// "0" is the signal for "already loaded"
+/******/ 		if(installedChunks[chunkId] === 0)
+/******/ 			return callback.call(null, __webpack_require__);
+
+/******/ 		// an array means "currently loading".
+/******/ 		if(installedChunks[chunkId] !== undefined) {
+/******/ 			installedChunks[chunkId].push(callback);
+/******/ 		} else {
+/******/ 			// start chunk loading
+/******/ 			installedChunks[chunkId] = [callback];
+/******/ 			var head = document.getElementsByTagName('head')[0];
+/******/ 			var script = document.createElement('script');
+/******/ 			script.type = 'text/javascript';
+/******/ 			script.charset = 'utf-8';
+/******/ 			script.async = true;
+
+/******/ 			script.src = __webpack_require__.p + "" + ({"1":"locales/en","2":"locales/es"}[chunkId]||chunkId) + "." + {"1":"97a67e4f18f73ba22b2309ac4aa7be94","2":"526ce280e998fade3204169e4a2ab952"}[chunkId] + ".js";
+/******/ 			head.appendChild(script);
+/******/ 		}
+/******/ 	};
 
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -32939,7 +32990,7 @@ module.exports =
 
 	var map = {
 		"./en.json": 432,
-		"./es.json": 433
+		"./es.json": 434
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -32957,34 +33008,42 @@ module.exports =
 
 /***/ },
 /* 432 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
-		"Login": "Login",
-		"Website": "Website",
-		"Documentation": "Documentation",
-		"Forums": "Forums",
-		"Support": "Support",
-		"EditProfile": "Edit profile",
-		"Logout": "Logout",
-		"MySites": "My Sites",
-		"NewThing2": "New thing"
-	};
+	var cbs = [], 
+		data;
+	module.exports = function(cb) {
+		if(cbs) cbs.push(cb);
+		else cb(data);
+	}
+	__webpack_require__.e/* nsure */(1, function(require) {
+		data = __webpack_require__(433);
+		var callbacks = cbs;
+		cbs = null;
+		for(var i = 0, l = callbacks.length; i < l; i++) {
+			callbacks[i](data);
+		}
+	});
 
 /***/ },
-/* 433 */
-/***/ function(module, exports) {
+/* 433 */,
+/* 434 */
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
-		"Login": "Ingresar",
-		"Website": "Web",
-		"Documentation": "Documentación",
-		"Forums": "Foros",
-		"Support": "Soporte",
-		"EditProfile": "Editar perfil",
-		"Logout": "Cerrar sesión",
-		"MySites": "Mis sitios"
-	};
+	var cbs = [], 
+		data;
+	module.exports = function(cb) {
+		if(cbs) cbs.push(cb);
+		else cb(data);
+	}
+	__webpack_require__.e/* nsure */(2, function(require) {
+		data = __webpack_require__(435);
+		var callbacks = cbs;
+		cbs = null;
+		for(var i = 0, l = callbacks.length; i < l; i++) {
+			callbacks[i](data);
+		}
+	});
 
 /***/ }
 /******/ ]);
