@@ -6,6 +6,7 @@ var worona = packageJson.worona;
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -92,6 +93,7 @@ module.exports = {
       manifest: require('./dist/prod/vendors/vendors-manifest.json'),
     }),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
+    new LodashModuleReplacementPlugin(),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -119,7 +121,7 @@ module.exports = {
             worona.prod.files.push({
               file: packageJson.name + '/dist/prod/' + file,
               hash: chunk.hash,
-              chunkName: chunkName });
+            });
           }));
         return JSON.stringify(packageJson, null, 2);
       }

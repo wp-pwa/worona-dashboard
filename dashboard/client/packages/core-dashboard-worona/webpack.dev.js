@@ -119,7 +119,7 @@ module.exports = {
             worona.dev.files.push({
               file: packageJson.name + '/dist/dev/' + file,
               hash: chunk.hash,
-              chunkName: chunkName });
+            });
           }));
         return JSON.stringify(packageJson, null, 2);
       }

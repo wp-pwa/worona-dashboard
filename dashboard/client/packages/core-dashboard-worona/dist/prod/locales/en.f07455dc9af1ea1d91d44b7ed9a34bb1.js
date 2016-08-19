@@ -1,1 +1,0 @@
-webpackJsonp([2],{36:function(o,n){o.exports={Worona:"Worona"}}});

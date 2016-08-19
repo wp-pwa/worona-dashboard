@@ -1,6 +1,5 @@
 [
   "babel-polyfill",
-  "lodash",
   "react",
   "react-dom",
   "react-redux",

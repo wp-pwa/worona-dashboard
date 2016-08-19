@@ -1,13 +1,14 @@
-import _ from 'lodash';
+import mapValues from 'lodash/mapValues';
+import omit from 'lodash/omit';
 import * as indexReducers from '../reducers';
 import * as themeReducers from '../reducers/theme';
 
-const selectors = {};
-_(indexReducers).omit('default').keys()
-.forEach(reducer => { selectors[reducer] = state => state.build[reducer]; });
+module.exports = mapValues(
+  omit(indexReducers, 'default'),
+  (value, key) => state => state.build[key]
+);
 
-selectors.theme = {};
-_(themeReducers).omit('default').keys()
-.forEach(reducer => { selectors.theme[reducer] = state => state.build.theme[reducer]; });
-
-module.exports = selectors;
+module.exports.theme = mapValues(
+  omit(themeReducers, 'default'),
+  (value, key) => state => state.build.theme[key]
+);

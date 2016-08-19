@@ -1,6 +1,6 @@
 {
   "name": "core-dashboard-worona",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "Core Package of Worona Dashboard",
   "main": "dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js",
   "scripts": {
@@ -17,6 +17,8 @@
     "build:core:prod:modules": "npm run clean:core:prod && webpack -p --progress --config webpack.prod.js --display-modules",
     "build:core:dev:reasons": "npm run clean:core:dev && webpack --progress --config webpack.dev.js --display-modules --display-reasons",
     "build:core:prod:reasons": "npm run clean:core:prod && webpack -p --progress --config webpack.prod.js --display-modules --display-reasons",
+    "build:core:dev:stats": "npm run clean:core:dev && webpack --progress --config webpack.dev.js --profile --json > dev-stats.json",
+    "build:core:prod:stats": "npm run clean:core:prod && webpack -p --progress --config webpack.prod.js --profile --json > prod-stats.json",
     "build:core": "npm run build:core:dev && npm run build:core:prod",
     "build:vendors:dev": "npm run clean:vendors:dev && webpack --progress --config vendors/webpack.dev.js",
     "build:vendors:prod": "npm run clean:vendors:prod && webpack -p --progress --config vendors/webpack.prod.js",
@@ -24,6 +26,8 @@
     "build:vendors:prod:modules": "npm run clean:vendors:prod && webpack --progress --config vendors/webpack.prod.js --display-modules",
     "build:vendors:dev:reasons": "npm run clean:vendors:dev && webpack -p --progress --config vendors/webpack.dev.js --display-modules --display-reasons",
     "build:vendors:prod:reasons": "npm run clean:vendors:prod && webpack -p --progress --config vendors/webpack.prod.js --display-modules --display-reasons",
+    "build:vendors:dev:stats": "npm run clean:vendors:dev && webpack -p --progress --config vendors/webpack.dev.js --profile --json > vendors/dev-stats.json",
+    "build:vendors:prod:stats": "npm run clean:vendors:prod && webpack -p --progress --config vendors/webpack.prod.js --profile --json > vendors/prod-stats.json",
     "build:vendors": "npm run build:vendors:dev && npm run build:vendors:prod",
     "build": "npm run build:vendors && npm run build:core"
   },
@@ -60,71 +64,61 @@
       "vendors": {
         "files": [
           {
-            "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.9af5f91c3adec1eb5051b85ee7b61dfe.js",
-            "hash": "9af5f91c3adec1eb5051b85ee7b61dfe",
-            "chunkName": "vendors"
+            "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.1870770bb88260af151db6f562a03ce3.js",
+            "hash": "1870770bb88260af151db6f562a03ce3"
           }
         ],
-        "main": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.9af5f91c3adec1eb5051b85ee7b61dfe.js"
+        "main": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.1870770bb88260af151db6f562a03ce3.js"
       },
       "files": [
         {
-          "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.9af5f91c3adec1eb5051b85ee7b61dfe.js",
-          "hash": "9af5f91c3adec1eb5051b85ee7b61dfe",
-          "chunkName": "vendors"
+          "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.1870770bb88260af151db6f562a03ce3.js",
+          "hash": "1870770bb88260af151db6f562a03ce3"
         },
         {
-          "file": "core-dashboard-worona/dist/dev/js/core.dashboard.46897ab844fa880bd271e65ac332751a.js",
-          "hash": "46897ab844fa880bd271e65ac332751a",
-          "chunkName": "main"
+          "file": "core-dashboard-worona/dist/dev/js/core.dashboard.667e03b53e3ad89461b752aaf60fe3cf.js",
+          "hash": "667e03b53e3ad89461b752aaf60fe3cf"
         },
         {
-          "file": "core-dashboard-worona/dist/dev/locales/en.6e70d32de7e9640ad5697ea1c914a33f.js",
-          "hash": "6e70d32de7e9640ad5697ea1c914a33f",
-          "chunkName": "locales/en"
+          "file": "core-dashboard-worona/dist/dev/locales/en.1cd214930e82c05d11ff47a40e2181ef.js",
+          "hash": "1cd214930e82c05d11ff47a40e2181ef"
         },
         {
-          "file": "core-dashboard-worona/dist/dev/locales/es.d983776b8187d215a74f2c252711a927.js",
-          "hash": "d983776b8187d215a74f2c252711a927",
-          "chunkName": "locales/es"
+          "file": "core-dashboard-worona/dist/dev/locales/es.35a628ee7286802ed304629e6736483c.js",
+          "hash": "35a628ee7286802ed304629e6736483c"
         }
       ],
-      "main": "core-dashboard-worona/dist/dev/js/core.dashboard.46897ab844fa880bd271e65ac332751a.js"
+      "main": "core-dashboard-worona/dist/dev/js/core.dashboard.667e03b53e3ad89461b752aaf60fe3cf.js"
     },
     "prod": {
       "vendors": {
         "files": [
           {
-            "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.d6cf4fb3f3e4c18b726788f60f2dd254.js",
-            "hash": "d6cf4fb3f3e4c18b726788f60f2dd254",
-            "chunkName": "vendors"
+            "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.f781d6a79028ef9812735a496db25101.js",
+            "hash": "f781d6a79028ef9812735a496db25101"
           }
         ],
-        "main": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.d6cf4fb3f3e4c18b726788f60f2dd254.js"
+        "main": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.f781d6a79028ef9812735a496db25101.js"
       },
       "files": [
         {
-          "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.d6cf4fb3f3e4c18b726788f60f2dd254.js",
-          "hash": "d6cf4fb3f3e4c18b726788f60f2dd254",
-          "chunkName": "vendors"
+          "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.f781d6a79028ef9812735a496db25101.js",
+          "hash": "f781d6a79028ef9812735a496db25101"
         },
         {
-          "file": "core-dashboard-worona/dist/prod/js/core.dashboard.639701a37a275bd7116e2d89d55fa73e.js",
-          "hash": "639701a37a275bd7116e2d89d55fa73e",
-          "chunkName": "main"
+          "file": "core-dashboard-worona/dist/prod/js/core.dashboard.baee49407626596a1285b950d3998f06.js",
+          "hash": "baee49407626596a1285b950d3998f06"
         },
         {
-          "file": "core-dashboard-worona/dist/prod/locales/es.e5058f41d707010510b973b15f4610db.js",
-          "hash": "e5058f41d707010510b973b15f4610db",
-          "chunkName": "locales/es"
+          "file": "core-dashboard-worona/dist/prod/locales/es.d4d1acd3aa7951fca4efe7b63df34e13.js",
+          "hash": "d4d1acd3aa7951fca4efe7b63df34e13"
         },
         {
-          "file": "core-dashboard-worona/dist/prod/locales/en.f07455dc9af1ea1d91d44b7ed9a34bb1.js",
-          "hash": "f07455dc9af1ea1d91d44b7ed9a34bb1",
-          "chunkName": "locales/en"
+          "file": "core-dashboard-worona/dist/prod/locales/en.a01cbe93c83c7303cc27adbddb45ffea.js",
+          "hash": "a01cbe93c83c7303cc27adbddb45ffea"
         }
       ],
-      "main": "core-dashboard-worona/dist/prod/js/core.dashboard.639701a37a275bd7116e2d89d55fa73e.js"
+      "main": "core-dashboard-worona/dist/prod/js/core.dashboard.baee49407626596a1285b950d3998f06.js"
     }
   },
   "devDependencies": {
