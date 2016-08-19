@@ -1,0 +1,1 @@
+webpackJsonpbulma_dashboard_theme([1],{113:function(o,e){o.exports={Login:"Ingresar",Website:"Web",Documentation:"Documentación",Forums:"Foros",Support:"Soporte",EditProfile:"Editar perfil",Logout:"Cerrar sesión",MySites:"Mis sitios"}}});
