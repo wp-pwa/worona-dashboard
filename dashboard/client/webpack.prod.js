@@ -1,10 +1,11 @@
 /*eslint-disable */
 var path = require('path');
 var webpack = require('webpack');
-var vendors = require('./packages/vendors-dashboard-worona/package.json').worona.prod.main;
+var vendors = require('./packages/core-dashboard-worona/package.json').worona.prod.vendors.main;
 var vendorsFile = /^.+\/(.+\.js)$/.exec(vendors)[1];
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -28,7 +29,7 @@ module.exports = {
           name: 'packages/[1][2]/dist/prod/js/[1]',
           regExp: 'packages\\/([\\w]+)([\\w\\-]+)'
         },
-        exclude: /(core-dashboard-worona|vendors-dashboard-worona)/,
+        exclude: /(core-dashboard-worona)/,
       },
       {
         test: /\.jsx?$/,
@@ -97,7 +98,6 @@ module.exports = {
   },
   devServer: {
 		contentBase: path.join(__dirname, 'dist', 'prod'),
-    outputPath: path.join(__dirname),
 		noInfo: false,
 		hot: false,
 		inline: false,
@@ -111,6 +111,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
+    new LodashModuleReplacementPlugin(),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -119,19 +120,19 @@ module.exports = {
       title: 'Worona Dashboard',
       template: path.join(__dirname, 'html', 'index.html'),
       favicon: path.join(__dirname, 'html', 'favicon.png'),
-      vendorsFile: 'packages/vendors-dashboard-worona/dist/prod/js/' + vendorsFile,
+      vendorsFile: 'packages/core-dashboard-worona/dist/prod/vendors/' + vendorsFile,
       window: {
-        publicPath: 'https://cdn.worona.io/',
+        publicPath: 'https://localhost:4000/',
       },
       appMountId: 'root',
       minify: { preserveLineBreaks: true, collapseWhitespace: true },
     }),
     new webpack.DllReferencePlugin({
       context: '.',
-      manifest: require('./packages/vendors-dashboard-worona/dist/prod/vendors-manifest.json'),
+      manifest: require('./packages/core-dashboard-worona/dist/prod/vendors/vendors-manifest.json'),
     }),
     new CopyWebpackPlugin([
-      { from: './packages/core-dashboard-worona/vendors' + vendors, to: 'packages/core-dashboard-worona/dist/prod/vendors', flatten: true },
+      { from: './packages/core-dashboard-worona/dist/prod/vendors/', to: 'packages/core-dashboard-worona/dist/prod/vendors' },
     ], {
       copyUnmodified: true,
     }),

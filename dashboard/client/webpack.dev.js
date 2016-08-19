@@ -29,7 +29,7 @@ module.exports = {
           name: 'packages/[1][2]/dist/dev/js/[1]',
           regExp: 'packages\\/([\\w]+)([\\w\\-]+)'
         },
-        exclude: /(core-dashboard-worona|vendors-dashboard-worona)/,
+        exclude: /(core-dashboard-worona)/,
       },
       {
         test: /\.jsx?$/,
