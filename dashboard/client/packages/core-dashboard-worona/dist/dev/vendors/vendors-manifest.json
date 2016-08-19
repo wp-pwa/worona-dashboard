@@ -362,10 +362,10 @@
     "./node_modules/lodash/_baseHas.js": "cc2f521595a371186e8dd412467c2883",
     "./node_modules/lodash/_getPrototype.js": "ab8a8020a0df97fcf2d9e6edab1d47bb",
     "./node_modules/lodash/_overArg.js": "4a8b21b3dfd7f6563eb2c6a677d830c7",
-    "./node_modules/babel-polyfill/lib/index.js": "248cb4fbdf790bc10ad8e85e391168ac",
+    "./node_modules/lodash/_baseKeys.js": "eb5b2da854b76e030eb63fb999356174",
     "./node_modules/lodash/_indexKeys.js": "44f4a480ff6d433bda250c99e00593ed",
     "./node_modules/lodash/_baseTimes.js": "cfe5bc97b2a7b647858de03791afd68d",
-    "./node_modules/lodash/isArguments.js": "f68877cdaf18cad2900f4a8441137dec",
+    "./node_modules/babel-polyfill/lib/index.js": "248cb4fbdf790bc10ad8e85e391168ac",
     "./node_modules/lodash/isArrayLikeObject.js": "00fa712353516efb11d90460e176c1a5",
     "./node_modules/lodash/isArrayLike.js": "f17792ebcd58b30463b9194c247635a6",
     "./node_modules/lodash/_getLength.js": "060f0a90e19593aa1f6105dc7c0f3481",
@@ -483,6 +483,11 @@
     "./node_modules/lodash/_baseMap.js": "1937a0ba1adb5df50bcabc4939b241b8",
     "./node_modules/lodash/_baseEach.js": "bd8f933041aa179faf2cb595a0cec086",
     "./node_modules/lodash/_createBaseEach.js": "1dee81a19ea9a88752638765c52dc8fc",
+    "./node_modules/superagent/lib/client.js": "6c17280eadd6cd31a69c0c65741ef9b4",
+    "./node_modules/component-emitter/index.js": "17c25dd7d9d2615bc1d97b6eb1aa094b",
+    "./node_modules/superagent/lib/request-base.js": "59ba2a98ba5f77e216b2ab295bc8c3c0",
+    "./node_modules/superagent/lib/is-object.js": "e72f32ec7a04b360ef9d6a0dcac6b73e",
+    "./node_modules/superagent/lib/request.js": "ef7b8b2997410df554b37e0ebf56a412",
     "./node_modules/react-dom/index.js": "5fdcf1aea784583ca083db0529872971",
     "./node_modules/react/lib/ReactDOM.js": "b61a9ff0f2e2e419d74b23f6d628fe4b",
     "./node_modules/react/lib/ReactDOMComponentTree.js": "2c45fbeda2f69c3f989f2fc515e1a533",
@@ -724,6 +729,6 @@
     "./node_modules/redux-saga/lib/internal/middleware.js": "2024a3d8c38d8e866372701fd53a7e17",
     "./node_modules/redux-saga/lib/effects.js": "3d98a649a8d8be6f2b1465b200367730",
     "./node_modules/redux-saga/lib/utils.js": "c7f9ad063cf611a104b53a4c5ec3e772",
-    "./node_modules/lodash/_baseKeys.js": "eb5b2da854b76e030eb63fb999356174"
+    "./node_modules/lodash/isArguments.js": "f68877cdaf18cad2900f4a8441137dec"
   }
 }

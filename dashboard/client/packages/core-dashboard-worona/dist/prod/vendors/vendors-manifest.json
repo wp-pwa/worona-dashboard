@@ -2,6 +2,7 @@
   "name": "vendors_dashboard_worona",
   "content": {
     "./node_modules/babel-polyfill/lib/index.js": "248cb4fbdf790bc10ad8e85e391168ac",
+    "./node_modules/component-emitter/index.js": "17c25dd7d9d2615bc1d97b6eb1aa094b",
     "./node_modules/core-js/fn/regexp/escape.js": "eb9a75ce7c34c049693fa6668e5377a4",
     "./node_modules/core-js/modules/_a-function.js": "2faa785cf87b8a7f285ef6b56f07978b",
     "./node_modules/core-js/modules/_a-number-value.js": "ce0fcab2b8abce108bc2098bbf40fc25",
@@ -313,9 +314,9 @@
     "./node_modules/fbjs/lib/getActiveElement.js": "ea025936c8f2e00a6c50b002cd4219b6",
     "./node_modules/fbjs/lib/getMarkupWrap.js": "de4900e2d6610116e7f59f6ae5def7b3",
     "./node_modules/fbjs/lib/getUnboundedScrollPosition.js": "e9ce7541934889624dbcf2620fbaa653",
-    "./node_modules/classnames/index.js": "1b55c86a6f139b5df00c447b8e42f181",
+    "./node_modules/fbjs/lib/hyphenate.js": "c12be76b9daaed67819e1889d8490e98",
     "./node_modules/fbjs/lib/hyphenateStyleName.js": "e774091c24bed075333ed8ca419f3116",
-    "./node_modules/fbjs/lib/invariant.js": "bdf94bc1032c9ff9f58a283a9e596a99",
+    "./node_modules/classnames/index.js": "1b55c86a6f139b5df00c447b8e42f181",
     "./node_modules/fbjs/lib/isNode.js": "61292fd86fac9a20366d22d5dada0d63",
     "./node_modules/fbjs/lib/isTextNode.js": "9783cf464be500cbad47417aa47c3107",
     "./node_modules/fbjs/lib/keyMirror.js": "a6ca45c435563e75593ef101ccd62f9a",
@@ -621,11 +622,15 @@
     "./node_modules/regenerator-runtime/runtime.js": "280d92cedd4801edbe66ef51b030548b",
     "./node_modules/reselect/lib/index.js": "febe5374b4779e3d8170ecd4f4641bf2",
     "./node_modules/strict-uri-encode/index.js": "b609834b8af7c325f0384b4474dab384",
+    "./node_modules/superagent/lib/client.js": "6c17280eadd6cd31a69c0c65741ef9b4",
+    "./node_modules/superagent/lib/is-object.js": "e72f32ec7a04b360ef9d6a0dcac6b73e",
+    "./node_modules/superagent/lib/request-base.js": "59ba2a98ba5f77e216b2ab295bc8c3c0",
+    "./node_modules/superagent/lib/request.js": "ef7b8b2997410df554b37e0ebf56a412",
     "./node_modules/symbol-observable/index.js": "cfc879945840152c26ccbaa8dacd7975",
     "./node_modules/symbol-observable/ponyfill.js": "2016a609e4cf66f25fe3e3ab0ba7ed10",
     "./node_modules/warning/browser.js": "1ca9ce9b885988594ff97e750faaa0b0",
     "./node_modules/worona-deps/src/index.js": "3dc67d31d7435ab49745de8e10359378",
     "./packages/core-dashboard-worona/node_modules/process/browser.js": "83923e6ec728b5df1e809c68f89f8647",
-    "./node_modules/fbjs/lib/hyphenate.js": "c12be76b9daaed67819e1889d8490e98"
+    "./node_modules/fbjs/lib/invariant.js": "bdf94bc1032c9ff9f58a283a9e596a99"
   }
 }
