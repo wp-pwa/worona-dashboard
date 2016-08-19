@@ -7,7 +7,7 @@ import Hero from '../../elements/Hero';
 import Input from '../../elements/Input';
 import Button from '../../elements/Button';
 import * as deps from '../../dependencies';
-import { formFailed } from '../../selectors';
+import * as selectors from '../../selectors';
 import { validate } from './validate';
 import styles from './style.css';
 
@@ -100,5 +100,5 @@ export default connect(state => ({
   waiting: deps.selectors.isCreatingAccount(state),
   statusMessage: deps.selectors.createAccountStatus(state),
   errorMessage: deps.selectors.createAccountError(state),
-  failed: formFailed(state),
+  failed: selectors.forms.register.validationFailed(state),
 }))(RegisterWithForm);

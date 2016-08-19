@@ -7,10 +7,6 @@ export const validationFailed = (state, action) => {
   return false;
 };
 
-export const register = combineReducers({
-  validationFailed,
-});
-
 export default combineReducers({
-  register,
+  validationFailed,
 });

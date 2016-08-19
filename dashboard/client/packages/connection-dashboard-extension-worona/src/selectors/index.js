@@ -1,5 +1,8 @@
-import _ from 'lodash';
+import mapValues from 'lodash/mapValues';
+import omit from 'lodash/omit';
 import * as reducers from '../reducers';
 
-_(reducers).omit('default').keys()
-  .forEach(reducer => { module.exports[reducer] = state => state.connection[reducer]; });
+module.exports = mapValues(
+  omit(reducers, 'default'),
+  (value, key) => state => state.connection[key]
+);
