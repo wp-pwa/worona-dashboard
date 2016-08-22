@@ -2,7 +2,9 @@
   "name": "worona-core",
   "version": "1.0.0",
   "description": "Worona Project",
-  "scripts": {},
+  "scripts": {
+    "install:all": "npm-recursive-install"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/worona/worona.git"
@@ -24,7 +26,8 @@
   "devDependencies": {
     "eslint": "^2.5.3",
     "eslint-config-airbnb": "^6.2.0",
-    "eslint-plugin-react": "^4.2.3"
+    "eslint-plugin-react": "^4.2.3",
+    "recursive-install": "^1.1.0"
   },
   "dependencies": {}
 }
