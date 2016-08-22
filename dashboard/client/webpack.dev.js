@@ -10,6 +10,7 @@ module.exports = {
   entry: {
     core: [
       'webpack/hot/dev-server',
+      'script!systemjs/dist/system.js',
       path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'index.js'),
     ],
   },

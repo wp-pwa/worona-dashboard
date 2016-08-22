@@ -127,6 +127,7 @@
     "html-webpack-plugin": "^2.22.0",
     "ignore-loader": "^0.1.1",
     "rimraf": "^2.5.4",
+    "systemjs": "^0.19.37",
     "webpack": "^1.13.1",
     "webpack-stats-plugin": "^0.1.3"
   },

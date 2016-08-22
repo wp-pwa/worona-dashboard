@@ -1,44 +1,44 @@
 import * as types from '../types';
 
+export const corePackagesRequested = () =>
+  ({ type: types.CORE_PACKAGES_REQUESTED });
+export const corePackagesSucceed = ({ pkgs }) =>
+  ({ type: types.CORE_PACKAGES_SUCCEED, pkgs });
+export const corePackagesFailed = ({ error }) =>
+  ({ type: types.CORE_PACKAGES_FAILED, error });
+
 let uniqueId = 0;
-export const packagesAdditionRequested = ({ theme, extensions, uid }) =>
-  ({ type: types.PACKAGES_ADDITION_REQUESTED, theme, extensions, uid: uid || uniqueId++ });
-export const packagesAdditionFailed = ({ error, name, uid }) =>
-  ({ type: types.PACKAGES_ADDITION_FAILED, error, name, uid });
-export const packagesAdditionSucceed = ({ theme, extensions, uid }) =>
-  ({ type: types.PACKAGES_ADDITION_SUCCEED, theme, extensions, uid });
+export const packagesAdditionRequested = ({ pkgs, uid }) =>
+  ({ type: types.PACKAGES_ADDITION_REQUESTED, pkgs, uid: uid || uniqueId++ });
+export const packagesAdditionFailed = ({ error, pkg, uid }) =>
+  ({ type: types.PACKAGES_ADDITION_FAILED, error, pkg, uid });
+export const packagesAdditionSucceed = ({ pkgs, uid }) =>
+  ({ type: types.PACKAGES_ADDITION_SUCCEED, pkgs, uid });
 
-export const packagesDownloadRequested = ({ theme, extensions, uid }) =>
-  ({ type: types.PACKAGES_DOWNLOAD_REQUESTED, theme, extensions, uid });
-export const packagesDownloadSucceed = ({ theme, extensions, uid }) =>
-  ({ type: types.PACKAGES_DOWNLOAD_SUCCEED, theme, extensions, uid });
-export const packagesDownloadFailed = ({ error, name, uid }) =>
-  ({ type: types.PACKAGES_DOWNLOAD_FAILED, error, name, uid });
+export const packagesDownloadRequested = ({ pkgs, uid }) =>
+  ({ type: types.PACKAGES_DOWNLOAD_REQUESTED, pkgs, uid });
+export const packagesDownloadSucceed = ({ pkgs, uid }) =>
+  ({ type: types.PACKAGES_DOWNLOAD_SUCCEED, pkgs, uid });
+export const packagesDownloadFailed = ({ error, pkg, uid }) =>
+  ({ type: types.PACKAGES_DOWNLOAD_FAILED, error, pkg, uid });
 
-export const themeDownloadRequested = ({ name, uid }) =>
-  ({ type: types.THEME_DOWNLOAD_REQUESTED, name, uid });
-export const themeDownloadSucceed = ({ name, uid }) =>
-  ({ type: types.THEME_DOWNLOAD_SUCCEED, name, uid });
-export const themeDownloadFailed = ({ error, name, uid }) =>
-  ({ type: types.THEME_DOWNLOAD_FAILED, error, name, uid });
+export const packageDownloadRequested = ({ pkg, uid }) =>
+  ({ type: types.PACKAGE_DOWNLOAD_REQUESTED, pkg, uid });
+export const packageDownloadSucceed = ({ pkg, uid }) =>
+  ({ type: types.PACKAGE_DOWNLOAD_SUCCEED, pkg, uid });
+export const packageDownloadFailed = ({ error, pkg, uid }) =>
+  ({ type: types.PACKAGE_DOWNLOAD_FAILED, error, pkg, uid });
 
-export const extensionDownloadRequested = ({ name, uid }) =>
-  ({ type: types.EXTENSION_DOWNLOAD_REQUESTED, name, uid });
-export const extensionDownloadSucceed = ({ name, uid }) =>
-  ({ type: types.EXTENSION_DOWNLOAD_SUCCEED, name, uid });
-export const extensionDownloadFailed = ({ error, name, uid }) =>
-  ({ type: types.EXTENSION_DOWNLOAD_FAILED, error, name, uid });
+export const packagesLoadRequested = ({ pkgs, uid }) =>
+  ({ type: types.PACKAGES_LOAD_REQUESTED, pkgs, uid });
+export const packagesLoadSucceed = ({ pkgs, uid }) =>
+  ({ type: types.PACKAGES_LOAD_SUCCEED, pkgs, uid });
+export const packagesLoadFailed = ({ error, pkg, uid }) =>
+  ({ type: types.PACKAGES_LOAD_FAILED, error, pkg, uid });
 
-export const packagesLoadRequested = ({ theme, extensions, uid }) =>
-  ({ type: types.PACKAGES_LOAD_REQUESTED, theme, extensions, uid });
-export const packagesLoadSucceed = ({ theme, extensions, uid }) =>
-  ({ type: types.PACKAGES_LOAD_SUCCEED, theme, extensions, uid });
-export const packagesLoadFailed = ({ error, name, uid }) =>
-  ({ type: types.PACKAGES_LOAD_FAILED, error, name, uid });
-
-export const themeChangeRequested = ({ name, uid }) =>
-  ({ type: types.THEME_CHANGE_REQUESTED, name, uid });
-export const themeChangeSucceed = ({ name, uid }) =>
-  ({ type: types.THEME_CHANGE_SUCCEED, name, uid });
-export const themeChangeFailed = ({ error, name, uid }) =>
-  ({ type: types.THEME_CHANGE_FAILED, error, name, uid });
+export const themeChangeRequested = ({ pkg, uid }) =>
+  ({ type: types.THEME_CHANGE_REQUESTED, pkg, uid });
+export const themeChangeSucceed = ({ pkg, uid }) =>
+  ({ type: types.THEME_CHANGE_SUCCEED, pkg, uid });
+export const themeChangeFailed = ({ error, pkg, uid }) =>
+  ({ type: types.THEME_CHANGE_FAILED, error, pkg, uid });
