@@ -1,44 +1,29 @@
 /* eslint-disable no-constant-condition, array-callback-return */
 import request from 'superagent';
 import { takeEvery } from 'redux-saga';
-import { put, fork, call, take, race } from 'redux-saga/effects';
+import { put, fork, call } from 'redux-saga/effects';
 import * as actions from '../actions';
 import * as types from '../types';
-import { packagesDownloadWatcher, packagesDownloadSaga, packageDownloadSaga } from './download';
-import { packagesLoadSaga } from './load';
+import download from './download';
+import load from './load';
+import theme from './theme';
 
-// Function triggered each PACKAGES_ADDITION_REQUESTED which starts the downloads and
-// listens to PACKAGES_DOWNLOAD_SUCCEED or PACKAGES_DOWNLOAD_FAILED. Once the packages are
-// downloaded, it starts the load and waits until it's complete. It also listens for failures
-// to dispatch PACKAGES_ADDITION_FAILED if necessary.
-export function* packagesAdditionSaga(action) {
+// All these functions control the PACKAGES_ADDITION actions initiating downloads first, load
+// second and failing if some of those fail.
+function* packagesAdditionStarter(action) {
   yield put(actions.packagesDownloadRequested(action));
-  while (true) {
-    const { downloadSucceed, downloadFailed } = yield race({
-      downloadSucceed: take(types.PACKAGES_DOWNLOAD_SUCCEED),
-      downloadFailed: take(types.PACKAGES_DOWNLOAD_FAILED),
-    });
-    if (downloadSucceed && downloadSucceed.uid === action.uid) {
-      yield put(actions.packagesLoadRequested(action));
-      while (true) {
-        const { loadSucceed, loadFailed } = yield race({
-          loadSucceed: take(types.PACKAGES_LOAD_SUCCEED),
-          loadFailed: take(types.PACKAGES_LOAD_FAILED),
-        });
-        if (loadSucceed && loadSucceed.uid === action.uid) {
-          yield put(actions.packagesAdditionSucceed(action));
-          break;
-        } else if (loadFailed && loadFailed.uid === action.uid) {
-          yield put(actions.packagesAdditionFailed(loadFailed));
-          break;
-        }
-      }
-      break;
-    } else if (downloadFailed && downloadFailed.uid === action.uid) {
-      yield put(actions.packagesAdditionFailed(downloadFailed));
-      break;
-    }
-  }
+}
+function* packagesAdditionDownloadSucceedWatcher(action) {
+  yield put(actions.packagesLoadRequested(action));
+}
+function* packagesAdditionDownloadFailedWatcher(action) {
+  yield put(actions.packagesAdditionFailed(action));
+}
+function* packagesAdditionLoadSucceedWatcher(action) {
+  yield put(actions.packagesAdditionSucceed(action));
+}
+function* packagesAdditionLoadFailedWatcher(action) {
+  yield put(actions.packagesAdditionFailed(action));
 }
 
 // Function which download the core packages list from the api and then starts a
@@ -50,33 +35,22 @@ export function* addCorePackagesSaga() {
     const action = { pkgs: res.body, uid: 'core' };
     yield put(actions.corePackagesSucceed(action));
     yield put(actions.packagesAdditionRequested(action));
+    yield put(actions.themeChangeRequested({ namespace: 'bulma' }));
   } catch (error) {
     yield put(actions.corePackagesFailed({ error }));
   }
 }
 
-export function* loadTheme(uid) {
-  while (true) {
-    const action = yield take(types.PACKAGES_LOAD_SUCCEED);
-    if (action.uid === uid) {
-      try {
-        yield put(actions.themeChangeRequested({ name: action.theme, uid }));
-        yield put(actions.themeChangeSucceed({ name: action.theme, uid }));
-      } catch (error) {
-        yield put(actions.themeChangeFailed({ error, name: action.theme, uid }));
-      }
-      break;
-    }
-  }
-}
-
 export default function* sagas() {
   yield [
-    takeEvery(types.PACKAGES_ADDITION_REQUESTED, packagesAdditionSaga),
-    takeEvery(types.PACKAGES_DOWNLOAD_REQUESTED, packagesDownloadWatcher),
-    takeEvery(types.PACKAGES_DOWNLOAD_REQUESTED, packagesDownloadSaga),
-    takeEvery(types.PACKAGE_DOWNLOAD_REQUESTED, packageDownloadSaga),
-    takeEvery(types.PACKAGES_LOAD_REQUESTED, packagesLoadSaga),
+    fork(download),
+    fork(load),
+    fork(theme),
+    takeEvery(types.PACKAGES_ADDITION_REQUESTED, packagesAdditionStarter),
+    takeEvery(types.PACKAGES_DOWNLOAD_SUCCEED, packagesAdditionDownloadSucceedWatcher),
+    takeEvery(types.PACKAGES_DOWNLOAD_FAILED, packagesAdditionDownloadFailedWatcher),
+    takeEvery(types.PACKAGES_LOAD_SUCCEED, packagesAdditionLoadSucceedWatcher),
+    takeEvery(types.PACKAGES_LOAD_FAILED, packagesAdditionLoadFailedWatcher),
     fork(addCorePackagesSaga),
   ];
 }

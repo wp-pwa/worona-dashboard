@@ -49,20 +49,36 @@
     "prod": {
       "files": [
         {
-          "file": "accounts-dashboard-extension-worona/dist/prod/js/accounts.dashboard.extension.b0529acccd3c444ca41c61559e04346a.js",
-          "hash": "b0529acccd3c444ca41c61559e04346a"
+          "file": "accounts-dashboard-extension-worona/dist/prod/js/accounts.dashboard.extension.3f0e71cd34cc980267302a20ff3743ce.js",
+          "hash": "3f0e71cd34cc980267302a20ff3743ce"
+        },
+        {
+          "file": "accounts-dashboard-extension-worona/dist/prod/locales/es.19fb6361c29bb9bd762b0ad3b47cc775.js",
+          "hash": "19fb6361c29bb9bd762b0ad3b47cc775"
+        },
+        {
+          "file": "accounts-dashboard-extension-worona/dist/prod/locales/en.adb84c246c15173530967bfc2bc72ee2.js",
+          "hash": "adb84c246c15173530967bfc2bc72ee2"
         }
       ],
-      "main": "accounts-dashboard-extension-worona/dist/prod/js/accounts.dashboard.extension.b0529acccd3c444ca41c61559e04346a.js"
+      "main": "accounts-dashboard-extension-worona/dist/prod/js/accounts.dashboard.extension.3f0e71cd34cc980267302a20ff3743ce.js"
     },
     "dev": {
       "files": [
         {
-          "file": "accounts-dashboard-extension-worona/dist/dev/js/accounts.dashboard.extension.7f5be55eb116485e27d3beb959b8d75f.js",
-          "hash": "7f5be55eb116485e27d3beb959b8d75f"
+          "file": "accounts-dashboard-extension-worona/dist/dev/js/accounts.dashboard.extension.88fb546dd9de7770b78a2e5818c1a02c.js",
+          "hash": "88fb546dd9de7770b78a2e5818c1a02c"
+        },
+        {
+          "file": "accounts-dashboard-extension-worona/dist/dev/locales/en.c08c4d939bcbd87a1d09eb26ef5ffc09.js",
+          "hash": "c08c4d939bcbd87a1d09eb26ef5ffc09"
+        },
+        {
+          "file": "accounts-dashboard-extension-worona/dist/dev/locales/es.7f9a849c9e0701e5cb4eb28c6053a36c.js",
+          "hash": "7f9a849c9e0701e5cb4eb28c6053a36c"
         }
       ],
-      "main": "accounts-dashboard-extension-worona/dist/dev/js/accounts.dashboard.extension.7f5be55eb116485e27d3beb959b8d75f.js"
+      "main": "accounts-dashboard-extension-worona/dist/dev/js/accounts.dashboard.extension.88fb546dd9de7770b78a2e5818c1a02c.js"
     }
   },
   "devDependencies": {

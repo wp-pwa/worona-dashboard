@@ -1,5 +1,6 @@
-/* eslint-disable no-constant-condition */
-import { put, call, race } from 'redux-saga/effects';
+/* eslint-disable no-constant-condition, no-undef */
+import { put, call, race, take } from 'redux-saga/effects';
+import { takeEvery } from 'redux-saga';
 import { addPackage } from 'worona-deps';
 import _ from 'lodash';
 import * as types from '../types';
@@ -9,11 +10,9 @@ import * as actions from '../actions';
 // so webpack knows about the included packages and create the bundles. We use bundle-loader
 // in the webpack config to separate the bundles.
 export const requireLocalPackage = pkg => new Promise(resolve => {
-  debugger;
-  const pkgName = `./${pkg.name}/src/index.js`;
-  // const req = require(`../../../../${pkgName}-worona/src/index.js`);
-  const req = require.context('../../../../', false, /-worona\/src\/index\.js$/);
-  resolve(req(pkgName));
+  const pkgName = `${pkg.namespace}-dashboard-${pkg.type}`;
+  const req = require(`../../../../${pkgName}-worona/src/index.js`);
+  req(module => resolve(module));
 });
 
 // Function used to require remote packages. It uses systemjs.import because we
@@ -35,7 +34,7 @@ export function* packagesDownloadSaga({ pkgs = [], uid }) {
 // requireLocalPackage or requireRemotePackage and dispatches PACKAGE_DOWNLOAD_SUCCED or
 // PACKAGE_DOWNLOAD_FAILED if necessary.
 export function* packageDownloadSaga({ pkg, uid }) {
-  const requirePackage = requireLocalPackage; // (TODO) Add here logic for local/remote requires.
+  const requirePackage = requireRemotePackage; // (TODO) Add here logic for local/remote requires.
   try {
     const module = yield call(requirePackage, pkg);
     yield call(addPackage, pkg.namespace, module); // Adds the download module to worona-deps.
@@ -55,8 +54,8 @@ export function* packagesDownloadWatcher({ pkgs = [], uid }) {
   const downloaded = [];
   while (true) {
     const { succeed, failed } = yield race({
-      succeed: types.PACKAGE_DOWNLOAD_SUCCEED,
-      failed: types.PACKAGE_DOWNLOAD_FAILED,
+      succeed: take(types.PACKAGE_DOWNLOAD_SUCCEED),
+      failed: take(types.PACKAGE_DOWNLOAD_FAILED),
     });
     if (succeed && succeed.uid === uid) {
       downloaded.push(succeed.pkg.name);
@@ -70,4 +69,12 @@ export function* packagesDownloadWatcher({ pkgs = [], uid }) {
       break;
     }
   }
+}
+
+export default function* sagas() {
+  yield [
+    takeEvery(types.PACKAGES_DOWNLOAD_REQUESTED, packagesDownloadWatcher),
+    takeEvery(types.PACKAGES_DOWNLOAD_REQUESTED, packagesDownloadSaga),
+    takeEvery(types.PACKAGE_DOWNLOAD_REQUESTED, packageDownloadSaga),
+  ];
 }

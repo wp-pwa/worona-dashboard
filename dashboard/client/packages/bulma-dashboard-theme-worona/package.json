@@ -1,6 +1,6 @@
 {
   "name": "bulma-dashboard-theme-worona",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Theme for the Worona Dashboard.",
   "main": "src/index.js",
   "scripts": {
@@ -73,8 +73,8 @@
           "hash": "60ff4f6e6ce1aced05ce3c4652971c1f"
         },
         {
-          "file": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.ec8b59cc8317324f08365f98493302cd.js",
-          "hash": "ec8b59cc8317324f08365f98493302cd"
+          "file": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.cc326db942642075478a7614ae95695e.js",
+          "hash": "cc326db942642075478a7614ae95695e"
         },
         {
           "file": "bulma-dashboard-theme-worona/dist/dev/locales/en.b3ccafa6fe20f60f7dcdcd9c540b07cd.js",
@@ -85,7 +85,7 @@
           "hash": "f9a50e78b806bdd49014c981c9797381"
         }
       ],
-      "main": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.ec8b59cc8317324f08365f98493302cd.js"
+      "main": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.cc326db942642075478a7614ae95695e.js"
     },
     "prod": {
       "files": [
@@ -114,8 +114,8 @@
           "hash": "60ff4f6e6ce1aced05ce3c4652971c1f"
         },
         {
-          "file": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.d38e2a03e3a6dcc63c8ca05b638145fb.js",
-          "hash": "d38e2a03e3a6dcc63c8ca05b638145fb"
+          "file": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.7b2cb7855e306b1385a215dd3fc0457c.js",
+          "hash": "7b2cb7855e306b1385a215dd3fc0457c"
         },
         {
           "file": "bulma-dashboard-theme-worona/dist/prod/locales/es.f776b89bad6d56e1224b60ae89d1978a.js",
@@ -130,7 +130,7 @@
           "hash": "60a17eae760a1e5f4b5f2647a836de0d"
         }
       ],
-      "main": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.d38e2a03e3a6dcc63c8ca05b638145fb.js"
+      "main": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.7b2cb7855e306b1385a215dd3fc0457c.js"
     }
   },
   "devDependencies": {

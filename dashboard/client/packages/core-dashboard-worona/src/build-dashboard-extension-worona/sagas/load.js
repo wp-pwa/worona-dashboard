@@ -1,6 +1,8 @@
 import { put, call } from 'redux-saga/effects';
+import { takeEvery } from 'redux-saga';
 import { getSagas } from 'worona-deps';
 import { reloadReducers, runSaga } from '../store';
+import * as types from '../types';
 import * as actions from '../actions';
 
 // Function used by packagesLoadSaga to load each package's sagas.
@@ -26,4 +28,10 @@ export function* packagesLoadSaga({ pkgs, uid }) {
     // catched on the loadSagas function.
     yield put(actions.packagesLoadFailed({ error, uid }));
   }
+}
+
+export default function* sagas() {
+  yield [
+    takeEvery(types.PACKAGES_LOAD_REQUESTED, packagesLoadSaga),
+  ];
 }

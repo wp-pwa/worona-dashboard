@@ -5,6 +5,7 @@ var vendors = require('./packages/core-dashboard-worona/package.json').worona.de
 var vendorsFile = /^.+\/(.+\.js)$/.exec(vendors)[1];
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -117,6 +118,8 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('development') } }),
+    new LodashModuleReplacementPlugin({ currying: true }),
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en-gb\.js|es\.js/),
     new HtmlWebpackPlugin({
       inject: false,
       title: 'Worona Dashboard (DEV)',

@@ -18528,7 +18528,7 @@ module.exports =
 	function registerEffect(suffix, animation) {
 	  if (_.isObject(suffix)) {
 	    animation = suffix;
-	    suffix = '';    
+	    suffix = '';
 	  }
 
 	  var key = 'VelocityHelper.animation.' + (effectCounter++) + suffix;
@@ -18539,7 +18539,7 @@ module.exports =
 	  }
 
 	  if (Velocity.RegisterEffect === undefined) {
-	    throw "Velocity.RegisterEffect not found. You need to require('velocity-animate/velocity.ui') at a top level for UI Pack.";
+	    throw "Velocity.RegisterEffect not found. You need to require 'velocity-animate/velocity.ui' at a top level for UI Pack.";
 	  }
 
 	  Velocity.RegisterEffect(key, animation);

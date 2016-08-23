@@ -7,7 +7,7 @@ import { Route, IndexRoute, IndexRedirect } from 'react-router';
 import { theme } from '../selectors';
 
 const mapStateToProps = state => ({
-  theme: theme.requested(state),
+  theme: theme.current(state),
 });
 
 class ThemeLoader extends React.Component {
