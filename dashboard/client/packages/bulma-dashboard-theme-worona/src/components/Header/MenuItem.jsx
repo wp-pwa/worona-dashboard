@@ -16,19 +16,19 @@ export const MenuItem = ({ type, name, url, target, link, action, icon }) => {
   const Anchor = !link ? ExtLink : Link;
   const onClick = !!action ? e => { e.preventDefault(); action(); } : null;
   const anchorClass = cn(
-    type === 'button' && 'button is-info is-outlined is-inverted',
+    type === 'button' && 'button is-primary',
     type === 'text' && window.location.pathname === url && styles.active,
     styles.item
   );
   return (
-    <span className="nav-item is-info">
+    <span className="nav-item">
       <Anchor className={anchorClass} href={url} to={link} target={target} onClick={onClick}>
         {type === 'button' && icon ? (
-          <span className="icon">
+          <span className="icon is-small">
             <i className={`fa fa-${icon}`}></i>
           </span>
         ) : null}
-        {name}
+        <span>{name}</span>
       </Anchor>
     </span>
   );

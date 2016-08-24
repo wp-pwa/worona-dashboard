@@ -7,18 +7,18 @@ import { toggleMobileMenu } from '../../actions';
 import * as selectors from '../../selectors';
 
 const Header = ({ items, toggle, active }) => (
-  <section className="hero is-info">
+  <section className="hero is-primary">
     <div className="hero-head">
-      <nav className="nav is-info">
+      <nav className="nav">
         {/* Left side*/}
         <div className="nav-left">
-          <a className="nav-item" href="/">
+          <a className="nav-item is-brand" href="/">
             <img src={worona} alt="Worona" />
           </a>
         </div>
 
         {/* Hamburger menu (on mobile) */}
-        <span className={`nav-toggle ${(active ? 'is-active' : '')}`} onClick={toggle}>
+        <span className={`nav-toggle is-right ${(active ? 'is-active' : '')}`} onClick={toggle}>
           <span></span>
           <span></span>
           <span></span>
