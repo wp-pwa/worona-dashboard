@@ -18,6 +18,7 @@ export default store;
 export const dispatch = action => store.dispatch(action);
 export const reloadReducers = () => store.replaceReducer(combineReducers(getReducers()));
 export const runSaga = saga => sagaMiddleware.run(saga);
+export const getState = store.getState.bind(store);
 
 if (module.hot) {
   module.hot.accept(() => {
