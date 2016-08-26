@@ -1,24 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import cn from 'classnames';
-import { Link } from 'react-router';
+import { translate } from 'react-i18next';
 import { reduxForm, Field } from 'redux-form';
-import Hero from '../elements/Hero';
+import { Link } from 'react-router';
+import cn from 'classnames';
 import Input from '../elements/Input';
 import Button from '../elements/Button';
 import * as deps from '../../dependencies';
 import { validate } from './validate';
-import styles from './style.css';
+import styles from './styles.css';
 
 const submit = (values, dispatch) => {
-  dispatch(deps.actions.createSiteRequested(values.title, values.url));
+  dispatch(deps.actions.loginRequested(values.email, values.password));
 };
 
-const CreateFirstApp = ({ handleSubmit, waiting, statusMessage, errorMessage }) =>
-  <div>
-    <Hero title="Now, create your first app" color="info"
-      subtitle="Just enter the title and your WordPress url and we will do the rest."
-    />
+const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
 
     <section className="hero-body">
       <div className="container has-text-centered">
@@ -26,30 +22,30 @@ const CreateFirstApp = ({ handleSubmit, waiting, statusMessage, errorMessage }) 
         <form onSubmit={handleSubmit(submit)} className={styles.box}>
 
           <Field
-            name="title"
+            name="email"
             component={Input}
             type="text"
-            placeholder="App Title"
-            icon="info-circle"
+            placeholder="Email"
+            icon="envelope"
           />
 
           <Field
-            name="url"
+            name="password"
             component={Input}
-            type="text"
-            placeholder="Your WordPress URL"
-            icon="wordpress"
+            type="password"
+            placeholder="Password"
+            icon="lock"
           />
 
           <Button
             color="success"
             center
+            className={styles.button}
             size="medium"
             loading={waiting}
             disabled={waiting}
-            className={styles.button}
           >
-            Create the app
+            Let me in!
           </Button>
 
           <div className={cn('help', styles.status)}>
@@ -62,32 +58,33 @@ const CreateFirstApp = ({ handleSubmit, waiting, statusMessage, errorMessage }) 
         </form>
 
         <div className={styles.link}>
-          <Link to="/">
-              I'll do it later
+          <Link to="/register">
+            I don't have an account yet
           </Link>
         </div>
 
       </div>
     </section>
-  </div>;
 
-CreateFirstApp.propTypes = {
+);
+LoginForm.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
-  waiting: React.PropTypes.bool,
-  failed: React.PropTypes.bool,
-  statusMessage: React.PropTypes.any,
-  errorMessage: React.PropTypes.any,
+  waiting: React.PropTypes.bool.isRequired,
+  statusMessage: React.PropTypes.any.isRequired,
+  errorMessage: React.PropTypes.any.isRequired,
+  t: React.PropTypes.func.isRequired,
 };
 
-const CreateFirstAppWithForm = reduxForm({
-  form: 'createFirstApp',
-  fields: ['title', 'url'],
+const LoginTranslated = translate('bulma')(LoginForm);
+
+const LoginWithForm = reduxForm({
+  form: 'login',
   validate,
   getFormState: state => state.bulma.reduxForm,
-})(CreateFirstApp);
+})(LoginTranslated);
 
 export default connect(state => ({
-  waiting: deps.selectors.isCreatingSite(state),
-  statusMessage: deps.selectors.createSiteStatus(state),
-  errorMessage: deps.selectors.createSiteError(state),
-}))(CreateFirstAppWithForm);
+  waiting: deps.selectors.isLoggingIn(state),
+  statusMessage: deps.selectors.loginStatus(state),
+  errorMessage: deps.selectors.loginError(state),
+}))(LoginWithForm);
