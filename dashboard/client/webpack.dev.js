@@ -118,7 +118,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('development') } }),
-    new LodashModuleReplacementPlugin({ currying: true }),
+    new LodashModuleReplacementPlugin(),
     new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en-gb\.js|es\.js/),
     new HtmlWebpackPlugin({
       inject: false,
