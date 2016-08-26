@@ -1,4 +1,4 @@
-# Worona Core Development
+# Worona Dashboard Development
 
 ## Installation
 
@@ -23,10 +23,10 @@ curl https://install.meteor.com/ | sh
 
 ----
 
-Run `npm install` to install global dependencies, like linters.
+Run `npm run install:all` to install all dependencies. It may take quite a while. Don't despair.
 
 ```bash
-npm install
+npm run install:all
 ```
 
 ## Development
