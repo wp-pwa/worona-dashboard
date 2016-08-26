@@ -1,6 +1,6 @@
 {
   "name": "bulma-dashboard-theme-worona",
-  "version": "1.1.5",
+  "version": "1.1.7",
   "description": "Theme for the Worona Dashboard.",
   "main": "src/index.js",
   "scripts": {
@@ -85,7 +85,16 @@
           "hash": "f9a50e78b806bdd49014c981c9797381"
         }
       ],
-      "main": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.cc326db942642075478a7614ae95695e.js"
+      "main": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.cc326db942642075478a7614ae95695e.js",
+      "assets": {
+        "fonts": [
+          "bulma-dashboard-theme-worona/dist/dev/fonts/fontawesome-webfont.25a32416abee198dd821b0b17a198a8f.eot",
+          "bulma-dashboard-theme-worona/dist/dev/fonts/fontawesome-webfont.e6cf7c6ec7c2d6f670ae9d762604cb0b.woff2",
+          "bulma-dashboard-theme-worona/dist/dev/fonts/fontawesome-webfont.c8ddf1e5e5bf3682bc7bebf30f394148.woff",
+          "bulma-dashboard-theme-worona/dist/dev/fonts/fontawesome-webfont.1dc35d25e61d819a9c357074014867ab.ttf",
+          "bulma-dashboard-theme-worona/dist/dev/fonts/fontawesome-webfont.d7c639084f684d66a1bc66855d193ed8.svg"
+        ]
+      }
     },
     "prod": {
       "files": [
@@ -130,20 +139,32 @@
           "hash": "60a17eae760a1e5f4b5f2647a836de0d"
         }
       ],
-      "main": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.7b2cb7855e306b1385a215dd3fc0457c.js"
+      "main": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.7b2cb7855e306b1385a215dd3fc0457c.js",
+      "assets": {
+        "fonts": [
+          "bulma-dashboard-theme-worona/dist/prod/fonts/fontawesome-webfont.25a32416abee198dd821b0b17a198a8f.eot",
+          "bulma-dashboard-theme-worona/dist/prod/fonts/fontawesome-webfont.d7c639084f684d66a1bc66855d193ed8.svg",
+          "bulma-dashboard-theme-worona/dist/prod/fonts/fontawesome-webfont.1dc35d25e61d819a9c357074014867ab.ttf",
+          "bulma-dashboard-theme-worona/dist/prod/fonts/fontawesome-webfont.e6cf7c6ec7c2d6f670ae9d762604cb0b.woff2",
+          "bulma-dashboard-theme-worona/dist/prod/fonts/fontawesome-webfont.c8ddf1e5e5bf3682bc7bebf30f394148.woff"
+        ],
+        "css": [
+          "bulma-dashboard-theme-worona/dist/prod/css/bulma.styles.60a17eae760a1e5f4b5f2647a836de0d.css"
+        ]
+      }
     }
   },
   "devDependencies": {
-    "rimraf": "^2.5.4",
-    "webpack": "^1.13.1",
     "animate.css": "^3.5.1",
     "bulma": "^0.1.0",
     "font-awesome": "^4.6.3",
     "moment": "^2.13.0",
     "redux-form": "^6.0.0-rc.3",
+    "rimraf": "^2.5.4",
     "url-regexp": "^1.0.2",
     "velocity-react": "^1.1.5",
-    "worona-packages": "^1.0.2"
+    "webpack": "^1.13.1",
+    "worona-packages": "^1.0.3"
   },
   "dependencies": {}
 }
