@@ -21,7 +21,7 @@ const Site = ({ name, url, date }) => (
       <footer className="card-footer">
         <a className="card-footer-item">
           <span className={cn('icon', 'is-small', styles.icons)}>
-            <i className="fa fa-sliders"></i>
+            <i className="fa fa-cog"></i>
           </span>
           Configure
         </a>
