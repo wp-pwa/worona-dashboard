@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
-import _ from 'lodash';
+import { flow, keyBy, mapValues } from 'lodash/fp';
 import * as t from '../types';
 
-const mapPkgs = pkgs => _.mapValues(_.keyBy(pkgs, pkg => pkg.namespace), pkg => pkg.name);
+const mapPkgs = flow([
+  keyBy(pkg => pkg.namespace),
+  mapValues(pkg => pkg.name),
+]);
 
 export const requested = (state = {}, action) => {
   switch (action.type) {
