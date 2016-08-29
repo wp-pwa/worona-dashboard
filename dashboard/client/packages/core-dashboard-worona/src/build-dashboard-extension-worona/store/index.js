@@ -1,4 +1,3 @@
-import { getReducers } from 'worona-deps';
 import { compose, createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { routerReducer as routing } from 'react-router-redux';
@@ -6,8 +5,11 @@ import { default as build } from '../reducers';
 
 const sagaMiddleware = createSagaMiddleware();
 
+const reducers = { build: build(), routing };
+const sagas = {};
+
 export const store = createStore(
-  combineReducers({ build: build(), routing }),
+  combineReducers(reducers),
   compose(
     applyMiddleware(sagaMiddleware),
     typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : f => f
@@ -16,8 +18,11 @@ export const store = createStore(
 export default store;
 
 export const dispatch = action => store.dispatch(action);
-export const reloadReducers = () => store.replaceReducer(combineReducers(getReducers()));
-export const runSaga = saga => sagaMiddleware.run(saga);
+export const reloadReducers = () => store.replaceReducer(combineReducers(reducers));
+export const addReducer = (namespace, reducer) => { if (reducer) reducers[namespace] = reducer; };
+export const removeReducer = namespace => { delete reducers[namespace]; };
+export const startSaga = (namespace, saga) => { sagas[namespace] = sagaMiddleware.run(saga); };
+export const stopSaga = (namespace) => { sagas[namespace].cancel(); };
 
 if (module.hot) {
   module.hot.accept(() => {

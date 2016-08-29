@@ -17,7 +17,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { I18nextProvider } from 'react-i18next';
-import { store, runSaga } from './build-dashboard-extension-worona/store';
+import { store, startSaga } from './build-dashboard-extension-worona/store';
 import sagas from './build-dashboard-extension-worona/sagas';
 import { routes } from './build-dashboard-extension-worona/routes';
 import i18next from './i18n-dashboard-extension-worona/i18n';
@@ -37,7 +37,7 @@ class App extends React.Component {
   }
 }
 
-runSaga(sagas);
+startSaga('build', sagas);
 
 if ('ontouchstart' in window) {
   window.addEventListener('load', () => FastClick.attach(document.body));

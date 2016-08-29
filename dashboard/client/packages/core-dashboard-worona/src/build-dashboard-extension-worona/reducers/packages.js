@@ -1,45 +1,28 @@
-import { combineReducers } from 'redux';
-import { flow, keyBy, mapValues } from 'lodash/fp';
-import * as t from '../types';
+import update from 'react/lib/update';
+import { flow, mapValues } from 'lodash/fp';
+import * as types from '../types';
 
-const mapPkgs = flow([
-  keyBy(pkg => pkg.namespace),
-  mapValues(pkg => pkg.name),
-]);
+const mapPkg = (state, pkgName, merge) =>
+  update(state, { [pkgName]: { $merge: merge } });
 
-export const requested = (state = {}, action) => {
+const mapPkgs = (state, pkgs, merge) =>
+  update(state, { $merge: flow(
+    mapValues(pkg => update(state[pkg.name] || pkg, { $merge: merge })))(pkgs) });
+
+export const packages = (state = {}, action) => {
   switch (action.type) {
-    case t.PACKAGES_ADDITION_REQUESTED:
-      return Object.assign({}, state, mapPkgs(action.pkgs));
+    case types.PACKAGES_ADDITION_REQUESTED:
+      return update(state, { $merge: mapValues(pkg => update(pkg, { $merge: {
+        downloaded: false,
+        activated: false,
+      } }))(action.pkgs) });
+    case types.PACKAGE_DOWNLOAD_SUCCEED:
+      return mapPkg(state, action.pkg.name, { downloaded: true });
+    case types.PACKAGES_LOAD_SUCCEED:
+      return mapPkgs(state, action.pkgs, { loaded: true });
     default:
       return state;
   }
 };
 
-export const downloaded = (state = {}, action) => {
-  if (action.type === t.PACKAGE_DOWNLOAD_SUCCEED) {
-    return Object.assign({}, state, { [action.pkg.namespace]: action.pkg.name });
-  }
-  return state;
-};
-
-export const failed = (state = {}, action) => {
-  if (action.type === t.PACKAGE_DOWNLOAD_FAILED) {
-    return Object.assign({}, state, { [action.pkg.namespace]: action.pkg.name });
-  }
-  return state;
-};
-
-export const loaded = (state = {}, action) => {
-  if (action.type === t.PACKAGES_LOAD_SUCCEED) {
-    return Object.assign({}, state, mapPkgs(action.pkgs));
-  }
-  return state;
-};
-
-export default combineReducers({
-  requested,
-  downloaded,
-  failed,
-  loaded,
-});
+export default packages;

@@ -15992,14 +15992,8 @@ var vendors_dashboard_worona =
 	  this._packages[name] = pkg;
 	};
 
-	Worona.prototype.getReducers = function() {
-	  var reducers = mapValues(this._packages, function(pkg) {
-	    if (pkg.reducers && pkg.reducers.default)
-	      return pkg.reducers.default();
-	  });
-	  return omitBy(reducers, function(reducer) {
-	    return !reducer;
-	  });
+	Worona.prototype.getReducers = function(namespace) {
+	  return this._packages[namespace].reducers && this._packages[namespace].reducers.default() || null;
 	}
 
 	Worona.prototype.getLocales = function(lng) {
@@ -16010,25 +16004,25 @@ var vendors_dashboard_worona =
 	  .filter(function(locale) { return !!locale; });
 	}
 
-	Worona.prototype.getLocale = function(ns, lng) {
-	  return this._packages[ns] && typeof this._packages[ns].locales === 'function' ?
-	    this._packages[ns].locales(lng) : null;
+	Worona.prototype.getLocale = function(namespace, lng) {
+	  return this._packages[namespace] && typeof this._packages[namespace].locales === 'function' ?
+	    this._packages[namespace].locales(lng) : null;
 	}
 
-	Worona.prototype.getSagas = function(pkgName) {
-	  if ((typeof this._packages[pkgName] !== 'undefined') &&
-	  (typeof this._packages[pkgName].sagas !== 'undefined') &&
-	  (typeof this._packages[pkgName].sagas.default !== 'undefined')) {
-	    return this._packages[pkgName].sagas.default;
+	Worona.prototype.getSagas = function(namespace) {
+	  if ((typeof this._packages[namespace] !== 'undefined') &&
+	  (typeof this._packages[namespace].sagas !== 'undefined') &&
+	  (typeof this._packages[namespace].sagas.default !== 'undefined')) {
+	    return this._packages[namespace].sagas.default;
 	  }
 	  return false;
 	}
 
-	var checkPackage = function(pkgName, obj) {
-	  if (typeof pkgName === 'undefined')
+	var checkPackage = function(namespace, obj) {
+	  if (typeof namespace === 'undefined')
 	    throw new Error('Dependecy failed. You have to specify at least package name');
-	  else if (typeof obj[pkgName] === 'undefined')
-	    throw new Error('Dependecy failed. ' + pkgName + ' is not loaded.');
+	  else if (typeof obj[namespace] === 'undefined')
+	    throw new Error('Dependecy failed. ' + namespace + ' is not loaded.');
 	}
 
 	var checkString = function(propName) {
@@ -16036,33 +16030,33 @@ var vendors_dashboard_worona =
 	    throw new Error('Dependecy failed. Please use strings to specify dependencies.');
 	}
 
-	var checkProp = function(pkgName, obj, propName) {
+	var checkProp = function(namespace, obj, propName) {
 	  if (typeof obj[propName] === 'undefined')
-	    throw new Error('Dependecy failed. \'' + pkgName + '\' exists, but \'' + pkgName +
+	    throw new Error('Dependecy failed. \'' + namespace + '\' exists, but \'' + namespace +
 	      '.' + propName + '\' doesn\'t.');
 	}
 
-	var nextDep = function(pkgName, obj, propName, args) {
+	var nextDep = function(namespace, obj, propName, args) {
 	  checkString(propName);
-	  checkProp(pkgName, obj, propName);
+	  checkProp(namespace, obj, propName);
 	  if (typeof args[0] === 'undefined') {
 	    return obj[propName];
 	  }
 	  var nextArgs = args.slice(1);
-	  return nextDep(pkgName + '.' + propName, obj[propName], args[0], nextArgs);
+	  return nextDep(namespace + '.' + propName, obj[propName], args[0], nextArgs);
 	}
 
 	Worona.prototype.dep = function() {
 	  var args = Array.prototype.slice.call(arguments);
-	  var pkgName = args[0];
+	  var namespace = args[0];
 	  var propName = args[1];
-	  checkString(pkgName);
-	  checkPackage(pkgName, this._packages);
+	  checkString(namespace);
+	  checkPackage(namespace, this._packages);
 	  if (typeof propName === 'undefined') {
-	    return this._packages[pkgName];
+	    return this._packages[namespace];
 	  }
 	  var nextArgs = args.slice(2);
-	  return nextDep(pkgName, this._packages[pkgName], propName, nextArgs);
+	  return nextDep(namespace, this._packages[namespace], propName, nextArgs);
 	}
 
 	Worona.prototype.mock = function(deps) {

@@ -5,24 +5,26 @@ import * as types from '../types';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
 
-export function* changeTheme({ namespace }) {
-  let loaded = yield select(selectors.packages.loaded);
-  if (typeof loaded[namespace] === 'undefined') { // Package is not loaded.
+export function* changeTheme({ name }) {
+  let pkgs = yield select(selectors.packages);
+  if ((typeof pkgs[name] === 'undefined') || (pkgs[name].status !== 'loaded')) {
+    // Package hasn't been requested.
     while (true) {
       // Wait until the package downloads (if it does).
       yield take(types.PACKAGES_ADDITION_SUCCEED);
-      loaded = yield select(selectors.packages.loaded);
-      if (typeof loaded[namespace] !== 'undefined') {
-        // Package has finished downloading, we can start exit the while and start the change.
+      pkgs = yield select(selectors.packages);
+      if (typeof pkgs[name] !== 'undefined' && pkgs[name].status === 'loaded') {
+        // Package has finished downloading and it is loaded, we can exit the while and start
+        // the change.
         break;
       }
     }
   }
   try {
-    yield put(actions.themeChangeStarted({ namespace }));
-    yield put(actions.themeChangeSucceed({ namespace }));
+    yield put(actions.themeChangeStarted({ name }));
+    yield put(actions.themeChangeSucceed({ name }));
   } catch (error) {
-    yield put(actions.themeChangeFailed({ error, namespace }));
+    yield put(actions.themeChangeFailed({ error, name }));
   }
 }
 

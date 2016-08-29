@@ -2,6 +2,7 @@
 import request from 'superagent';
 import { takeEvery } from 'redux-saga';
 import { put, fork, call } from 'redux-saga/effects';
+import { keyBy } from 'lodash/fp';
 import * as actions from '../actions';
 import * as types from '../types';
 import download from './download';
@@ -32,10 +33,10 @@ export function* addCorePackagesSaga() {
   put(actions.corePackagesRequested());
   try {
     const res = yield call(request.get, 'https://cdn.worona.io/api/v1/settings/core/dashboard');
-    const action = { pkgs: res.body, uid: 'core' };
+    const action = { pkgs: keyBy(pkg => pkg.name)(res.body), uid: 'core' };
     yield put(actions.corePackagesSucceed(action));
     yield put(actions.packagesAdditionRequested(action));
-    yield put(actions.themeChangeRequested({ namespace: 'bulma' }));
+    yield put(actions.themeChangeRequested({ name: 'bulma-dashboard-theme-worona' }));
   } catch (error) {
     yield put(actions.corePackagesFailed({ error }));
   }

@@ -36,11 +36,11 @@ export const packagesLoadSucceed = ({ pkgs, uid }) =>
 export const packagesLoadFailed = ({ error, pkg, uid }) =>
   ({ type: types.PACKAGES_LOAD_FAILED, error, pkg, uid });
 
-export const themeChangeRequested = ({ namespace }) =>
-  ({ type: types.THEME_CHANGE_REQUESTED, namespace });
-export const themeChangeStarted = ({ namespace }) =>
-  ({ type: types.THEME_CHANGE_STARTED, namespace });
-export const themeChangeSucceed = ({ namespace }) =>
-  ({ type: types.THEME_CHANGE_SUCCEED, namespace });
-export const themeChangeFailed = ({ error, namespace }) =>
-  ({ type: types.THEME_CHANGE_FAILED, error, namespace });
+export const themeChangeRequested = ({ name }) =>
+  ({ type: types.THEME_CHANGE_REQUESTED, name });
+export const themeChangeStarted = ({ name }) =>
+  ({ type: types.THEME_CHANGE_STARTED, name });
+export const themeChangeSucceed = ({ name }) =>
+  ({ type: types.THEME_CHANGE_SUCCEED, name });
+export const themeChangeFailed = ({ error, name }) =>
+  ({ type: types.THEME_CHANGE_FAILED, error, name });

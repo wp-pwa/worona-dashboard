@@ -1,8 +1,8 @@
 /* eslint-disable no-constant-condition, no-undef */
 import { put, call, race, take } from 'redux-saga/effects';
+import { toArray, mapValues, reduce } from 'lodash';
 import { takeEvery } from 'redux-saga';
 import { addPackage } from 'worona-deps';
-import _ from 'lodash';
 import * as types from '../types';
 import * as actions from '../actions';
 
@@ -25,8 +25,8 @@ export const requireRemotePackage = pkg => new Promise(resolve => {
 
 // Function which is triggered each PACKAGES_DOWNLOAD_REQUESTED and dispatches individual
 // PACKAGE_DOWNLOAD_REQUESTED.
-export function* packagesDownloadSaga({ pkgs = [], uid }) {
-  yield pkgs.map(pkg => put(actions.packageDownloadRequested({ pkg, uid })));
+export function* packagesDownloadSaga({ pkgs = {}, uid }) {
+  yield toArray(pkgs).map(pkg => put(actions.packageDownloadRequested({ pkg, uid })));
 }
 
 // Function triggered by PACKAGE_DOWNLOAD_REQUESTED and used to download each package/module
@@ -49,17 +49,16 @@ export function* packageDownloadSaga({ pkg, uid }) {
 // and updates the list. Once the list is completed, it dispatches a PACKAGES_DOWNLOAD_SUCCEED.
 // It also listens to any relevant PACKAGE_DOWNLOAD_FAILED and dispatch PACKAGES_DOWNLOAD_FAILED if
 // any download fails.
-export function* packagesDownloadWatcher({ pkgs = [], uid }) {
-  const requested = pkgs.map(pkg => pkg.name);
-  const downloaded = [];
+export function* packagesDownloadWatcher({ pkgs = {}, uid }) {
+  const requested = mapValues(pkgs, () => false);
   while (true) {
     const { succeed, failed } = yield race({
       succeed: take(types.PACKAGE_DOWNLOAD_SUCCEED),
       failed: take(types.PACKAGE_DOWNLOAD_FAILED),
     });
     if (succeed && succeed.uid === uid) {
-      downloaded.push(succeed.pkg.name);
-      if (_.isEqual(requested.sort(), downloaded.sort())) {
+      requested[succeed.pkg.name] = true;
+      if (reduce(requested, (acc, pkg) => acc && pkg, true)) {
         // If both download and requested are equal, dispatch PACKAGES_DOWNLOAD_SUCCEED and exit.
         yield put(actions.packagesDownloadSucceed({ pkgs, uid }));
         break;
