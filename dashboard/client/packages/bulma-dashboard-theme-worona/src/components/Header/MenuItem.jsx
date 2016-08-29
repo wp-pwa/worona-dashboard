@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import cn from 'classnames';
 import { connect } from 'react-redux';
 
+import Icon from '../elements/Icon';
+
 const ExtLink = props => (
   <a {...props}>
     {props.children}
@@ -23,9 +25,7 @@ export const MenuItem = ({ type, name, url, target, link, action, icon, location
     <span className="nav-item">
       <Anchor className={anchorClass} href={url} to={link} target={target} onClick={onClick}>
         {type === 'button' && icon ? (
-          <span className="icon is-small">
-            <i className={`fa fa-${icon}`}></i>
-          </span>
+          <Icon iconFaCode={icon} small />
         ) : null}
         <span>{name}</span>
       </Anchor>
