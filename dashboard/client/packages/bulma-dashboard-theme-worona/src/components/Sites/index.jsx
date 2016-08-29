@@ -14,7 +14,7 @@ const Sites = () => (
   <Body>
     <Header>
       <TopNav />
-      <Hero title="My Sites" color="info"
+      <Hero title="My Sites"
         subtitle="Configure your sites here or add a new one"
       />
     </Header>
