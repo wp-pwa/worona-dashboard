@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Icon = ({ iconFaCode, small }) => (
-  <span className="icon">
-    <i className={`fa fa-${iconFaCode} ${(small ? 'is-small' : '')}`}></i>
+  <span className={`icon ${(small ? 'is-small' : '')}`}>
+    <i className={`fa fa-${iconFaCode}`}></i>
   </span>
 );
 Icon.propTypes = {
