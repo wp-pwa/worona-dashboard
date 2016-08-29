@@ -8,32 +8,34 @@ import * as selectors from '../../selectors';
 
 const TopNav = ({ items, toggle, active }) => (
   <div className="hero-head">
-    <nav className="nav">
-      {/* Left side*/}
-      <div className="nav-left">
-        <a className="nav-item is-brand" href="/">
-          <img src={worona} alt="Worona" />
-        </a>
-      </div>
+    <div className="container">
+      <nav className="nav">
+        {/* Left side*/}
+        <div className="nav-left">
+          <a className="nav-item is-brand" href="/">
+            <img src={worona} alt="Worona" />
+          </a>
+        </div>
 
-      {/* Hamburger menu (on mobile) */}
-      <span className={`nav-toggle is-right ${(active ? 'is-active' : '')}`} onClick={toggle}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
+        {/* Hamburger menu (on mobile) */}
+        <span className={`nav-toggle is-right ${(active ? 'is-active' : '')}`} onClick={toggle}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
 
-      {/* Right side, not mobile */}
-      <Menu items={items} />
+        {/* Right side, not mobile */}
+        <Menu items={items} />
 
-      {/* Right side, mobile */}
-      <VelocityTransitionGroup
-        enter={{ animation: 'slideDown', duration: 150 }}
-        leave={{ animation: 'slideUp', duration: 150 }}
-      >
-        {active ? <Menu items={items} active={active} /> : null}
-      </VelocityTransitionGroup>
-    </nav>
+        {/* Right side, mobile */}
+        <VelocityTransitionGroup
+          enter={{ animation: 'slideDown', duration: 150 }}
+          leave={{ animation: 'slideUp', duration: 150 }}
+        >
+          {active ? <Menu items={items} active={active} /> : null}
+        </VelocityTransitionGroup>
+      </nav>
+    </div>
   </div>
 );
 TopNav.propTypes = {
