@@ -9,17 +9,19 @@ import Main from '../Main';
 import Hero from '../elements/Hero';
 
 import SitesList from './SitesList';
+import AddSiteNav from './AddSiteNav';
 
 const Sites = () => (
   <Body>
     <Header>
       <TopNav />
-      <Hero title="My Sites"
-        subtitle="Configure your sites here or add a new one"
-      />
+      <Hero title="Sites">
+        Manage your <strong>WordPress Sites</strong> or add new ones.
+      </Hero>
     </Header>
 
     <Main>
+      <AddSiteNav />
       <SitesList />
     </Main>
 

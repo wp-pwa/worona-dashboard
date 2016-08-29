@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import Button from '../elements/Button';
 import Site from './Site';
 
 const SitesList = ({ sites }) => (
