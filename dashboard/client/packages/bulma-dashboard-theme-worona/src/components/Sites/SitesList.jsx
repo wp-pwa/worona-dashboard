@@ -4,15 +4,13 @@ import { translate } from 'react-i18next';
 import Site from './Site';
 
 const SitesList = ({ sites }) => (
-  <div>
-    <section className="section container">
-      <div className="columns is-multiline">
-        {sites.map(site => (
-          <Site {...site} date={site.modifiedAt.$date} key={site.id} />
-        ))}
-      </div>
-    </section>
-  </div>
+  <section className="section">
+    <div className="columns">
+      {sites.map(site => (
+        <Site {...site} date={site.modifiedAt.$date} key={site.id} />
+      ))}
+    </div>
+  </section>
 );
 SitesList.propTypes = {
   sites: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,

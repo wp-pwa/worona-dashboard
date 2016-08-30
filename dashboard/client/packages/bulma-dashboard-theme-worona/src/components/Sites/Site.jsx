@@ -3,19 +3,22 @@ import cn from 'classnames';
 import moment from 'moment';
 import styles from './style.css';
 
-const Site = ({ name, url, date }) => (
-  <div className="column is-4 is-centered">
-    <div className={cn('card', styles.card)}>
+const Site = ({ name, url, date, id }) => (
+  <div className="column is-narrow-mobile is-one-third-tablet is-one-quarter-desktop">
+    <div className={cn('card', 'is-fullwidth', styles.card)}>
       <header className="card-header">
-        <a href="#" className="card-header-title is-info">
+        <p className="card-header-title">
           {name}
-        </a>
+        </p>
       </header>
       <div className="card-content">
         <div className="content">
-          {url}
+          <strong>URL:</strong> {url}
           <br />
-          <small>Modified: {moment(date).fromNow()}</small>
+          <strong>Site ID:</strong> {id}
+          <br />
+          <br />
+          <small>Last modified: {moment(date).fromNow()}</small>
         </div>
       </div>
       <footer className="card-footer">
@@ -38,6 +41,7 @@ const Site = ({ name, url, date }) => (
 Site.propTypes = {
   name: React.PropTypes.string.isRequired,
   url: React.PropTypes.string.isRequired,
+  id: React.PropTypes.string.isRequired,
   date: React.PropTypes.number.isRequired,
 };
 
