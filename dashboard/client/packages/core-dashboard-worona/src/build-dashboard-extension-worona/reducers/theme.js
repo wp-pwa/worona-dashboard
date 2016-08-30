@@ -1,21 +1,33 @@
 import { combineReducers } from 'redux';
 import * as t from '../types';
 
-export const requested = (state = 'loading', action) => {
-  if (action.type === t.THEME_CHANGE_REQUESTED) {
-    return action.name;
+const defaultTheme = {
+  namespace: 'loading',
+};
+
+export const requested = (state = defaultTheme, { type, name, namespace }) => {
+  if (type === t.THEME_CHANGE_REQUESTED) {
+    return { name, namespace };
   }
   return state;
 };
 
-export const current = (state = 'loading', action) => {
-  if (action.type === t.THEME_CHANGE_STARTED) {
-    return action.name;
+export const isLoading = (state = defaultTheme, { type, name, namespace }) => {
+  if (type === t.THEME_CHANGE_STARTED) {
+    return { name, namespace };
+  }
+  return state;
+};
+
+export const current = (state = defaultTheme, { type, name, namespace }) => {
+  if (type === t.THEME_CHANGE_SUCCEED) {
+    return { name, namespace };
   }
   return state;
 };
 
 export default combineReducers({
   current,
+  isLoading,
   requested,
 });

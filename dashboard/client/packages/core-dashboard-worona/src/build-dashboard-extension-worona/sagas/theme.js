@@ -5,15 +5,15 @@ import * as types from '../types';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
 
-export function* changeTheme({ name }) {
+export function* changeTheme({ name, namespace }) {
   let pkgs = yield select(selectors.packages);
-  if ((typeof pkgs[name] === 'undefined') || (pkgs[name].status !== 'loaded')) {
+  if ((typeof pkgs[name] === 'undefined') || (pkgs[name].loaded !== true)) {
     // Package hasn't been requested.
     while (true) {
       // Wait until the package downloads (if it does).
       yield take(types.PACKAGES_ADDITION_SUCCEED);
       pkgs = yield select(selectors.packages);
-      if (typeof pkgs[name] !== 'undefined' && pkgs[name].status === 'loaded') {
+      if (typeof pkgs[name] !== 'undefined' && pkgs[name].loaded === true) {
         // Package has finished downloading and it is loaded, we can exit the while and start
         // the change.
         break;
@@ -21,8 +21,8 @@ export function* changeTheme({ name }) {
     }
   }
   try {
-    yield put(actions.themeChangeStarted({ name }));
-    yield put(actions.themeChangeSucceed({ name }));
+    yield put(actions.themeChangeStarted({ name, namespace }));
+    yield put(actions.themeChangeSucceed({ name, namespace }));
   } catch (error) {
     yield put(actions.themeChangeFailed({ error, name }));
   }

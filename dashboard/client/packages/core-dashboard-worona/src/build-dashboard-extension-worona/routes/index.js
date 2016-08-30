@@ -4,16 +4,43 @@ import React from 'react';
 import { dep } from 'worona-deps';
 import { connect } from 'react-redux';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
-import { theme } from '../selectors';
+import { theme, packages } from '../selectors';
 
-const mapStateToProps = state => ({
-  theme: theme.current(state),
-});
+const mapStateToProps = (state) => {
+  const newTheme = theme.isLoading(state);
+  const props = {
+    theme: newTheme.namespace,
+  };
+  const packageTheme = packages(state)[newTheme.name];
+  if (packageTheme && packageTheme.prod && packageTheme.prod.assets &&
+    packageTheme.prod.assets.css) {
+    props.css = packageTheme.prod.assets.css;
+  }
+  return props;
+};
+
+class StyleLoader extends React.Component {
+  componentDidMount() {
+    this.refs.link.addEventListener('load', () => alert('loaded!'));
+  }
+  render() {
+    return (
+      <link rel="stylesheet" ref="link" type="text/css" href={this.props.cssPath} />
+    );
+  }
+}
 
 class ThemeLoader extends React.Component {
   render() {
+    const css = this.props.css || [];
+    const cdn = 'https://cdn.worona.io/packages/';
     const Theme = dep(this.props.theme, 'components', 'Theme');
-    return <Theme {...this.props} />;
+    return (
+      <div id="root">
+        {css.map(cssPath => <StyleLoader cssPath={cdn + cssPath} key={cssPath} />)}
+        <Theme {...this.props} />;
+      </div>
+    );
   }
 }
 ThemeLoader = connect(mapStateToProps)(ThemeLoader);

@@ -36,7 +36,8 @@ export function* addCorePackagesSaga() {
     const action = { pkgs: keyBy(pkg => pkg.name)(res.body), uid: 'core' };
     yield put(actions.corePackagesSucceed(action));
     yield put(actions.packagesAdditionRequested(action));
-    yield put(actions.themeChangeRequested({ name: 'bulma-dashboard-theme-worona' }));
+    yield put(actions.themeChangeRequested(
+      { name: 'bulma-dashboard-theme-worona', namespace: 'bulma' }));
   } catch (error) {
     yield put(actions.corePackagesFailed({ error }));
   }
