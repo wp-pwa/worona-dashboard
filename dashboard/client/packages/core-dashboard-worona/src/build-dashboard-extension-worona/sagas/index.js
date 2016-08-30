@@ -30,7 +30,7 @@ function* packagesAdditionLoadFailedWatcher(action) {
 // Function which download the core packages list from the api and then starts a
 // PACKAGES_ADDITION_REQUESTED to add them to the system.
 export function* addCorePackagesSaga() {
-  put(actions.corePackagesRequested());
+  yield put(actions.corePackagesRequested());
   try {
     const res = yield call(request.get, 'https://cdn.worona.io/api/v1/settings/core/dashboard');
     const action = { pkgs: keyBy(pkg => pkg.name)(res.body), uid: 'core' };

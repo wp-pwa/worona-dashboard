@@ -23,7 +23,7 @@ i18next
     lng: 'en',
     fallbackLng: 'en',
     ns: 'build',
-    debug: true,
+    debug: false,
     interpolation: {
       escapeValue: false, // Not needed for react.
     },

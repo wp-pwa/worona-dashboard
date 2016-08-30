@@ -10,7 +10,10 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: ['./src/index.js'],
+    main: [
+      'script!systemjs/dist/system.js',
+      './src/index.js'
+    ],
   },
   output: {
     path: path.join(__dirname, 'dist', env),
@@ -29,9 +32,6 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        query: {
-          presets: ['react-hmre'],
-        },
         exclude: /(node_modules)/,
       },
       {

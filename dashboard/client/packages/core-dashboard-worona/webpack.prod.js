@@ -11,7 +11,10 @@ var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: ['./src/index.js'],
+    main: [
+      'script!systemjs/dist/system.js',
+      './src/index.js'
+    ],
   },
   output: {
     path: path.join(__dirname, 'dist', env),
@@ -94,7 +97,8 @@ module.exports = {
       manifest: require('./dist/' + env + '/vendors/vendors-manifest.json'),
     }),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
-    new LodashModuleReplacementPlugin(),
+    new LodashModuleReplacementPlugin(
+      { currying: true, flattening: true, placeholders: true, collections: true }),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),

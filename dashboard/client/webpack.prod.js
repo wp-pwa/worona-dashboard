@@ -10,6 +10,7 @@ var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 module.exports = {
   entry: {
     core: [
+      'script!systemjs/dist/system.js',
       path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'index.js'),
     ],
   },
@@ -111,7 +112,8 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
-    new LodashModuleReplacementPlugin(),
+    new LodashModuleReplacementPlugin(
+      { currying: true, flattening: true, placeholders: true, collections: true }),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
