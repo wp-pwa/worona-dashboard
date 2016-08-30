@@ -5,7 +5,7 @@ import * as types from '../types';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
 
-export function* changeTheme({ name, namespace }) {
+export function* changeTheme({ name }) {
   let pkgs = yield select(selectors.packages);
   if ((typeof pkgs[name] === 'undefined') || (pkgs[name].loaded !== true)) {
     // Package hasn't been requested.
@@ -21,15 +21,16 @@ export function* changeTheme({ name, namespace }) {
     }
   }
   try {
-    yield put(actions.themeChangeStarted({ name, namespace }));
-    yield put(actions.themeChangeSucceed({ name, namespace }));
+    const packages = yield select(selectors.build.packages);
+    yield put(actions.themeLoadStarted({ pkg: packages[name] }));
+    yield put(actions.themeLoadSucceed({ pkg: packages[name] }));
   } catch (error) {
-    yield put(actions.themeChangeFailed({ error, name }));
+    yield put(actions.themeLoadFailed({ error: error.message, name }));
   }
 }
 
 export default function* sagas() {
   yield [
-    takeEvery(types.THEME_CHANGE_REQUESTED, changeTheme),
+    takeEvery(types.THEME_LOAD_REQUESTED, changeTheme),
   ];
 }

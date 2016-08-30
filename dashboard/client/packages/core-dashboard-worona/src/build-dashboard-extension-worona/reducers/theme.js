@@ -1,27 +1,25 @@
 import { combineReducers } from 'redux';
-import * as t from '../types';
+import * as types from '../types';
 
-const defaultTheme = {
-  namespace: 'loading',
-};
+const defaultTheme = 'loading-dashboard-theme-worona';
 
-export const requested = (state = defaultTheme, { type, name, namespace }) => {
-  if (type === t.THEME_CHANGE_REQUESTED) {
-    return { name, namespace };
+export const requested = (state = defaultTheme, { type, name }) => {
+  if (type === types.THEME_LOAD_REQUESTED) {
+    return name;
   }
   return state;
 };
 
-export const isLoading = (state = defaultTheme, { type, name, namespace }) => {
-  if (type === t.THEME_CHANGE_STARTED) {
-    return { name, namespace };
+export const isLoading = (state = defaultTheme, { type, pkg }) => {
+  if (type === types.THEME_LOAD_STARTED) {
+    return pkg.name;
   }
   return state;
 };
 
-export const current = (state = defaultTheme, { type, name, namespace }) => {
-  if (type === t.THEME_CHANGE_SUCCEED) {
-    return { name, namespace };
+export const current = (state = defaultTheme, { type, pkg }) => {
+  if (type === types.THEME_LOAD_SUCCEED) {
+    return pkg.name;
   }
   return state;
 };

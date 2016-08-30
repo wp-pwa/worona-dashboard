@@ -2,7 +2,15 @@ import update from 'react/lib/update';
 import { mapValues } from 'lodash';
 import * as types from '../types';
 
-export const packages = (state = {}, action) => {
+const defaultPackages = {
+  'loading-dashboard-theme-worona': {
+    name: 'loading-dashboard-theme-worona',
+    namespace: 'loading',
+    type: 'theme',
+  },
+};
+
+export const packages = (state = defaultPackages, action) => {
   let newPkgs;
   switch (action.type) {
     case types.PACKAGES_ADDITION_REQUESTED:

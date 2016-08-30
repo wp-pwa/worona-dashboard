@@ -6,19 +6,6 @@ import { connect } from 'react-redux';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
 import { theme, packages } from '../selectors';
 
-const mapStateToProps = (state) => {
-  const newTheme = theme.isLoading(state);
-  const props = {
-    theme: newTheme.namespace,
-  };
-  const packageTheme = packages(state)[newTheme.name];
-  if (packageTheme && packageTheme.prod && packageTheme.prod.assets &&
-    packageTheme.prod.assets.css) {
-    props.css = packageTheme.prod.assets.css;
-  }
-  return props;
-};
-
 class StyleLoader extends React.Component {
   componentDidMount() {
     this.refs.link.addEventListener('load', () => alert('loaded!'));
@@ -29,6 +16,19 @@ class StyleLoader extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  const newTheme = theme.isLoading(state);
+  const packageTheme = packages(state)[newTheme.name];
+  const props = {
+    theme: packageTheme.namespace,
+  };
+  if (packageTheme && packageTheme.prod && packageTheme.prod.assets &&
+    packageTheme.prod.assets.css) {
+    props.css = packageTheme.prod.assets.css;
+  }
+  return props;
+};
 
 class ThemeLoader extends React.Component {
   render() {
