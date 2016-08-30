@@ -7,7 +7,7 @@ const Header = ({ children }) => (
 );
 
 Header.propTypes = {
-  children: React.PropTypes.node.required,
+  children: React.PropTypes.node.isRequired,
 };
 
 export default Header;
