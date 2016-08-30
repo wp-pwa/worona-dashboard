@@ -1,6 +1,6 @@
 {
   "name": "core-dashboard-worona",
-  "version": "1.1.13",
+  "version": "1.1.14",
   "description": "Core Package of Worona Dashboard",
   "main": "dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js",
   "scripts": {
@@ -88,7 +88,8 @@
           "hash": "ae25225b3df5628ca5b3b05913152faa"
         }
       ],
-      "main": "core-dashboard-worona/dist/dev/js/core.dashboard.cc7cf1b03f441cf3a9130149fdedf4bf.js"
+      "main": "core-dashboard-worona/dist/dev/js/core.dashboard.cc7cf1b03f441cf3a9130149fdedf4bf.js",
+      "assets": {}
     },
     "prod": {
       "vendors": {
@@ -118,7 +119,8 @@
           "hash": "41aae638ea4e86146eae69a60e82292b"
         }
       ],
-      "main": "core-dashboard-worona/dist/prod/js/core.dashboard.7f8295d36cd904ca5ae7f23e993a44cd.js"
+      "main": "core-dashboard-worona/dist/prod/js/core.dashboard.7f8295d36cd904ca5ae7f23e993a44cd.js",
+      "assets": {}
     }
   },
   "devDependencies": {

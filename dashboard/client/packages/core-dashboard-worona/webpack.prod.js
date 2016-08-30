@@ -1,4 +1,5 @@
 /* eslint-disable */
+var env = 'prod';
 var path = require('path');
 var webpack = require('webpack');
 var packageJson = require('./package.json');
@@ -13,8 +14,8 @@ module.exports = {
     main: ['./src/index.js'],
   },
   output: {
-    path: path.join(__dirname, 'dist', 'prod'),
-    publicPath: 'https://cdn.worona.io/packages/core-dashboard-worona/dist/prod/',
+    path: path.join(__dirname, 'dist', env),
+    publicPath: 'https://cdn.worona.io/packages/core-dashboard-worona/dist/' + env + '/',
     filename: 'js/core.dashboard.[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 32,
@@ -90,7 +91,7 @@ module.exports = {
   plugins: [
     new webpack.DllReferencePlugin({
       context: '../..',
-      manifest: require('./dist/prod/vendors/vendors-manifest.json'),
+      manifest: require('./dist/' + env + '/vendors/vendors-manifest.json'),
     }),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
     new LodashModuleReplacementPlugin(),
@@ -102,27 +103,28 @@ module.exports = {
       inject: false,
       title: 'Worona Dashboard',
       template: path.join(__dirname, 'html', 'index.html'),
-      vendorsFile: 'https://cdn.worona.io/packages/' + worona.prod.vendors.main,
+      vendorsFile: 'https://cdn.worona.io/packages/' + worona[env].vendors.main,
       appMountId: 'root',
-      window: { __worona__: { prod: true, remote: true } },
+      window: { __worona__: { [env]: true, remote: true } },
       minify: { preserveLineBreaks: true, collapseWhitespace: true },
     }),
     new StatsWriterPlugin({
       filename: '../../package.json',
       fields: ['chunks'],
       transform: function (data) {
-        worona.prod = worona.prod || {};
-        worona.prod.files = [ worona.prod.vendors.files[0] ];
+        worona[env] = worona[env] || {};
+        worona[env].files = [ worona[env].vendors.files[0] ];
+        worona[env].assets = {};
         data.chunks.forEach(chunk => chunk.files.forEach((file, index) => {
-            const chunkName = chunk.names[index];
-            if (chunkName === 'main') {
-              worona.prod.main = packageJson.name + '/dist/prod/' + file;
-            }
-            worona.prod.files.push({
-              file: packageJson.name + '/dist/prod/' + file,
-              hash: chunk.hash,
-            });
-          }));
+          const chunkName = chunk.names[index];
+          if (chunkName === 'main') {
+            worona[env].main = packageJson.name + '/dist/' + env + '/' + file;
+          }
+          worona[env].files.push({
+            file: packageJson.name + '/dist/' + env + '/' + file,
+            hash: chunk.hash,
+          });
+        }));
         return JSON.stringify(packageJson, null, 2);
       }
     }),
