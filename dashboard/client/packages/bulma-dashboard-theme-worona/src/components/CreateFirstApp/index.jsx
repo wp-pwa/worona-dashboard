@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Header from '../Header';
 import TopNav from '../Header/TopNav';
@@ -46,9 +47,12 @@ const CreateFirstApp = ({ isFirstLogin }) => {
   );
 };
 
-
 CreateFirstApp.propTypes = {
   isFirstLogin: React.PropTypes.bool,
 };
 
-export default CreateFirstApp;
+const mapStateToProps = state => ({
+  isFirstLogin: state.accounts.isFirstLogin,
+});
+
+export default connect(mapStateToProps)(CreateFirstApp);

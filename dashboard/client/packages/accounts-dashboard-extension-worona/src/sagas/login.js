@@ -29,7 +29,7 @@ export function* loginRequestedWatcher() {
 
 export function* loginSucceedSaga() {
   if (yield select(selectors.isFirstLogin)) {
-    yield call(deps.libs.push, '/create-first-app');
+    yield call(deps.libs.push, '/add-site');
   } else {
     yield call(deps.libs.push, '/sites');
   }
