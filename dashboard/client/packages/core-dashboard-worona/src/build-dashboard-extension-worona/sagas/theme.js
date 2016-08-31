@@ -1,5 +1,5 @@
 /* eslint-disable no-constant-condition */
-import { takeEvery } from 'redux-saga';
+import { takeLatest } from 'redux-saga';
 import { select, put, take } from 'redux-saga/effects';
 import * as types from '../types';
 import * as actions from '../actions';
@@ -21,7 +21,7 @@ export function* changeTheme({ name }) {
     }
   }
   try {
-    const packages = yield select(selectors.build.packages);
+    const packages = yield select(selectors.packages);
     yield put(actions.themeLoadStarted({ pkg: packages[name] }));
     yield put(actions.themeLoadSucceed({ pkg: packages[name] }));
   } catch (error) {
@@ -31,6 +31,6 @@ export function* changeTheme({ name }) {
 
 export default function* sagas() {
   yield [
-    takeEvery(types.THEME_LOAD_REQUESTED, changeTheme),
+    takeLatest(types.THEME_LOAD_REQUESTED, changeTheme),
   ];
 }

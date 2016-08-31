@@ -19,7 +19,7 @@ class StyleLoader extends React.Component {
 
 const mapStateToProps = (state) => {
   const newTheme = theme.isLoading(state);
-  const packageTheme = packages(state)[newTheme.name];
+  const packageTheme = packages(state)[newTheme];
   const props = {
     theme: packageTheme.namespace,
   };
