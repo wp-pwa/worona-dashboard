@@ -46,6 +46,10 @@
     "listed": 0,
     "deactivable": 0,
     "public": 1,
+    "dependencies": [
+      "connection",
+      "accounts"
+    ],
     "dev": {
       "files": [
         {

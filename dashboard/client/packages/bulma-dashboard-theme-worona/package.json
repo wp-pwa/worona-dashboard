@@ -46,6 +46,11 @@
     "listed": 0,
     "deactivable": 0,
     "public": 1,
+    "dependencies": [
+      "build",
+      "accounts",
+      "sites"
+    ],
     "dev": {
       "files": [
         {
