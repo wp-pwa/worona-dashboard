@@ -39,7 +39,7 @@ export function* addCorePackagesSaga() {
     yield put(actions.themeLoadRequested(
       { name: 'bulma-dashboard-theme-worona', namespace: 'bulma' }));
   } catch (error) {
-    yield put(actions.corePackagesFailed({ error }));
+    yield put(actions.corePackagesFailed({ error: error.message }));
   }
 }
 

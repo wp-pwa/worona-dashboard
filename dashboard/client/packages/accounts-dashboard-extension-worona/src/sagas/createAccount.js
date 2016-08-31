@@ -14,7 +14,7 @@ export function* createAccountSaga({ name, email, password }) {
       yield put(actions.createAccountSucceed(userId));
       yield put(actions.loginRequested(email, password));
     } catch (error) {
-      yield put(actions.createAccountFailed(error));
+      yield put(actions.createAccountFailed(error.message));
     }
   } else {
     yield put(actions.createAccountStatusChanged(NOT_CONNECTED));

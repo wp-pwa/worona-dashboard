@@ -24,7 +24,7 @@ export function* packageLoadSaga(pkg, uid) {
     yield call(reloadReducers);
     yield put(actions.packageLoadSucceed({ pkg, uid }));
   } catch (error) {
-    yield put(actions.packageLoadFailed({ error, pkg, uid }));
+    yield put(actions.packageLoadFailed({ error: error.message, pkg, uid }));
     throw new Error(`Package ${pkg} load failed.`);
   }
 }
@@ -37,7 +37,7 @@ export function* packagesLoadSaga({ pkgs, uid }) {
     yield toArray(pkgs).map(pkg => call(packageLoadSaga, pkg, uid));
     yield put(actions.packagesLoadSucceed({ pkgs, uid }));
   } catch (error) {
-    yield put(actions.packagesLoadFailed({ error, uid }));
+    yield put(actions.packagesLoadFailed({ error: error.message, uid }));
   }
 }
 

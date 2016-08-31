@@ -14,7 +14,7 @@ export function* loginRequestedSaga({ email, password }) {
       const userId = yield call(deps.libs.loginWithPassword, email, password);
       yield put(actions.loginSucceed(userId));
     } catch (error) {
-      yield put(actions.loginFailed(error));
+      yield put(actions.loginFailed(error.message));
     }
   } else {
     yield put(actions.loginStatusChanged(NOT_CONNECTED));

@@ -20,7 +20,7 @@ test('themeDownloadSaga failed', t => {
   const gen = sagas.themeDownloadSaga({ name, uid });
   t.deepEqual(gen.next().value, call(sagas.requirePackage, 'test-dashboard-theme'));
   const error = {};
-  t.deepEqual(gen.throw(error).value, put(actions.themeDownloadFailed({ error, name, uid })));
+  t.deepEqual(gen.throw(error).value, put(actions.themeDownloadFailed({ error: error.message, name, uid })));
 });
 
 test('extensionDownloadSaga succeed', t => {
@@ -37,7 +37,7 @@ test('extensionDownloadSaga failed', t => {
   const gen = sagas.extensionDownloadSaga({ name, uid });
   t.deepEqual(gen.next().value, call(sagas.requirePackage, 'test-dashboard-extension'));
   const error = {};
-  t.deepEqual(gen.throw(error).value, put(actions.extensionDownloadFailed({ error, name, uid })));
+  t.deepEqual(gen.throw(error).value, put(actions.extensionDownloadFailed({ error: error.message, name, uid })));
 });
 
 test('packagesDownloadSucceedWatcher', t => {
@@ -123,7 +123,7 @@ test('loadPackage failed', t => {
   t.deepEqual(gen.next().value, call(getSagas, 'test'));
   const error = {};
   t.deepEqual(gen.throw(error).value,
-    put(actions.packagesLoadFailed({ error, name: 'test', uid: 1 })));
+    put(actions.packagesLoadFailed({ error: error.message, name: 'test', uid: 1 })));
 });
 
 test('packagesLoadSaga', t => {
@@ -165,6 +165,6 @@ test('loadCoreTheme failed', t => {
     put(actions.themeChangeRequested({ name: action.theme, uid: 'core' })));
   const error = {};
   t.deepEqual(gen.throw(error).value,
-    put(actions.themeChangeFailed({ error, name: action.theme, uid: 'core' })));
+    put(actions.themeChangeFailed({ error: error.message, name: action.theme, uid: 'core' })));
   t.true(gen.next().done);
 });

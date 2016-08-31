@@ -40,7 +40,7 @@ export function* packageDownloadSaga({ pkg, uid }) {
     yield call(addPackage, pkg.namespace, module); // Adds the download module to worona-deps.
     yield put(actions.packageDownloadSucceed({ pkg, uid }));
   } catch (error) {
-    yield put(actions.packageDownloadFailed({ error, pkg, uid }));
+    yield put(actions.packageDownloadFailed({ error: error.message, pkg, uid }));
   }
 }
 
