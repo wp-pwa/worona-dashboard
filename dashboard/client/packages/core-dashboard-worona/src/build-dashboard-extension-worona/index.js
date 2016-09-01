@@ -5,9 +5,11 @@ import * as reducers from './reducers';
 import * as libs from './libs';
 import * as store from './store';
 import * as sagas from './sagas';
-import * as routes from './routes';
 import * as selectors from './selectors';
 const locales = lang => require(`./locales/${lang}.json`);
+
+export const name = 'build-dashboard-extension-worona';
+export const namespace = 'build';
 
 export {
   actions,
@@ -18,6 +20,5 @@ export {
   store,
   sagas,
   selectors,
-  routes,
   locales,
 };

@@ -6,14 +6,17 @@ const defaultList = {
   'build-dashboard-extension-worona': {
     name: 'build-dashboard-extension-worona',
     namespace: 'build',
+    type: 'extension',
   },
   'loading-dashboard-theme-worona': {
     name: 'loading-dashboard-theme-worona',
-    namespace: 'loading',
+    namespace: 'theme',
+    type: 'theme',
   },
   'routing-dashboard-extension-worona': {
     name: 'routing-dashboard-extension-worona',
     namespace: 'routing',
+    type: 'extension',
   },
 };
 

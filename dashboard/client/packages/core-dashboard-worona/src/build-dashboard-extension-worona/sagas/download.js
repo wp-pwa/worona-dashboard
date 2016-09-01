@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition, no-undef */
-import { put, call, race, take } from 'redux-saga/effects';
-import { toArray, mapValues, reduce } from 'lodash';
+import { put, call } from 'redux-saga/effects';
+import update from 'react/lib/update';
 import { takeEvery } from 'redux-saga';
 import { addPackage } from 'worona-deps';
 import * as types from '../types';
@@ -23,12 +23,6 @@ export const requireRemotePackage = pkg => new Promise(resolve => {
   .then(module => resolve(module));
 });
 
-// Function which is triggered each PACKAGES_DOWNLOAD_REQUESTED and dispatches individual
-// PACKAGE_DOWNLOAD_REQUESTED.
-export function* packagesDownloadSaga({ pkgs = {}, uid }) {
-  yield toArray(pkgs).map(pkg => put(actions.packageDownloadRequested({ pkg, uid })));
-}
-
 // Function triggered by PACKAGE_DOWNLOAD_REQUESTED and used to download each package/module
 // and add it to the 'worona-deps' package. It contains the logic to use either
 // requireLocalPackage or requireRemotePackage and dispatches PACKAGE_DOWNLOAD_SUCCED or
@@ -37,36 +31,12 @@ export function* packageDownloadSaga({ pkg }) {
   const requirePackage = requireRemotePackage; // (TODO) Add here logic for local/remote requires.
   try {
     const module = yield call(requirePackage, pkg);
-    yield call(addPackage, pkg.name, module); // Adds the download module to worona-deps.
+    // Adds the download module to worona-deps.
+    yield call(addPackage,
+      update(module, { $merge: { name: pkg.name, namespace: pkg.namespace } }));
     yield put(actions.packageDownloadSucceed({ pkg }));
   } catch (error) {
     yield put(actions.packageDownloadFailed({ error: error.message, pkg }));
-  }
-}
-
-// Function triggered by PACKAGES_DOWNLOAD_REQUESTED which creates an internal list of
-// packages which need to be downloaded. Then, it listens to any PACKAGE_DOWNLOAD_SUCCEED
-// and updates the list. Once the list is completed, it dispatches a PACKAGES_DOWNLOAD_SUCCEED.
-// It also listens to any relevant PACKAGE_DOWNLOAD_FAILED and dispatch PACKAGES_DOWNLOAD_FAILED if
-// any download fails.
-export function* packagesDownloadWatcher({ pkgs = {}, uid }) {
-  const requested = mapValues(pkgs, () => false);
-  while (true) {
-    const { succeed, failed } = yield race({
-      succeed: take(types.PACKAGE_DOWNLOAD_SUCCEED),
-      failed: take(types.PACKAGE_DOWNLOAD_FAILED),
-    });
-    if (succeed && succeed.uid === uid) {
-      requested[succeed.pkg.name] = true;
-      if (reduce(requested, (acc, pkg) => acc && pkg, true)) {
-        // If both download and requested are equal, dispatch PACKAGES_DOWNLOAD_SUCCEED and exit.
-        yield put(actions.packagesDownloadSucceed({ pkgs, uid }));
-        break;
-      }
-    } else if (failed && failed.uid === uid) {
-      yield put(actions.packagesDownloadFailed(failed));
-      break;
-    }
   }
 }
 

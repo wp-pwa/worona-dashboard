@@ -3,13 +3,14 @@
 
 import 'babel-polyfill';
 import { addPackage } from 'worona-deps';
-import { routerReducer as routing } from 'react-router-redux';
+
 import * as loading from './loading-dashboard-theme-worona';
 import * as build from './build-dashboard-extension-worona';
+import * as routing from './routing-dashboard-extension-worona';
 
-addPackage('build-dashboard-extension-worona', build);
-addPackage('loading-dashboard-theme-worona', loading);
-addPackage('routing-dashboard-extension-worona', { reducers: { default: () => routing } });
+addPackage(build);
+addPackage(loading);
+addPackage(routing);
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -19,7 +20,7 @@ import { Router, browserHistory } from 'react-router';
 import { I18nextProvider } from 'react-i18next';
 import { store, startSaga } from './build-dashboard-extension-worona/store';
 import sagas from './build-dashboard-extension-worona/sagas';
-import { routes } from './build-dashboard-extension-worona/routes';
+import routes from './routing-dashboard-extension-worona/routes';
 import i18next from './i18n-dashboard-extension-worona/i18n';
 import FastClick from 'fastclick';
 

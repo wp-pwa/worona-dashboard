@@ -4,7 +4,6 @@ import React from 'react';
 import { dep } from 'worona-deps';
 import { connect } from 'react-redux';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
-import * as selectors from '../selectors';
 
 class StyleLoader extends React.Component {
   componentDidMount() {
@@ -17,23 +16,18 @@ class StyleLoader extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const name = selectors.currentTheme(state);
-  const pkg = selectors.packageList(state)[name];
-  const props = {
-    theme: name,
-  };
-  if (pkg && pkg.prod && pkg.prod.assets && pkg.prod.assets.css) {
-    props.css = pkg.prod.assets.css;
-  }
-  return props;
-};
+// const mapStateToProps = (state) => {
+//   if (pkg && pkg.prod && pkg.prod.assets && pkg.prod.assets.css) {
+//     props.css = pkg.prod.assets.css;
+//   }
+//   return 'theme';
+// };
 
 class ThemeLoader extends React.Component {
   render() {
     const css = this.props.css || [];
     const cdn = 'https://cdn.worona.io/packages/';
-    const Theme = dep(this.props.theme, 'components', 'Theme');
+    const Theme = dep('theme', 'components', 'Theme');
     return (
       <div id="root">
         {css.map(cssPath => <StyleLoader cssPath={cdn + cssPath} key={cssPath} />)}
@@ -42,20 +36,20 @@ class ThemeLoader extends React.Component {
     );
   }
 }
-ThemeLoader = connect(mapStateToProps)(ThemeLoader);
+// ThemeLoader = connect(mapStateToProps)(ThemeLoader);
 
 class Entry extends React.Component {
   render() {
     try {
-      const Component = dep(this.props.theme, 'components', this.props.route.wrapped);
+      const Component = dep('theme', 'components', this.props.route.wrapped);
       return <Component {...this.props} />;
     } catch (error) {
-      const Component = dep(this.props.theme, 'components', 'Home');
+      const Component = dep('theme', 'components', 'Home');
       return <Component {...this.props} />;
     }
   }
 }
-Entry = connect(mapStateToProps)(Entry);
+// Entry = connect(mapStateToProps)(Entry);
 
 const requireAuth = (store) => (nextState, replace) => {
   const accounts = store.getState().accounts;
