@@ -15,5 +15,6 @@
   "fastclick",
   "classnames",
   "worona-deps",
-  "superagent"
+  "superagent",
+  "normalizr"
 ]

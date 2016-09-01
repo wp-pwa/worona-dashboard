@@ -365,9 +365,9 @@
     "./node_modules/lodash/_baseKeys.js": "eb5b2da854b76e030eb63fb999356174",
     "./node_modules/lodash/_indexKeys.js": "44f4a480ff6d433bda250c99e00593ed",
     "./node_modules/lodash/_baseTimes.js": "cfe5bc97b2a7b647858de03791afd68d",
-    "./node_modules/babel-polyfill/lib/index.js": "248cb4fbdf790bc10ad8e85e391168ac",
+    "./node_modules/lodash/isArguments.js": "f68877cdaf18cad2900f4a8441137dec",
     "./node_modules/lodash/isArrayLikeObject.js": "00fa712353516efb11d90460e176c1a5",
-    "./node_modules/lodash/isArrayLike.js": "f17792ebcd58b30463b9194c247635a6",
+    "./node_modules/babel-polyfill/lib/index.js": "248cb4fbdf790bc10ad8e85e391168ac",
     "./node_modules/lodash/_getLength.js": "060f0a90e19593aa1f6105dc7c0f3481",
     "./node_modules/lodash/_baseProperty.js": "db5827b2a244e8483fac371a9881729c",
     "./node_modules/lodash/isFunction.js": "0aa705edc20b166002c33ed65ce29cc7",
@@ -488,6 +488,11 @@
     "./node_modules/superagent/lib/request-base.js": "59ba2a98ba5f77e216b2ab295bc8c3c0",
     "./node_modules/superagent/lib/is-object.js": "e72f32ec7a04b360ef9d6a0dcac6b73e",
     "./node_modules/superagent/lib/request.js": "ef7b8b2997410df554b37e0ebf56a412",
+    "./node_modules/normalizr/lib/index.js": "258a0940351b8aedcfe4caa4c170b9fc",
+    "./node_modules/normalizr/lib/EntitySchema.js": "66f1c063035577a4c6a2a64e630d6b16",
+    "./node_modules/normalizr/lib/IterableSchema.js": "22d3f95f2e1c40147d9aa01de7903e64",
+    "./node_modules/normalizr/lib/UnionSchema.js": "2f65d2fcd5b5d85da717fa03dcad8a9a",
+    "./node_modules/lodash/isEqual.js": "f6b38d1d671210206dfdfbae975a1294",
     "./node_modules/react-dom/index.js": "5fdcf1aea784583ca083db0529872971",
     "./node_modules/react/lib/ReactDOM.js": "b61a9ff0f2e2e419d74b23f6d628fe4b",
     "./node_modules/react/lib/ReactDOMComponentTree.js": "2c45fbeda2f69c3f989f2fc515e1a533",
@@ -729,6 +734,6 @@
     "./node_modules/redux-saga/lib/internal/middleware.js": "2024a3d8c38d8e866372701fd53a7e17",
     "./node_modules/redux-saga/lib/effects.js": "3d98a649a8d8be6f2b1465b200367730",
     "./node_modules/redux-saga/lib/utils.js": "c7f9ad063cf611a104b53a4c5ec3e772",
-    "./node_modules/lodash/isArguments.js": "f68877cdaf18cad2900f4a8441137dec"
+    "./node_modules/lodash/isArrayLike.js": "f17792ebcd58b30463b9194c247635a6"
   }
 }

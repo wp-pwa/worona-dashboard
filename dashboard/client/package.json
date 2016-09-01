@@ -43,6 +43,7 @@
     "i18next": "^3.4.1",
     "i18next-xhr-backend": "^0.6.0",
     "lodash": "^4.13.1",
+    "normalizr": "^2.2.1",
     "react": "^15.3.0",
     "react-dom": "^15.1.0",
     "react-i18next": "^1.6.3",
