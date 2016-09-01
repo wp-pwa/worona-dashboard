@@ -15961,9 +15961,19 @@ var vendors_dashboard_worona =
 /***/ "3dc67d31d7435ab49745de8e10359378":
 /***/ function(module, exports, __webpack_require__) {
 
-	var mapValues = __webpack_require__("fb37a1c81c978cdd3ddef6b344d35205");
-	var omitBy = __webpack_require__("08fc70332265ca6fa7f08fafdb4ddadb");
 	var map = __webpack_require__("1d1e2fafdfa526e25062a685a208eb95");
+
+	var Worona = function() {
+	  this._downloaded = {}; // Store the downloaded packages using their names.
+	  this._deps = {}; // Store references to the downloaded packages, using their namespaces.
+	  this.isTest = typeof window === 'undefined';
+	  this.isDev = !checkWorona('prod');
+	  this.isProd = checkWorona('prod');
+	  this.isLocal = !checkWorona('remote');
+	  this.isRemote = checkWorona('remote');
+	  this.isWeb = !checkGlobal('cordova');
+	  this.isCordova = checkGlobal('cordova');
+	}
 
 	function checkGlobal(variable) {
 	  if (typeof window !== 'undefined')
@@ -15977,43 +15987,47 @@ var vendors_dashboard_worona =
 	  return false;
 	}
 
-	var Worona = function() {
-	  this._packages = {};
-	  this.isTest = typeof window === 'undefined';
-	  this.isDev = !checkWorona('prod');
-	  this.isProd = checkWorona('prod');
-	  this.isLocal = !checkWorona('remote');
-	  this.isRemote = checkWorona('remote');
-	  this.isWeb = !checkGlobal('cordova');
-	  this.isCordova = checkGlobal('cordova');
-	}
-
-	Worona.prototype.addPackage = function(name, pkg) {
-	  this._packages[name] = pkg;
+	// Used to add a downloaded package to the system.
+	Worona.prototype.addPackage = function(pkg) {
+	  this._downloaded[pkg.name] = pkg;
+	  if (!this._deps[pkg.namespace]) this._deps[pkg.namespace] = pkg;
 	};
 
-	Worona.prototype.getReducers = function(namespace) {
-	  return this._packages[namespace].reducers && this._packages[namespace].reducers.default() || null;
+	// Used to activate a package to start using it in the dependencies: worona.dep().
+	// Please not that if a package is downloaded and no other package with the same namespace is
+	// activated yet, it will be available using worona.dep() even if you don't use .activatePackage.
+	// This helps solving activation order and circular dependencies.
+	Worona.prototype.activatePackage = function(name) {
+	  var pkg = this._downloaded[name];
+	  this._deps[pkg.namespace] = pkg;
 	}
 
+	// Used to retrieve the root reducer of a specific namespace.
+	Worona.prototype.getReducers = function(namespace) {
+	  return this._deps[namespace].reducers && this._deps[namespace].reducers.default() || null;
+	}
+
+	// Used to retrieve all locales of a specific language.
 	Worona.prototype.getLocales = function(lng) {
-	  return map(this._packages, function(pkg) {
+	  return map(this._deps, function(pkg) {
 	    if (pkg.locales)
 	      return pkg.locales(lng);
 	  })
 	  .filter(function(locale) { return !!locale; });
 	}
 
+	// Used to retrieve the locale of a namespace and language.
 	Worona.prototype.getLocale = function(namespace, lng) {
-	  return this._packages[namespace] && typeof this._packages[namespace].locales === 'function' ?
-	    this._packages[namespace].locales(lng) : null;
+	  return this._deps[namespace] && typeof this._deps[namespace].locales === 'function' ?
+	    this._deps[namespace].locales(lng) : null;
 	}
 
+	// Used to retrieve the root saga for a namespace.
 	Worona.prototype.getSagas = function(namespace) {
-	  if ((typeof this._packages[namespace] !== 'undefined') &&
-	  (typeof this._packages[namespace].sagas !== 'undefined') &&
-	  (typeof this._packages[namespace].sagas.default !== 'undefined')) {
-	    return this._packages[namespace].sagas.default;
+	  if ((typeof this._deps[namespace] !== 'undefined') &&
+	  (typeof this._deps[namespace].sagas !== 'undefined') &&
+	  (typeof this._deps[namespace].sagas.default !== 'undefined')) {
+	    return this._deps[namespace].sagas.default;
 	  }
 	  return false;
 	}
@@ -16046,19 +16060,23 @@ var vendors_dashboard_worona =
 	  return nextDep(namespace + '.' + propName, obj[propName], args[0], nextArgs);
 	}
 
+	// Used to get a dependency in Worona. Usage is worona.dep('accounts', 'actions', 'login').
+	// More examples are in the tests.
 	Worona.prototype.dep = function() {
 	  var args = Array.prototype.slice.call(arguments);
 	  var namespace = args[0];
 	  var propName = args[1];
 	  checkString(namespace);
-	  checkPackage(namespace, this._packages);
+	  checkPackage(namespace, this._deps);
 	  if (typeof propName === 'undefined') {
-	    return this._packages[namespace];
+	    return this._deps[namespace];
 	  }
 	  var nextArgs = args.slice(2);
-	  return nextDep(namespace, this._packages[namespace], propName, nextArgs);
+	  return nextDep(namespace, this._deps[namespace], propName, nextArgs);
 	}
 
+	// Used to mock a dependency when unit testing modules with dependencies. It is as simple as
+	// doing worona.mock(deps).
 	Worona.prototype.mock = function(deps) {
 	  var mockedDeps = {};
 	  for (var sub in deps) {
@@ -16098,825 +16116,90 @@ var vendors_dashboard_worona =
 
 /***/ },
 
-/***/ "fb37a1c81c978cdd3ddef6b344d35205":
+/***/ "1d1e2fafdfa526e25062a685a208eb95":
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseForOwn = __webpack_require__("0d0f31afc185b80c38ac88d541456608"),
-	    baseIteratee = __webpack_require__("4f5d4c49632a4b0539d7f740e1192827");
+	var arrayMap = __webpack_require__("a02a54b74da9d5c4dc5fa424e99e688d"),
+	    baseIteratee = __webpack_require__("4f5d4c49632a4b0539d7f740e1192827"),
+	    baseMap = __webpack_require__("1937a0ba1adb5df50bcabc4939b241b8"),
+	    isArray = __webpack_require__("f85d21a71fc5789229ef704c58caf08a");
 
 	/**
-	 * Creates an object with the same keys as `object` and values generated
-	 * by running each own enumerable string keyed property of `object` thru
+	 * Creates an array of values by running each element in `collection` thru
 	 * `iteratee`. The iteratee is invoked with three arguments:
-	 * (value, key, object).
+	 * (value, index|key, collection).
+	 *
+	 * Many lodash methods are guarded to work as iteratees for methods like
+	 * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
+	 *
+	 * The guarded methods are:
+	 * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
+	 * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
+	 * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
+	 * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
 	 *
 	 * @static
 	 * @memberOf _
-	 * @since 2.4.0
-	 * @category Object
-	 * @param {Object} object The object to iterate over.
-	 * @param {Function} [iteratee=_.identity] The function invoked per iteration.
-	 * @returns {Object} Returns the new mapped object.
-	 * @see _.mapKeys
-	 * @example
-	 *
-	 * var users = {
-	 *   'fred':    { 'user': 'fred',    'age': 40 },
-	 *   'pebbles': { 'user': 'pebbles', 'age': 1 }
-	 * };
-	 *
-	 * _.mapValues(users, function(o) { return o.age; });
-	 * // => { 'fred': 40, 'pebbles': 1 } (iteration order is not guaranteed)
-	 *
-	 * // The `_.property` iteratee shorthand.
-	 * _.mapValues(users, 'age');
-	 * // => { 'fred': 40, 'pebbles': 1 } (iteration order is not guaranteed)
-	 */
-	function mapValues(object, iteratee) {
-	  var result = {};
-	  iteratee = baseIteratee(iteratee, 3);
-
-	  baseForOwn(object, function(value, key, object) {
-	    result[key] = iteratee(value, key, object);
-	  });
-	  return result;
-	}
-
-	module.exports = mapValues;
-
-
-/***/ },
-
-/***/ "0d0f31afc185b80c38ac88d541456608":
-/***/ function(module, exports, __webpack_require__) {
-
-	var baseFor = __webpack_require__("795488885dd7283b63f0b73fa9236fa2"),
-	    keys = __webpack_require__("eacbe80d1781eef5d92ec2042be7b929");
-
-	/**
-	 * The base implementation of `_.forOwn` without support for iteratee shorthands.
-	 *
-	 * @private
-	 * @param {Object} object The object to iterate over.
-	 * @param {Function} iteratee The function invoked per iteration.
-	 * @returns {Object} Returns `object`.
-	 */
-	function baseForOwn(object, iteratee) {
-	  return object && baseFor(object, iteratee, keys);
-	}
-
-	module.exports = baseForOwn;
-
-
-/***/ },
-
-/***/ "795488885dd7283b63f0b73fa9236fa2":
-/***/ function(module, exports, __webpack_require__) {
-
-	var createBaseFor = __webpack_require__("5925eca1a4c2c6e0465ece992cbc9661");
-
-	/**
-	 * The base implementation of `baseForOwn` which iterates over `object`
-	 * properties returned by `keysFunc` and invokes `iteratee` for each property.
-	 * Iteratee functions may exit iteration early by explicitly returning `false`.
-	 *
-	 * @private
-	 * @param {Object} object The object to iterate over.
-	 * @param {Function} iteratee The function invoked per iteration.
-	 * @param {Function} keysFunc The function to get the keys of `object`.
-	 * @returns {Object} Returns `object`.
-	 */
-	var baseFor = createBaseFor();
-
-	module.exports = baseFor;
-
-
-/***/ },
-
-/***/ "5925eca1a4c2c6e0465ece992cbc9661":
-/***/ function(module, exports) {
-
-	/**
-	 * Creates a base function for methods like `_.forIn` and `_.forOwn`.
-	 *
-	 * @private
-	 * @param {boolean} [fromRight] Specify iterating from right to left.
-	 * @returns {Function} Returns the new base function.
-	 */
-	function createBaseFor(fromRight) {
-	  return function(object, iteratee, keysFunc) {
-	    var index = -1,
-	        iterable = Object(object),
-	        props = keysFunc(object),
-	        length = props.length;
-
-	    while (length--) {
-	      var key = props[fromRight ? length : ++index];
-	      if (iteratee(iterable[key], key, iterable) === false) {
-	        break;
-	      }
-	    }
-	    return object;
-	  };
-	}
-
-	module.exports = createBaseFor;
-
-
-/***/ },
-
-/***/ "eacbe80d1781eef5d92ec2042be7b929":
-/***/ function(module, exports, __webpack_require__) {
-
-	var baseHas = __webpack_require__("cc2f521595a371186e8dd412467c2883"),
-	    baseKeys = __webpack_require__("eb5b2da854b76e030eb63fb999356174"),
-	    indexKeys = __webpack_require__("44f4a480ff6d433bda250c99e00593ed"),
-	    isArrayLike = __webpack_require__("f17792ebcd58b30463b9194c247635a6"),
-	    isIndex = __webpack_require__("5ea673ab65dbfaea2a6ccd3b157c3a4c"),
-	    isPrototype = __webpack_require__("19160e8751c9534cf1e5cb81003f7713");
-
-	/**
-	 * Creates an array of the own enumerable property names of `object`.
-	 *
-	 * **Note:** Non-object values are coerced to objects. See the
-	 * [ES spec](http://ecma-international.org/ecma-262/6.0/#sec-object.keys)
-	 * for more details.
-	 *
-	 * @static
 	 * @since 0.1.0
-	 * @memberOf _
-	 * @category Object
-	 * @param {Object} object The object to query.
-	 * @returns {Array} Returns the array of property names.
+	 * @category Collection
+	 * @param {Array|Object} collection The collection to iterate over.
+	 * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+	 * @returns {Array} Returns the new mapped array.
 	 * @example
 	 *
-	 * function Foo() {
-	 *   this.a = 1;
-	 *   this.b = 2;
+	 * function square(n) {
+	 *   return n * n;
 	 * }
 	 *
-	 * Foo.prototype.c = 3;
+	 * _.map([4, 8], square);
+	 * // => [16, 64]
 	 *
-	 * _.keys(new Foo);
-	 * // => ['a', 'b'] (iteration order is not guaranteed)
+	 * _.map({ 'a': 4, 'b': 8 }, square);
+	 * // => [16, 64] (iteration order is not guaranteed)
 	 *
-	 * _.keys('hi');
-	 * // => ['0', '1']
+	 * var users = [
+	 *   { 'user': 'barney' },
+	 *   { 'user': 'fred' }
+	 * ];
+	 *
+	 * // The `_.property` iteratee shorthand.
+	 * _.map(users, 'user');
+	 * // => ['barney', 'fred']
 	 */
-	function keys(object) {
-	  var isProto = isPrototype(object);
-	  if (!(isProto || isArrayLike(object))) {
-	    return baseKeys(object);
-	  }
-	  var indexes = indexKeys(object),
-	      skipIndexes = !!indexes,
-	      result = indexes || [],
-	      length = result.length;
-
-	  for (var key in object) {
-	    if (baseHas(object, key) &&
-	        !(skipIndexes && (key == 'length' || isIndex(key, length))) &&
-	        !(isProto && key == 'constructor')) {
-	      result.push(key);
-	    }
-	  }
-	  return result;
+	function map(collection, iteratee) {
+	  var func = isArray(collection) ? arrayMap : baseMap;
+	  return func(collection, baseIteratee(iteratee, 3));
 	}
 
-	module.exports = keys;
+	module.exports = map;
 
 
 /***/ },
 
-/***/ "cc2f521595a371186e8dd412467c2883":
-/***/ function(module, exports, __webpack_require__) {
-
-	var getPrototype = __webpack_require__("ab8a8020a0df97fcf2d9e6edab1d47bb");
-
-	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
-
-	/** Used to check objects for own properties. */
-	var hasOwnProperty = objectProto.hasOwnProperty;
-
-	/**
-	 * The base implementation of `_.has` without support for deep paths.
-	 *
-	 * @private
-	 * @param {Object} [object] The object to query.
-	 * @param {Array|string} key The key to check.
-	 * @returns {boolean} Returns `true` if `key` exists, else `false`.
-	 */
-	function baseHas(object, key) {
-	  // Avoid a bug in IE 10-11 where objects with a [[Prototype]] of `null`,
-	  // that are composed entirely of index properties, return `false` for
-	  // `hasOwnProperty` checks of them.
-	  return object != null &&
-	    (hasOwnProperty.call(object, key) ||
-	      (typeof object == 'object' && key in object && getPrototype(object) === null));
-	}
-
-	module.exports = baseHas;
-
-
-/***/ },
-
-/***/ "ab8a8020a0df97fcf2d9e6edab1d47bb":
-/***/ function(module, exports, __webpack_require__) {
-
-	var overArg = __webpack_require__("4a8b21b3dfd7f6563eb2c6a677d830c7");
-
-	/* Built-in method references for those with the same name as other `lodash` methods. */
-	var nativeGetPrototype = Object.getPrototypeOf;
-
-	/**
-	 * Gets the `[[Prototype]]` of `value`.
-	 *
-	 * @private
-	 * @param {*} value The value to query.
-	 * @returns {null|Object} Returns the `[[Prototype]]`.
-	 */
-	var getPrototype = overArg(nativeGetPrototype, Object);
-
-	module.exports = getPrototype;
-
-
-/***/ },
-
-/***/ "4a8b21b3dfd7f6563eb2c6a677d830c7":
+/***/ "a02a54b74da9d5c4dc5fa424e99e688d":
 /***/ function(module, exports) {
 
 	/**
-	 * Creates a function that invokes `func` with its first argument transformed.
+	 * A specialized version of `_.map` for arrays without support for iteratee
+	 * shorthands.
 	 *
 	 * @private
-	 * @param {Function} func The function to wrap.
-	 * @param {Function} transform The argument transform.
-	 * @returns {Function} Returns the new function.
-	 */
-	function overArg(func, transform) {
-	  return function(arg) {
-	    return func(transform(arg));
-	  };
-	}
-
-	module.exports = overArg;
-
-
-/***/ },
-
-/***/ "eb5b2da854b76e030eb63fb999356174":
-/***/ function(module, exports, __webpack_require__) {
-
-	var overArg = __webpack_require__("4a8b21b3dfd7f6563eb2c6a677d830c7");
-
-	/* Built-in method references for those with the same name as other `lodash` methods. */
-	var nativeKeys = Object.keys;
-
-	/**
-	 * The base implementation of `_.keys` which doesn't skip the constructor
-	 * property of prototypes or treat sparse arrays as dense.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @returns {Array} Returns the array of property names.
-	 */
-	var baseKeys = overArg(nativeKeys, Object);
-
-	module.exports = baseKeys;
-
-
-/***/ },
-
-/***/ "44f4a480ff6d433bda250c99e00593ed":
-/***/ function(module, exports, __webpack_require__) {
-
-	var baseTimes = __webpack_require__("cfe5bc97b2a7b647858de03791afd68d"),
-	    isArguments = __webpack_require__("f68877cdaf18cad2900f4a8441137dec"),
-	    isArray = __webpack_require__("f85d21a71fc5789229ef704c58caf08a"),
-	    isLength = __webpack_require__("2e6eb015ceb8b2ccf845ca78e6cb05e2"),
-	    isString = __webpack_require__("4167f2b891be5efb671ee0c1a61d5b18");
-
-	/**
-	 * Creates an array of index keys for `object` values of arrays,
-	 * `arguments` objects, and strings, otherwise `null` is returned.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @returns {Array|null} Returns index keys, else `null`.
-	 */
-	function indexKeys(object) {
-	  var length = object ? object.length : undefined;
-	  if (isLength(length) &&
-	      (isArray(object) || isString(object) || isArguments(object))) {
-	    return baseTimes(length, String);
-	  }
-	  return null;
-	}
-
-	module.exports = indexKeys;
-
-
-/***/ },
-
-/***/ "cfe5bc97b2a7b647858de03791afd68d":
-/***/ function(module, exports) {
-
-	/**
-	 * The base implementation of `_.times` without support for iteratee shorthands
-	 * or max array length checks.
-	 *
-	 * @private
-	 * @param {number} n The number of times to invoke `iteratee`.
+	 * @param {Array} [array] The array to iterate over.
 	 * @param {Function} iteratee The function invoked per iteration.
-	 * @returns {Array} Returns the array of results.
+	 * @returns {Array} Returns the new mapped array.
 	 */
-	function baseTimes(n, iteratee) {
+	function arrayMap(array, iteratee) {
 	  var index = -1,
-	      result = Array(n);
+	      length = array ? array.length : 0,
+	      result = Array(length);
 
-	  while (++index < n) {
-	    result[index] = iteratee(index);
+	  while (++index < length) {
+	    result[index] = iteratee(array[index], index, array);
 	  }
 	  return result;
 	}
 
-	module.exports = baseTimes;
-
-
-/***/ },
-
-/***/ "f68877cdaf18cad2900f4a8441137dec":
-/***/ function(module, exports, __webpack_require__) {
-
-	var isArrayLikeObject = __webpack_require__("00fa712353516efb11d90460e176c1a5");
-
-	/** `Object#toString` result references. */
-	var argsTag = '[object Arguments]';
-
-	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
-
-	/** Used to check objects for own properties. */
-	var hasOwnProperty = objectProto.hasOwnProperty;
-
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
-
-	/** Built-in value references. */
-	var propertyIsEnumerable = objectProto.propertyIsEnumerable;
-
-	/**
-	 * Checks if `value` is likely an `arguments` object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.1.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an `arguments` object,
-	 *  else `false`.
-	 * @example
-	 *
-	 * _.isArguments(function() { return arguments; }());
-	 * // => true
-	 *
-	 * _.isArguments([1, 2, 3]);
-	 * // => false
-	 */
-	function isArguments(value) {
-	  // Safari 8.1 incorrectly makes `arguments.callee` enumerable in strict mode.
-	  return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
-	    (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
-	}
-
-	module.exports = isArguments;
-
-
-/***/ },
-
-/***/ "00fa712353516efb11d90460e176c1a5":
-/***/ function(module, exports, __webpack_require__) {
-
-	var isArrayLike = __webpack_require__("f17792ebcd58b30463b9194c247635a6"),
-	    isObjectLike = __webpack_require__("73069110313ec30bdec04e6da1cea1bc");
-
-	/**
-	 * This method is like `_.isArrayLike` except that it also checks if `value`
-	 * is an object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an array-like object,
-	 *  else `false`.
-	 * @example
-	 *
-	 * _.isArrayLikeObject([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isArrayLikeObject(document.body.children);
-	 * // => true
-	 *
-	 * _.isArrayLikeObject('abc');
-	 * // => false
-	 *
-	 * _.isArrayLikeObject(_.noop);
-	 * // => false
-	 */
-	function isArrayLikeObject(value) {
-	  return isObjectLike(value) && isArrayLike(value);
-	}
-
-	module.exports = isArrayLikeObject;
-
-
-/***/ },
-
-/***/ "248cb4fbdf790bc10ad8e85e391168ac":
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
-
-	__webpack_require__("9916bec47baf600751152784dccd49d0");
-
-	__webpack_require__("280d92cedd4801edbe66ef51b030548b");
-
-	__webpack_require__("eb9a75ce7c34c049693fa6668e5377a4");
-
-	/* eslint max-len: 0 */
-
-	if (global._babelPolyfill) {
-	  throw new Error("only one instance of babel-polyfill is allowed");
-	}
-	global._babelPolyfill = true;
-
-	// Should be removed in the next major release:
-
-	var DEFINE_PROPERTY = "defineProperty";
-	function define(O, key, value) {
-	  O[key] || Object[DEFINE_PROPERTY](O, key, {
-	    writable: true,
-	    configurable: true,
-	    value: value
-	  });
-	}
-
-	define(String.prototype, "padLeft", "".padStart);
-	define(String.prototype, "padRight", "".padEnd);
-
-	"pop,reverse,shift,keys,values,entries,indexOf,every,some,forEach,map,filter,find,findIndex,includes,join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill".split(",").forEach(function (key) {
-	  [][key] && define(Array, key, Function.call.bind([][key]));
-	});
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-
-/***/ "060f0a90e19593aa1f6105dc7c0f3481":
-/***/ function(module, exports, __webpack_require__) {
-
-	var baseProperty = __webpack_require__("db5827b2a244e8483fac371a9881729c");
-
-	/**
-	 * Gets the "length" property value of `object`.
-	 *
-	 * **Note:** This function is used to avoid a
-	 * [JIT bug](https://bugs.webkit.org/show_bug.cgi?id=142792) that affects
-	 * Safari on at least iOS 8.1-8.3 ARM64.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @returns {*} Returns the "length" value.
-	 */
-	var getLength = baseProperty('length');
-
-	module.exports = getLength;
-
-
-/***/ },
-
-/***/ "db5827b2a244e8483fac371a9881729c":
-/***/ function(module, exports) {
-
-	/**
-	 * The base implementation of `_.property` without support for deep paths.
-	 *
-	 * @private
-	 * @param {string} key The key of the property to get.
-	 * @returns {Function} Returns the new accessor function.
-	 */
-	function baseProperty(key) {
-	  return function(object) {
-	    return object == null ? undefined : object[key];
-	  };
-	}
-
-	module.exports = baseProperty;
-
-
-/***/ },
-
-/***/ "0aa705edc20b166002c33ed65ce29cc7":
-/***/ function(module, exports, __webpack_require__) {
-
-	var isObject = __webpack_require__("8a1b4937e4a818246b5edfd46d1cf67b");
-
-	/** `Object#toString` result references. */
-	var funcTag = '[object Function]',
-	    genTag = '[object GeneratorFunction]';
-
-	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
-
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
-
-	/**
-	 * Checks if `value` is classified as a `Function` object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.1.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a function, else `false`.
-	 * @example
-	 *
-	 * _.isFunction(_);
-	 * // => true
-	 *
-	 * _.isFunction(/abc/);
-	 * // => false
-	 */
-	function isFunction(value) {
-	  // The use of `Object#toString` avoids issues with the `typeof` operator
-	  // in Safari 8 which returns 'object' for typed array and weak map constructors,
-	  // and PhantomJS 1.9 which returns 'function' for `NodeList` instances.
-	  var tag = isObject(value) ? objectToString.call(value) : '';
-	  return tag == funcTag || tag == genTag;
-	}
-
-	module.exports = isFunction;
-
-
-/***/ },
-
-/***/ "8a1b4937e4a818246b5edfd46d1cf67b":
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is the
-	 * [language type](http://www.ecma-international.org/ecma-262/6.0/#sec-ecmascript-language-types)
-	 * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.1.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
-	 * @example
-	 *
-	 * _.isObject({});
-	 * // => true
-	 *
-	 * _.isObject([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObject(_.noop);
-	 * // => true
-	 *
-	 * _.isObject(null);
-	 * // => false
-	 */
-	function isObject(value) {
-	  var type = typeof value;
-	  return !!value && (type == 'object' || type == 'function');
-	}
-
-	module.exports = isObject;
-
-
-/***/ },
-
-/***/ "2e6eb015ceb8b2ccf845ca78e6cb05e2":
-/***/ function(module, exports) {
-
-	/** Used as references for various `Number` constants. */
-	var MAX_SAFE_INTEGER = 9007199254740991;
-
-	/**
-	 * Checks if `value` is a valid array-like length.
-	 *
-	 * **Note:** This function is loosely based on
-	 * [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a valid length,
-	 *  else `false`.
-	 * @example
-	 *
-	 * _.isLength(3);
-	 * // => true
-	 *
-	 * _.isLength(Number.MIN_VALUE);
-	 * // => false
-	 *
-	 * _.isLength(Infinity);
-	 * // => false
-	 *
-	 * _.isLength('3');
-	 * // => false
-	 */
-	function isLength(value) {
-	  return typeof value == 'number' &&
-	    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-	}
-
-	module.exports = isLength;
-
-
-/***/ },
-
-/***/ "73069110313ec30bdec04e6da1cea1bc":
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is object-like. A value is object-like if it's not `null`
-	 * and has a `typeof` result of "object".
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
-	 * @example
-	 *
-	 * _.isObjectLike({});
-	 * // => true
-	 *
-	 * _.isObjectLike([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObjectLike(_.noop);
-	 * // => false
-	 *
-	 * _.isObjectLike(null);
-	 * // => false
-	 */
-	function isObjectLike(value) {
-	  return !!value && typeof value == 'object';
-	}
-
-	module.exports = isObjectLike;
-
-
-/***/ },
-
-/***/ "f85d21a71fc5789229ef704c58caf08a":
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is classified as an `Array` object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.1.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an array, else `false`.
-	 * @example
-	 *
-	 * _.isArray([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isArray(document.body.children);
-	 * // => false
-	 *
-	 * _.isArray('abc');
-	 * // => false
-	 *
-	 * _.isArray(_.noop);
-	 * // => false
-	 */
-	var isArray = Array.isArray;
-
-	module.exports = isArray;
-
-
-/***/ },
-
-/***/ "4167f2b891be5efb671ee0c1a61d5b18":
-/***/ function(module, exports, __webpack_require__) {
-
-	var isArray = __webpack_require__("f85d21a71fc5789229ef704c58caf08a"),
-	    isObjectLike = __webpack_require__("73069110313ec30bdec04e6da1cea1bc");
-
-	/** `Object#toString` result references. */
-	var stringTag = '[object String]';
-
-	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
-
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
-
-	/**
-	 * Checks if `value` is classified as a `String` primitive or object.
-	 *
-	 * @static
-	 * @since 0.1.0
-	 * @memberOf _
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a string, else `false`.
-	 * @example
-	 *
-	 * _.isString('abc');
-	 * // => true
-	 *
-	 * _.isString(1);
-	 * // => false
-	 */
-	function isString(value) {
-	  return typeof value == 'string' ||
-	    (!isArray(value) && isObjectLike(value) && objectToString.call(value) == stringTag);
-	}
-
-	module.exports = isString;
-
-
-/***/ },
-
-/***/ "5ea673ab65dbfaea2a6ccd3b157c3a4c":
-/***/ function(module, exports) {
-
-	/** Used as references for various `Number` constants. */
-	var MAX_SAFE_INTEGER = 9007199254740991;
-
-	/** Used to detect unsigned integer values. */
-	var reIsUint = /^(?:0|[1-9]\d*)$/;
-
-	/**
-	 * Checks if `value` is a valid array-like index.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
-	 * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
-	 */
-	function isIndex(value, length) {
-	  length = length == null ? MAX_SAFE_INTEGER : length;
-	  return !!length &&
-	    (typeof value == 'number' || reIsUint.test(value)) &&
-	    (value > -1 && value % 1 == 0 && value < length);
-	}
-
-	module.exports = isIndex;
-
-
-/***/ },
-
-/***/ "19160e8751c9534cf1e5cb81003f7713":
-/***/ function(module, exports) {
-
-	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
-
-	/**
-	 * Checks if `value` is likely a prototype object.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
-	 */
-	function isPrototype(value) {
-	  var Ctor = value && value.constructor,
-	      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
-
-	  return value === proto;
-	}
-
-	module.exports = isPrototype;
+	module.exports = arrayMap;
 
 
 /***/ },
@@ -17090,42 +16373,42 @@ var vendors_dashboard_worona =
 
 /***/ },
 
-/***/ "8429a5e775bfba3f6e9e1a4fd989a77d":
+/***/ "248cb4fbdf790bc10ad8e85e391168ac":
 /***/ function(module, exports, __webpack_require__) {
 
-	var listCacheClear = __webpack_require__("52ea8feebcca2b3a8a93610645258eeb"),
-	    listCacheDelete = __webpack_require__("52302e9d7111bc35284245e582521b7a"),
-	    listCacheGet = __webpack_require__("6efc374695758889d033cb723888362e"),
-	    listCacheHas = __webpack_require__("d18a1ba5b6773d3f83403597f9a70e53"),
-	    listCacheSet = __webpack_require__("69f45db32fce0de428043932c93a2f8e");
+	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
 
-	/**
-	 * Creates an list cache object.
-	 *
-	 * @private
-	 * @constructor
-	 * @param {Array} [entries] The key-value pairs to cache.
-	 */
-	function ListCache(entries) {
-	  var index = -1,
-	      length = entries ? entries.length : 0;
+	__webpack_require__("9916bec47baf600751152784dccd49d0");
 
-	  this.clear();
-	  while (++index < length) {
-	    var entry = entries[index];
-	    this.set(entry[0], entry[1]);
-	  }
+	__webpack_require__("280d92cedd4801edbe66ef51b030548b");
+
+	__webpack_require__("eb9a75ce7c34c049693fa6668e5377a4");
+
+	/* eslint max-len: 0 */
+
+	if (global._babelPolyfill) {
+	  throw new Error("only one instance of babel-polyfill is allowed");
+	}
+	global._babelPolyfill = true;
+
+	// Should be removed in the next major release:
+
+	var DEFINE_PROPERTY = "defineProperty";
+	function define(O, key, value) {
+	  O[key] || Object[DEFINE_PROPERTY](O, key, {
+	    writable: true,
+	    configurable: true,
+	    value: value
+	  });
 	}
 
-	// Add methods to `ListCache`.
-	ListCache.prototype.clear = listCacheClear;
-	ListCache.prototype['delete'] = listCacheDelete;
-	ListCache.prototype.get = listCacheGet;
-	ListCache.prototype.has = listCacheHas;
-	ListCache.prototype.set = listCacheSet;
+	define(String.prototype, "padLeft", "".padStart);
+	define(String.prototype, "padRight", "".padEnd);
 
-	module.exports = ListCache;
-
+	"pop,reverse,shift,keys,values,entries,indexOf,every,some,forEach,map,filter,find,findIndex,includes,join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill".split(",").forEach(function (key) {
+	  [][key] && define(Array, key, Function.call.bind([][key]));
+	});
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 
@@ -17553,6 +16836,93 @@ var vendors_dashboard_worona =
 	}
 
 	module.exports = baseIsNative;
+
+
+/***/ },
+
+/***/ "0aa705edc20b166002c33ed65ce29cc7":
+/***/ function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__("8a1b4937e4a818246b5edfd46d1cf67b");
+
+	/** `Object#toString` result references. */
+	var funcTag = '[object Function]',
+	    genTag = '[object GeneratorFunction]';
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objectToString = objectProto.toString;
+
+	/**
+	 * Checks if `value` is classified as a `Function` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+	 * @example
+	 *
+	 * _.isFunction(_);
+	 * // => true
+	 *
+	 * _.isFunction(/abc/);
+	 * // => false
+	 */
+	function isFunction(value) {
+	  // The use of `Object#toString` avoids issues with the `typeof` operator
+	  // in Safari 8 which returns 'object' for typed array and weak map constructors,
+	  // and PhantomJS 1.9 which returns 'function' for `NodeList` instances.
+	  var tag = isObject(value) ? objectToString.call(value) : '';
+	  return tag == funcTag || tag == genTag;
+	}
+
+	module.exports = isFunction;
+
+
+/***/ },
+
+/***/ "8a1b4937e4a818246b5edfd46d1cf67b":
+/***/ function(module, exports) {
+
+	/**
+	 * Checks if `value` is the
+	 * [language type](http://www.ecma-international.org/ecma-262/6.0/#sec-ecmascript-language-types)
+	 * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+	 * @example
+	 *
+	 * _.isObject({});
+	 * // => true
+	 *
+	 * _.isObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObject(_.noop);
+	 * // => true
+	 *
+	 * _.isObject(null);
+	 * // => false
+	 */
+	function isObject(value) {
+	  var type = typeof value;
+	  return !!value && (type == 'object' || type == 'function');
+	}
+
+	module.exports = isObject;
 
 
 /***/ },
@@ -18715,6 +18085,617 @@ var vendors_dashboard_worona =
 
 /***/ },
 
+/***/ "cc2f521595a371186e8dd412467c2883":
+/***/ function(module, exports, __webpack_require__) {
+
+	var getPrototype = __webpack_require__("ab8a8020a0df97fcf2d9e6edab1d47bb");
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+
+	/**
+	 * The base implementation of `_.has` without support for deep paths.
+	 *
+	 * @private
+	 * @param {Object} [object] The object to query.
+	 * @param {Array|string} key The key to check.
+	 * @returns {boolean} Returns `true` if `key` exists, else `false`.
+	 */
+	function baseHas(object, key) {
+	  // Avoid a bug in IE 10-11 where objects with a [[Prototype]] of `null`,
+	  // that are composed entirely of index properties, return `false` for
+	  // `hasOwnProperty` checks of them.
+	  return object != null &&
+	    (hasOwnProperty.call(object, key) ||
+	      (typeof object == 'object' && key in object && getPrototype(object) === null));
+	}
+
+	module.exports = baseHas;
+
+
+/***/ },
+
+/***/ "ab8a8020a0df97fcf2d9e6edab1d47bb":
+/***/ function(module, exports, __webpack_require__) {
+
+	var overArg = __webpack_require__("4a8b21b3dfd7f6563eb2c6a677d830c7");
+
+	/* Built-in method references for those with the same name as other `lodash` methods. */
+	var nativeGetPrototype = Object.getPrototypeOf;
+
+	/**
+	 * Gets the `[[Prototype]]` of `value`.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @returns {null|Object} Returns the `[[Prototype]]`.
+	 */
+	var getPrototype = overArg(nativeGetPrototype, Object);
+
+	module.exports = getPrototype;
+
+
+/***/ },
+
+/***/ "4a8b21b3dfd7f6563eb2c6a677d830c7":
+/***/ function(module, exports) {
+
+	/**
+	 * Creates a function that invokes `func` with its first argument transformed.
+	 *
+	 * @private
+	 * @param {Function} func The function to wrap.
+	 * @param {Function} transform The argument transform.
+	 * @returns {Function} Returns the new function.
+	 */
+	function overArg(func, transform) {
+	  return function(arg) {
+	    return func(transform(arg));
+	  };
+	}
+
+	module.exports = overArg;
+
+
+/***/ },
+
+/***/ "eacbe80d1781eef5d92ec2042be7b929":
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseHas = __webpack_require__("cc2f521595a371186e8dd412467c2883"),
+	    baseKeys = __webpack_require__("eb5b2da854b76e030eb63fb999356174"),
+	    indexKeys = __webpack_require__("44f4a480ff6d433bda250c99e00593ed"),
+	    isArrayLike = __webpack_require__("f17792ebcd58b30463b9194c247635a6"),
+	    isIndex = __webpack_require__("5ea673ab65dbfaea2a6ccd3b157c3a4c"),
+	    isPrototype = __webpack_require__("19160e8751c9534cf1e5cb81003f7713");
+
+	/**
+	 * Creates an array of the own enumerable property names of `object`.
+	 *
+	 * **Note:** Non-object values are coerced to objects. See the
+	 * [ES spec](http://ecma-international.org/ecma-262/6.0/#sec-object.keys)
+	 * for more details.
+	 *
+	 * @static
+	 * @since 0.1.0
+	 * @memberOf _
+	 * @category Object
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.keys(new Foo);
+	 * // => ['a', 'b'] (iteration order is not guaranteed)
+	 *
+	 * _.keys('hi');
+	 * // => ['0', '1']
+	 */
+	function keys(object) {
+	  var isProto = isPrototype(object);
+	  if (!(isProto || isArrayLike(object))) {
+	    return baseKeys(object);
+	  }
+	  var indexes = indexKeys(object),
+	      skipIndexes = !!indexes,
+	      result = indexes || [],
+	      length = result.length;
+
+	  for (var key in object) {
+	    if (baseHas(object, key) &&
+	        !(skipIndexes && (key == 'length' || isIndex(key, length))) &&
+	        !(isProto && key == 'constructor')) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+
+	module.exports = keys;
+
+
+/***/ },
+
+/***/ "eb5b2da854b76e030eb63fb999356174":
+/***/ function(module, exports, __webpack_require__) {
+
+	var overArg = __webpack_require__("4a8b21b3dfd7f6563eb2c6a677d830c7");
+
+	/* Built-in method references for those with the same name as other `lodash` methods. */
+	var nativeKeys = Object.keys;
+
+	/**
+	 * The base implementation of `_.keys` which doesn't skip the constructor
+	 * property of prototypes or treat sparse arrays as dense.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	var baseKeys = overArg(nativeKeys, Object);
+
+	module.exports = baseKeys;
+
+
+/***/ },
+
+/***/ "44f4a480ff6d433bda250c99e00593ed":
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseTimes = __webpack_require__("cfe5bc97b2a7b647858de03791afd68d"),
+	    isArguments = __webpack_require__("f68877cdaf18cad2900f4a8441137dec"),
+	    isArray = __webpack_require__("f85d21a71fc5789229ef704c58caf08a"),
+	    isLength = __webpack_require__("2e6eb015ceb8b2ccf845ca78e6cb05e2"),
+	    isString = __webpack_require__("4167f2b891be5efb671ee0c1a61d5b18");
+
+	/**
+	 * Creates an array of index keys for `object` values of arrays,
+	 * `arguments` objects, and strings, otherwise `null` is returned.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array|null} Returns index keys, else `null`.
+	 */
+	function indexKeys(object) {
+	  var length = object ? object.length : undefined;
+	  if (isLength(length) &&
+	      (isArray(object) || isString(object) || isArguments(object))) {
+	    return baseTimes(length, String);
+	  }
+	  return null;
+	}
+
+	module.exports = indexKeys;
+
+
+/***/ },
+
+/***/ "cfe5bc97b2a7b647858de03791afd68d":
+/***/ function(module, exports) {
+
+	/**
+	 * The base implementation of `_.times` without support for iteratee shorthands
+	 * or max array length checks.
+	 *
+	 * @private
+	 * @param {number} n The number of times to invoke `iteratee`.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Array} Returns the array of results.
+	 */
+	function baseTimes(n, iteratee) {
+	  var index = -1,
+	      result = Array(n);
+
+	  while (++index < n) {
+	    result[index] = iteratee(index);
+	  }
+	  return result;
+	}
+
+	module.exports = baseTimes;
+
+
+/***/ },
+
+/***/ "f68877cdaf18cad2900f4a8441137dec":
+/***/ function(module, exports, __webpack_require__) {
+
+	var isArrayLikeObject = __webpack_require__("00fa712353516efb11d90460e176c1a5");
+
+	/** `Object#toString` result references. */
+	var argsTag = '[object Arguments]';
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objectToString = objectProto.toString;
+
+	/** Built-in value references. */
+	var propertyIsEnumerable = objectProto.propertyIsEnumerable;
+
+	/**
+	 * Checks if `value` is likely an `arguments` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+	 *  else `false`.
+	 * @example
+	 *
+	 * _.isArguments(function() { return arguments; }());
+	 * // => true
+	 *
+	 * _.isArguments([1, 2, 3]);
+	 * // => false
+	 */
+	function isArguments(value) {
+	  // Safari 8.1 incorrectly makes `arguments.callee` enumerable in strict mode.
+	  return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
+	    (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
+	}
+
+	module.exports = isArguments;
+
+
+/***/ },
+
+/***/ "00fa712353516efb11d90460e176c1a5":
+/***/ function(module, exports, __webpack_require__) {
+
+	var isArrayLike = __webpack_require__("f17792ebcd58b30463b9194c247635a6"),
+	    isObjectLike = __webpack_require__("73069110313ec30bdec04e6da1cea1bc");
+
+	/**
+	 * This method is like `_.isArrayLike` except that it also checks if `value`
+	 * is an object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an array-like object,
+	 *  else `false`.
+	 * @example
+	 *
+	 * _.isArrayLikeObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArrayLikeObject(document.body.children);
+	 * // => true
+	 *
+	 * _.isArrayLikeObject('abc');
+	 * // => false
+	 *
+	 * _.isArrayLikeObject(_.noop);
+	 * // => false
+	 */
+	function isArrayLikeObject(value) {
+	  return isObjectLike(value) && isArrayLike(value);
+	}
+
+	module.exports = isArrayLikeObject;
+
+
+/***/ },
+
+/***/ "f17792ebcd58b30463b9194c247635a6":
+/***/ function(module, exports, __webpack_require__) {
+
+	var getLength = __webpack_require__("060f0a90e19593aa1f6105dc7c0f3481"),
+	    isFunction = __webpack_require__("0aa705edc20b166002c33ed65ce29cc7"),
+	    isLength = __webpack_require__("2e6eb015ceb8b2ccf845ca78e6cb05e2");
+
+	/**
+	 * Checks if `value` is array-like. A value is considered array-like if it's
+	 * not a function and has a `value.length` that's an integer greater than or
+	 * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+	 * @example
+	 *
+	 * _.isArrayLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArrayLike(document.body.children);
+	 * // => true
+	 *
+	 * _.isArrayLike('abc');
+	 * // => true
+	 *
+	 * _.isArrayLike(_.noop);
+	 * // => false
+	 */
+	function isArrayLike(value) {
+	  return value != null && isLength(getLength(value)) && !isFunction(value);
+	}
+
+	module.exports = isArrayLike;
+
+
+/***/ },
+
+/***/ "060f0a90e19593aa1f6105dc7c0f3481":
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseProperty = __webpack_require__("db5827b2a244e8483fac371a9881729c");
+
+	/**
+	 * Gets the "length" property value of `object`.
+	 *
+	 * **Note:** This function is used to avoid a
+	 * [JIT bug](https://bugs.webkit.org/show_bug.cgi?id=142792) that affects
+	 * Safari on at least iOS 8.1-8.3 ARM64.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {*} Returns the "length" value.
+	 */
+	var getLength = baseProperty('length');
+
+	module.exports = getLength;
+
+
+/***/ },
+
+/***/ "db5827b2a244e8483fac371a9881729c":
+/***/ function(module, exports) {
+
+	/**
+	 * The base implementation of `_.property` without support for deep paths.
+	 *
+	 * @private
+	 * @param {string} key The key of the property to get.
+	 * @returns {Function} Returns the new accessor function.
+	 */
+	function baseProperty(key) {
+	  return function(object) {
+	    return object == null ? undefined : object[key];
+	  };
+	}
+
+	module.exports = baseProperty;
+
+
+/***/ },
+
+/***/ "2e6eb015ceb8b2ccf845ca78e6cb05e2":
+/***/ function(module, exports) {
+
+	/** Used as references for various `Number` constants. */
+	var MAX_SAFE_INTEGER = 9007199254740991;
+
+	/**
+	 * Checks if `value` is a valid array-like length.
+	 *
+	 * **Note:** This function is loosely based on
+	 * [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a valid length,
+	 *  else `false`.
+	 * @example
+	 *
+	 * _.isLength(3);
+	 * // => true
+	 *
+	 * _.isLength(Number.MIN_VALUE);
+	 * // => false
+	 *
+	 * _.isLength(Infinity);
+	 * // => false
+	 *
+	 * _.isLength('3');
+	 * // => false
+	 */
+	function isLength(value) {
+	  return typeof value == 'number' &&
+	    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+	}
+
+	module.exports = isLength;
+
+
+/***/ },
+
+/***/ "73069110313ec30bdec04e6da1cea1bc":
+/***/ function(module, exports) {
+
+	/**
+	 * Checks if `value` is object-like. A value is object-like if it's not `null`
+	 * and has a `typeof` result of "object".
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 * @example
+	 *
+	 * _.isObjectLike({});
+	 * // => true
+	 *
+	 * _.isObjectLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObjectLike(_.noop);
+	 * // => false
+	 *
+	 * _.isObjectLike(null);
+	 * // => false
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+
+	module.exports = isObjectLike;
+
+
+/***/ },
+
+/***/ "f85d21a71fc5789229ef704c58caf08a":
+/***/ function(module, exports) {
+
+	/**
+	 * Checks if `value` is classified as an `Array` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+	 * @example
+	 *
+	 * _.isArray([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArray(document.body.children);
+	 * // => false
+	 *
+	 * _.isArray('abc');
+	 * // => false
+	 *
+	 * _.isArray(_.noop);
+	 * // => false
+	 */
+	var isArray = Array.isArray;
+
+	module.exports = isArray;
+
+
+/***/ },
+
+/***/ "4167f2b891be5efb671ee0c1a61d5b18":
+/***/ function(module, exports, __webpack_require__) {
+
+	var isArray = __webpack_require__("f85d21a71fc5789229ef704c58caf08a"),
+	    isObjectLike = __webpack_require__("73069110313ec30bdec04e6da1cea1bc");
+
+	/** `Object#toString` result references. */
+	var stringTag = '[object String]';
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objectToString = objectProto.toString;
+
+	/**
+	 * Checks if `value` is classified as a `String` primitive or object.
+	 *
+	 * @static
+	 * @since 0.1.0
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a string, else `false`.
+	 * @example
+	 *
+	 * _.isString('abc');
+	 * // => true
+	 *
+	 * _.isString(1);
+	 * // => false
+	 */
+	function isString(value) {
+	  return typeof value == 'string' ||
+	    (!isArray(value) && isObjectLike(value) && objectToString.call(value) == stringTag);
+	}
+
+	module.exports = isString;
+
+
+/***/ },
+
+/***/ "5ea673ab65dbfaea2a6ccd3b157c3a4c":
+/***/ function(module, exports) {
+
+	/** Used as references for various `Number` constants. */
+	var MAX_SAFE_INTEGER = 9007199254740991;
+
+	/** Used to detect unsigned integer values. */
+	var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+	/**
+	 * Checks if `value` is a valid array-like index.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+	 * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+	 */
+	function isIndex(value, length) {
+	  length = length == null ? MAX_SAFE_INTEGER : length;
+	  return !!length &&
+	    (typeof value == 'number' || reIsUint.test(value)) &&
+	    (value > -1 && value % 1 == 0 && value < length);
+	}
+
+	module.exports = isIndex;
+
+
+/***/ },
+
+/***/ "19160e8751c9534cf1e5cb81003f7713":
+/***/ function(module, exports) {
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+
+	/**
+	 * Checks if `value` is likely a prototype object.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+	 */
+	function isPrototype(value) {
+	  var Ctor = value && value.constructor,
+	      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
+
+	  return value === proto;
+	}
+
+	module.exports = isPrototype;
+
+
+/***/ },
+
 /***/ "43d7ba6a536bf42c6b116f3683acb776":
 /***/ function(module, exports, __webpack_require__) {
 
@@ -19767,551 +19748,6 @@ var vendors_dashboard_worona =
 
 /***/ },
 
-/***/ "08fc70332265ca6fa7f08fafdb4ddadb":
-/***/ function(module, exports, __webpack_require__) {
-
-	var baseIteratee = __webpack_require__("4f5d4c49632a4b0539d7f740e1192827"),
-	    negate = __webpack_require__("d46210c4a8538124c5c4a21a643641c0"),
-	    pickBy = __webpack_require__("da5d7161f2a7d2fe7ec56df0788436c2");
-
-	/**
-	 * The opposite of `_.pickBy`; this method creates an object composed of
-	 * the own and inherited enumerable string keyed properties of `object` that
-	 * `predicate` doesn't return truthy for. The predicate is invoked with two
-	 * arguments: (value, key).
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Object
-	 * @param {Object} object The source object.
-	 * @param {Function} [predicate=_.identity] The function invoked per property.
-	 * @returns {Object} Returns the new object.
-	 * @example
-	 *
-	 * var object = { 'a': 1, 'b': '2', 'c': 3 };
-	 *
-	 * _.omitBy(object, _.isNumber);
-	 * // => { 'b': '2' }
-	 */
-	function omitBy(object, predicate) {
-	  return pickBy(object, negate(baseIteratee(predicate)));
-	}
-
-	module.exports = omitBy;
-
-
-/***/ },
-
-/***/ "d46210c4a8538124c5c4a21a643641c0":
-/***/ function(module, exports) {
-
-	/** Used as the `TypeError` message for "Functions" methods. */
-	var FUNC_ERROR_TEXT = 'Expected a function';
-
-	/**
-	 * Creates a function that negates the result of the predicate `func`. The
-	 * `func` predicate is invoked with the `this` binding and arguments of the
-	 * created function.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 3.0.0
-	 * @category Function
-	 * @param {Function} predicate The predicate to negate.
-	 * @returns {Function} Returns the new negated function.
-	 * @example
-	 *
-	 * function isEven(n) {
-	 *   return n % 2 == 0;
-	 * }
-	 *
-	 * _.filter([1, 2, 3, 4, 5, 6], _.negate(isEven));
-	 * // => [1, 3, 5]
-	 */
-	function negate(predicate) {
-	  if (typeof predicate != 'function') {
-	    throw new TypeError(FUNC_ERROR_TEXT);
-	  }
-	  return function() {
-	    var args = arguments;
-	    switch (args.length) {
-	      case 0: return !predicate.call(this);
-	      case 1: return !predicate.call(this, args[0]);
-	      case 2: return !predicate.call(this, args[0], args[1]);
-	      case 3: return !predicate.call(this, args[0], args[1], args[2]);
-	    }
-	    return !predicate.apply(this, args);
-	  };
-	}
-
-	module.exports = negate;
-
-
-/***/ },
-
-/***/ "da5d7161f2a7d2fe7ec56df0788436c2":
-/***/ function(module, exports, __webpack_require__) {
-
-	var baseIteratee = __webpack_require__("4f5d4c49632a4b0539d7f740e1192827"),
-	    basePickBy = __webpack_require__("75899357cf96d3ec3d3aa97af829c57c"),
-	    getAllKeysIn = __webpack_require__("603a4f4e0151fcf70068f05b67c27e7a");
-
-	/**
-	 * Creates an object composed of the `object` properties `predicate` returns
-	 * truthy for. The predicate is invoked with two arguments: (value, key).
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Object
-	 * @param {Object} object The source object.
-	 * @param {Function} [predicate=_.identity] The function invoked per property.
-	 * @returns {Object} Returns the new object.
-	 * @example
-	 *
-	 * var object = { 'a': 1, 'b': '2', 'c': 3 };
-	 *
-	 * _.pickBy(object, _.isNumber);
-	 * // => { 'a': 1, 'c': 3 }
-	 */
-	function pickBy(object, predicate) {
-	  return object == null ? {} : basePickBy(object, getAllKeysIn(object), baseIteratee(predicate));
-	}
-
-	module.exports = pickBy;
-
-
-/***/ },
-
-/***/ "75899357cf96d3ec3d3aa97af829c57c":
-/***/ function(module, exports) {
-
-	/**
-	 * The base implementation of  `_.pickBy` without support for iteratee shorthands.
-	 *
-	 * @private
-	 * @param {Object} object The source object.
-	 * @param {string[]} props The property identifiers to pick from.
-	 * @param {Function} predicate The function invoked per property.
-	 * @returns {Object} Returns the new object.
-	 */
-	function basePickBy(object, props, predicate) {
-	  var index = -1,
-	      length = props.length,
-	      result = {};
-
-	  while (++index < length) {
-	    var key = props[index],
-	        value = object[key];
-
-	    if (predicate(value, key)) {
-	      result[key] = value;
-	    }
-	  }
-	  return result;
-	}
-
-	module.exports = basePickBy;
-
-
-/***/ },
-
-/***/ "603a4f4e0151fcf70068f05b67c27e7a":
-/***/ function(module, exports, __webpack_require__) {
-
-	var baseGetAllKeys = __webpack_require__("ed4a024d8582fa2d46b742b4f455fcd9"),
-	    getSymbolsIn = __webpack_require__("c703d7ff03e2ff7377c2653c2b8ccfda"),
-	    keysIn = __webpack_require__("e07d9897b71584307436d23dcbd2f1d8");
-
-	/**
-	 * Creates an array of own and inherited enumerable property names and
-	 * symbols of `object`.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @returns {Array} Returns the array of property names and symbols.
-	 */
-	function getAllKeysIn(object) {
-	  return baseGetAllKeys(object, keysIn, getSymbolsIn);
-	}
-
-	module.exports = getAllKeysIn;
-
-
-/***/ },
-
-/***/ "ed4a024d8582fa2d46b742b4f455fcd9":
-/***/ function(module, exports, __webpack_require__) {
-
-	var arrayPush = __webpack_require__("08326d6481068e8002521f5261857a14"),
-	    isArray = __webpack_require__("f85d21a71fc5789229ef704c58caf08a");
-
-	/**
-	 * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
-	 * `keysFunc` and `symbolsFunc` to get the enumerable property names and
-	 * symbols of `object`.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @param {Function} keysFunc The function to get the keys of `object`.
-	 * @param {Function} symbolsFunc The function to get the symbols of `object`.
-	 * @returns {Array} Returns the array of property names and symbols.
-	 */
-	function baseGetAllKeys(object, keysFunc, symbolsFunc) {
-	  var result = keysFunc(object);
-	  return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
-	}
-
-	module.exports = baseGetAllKeys;
-
-
-/***/ },
-
-/***/ "08326d6481068e8002521f5261857a14":
-/***/ function(module, exports) {
-
-	/**
-	 * Appends the elements of `values` to `array`.
-	 *
-	 * @private
-	 * @param {Array} array The array to modify.
-	 * @param {Array} values The values to append.
-	 * @returns {Array} Returns `array`.
-	 */
-	function arrayPush(array, values) {
-	  var index = -1,
-	      length = values.length,
-	      offset = array.length;
-
-	  while (++index < length) {
-	    array[offset + index] = values[index];
-	  }
-	  return array;
-	}
-
-	module.exports = arrayPush;
-
-
-/***/ },
-
-/***/ "c703d7ff03e2ff7377c2653c2b8ccfda":
-/***/ function(module, exports, __webpack_require__) {
-
-	var arrayPush = __webpack_require__("08326d6481068e8002521f5261857a14"),
-	    getPrototype = __webpack_require__("ab8a8020a0df97fcf2d9e6edab1d47bb"),
-	    getSymbols = __webpack_require__("e56a845b9fc67048934f2189b93275e6"),
-	    stubArray = __webpack_require__("935f770192f45a1c5bfbb3721d400a32");
-
-	/* Built-in method references for those with the same name as other `lodash` methods. */
-	var nativeGetSymbols = Object.getOwnPropertySymbols;
-
-	/**
-	 * Creates an array of the own and inherited enumerable symbol properties
-	 * of `object`.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @returns {Array} Returns the array of symbols.
-	 */
-	var getSymbolsIn = !nativeGetSymbols ? stubArray : function(object) {
-	  var result = [];
-	  while (object) {
-	    arrayPush(result, getSymbols(object));
-	    object = getPrototype(object);
-	  }
-	  return result;
-	};
-
-	module.exports = getSymbolsIn;
-
-
-/***/ },
-
-/***/ "e56a845b9fc67048934f2189b93275e6":
-/***/ function(module, exports, __webpack_require__) {
-
-	var overArg = __webpack_require__("4a8b21b3dfd7f6563eb2c6a677d830c7"),
-	    stubArray = __webpack_require__("935f770192f45a1c5bfbb3721d400a32");
-
-	/* Built-in method references for those with the same name as other `lodash` methods. */
-	var nativeGetSymbols = Object.getOwnPropertySymbols;
-
-	/**
-	 * Creates an array of the own enumerable symbol properties of `object`.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @returns {Array} Returns the array of symbols.
-	 */
-	var getSymbols = nativeGetSymbols ? overArg(nativeGetSymbols, Object) : stubArray;
-
-	module.exports = getSymbols;
-
-
-/***/ },
-
-/***/ "935f770192f45a1c5bfbb3721d400a32":
-/***/ function(module, exports) {
-
-	/**
-	 * This method returns a new empty array.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.13.0
-	 * @category Util
-	 * @returns {Array} Returns the new empty array.
-	 * @example
-	 *
-	 * var arrays = _.times(2, _.stubArray);
-	 *
-	 * console.log(arrays);
-	 * // => [[], []]
-	 *
-	 * console.log(arrays[0] === arrays[1]);
-	 * // => false
-	 */
-	function stubArray() {
-	  return [];
-	}
-
-	module.exports = stubArray;
-
-
-/***/ },
-
-/***/ "e07d9897b71584307436d23dcbd2f1d8":
-/***/ function(module, exports, __webpack_require__) {
-
-	var baseKeysIn = __webpack_require__("43ac4add056f2141ef21c14bf29865d3"),
-	    indexKeys = __webpack_require__("44f4a480ff6d433bda250c99e00593ed"),
-	    isIndex = __webpack_require__("5ea673ab65dbfaea2a6ccd3b157c3a4c"),
-	    isPrototype = __webpack_require__("19160e8751c9534cf1e5cb81003f7713");
-
-	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
-
-	/** Used to check objects for own properties. */
-	var hasOwnProperty = objectProto.hasOwnProperty;
-
-	/**
-	 * Creates an array of the own and inherited enumerable property names of `object`.
-	 *
-	 * **Note:** Non-object values are coerced to objects.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 3.0.0
-	 * @category Object
-	 * @param {Object} object The object to query.
-	 * @returns {Array} Returns the array of property names.
-	 * @example
-	 *
-	 * function Foo() {
-	 *   this.a = 1;
-	 *   this.b = 2;
-	 * }
-	 *
-	 * Foo.prototype.c = 3;
-	 *
-	 * _.keysIn(new Foo);
-	 * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
-	 */
-	function keysIn(object) {
-	  var index = -1,
-	      isProto = isPrototype(object),
-	      props = baseKeysIn(object),
-	      propsLength = props.length,
-	      indexes = indexKeys(object),
-	      skipIndexes = !!indexes,
-	      result = indexes || [],
-	      length = result.length;
-
-	  while (++index < propsLength) {
-	    var key = props[index];
-	    if (!(skipIndexes && (key == 'length' || isIndex(key, length))) &&
-	        !(key == 'constructor' && (isProto || !hasOwnProperty.call(object, key)))) {
-	      result.push(key);
-	    }
-	  }
-	  return result;
-	}
-
-	module.exports = keysIn;
-
-
-/***/ },
-
-/***/ "43ac4add056f2141ef21c14bf29865d3":
-/***/ function(module, exports, __webpack_require__) {
-
-	var Reflect = __webpack_require__("1e0ae24ea4c6e4aea78fedbbda1ab1e3"),
-	    iteratorToArray = __webpack_require__("5892c9608e1c21ab3231ab189527ee30");
-
-	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
-
-	/** Built-in value references. */
-	var enumerate = Reflect ? Reflect.enumerate : undefined,
-	    propertyIsEnumerable = objectProto.propertyIsEnumerable;
-
-	/**
-	 * The base implementation of `_.keysIn` which doesn't skip the constructor
-	 * property of prototypes or treat sparse arrays as dense.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @returns {Array} Returns the array of property names.
-	 */
-	function baseKeysIn(object) {
-	  object = object == null ? object : Object(object);
-
-	  var result = [];
-	  for (var key in object) {
-	    result.push(key);
-	  }
-	  return result;
-	}
-
-	// Fallback for IE < 9 with es6-shim.
-	if (enumerate && !propertyIsEnumerable.call({ 'valueOf': 1 }, 'valueOf')) {
-	  baseKeysIn = function(object) {
-	    return iteratorToArray(enumerate(object));
-	  };
-	}
-
-	module.exports = baseKeysIn;
-
-
-/***/ },
-
-/***/ "1e0ae24ea4c6e4aea78fedbbda1ab1e3":
-/***/ function(module, exports, __webpack_require__) {
-
-	var root = __webpack_require__("338718dcc3942753f18865f8f21c3147");
-
-	/** Built-in value references. */
-	var Reflect = root.Reflect;
-
-	module.exports = Reflect;
-
-
-/***/ },
-
-/***/ "5892c9608e1c21ab3231ab189527ee30":
-/***/ function(module, exports) {
-
-	/**
-	 * Converts `iterator` to an array.
-	 *
-	 * @private
-	 * @param {Object} iterator The iterator to convert.
-	 * @returns {Array} Returns the converted array.
-	 */
-	function iteratorToArray(iterator) {
-	  var data,
-	      result = [];
-
-	  while (!(data = iterator.next()).done) {
-	    result.push(data.value);
-	  }
-	  return result;
-	}
-
-	module.exports = iteratorToArray;
-
-
-/***/ },
-
-/***/ "1d1e2fafdfa526e25062a685a208eb95":
-/***/ function(module, exports, __webpack_require__) {
-
-	var arrayMap = __webpack_require__("a02a54b74da9d5c4dc5fa424e99e688d"),
-	    baseIteratee = __webpack_require__("4f5d4c49632a4b0539d7f740e1192827"),
-	    baseMap = __webpack_require__("1937a0ba1adb5df50bcabc4939b241b8"),
-	    isArray = __webpack_require__("f85d21a71fc5789229ef704c58caf08a");
-
-	/**
-	 * Creates an array of values by running each element in `collection` thru
-	 * `iteratee`. The iteratee is invoked with three arguments:
-	 * (value, index|key, collection).
-	 *
-	 * Many lodash methods are guarded to work as iteratees for methods like
-	 * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
-	 *
-	 * The guarded methods are:
-	 * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
-	 * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
-	 * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
-	 * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.1.0
-	 * @category Collection
-	 * @param {Array|Object} collection The collection to iterate over.
-	 * @param {Function} [iteratee=_.identity] The function invoked per iteration.
-	 * @returns {Array} Returns the new mapped array.
-	 * @example
-	 *
-	 * function square(n) {
-	 *   return n * n;
-	 * }
-	 *
-	 * _.map([4, 8], square);
-	 * // => [16, 64]
-	 *
-	 * _.map({ 'a': 4, 'b': 8 }, square);
-	 * // => [16, 64] (iteration order is not guaranteed)
-	 *
-	 * var users = [
-	 *   { 'user': 'barney' },
-	 *   { 'user': 'fred' }
-	 * ];
-	 *
-	 * // The `_.property` iteratee shorthand.
-	 * _.map(users, 'user');
-	 * // => ['barney', 'fred']
-	 */
-	function map(collection, iteratee) {
-	  var func = isArray(collection) ? arrayMap : baseMap;
-	  return func(collection, baseIteratee(iteratee, 3));
-	}
-
-	module.exports = map;
-
-
-/***/ },
-
-/***/ "a02a54b74da9d5c4dc5fa424e99e688d":
-/***/ function(module, exports) {
-
-	/**
-	 * A specialized version of `_.map` for arrays without support for iteratee
-	 * shorthands.
-	 *
-	 * @private
-	 * @param {Array} [array] The array to iterate over.
-	 * @param {Function} iteratee The function invoked per iteration.
-	 * @returns {Array} Returns the new mapped array.
-	 */
-	function arrayMap(array, iteratee) {
-	  var index = -1,
-	      length = array ? array.length : 0,
-	      result = Array(length);
-
-	  while (++index < length) {
-	    result[index] = iteratee(array[index], index, array);
-	  }
-	  return result;
-	}
-
-	module.exports = arrayMap;
-
-
-/***/ },
-
 /***/ "1937a0ba1adb5df50bcabc4939b241b8":
 /***/ function(module, exports, __webpack_require__) {
 
@@ -20358,6 +19794,84 @@ var vendors_dashboard_worona =
 	var baseEach = createBaseEach(baseForOwn);
 
 	module.exports = baseEach;
+
+
+/***/ },
+
+/***/ "0d0f31afc185b80c38ac88d541456608":
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseFor = __webpack_require__("795488885dd7283b63f0b73fa9236fa2"),
+	    keys = __webpack_require__("eacbe80d1781eef5d92ec2042be7b929");
+
+	/**
+	 * The base implementation of `_.forOwn` without support for iteratee shorthands.
+	 *
+	 * @private
+	 * @param {Object} object The object to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Object} Returns `object`.
+	 */
+	function baseForOwn(object, iteratee) {
+	  return object && baseFor(object, iteratee, keys);
+	}
+
+	module.exports = baseForOwn;
+
+
+/***/ },
+
+/***/ "795488885dd7283b63f0b73fa9236fa2":
+/***/ function(module, exports, __webpack_require__) {
+
+	var createBaseFor = __webpack_require__("5925eca1a4c2c6e0465ece992cbc9661");
+
+	/**
+	 * The base implementation of `baseForOwn` which iterates over `object`
+	 * properties returned by `keysFunc` and invokes `iteratee` for each property.
+	 * Iteratee functions may exit iteration early by explicitly returning `false`.
+	 *
+	 * @private
+	 * @param {Object} object The object to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @param {Function} keysFunc The function to get the keys of `object`.
+	 * @returns {Object} Returns `object`.
+	 */
+	var baseFor = createBaseFor();
+
+	module.exports = baseFor;
+
+
+/***/ },
+
+/***/ "5925eca1a4c2c6e0465ece992cbc9661":
+/***/ function(module, exports) {
+
+	/**
+	 * Creates a base function for methods like `_.forIn` and `_.forOwn`.
+	 *
+	 * @private
+	 * @param {boolean} [fromRight] Specify iterating from right to left.
+	 * @returns {Function} Returns the new base function.
+	 */
+	function createBaseFor(fromRight) {
+	  return function(object, iteratee, keysFunc) {
+	    var index = -1,
+	        iterable = Object(object),
+	        props = keysFunc(object),
+	        length = props.length;
+
+	    while (length--) {
+	      var key = props[fromRight ? length : ++index];
+	      if (iteratee(iterable[key], key, iterable) === false) {
+	        break;
+	      }
+	    }
+	    return object;
+	  };
+	}
+
+	module.exports = createBaseFor;
 
 
 /***/ },
@@ -49481,43 +48995,41 @@ var vendors_dashboard_worona =
 
 /***/ },
 
-/***/ "f17792ebcd58b30463b9194c247635a6":
+/***/ "8429a5e775bfba3f6e9e1a4fd989a77d":
 /***/ function(module, exports, __webpack_require__) {
 
-	var getLength = __webpack_require__("060f0a90e19593aa1f6105dc7c0f3481"),
-	    isFunction = __webpack_require__("0aa705edc20b166002c33ed65ce29cc7"),
-	    isLength = __webpack_require__("2e6eb015ceb8b2ccf845ca78e6cb05e2");
+	var listCacheClear = __webpack_require__("52ea8feebcca2b3a8a93610645258eeb"),
+	    listCacheDelete = __webpack_require__("52302e9d7111bc35284245e582521b7a"),
+	    listCacheGet = __webpack_require__("6efc374695758889d033cb723888362e"),
+	    listCacheHas = __webpack_require__("d18a1ba5b6773d3f83403597f9a70e53"),
+	    listCacheSet = __webpack_require__("69f45db32fce0de428043932c93a2f8e");
 
 	/**
-	 * Checks if `value` is array-like. A value is considered array-like if it's
-	 * not a function and has a `value.length` that's an integer greater than or
-	 * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+	 * Creates an list cache object.
 	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
-	 * @example
-	 *
-	 * _.isArrayLike([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isArrayLike(document.body.children);
-	 * // => true
-	 *
-	 * _.isArrayLike('abc');
-	 * // => true
-	 *
-	 * _.isArrayLike(_.noop);
-	 * // => false
+	 * @private
+	 * @constructor
+	 * @param {Array} [entries] The key-value pairs to cache.
 	 */
-	function isArrayLike(value) {
-	  return value != null && isLength(getLength(value)) && !isFunction(value);
+	function ListCache(entries) {
+	  var index = -1,
+	      length = entries ? entries.length : 0;
+
+	  this.clear();
+	  while (++index < length) {
+	    var entry = entries[index];
+	    this.set(entry[0], entry[1]);
+	  }
 	}
 
-	module.exports = isArrayLike;
+	// Add methods to `ListCache`.
+	ListCache.prototype.clear = listCacheClear;
+	ListCache.prototype['delete'] = listCacheDelete;
+	ListCache.prototype.get = listCacheGet;
+	ListCache.prototype.has = listCacheHas;
+	ListCache.prototype.set = listCacheSet;
+
+	module.exports = ListCache;
 
 
 /***/ }
