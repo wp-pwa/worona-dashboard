@@ -16003,8 +16003,8 @@ var vendors_dashboard_worona =
 	}
 
 	// Used to retrieve the root reducer of a specific namespace.
-	Worona.prototype.getReducers = function(namespace) {
-	  return this._deps[namespace].reducers && this._deps[namespace].reducers.default() || null;
+	Worona.prototype.getReducers = function(name) {
+	  return this._downloaded[name].reducers && this._downloaded[name].reducers.default() || null;
 	}
 
 	// Used to retrieve all locales of a specific language.
@@ -16017,17 +16017,17 @@ var vendors_dashboard_worona =
 	}
 
 	// Used to retrieve the locale of a namespace and language.
-	Worona.prototype.getLocale = function(namespace, lng) {
-	  return this._deps[namespace] && typeof this._deps[namespace].locales === 'function' ?
-	    this._deps[namespace].locales(lng) : null;
+	Worona.prototype.getLocale = function(name, lng) {
+	  return this._downloaded[name] && typeof this._downloaded[name].locales === 'function' ?
+	    this._downloaded[name].locales(lng) : null;
 	}
 
 	// Used to retrieve the root saga for a namespace.
-	Worona.prototype.getSagas = function(namespace) {
-	  if ((typeof this._deps[namespace] !== 'undefined') &&
-	  (typeof this._deps[namespace].sagas !== 'undefined') &&
-	  (typeof this._deps[namespace].sagas.default !== 'undefined')) {
-	    return this._deps[namespace].sagas.default;
+	Worona.prototype.getSagas = function(name) {
+	  if ((typeof this._downloaded[name] !== 'undefined') &&
+	  (typeof this._downloaded[name].sagas !== 'undefined') &&
+	  (typeof this._downloaded[name].sagas.default !== 'undefined')) {
+	    return this._downloaded[name].sagas.default;
 	  }
 	  return false;
 	}
