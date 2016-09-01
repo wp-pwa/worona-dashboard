@@ -21,7 +21,7 @@ import { I18nextProvider } from 'react-i18next';
 import { store, startSaga } from './build-dashboard-extension-worona/store';
 import sagas from './build-dashboard-extension-worona/sagas';
 import routes from './routing-dashboard-extension-worona/routes';
-import i18next from './i18n-dashboard-extension-worona/i18n';
+import i18n from './build-dashboard-extension-worona/i18n';
 import FastClick from 'fastclick';
 
 const history = syncHistoryWithStore(browserHistory, store);
@@ -29,7 +29,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 class App extends React.Component {
   render() {
     return (
-      <I18nextProvider i18n={i18next}>
+      <I18nextProvider i18n={i18n}>
         <Provider store={store}>
           <Router history={history} routes={routes(store)} />
         </Provider>
