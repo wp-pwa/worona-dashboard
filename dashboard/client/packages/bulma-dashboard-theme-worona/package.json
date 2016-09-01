@@ -1,6 +1,6 @@
 {
   "name": "bulma-dashboard-theme-worona",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Theme for the Worona Dashboard.",
   "main": "src/index.js",
   "scripts": {
@@ -35,7 +35,7 @@
   "worona": {
     "niceName": "Bulma",
     "slug": "bulma",
-    "namespace": "bulma",
+    "namespace": "theme",
     "type": "theme",
     "service": "dashboard",
     "authors": [
