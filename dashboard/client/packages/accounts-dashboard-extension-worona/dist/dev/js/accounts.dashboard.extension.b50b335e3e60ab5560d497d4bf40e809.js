@@ -4825,7 +4825,7 @@ module.exports =
 	          _context.prev = 15;
 	          _context.t0 = _context['catch'](3);
 	          _context.next = 19;
-	          return (0, _effects.put)(actions.createAccountFailed(_context.t0));
+	          return (0, _effects.put)(actions.createAccountFailed(_context.t0.message));
 
 	        case 19:
 	          _context.next = 29;
@@ -5049,7 +5049,7 @@ module.exports =
 	          _context.prev = 13;
 	          _context.t0 = _context['catch'](3);
 	          _context.next = 17;
-	          return (0, _effects.put)(actions.loginFailed(_context.t0));
+	          return (0, _effects.put)(actions.loginFailed(_context.t0.message));
 
 	        case 17:
 	          _context.next = 27;
@@ -5384,7 +5384,7 @@ module.exports =
 	          _context.prev = 7;
 	          _context.t0 = _context['catch'](0);
 	          _context.next = 11;
-	          return (0, _effects.put)(actions.logoutFailed(_context.t0));
+	          return (0, _effects.put)(actions.logoutFailed(_context.t0.message));
 
 	        case 11:
 	        case 'end':

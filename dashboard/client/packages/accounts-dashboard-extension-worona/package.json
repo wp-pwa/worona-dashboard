@@ -1,6 +1,6 @@
 {
   "name": "accounts-dashboard-extension-worona",
-  "version": "1.1.6",
+  "version": "1.1.8",
   "description": "Extension for the Worona Dashboard in charge of the accounts system.",
   "main": "src/index.js",
   "scripts": {
@@ -53,8 +53,8 @@
     "prod": {
       "files": [
         {
-          "file": "accounts-dashboard-extension-worona/dist/prod/js/accounts.dashboard.extension.3f0e71cd34cc980267302a20ff3743ce.js",
-          "hash": "3f0e71cd34cc980267302a20ff3743ce"
+          "file": "accounts-dashboard-extension-worona/dist/prod/js/accounts.dashboard.extension.2ec3d8737caceeeafb6aa413f5274743.js",
+          "hash": "2ec3d8737caceeeafb6aa413f5274743"
         },
         {
           "file": "accounts-dashboard-extension-worona/dist/prod/locales/es.19fb6361c29bb9bd762b0ad3b47cc775.js",
@@ -65,13 +65,14 @@
           "hash": "adb84c246c15173530967bfc2bc72ee2"
         }
       ],
-      "main": "accounts-dashboard-extension-worona/dist/prod/js/accounts.dashboard.extension.3f0e71cd34cc980267302a20ff3743ce.js"
+      "main": "accounts-dashboard-extension-worona/dist/prod/js/accounts.dashboard.extension.2ec3d8737caceeeafb6aa413f5274743.js",
+      "assets": {}
     },
     "dev": {
       "files": [
         {
-          "file": "accounts-dashboard-extension-worona/dist/dev/js/accounts.dashboard.extension.88fb546dd9de7770b78a2e5818c1a02c.js",
-          "hash": "88fb546dd9de7770b78a2e5818c1a02c"
+          "file": "accounts-dashboard-extension-worona/dist/dev/js/accounts.dashboard.extension.b50b335e3e60ab5560d497d4bf40e809.js",
+          "hash": "b50b335e3e60ab5560d497d4bf40e809"
         },
         {
           "file": "accounts-dashboard-extension-worona/dist/dev/locales/en.c08c4d939bcbd87a1d09eb26ef5ffc09.js",
@@ -82,13 +83,14 @@
           "hash": "7f9a849c9e0701e5cb4eb28c6053a36c"
         }
       ],
-      "main": "accounts-dashboard-extension-worona/dist/dev/js/accounts.dashboard.extension.88fb546dd9de7770b78a2e5818c1a02c.js"
+      "main": "accounts-dashboard-extension-worona/dist/dev/js/accounts.dashboard.extension.b50b335e3e60ab5560d497d4bf40e809.js",
+      "assets": {}
     }
   },
   "devDependencies": {
     "rimraf": "^2.5.4",
     "webpack": "^1.13.1",
-    "worona-packages": "^1.0.2"
+    "worona-packages": "^1.0.3"
   },
   "dependencies": {}
 }

@@ -1,6 +1,6 @@
 {
   "name": "subscriptions-dashboard-extension-worona",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Extension for the Worona Dashboard to manage subscriptions.",
   "main": "src/index.js",
   "scripts": {
@@ -57,7 +57,8 @@
           "hash": "51f5a2d0943335d76aef804e77654a9f"
         }
       ],
-      "main": "subscriptions-dashboard-extension-worona/dist/dev/js/subscriptions.dashboard.extension.51f5a2d0943335d76aef804e77654a9f.js"
+      "main": "subscriptions-dashboard-extension-worona/dist/dev/js/subscriptions.dashboard.extension.51f5a2d0943335d76aef804e77654a9f.js",
+      "assets": {}
     },
     "prod": {
       "files": [
@@ -66,13 +67,14 @@
           "hash": "eabd8768a479f426bb88b4ece18b8e1c"
         }
       ],
-      "main": "subscriptions-dashboard-extension-worona/dist/prod/js/subscriptions.dashboard.extension.eabd8768a479f426bb88b4ece18b8e1c.js"
+      "main": "subscriptions-dashboard-extension-worona/dist/prod/js/subscriptions.dashboard.extension.eabd8768a479f426bb88b4ece18b8e1c.js",
+      "assets": {}
     }
   },
   "devDependencies": {
     "rimraf": "^2.5.4",
     "webpack": "^1.13.1",
-    "worona-packages": "^1.0.2"
+    "worona-packages": "^1.0.3"
   },
   "dependencies": {}
 }

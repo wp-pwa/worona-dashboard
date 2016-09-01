@@ -1,6 +1,6 @@
 {
   "name": "sites-dashboard-extension-worona",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Extension for the Worona Dashboard in charge of the sites collection.",
   "main": "src/index.js",
   "scripts": {
@@ -58,7 +58,8 @@
           "hash": "5855b314510dea01dea4db2c85777a24"
         }
       ],
-      "main": "sites-dashboard-extension-worona/dist/dev/js/sites.dashboard.extension.5855b314510dea01dea4db2c85777a24.js"
+      "main": "sites-dashboard-extension-worona/dist/dev/js/sites.dashboard.extension.5855b314510dea01dea4db2c85777a24.js",
+      "assets": {}
     },
     "prod": {
       "files": [
@@ -67,13 +68,14 @@
           "hash": "d083e8894ef062356bfe9823a99d5459"
         }
       ],
-      "main": "sites-dashboard-extension-worona/dist/prod/js/sites.dashboard.extension.d083e8894ef062356bfe9823a99d5459.js"
+      "main": "sites-dashboard-extension-worona/dist/prod/js/sites.dashboard.extension.d083e8894ef062356bfe9823a99d5459.js",
+      "assets": {}
     }
   },
   "devDependencies": {
     "rimraf": "^2.5.4",
     "webpack": "^1.13.1",
-    "worona-packages": "^1.0.2"
+    "worona-packages": "^1.0.3"
   },
   "dependencies": {}
 }

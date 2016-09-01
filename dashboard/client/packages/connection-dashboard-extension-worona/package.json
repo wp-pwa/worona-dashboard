@@ -1,6 +1,6 @@
 {
   "name": "connection-dashboard-extension-worona",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Extension for the Worona Dashboard in charge of the connection to the server.",
   "main": "src/index.js",
   "scripts": {
@@ -53,7 +53,8 @@
           "hash": "f30ee1b3c76605f5fa2c510856347fe9"
         }
       ],
-      "main": "connection-dashboard-extension-worona/dist/dev/js/connection.dashboard.extension.f30ee1b3c76605f5fa2c510856347fe9.js"
+      "main": "connection-dashboard-extension-worona/dist/dev/js/connection.dashboard.extension.f30ee1b3c76605f5fa2c510856347fe9.js",
+      "assets": {}
     },
     "prod": {
       "files": [
@@ -62,15 +63,16 @@
           "hash": "157eb1405379dbc9ae5935a0a1aef9bc"
         }
       ],
-      "main": "connection-dashboard-extension-worona/dist/prod/js/connection.dashboard.extension.157eb1405379dbc9ae5935a0a1aef9bc.js"
+      "main": "connection-dashboard-extension-worona/dist/prod/js/connection.dashboard.extension.157eb1405379dbc9ae5935a0a1aef9bc.js",
+      "assets": {}
     }
   },
   "dependencies": {},
   "devDependencies": {
+    "asteroid": "^2.0.2",
     "rimraf": "^2.5.4",
     "webpack": "^1.13.1",
-    "worona-packages": "^1.0.2",
-    "ws": "^1.1.0",
-    "asteroid": "^2.0.2"
+    "worona-packages": "^1.0.3",
+    "ws": "^1.1.0"
   }
 }
