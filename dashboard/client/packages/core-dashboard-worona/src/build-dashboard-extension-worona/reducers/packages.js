@@ -1,31 +1,47 @@
+import { combineReducers } from 'redux';
 import update from 'react/lib/update';
-import { mapValues } from 'lodash';
 import * as types from '../types';
 
-const defaultPackages = {
+const defaultList = {
+  'build-dashboard-extension-worona': {
+    name: 'build-dashboard-extension-worona',
+    namespace: 'build',
+  },
   'loading-dashboard-theme-worona': {
     name: 'loading-dashboard-theme-worona',
     namespace: 'loading',
-    type: 'theme',
+  },
+  'routing-dashboard-extension-worona': {
+    name: 'routing-dashboard-extension-worona',
+    namespace: 'routing',
   },
 };
 
-export const packages = (state = defaultPackages, action) => {
-  let newPkgs;
+const defaultDownloaded = [
+  'build-dashboard-extension-worona',
+  'loading-dashboard-theme-worona',
+  'routing-dashboard-extension-worona',
+];
+
+export const list = (state = defaultList, action) => {
   switch (action.type) {
-    case types.PACKAGES_ADDITION_REQUESTED:
-      newPkgs = mapValues(action.pkgs, pkg => update(pkg, { $merge: {
-        downloaded: false,
-        loaded: false,
-      } }));
-      return update(state, { $merge: newPkgs });
-    case types.PACKAGE_DOWNLOAD_SUCCEED:
-      return update(state, { [action.pkg.name]: { $merge: { downloaded: true } } });
-    case types.PACKAGE_LOAD_SUCCEED:
-      return update(state, { [action.pkg.name]: { $merge: { loaded: true } } });
+    case types.CORE_PACKAGES_SUCCEED:
+      return update(state, { $merge: action.pkgs });
     default:
       return state;
   }
 };
 
-export default packages;
+export const downloaded = (state = defaultDownloaded, action) => {
+  switch (action.type) {
+    case types.PACKAGE_DOWNLOAD_SUCCEED:
+      return [...state, action.pkg.name];
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({
+  list,
+  downloaded,
+});

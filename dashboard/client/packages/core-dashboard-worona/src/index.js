@@ -7,9 +7,9 @@ import { routerReducer as routing } from 'react-router-redux';
 import * as loading from './loading-dashboard-theme-worona';
 import * as build from './build-dashboard-extension-worona';
 
-addPackage('build', build);
-addPackage('loading', loading);
-addPackage('routing', { reducers: { default: () => routing } });
+addPackage('build-dashboard-extension-worona', build);
+addPackage('loading-dashboard-theme-worona', loading);
+addPackage('routing-dashboard-extension-worona', { reducers: { default: () => routing } });
 
 import React from 'react';
 import ReactDOM from 'react-dom';

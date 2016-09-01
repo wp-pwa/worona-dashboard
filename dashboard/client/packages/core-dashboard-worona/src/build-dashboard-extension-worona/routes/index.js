@@ -4,7 +4,7 @@ import React from 'react';
 import { dep } from 'worona-deps';
 import { connect } from 'react-redux';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
-import { theme, packages } from '../selectors';
+import * as selectors from '../selectors';
 
 class StyleLoader extends React.Component {
   componentDidMount() {
@@ -18,14 +18,13 @@ class StyleLoader extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const newTheme = theme.isLoading(state);
-  const packageTheme = packages(state)[newTheme];
+  const name = selectors.currentTheme(state);
+  const pkg = selectors.packageList(state)[name];
   const props = {
-    theme: packageTheme.namespace,
+    theme: name,
   };
-  if (packageTheme && packageTheme.prod && packageTheme.prod.assets &&
-    packageTheme.prod.assets.css) {
-    props.css = packageTheme.prod.assets.css;
+  if (pkg && pkg.prod && pkg.prod.assets && pkg.prod.assets.css) {
+    props.css = pkg.prod.assets.css;
   }
   return props;
 };

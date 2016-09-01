@@ -33,14 +33,14 @@ export function* packagesDownloadSaga({ pkgs = {}, uid }) {
 // and add it to the 'worona-deps' package. It contains the logic to use either
 // requireLocalPackage or requireRemotePackage and dispatches PACKAGE_DOWNLOAD_SUCCED or
 // PACKAGE_DOWNLOAD_FAILED if necessary.
-export function* packageDownloadSaga({ pkg, uid }) {
+export function* packageDownloadSaga({ pkg }) {
   const requirePackage = requireRemotePackage; // (TODO) Add here logic for local/remote requires.
   try {
     const module = yield call(requirePackage, pkg);
-    yield call(addPackage, pkg.namespace, module); // Adds the download module to worona-deps.
-    yield put(actions.packageDownloadSucceed({ pkg, uid }));
+    yield call(addPackage, pkg.name, module); // Adds the download module to worona-deps.
+    yield put(actions.packageDownloadSucceed({ pkg }));
   } catch (error) {
-    yield put(actions.packageDownloadFailed({ error: error.message, pkg, uid }));
+    yield put(actions.packageDownloadFailed({ error: error.message, pkg }));
   }
 }
 
@@ -72,8 +72,6 @@ export function* packagesDownloadWatcher({ pkgs = {}, uid }) {
 
 export default function* sagas() {
   yield [
-    takeEvery(types.PACKAGES_DOWNLOAD_REQUESTED, packagesDownloadWatcher),
-    takeEvery(types.PACKAGES_DOWNLOAD_REQUESTED, packagesDownloadSaga),
     takeEvery(types.PACKAGE_DOWNLOAD_REQUESTED, packageDownloadSaga),
   ];
 }
