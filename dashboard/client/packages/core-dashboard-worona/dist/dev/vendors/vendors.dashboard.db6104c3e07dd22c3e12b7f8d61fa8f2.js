@@ -15966,6 +15966,7 @@ var vendors_dashboard_worona =
 	var Worona = function() {
 	  this._downloaded = {}; // Store the downloaded packages using their names.
 	  this._deps = {}; // Store references to the downloaded packages, using their namespaces.
+	  this._depSubscribers = []; // Stores callbacks subscribed to the deps.
 	  this.isTest = typeof window === 'undefined';
 	  this.isDev = !checkWorona('prod');
 	  this.isProd = checkWorona('prod');
@@ -15987,10 +15988,62 @@ var vendors_dashboard_worona =
 	  return false;
 	}
 
+	// Private method used to add subscribers to the dependencies notifications. It retuns an object with a stop()
+	// method.
+	Worona.prototype._addDepSubscriber = function(func) {
+	  var self = this;
+	  var length = this._depSubscribers.push(func);
+	  return {
+	    stop: function(){ self._depSubscribers.splice(length - 1); },
+	  };
+	};
+
+	// Private method used to notifiy subscribers of new dependencies added to the system.
+	Worona.prototype._notifyDepSubscribers = function(namespace) {
+	  this._depSubscribers.forEach(function(func) {
+	    func(namespace);
+	  });
+	};
+
+	// Accepts an array of dependencies and an optional timeout. Returns a promise which resolves
+	// to true when all the dependencies are met, or rejects with an error if the timeout strikes first.
+	Worona.prototype.waitForDeps = function(deps, timeout) {
+	  var self = this;
+	  return new Promise(function(resolve, reject) {
+	    var left = deps.slice(0); // Clone array.
+	    left.forEach(function(dep, index){ // Remove each dependency already in the system.
+	      if (!!self._deps[dep]) left.splice(index);
+	    }) ;
+	    if (left.length !== 0) {
+	      var subscription = self._addDepSubscriber(function(namespace) {
+	        var index = left.indexOf(namespace);
+	        if (index !== -1) {
+	          left.splice(index); // Remove the item from the array.
+	          if (left.length === 0) { // No more deps left. Yeah!
+	            subscription.stop();
+	            resolve(true);
+	          }
+	        }
+	      });
+	      if (timeout) {
+	        setTimeout(function () {
+	          subscription.stop();
+	          reject('Dependencies not supplied before timeout (' + timeout + ')');
+	        }, timeout);
+	      }
+	    } else {
+	      resolve(true);
+	    }
+	  });
+	}
+
 	// Used to add a downloaded package to the system.
 	Worona.prototype.addPackage = function(pkg) {
 	  this._downloaded[pkg.name] = pkg;
-	  if (!this._deps[pkg.namespace]) this._deps[pkg.namespace] = pkg;
+	  if (!this._deps[pkg.namespace]) {
+	    this._deps[pkg.namespace] = pkg;
+	    this._notifyDepSubscribers(pkg.namespace);
+	  }
 	};
 
 	// Used to activate a package to start using it in the dependencies: worona.dep().
@@ -16000,6 +16053,7 @@ var vendors_dashboard_worona =
 	Worona.prototype.activatePackage = function(name) {
 	  var pkg = this._downloaded[name];
 	  this._deps[pkg.namespace] = pkg;
+	  this._notifyDepSubscribers(pkg.namespace);
 	}
 
 	// Used to retrieve the root reducer of a specific namespace.
