@@ -1,7 +1,7 @@
 /* eslint-disable no-constant-condition */
-import { put, call, take } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
-import { getSagas, getReducers, activatePackage } from 'worona-deps';
+import { getSagas, getReducers, activatePackage, waitForDeps } from 'worona-deps';
 import { addReducer, startSaga, reloadReducers } from '../store';
 import * as types from '../types';
 import * as actions from '../actions';
@@ -17,23 +17,9 @@ export function* loadReducers(name) {
   if (newReducers) yield call(addReducer, name, newReducers);
 }
 
-export function* waitForDependencies(dependencies) {
-  const left = [...dependencies];
-  while (true) {
-    const action = yield take([types.PACKAGE_DOWNLOAD_SUCCEED, types.PACKAGE_DOWNLOAD_FAILED]);
-    debugger;
-    const index = left.indexOf(action.pkg.namespace);
-    if (index !== -1) {
-      if (action.error) throw action.error; // Throw error (cancel) if package failed downloading.
-      left.splice(index); // Delete package from left array.
-      if (left.length === 0) break; // Check if there are no dependencies left and exit.
-    }
-  }
-}
-
 export function* packageLoadSaga({ pkg }) {
   try {
-    yield pkg.dependencies.map(dep => waitForDep(dep));
+    yield call(waitForDeps, pkg.dependencies, 10000);
     yield call(loadReducers, pkg.name);
     yield call(loadSagas, pkg.name);
     yield call(reloadReducers);
@@ -41,7 +27,7 @@ export function* packageLoadSaga({ pkg }) {
     yield put(actions.packageLoadSucceed({ pkg }));
   } catch (error) {
     yield put(actions.packageLoadFailed({ error: error.message, pkg }));
-    throw new Error(`Package ${pkg} load failed.`);
+    throw error;
   }
 }
 

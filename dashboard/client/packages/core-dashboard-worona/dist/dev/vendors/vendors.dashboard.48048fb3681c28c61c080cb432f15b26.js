@@ -15994,7 +15994,7 @@ var vendors_dashboard_worona =
 	  var self = this;
 	  var length = this._depSubscribers.push(func);
 	  return {
-	    stop: function(){ self._depSubscribers.splice(length - 1); },
+	    stop: function(){ self._depSubscribers.splice(length - 1, 1); },
 	  };
 	};
 
@@ -16012,13 +16012,13 @@ var vendors_dashboard_worona =
 	  return new Promise(function(resolve, reject) {
 	    var left = deps.slice(0); // Clone array.
 	    left.forEach(function(dep, index){ // Remove each dependency already in the system.
-	      if (!!self._deps[dep]) left.splice(index);
+	      if (!!self._deps[dep]) left.splice(index, 1);
 	    }) ;
 	    if (left.length !== 0) {
 	      var subscription = self._addDepSubscriber(function(namespace) {
 	        var index = left.indexOf(namespace);
 	        if (index !== -1) {
-	          left.splice(index); // Remove the item from the array.
+	          left.splice(index, 1); // Remove the item from the array.
 	          if (left.length === 0) { // No more deps left. Yeah!
 	            subscription.stop();
 	            resolve(true);
@@ -16152,6 +16152,7 @@ var vendors_dashboard_worona =
 	  worona: worona,
 	  Worona: Worona,
 	  addPackage: worona.addPackage.bind(worona),
+	  activatePackage: worona.activatePackage.bind(worona),
 	  getReducers: worona.getReducers.bind(worona),
 	  getLocales: worona.getLocales.bind(worona),
 	  getLocale: worona.getLocale.bind(worona),
