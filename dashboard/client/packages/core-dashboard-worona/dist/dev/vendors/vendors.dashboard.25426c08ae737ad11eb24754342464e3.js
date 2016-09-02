@@ -16156,6 +16156,7 @@ var vendors_dashboard_worona =
 	  getLocales: worona.getLocales.bind(worona),
 	  getLocale: worona.getLocale.bind(worona),
 	  getSagas: worona.getSagas.bind(worona),
+	  waitForDeps: worona.waitForDeps.bind(worona),
 	  dep: worona.dep.bind(worona),
 	  mock: worona.mock,
 	  isTest: worona.isTest,

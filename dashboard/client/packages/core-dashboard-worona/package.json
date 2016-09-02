@@ -95,11 +95,11 @@
       "vendors": {
         "files": [
           {
-            "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.2798bd3d1258f70f56acc2aad080e10c.js",
-            "hash": "2798bd3d1258f70f56acc2aad080e10c"
+            "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.ff7102cc56bfd06ba7725bae8eb0eb4a.js",
+            "hash": "ff7102cc56bfd06ba7725bae8eb0eb4a"
           }
         ],
-        "main": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.2798bd3d1258f70f56acc2aad080e10c.js"
+        "main": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.ff7102cc56bfd06ba7725bae8eb0eb4a.js"
       },
       "files": [
         {
