@@ -8,13 +8,12 @@ import Button from '../elements/Button';
 import Icon from '../elements/Icon';
 import * as deps from '../../dependencies';
 import { validate } from './validate';
-import styles from './styles.css';
 
 const submit = (values, dispatch) => {
   dispatch(deps.actions.createSiteRequested(values.title, values.url));
 };
 
-const AddSiteForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
+const AddSiteForm = ({ handleSubmit, waiting, statusMessage, errorMessage, reset }) => (
   <section className="section">
     <div className="container">
 
@@ -42,34 +41,38 @@ const AddSiteForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => 
               size="is-large"
             />
 
-            <Button
-              color="primary"
-              size="medium"
-              loading={waiting}
-              disabled={waiting}
-              className={styles.button}
-            >
-              <Icon iconFaCode="plus-circle" />
-              <span><strong>Add Site</strong></span>
-            </Button>
+            <div className="level is-mobile">
+              <div className="level-left center">
 
-            <div className={cn('help', styles.status)}>
+                <Button
+                  color="primary"
+                  size="medium"
+                  loading={waiting}
+                  disabled={waiting}
+                >
+                  <Icon iconFaCode="plus-circle" />
+                  <span><strong>Add Site</strong></span>
+                </Button>
+
+                <Button className="button is-link" onClick={reset}>Reset</Button>
+              </div>
+
+              <div className="level-right">
+                <Link className="button" to="/">Cancel</Link>
+              </div>
+            </div>
+
+            <div className="help">
               {statusMessage}
             </div>
 
-            <div className={cn('help', 'is-danger', styles.status)}>
+            <div className={cn('help', 'is-danger')}>
               {errorMessage.reason}
             </div>
 
           </div>
         </div>
       </form>
-
-      <div className={styles.link}>
-        <Link to="/">
-          I'll do it later
-        </Link>
-      </div>
 
     </div>
   </section>
@@ -80,6 +83,7 @@ AddSiteForm.propTypes = {
   failed: React.PropTypes.bool,
   statusMessage: React.PropTypes.any,
   errorMessage: React.PropTypes.any,
+  reset: React.PropTypes.any,
 };
 
 const AddSiteWithForm = reduxForm({
