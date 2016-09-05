@@ -20,9 +20,9 @@ export default store;
 export const dispatch = action => store.dispatch(action);
 export const reloadReducers = () => store.replaceReducer(combineReducers(reducers));
 export const addReducer = (namespace, reducer) => { if (reducer) reducers[namespace] = reducer; };
-export const removeReducer = namespace => { delete reducers[namespace]; };
+export const removeReducer = namespace => { if (reducers[namespace]) delete reducers[namespace]; };
 export const startSaga = (namespace, saga) => { sagas[namespace] = sagaMiddleware.run(saga); };
-export const stopSaga = (namespace) => { sagas[namespace].cancel(); };
+export const stopSaga = (namespace) => { if (sagas[namespace]) sagas[namespace].cancel(); };
 
 if (module.hot) {
   module.hot.accept(() => {
