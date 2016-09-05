@@ -8,7 +8,6 @@ import Input from '../elements/Input';
 import Button from '../elements/Button';
 import * as deps from '../../dependencies';
 import { validate } from './validate';
-import styles from './styles.css';
 
 const submit = (values, dispatch) => {
   dispatch(deps.actions.loginRequested(values.email, values.password));
@@ -19,7 +18,7 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
     <section className="hero-body">
       <div className="container has-text-centered">
 
-        <form onSubmit={handleSubmit(submit)} className={styles.box}>
+        <form onSubmit={handleSubmit(submit)}>
 
           <Field
             name="email"
@@ -40,7 +39,6 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
           <Button
             color="success"
             center
-            className={styles.button}
             size="medium"
             loading={waiting}
             disabled={waiting}
@@ -48,16 +46,16 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
             Let me in!
           </Button>
 
-          <div className={cn('help', styles.status)}>
+          <div className="help">
             {statusMessage}
           </div>
 
-          <div className={cn('help', 'is-danger', styles.status)}>
+          <div className={cn('help', 'is-danger')}>
             {errorMessage.reason}
           </div>
         </form>
 
-        <div className={styles.link}>
+        <div>
           <Link to="/register">
             I don't have an account yet
           </Link>

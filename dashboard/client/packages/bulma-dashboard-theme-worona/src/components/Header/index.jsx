@@ -1,7 +1,9 @@
 import React from 'react';
+import styles from './style.css';
+import cn from 'classnames';
 
 const Header = ({ children }) => (
-  <section className="hero is-primary">
+  <section className={cn('hero', 'is-primary', styles.footer)}>
     {children}
   </section>
 );

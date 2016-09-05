@@ -9,7 +9,6 @@ import Button from '../elements/Button';
 import * as deps from '../../dependencies';
 import * as selectors from '../../selectors';
 import { validate } from './validate';
-import styles from './style.css';
 
 const submit = (values, dispatch) => {
   dispatch(deps.actions.createAccountRequested(values.name, values.email, values.password));
@@ -24,7 +23,7 @@ const Register = ({ handleSubmit, waiting, failed, statusMessage, errorMessage }
     <section className="hero-body">
       <div className="container has-text-centered">
 
-        <form onSubmit={handleSubmit(submit)} className={styles.box}>
+        <form onSubmit={handleSubmit(submit)}>
 
           <Field
             name="name"
@@ -57,21 +56,20 @@ const Register = ({ handleSubmit, waiting, failed, statusMessage, errorMessage }
             size="medium"
             loading={waiting}
             disabled={waiting}
-            className={styles.button}
           >
             Create my account
           </Button>
 
-          <div className={cn('help', styles.status)}>
+          <div className="help" >
             {statusMessage}
           </div>
 
-          <div className={cn('help', 'is-danger', styles.status)}>
+          <div className={cn('help', 'is-danger')}>
             {errorMessage.reason}
           </div>
         </form>
 
-        <div className={styles.link}>
+        <div>
           <Link to="/login">
             I do have an account
           </Link>

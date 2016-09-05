@@ -1,11 +1,10 @@
 import React from 'react';
 import cn from 'classnames';
 import moment from 'moment';
-import styles from './style.css';
 
 const Site = ({ name, url, date, id }) => (
   <div className="column is-narrow-mobile is-one-third-tablet is-one-quarter-desktop">
-    <div className={cn('card', 'is-fullwidth', styles.card)}>
+    <div className={cn('card', 'is-fullwidth')}>
       <header className="card-header">
         <p className="card-header-title">
           {name}
@@ -23,13 +22,13 @@ const Site = ({ name, url, date, id }) => (
       </div>
       <footer className="card-footer">
         <a className="card-footer-item">
-          <span className={cn('icon', 'is-small', styles.icons)}>
+          <span className={cn('icon', 'is-small')}>
             <i className="fa fa-cog"></i>
           </span>
           Configure
         </a>
         <a className="card-footer-item">
-          <span className={cn('icon', 'is-small', styles.icons)}>
+          <span className={cn('icon', 'is-small')}>
             <i className="fa fa-trash-o"></i>
           </span>
           Delete

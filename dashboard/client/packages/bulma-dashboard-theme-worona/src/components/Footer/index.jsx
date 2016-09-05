@@ -10,6 +10,6 @@ const Footer = ({ children }) => (
 
 Footer.propTypes = {
   children: React.PropTypes.node.isRequired,
-}
+};
 
 export default Footer;

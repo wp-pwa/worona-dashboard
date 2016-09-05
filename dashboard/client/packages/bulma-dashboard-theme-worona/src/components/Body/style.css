@@ -2,7 +2,7 @@
   height: 100%;
 }
 
-:global(body), :global(#root), .body {
+.body {
   display: flex;
   flex-direction: column;
   height: 100%;
