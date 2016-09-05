@@ -1,5 +1,5 @@
 /* eslint-disable no-constant-condition */
-import { put, call } from 'redux-saga/effects';
+import { put, call, take } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
 import { getSagas, getReducers, activatePackage, waitForDeps } from 'worona-deps';
 import { addReducer, startSaga, reloadReducers, removeReducer, stopSaga } from '../store';
@@ -17,6 +17,27 @@ export function* loadReducers(name, namespace) {
   if (newReducers) yield call(addReducer, namespace, newReducers);
 }
 
+export function* loadTheme(pkg) {
+  yield put(actions.themeCssLoadRequested({ pkg }));
+  while (true) {
+    let action = yield take([types.THEME_CSS_LOAD_SUCCEED, types.THEME_CSS_LOAD_FAILED]);
+    if (action.name === pkg.name) {
+      if (action.error) throw action.error;
+      else {
+        yield put(actions.themeHtmlLoadRequested({ name: pkg.name }));
+        while (true) {
+          action = yield take([types.THEME_HTML_LOAD_SUCCEED, types.THEME_HTML_LOAD_FAILED]);
+          if (action.name === pkg.name) {
+            if (action.error) throw action.error;
+            else break;
+          }
+          break;
+        }
+      }
+    }
+  }
+}
+
 export function* packageLoadSaga({ pkg }) {
   try {
     yield call(waitForDeps, pkg.dependencies, 10000);
@@ -25,6 +46,7 @@ export function* packageLoadSaga({ pkg }) {
     yield call(stopSaga, pkg.namespace);
     yield call(loadSagas, pkg.name, pkg.namespace);
     yield call(reloadReducers);
+    if (pkg.type === 'theme') yield call(loadTheme, pkg);
     yield call(activatePackage, pkg.name);
     yield put(actions.packageLoadSucceed({ pkg }));
   } catch (error) {

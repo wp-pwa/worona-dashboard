@@ -1,36 +1,26 @@
 /* eslint-disable no-constant-condition */
 import { takeLatest } from 'redux-saga';
-import { select, put, take } from 'redux-saga/effects';
+import { put, take } from 'redux-saga/effects';
 import * as types from '../types';
 import * as actions from '../actions';
-import * as selectors from '../selectors';
 
-export function* changeTheme({ name }) {
-  let pkgs = yield select(selectors.packages);
-  if ((typeof pkgs[name] === 'undefined') || (pkgs[name].loaded !== true)) {
-    // Package hasn't been requested.
+export function* cssLoadSaga({ pkg }) {
+  if (pkg.prod.assets.css) {
+    const left = pkg.prod.assets.css.slice(0); // Clone array.
     while (true) {
-      // Wait until the package downloads (if it does).
-      yield take(types.PACKAGES_ADDITION_SUCCEED);
-      pkgs = yield select(selectors.packages);
-      if (typeof pkgs[name] !== 'undefined' && pkgs[name].loaded === true) {
-        // Package has finished downloading and it is loaded, we can exit the while and start
-        // the change.
-        break;
+      const { file } = yield take(types.THEME_CSS_FILE_DOWNLOADED);
+      const index = left.indexOf(file);
+      if (index !== -1) {
+        left.splice(index, 1); // Delete item.
       }
+      if (left.length === 0) break;
     }
   }
-  try {
-    const packages = yield select(selectors.packages);
-    yield put(actions.themeLoadStarted({ pkg: packages[name] }));
-    yield put(actions.themeLoadSucceed({ pkg: packages[name] }));
-  } catch (error) {
-    yield put(actions.themeLoadFailed({ error: error.message, name }));
-  }
+  yield put(actions.themeCssLoadSucceed({ pkg }));
 }
 
 export default function* sagas() {
   yield [
-    takeLatest(types.THEME_LOAD_REQUESTED, changeTheme),
+    takeLatest(types.THEME_CSS_LOAD_REQUESTED, cssLoadSaga),
   ];
 }

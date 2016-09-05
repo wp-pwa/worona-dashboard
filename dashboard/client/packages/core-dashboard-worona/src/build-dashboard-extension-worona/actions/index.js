@@ -28,26 +28,18 @@ export const packageLoadSucceed = ({ pkg }) =>
 export const packageLoadFailed = ({ error, pkg }) =>
   ({ type: types.PACKAGE_LOAD_FAILED, error, pkg });
 
-export const themeLoadRequested = ({ name }) =>
-  ({ type: types.THEME_LOAD_REQUESTED, name });
-export const themeLoadStarted = ({ pkg }) =>
-  ({ type: types.THEME_LOAD_STARTED, pkg });
-
 export const themeCssLoadRequested = ({ pkg }) =>
   ({ type: types.THEME_CSS_LOAD_REQUESTED, pkg });
+export const themeCssFileDownloaded = ({ file }) =>
+  ({ type: types.THEME_CSS_FILE_DOWNLOADED, file });
 export const themeCssLoadSucceed = ({ pkg }) =>
   ({ type: types.THEME_CSS_LOAD_SUCCEED, pkg });
-export const themeCssLoadFailed = ({ pkg }) =>
-  ({ type: types.THEME_CSS_LOAD_FAILED, pkg });
+export const themeCssLoadFailed = ({ pkg, error }) =>
+  ({ type: types.THEME_CSS_LOAD_FAILED, pkg, error });
 
 export const themeHtmlLoadRequested = ({ pkg }) =>
   ({ type: types.THEME_HTML_LOAD_REQUESTED, pkg });
 export const themeHtmlLoadSucceed = ({ pkg }) =>
   ({ type: types.THEME_HTML_LOAD_SUCCEED, pkg });
-export const themeHtmlLoadFailed = ({ pkg }) =>
-  ({ type: types.THEME_HTML_LOAD_FAILED, pkg });
-
-export const themeLoadSucceed = ({ pkg }) =>
-  ({ type: types.THEME_LOAD_SUCCEED, pkg });
-export const themeLoadFailed = ({ error, name }) =>
-  ({ type: types.THEME_LOAD_FAILED, error, name });
+export const themeHtmlLoadFailed = ({ pkg, error }) =>
+  ({ type: types.THEME_HTML_LOAD_FAILED, pkg, error });
