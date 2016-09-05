@@ -16011,9 +16011,12 @@ var vendors_dashboard_worona =
 	  var self = this;
 	  return new Promise(function(resolve, reject) {
 	    var left = deps.slice(0); // Clone array.
-	    left.forEach(function(dep, index){ // Remove each dependency already in the system.
-	      if (!!self._deps[dep]) left.splice(index, 1);
-	    }) ;
+
+	    for (var i = left.length - 1; i >= 0; i--) {
+	      const dep = left[i];
+	      if (!!self._deps[dep]) left.splice(i, 1);
+	    }
+
 	    if (left.length !== 0) {
 	      var subscription = self._addDepSubscriber(function(namespace) {
 	        var index = left.indexOf(namespace);
@@ -16053,7 +16056,6 @@ var vendors_dashboard_worona =
 	Worona.prototype.activatePackage = function(name) {
 	  var pkg = this._downloaded[name];
 	  this._deps[pkg.namespace] = pkg;
-	  this._notifyDepSubscribers(pkg.namespace);
 	}
 
 	// Used to retrieve the root reducer of a specific namespace.
