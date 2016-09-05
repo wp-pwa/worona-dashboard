@@ -11,7 +11,7 @@ import Main from '../Main';
 
 import AddSiteForm from './AddSiteForm';
 
-const CreateFirstApp = ({ isFirstLogin }) => {
+const AddSite = ({ isFirstLogin }) => {
   let header = '';
   if (isFirstLogin) {
     header = (
@@ -47,7 +47,7 @@ const CreateFirstApp = ({ isFirstLogin }) => {
   );
 };
 
-CreateFirstApp.propTypes = {
+AddSite.propTypes = {
   isFirstLogin: React.PropTypes.bool,
 };
 
@@ -55,4 +55,4 @@ const mapStateToProps = state => ({
   isFirstLogin: state.accounts.isFirstLogin,
 });
 
-export default connect(mapStateToProps)(CreateFirstApp);
+export default connect(mapStateToProps)(AddSite);
