@@ -26,6 +26,12 @@ const defaultDownloaded = [
   'routing-dashboard-extension-worona',
 ];
 
+const defaultActivated = {
+  build: 'build-dashboard-extension-worona',
+  routing: 'routing-dashboard-extension-worona',
+  theme: 'loading-dashboard-theme-worona',
+};
+
 export const list = (state = defaultList, action) => {
   switch (action.type) {
     case types.CORE_PACKAGES_SUCCEED:
@@ -44,7 +50,17 @@ export const downloaded = (state = defaultDownloaded, action) => {
   }
 };
 
+export const activated = (state = defaultActivated, { type, pkg }) => {
+  switch (type) {
+    case types.PACKAGE_ACTIVATION_SUCCEED:
+      return update(state, { $merge: { [pkg.namespace]: pkg.name } });
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   list,
   downloaded,
+  activated,
 });
