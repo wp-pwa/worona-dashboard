@@ -2,14 +2,16 @@
 import request from 'superagent';
 import { normalize } from 'normalizr';
 import { takeEvery } from 'redux-saga';
-import { put, fork, call, take } from 'redux-saga/effects';
+import { put, fork, call, select } from 'redux-saga/effects';
 import { toArray } from 'lodash';
 import * as actions from '../actions';
 import * as types from '../types';
 import * as schemas from '../schemas';
+import * as selectors from '../selectors';
 import download from './download';
 import load from './load';
-import theme from './theme';
+import assets from './assets';
+import { waitFor } from './waitFor';
 
 // Function which download the core packages list from the api and then starts a
 // PACKAGES_ADDITION_REQUESTED to add them to the system.
@@ -24,27 +26,28 @@ export function* addCorePackagesSaga() {
     yield put(actions.corePackagesSucceed({ pkgs }));
     // Start activation for each downloaded package.
     yield toArray(pkgs).map(pkg => put(actions.packageActivationRequested({ pkg })));
-    // yield put(actions.themeLoadRequested({ name: 'bulma-dashboard-theme-worona' }));
   } catch (error) {
     yield put(actions.corePackagesFailed({ error: error.message }));
   }
 }
 
-// Wait until success or failure actions. It ends on success and throws on failure.
-export function* waitFor(name, success, failure) {
-  while (true) {
-    const { type, pkg, error } = yield take([success, failure]);
-    if (pkg.name === name) {
-      if (type === success) break;
-      else if (error) throw error;
-    }
-  }
-}
-
 export function* packageActivationSaga({ pkg }) {
   try {
-    yield put(actions.packageDownloadRequested({ pkg }));
-    yield call(waitFor, pkg.name, types.PACKAGE_DOWNLOAD_SUCCEED, types.PACKAGE_DOWNLOAD_FAILED);
+    // Download phase.
+    const downloaded = select(selectors.downloadedPackages);
+    if (!downloaded[pkg.name]) {
+      yield put(actions.packageDownloadRequested({ pkg }));
+      yield call(waitFor, pkg.name, types.PACKAGE_DOWNLOAD_SUCCEED, types.PACKAGE_DOWNLOAD_FAILED);
+    }
+    // Deactivation of previous package phase.
+    const activated = select(selectors.activatedPackages);
+    const previousPackage = activated[pkg.namespace];
+    if (previousPackage) {
+      yield put(actions.packageDeactivationRequested({ previousPackage }));
+      yield call(waitFor, previousPackage.name,
+        types.PACKAGE_DEACTIVATION_SUCCEED, types.PACKAGE_DEACTIVATION_FAILED);
+    }
+    // Load phase.
     yield put(actions.packageLoadRequested({ pkg }));
     yield call(waitFor, pkg.name, types.PACKAGE_LOAD_SUCCEED, types.PACKAGE_LOAD_FAILED);
     yield put(actions.packageActivationSucceed({ pkg }));
@@ -57,7 +60,7 @@ export default function* sagas() {
   yield [
     fork(download),
     fork(load),
-    fork(theme),
+    fork(assets),
     takeEvery(types.PACKAGE_ACTIVATION_REQUESTED, packageActivationSaga),
     fork(addCorePackagesSaga),
   ];

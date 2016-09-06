@@ -14,6 +14,13 @@ export const packageActivationSucceed = ({ pkg }) =>
 export const packageActivationFailed = ({ error, pkg }) =>
   ({ type: types.PACKAGE_ACTIVATION_FAILED, error, pkg });
 
+export const packageDeactivationRequested = ({ pkg }) =>
+  ({ type: types.PACKAGE_DEACTIVATION_REQUESTED, pkg });
+export const packageDeactivationSucceed = ({ pkg }) =>
+  ({ type: types.PACKAGE_DEACTIVATION_SUCCEED, pkg });
+export const packageDeactivationFailed = ({ error, pkg }) =>
+  ({ type: types.PACKAGE_DEACTIVATION_FAILED, error, pkg });
+
 export const packageDownloadRequested = ({ pkg }) =>
   ({ type: types.PACKAGE_DOWNLOAD_REQUESTED, pkg });
 export const packageDownloadSucceed = ({ pkg }) =>
@@ -28,18 +35,11 @@ export const packageLoadSucceed = ({ pkg }) =>
 export const packageLoadFailed = ({ error, pkg }) =>
   ({ type: types.PACKAGE_LOAD_FAILED, error, pkg });
 
-export const themeCssLoadRequested = ({ pkg }) =>
-  ({ type: types.THEME_CSS_LOAD_REQUESTED, pkg });
-export const themeCssFileDownloaded = ({ file }) =>
-  ({ type: types.THEME_CSS_FILE_DOWNLOADED, file });
-export const themeCssLoadSucceed = ({ pkg }) =>
-  ({ type: types.THEME_CSS_LOAD_SUCCEED, pkg });
-export const themeCssLoadFailed = ({ pkg, error }) =>
-  ({ type: types.THEME_CSS_LOAD_FAILED, pkg, error });
-
-export const themeHtmlLoadRequested = ({ pkg }) =>
-  ({ type: types.THEME_HTML_LOAD_REQUESTED, pkg });
-export const themeHtmlLoadSucceed = ({ pkg }) =>
-  ({ type: types.THEME_HTML_LOAD_SUCCEED, pkg });
-export const themeHtmlLoadFailed = ({ pkg, error }) =>
-  ({ type: types.THEME_HTML_LOAD_FAILED, pkg, error });
+export const packageAssetsLoadRequested = ({ pkg }) =>
+  ({ type: types.PACKAGE_ASSETS_LOAD_REQUESTED, pkg });
+export const packageAssetsFileDownloaded = ({ file }) =>
+  ({ type: types.PACKAGE_ASSETS_FILE_DOWNLOADED, file });
+export const packageAssetsLoadSucceed = ({ pkg }) =>
+  ({ type: types.PACKAGE_ASSETS_LOAD_SUCCEED, pkg });
+export const packageAssetsLoadFailed = ({ pkg, error }) =>
+  ({ type: types.PACKAGE_ASSETS_LOAD_FAILED, pkg, error });

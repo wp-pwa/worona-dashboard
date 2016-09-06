@@ -18,9 +18,12 @@ LinkCss.propTypes = ({
   cssPath: React.PropTypes.string.isRequired,
   themeCssFileDownloaded: React.PropTypes.func.isRequired,
 });
+
+
 const mapDispatchToProps = (dispatch, { cssPath }) => ({
-  themeCssFileDownloaded: () => dispatch(deps.actions.themeCssFileDownloaded({ file: cssPath })),
+  assetsFileDownloaded: () => dispatch(deps.actions.themeAssetsFileDownloaded({ file: cssPath })),
 });
+
 LinkCss = connect(null, mapDispatchToProps)(LinkCss);
 
 export const StyleLoader = ({ css }) =>

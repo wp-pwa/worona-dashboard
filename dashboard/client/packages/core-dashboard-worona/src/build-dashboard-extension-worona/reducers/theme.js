@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
 import * as types from '../types';
 
-export const css = (state = [], action) => {
+export const assets = (state = [], action) => {
   switch (action.type) {
-    case types.THEME_CSS_LOAD_REQUESTED:
-      return action.pkg.prod.assets.css;
+    case types.THEME_ASSETS_LOAD_REQUESTED:
+      return action.pkg.prod.assets;
     default:
       return state;
   }
 };
 
 export default combineReducers({
-  css,
+  assets,
 });

@@ -1,10 +1,11 @@
 /* eslint-disable no-constant-condition */
-import { put, call, take } from 'redux-saga/effects';
+import { put, call, take, select } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
 import { getSagas, getReducers, activatePackage, waitForDeps } from 'worona-deps';
 import { addReducer, startSaga, reloadReducers, removeReducer, stopSaga } from '../store';
 import * as types from '../types';
 import * as actions from '../actions';
+import * as selectors from '../selectors';
 
 // Function used by packagesLoadSaga to load each package's sagas.
 export function* loadSagas(name, namespace) {
@@ -17,36 +18,37 @@ export function* loadReducers(name, namespace) {
   if (newReducers) yield call(addReducer, namespace, newReducers);
 }
 
-export function* loadTheme(pkg) {
-  yield put(actions.themeCssLoadRequested({ pkg }));
+export function* loadAssets(pkg) {
+  yield put(actions.themeAssetsLoadRequested({ pkg }));
   while (true) {
-    let action = yield take([types.THEME_CSS_LOAD_SUCCEED, types.THEME_CSS_LOAD_FAILED]);
-    if (action.name === pkg.name) {
+    const action = yield take([types.THEME_ASSETS_LOAD_SUCCEED, types.THEME_ASSETS_LOAD_FAILED]);
+    if (action.pkg.name === pkg.name) {
       if (action.error) throw action.error;
-      else {
-        yield put(actions.themeHtmlLoadRequested({ name: pkg.name }));
-        while (true) {
-          action = yield take([types.THEME_HTML_LOAD_SUCCEED, types.THEME_HTML_LOAD_FAILED]);
-          if (action.name === pkg.name) {
-            if (action.error) throw action.error;
-            else break;
-          }
-          break;
-        }
-      }
+      else break;
     }
+  }
+}
+
+export function* deactivateSaga(pkg) {
+  try {
+    yield put(actions.packageDeactivationRequested({ pkg }));
+    yield call(removeReducer, pkg.namespace);
+    yield call(stopSaga, pkg.namespace);
+    yield put(actions.packageDeactivationSucceed({ pkg }));
+  } catch (error) {
+    yield put(actions.packageDeactivationFailed({ error: error.message, pkg }));
   }
 }
 
 export function* packageLoadSaga({ pkg }) {
   try {
     yield call(waitForDeps, pkg.dependencies, 10000);
-    yield call(removeReducer, pkg.namespace);
+    const activated = yield select(selectors.activatedPackages);
+    if (activated[pkg.namespace] !== pkg.name) yield call(deactivateSaga, pkg);
     yield call(loadReducers, pkg.name, pkg.namespace);
-    yield call(stopSaga, pkg.namespace);
     yield call(loadSagas, pkg.name, pkg.namespace);
     yield call(reloadReducers);
-    if (pkg.type === 'theme') yield call(loadTheme, pkg);
+    yield call(loadAssets, pkg);
     yield call(activatePackage, pkg.name);
     yield put(actions.packageLoadSucceed({ pkg }));
   } catch (error) {

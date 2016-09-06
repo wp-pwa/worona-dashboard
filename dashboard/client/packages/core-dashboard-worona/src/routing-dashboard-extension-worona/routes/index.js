@@ -5,15 +5,11 @@ import { dep } from 'worona-deps';
 import { connect } from 'react-redux';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
 import StyleLoader from '../components/StyleLoader';
+import * as deps from '../dependencies';
 
-
-
-// const mapStateToProps = (state) => {
-//   if (pkg && pkg.prod && pkg.prod.assets && pkg.prod.assets.css) {
-//     props.css = pkg.prod.assets.css;
-//   }
-//   return 'theme';
-// };
+const mapStateToProps = state => ({
+  themeName: deps.selectors.getThemeName(state),
+});
 
 class ThemeLoader extends React.Component {
   render() {
@@ -26,7 +22,7 @@ class ThemeLoader extends React.Component {
     );
   }
 }
-// ThemeLoader = connect(mapStateToProps)(ThemeLoader);
+ThemeLoader = connect(mapStateToProps)(ThemeLoader);
 
 class Entry extends React.Component {
   render() {
