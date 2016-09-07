@@ -49,6 +49,7 @@ const AddSiteForm = ({ handleSubmit, waiting, statusMessage, errorMessage, reset
                   size="medium"
                   loading={waiting}
                   disabled={waiting}
+                  type="submit"
                 >
                   <Icon iconFaCode="plus-circle" />
                   <span><strong>Add Site</strong></span>
@@ -67,6 +68,7 @@ const AddSiteForm = ({ handleSubmit, waiting, statusMessage, errorMessage, reset
             </div>
 
             <div className={cn('help', 'is-danger')}>
+              {errorMessage.error}
               {errorMessage.reason}
             </div>
 
@@ -94,7 +96,7 @@ const AddSiteWithForm = reduxForm({
 })(AddSiteForm);
 
 export default connect(state => ({
-  waiting: deps.selectors.isLoggingIn(state),
-  statusMessage: deps.selectors.loginStatus(state),
-  errorMessage: deps.selectors.loginError(state),
+  waiting: deps.selectors.isCreatingSite(state),
+  statusMessage: deps.selectors.createSiteStatus(state),
+  errorMessage: deps.selectors.createSiteError(state),
 }))(AddSiteWithForm);

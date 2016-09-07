@@ -134,15 +134,15 @@
     }
   },
   "devDependencies": {
-    "rimraf": "^2.5.4",
-    "webpack": "^1.13.1",
     "animate.css": "^3.5.1",
     "bulma": "^0.1.0",
     "font-awesome": "^4.6.3",
     "moment": "^2.13.0",
-    "redux-form": "^6.0.0-rc.3",
+    "redux-form": "^6.0.2",
+    "rimraf": "^2.5.4",
     "url-regexp": "^1.0.2",
     "velocity-react": "^1.1.5",
+    "webpack": "^1.13.1",
     "worona-packages": "^1.0.2"
   },
   "dependencies": {}
