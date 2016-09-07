@@ -1,8 +1,11 @@
 import React from 'react';
 import cn from 'classnames';
 import moment from 'moment';
+import { connect } from 'react-redux';
+import * as deps from '../../dependencies';
 
-const Site = ({ name, url, date, id }) => (
+
+const Site = ({ name, url, date, id, deleteSite }) => (
   <div className="column is-narrow-mobile is-one-third-tablet is-one-quarter-desktop">
     <div className={cn('card', 'is-fullwidth')}>
       <header className="card-header">
@@ -27,7 +30,7 @@ const Site = ({ name, url, date, id }) => (
           </span>
           Configure
         </a>
-        <a className="card-footer-item">
+        <a className="card-footer-item is-loading" onClick={deleteSite}>
           <span className={cn('icon', 'is-small')}>
             <i className="fa fa-trash-o"></i>
           </span>
@@ -42,6 +45,11 @@ Site.propTypes = {
   url: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
   date: React.PropTypes.number.isRequired,
+  deleteSite: React.PropTypes.func.isRequired,
 };
 
-export default Site;
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  deleteSite: () => dispatch(deps.actions.deleteSiteRequested({ _id: ownProps.id })),
+});
+
+export default connect(null, mapDispatchToProps)(Site);
