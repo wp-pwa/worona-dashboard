@@ -23,6 +23,7 @@ export const addReducer = (namespace, reducer) => { if (reducer) reducers[namesp
 export const removeReducer = namespace => { if (reducers[namespace]) delete reducers[namespace]; };
 export const startSaga = (namespace, saga) => { sagas[namespace] = sagaMiddleware.run(saga); };
 export const stopSaga = (namespace) => { if (sagas[namespace]) sagas[namespace].cancel(); };
+export const getState = store.getState.bind(store);
 
 if (module.hot) {
   module.hot.accept(() => {

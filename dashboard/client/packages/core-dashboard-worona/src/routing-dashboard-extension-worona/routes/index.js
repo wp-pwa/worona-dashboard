@@ -4,7 +4,7 @@ import React from 'react';
 import { dep } from 'worona-deps';
 import { connect } from 'react-redux';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
-import StyleLoader from '../components/StyleLoader';
+import CssLoader from '../components/CssLoader';
 import * as deps from '../dependencies';
 
 const mapStateToProps = state => ({
@@ -13,10 +13,11 @@ const mapStateToProps = state => ({
 
 class ThemeLoader extends React.Component {
   render() {
+    debugger;
     const Theme = dep('theme', 'components', 'Theme');
     return (
       <div id="root">
-        <StyleLoader />
+        <CssLoader />
         <Theme {...this.props} />;
       </div>
     );

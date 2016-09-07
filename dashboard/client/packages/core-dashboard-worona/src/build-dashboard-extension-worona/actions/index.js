@@ -37,8 +37,8 @@ export const packageLoadFailed = ({ error, pkg }) =>
 
 export const packageAssetsLoadRequested = ({ pkg }) =>
   ({ type: types.PACKAGE_ASSETS_LOAD_REQUESTED, pkg });
-export const packageAssetsFileDownloaded = ({ file }) =>
-  ({ type: types.PACKAGE_ASSETS_FILE_DOWNLOADED, file });
+export const packageAssetFileDownloaded = ({ pkgName, assetType, path }) =>
+  ({ type: types.PACKAGE_ASSET_FILE_DOWNLOADED, pkgName, assetType, path });
 export const packageAssetsLoadSucceed = ({ pkg }) =>
   ({ type: types.PACKAGE_ASSETS_LOAD_SUCCEED, pkg });
 export const packageAssetsLoadFailed = ({ pkg, error }) =>

@@ -45,8 +45,8 @@ Header.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  items: selectors.header.items(state),
-  active: state.bulma.header.showingMobileMenu,
+  items: selectors.getHeaderItems(state),
+  active: selectors.getShowMobileMenu(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
