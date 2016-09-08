@@ -93,7 +93,7 @@ Register.propTypes = {
 const RegisterWithForm = reduxForm({
   form: 'register',
   validate,
-  getFormState: state => state.bulma.reduxForm,
+  getFormState: state => state.theme.reduxForm,
 })(Register);
 
 export default connect(state => ({

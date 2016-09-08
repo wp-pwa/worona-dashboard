@@ -85,7 +85,7 @@ const LoginTranslated = translate('bulma')(Login);
 const LoginWithForm = reduxForm({
   form: 'login',
   validate,
-  getFormState: state => state.bulma.reduxForm,
+  getFormState: state => state.theme.reduxForm,
 })(LoginTranslated);
 
 export default connect(state => ({

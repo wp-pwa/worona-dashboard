@@ -83,7 +83,7 @@ const CreateFirstAppWithForm = reduxForm({
   form: 'createFirstApp',
   fields: ['title', 'url'],
   validate,
-  getFormState: state => state.bulma.reduxForm,
+  getFormState: state => state.theme.reduxForm,
 })(CreateFirstApp);
 
 export default connect(state => ({

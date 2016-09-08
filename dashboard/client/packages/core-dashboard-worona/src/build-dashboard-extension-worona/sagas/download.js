@@ -1,4 +1,5 @@
 /* eslint-disable no-constant-condition, no-undef */
+import { isRemote } from 'worona-deps';
 import { put, call } from 'redux-saga/effects';
 import update from 'react/lib/update';
 import { takeEvery } from 'redux-saga';
@@ -10,7 +11,7 @@ import * as actions from '../actions';
 // so webpack knows about the included packages and create the bundles. We use bundle-loader
 // in the webpack config to separate the bundles.
 export const requireLocalPackage = pkg => new Promise(resolve => {
-  const pkgName = `${pkg.namespace}-dashboard-${pkg.type}`;
+  const pkgName = /(.+)-worona/.exec(pkg.name)[1];
   const req = require(`../../../../${pkgName}-worona/src/index.js`);
   req(module => resolve(module));
 });
@@ -28,7 +29,7 @@ export const requireRemotePackage = pkg => new Promise(resolve => {
 // requireLocalPackage or requireRemotePackage and dispatches PACKAGE_DOWNLOAD_SUCCED or
 // PACKAGE_DOWNLOAD_FAILED if necessary.
 export function* packageDownloadSaga({ pkg }) {
-  const requirePackage = requireRemotePackage; // (TODO) Add here logic for local/remote requires.
+  const requirePackage = isRemote ? requireRemotePackage : requireLocalPackage;
   try {
     const module = yield call(requirePackage, pkg);
     // Adds the download module to worona-deps.

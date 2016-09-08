@@ -13,7 +13,6 @@ const mapStateToProps = state => ({
 
 class ThemeLoader extends React.Component {
   render() {
-    debugger;
     const Theme = dep('theme', 'components', 'Theme');
     return (
       <div id="root">

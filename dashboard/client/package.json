@@ -14,7 +14,9 @@
     "build:prod:reasons": "npm run clean:prod && webpack --config webpack.prod.js --progress -p --display-modules --display-reasons",
     "build": "npm run build:dev && npm run build:prod",
     "start": "webpack-dev-server --config webpack.dev.js",
+    "start:remote": "webpack-dev-server --config webpack.dev.js --remote",
     "start:prod": "webpack-dev-server --config webpack.prod.js -p",
+    "start:prod:remote": "webpack-dev-server --config webpack.prod.js -p --remote",
     "test": "ava **/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
     "update:vendors": "npm install --save --save-exact vendors-dashboard-worona@latest"
   },
@@ -84,6 +86,7 @@
     "systemjs": "^0.19.37",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "yargs": "^5.0.0"
   }
 }
