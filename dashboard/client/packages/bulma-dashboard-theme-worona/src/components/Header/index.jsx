@@ -1,56 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { VelocityTransitionGroup } from 'velocity-react';
-import worona from './worona.png';
-import { Menu } from './Menu.jsx';
-import { toggleMobileMenu } from '../../actions';
-import * as selectors from '../../selectors';
+import styles from './style.css';
+import cn from 'classnames';
 
-const Header = ({ items, toggle, active }) => (
-  <section className="hero is-info">
-    <div className="hero-head">
-      <nav className="nav is-info">
-        {/* Left side*/}
-        <div className="nav-left">
-          <a className="nav-item" href="/">
-            <img src={worona} alt="Worona" />
-          </a>
-        </div>
-
-        {/* Hamburger menu (on mobile) */}
-        <span className={`nav-toggle ${(active ? 'is-active' : '')}`} onClick={toggle}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-
-        {/* Right side, not mobile */}
-        <Menu items={items} />
-
-        {/* Right side, mobile */}
-        <VelocityTransitionGroup
-          enter={{ animation: 'slideDown', duration: 150 }}
-          leave={{ animation: 'slideUp', duration: 150 }}
-        >
-          {active ? <Menu items={items} active={active} /> : null}
-        </VelocityTransitionGroup>
-      </nav>
-    </div>
+const Header = ({ children }) => (
+  <section className={cn('hero', 'is-primary', styles.footer)}>
+    {children}
   </section>
 );
+
 Header.propTypes = {
-  items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-  active: React.PropTypes.bool.isRequired,
-  toggle: React.PropTypes.func.isRequired,
+  children: React.PropTypes.node.isRequired,
 };
 
-const mapStateToProps = state => ({
-  items: selectors.getHeaderItems(state),
-  active: selectors.getShowMobileMenu(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  toggle: () => dispatch(toggleMobileMenu()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

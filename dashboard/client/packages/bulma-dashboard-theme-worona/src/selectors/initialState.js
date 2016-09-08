@@ -1,41 +1,33 @@
 import * as deps from '../dependencies';
 
-export const initialHeaderItems = [
-  {
-    name: 'Website',
-    type: 'text',
-    url: 'https://www.worona.org',
-  },
-  {
-    name: 'Documentation',
-    type: 'text',
-    url: 'https://docs.worona.org',
-    target: '_blank',
-  },
-  {
-    name: 'Forums',
-    type: 'text',
-    url: 'https://forums.worona.org',
-    target: '_blank',
-  },
-  {
-    name: 'Support',
-    type: 'text',
-    url: 'https://support.worona.org',
-    target: '_blank',
-  },
-];
+export const initialHeaderItems = [];
 
 export const loggedInItems = [
   {
-    name: 'Edit profile',
-    type: 'text',
+    name: 'Sites',
+    type: 'button',
+    url: 'sites',
+    link: 'sites',
+    icon: 'th',
+  },
+  {
+    name: 'Licenses',
+    type: 'button',
+    url: 'licenses',
+    link: 'licenses',
+    icon: 'sliders',
+  },
+  {
+    name: 'Profile',
+    type: 'button',
+    url: 'profile',
     link: 'profile',
+    icon: 'user',
   },
   {
     name: 'Logout',
     type: 'button',
-    icon: 'sign-out',
+    icon: 'power-off',
     action: () => deps.store.dispatch(deps.actions.logoutRequested()),
   },
 ];

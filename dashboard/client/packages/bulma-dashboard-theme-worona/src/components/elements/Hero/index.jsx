@@ -1,23 +1,25 @@
 import React from 'react';
 import cn from 'classnames';
 
-const Hero = ({ title, subtitle, color = 'primary', gradient = false }) => (
+const Hero = ({ title, subtitle, children, color = 'primary', gradient = false }) => (
   <section className={cn('hero', `is-${color}`, gradient && 'is-bold')}>
     <div className="hero-body">
       <div className="container">
-        <h1 className="title">
+        <p className="title">
           {title}
-        </h1>
-        <h2 className="subtitle">
+        </p>
+        <p className="subtitle">
           {subtitle}
-        </h2>
+          {children}
+        </p>
       </div>
     </div>
   </section>
 );
 Hero.propTypes = {
   title: React.PropTypes.string.isRequired,
-  subtitle: React.PropTypes.string.isRequired,
+  subtitle: React.PropTypes.string,
+  children: React.PropTypes.node,
   color: React.PropTypes.string,
   gradient: React.PropTypes.bool,
 };

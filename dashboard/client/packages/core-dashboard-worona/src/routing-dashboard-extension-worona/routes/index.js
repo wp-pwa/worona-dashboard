@@ -52,7 +52,7 @@ export const routes = (store) => (
     <IndexRedirect to="login" />
     <Route path="login" component={Entry} wrapped="Login" onEnter={dontRequireAuth(store)} />
     <Route path="register" component={Entry} wrapped="Register" onEnter={dontRequireAuth(store)} />
-    <Route path="create-first-app" component={Entry} wrapped="CreateFirstApp"
+    <Route path="add-site" component={Entry} wrapped="AddSite"
       onEnter={requireAuth(store)}
     />
     <Route path="profile" component={Entry} wrapped="Profile" onEnter={requireAuth(store)} />

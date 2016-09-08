@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 const Button = ({
   children, onClick, color, size, outlined, center, loading, disabled, animate, className, inverted,
-}) => {
+  type = 'button' }) => {
   const buttonClass = cx(
     'button',
     className,
@@ -17,7 +17,7 @@ const Button = ({
   );
   return (
     <span className={cx(center && 'is-text-centered')}>
-      <button className={buttonClass} onClick={onClick}>
+      <button type={type} className={buttonClass} onClick={onClick}>
         {children}
       </button>
     </span>
@@ -36,6 +36,7 @@ Button.propTypes = {
   disabled: React.PropTypes.bool,
   animate: React.PropTypes.string,
   className: React.PropTypes.string,
+  type: React.PropTypes.string,
 };
 
 export default Button;

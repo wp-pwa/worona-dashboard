@@ -1,11 +1,3 @@
-.item {
-  color: color(white alpha(-30%)) !important;
-}
-
-.item:hover {
-  color: color(white alpha(100%)) !important;
-}
-
-.active {
-  color: color(white alpha(100%)) !important;
+.header {
+  flex: 0 0 auto;
 }

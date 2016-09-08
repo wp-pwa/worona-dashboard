@@ -1,4 +1,3 @@
-import findIndex from 'lodash/findIndex';
 import * as types from '../types';
 
 const newItem = (id, fields) => Object.assign({}, { id }, fields);
@@ -9,7 +8,7 @@ export const collectionCreator = collection => (state = [], action) => {
     const { id, fields } = action;
     switch (action.event) {
       case 'added': {
-        const index = findIndex(state, { id });
+        const index = state.map(item => item.id).indexOf(id);
         if (index === -1) return [...state, newItem(id, fields)];
         return state.map((item, i) => (i === index ? newItem(id, fields) : item)); }
       case 'changed':

@@ -2,11 +2,13 @@ import React from 'react';
 import cx from 'classnames';
 import styles from './style.css';
 
-const Input = ({ input, meta: { touched, error }, size, label, icon, placeholder, type }) =>
+const Input = ({ input, meta: { touched, error }, size, label, icon, placeholder,
+   type }) =>
   <div className={styles.input}>
     {label && <label className="label">{label}</label>}
     <p className={cx('control', icon && 'has-icon')}>
-      <input className={cx('input', error && touched && 'is-danger', size && `is-${size}`)}
+      <input className={cx('input', error && touched
+         && 'is-danger', size && `is-${size}`)}
         {...input} placeholder={placeholder} type={type}
       />
     {icon && <i className={`fa fa-${icon}`}></i>}

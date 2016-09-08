@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import cn from 'classnames';
-import styles from './style.css';
+import { connect } from 'react-redux';
+
+import Icon from '../elements/Icon';
 
 const ExtLink = props => (
   <a {...props}>
@@ -12,23 +14,20 @@ ExtLink.propTypes = {
   children: React.PropTypes.node.isRequired,
 };
 
-export const MenuItem = ({ type, name, url, target, link, action, icon }) => {
+export const MenuItem = ({ type, name, url, target, link, action, icon, location }) => {
   const Anchor = !link ? ExtLink : Link;
   const onClick = !!action ? e => { e.preventDefault(); action(); } : null;
-  const anchorClass = cn(
-    type === 'button' && 'button is-info is-outlined is-inverted',
-    type === 'text' && window.location.pathname === url && styles.active,
-    styles.item
-  );
+  const anchorClass = cn({
+    'button is-primary': type === 'button',
+    'is-active': location === url,
+  });
   return (
-    <span className="nav-item is-info">
+    <span className="nav-item">
       <Anchor className={anchorClass} href={url} to={link} target={target} onClick={onClick}>
         {type === 'button' && icon ? (
-          <span className="icon">
-            <i className={`fa fa-${icon}`}></i>
-          </span>
+          <Icon iconFaCode={icon} small />
         ) : null}
-        {name}
+        <span>{name}</span>
       </Anchor>
     </span>
   );
@@ -41,6 +40,9 @@ MenuItem.propTypes = {
   action: React.PropTypes.func,
   target: React.PropTypes.string,
   icon: React.PropTypes.string,
+  location: React.PropTypes.string,
 };
 
-export default MenuItem;
+const mapStateToProps = state => ({ location: state.routing.locationBeforeTransitions.pathname });
+
+export default connect(mapStateToProps)(MenuItem);

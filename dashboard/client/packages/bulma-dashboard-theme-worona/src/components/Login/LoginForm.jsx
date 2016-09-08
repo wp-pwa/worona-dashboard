@@ -1,36 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import cn from 'classnames';
-import { Link } from 'react-router';
+import { translate } from 'react-i18next';
 import { reduxForm, Field } from 'redux-form';
-import Hero from '../elements/Hero';
+import { Link } from 'react-router';
+import cn from 'classnames';
 import Input from '../elements/Input';
 import Button from '../elements/Button';
 import * as deps from '../../dependencies';
 import { validate } from './validate';
 
 const submit = (values, dispatch) => {
-  dispatch(deps.actions.createAccountRequested(values.name, values.email, values.password));
+  dispatch(deps.actions.loginRequested(values.email, values.password));
 };
 
-const Register = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
-  <div>
-    <Hero title="Create an account" color="info"
-      subtitle="Welcome to Worona. You are only one step away to start making apps."
-    />
+const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
 
     <section className="hero-body">
       <div className="container has-text-centered">
 
         <form onSubmit={handleSubmit(submit)}>
-
-          <Field
-            name="name"
-            component={Input}
-            type="text"
-            placeholder="My name is..."
-            icon="user"
-          />
 
           <Field
             name="email"
@@ -55,10 +43,10 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
             loading={waiting}
             disabled={waiting}
           >
-            Create my account
+            Let me in!
           </Button>
 
-          <div className="help" >
+          <div className="help">
             {statusMessage}
           </div>
 
@@ -68,31 +56,33 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
         </form>
 
         <div>
-          <Link to="/login">
-            I do have an account
+          <Link to="/register">
+            I don't have an account yet
           </Link>
         </div>
 
       </div>
     </section>
-  </div>
-);
 
-Register.propTypes = {
+);
+LoginForm.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
-  waiting: React.PropTypes.bool,
-  statusMessage: React.PropTypes.any,
-  errorMessage: React.PropTypes.any,
+  waiting: React.PropTypes.bool.isRequired,
+  statusMessage: React.PropTypes.any.isRequired,
+  errorMessage: React.PropTypes.any.isRequired,
+  t: React.PropTypes.func.isRequired,
 };
 
-const RegisterWithForm = reduxForm({
-  form: 'register',
+const LoginTranslated = translate('bulma')(LoginForm);
+
+const LoginWithForm = reduxForm({
+  form: 'login',
   validate,
-  getFormState: state => state.theme.reduxForm,
-})(Register);
+  getFormState: state => state.bulma.reduxForm,
+})(LoginTranslated);
 
 export default connect(state => ({
-  waiting: deps.selectors.isCreatingAccount(state),
-  statusMessage: deps.selectors.createAccountStatus(state),
-  errorMessage: deps.selectors.createAccountError(state),
-}))(RegisterWithForm);
+  waiting: deps.selectors.isLoggingIn(state),
+  statusMessage: deps.selectors.loginStatus(state),
+  errorMessage: deps.selectors.loginError(state),
+}))(LoginWithForm);

@@ -1,1 +1,2 @@
-export const CREATING_SITE = 'Creating your app. Please wait...';
+export const CREATING_SITE = 'Creating your new site. Please wait...';
+export const DELETING_SITE = 'Deleting site...';
