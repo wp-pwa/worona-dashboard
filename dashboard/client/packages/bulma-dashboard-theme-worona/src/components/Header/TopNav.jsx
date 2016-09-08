@@ -6,7 +6,29 @@ import { Menu } from './Menu.jsx';
 import { toggleMobileMenu } from '../../actions';
 import * as selectors from '../../selectors';
 
-const TopNav = ({ items, toggle, active }) => (
+const TopNav = ({ items, toggle, active }) => {
+  let navigationMenu;
+  if (items.length > 0) {
+    navigationMenu = (
+      <div>
+        <span className={`nav-toggle is-right ${(active ? 'is-active' : '')}`} onClick={toggle}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+
+        <Menu items={items} />
+
+        <VelocityTransitionGroup
+          enter={{ animation: 'slideDown', duration: 150 }}
+          leave={{ animation: 'slideUp', duration: 150 }}
+        >
+          {active ? <Menu items={items} active={active} /> : null}
+        </VelocityTransitionGroup>
+      </div>
+    );
+  }
+  return (
   <div className="hero-head">
     <div className="container">
       <nav className="nav">
@@ -16,28 +38,14 @@ const TopNav = ({ items, toggle, active }) => (
             <img src={worona} alt="Worona" />
           </a>
         </div>
-
-        {/* Hamburger menu (on mobile) */}
-        <span className={`nav-toggle is-right ${(active ? 'is-active' : '')}`} onClick={toggle}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-
-        {/* Right side, not mobile */}
-        <Menu items={items} />
-
-        {/* Right side, mobile */}
-        <VelocityTransitionGroup
-          enter={{ animation: 'slideDown', duration: 150 }}
-          leave={{ animation: 'slideUp', duration: 150 }}
-        >
-          {active ? <Menu items={items} active={active} /> : null}
-        </VelocityTransitionGroup>
+        { navigationMenu }
       </nav>
     </div>
   </div>
-);
+  );
+};
+
+
 TopNav.propTypes = {
   items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
   active: React.PropTypes.bool.isRequired,
