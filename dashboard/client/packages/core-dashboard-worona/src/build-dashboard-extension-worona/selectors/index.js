@@ -1,13 +1,13 @@
-import _ from 'lodash';
-import * as indexReducers from '../reducers';
-import * as themeReducers from '../reducers/theme';
+import { createSelector } from 'reselect';
+import { flatMap, map } from 'lodash';
 
-const selectors = {};
-_(indexReducers).omit('default').keys()
-.forEach(reducer => { selectors[reducer] = state => state.build[reducer]; });
+export const packageList = state => state.build.packages.list;
+export const downloadedPackages = state => state.build.packages.downloaded;
+export const activatedPackages = state => state.build.packages.activated;
+export const getAssets = state => state.build.assets;
+export const getThemeName = state => state.build.packages.activated.theme;
 
-selectors.theme = {};
-_(themeReducers).omit('default').keys()
-.forEach(reducer => { selectors.theme[reducer] = state => state.build.theme[reducer]; });
-
-module.exports = selectors;
+export const getCssAssets = createSelector(
+  getAssets,
+  assets => flatMap(assets, (pkg, pkgName) => map(pkg.css, (val, path) => ({ path, pkgName })))
+);

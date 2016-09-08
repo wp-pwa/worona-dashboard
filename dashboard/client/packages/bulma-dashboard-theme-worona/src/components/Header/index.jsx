@@ -4,8 +4,7 @@ import { VelocityTransitionGroup } from 'velocity-react';
 import worona from './worona.png';
 import { Menu } from './Menu.jsx';
 import { toggleMobileMenu } from '../../actions';
-import { headerItems } from '../../selectors';
-
+import * as selectors from '../../selectors';
 
 const Header = ({ items, toggle, active }) => (
   <section className="hero is-info">
@@ -32,7 +31,6 @@ const Header = ({ items, toggle, active }) => (
         <VelocityTransitionGroup
           enter={{ animation: 'slideDown', duration: 150 }}
           leave={{ animation: 'slideUp', duration: 150 }}
-          duration={300}
         >
           {active ? <Menu items={items} active={active} /> : null}
         </VelocityTransitionGroup>
@@ -47,8 +45,8 @@ Header.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  items: headerItems(state),
-  active: state.bulma.header.showingMobileMenu,
+  items: selectors.getHeaderItems(state),
+  active: selectors.getShowMobileMenu(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

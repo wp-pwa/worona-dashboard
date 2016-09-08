@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import theme from './theme';
+import assets from './assets';
+import packages from './packages';
 
 export default () => combineReducers({
-  theme,
+  packages,
+  assets,
 });

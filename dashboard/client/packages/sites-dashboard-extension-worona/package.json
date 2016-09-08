@@ -1,10 +1,20 @@
 {
   "name": "sites-dashboard-extension-worona",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Extension for the Worona Dashboard in charge of the sites collection.",
   "main": "src/index.js",
   "scripts": {
-    "build": "webpack -p --progress --config webpack.prod.js && webpack --progress --config webpack.dev.js"
+    "update:vendors": "node node_modules/worona-packages/update-vendors.js --service dashboard",
+    "clean": "rimraf dist",
+    "clean:dev": "rimraf dist/dev",
+    "clean:prod": "rimraf dist/prod",
+    "build:dev": "npm run clean:dev && npm run update:vendors && webpack --progress --config webpack.dev.js",
+    "build:prod": "npm run clean:prod && npm run update:vendors && webpack -p --progress --config webpack.prod.js",
+    "build:dev:modules": "npm run clean:dev && npm run update:vendors && webpack --progress --config webpack.dev.js --display-modules",
+    "build:prod:modules": "npm run clean:prod && npm run update:vendors && webpack -p --progress --config webpack.prod.js --display-modules",
+    "build:dev:reasons": "npm run clean:dev && npm run update:vendors && webpack --progress --config webpack.dev.js --display-modules --display-reasons",
+    "build:prod:reasons": "npm run clean:prod && npm run update:vendors && webpack -p --progress --config webpack.prod.js --display-modules --display-reasons",
+    "build": "npm run build:dev && npm run build:prod"
   },
   "repository": {
     "type": "git",
@@ -35,8 +45,37 @@
     "core": 1,
     "listed": 0,
     "deactivable": 0,
-    "public": 1
+    "public": 1,
+    "dependencies": [
+      "build",
+      "connection",
+      "subscriptions"
+    ],
+    "dev": {
+      "files": [
+        {
+          "file": "sites-dashboard-extension-worona/dist/dev/js/sites.dashboard.extension.5855b314510dea01dea4db2c85777a24.js",
+          "hash": "5855b314510dea01dea4db2c85777a24"
+        }
+      ],
+      "main": "sites-dashboard-extension-worona/dist/dev/js/sites.dashboard.extension.5855b314510dea01dea4db2c85777a24.js",
+      "assets": {}
+    },
+    "prod": {
+      "files": [
+        {
+          "file": "sites-dashboard-extension-worona/dist/prod/js/sites.dashboard.extension.d083e8894ef062356bfe9823a99d5459.js",
+          "hash": "d083e8894ef062356bfe9823a99d5459"
+        }
+      ],
+      "main": "sites-dashboard-extension-worona/dist/prod/js/sites.dashboard.extension.d083e8894ef062356bfe9823a99d5459.js",
+      "assets": {}
+    }
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "rimraf": "^2.5.4",
+    "webpack": "^1.13.1",
+    "worona-packages": "^1.0.3"
+  },
   "dependencies": {}
 }

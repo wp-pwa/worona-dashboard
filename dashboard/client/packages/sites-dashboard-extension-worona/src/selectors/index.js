@@ -1,3 +1,8 @@
-export const isCreatingSite = state => state.sites.isCreatingSite;
-export const createSiteStatus = state => state.sites.createSiteStatus;
-export const createSiteError = state => state.sites.createSiteError;
+import mapValues from 'lodash/mapValues';
+import omit from 'lodash/omit';
+import * as reducers from '../reducers';
+
+module.exports = mapValues(
+  omit(reducers, 'default'),
+  (value, key) => state => state.sites[key]
+);

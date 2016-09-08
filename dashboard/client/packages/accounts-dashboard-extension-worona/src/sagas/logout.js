@@ -9,7 +9,7 @@ export function* logoutRequestedSaga() {
     yield call(deps.libs.logout);
     yield put(actions.logoutSucceed());
   } catch (error) {
-    yield put(actions.logoutFailed(error));
+    yield put(actions.logoutFailed(error.message));
   }
 }
 export function* logoutRequestedWatcher() {

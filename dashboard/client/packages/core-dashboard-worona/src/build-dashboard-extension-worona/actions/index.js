@@ -1,44 +1,45 @@
 import * as types from '../types';
 
-let uniqueId = 0;
-export const packagesAdditionRequested = ({ theme, extensions, uid }) =>
-  ({ type: types.PACKAGES_ADDITION_REQUESTED, theme, extensions, uid: uid || uniqueId++ });
-export const packagesAdditionFailed = ({ error, name, uid }) =>
-  ({ type: types.PACKAGES_ADDITION_FAILED, error, name, uid });
-export const packagesAdditionSucceed = ({ theme, extensions, uid }) =>
-  ({ type: types.PACKAGES_ADDITION_SUCCEED, theme, extensions, uid });
+export const corePackagesRequested = () =>
+  ({ type: types.CORE_PACKAGES_REQUESTED });
+export const corePackagesSucceed = ({ pkgs }) =>
+  ({ type: types.CORE_PACKAGES_SUCCEED, pkgs });
+export const corePackagesFailed = ({ error }) =>
+  ({ type: types.CORE_PACKAGES_FAILED, error });
 
-export const packagesDownloadRequested = ({ theme, extensions, uid }) =>
-  ({ type: types.PACKAGES_DOWNLOAD_REQUESTED, theme, extensions, uid });
-export const packagesDownloadSucceed = ({ theme, extensions, uid }) =>
-  ({ type: types.PACKAGES_DOWNLOAD_SUCCEED, theme, extensions, uid });
-export const packagesDownloadFailed = ({ error, name, uid }) =>
-  ({ type: types.PACKAGES_DOWNLOAD_FAILED, error, name, uid });
+export const packageActivationRequested = ({ pkg }) =>
+  ({ type: types.PACKAGE_ACTIVATION_REQUESTED, pkg });
+export const packageActivationSucceed = ({ pkg }) =>
+  ({ type: types.PACKAGE_ACTIVATION_SUCCEED, pkg });
+export const packageActivationFailed = ({ error, pkg }) =>
+  ({ type: types.PACKAGE_ACTIVATION_FAILED, error, pkg });
 
-export const themeDownloadRequested = ({ name, uid }) =>
-  ({ type: types.THEME_DOWNLOAD_REQUESTED, name, uid });
-export const themeDownloadSucceed = ({ name, uid }) =>
-  ({ type: types.THEME_DOWNLOAD_SUCCEED, name, uid });
-export const themeDownloadFailed = ({ error, name, uid }) =>
-  ({ type: types.THEME_DOWNLOAD_FAILED, error, name, uid });
+export const packageDeactivationRequested = ({ pkg }) =>
+  ({ type: types.PACKAGE_DEACTIVATION_REQUESTED, pkg });
+export const packageDeactivationSucceed = ({ pkg }) =>
+  ({ type: types.PACKAGE_DEACTIVATION_SUCCEED, pkg });
+export const packageDeactivationFailed = ({ error, pkg }) =>
+  ({ type: types.PACKAGE_DEACTIVATION_FAILED, error, pkg });
 
-export const extensionDownloadRequested = ({ name, uid }) =>
-  ({ type: types.EXTENSION_DOWNLOAD_REQUESTED, name, uid });
-export const extensionDownloadSucceed = ({ name, uid }) =>
-  ({ type: types.EXTENSION_DOWNLOAD_SUCCEED, name, uid });
-export const extensionDownloadFailed = ({ error, name, uid }) =>
-  ({ type: types.EXTENSION_DOWNLOAD_FAILED, error, name, uid });
+export const packageDownloadRequested = ({ pkg }) =>
+  ({ type: types.PACKAGE_DOWNLOAD_REQUESTED, pkg });
+export const packageDownloadSucceed = ({ pkg }) =>
+  ({ type: types.PACKAGE_DOWNLOAD_SUCCEED, pkg });
+export const packageDownloadFailed = ({ error, pkg }) =>
+  ({ type: types.PACKAGE_DOWNLOAD_FAILED, error, pkg });
 
-export const packagesLoadRequested = ({ theme, extensions, uid }) =>
-  ({ type: types.PACKAGES_LOAD_REQUESTED, theme, extensions, uid });
-export const packagesLoadSucceed = ({ theme, extensions, uid }) =>
-  ({ type: types.PACKAGES_LOAD_SUCCEED, theme, extensions, uid });
-export const packagesLoadFailed = ({ error, name, uid }) =>
-  ({ type: types.PACKAGES_LOAD_FAILED, error, name, uid });
+export const packageLoadRequested = ({ pkg }) =>
+  ({ type: types.PACKAGE_LOAD_REQUESTED, pkg });
+export const packageLoadSucceed = ({ pkg }) =>
+  ({ type: types.PACKAGE_LOAD_SUCCEED, pkg });
+export const packageLoadFailed = ({ error, pkg }) =>
+  ({ type: types.PACKAGE_LOAD_FAILED, error, pkg });
 
-export const themeChangeRequested = ({ name, uid }) =>
-  ({ type: types.THEME_CHANGE_REQUESTED, name, uid });
-export const themeChangeSucceed = ({ name, uid }) =>
-  ({ type: types.THEME_CHANGE_SUCCEED, name, uid });
-export const themeChangeFailed = ({ error, name, uid }) =>
-  ({ type: types.THEME_CHANGE_FAILED, error, name, uid });
+export const packageAssetsLoadRequested = ({ pkg }) =>
+  ({ type: types.PACKAGE_ASSETS_LOAD_REQUESTED, pkg });
+export const packageAssetFileDownloaded = ({ pkgName, assetType, path }) =>
+  ({ type: types.PACKAGE_ASSET_FILE_DOWNLOADED, pkgName, assetType, path });
+export const packageAssetsLoadSucceed = ({ pkg }) =>
+  ({ type: types.PACKAGE_ASSETS_LOAD_SUCCEED, pkg });
+export const packageAssetsLoadFailed = ({ pkg, error }) =>
+  ({ type: types.PACKAGE_ASSETS_LOAD_FAILED, pkg, error });

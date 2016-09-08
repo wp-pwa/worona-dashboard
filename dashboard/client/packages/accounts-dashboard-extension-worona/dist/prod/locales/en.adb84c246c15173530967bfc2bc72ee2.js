@@ -1,0 +1,1 @@
+webpackJsonpaccounts_dashboard_extension([2],{12:function(s,t){s.exports={Test:"test"}}});
