@@ -45,8 +45,8 @@ TopNav.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  items: selectors.header.items(state),
-  active: state.bulma.header.showingMobileMenu,
+  items: selectors.getHeaderItems(state),
+  active: state.theme.header.showingMobileMenu,
 });
 
 const mapDispatchToProps = (dispatch) => ({

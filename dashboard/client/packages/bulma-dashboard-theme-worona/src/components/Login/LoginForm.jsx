@@ -42,6 +42,7 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
             size="medium"
             loading={waiting}
             disabled={waiting}
+            type="submit"
           >
             Let me in!
           </Button>
@@ -78,7 +79,7 @@ const LoginTranslated = translate('bulma')(LoginForm);
 const LoginWithForm = reduxForm({
   form: 'login',
   validate,
-  getFormState: state => state.bulma.reduxForm,
+  getFormState: state => state.theme.reduxForm,
 })(LoginTranslated);
 
 export default connect(state => ({
