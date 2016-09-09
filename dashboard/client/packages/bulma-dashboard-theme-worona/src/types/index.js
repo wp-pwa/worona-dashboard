@@ -1,1 +1,2 @@
 export const TOGGLE_MOBILE_MENU = 'bulma/TOGGLE_MOBILE_MENU';
+export const CLOSE_MOBILE_MENU = 'bulma/CLOSE_MOBILE_MENU';
