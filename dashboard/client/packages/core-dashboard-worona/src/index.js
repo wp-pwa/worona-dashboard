@@ -2,15 +2,18 @@
 __webpack_public_path__ = window.publicPath;
 
 import 'babel-polyfill';
-import { addPackage } from 'worona-deps';
+import { packageDownloaded, packageActivated } from 'worona-deps';
 
 import * as loading from './loading-dashboard-theme-worona';
 import * as build from './build-dashboard-extension-worona';
 import * as routing from './routing-dashboard-extension-worona';
 
-addPackage(build);
-addPackage(loading);
-addPackage(routing);
+packageDownloaded(build);
+packageDownloaded(loading);
+packageDownloaded(routing);
+packageActivated('build-dashboard-extension-worona');
+packageActivated('loading-dashboard-theme-worona');
+packageActivated('routing-dashboard-extension-worona');
 
 import React from 'react';
 import ReactDOM from 'react-dom';

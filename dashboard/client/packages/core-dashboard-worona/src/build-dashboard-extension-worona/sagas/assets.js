@@ -1,4 +1,5 @@
 /* eslint-disable no-constant-condition */
+import { isDev } from 'worona-deps';
 import { takeEvery } from 'redux-saga';
 import { put, take, select } from 'redux-saga/effects';
 import { reduce } from 'lodash';
@@ -9,13 +10,13 @@ import * as selectors from '../selectors';
 export const assetsLoadSaga = type =>
   function* typedAssetsLoadSaga({ pkg }) {
     while (true) {
-      yield take(types.PACKAGE_ASSET_FILE_DOWNLOADED);
       const assets = yield select(selectors.getAssets);
       const assetType = assets[pkg.name][type];
-      if (reduce(assetType, (acc, val) => acc && val, true)) {
+      if (reduce(assetType, (acc, val) => acc && val, true) || isDev) {
         yield put(actions.packageAssetsLoadSucceed({ pkg }));
         break;
       }
+      yield take(types.PACKAGE_ASSET_FILE_DOWNLOADED);
     }
   };
 
