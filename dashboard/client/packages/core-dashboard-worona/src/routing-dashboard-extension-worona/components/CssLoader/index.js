@@ -1,3 +1,4 @@
+import { isRemote } from 'worona-deps';
 import React from 'react';
 import { connect } from 'react-redux';
 import * as deps from '../../dependencies';
@@ -27,15 +28,17 @@ const mapDispatchToProps = (dispatch, { path, pkgName }) => ({
 
 LinkCss = connect(null, mapDispatchToProps)(LinkCss);
 
-export const CssLoader = ({ cssAssets }) =>
-  <div>
-    {cssAssets.map(asset =>
-      <LinkCss cdn="https://cdn.worona.io/packages/"
-        pkgName={asset.pkgName} path={asset.path} key={asset.path}
-      />
-    )}
-  </div>
-;
+export const CssLoader = ({ cssAssets }) => {
+  const cdn = isRemote ? 'https://cdn.worona.io/packages/' : 'https://localhost:4000/packages/';
+  return (
+    <div>
+      {cssAssets.map(asset =>
+        <LinkCss cdn={cdn} pkgName={asset.pkgName} path={asset.path} key={asset.path} />
+      )}
+    </div>
+  );
+};
+
 CssLoader.propTypes = {
   cssAssets: React.PropTypes.arrayOf(React.PropTypes.shape({
     path: React.PropTypes.string,

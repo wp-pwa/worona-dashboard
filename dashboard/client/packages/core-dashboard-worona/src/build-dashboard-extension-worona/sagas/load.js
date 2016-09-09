@@ -1,7 +1,7 @@
 /* eslint-disable no-constant-condition */
-import { put, call } from 'redux-saga/effects';
+import { put, call, take, fork } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
-import { getSagas, getReducers, activatePackage, waitForDeps } from 'worona-deps';
+import { getSagas, getReducers, packageActivated, waitForDeps } from 'worona-deps';
 import { addReducer, startSaga, reloadReducers, removeReducer, stopSaga } from '../store';
 import * as types from '../types';
 import * as actions from '../actions';
@@ -18,19 +18,28 @@ export function* loadReducers(name, namespace) {
   if (newReducers) yield call(addReducer, namespace, newReducers);
 }
 
+export function* packageActivationSaga({ pkg }) {
+  try {
+    yield call(waitFor, pkg.name,
+      types.PACKAGE_ASSETS_LOAD_SUCCEED, types.PACKAGE_ASSETS_LOAD_FAILED);
+    yield put(actions.packageLoadSucceed({ pkg }));
+    yield call(packageActivated, pkg.name);
+  } catch (error) {
+    yield put(actions.packageLoadFailed({ error, pkg }));
+    throw error;
+  }
+}
+
 export function* packageLoadSaga({ pkg }) {
   try {
     yield call(waitForDeps, pkg.dependencies, 10000);
+    yield fork(packageActivationSaga, { pkg });
     yield call(loadReducers, pkg.name, pkg.namespace);
     yield call(loadSagas, pkg.name, pkg.namespace);
     yield call(reloadReducers);
     yield put(actions.packageAssetsLoadRequested({ pkg }));
-    yield call(waitFor, pkg.name,
-      types.PACKAGE_ASSETS_LOAD_SUCCEED, types.PACKAGE_ASSETS_LOAD_FAILED);
-    yield call(activatePackage, pkg.name);
-    yield put(actions.packageLoadSucceed({ pkg }));
   } catch (error) {
-    yield put(actions.packageLoadFailed({ error: error.message, pkg }));
+    yield put(actions.packageLoadFailed({ error, pkg }));
     throw error;
   }
 }

@@ -3,7 +3,7 @@ import { isRemote } from 'worona-deps';
 import { put, call } from 'redux-saga/effects';
 import update from 'react/lib/update';
 import { takeEvery } from 'redux-saga';
-import { addPackage } from 'worona-deps';
+import { packageDownloaded } from 'worona-deps';
 import * as types from '../types';
 import * as actions from '../actions';
 
@@ -33,7 +33,7 @@ export function* packageDownloadSaga({ pkg }) {
   try {
     const module = yield call(requirePackage, pkg);
     // Adds the download module to worona-deps.
-    yield call(addPackage,
+    yield call(packageDownloaded,
       update(module, { $merge: { name: pkg.name, namespace: pkg.namespace } }));
     yield put(actions.packageDownloadSucceed({ pkg }));
   } catch (error) {
