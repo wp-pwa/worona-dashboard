@@ -15965,7 +15965,7 @@ var vendors_dashboard_worona =
 
 	var Worona = function() {
 	  this._downloaded = {}; // Store the downloaded packages using their names.
-	  this._deps = {}; // Store references to the downloaded packages, using their namespaces.
+	  this._activated = {}; // Store references to the downloaded packages, using their namespaces.
 	  this._depSubscribers = []; // Stores callbacks subscribed to the deps.
 	  this.isTest = typeof window === 'undefined';
 	  this.isDev = !checkWorona('prod');
@@ -16013,8 +16013,9 @@ var vendors_dashboard_worona =
 	    var left = deps.slice(0); // Clone array.
 
 	    for (var i = left.length - 1; i >= 0; i--) {
-	      const dep = left[i];
-	      if (!!self._deps[dep]) left.splice(i, 1);
+	      if (!!self._activated[left[i]]) {
+	        left.splice(i, 1);
+	      }
 	    }
 
 	    if (left.length !== 0) {
@@ -16041,21 +16042,18 @@ var vendors_dashboard_worona =
 	}
 
 	// Used to add a downloaded package to the system.
-	Worona.prototype.addPackage = function(pkg) {
+	Worona.prototype.packageDownloaded = function(pkg) {
 	  this._downloaded[pkg.name] = pkg;
-	  if (!this._deps[pkg.namespace]) {
-	    this._deps[pkg.namespace] = pkg;
-	    this._notifyDepSubscribers(pkg.namespace);
-	  }
 	};
 
 	// Used to activate a package to start using it in the dependencies: worona.dep().
 	// Please not that if a package is downloaded and no other package with the same namespace is
-	// activated yet, it will be available using worona.dep() even if you don't use .activatePackage.
+	// activated yet, it will be available using worona.dep() even if you don't use .packageActivated.
 	// This helps solving activation order and circular dependencies.
-	Worona.prototype.activatePackage = function(name) {
+	Worona.prototype.packageActivated = function(name) {
 	  var pkg = this._downloaded[name];
-	  this._deps[pkg.namespace] = pkg;
+	  this._activated[pkg.namespace] = pkg;
+	  this._notifyDepSubscribers(pkg.namespace);
 	}
 
 	// Used to retrieve the root reducer of a specific namespace.
@@ -16065,7 +16063,7 @@ var vendors_dashboard_worona =
 
 	// Used to retrieve all locales of a specific language.
 	Worona.prototype.getLocales = function(lng) {
-	  return map(this._deps, function(pkg) {
+	  return map(this._activated, function(pkg) {
 	    if (pkg.locales)
 	      return pkg.locales(lng);
 	  })
@@ -16123,12 +16121,12 @@ var vendors_dashboard_worona =
 	  var namespace = args[0];
 	  var propName = args[1];
 	  checkString(namespace);
-	  checkPackage(namespace, this._deps);
+	  checkPackage(namespace, this._activated);
 	  if (typeof propName === 'undefined') {
-	    return this._deps[namespace];
+	    return this._activated[namespace];
 	  }
 	  var nextArgs = args.slice(2);
-	  return nextDep(namespace, this._deps[namespace], propName, nextArgs);
+	  return nextDep(namespace, this._activated[namespace], propName, nextArgs);
 	}
 
 	// Used to mock a dependency when unit testing modules with dependencies. It is as simple as
@@ -16153,8 +16151,8 @@ var vendors_dashboard_worona =
 	  default: worona,
 	  worona: worona,
 	  Worona: Worona,
-	  addPackage: worona.addPackage.bind(worona),
-	  activatePackage: worona.activatePackage.bind(worona),
+	  packageDownloaded: worona.packageDownloaded.bind(worona),
+	  packageActivated: worona.packageActivated.bind(worona),
 	  getReducers: worona.getReducers.bind(worona),
 	  getLocales: worona.getLocales.bind(worona),
 	  getLocale: worona.getLocale.bind(worona),
