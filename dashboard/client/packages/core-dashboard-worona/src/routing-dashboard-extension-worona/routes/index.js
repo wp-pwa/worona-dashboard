@@ -17,7 +17,7 @@ class ThemeLoader extends React.Component {
     return (
       <div id="root">
         <CssLoader />
-        <Theme {...this.props} />;
+        <Theme {...this.props} />
       </div>
     );
   }
