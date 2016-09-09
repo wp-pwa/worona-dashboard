@@ -7,7 +7,7 @@ import { toggleMobileMenu } from '../../actions';
 import * as selectors from '../../selectors';
 
 const TopNav = ({ items, toggle, active }) => {
-  let navigationMenu;
+  let navigationMenu = null;
   if (items.length > 0) {
     navigationMenu = (
       <div>
@@ -38,7 +38,7 @@ const TopNav = ({ items, toggle, active }) => {
             <img src={worona} alt="Worona" />
           </a>
         </div>
-        { navigationMenu }
+        {navigationMenu}
       </nav>
     </div>
   </div>

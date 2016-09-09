@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import cn from 'classnames';
 import { Link } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
+
+import Header from '../Header';
+import TopNav from '../Header/TopNav';
+import Body from '../Body';
+import Main from '../Main';
+
 import Hero from '../elements/Hero';
 import Input from '../elements/Input';
 import Button from '../elements/Button';
@@ -14,11 +20,15 @@ const submit = (values, dispatch) => {
 };
 
 const Register = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
-  <div>
-    <Hero title="Create an account" color="info"
-      subtitle="Welcome to Worona. You are only one step away to start making apps."
-    />
+  <Body>
+    <Header>
+      <TopNav />
+      <Hero title="Create an account"
+        subtitle="Welcome to Worona. You are only one step away to start making apps."
+      />
+    </Header>
 
+    <Main>
     <section className="hero-body">
       <div className="container has-text-centered">
 
@@ -54,6 +64,7 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
             size="medium"
             loading={waiting}
             disabled={waiting}
+            type="submit"
           >
             Create my account
           </Button>
@@ -75,7 +86,8 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
 
       </div>
     </section>
-  </div>
+  </Main>
+</Body>
 );
 
 Register.propTypes = {
