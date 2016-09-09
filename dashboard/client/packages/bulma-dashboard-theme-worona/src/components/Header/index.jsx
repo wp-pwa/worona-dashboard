@@ -3,7 +3,7 @@ import styles from './style.css';
 import cn from 'classnames';
 
 const Header = ({ children }) => (
-  <section className={cn('hero', 'is-primary', styles.footer)}>
+  <section className={cn('hero', 'is-primary', styles.header)}>
     {children}
   </section>
 );

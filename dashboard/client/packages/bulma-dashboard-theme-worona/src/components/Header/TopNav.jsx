@@ -5,6 +5,7 @@ import worona from './worona.png';
 import { Menu } from './Menu.jsx';
 import { toggleMobileMenu } from '../../actions';
 import * as selectors from '../../selectors';
+import styles from './style.css';
 
 const TopNav = ({ items, toggle, active }) => {
   let navigationMenu = null;
@@ -31,7 +32,7 @@ const TopNav = ({ items, toggle, active }) => {
   return (
   <div className="hero-head">
     <div className="container">
-      <nav className="nav">
+      <nav className={`nav ${styles.navigationMenu}`}>
         {/* Left side*/}
         <div className="nav-left">
           <a className="nav-item is-brand" href="/">
