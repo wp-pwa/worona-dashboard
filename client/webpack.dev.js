@@ -14,7 +14,7 @@ var publicPath = argv.remote ? 'https://cdn.worona.io/' : 'https://localhost:400
 module.exports = {
   entry: {
     core: [
-      'webpack/hot/dev-server',
+      // 'webpack/hot/dev-server',
       'script!systemjs/dist/system.js',
       path.join(__dirname, 'packages', 'core-dashboard-worona', 'src', 'index.js'),
     ],
@@ -40,9 +40,6 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        query: {
-          presets: ['react-hmre'],
-        },
         exclude: /(node_modules)/,
       },
       {
@@ -109,7 +106,7 @@ module.exports = {
   devServer: {
 		contentBase: path.join(__dirname, 'dist', env),
 		noInfo: false,
-		hot: true,
+		// hot: true,
 		inline: true,
     port: 4000,
     https: true,
@@ -120,7 +117,7 @@ module.exports = {
     return [require('postcss-cssnext')()];
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('development') } }),
     new LodashModuleReplacementPlugin(
       { currying: true, flattening: true, placeholders: true, collections: true }),
