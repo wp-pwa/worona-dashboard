@@ -28,7 +28,8 @@ module.exports = {
       context: path.join(__dirname, '..', '..', '..'),
     }),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
-    new LodashModuleReplacementPlugin(),
+    new LodashModuleReplacementPlugin(
+      { currying: true, flattening: true, placeholders: true, collections: true }),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
