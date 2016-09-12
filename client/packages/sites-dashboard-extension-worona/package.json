@@ -1,6 +1,6 @@
 {
   "name": "sites-dashboard-extension-worona",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Extension for the Worona Dashboard in charge of the sites collection.",
   "main": "src/index.js",
   "scripts": {
@@ -54,21 +54,21 @@
     "dev": {
       "files": [
         {
-          "file": "sites-dashboard-extension-worona/dist/dev/js/sites.dashboard.extension.5855b314510dea01dea4db2c85777a24.js",
-          "hash": "5855b314510dea01dea4db2c85777a24"
+          "file": "sites-dashboard-extension-worona/dist/dev/js/sites.dashboard.extension.23b19911d4b540d5808d598ccf60212b.js",
+          "hash": "23b19911d4b540d5808d598ccf60212b"
         }
       ],
-      "main": "sites-dashboard-extension-worona/dist/dev/js/sites.dashboard.extension.5855b314510dea01dea4db2c85777a24.js",
+      "main": "sites-dashboard-extension-worona/dist/dev/js/sites.dashboard.extension.23b19911d4b540d5808d598ccf60212b.js",
       "assets": {}
     },
     "prod": {
       "files": [
         {
-          "file": "sites-dashboard-extension-worona/dist/prod/js/sites.dashboard.extension.d083e8894ef062356bfe9823a99d5459.js",
-          "hash": "d083e8894ef062356bfe9823a99d5459"
+          "file": "sites-dashboard-extension-worona/dist/prod/js/sites.dashboard.extension.642175f6f36635841ccac58094ac4d5b.js",
+          "hash": "642175f6f36635841ccac58094ac4d5b"
         }
       ],
-      "main": "sites-dashboard-extension-worona/dist/prod/js/sites.dashboard.extension.d083e8894ef062356bfe9823a99d5459.js",
+      "main": "sites-dashboard-extension-worona/dist/prod/js/sites.dashboard.extension.642175f6f36635841ccac58094ac4d5b.js",
       "assets": {}
     }
   },
