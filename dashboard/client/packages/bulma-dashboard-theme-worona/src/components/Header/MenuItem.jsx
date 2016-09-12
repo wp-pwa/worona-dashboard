@@ -3,8 +3,6 @@ import { Link } from 'react-router';
 import cn from 'classnames';
 import { connect } from 'react-redux';
 
-import * as deps from '../../dependencies';
-import { closeMobileMenu } from '../../actions';
 
 import Icon from '../elements/Icon';
 
@@ -19,15 +17,13 @@ ExtLink.propTypes = {
 
 export const MenuItem = ({ type, name, url, target, link, action, icon, location }) => {
   const Anchor = !link ? ExtLink : Link;
-  const onClick = !!action ? e => { e.preventDefault(); action(); } :
-   () => { deps.store.dispatch(closeMobileMenu()); };
   const anchorClass = cn({
     'button is-primary': type === 'button',
     'is-active': location === url,
   });
   return (
     <span className="nav-item">
-      <Anchor className={anchorClass} href={url} to={link} target={target} onClick={onClick}>
+      <Anchor className={anchorClass} href={url} to={link} target={target} onClick={action}>
         {type === 'button' && icon ? (
           <Icon iconFaCode={icon} small />
         ) : null}

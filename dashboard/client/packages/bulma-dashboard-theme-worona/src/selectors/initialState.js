@@ -1,6 +1,9 @@
 import * as deps from '../dependencies';
+import { closeMobileMenu } from '../actions';
 
 export const initialHeaderItems = [];
+
+const closeMobileMenuAction = () => deps.store.dispatch(closeMobileMenu());
 
 export const loggedInItems = [
   {
@@ -9,6 +12,7 @@ export const loggedInItems = [
     url: 'sites',
     link: 'sites',
     icon: 'th',
+    action: closeMobileMenuAction,
   },
   {
     name: 'Licenses',
@@ -16,6 +20,7 @@ export const loggedInItems = [
     url: 'licenses',
     link: 'licenses',
     icon: 'sliders',
+    action: closeMobileMenuAction,
   },
   {
     name: 'Profile',
@@ -23,6 +28,7 @@ export const loggedInItems = [
     url: 'profile',
     link: 'profile',
     icon: 'user',
+    action: closeMobileMenuAction,
   },
   {
     name: 'Logout',
