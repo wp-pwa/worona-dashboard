@@ -26,6 +26,7 @@ curl https://install.meteor.com/ | sh
 Run `npm run install:all` to install all dependencies. It may take quite a while. Don't despair.
 
 ```bash
+npm install # do this first to install recuersive-install
 npm run install:all
 ```
 
