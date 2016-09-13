@@ -1,0 +1,6 @@
+.header {
+  flex: 0 0 auto;
+}
+.navigationMenu {
+  z-index: 3;
+}
