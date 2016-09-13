@@ -19088,7 +19088,7 @@ module.exports =
 	    header = _react2.default.createElement(
 	      _Header2.default,
 	      null,
-	      _react2.default.createElement(_Hero2.default, { title: 'Now, create your first app',
+	      _react2.default.createElement(_Hero2.default, { title: 'Now, create your first site',
 	        subtitle: 'Your are one step away from making your site work great on mobile.'
 	      })
 	    );

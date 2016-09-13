@@ -1,6 +1,6 @@
 {
   "name": "bulma-dashboard-theme-worona",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "Theme for the Worona Dashboard.",
   "main": "src/index.js",
   "scripts": {
@@ -78,8 +78,8 @@
           "hash": "60ff4f6e6ce1aced05ce3c4652971c1f"
         },
         {
-          "file": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.b002729e84b95b6121115ee9e6f2f878.js",
-          "hash": "b002729e84b95b6121115ee9e6f2f878"
+          "file": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.8155323f874aab2c59d4fe4741738083.js",
+          "hash": "8155323f874aab2c59d4fe4741738083"
         },
         {
           "file": "bulma-dashboard-theme-worona/dist/dev/locales/en.25b5b46991d2e9699c230f91730fd4b8.js",
@@ -90,7 +90,7 @@
           "hash": "98bdc36f78e9cfa756874d02a9a158f1"
         }
       ],
-      "main": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.b002729e84b95b6121115ee9e6f2f878.js",
+      "main": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.8155323f874aab2c59d4fe4741738083.js",
       "assets": {
         "fonts": [
           "bulma-dashboard-theme-worona/dist/dev/fonts/fontawesome-webfont.25a32416abee198dd821b0b17a198a8f.eot",
@@ -128,8 +128,8 @@
           "hash": "60ff4f6e6ce1aced05ce3c4652971c1f"
         },
         {
-          "file": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.d72dad6ae39359d842dd805086a4e46b.js",
-          "hash": "d72dad6ae39359d842dd805086a4e46b"
+          "file": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.e471d28605d8810ec785a7d37fa96b35.js",
+          "hash": "e471d28605d8810ec785a7d37fa96b35"
         },
         {
           "file": "bulma-dashboard-theme-worona/dist/prod/locales/es.7d5484391e1b65faf0d1e684a20ad581.js",
@@ -144,7 +144,7 @@
           "hash": "22c0b4622686b3f019b669e54a15b842"
         }
       ],
-      "main": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.d72dad6ae39359d842dd805086a4e46b.js",
+      "main": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.e471d28605d8810ec785a7d37fa96b35.js",
       "assets": {
         "fonts": [
           "bulma-dashboard-theme-worona/dist/prod/fonts/fontawesome-webfont.25a32416abee198dd821b0b17a198a8f.eot",
