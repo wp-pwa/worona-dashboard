@@ -1,6 +1,6 @@
 {
   "name": "core-dashboard-worona",
-  "version": "1.1.20",
+  "version": "1.1.21",
   "description": "Core Package of Worona Dashboard",
   "main": "dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js",
   "scripts": {
@@ -64,11 +64,11 @@
       "vendors": {
         "files": [
           {
-            "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.9f19199073fb4b59fa1c465899f5c42f.js",
-            "hash": "9f19199073fb4b59fa1c465899f5c42f"
+            "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.ce14cf40082b98d94130b1eb06db76a3.js",
+            "hash": "ce14cf40082b98d94130b1eb06db76a3"
           }
         ],
-        "main": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.9f19199073fb4b59fa1c465899f5c42f.js"
+        "main": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.ce14cf40082b98d94130b1eb06db76a3.js"
       },
       "files": [
         {
@@ -95,11 +95,11 @@
       "vendors": {
         "files": [
           {
-            "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.32402869075bf2148c58d9ecbe2577b6.js",
-            "hash": "32402869075bf2148c58d9ecbe2577b6"
+            "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.9d6c47026399756931f7becb995e0d87.js",
+            "hash": "9d6c47026399756931f7becb995e0d87"
           }
         ],
-        "main": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.32402869075bf2148c58d9ecbe2577b6.js"
+        "main": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.9d6c47026399756931f7becb995e0d87.js"
       },
       "files": [
         {
