@@ -3,7 +3,7 @@ import cn from 'classnames';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import * as deps from '../../dependencies';
-
+import { Link } from 'react-router';
 
 const Site = ({ name, url, date, id, deleteSite }) => (
   <div className="column is-narrow-mobile is-one-third-tablet is-one-quarter-desktop">
@@ -24,13 +24,13 @@ const Site = ({ name, url, date, id, deleteSite }) => (
         </div>
       </div>
       <footer className="card-footer">
-        <a className="card-footer-item">
+        <Link className="card-footer-item" to={`/site/${id}/app/general`} role="button" >
           <span className={cn('icon', 'is-small')}>
             <i className="fa fa-cog"></i>
           </span>
           Configure
-        </a>
-        <a className="card-footer-item is-loading" onClick={deleteSite}>
+        </Link>
+        <a className="card-footer-item is-loading" onClick={deleteSite} role="button" >
           <span className={cn('icon', 'is-small')}>
             <i className="fa fa-trash-o"></i>
           </span>

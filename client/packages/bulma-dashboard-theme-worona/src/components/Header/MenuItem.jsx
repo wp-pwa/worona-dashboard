@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import cn from 'classnames';
-import { connect } from 'react-redux';
 
 import Icon from '../elements/Icon';
 
@@ -23,7 +22,7 @@ export const MenuItem = ({ type, name, url, target, link, action, icon, tabindex
     <span className="nav-item">
       <Anchor className={anchorClass}
         href={url} to={link} target={target} onClick={action}
-        role="button" tabIndex={tabindex}
+        role="button" tabIndex={tabindex} activeClassName={!!link ? 'is-active' : null}
       >
         {type === 'button' && icon ? (
           <Icon iconFaCode={icon} small />

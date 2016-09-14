@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './style.css';
 
 const Main = ({ children }) => (
-  <div className={styles.main}>
+  <section className={`section ${styles.main}`}>
     { children }
-  </div>
+  </section>
 );
 Main.propTypes = {
   children: React.PropTypes.node.isRequired,

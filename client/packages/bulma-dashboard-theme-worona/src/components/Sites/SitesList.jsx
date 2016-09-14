@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import Site from './Site';
+import * as deps from '../../dependencies';
 
 const SitesList = ({ sites }) => (
   <section className="section">
@@ -18,7 +19,7 @@ SitesList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  sites: state.sites.collection,
+  sites: deps.selectors.getAllSites(state),
 });
 
 export default connect(mapStateToProps)(translate('bulma', { wait: true })(SitesList));

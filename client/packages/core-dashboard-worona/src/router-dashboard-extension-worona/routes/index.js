@@ -62,8 +62,10 @@ export const routes = (store) => (
     />
     <Route path="profile" component={Entry} wrapped="Profile" onEnter={requireAuth(store)} />
     <Route path="sites" component={Entry} wrapped="Sites" onEnter={requireAuth(store)} />
-    <Route path="site/:siteId" component={Entry} wrapped="SiteHome" onEnter={requireAuth(store)}>
-      <IndexRoute component={Entry} wrapped="SitesEntry" />
+    <Route path="site/:siteId(/:service/:namespace)" component={Entry} wrapped="SiteHome"
+      onEnter={requireAuth(store)}
+    >
+      <IndexRoute component={Entry} wrapped="ConfigSite" />
     </Route>
   </Route>
 );
