@@ -16,18 +16,19 @@ const AddSite = ({ isFirstLogin }) => {
   if (isFirstLogin) {
     header = (
       <Header>
-              <Hero title = "Now, create your first app"
-                subtitle="Your are one step away from making your site work great on mobile."
-              />
+        <TopNav />
+        <Hero title = "Now, create your first site"
+          subtitle="Your are one step away from making your site work great on mobile."
+        />
       </Header>
     );
   } else {
     header = (
       <Header>
-            <TopNav />
-            <Hero title = "Add Site"
-              subtitle="Your are one step away from making your site work great on mobile."
-            />
+        <TopNav />
+        <Hero title = "Add Site"
+          subtitle="Your are one step away from making your site work great on mobile."
+        />
       </Header>
     );
   }
