@@ -35,7 +35,7 @@ npm run install:all
 Run the dashboard client.
 
 ```bash
-cd dashboard/client
+cd client
 npm start
 ```
 
@@ -48,7 +48,7 @@ npm test
 Open another terminal and run the dashboard server.
 
 ```bash
-cd dahsboard/server
+cd server
 npm start
 ```
 
