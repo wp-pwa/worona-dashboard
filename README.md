@@ -5,8 +5,8 @@
 Clone this repo or [download the zip file from Github](https://github.com/worona/worona/archive/master.zip).
 
 ```bash
-git clone https://github.com/worona/worona.git
-cd worona
+git clone https://github.com/worona/worona-dashboard.git
+cd worona-dashboard
 ```
 
 ----
