@@ -4,7 +4,7 @@ import MenuItem from './MenuItem';
 export const Menu = ({ items, active }) => (
   <div className={`nav-right nav-menu ${(active ? 'is-active' : '')}`}>
     {items.map((item, index) =>
-      (<MenuItem key={index} {...item} />)
+      (<MenuItem key={index} tabindex={index + 1} {...item} />)
     )}
   </div>
 );
