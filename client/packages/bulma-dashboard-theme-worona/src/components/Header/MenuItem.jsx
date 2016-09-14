@@ -3,10 +3,9 @@ import { Link } from 'react-router';
 import cn from 'classnames';
 import { connect } from 'react-redux';
 
-
 import Icon from '../elements/Icon';
 
-const ExtLink = props => (
+export const ExtLink = props => (
   <a {...props}>
     {props.children}
   </a>
@@ -15,7 +14,7 @@ ExtLink.propTypes = {
   children: React.PropTypes.node.isRequired,
 };
 
-export const MenuItem = ({ type, name, url, target, link, action, icon, location }) => {
+export const MenuItem = ({ type, name, url, target, link, action, icon, location, tabindex }) => {
   const Anchor = !link ? ExtLink : Link;
   const anchorClass = cn({
     'button is-primary': type === 'button',
@@ -23,7 +22,10 @@ export const MenuItem = ({ type, name, url, target, link, action, icon, location
   });
   return (
     <span className="nav-item">
-      <Anchor className={anchorClass} href={url} to={link} target={target} onClick={action}>
+      <Anchor className={anchorClass}
+        href={url} to={link} target={target} onClick={action}
+        role="button" tabIndex={tabindex}
+      >
         {type === 'button' && icon ? (
           <Icon iconFaCode={icon} small />
         ) : null}
@@ -41,6 +43,7 @@ MenuItem.propTypes = {
   target: React.PropTypes.string,
   icon: React.PropTypes.string,
   location: React.PropTypes.string,
+  tabindex: React.PropTypes.number,
 };
 
 const mapStateToProps = state => ({ location: state.routing.locationBeforeTransitions.pathname });
