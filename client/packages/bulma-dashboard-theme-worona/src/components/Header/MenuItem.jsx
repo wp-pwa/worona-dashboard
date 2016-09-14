@@ -14,11 +14,10 @@ ExtLink.propTypes = {
   children: React.PropTypes.node.isRequired,
 };
 
-export const MenuItem = ({ type, name, url, target, link, action, icon, location, tabindex }) => {
+export const MenuItem = ({ type, name, url, target, link, action, icon, tabindex }) => {
   const Anchor = !link ? ExtLink : Link;
   const anchorClass = cn({
     'button is-primary': type === 'button',
-    'is-active': location === url,
   });
   return (
     <span className="nav-item">
@@ -42,10 +41,7 @@ MenuItem.propTypes = {
   action: React.PropTypes.func,
   target: React.PropTypes.string,
   icon: React.PropTypes.string,
-  location: React.PropTypes.string,
   tabindex: React.PropTypes.number,
 };
 
-const mapStateToProps = state => ({ location: state.routing.locationBeforeTransitions.pathname });
-
-export default connect(mapStateToProps)(MenuItem);
+export default MenuItem;

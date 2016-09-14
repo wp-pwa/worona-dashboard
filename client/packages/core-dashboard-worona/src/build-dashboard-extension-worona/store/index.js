@@ -1,17 +1,22 @@
 import { compose, createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { routerReducer as routing } from 'react-router-redux';
-import { default as build } from '../reducers';
+import { routerStateReducer as router } from 'redux-router';
+import build from '../reducers';
+import { reduxReactRouter } from 'redux-router';
+import { createHistory } from 'history';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const reducers = { build: build(), routing };
+const reducers = { build: build(), router };
 const sagas = {};
 
 export const store = createStore(
   combineReducers(reducers),
   compose(
     applyMiddleware(sagaMiddleware),
+    reduxReactRouter({
+      createHistory,
+    }),
     typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
