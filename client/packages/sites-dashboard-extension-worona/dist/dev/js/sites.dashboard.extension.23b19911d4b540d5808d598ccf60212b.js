@@ -89,7 +89,7 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.createSiteFailed = exports.createSiteSucceed = exports.createSiteStatusChanged = exports.createSiteRequested = undefined;
+	exports.deleteSiteFailed = exports.deleteSiteSucceed = exports.deleteSiteStatusChanged = exports.deleteSiteRequested = exports.createSiteFailed = exports.createSiteSucceed = exports.createSiteStatusChanged = exports.createSiteRequested = undefined;
 
 	var _types = __webpack_require__(2);
 
@@ -97,6 +97,7 @@ module.exports =
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+	// Create Site actions:
 	var createSiteRequested = exports.createSiteRequested = function createSiteRequested(name, url, _id) {
 	  return { type: types.CREATE_SITE_REQUESTED, name: name, url: url, _id: _id };
 	};
@@ -109,6 +110,21 @@ module.exports =
 	var createSiteFailed = exports.createSiteFailed = function createSiteFailed(error) {
 	  return { type: types.CREATE_SITE_FAILED, error: error };
 	};
+	// Delete Site actions:
+	var deleteSiteRequested = exports.deleteSiteRequested = function deleteSiteRequested(_ref) {
+	  var _id = _ref._id;
+	  return { type: types.DELETE_SITE_REQUESTED, _id: _id };
+	};
+	var deleteSiteStatusChanged = exports.deleteSiteStatusChanged = function deleteSiteStatusChanged(status) {
+	  return { type: types.DELETE_SITE_STATUS_CHANGED, status: status };
+	};
+	var deleteSiteSucceed = exports.deleteSiteSucceed = function deleteSiteSucceed(_ref2) {
+	  var siteId = _ref2.siteId;
+	  return { type: types.DELETE_SITE_SUCCEED, siteId: siteId };
+	};
+	var deleteSiteFailed = exports.deleteSiteFailed = function deleteSiteFailed(error) {
+	  return { type: types.DELETE_SITE_FAILED, error: error };
+	};
 
 /***/ },
 /* 2 */
@@ -119,10 +135,16 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	// Create Site types:
 	var CREATE_SITE_REQUESTED = exports.CREATE_SITE_REQUESTED = 'sites/CREATE_SITE_REQUESTED';
 	var CREATE_SITE_STATUS_CHANGED = exports.CREATE_SITE_STATUS_CHANGED = 'sites/CREATE_SITE_STATUS_CHANGED';
 	var CREATE_SITE_SUCCEED = exports.CREATE_SITE_SUCCEED = 'sites/CREATE_SITE_SUCCEED';
 	var CREATE_SITE_FAILED = exports.CREATE_SITE_FAILED = 'sites/CREATE_SITE_FAILED';
+	// Delete Site types:
+	var DELETE_SITE_REQUESTED = exports.DELETE_SITE_REQUESTED = 'sites/DELETE_SITE_REQUESTED';
+	var DELETE_SITE_STATUS_CHANGED = exports.DELETE_SITE_STATUS_CHANGED = 'sites/DELETE_SITE_STATUS_CHANGED';
+	var DELETE_SITE_SUCCEED = exports.DELETE_SITE_SUCCEED = 'sites/DELETE_SITE_SUCCEED';
+	var DELETE_SITE_FAILED = exports.DELETE_SITE_FAILED = 'sites/DELETE_SITE_FAILED';
 
 /***/ },
 /* 3 */
@@ -4551,6 +4573,8 @@ module.exports =
 
 	var _createSite = __webpack_require__(144);
 
+	var _deleteSite = __webpack_require__(148);
+
 	var _dependencies = __webpack_require__(7);
 
 	var deps = _interopRequireWildcard(_dependencies);
@@ -4565,7 +4589,7 @@ module.exports =
 	      switch (_context.prev = _context.next) {
 	        case 0:
 	          _context.next = 2;
-	          return [(0, _effects.fork)(_createSite.createSiteWatcher), (0, _effects.fork)(deps.sagaCreators.subscriptionWatcherCreator('sites'))];
+	          return [(0, _effects.fork)(_createSite.createSiteWatcher), (0, _effects.fork)(_deleteSite.deleteSiteWatcher), (0, _effects.fork)(deps.sagaCreators.subscriptionWatcherCreator('sites'))];
 
 	        case 2:
 	        case 'end':
@@ -4694,7 +4718,8 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var CREATING_SITE = exports.CREATING_SITE = 'Creating your app. Please wait...';
+	var CREATING_SITE = exports.CREATING_SITE = 'Creating your new site. Please wait...';
+	var DELETING_SITE = exports.DELETING_SITE = 'Deleting site...';
 
 /***/ },
 /* 147 */
@@ -4705,7 +4730,7 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.createSite = undefined;
+	exports.deleteSite = exports.createSite = undefined;
 
 	var _dependencies = __webpack_require__(7);
 
@@ -4721,6 +4746,108 @@ module.exports =
 	  var caller = _ref$caller === undefined ? deps.libs.call : _ref$caller;
 	  return caller('createSite', { name: name, url: url, _id: _id });
 	};
+	var deleteSite = exports.deleteSite = function deleteSite(_ref2) {
+	  var _id = _ref2._id;
+	  var _ref2$caller = _ref2.caller;
+	  var caller = _ref2$caller === undefined ? deps.libs.call : _ref2$caller;
+	  return caller('deleteSite', { _id: _id });
+	};
+
+/***/ },
+/* 148 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.deleteSiteSaga = deleteSiteSaga;
+	exports.deleteSiteWatcher = deleteSiteWatcher;
+
+	var _reduxSaga = __webpack_require__(145);
+
+	var _effects = __webpack_require__(143);
+
+	var _messages = __webpack_require__(146);
+
+	var _actions = __webpack_require__(1);
+
+	var actions = _interopRequireWildcard(_actions);
+
+	var _libs = __webpack_require__(147);
+
+	var libs = _interopRequireWildcard(_libs);
+
+	var _types = __webpack_require__(2);
+
+	var types = _interopRequireWildcard(_types);
+
+	var _dependencies = __webpack_require__(7);
+
+	var deps = _interopRequireWildcard(_dependencies);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	var _marked = [deleteSiteSaga, deleteSiteWatcher].map(regeneratorRuntime.mark);
+
+	function deleteSiteSaga(action) {
+	  var _id, siteId;
+
+	  return regeneratorRuntime.wrap(function deleteSiteSaga$(_context) {
+	    while (1) {
+	      switch (_context.prev = _context.next) {
+	        case 0:
+	          _id = action._id;
+	          _context.prev = 1;
+	          _context.next = 4;
+	          return (0, _effects.put)(actions.deleteSiteStatusChanged(_messages.DELETING_SITE));
+
+	        case 4:
+	          _context.next = 6;
+	          return (0, _effects.call)(libs.deleteSite, { _id: _id });
+
+	        case 6:
+	          siteId = _context.sent;
+	          _context.next = 9;
+	          return (0, _effects.put)(actions.deleteSiteSucceed(siteId));
+
+	        case 9:
+	          _context.next = 11;
+	          return (0, _effects.call)(deps.libs.push, '/');
+
+	        case 11:
+	          _context.next = 17;
+	          break;
+
+	        case 13:
+	          _context.prev = 13;
+	          _context.t0 = _context['catch'](1);
+	          _context.next = 17;
+	          return (0, _effects.put)(actions.deleteSiteFailed(_context.t0));
+
+	        case 17:
+	        case 'end':
+	          return _context.stop();
+	      }
+	    }
+	  }, _marked[0], this, [[1, 13]]);
+	}
+
+	function deleteSiteWatcher() {
+	  return regeneratorRuntime.wrap(function deleteSiteWatcher$(_context2) {
+	    while (1) {
+	      switch (_context2.prev = _context2.next) {
+	        case 0:
+	          return _context2.delegateYield((0, _reduxSaga.takeEvery)(types.DELETE_SITE_REQUESTED, deleteSiteSaga), 't0', 1);
+
+	        case 1:
+	        case 'end':
+	          return _context2.stop();
+	      }
+	    }
+	  }, _marked[1], this);
+	}
 
 /***/ }
 /******/ ]);

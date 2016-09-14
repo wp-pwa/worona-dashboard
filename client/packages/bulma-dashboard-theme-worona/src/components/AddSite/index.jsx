@@ -16,7 +16,7 @@ const AddSite = ({ isFirstLogin }) => {
   if (isFirstLogin) {
     header = (
       <Header>
-              <Hero title = "Now, create your first app"
+              <Hero title = "Now, create your first site"
                 subtitle="Your are one step away from making your site work great on mobile."
               />
       </Header>

@@ -5108,7 +5108,7 @@ module.exports =
 	          }
 
 	          _context3.next = 5;
-	          return (0, _effects.call)(deps.libs.push, '/create-first-app');
+	          return (0, _effects.call)(deps.libs.push, '/add-site');
 
 	        case 5:
 	          _context3.next = 9;

@@ -6,7 +6,6 @@ var packageJson = require('../package.json');
 var worona = packageJson.worona;
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 var FixModuleIdAndChunkIdPlugin = require('fix-moduleid-and-chunkid-plugin');
-var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -28,7 +27,6 @@ module.exports = {
       context: path.join(__dirname, '..', '..', '..'),
     }),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
-    new LodashModuleReplacementPlugin(),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),

@@ -1,6 +1,6 @@
 {
   "name": "bulma-dashboard-theme-worona",
-  "version": "1.1.8",
+  "version": "1.1.10",
   "description": "Theme for the Worona Dashboard.",
   "main": "src/index.js",
   "scripts": {
@@ -78,19 +78,19 @@
           "hash": "60ff4f6e6ce1aced05ce3c4652971c1f"
         },
         {
-          "file": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.cc326db942642075478a7614ae95695e.js",
-          "hash": "cc326db942642075478a7614ae95695e"
+          "file": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.8155323f874aab2c59d4fe4741738083.js",
+          "hash": "8155323f874aab2c59d4fe4741738083"
         },
         {
-          "file": "bulma-dashboard-theme-worona/dist/dev/locales/en.b3ccafa6fe20f60f7dcdcd9c540b07cd.js",
-          "hash": "b3ccafa6fe20f60f7dcdcd9c540b07cd"
+          "file": "bulma-dashboard-theme-worona/dist/dev/locales/en.25b5b46991d2e9699c230f91730fd4b8.js",
+          "hash": "25b5b46991d2e9699c230f91730fd4b8"
         },
         {
-          "file": "bulma-dashboard-theme-worona/dist/dev/locales/es.f9a50e78b806bdd49014c981c9797381.js",
-          "hash": "f9a50e78b806bdd49014c981c9797381"
+          "file": "bulma-dashboard-theme-worona/dist/dev/locales/es.98bdc36f78e9cfa756874d02a9a158f1.js",
+          "hash": "98bdc36f78e9cfa756874d02a9a158f1"
         }
       ],
-      "main": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.cc326db942642075478a7614ae95695e.js",
+      "main": "bulma-dashboard-theme-worona/dist/dev/js/bulma.dashboard.theme.8155323f874aab2c59d4fe4741738083.js",
       "assets": {
         "fonts": [
           "bulma-dashboard-theme-worona/dist/dev/fonts/fontawesome-webfont.25a32416abee198dd821b0b17a198a8f.eot",
@@ -128,23 +128,23 @@
           "hash": "60ff4f6e6ce1aced05ce3c4652971c1f"
         },
         {
-          "file": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.7b2cb7855e306b1385a215dd3fc0457c.js",
-          "hash": "7b2cb7855e306b1385a215dd3fc0457c"
+          "file": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.e471d28605d8810ec785a7d37fa96b35.js",
+          "hash": "e471d28605d8810ec785a7d37fa96b35"
         },
         {
-          "file": "bulma-dashboard-theme-worona/dist/prod/locales/es.f776b89bad6d56e1224b60ae89d1978a.js",
-          "hash": "f776b89bad6d56e1224b60ae89d1978a"
+          "file": "bulma-dashboard-theme-worona/dist/prod/locales/es.7d5484391e1b65faf0d1e684a20ad581.js",
+          "hash": "7d5484391e1b65faf0d1e684a20ad581"
         },
         {
-          "file": "bulma-dashboard-theme-worona/dist/prod/locales/en.6b29e14f3f68e976fbf8bb671b08a1cb.js",
-          "hash": "6b29e14f3f68e976fbf8bb671b08a1cb"
+          "file": "bulma-dashboard-theme-worona/dist/prod/locales/en.e635c0605694088875b48356e811261a.js",
+          "hash": "e635c0605694088875b48356e811261a"
         },
         {
-          "file": "bulma-dashboard-theme-worona/dist/prod/css/bulma.styles.60a17eae760a1e5f4b5f2647a836de0d.css",
-          "hash": "60a17eae760a1e5f4b5f2647a836de0d"
+          "file": "bulma-dashboard-theme-worona/dist/prod/css/bulma.styles.22c0b4622686b3f019b669e54a15b842.css",
+          "hash": "22c0b4622686b3f019b669e54a15b842"
         }
       ],
-      "main": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.7b2cb7855e306b1385a215dd3fc0457c.js",
+      "main": "bulma-dashboard-theme-worona/dist/prod/js/bulma.dashboard.theme.e471d28605d8810ec785a7d37fa96b35.js",
       "assets": {
         "fonts": [
           "bulma-dashboard-theme-worona/dist/prod/fonts/fontawesome-webfont.25a32416abee198dd821b0b17a198a8f.eot",
@@ -154,7 +154,7 @@
           "bulma-dashboard-theme-worona/dist/prod/fonts/fontawesome-webfont.c8ddf1e5e5bf3682bc7bebf30f394148.woff"
         ],
         "css": [
-          "bulma-dashboard-theme-worona/dist/prod/css/bulma.styles.60a17eae760a1e5f4b5f2647a836de0d.css"
+          "bulma-dashboard-theme-worona/dist/prod/css/bulma.styles.22c0b4622686b3f019b669e54a15b842.css"
         ]
       }
     }

@@ -2,13 +2,14 @@
 var env = 'prod';
 var path = require('path');
 var webpack = require('webpack');
+var argv = require('yargs').argv;
 var vendors = require('./packages/core-dashboard-worona/package.json').worona[env].vendors.main;
 var vendorsFile = /^.+\/(.+\.js)$/.exec(vendors)[1];
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
-var publicPath = argv.remote ? 'https://cdn.worona.io' : 'https://localhost:4000';
+var publicPath = argv.remote ? 'https://cdn.worona.io/' : 'https://localhost:4000/';
 
 module.exports = {
   entry: {
@@ -19,7 +20,6 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist', env),
-    publicPath: publicPath,
     filename: 'packages/core-dashboard-worona/dist/' + env + '/js/core.[hash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 32,
@@ -101,6 +101,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
+  // devtool: '#eval-source-map',
   devServer: {
 		contentBase: path.join(__dirname, 'dist', env),
 		noInfo: false,

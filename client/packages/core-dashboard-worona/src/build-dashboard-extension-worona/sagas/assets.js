@@ -1,5 +1,4 @@
 /* eslint-disable no-constant-condition */
-import { isDev } from 'worona-deps';
 import { takeEvery } from 'redux-saga';
 import { put, take, select } from 'redux-saga/effects';
 import { reduce } from 'lodash';
@@ -12,7 +11,7 @@ export const assetsLoadSaga = type =>
     while (true) {
       const assets = yield select(selectors.getAssets);
       const assetType = assets[pkg.name][type];
-      if (reduce(assetType, (acc, val) => acc && val, true) || isDev) {
+      if (reduce(assetType, (acc, val) => acc && val, true)) {
         yield put(actions.packageAssetsLoadSucceed({ pkg }));
         break;
       }
