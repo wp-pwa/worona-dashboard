@@ -64,11 +64,11 @@
       "vendors": {
         "files": [
           {
-            "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.ce14cf40082b98d94130b1eb06db76a3.js",
-            "hash": "ce14cf40082b98d94130b1eb06db76a3"
+            "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.be9b7b4dfdb51624c47c84c258871d85.js",
+            "hash": "be9b7b4dfdb51624c47c84c258871d85"
           }
         ],
-        "main": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.ce14cf40082b98d94130b1eb06db76a3.js"
+        "main": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.be9b7b4dfdb51624c47c84c258871d85.js"
       },
       "files": [
         {
@@ -95,11 +95,11 @@
       "vendors": {
         "files": [
           {
-            "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.9d6c47026399756931f7becb995e0d87.js",
-            "hash": "9d6c47026399756931f7becb995e0d87"
+            "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.cbdbfdbd06b858a810c212ef55b4bca7.js",
+            "hash": "cbdbfdbd06b858a810c212ef55b4bca7"
           }
         ],
-        "main": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.9d6c47026399756931f7becb995e0d87.js"
+        "main": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.cbdbfdbd06b858a810c212ef55b4bca7.js"
       },
       "files": [
         {
