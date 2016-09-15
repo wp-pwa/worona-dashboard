@@ -6,11 +6,15 @@ export const libs = {
   get loggedInEventChannel() { return dep('connection', 'libs', 'loggedInEventChannel'); },
   get loggedOutEventChannel() { return dep('connection', 'libs', 'loggedOutEventChannel'); },
   get logout() { return dep('connection', 'libs', 'logout'); },
-  get push() { return dep('build', 'libs', 'push'); },
+};
+
+export const actions = {
+  get push() { return dep('router', 'actions', 'push'); },
 };
 
 export const types = {
   get CONNECTION_SUCCEED() { return dep('connection', 'types', 'CONNECTION_SUCCEED'); },
+  get ROUTER_DID_CHANGE() { return dep('router', 'types', 'ROUTER_DID_CHANGE'); },
 };
 
 export const selectors = {

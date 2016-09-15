@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import * as types from '../types';
+import * as deps from '../dependencies';
 
 export const isLoggedIn = (state = false, action) => {
   switch (action.type) {
@@ -143,6 +144,20 @@ export const isFirstLogin = (state = false, action) => {
   }
 };
 
+export const redirectAfterLogin = (state = '/sites', action) => {
+  switch (action.type) {
+    case deps.types.ROUTER_DID_CHANGE:
+      if (action.payload.location.pathname === '/login') {
+        return action.payload.location.query.next || '/sites';
+      }
+      return state;
+    case types.LOGOUT_SUCCEED:
+      return '/sites';
+    default:
+      return state;
+  }
+};
+
 export default () => combineReducers({
   isLoggedIn,
   userId,
@@ -154,4 +169,5 @@ export default () => combineReducers({
   createAccountError,
   createAccountStatus,
   isFirstLogin,
+  redirectAfterLogin,
 });

@@ -18,7 +18,7 @@ export function* logoutRequestedWatcher() {
 
 export function* logoutSucceedSaga() {
   // Redirect the user to the home after a successful logout.
-  yield call(deps.libs.push, '/login');
+  yield put(deps.actions.push('/login'));
 }
 export function* logoutSucceedWatcher() {
   yield* takeLatest(types.LOGOUT_SUCCEED, logoutSucceedSaga);
