@@ -1,5 +1,6 @@
 /* eslint-disable no-constant-condition, array-callback-return */
 import request from 'superagent';
+import { isRemote } from 'worona-deps';
 import { normalize } from 'normalizr';
 import { takeEvery } from 'redux-saga';
 import { put, fork, call, select } from 'redux-saga/effects';
@@ -12,6 +13,7 @@ import download from './download';
 import load from './load';
 import assets from './assets';
 import { waitFor } from './waitFor';
+import defaultPackages from '../default/packages';
 
 // Function which download the core packages list from the api and then starts a
 // PACKAGES_ADDITION_REQUESTED to add them to the system.
@@ -19,7 +21,9 @@ export function* addCorePackagesSaga() {
   yield put(actions.corePackagesRequested());
   try {
     // Call the API.
-    const res = yield call(request.get, 'https://cdn.worona.io/api/v1/settings/core/dashboard');
+    const res = isRemote ?
+      yield call(request.get, 'https://cdn.worona.io/api/v1/settings/core/dashboard') :
+      defaultPackages;
     // Normalize the result using normalizr.
     const pkgs = normalize(res.body, schemas.arrayOfPackages).entities.packages;
     // Inform that the API call was successful.

@@ -15,7 +15,7 @@ export function subscriptionWatcherCreator(selectedCollection, ...params) {
     const subsChannel = yield call(deps.libs.collectionEventChannel, selectedCollection);
     while (true) {
       yield take(deps.types.LOGIN_SUCCEED);
-      yield put(actions.subscriptionStarted());
+      yield put(actions.subscriptionStarted(selectedCollection));
       const subscription = yield call(deps.libs.subscribe, selectedCollection, ...params);
       const readyChannel = yield call(deps.libs.readyEventChannel, subscription);
       const errorChannel = yield call(deps.libs.errorEventChannel, subscription);

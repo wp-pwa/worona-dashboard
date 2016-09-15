@@ -20,7 +20,11 @@ Meteor.methods({
     const data = { name, url, userIds: [userId], createdAt, modifiedAt };
     if (!!_id) data._id = _id;
 
-    return sites.insert(data);
+    const siteId = sites.insert(data);
+
+    Meteor.call('initSettings', siteId);
+
+    return siteId;
   },
   deleteSite({ _id }) {
     check(_id, String);
