@@ -5,7 +5,7 @@ import Site from './Site';
 
 const SitesList = ({ sites }) => (
   <section className="section">
-    <div className="columns">
+    <div className="columns is-multiline">
       {sites.map(site => (
         <Site {...site} date={site.modifiedAt.$date} key={site.id} />
       ))}
