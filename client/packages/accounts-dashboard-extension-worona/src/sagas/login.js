@@ -29,9 +29,10 @@ export function* loginRequestedWatcher() {
 
 export function* loginSucceedSaga() {
   if (yield select(selectors.isFirstLogin)) {
-    yield call(deps.libs.push, '/add-site');
+    yield put(deps.actions.push('/add-site'));
   } else {
-    yield call(deps.libs.push, '/sites');
+    const redirect = yield select(selectors.redirectAfterLogin);
+    yield put(deps.actions.push(redirect));
   }
 }
 export function* loginSucceedWatcher() {

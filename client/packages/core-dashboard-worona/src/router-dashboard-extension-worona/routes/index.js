@@ -39,7 +39,12 @@ class Entry extends React.Component {
 
 const requireAuth = (store) => (nextState, replace) => {
   const accounts = store.getState().accounts;
-  if (!accounts || !accounts.isLoggedIn) replace({ pathname: '/login' });
+  if (!accounts || !accounts.isLoggedIn) {
+    replace({
+      pathname: '/login',
+      query: { next: nextState.location.pathname },
+    });
+  }
 };
 
 const dontRequireAuth = (store) => (nextState, replace) => {
@@ -49,7 +54,7 @@ const dontRequireAuth = (store) => (nextState, replace) => {
 
 export const routes = (store) => (
   <Route path="/" component={ThemeLoader} >
-    <IndexRedirect to="login" />
+    <IndexRedirect to="/login" />
     <Route path="login" component={Entry} wrapped="Login" onEnter={dontRequireAuth(store)} />
     <Route path="register" component={Entry} wrapped="Register" onEnter={dontRequireAuth(store)} />
     <Route path="add-site" component={Entry} wrapped="AddSite"
