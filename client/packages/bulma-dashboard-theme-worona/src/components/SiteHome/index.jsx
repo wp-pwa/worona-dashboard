@@ -13,14 +13,14 @@ import { connect } from 'react-redux';
 import ServiceTabs from './ServiceTabs';
 import AsideMenu from './AsideMenu';
 
-const SiteHome = ({ params, site: { name, url } }) => (
+const SiteHome = ({ siteId, siteInfo }) => (
   <Body>
     <Header>
       <TopNav />
-      <Hero title={name}>
-        <small>{params.siteId}</small>
+      <Hero title={siteInfo.name}>
+        <small>{siteId}</small>
         <br />
-        <small>{url}</small>
+        <small>{siteInfo.url}</small>
       </Hero>
       <ServiceTabs />
     </Header>
@@ -38,12 +38,15 @@ const SiteHome = ({ params, site: { name, url } }) => (
   </Body>
 );
 
-const mapStateToProps = (state, ownProps) =>
-  ({ site: deps.selectors.getSiteInfo(ownProps.params.siteId)(state) });
+const mapStateToProps = (state) => {
+  const siteId = deps.selectors.getSiteId(state);
+  const siteInfo = Object.assign({}, { siteId }, deps.selectors.getSiteInfo(siteId)(state));
+  return ({ siteId, siteInfo });
+};
 
 SiteHome.propTypes = {
-  params: React.PropTypes.object.isRequired,
-  site: React.PropTypes.object.isRequired,
+  siteId: React.PropTypes.string.isRequired,
+  siteInfo: React.PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps)(SiteHome);
