@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import { defaultSettings } from '../../selectors/initialState';
+import * as deps from '../../dependencies';
 
 const MenuEntry = ({ name, target }) => (
   <li>
@@ -52,9 +53,10 @@ AsideMenu.propTypes = {
   settingMenuEntries: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
 };
 
-const mapStateToProps = () => ({
+const mapStateToProps = (state) => ({
   settingCategories: defaultSettings.settingCategories,
-  settingMenuEntries: defaultSettings.settingMenuEntries,
+  settingMenuEntries: deps.selectors.getDefaultSettings(
+    deps.selectors.getSiteId(state))(state),
 });
 
 export default connect(mapStateToProps)(AsideMenu);
