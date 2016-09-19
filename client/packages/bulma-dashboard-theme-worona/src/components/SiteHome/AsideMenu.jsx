@@ -5,16 +5,27 @@ import { Link } from 'react-router';
 import { defaultSettings } from '../../selectors/initialState';
 import * as deps from '../../dependencies';
 
-const MenuEntry = ({ name, target }) => (
+let MenuEntry = ({ name, target, params }) => (
   <li>
-    <Link to={target} role="button" activeClassName="is-active">{name}</Link>
+    <Link to={`/site/${params.siteId}/${params.service}/${target}`}
+      role="button" activeClassName="is-active"
+    >
+      {name}
+    </Link>
   </li>
 );
+
+const mapStateToMenuEntryProps = (state) => ({
+  params: state.router.params,
+});
 
 MenuEntry.propTypes = {
   name: React.PropTypes.string,
   target: React.PropTypes.string,
+  params: React.PropTypes.object.isRequired,
 };
+
+MenuEntry = connect(mapStateToMenuEntryProps)(MenuEntry);
 
 const MenuCategory = ({ name, entries }) => (
   <div name={name}>
@@ -53,10 +64,10 @@ AsideMenu.propTypes = {
   settingMenuEntries: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToMenuProps = (state) => ({
   settingCategories: defaultSettings.settingCategories,
   settingMenuEntries: deps.selectors.getDefaultSettings(
     deps.selectors.getSiteId(state))(state),
 });
 
-export default connect(mapStateToProps)(AsideMenu);
+export default connect(mapStateToMenuProps)(AsideMenu);
