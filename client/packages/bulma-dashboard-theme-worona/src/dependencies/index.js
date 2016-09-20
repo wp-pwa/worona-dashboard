@@ -30,5 +30,5 @@ export const selectors = {
   get getAllSites() { return dep('sites', 'selectors', 'getAllSites'); },
   get getSiteId() { return dep('router', 'selectors', 'getSiteId'); },
   get getSiteInfo() { return dep('sites', 'selectors', 'getSiteInfo'); },
-  get getDefaultSettings() { return dep('settings', 'selectors', 'getDefaultSettings'); },
+  get getSiteSettings() { return dep('settings', 'selectors', 'getSiteSettings'); },
 };

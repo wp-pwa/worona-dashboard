@@ -66,7 +66,7 @@ AsideMenu.propTypes = {
 
 const mapStateToMenuProps = (state) => ({
   settingCategories: defaultSettings.settingCategories,
-  settingMenuEntries: deps.selectors.getDefaultSettings(
+  settingMenuEntries: deps.selectors.getSiteSettings(
     deps.selectors.getSiteId(state))(state),
 });
 

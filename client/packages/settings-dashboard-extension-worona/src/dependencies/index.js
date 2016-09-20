@@ -10,3 +10,7 @@ export const sagaCreators = {
     return dep('subscriptions', 'sagaCreators', 'subscriptionWatcherCreator');
   },
 };
+
+export const libs = {
+  get call() { return dep('connection', 'libs', 'call'); },
+};
