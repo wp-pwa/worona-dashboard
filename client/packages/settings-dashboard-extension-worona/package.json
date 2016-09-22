@@ -46,6 +46,9 @@
     "deactivable": 0,
     "public": 1,
     "dependencies": [
+      "build",
+      "subscriptions",
+      "connection"
     ]
   },
   "dev": {},
