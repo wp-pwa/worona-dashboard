@@ -44,13 +44,13 @@ MenuCategory.propTypes = {
   entries: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
 };
 
-const AsideMenu = ({ settingCategories, settingMenuEntries }) => (
+const AsideMenu = ({ settings }) => (
     <div className="column is-hidden-mobile is-2-desktop">
         <aside className="menu">
           {
-            settingCategories.map(({ name }, index) =>
+            settings.map(({ name, entries }, index) =>
             (<MenuCategory key={index} name={name}
-              entries={settingMenuEntries.filter(entry => entry.categoryName === name)}
+              entries={entries}
             />)
             )
           }
@@ -59,14 +59,11 @@ const AsideMenu = ({ settingCategories, settingMenuEntries }) => (
 );
 
 AsideMenu.propTypes = {
-  settingCategories: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-  settingMenuEntries: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  settings: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
 };
 
 const mapStateToMenuProps = (state) => ({
-  settingCategories: deps.selectors.getCategories(state),
-  settingMenuEntries: deps.selectors.getSiteSettings(
-    deps.selectors.getSiteId(state))(state),
+  settings: deps.selectors.getSiteSettingsByCategory(deps.selectors.getSiteId(state))(state),
 });
 
 export default connect(mapStateToMenuProps)(AsideMenu);

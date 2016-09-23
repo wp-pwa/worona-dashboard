@@ -10,6 +10,6 @@ export const getSiteSettingsByCategory = (id) => createSelector(
   getSiteSettings(id),
   (categories, settings) => categories.map(({ name }) => ({
     name,
-    settings: settings.filter(entry => entry.categoryName === name),
+    entries: settings.filter(entry => entry.categoryName === name),
   }))
 );
