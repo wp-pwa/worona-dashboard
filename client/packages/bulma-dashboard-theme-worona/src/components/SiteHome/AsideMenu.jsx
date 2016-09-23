@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { defaultSettings } from '../../selectors/initialState';
 import * as deps from '../../dependencies';
 
 let MenuEntry = ({ name, target, params }) => (
@@ -49,9 +48,9 @@ const AsideMenu = ({ settingCategories, settingMenuEntries }) => (
     <div className="column is-hidden-mobile is-2-desktop">
         <aside className="menu">
           {
-            settingCategories.map((categoryName, index) =>
-            (<MenuCategory key={index} name={categoryName}
-              entries={settingMenuEntries.filter(entry => entry.categoryName === categoryName)}
+            settingCategories.map(({ name }, index) =>
+            (<MenuCategory key={index} name={name}
+              entries={settingMenuEntries.filter(entry => entry.categoryName === name)}
             />)
             )
           }
@@ -60,12 +59,12 @@ const AsideMenu = ({ settingCategories, settingMenuEntries }) => (
 );
 
 AsideMenu.propTypes = {
-  settingCategories: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+  settingCategories: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
   settingMenuEntries: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
 };
 
 const mapStateToMenuProps = (state) => ({
-  settingCategories: defaultSettings.settingCategories,
+  settingCategories: deps.selectors.getCategories(state),
   settingMenuEntries: deps.selectors.getSiteSettings(
     deps.selectors.getSiteId(state))(state),
 });

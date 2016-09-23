@@ -37,7 +37,3 @@ export const loggedInItems = [
     action: () => deps.store.dispatch(deps.actions.logoutRequested()),
   },
 ];
-
-export const defaultSettings = {
-  settingCategories: ['Settings', 'Appeareance', 'Extensions', 'Publish'],
-};
