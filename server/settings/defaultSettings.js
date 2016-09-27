@@ -11,12 +11,12 @@ export const defaultSettings = [
   },
   {
     name: 'Change Theme',
-    categoryName: 'Appeareance',
+    categoryName: 'Appearance',
     target: 'change-theme',
   },
   {
     name: 'Starter Theme',
-    categoryName: 'Appeareance',
+    categoryName: 'Appearance',
     target: 'current-theme',
   },
   {

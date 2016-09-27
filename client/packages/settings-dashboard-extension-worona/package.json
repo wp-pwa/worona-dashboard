@@ -1,6 +1,6 @@
 {
   "name": "settings-dashboard-extension-worona",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Extension for managing Worona settings.",
   "main": "src/index.js",
   "scripts": {
@@ -49,7 +49,31 @@
       "build",
       "subscriptions",
       "connection"
-    ]
+    ],
+    "dev": {
+      "files": [
+        {
+          "file": "settings-dashboard-extension-worona/dist/dev/js/settings.dashboard.extension.ca2e57dbe52096aa5a32a38858843b3b.js",
+          "hash": "ca2e57dbe52096aa5a32a38858843b3b"
+        }
+      ],
+      "assets": {},
+      "main": "settings-dashboard-extension-worona/dist/dev/js/settings.dashboard.extension.ca2e57dbe52096aa5a32a38858843b3b.js"
+    },
+    "prod": {
+      "files": [
+        {
+          "file": "settings-dashboard-extension-worona/dist/prod/js/settings.dashboard.extension.646090daf8df7394bb69135d2f99606c.js",
+          "hash": "646090daf8df7394bb69135d2f99606c"
+        }
+      ],
+      "assets": {},
+      "main": "settings-dashboard-extension-worona/dist/prod/js/settings.dashboard.extension.646090daf8df7394bb69135d2f99606c.js"
+    }
+  },
+  "menu": {
+    "category": "appearance",
+    "order": 102
   },
   "dev": {},
   "devDependencies": {
