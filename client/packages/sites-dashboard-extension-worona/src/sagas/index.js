@@ -3,7 +3,7 @@ import { createSiteWatcher } from './createSite';
 import { deleteSiteWatcher } from './deleteSite';
 import * as deps from '../dependencies';
 
-export default function* () {
+export default function* siteSagas() {
   yield [
     fork(createSiteWatcher),
     fork(deleteSiteWatcher),

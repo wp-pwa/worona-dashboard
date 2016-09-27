@@ -27,4 +27,10 @@ export const selectors = {
   get isCreatingSite() { return dep('sites', 'selectors', 'isCreatingSite'); },
   get createSiteStatus() { return dep('sites', 'selectors', 'createSiteStatus'); },
   get createSiteError() { return dep('sites', 'selectors', 'createSiteError'); },
+  get getAllSites() { return dep('sites', 'selectors', 'getAllSites'); },
+  get getSiteId() { return dep('router', 'selectors', 'getSiteId'); },
+  get getSiteInfo() { return dep('sites', 'selectors', 'getSiteInfo'); },
+  get getSiteSettingsByCategory() {
+    return dep('settings', 'selectors', 'getSiteSettingsByCategory');
+  },
 };
