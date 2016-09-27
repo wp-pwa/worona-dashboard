@@ -1,6 +1,6 @@
 {
   "name": "subscriptions-dashboard-extension-worona",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "Extension for the Worona Dashboard to manage subscriptions.",
   "main": "src/index.js",
   "scripts": {
@@ -53,21 +53,21 @@
     "dev": {
       "files": [
         {
-          "file": "subscriptions-dashboard-extension-worona/dist/dev/js/subscriptions.dashboard.extension.a08233bc6d810deab9dc3cc3f939fbbf.js",
-          "hash": "a08233bc6d810deab9dc3cc3f939fbbf"
+          "file": "subscriptions-dashboard-extension-worona/dist/dev/js/subscriptions.dashboard.extension.d5e2eb7b52ad64e5a6a5809e67dbc898.js",
+          "hash": "d5e2eb7b52ad64e5a6a5809e67dbc898"
         }
       ],
-      "main": "subscriptions-dashboard-extension-worona/dist/dev/js/subscriptions.dashboard.extension.a08233bc6d810deab9dc3cc3f939fbbf.js",
+      "main": "subscriptions-dashboard-extension-worona/dist/dev/js/subscriptions.dashboard.extension.d5e2eb7b52ad64e5a6a5809e67dbc898.js",
       "assets": {}
     },
     "prod": {
       "files": [
         {
-          "file": "subscriptions-dashboard-extension-worona/dist/prod/js/subscriptions.dashboard.extension.e886ca8f88e298c313e8e474a4d45f63.js",
-          "hash": "e886ca8f88e298c313e8e474a4d45f63"
+          "file": "subscriptions-dashboard-extension-worona/dist/prod/js/subscriptions.dashboard.extension.97138dada4904fb74a575803b8463929.js",
+          "hash": "97138dada4904fb74a575803b8463929"
         }
       ],
-      "main": "subscriptions-dashboard-extension-worona/dist/prod/js/subscriptions.dashboard.extension.e886ca8f88e298c313e8e474a4d45f63.js",
+      "main": "subscriptions-dashboard-extension-worona/dist/prod/js/subscriptions.dashboard.extension.97138dada4904fb74a575803b8463929.js",
       "assets": {}
     }
   },

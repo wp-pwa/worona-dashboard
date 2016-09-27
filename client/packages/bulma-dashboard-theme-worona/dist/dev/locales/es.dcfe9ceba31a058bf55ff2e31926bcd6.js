@@ -1,6 +1,6 @@
 webpackJsonpbulma_dashboard_theme([2],{
 
-/***/ 440:
+/***/ 340:
 /***/ function(module, exports) {
 
 	module.exports = {

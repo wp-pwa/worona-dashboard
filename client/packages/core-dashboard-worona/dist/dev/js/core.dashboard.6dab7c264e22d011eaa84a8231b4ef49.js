@@ -73,7 +73,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "" + ({"1":"locales/en","2":"locales/es"}[chunkId]||chunkId) + "." + {"1":"b8c7b7705d6a70fdc2a22217434d20de","2":"639204e4747bba18558ba4d6353805ba"}[chunkId] + ".js";
+/******/ 			script.src = __webpack_require__.p + "" + ({"1":"locales/en","2":"locales/es"}[chunkId]||chunkId) + "." + {"1":"0eab3406c28b92ba6c485d0dba018896","2":"c988e4e6c716e56e3a771da9d82fb248"}[chunkId] + ".js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -147,43 +147,41 @@
 
 	var build = _interopRequireWildcard(_buildDashboardExtensionWorona);
 
-	var _routingDashboardExtensionWorona = __webpack_require__(286);
+	var _routerDashboardExtensionWorona = __webpack_require__(303);
 
-	var routing = _interopRequireWildcard(_routingDashboardExtensionWorona);
+	var router = _interopRequireWildcard(_routerDashboardExtensionWorona);
 
 	var _react = __webpack_require__(11);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(292);
+	var _reactDom = __webpack_require__(312);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactRouterRedux = __webpack_require__(245);
+	var _reactRedux = __webpack_require__(306);
 
-	var _reactRedux = __webpack_require__(289);
-
-	var _reactRouter = __webpack_require__(242);
-
-	var _reactI18next = __webpack_require__(293);
+	var _reactI18next = __webpack_require__(313);
 
 	var _store = __webpack_require__(243);
 
-	var _sagas = __webpack_require__(246);
+	var _sagas = __webpack_require__(261);
 
 	var _sagas2 = _interopRequireDefault(_sagas);
 
-	var _routes = __webpack_require__(288);
+	var _routes = __webpack_require__(305);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _i18n = __webpack_require__(277);
+	var _i18n = __webpack_require__(294);
 
 	var _i18n2 = _interopRequireDefault(_i18n);
 
-	var _fastclick = __webpack_require__(294);
+	var _fastclick = __webpack_require__(314);
 
 	var _fastclick2 = _interopRequireDefault(_fastclick);
+
+	var _reduxRouter = __webpack_require__(245);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -200,12 +198,10 @@
 
 	(0, _woronaDeps.packageDownloaded)(build);
 	(0, _woronaDeps.packageDownloaded)(loading);
-	(0, _woronaDeps.packageDownloaded)(routing);
+	(0, _woronaDeps.packageDownloaded)(router);
 	(0, _woronaDeps.packageActivated)('build-dashboard-extension-worona');
 	(0, _woronaDeps.packageActivated)('loading-dashboard-theme-worona');
-	(0, _woronaDeps.packageActivated)('routing-dashboard-extension-worona');
-
-	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, _store.store);
+	(0, _woronaDeps.packageActivated)('router-dashboard-extension-worona');
 
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -225,7 +221,7 @@
 	        _react2.default.createElement(
 	          _reactRedux.Provider,
 	          { store: _store.store },
-	          _react2.default.createElement(_reactRouter.Router, { history: history, routes: (0, _routes2.default)(_store.store) })
+	          _react2.default.createElement(_reduxRouter.ReduxRouter, { routes: (0, _routes2.default)(_store.store) })
 	        )
 	      );
 	    }
@@ -918,22 +914,22 @@
 
 	var store = _interopRequireWildcard(_store);
 
-	var _sagas = __webpack_require__(246);
+	var _sagas = __webpack_require__(261);
 
 	var sagas = _interopRequireWildcard(_sagas);
 
-	var _selectors = __webpack_require__(260);
+	var _selectors = __webpack_require__(275);
 
 	var selectors = _interopRequireWildcard(_selectors);
 
-	var _i18n = __webpack_require__(277);
+	var _i18n = __webpack_require__(294);
 
 	var i18n = _interopRequireWildcard(_i18n);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	var locales = function locales(lang) {
-	  return __webpack_require__(281)("./" + lang + '.json');
+	  return __webpack_require__(298)("./" + lang + '.json');
 	};
 
 	var name = exports.name = 'build-dashboard-extension-worona';
@@ -9496,20 +9492,24 @@
 
 	var _reduxSaga2 = _interopRequireDefault(_reduxSaga);
 
-	var _reactRouterRedux = __webpack_require__(245);
+	var _reduxRouter = __webpack_require__(245);
 
 	var _reducers = __webpack_require__(24);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
+	var _history = __webpack_require__(246);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var sagaMiddleware = (0, _reduxSaga2.default)();
 
-	var reducers = { build: (0, _reducers2.default)(), routing: _reactRouterRedux.routerReducer };
+	var reducers = { build: (0, _reducers2.default)(), router: _reduxRouter.routerStateReducer };
 	var sagas = {};
 
-	var store = exports.store = (0, _redux.createStore)((0, _redux.combineReducers)(reducers), (0, _redux.compose)((0, _redux.applyMiddleware)(sagaMiddleware), typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : function (f) {
+	var store = exports.store = (0, _redux.createStore)((0, _redux.combineReducers)(reducers), (0, _redux.compose)((0, _redux.applyMiddleware)(sagaMiddleware), (0, _reduxRouter.reduxReactRouter)({
+	  createHistory: _history.createHistory
+	}), typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : function (f) {
 	  return f;
 	}));
 	exports.default = store;
@@ -9549,10 +9549,370 @@
 /* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = (__webpack_require__(6))("25862ca0b7466ef79512dbe6e0fb15e2");
+	module.exports = (__webpack_require__(6))("f00e98360994d69eeee03f82e895b64b");
 
 /***/ },
 /* 246 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _deprecate = __webpack_require__(247);
+
+	var _deprecate2 = _interopRequireDefault(_deprecate);
+
+	var _createLocation2 = __webpack_require__(248);
+
+	var _createLocation3 = _interopRequireDefault(_createLocation2);
+
+	var _createBrowserHistory = __webpack_require__(249);
+
+	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
+
+	exports.createHistory = _createBrowserHistory2['default'];
+
+	var _createHashHistory2 = __webpack_require__(250);
+
+	var _createHashHistory3 = _interopRequireDefault(_createHashHistory2);
+
+	exports.createHashHistory = _createHashHistory3['default'];
+
+	var _createMemoryHistory2 = __webpack_require__(251);
+
+	var _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);
+
+	exports.createMemoryHistory = _createMemoryHistory3['default'];
+
+	var _useBasename2 = __webpack_require__(252);
+
+	var _useBasename3 = _interopRequireDefault(_useBasename2);
+
+	exports.useBasename = _useBasename3['default'];
+
+	var _useBeforeUnload2 = __webpack_require__(253);
+
+	var _useBeforeUnload3 = _interopRequireDefault(_useBeforeUnload2);
+
+	exports.useBeforeUnload = _useBeforeUnload3['default'];
+
+	var _useQueries2 = __webpack_require__(257);
+
+	var _useQueries3 = _interopRequireDefault(_useQueries2);
+
+	exports.useQueries = _useQueries3['default'];
+
+	var _Actions2 = __webpack_require__(258);
+
+	var _Actions3 = _interopRequireDefault(_Actions2);
+
+	exports.Actions = _Actions3['default'];
+
+	// deprecated
+
+	var _enableBeforeUnload2 = __webpack_require__(259);
+
+	var _enableBeforeUnload3 = _interopRequireDefault(_enableBeforeUnload2);
+
+	exports.enableBeforeUnload = _enableBeforeUnload3['default'];
+
+	var _enableQueries2 = __webpack_require__(260);
+
+	var _enableQueries3 = _interopRequireDefault(_enableQueries2);
+
+	exports.enableQueries = _enableQueries3['default'];
+	var createLocation = _deprecate2['default'](_createLocation3['default'], 'Using createLocation without a history instance is deprecated; please use history.createLocation instead');
+	exports.createLocation = createLocation;
+
+/***/ },
+/* 247 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(6))("1f8848b5680208d2ea135960d217c7cd");
+
+/***/ },
+/* 248 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(6))("7d53d107f731ca2b7f7f8917620142a8");
+
+/***/ },
+/* 249 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(6))("a153e9e57932fe0634e0ee70633d90a0");
+
+/***/ },
+/* 250 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(6))("9fb9dd380c1fb82936ffd7d8af9a9b25");
+
+/***/ },
+/* 251 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(6))("ebf633ddb74641270b94ff27c1a7d55c");
+
+/***/ },
+/* 252 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(6))("b7f1ddb8e8405bf06ee42c7792d55472");
+
+/***/ },
+/* 253 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _warning = __webpack_require__(254);
+
+	var _warning2 = _interopRequireDefault(_warning);
+
+	var _ExecutionEnvironment = __webpack_require__(255);
+
+	var _DOMUtils = __webpack_require__(256);
+
+	var _deprecate = __webpack_require__(247);
+
+	var _deprecate2 = _interopRequireDefault(_deprecate);
+
+	function startBeforeUnloadListener(getBeforeUnloadPromptMessage) {
+	  function listener(event) {
+	    var message = getBeforeUnloadPromptMessage();
+
+	    if (typeof message === 'string') {
+	      (event || window.event).returnValue = message;
+	      return message;
+	    }
+	  }
+
+	  _DOMUtils.addEventListener(window, 'beforeunload', listener);
+
+	  return function () {
+	    _DOMUtils.removeEventListener(window, 'beforeunload', listener);
+	  };
+	}
+
+	/**
+	 * Returns a new createHistory function that can be used to create
+	 * history objects that know how to use the beforeunload event in web
+	 * browsers to cancel navigation.
+	 */
+	function useBeforeUnload(createHistory) {
+	  return function (options) {
+	    var history = createHistory(options);
+
+	    var stopBeforeUnloadListener = undefined;
+	    var beforeUnloadHooks = [];
+
+	    function getBeforeUnloadPromptMessage() {
+	      var message = undefined;
+
+	      for (var i = 0, len = beforeUnloadHooks.length; message == null && i < len; ++i) {
+	        message = beforeUnloadHooks[i].call();
+	      }return message;
+	    }
+
+	    function listenBeforeUnload(hook) {
+	      beforeUnloadHooks.push(hook);
+
+	      if (beforeUnloadHooks.length === 1) {
+	        if (_ExecutionEnvironment.canUseDOM) {
+	          stopBeforeUnloadListener = startBeforeUnloadListener(getBeforeUnloadPromptMessage);
+	        } else {
+	           true ? _warning2['default'](false, 'listenBeforeUnload only works in DOM environments') : undefined;
+	        }
+	      }
+
+	      return function () {
+	        beforeUnloadHooks = beforeUnloadHooks.filter(function (item) {
+	          return item !== hook;
+	        });
+
+	        if (beforeUnloadHooks.length === 0 && stopBeforeUnloadListener) {
+	          stopBeforeUnloadListener();
+	          stopBeforeUnloadListener = null;
+	        }
+	      };
+	    }
+
+	    // deprecated
+	    function registerBeforeUnloadHook(hook) {
+	      if (_ExecutionEnvironment.canUseDOM && beforeUnloadHooks.indexOf(hook) === -1) {
+	        beforeUnloadHooks.push(hook);
+
+	        if (beforeUnloadHooks.length === 1) stopBeforeUnloadListener = startBeforeUnloadListener(getBeforeUnloadPromptMessage);
+	      }
+	    }
+
+	    // deprecated
+	    function unregisterBeforeUnloadHook(hook) {
+	      if (beforeUnloadHooks.length > 0) {
+	        beforeUnloadHooks = beforeUnloadHooks.filter(function (item) {
+	          return item !== hook;
+	        });
+
+	        if (beforeUnloadHooks.length === 0) stopBeforeUnloadListener();
+	      }
+	    }
+
+	    return _extends({}, history, {
+	      listenBeforeUnload: listenBeforeUnload,
+
+	      registerBeforeUnloadHook: _deprecate2['default'](registerBeforeUnloadHook, 'registerBeforeUnloadHook is deprecated; use listenBeforeUnload instead'),
+	      unregisterBeforeUnloadHook: _deprecate2['default'](unregisterBeforeUnloadHook, 'unregisterBeforeUnloadHook is deprecated; use the callback returned from listenBeforeUnload instead')
+	    });
+	  };
+	}
+
+	exports['default'] = useBeforeUnload;
+	module.exports = exports['default'];
+
+/***/ },
+/* 254 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+
+	'use strict';
+
+	/**
+	 * Similar to invariant but only logs a warning if the condition is not met.
+	 * This can be used to log issues in development environments in critical
+	 * paths. Removing the logging code for production environments will keep the
+	 * same logic and follow the same code paths.
+	 */
+
+	var warning = function() {};
+
+	if (true) {
+	  warning = function(condition, format, args) {
+	    var len = arguments.length;
+	    args = new Array(len > 2 ? len - 2 : 0);
+	    for (var key = 2; key < len; key++) {
+	      args[key - 2] = arguments[key];
+	    }
+	    if (format === undefined) {
+	      throw new Error(
+	        '`warning(condition, format, ...args)` requires a warning ' +
+	        'message argument'
+	      );
+	    }
+
+	    if (format.length < 10 || (/^[s\W]*$/).test(format)) {
+	      throw new Error(
+	        'The warning format should be able to uniquely identify this ' +
+	        'warning. Please, use a more descriptive format than: ' + format
+	      );
+	    }
+
+	    if (!condition) {
+	      var argIndex = 0;
+	      var message = 'Warning: ' +
+	        format.replace(/%s/g, function() {
+	          return args[argIndex++];
+	        });
+	      if (typeof console !== 'undefined') {
+	        console.error(message);
+	      }
+	      try {
+	        // This error was thrown as a convenience so that you can use this stack
+	        // to find the callsite that caused this warning to fire.
+	        throw new Error(message);
+	      } catch(x) {}
+	    }
+	  };
+	}
+
+	module.exports = warning;
+
+
+/***/ },
+/* 255 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(6))("bb1df15aec49470c9c53c0274354547e");
+
+/***/ },
+/* 256 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(6))("774d5ce376ca5b5236795730341fca4c");
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(6))("1fe276b788e6064adc1c3b484cbd862c");
+
+/***/ },
+/* 258 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(6))("69033e596916983610ec27a43deb1998");
+
+/***/ },
+/* 259 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _deprecate = __webpack_require__(247);
+
+	var _deprecate2 = _interopRequireDefault(_deprecate);
+
+	var _useBeforeUnload = __webpack_require__(253);
+
+	var _useBeforeUnload2 = _interopRequireDefault(_useBeforeUnload);
+
+	exports['default'] = _deprecate2['default'](_useBeforeUnload2['default'], 'enableBeforeUnload is deprecated, use useBeforeUnload instead');
+	module.exports = exports['default'];
+
+/***/ },
+/* 260 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _deprecate = __webpack_require__(247);
+
+	var _deprecate2 = _interopRequireDefault(_deprecate);
+
+	var _useQueries = __webpack_require__(257);
+
+	var _useQueries2 = _interopRequireDefault(_useQueries);
+
+	exports['default'] = _deprecate2['default'](_useQueries2['default'], 'enableQueries is deprecated, use useQueries instead');
+	module.exports = exports['default'];
+
+/***/ },
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9561,7 +9921,7 @@
 	  value: true
 	});
 
-	var _toArray2 = __webpack_require__(247);
+	var _toArray2 = __webpack_require__(262);
 
 	var _toArray3 = _interopRequireDefault(_toArray2);
 
@@ -9569,15 +9929,17 @@
 	exports.packageActivationSaga = packageActivationSaga;
 	exports.default = sagas;
 
-	var _superagent = __webpack_require__(256);
+	var _superagent = __webpack_require__(271);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
-	var _normalizr = __webpack_require__(257);
+	var _woronaDeps = __webpack_require__(7);
+
+	var _normalizr = __webpack_require__(272);
 
 	var _reduxSaga = __webpack_require__(244);
 
-	var _effects = __webpack_require__(258);
+	var _effects = __webpack_require__(273);
 
 	var _actions = __webpack_require__(21);
 
@@ -9587,27 +9949,31 @@
 
 	var types = _interopRequireWildcard(_types);
 
-	var _schemas = __webpack_require__(259);
+	var _schemas = __webpack_require__(274);
 
 	var schemas = _interopRequireWildcard(_schemas);
 
-	var _selectors = __webpack_require__(260);
+	var _selectors = __webpack_require__(275);
 
 	var selectors = _interopRequireWildcard(_selectors);
 
-	var _download = __webpack_require__(265);
+	var _download = __webpack_require__(280);
 
 	var _download2 = _interopRequireDefault(_download);
 
-	var _load = __webpack_require__(272);
+	var _load = __webpack_require__(288);
 
 	var _load2 = _interopRequireDefault(_load);
 
-	var _assets = __webpack_require__(274);
+	var _assets = __webpack_require__(290);
 
 	var _assets2 = _interopRequireDefault(_assets);
 
-	var _waitFor = __webpack_require__(273);
+	var _waitFor = __webpack_require__(289);
+
+	var _packages = __webpack_require__(293);
+
+	var _packages2 = _interopRequireDefault(_packages);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -9629,41 +9995,55 @@
 
 	        case 2:
 	          _context.prev = 2;
-	          _context.next = 5;
+
+	          if (!_woronaDeps.isRemote) {
+	            _context.next = 9;
+	            break;
+	          }
+
+	          _context.next = 6;
 	          return (0, _effects.call)(_superagent2.default.get, 'https://cdn.worona.io/api/v1/settings/core/dashboard');
 
-	        case 5:
-	          res = _context.sent;
+	        case 6:
+	          _context.t0 = _context.sent;
+	          _context.next = 10;
+	          break;
+
+	        case 9:
+	          _context.t0 = _packages2.default;
+
+	        case 10:
+	          res = _context.t0;
 
 	          // Normalize the result using normalizr.
 	          pkgs = (0, _normalizr.normalize)(res.body, schemas.arrayOfPackages).entities.packages;
 	          // Inform that the API call was successful.
 
-	          _context.next = 9;
+	          _context.next = 14;
 	          return (0, _effects.put)(actions.corePackagesSucceed({ pkgs: pkgs }));
 
-	        case 9:
-	          _context.next = 11;
+	        case 14:
+	          _context.next = 16;
 	          return (0, _toArray3.default)(pkgs).map(function (pkg) {
 	            return (0, _effects.put)(actions.packageActivationRequested({ pkg: pkg }));
 	          });
 
-	        case 11:
-	          _context.next = 17;
+	        case 16:
+	          _context.next = 22;
 	          break;
 
-	        case 13:
-	          _context.prev = 13;
-	          _context.t0 = _context['catch'](2);
-	          _context.next = 17;
-	          return (0, _effects.put)(actions.corePackagesFailed({ error: _context.t0.message }));
+	        case 18:
+	          _context.prev = 18;
+	          _context.t1 = _context['catch'](2);
+	          _context.next = 22;
+	          return (0, _effects.put)(actions.corePackagesFailed({ error: _context.t1.message }));
 
-	        case 17:
+	        case 22:
 	        case 'end':
 	          return _context.stop();
 	      }
 	    }
-	  }, _marked[0], this, [[2, 13]]);
+	  }, _marked[0], this, [[2, 18]]);
 	}
 
 	function packageActivationSaga(_ref) {
@@ -9754,19 +10134,19 @@
 	}
 
 /***/ },
-/* 247 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Symbol = __webpack_require__(168),
 	    copyArray = __webpack_require__(72),
 	    getTag = __webpack_require__(149),
 	    isArrayLike = __webpack_require__(105),
-	    isString = __webpack_require__(248),
-	    iteratorToArray = __webpack_require__(249),
+	    isString = __webpack_require__(263),
+	    iteratorToArray = __webpack_require__(264),
 	    mapToArray = __webpack_require__(162),
 	    setToArray = __webpack_require__(166),
-	    stringToArray = __webpack_require__(250),
-	    values = __webpack_require__(254);
+	    stringToArray = __webpack_require__(265),
+	    values = __webpack_require__(269);
 
 	/** `Object#toString` result references. */
 	var mapTag = '[object Map]',
@@ -9818,7 +10198,7 @@
 
 
 /***/ },
-/* 248 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isArray = __webpack_require__(69),
@@ -9863,7 +10243,7 @@
 
 
 /***/ },
-/* 249 */
+/* 264 */
 /***/ function(module, exports) {
 
 	/**
@@ -9887,12 +10267,12 @@
 
 
 /***/ },
-/* 250 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var asciiToArray = __webpack_require__(251),
-	    hasUnicode = __webpack_require__(252),
-	    unicodeToArray = __webpack_require__(253);
+	var asciiToArray = __webpack_require__(266),
+	    hasUnicode = __webpack_require__(267),
+	    unicodeToArray = __webpack_require__(268);
 
 	/**
 	 * Converts `string` to an array.
@@ -9911,7 +10291,7 @@
 
 
 /***/ },
-/* 251 */
+/* 266 */
 /***/ function(module, exports) {
 
 	/**
@@ -9929,7 +10309,7 @@
 
 
 /***/ },
-/* 252 */
+/* 267 */
 /***/ function(module, exports) {
 
 	/** Used to compose unicode character classes. */
@@ -9959,7 +10339,7 @@
 
 
 /***/ },
-/* 253 */
+/* 268 */
 /***/ function(module, exports) {
 
 	/** Used to compose unicode character classes. */
@@ -10003,10 +10383,10 @@
 
 
 /***/ },
-/* 254 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseValues = __webpack_require__(255),
+	var baseValues = __webpack_require__(270),
 	    keys = __webpack_require__(100);
 
 	/**
@@ -10043,7 +10423,7 @@
 
 
 /***/ },
-/* 255 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var arrayMap = __webpack_require__(220);
@@ -10068,25 +10448,25 @@
 
 
 /***/ },
-/* 256 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(6))("6c17280eadd6cd31a69c0c65741ef9b4");
 
 /***/ },
-/* 257 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(6))("258a0940351b8aedcfe4caa4c170b9fc");
 
 /***/ },
-/* 258 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(6))("9538dc1f1f3ffc7eff656785a3b0e00e");
 
 /***/ },
-/* 259 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10096,13 +10476,13 @@
 	});
 	exports.arrayOfPackages = exports.packages = undefined;
 
-	var _normalizr = __webpack_require__(257);
+	var _normalizr = __webpack_require__(272);
 
 	var packages = exports.packages = new _normalizr.Schema('packages', { idAttribute: 'name' });
 	var arrayOfPackages = exports.arrayOfPackages = (0, _normalizr.arrayOf)(packages);
 
 /***/ },
-/* 260 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10112,15 +10492,15 @@
 	});
 	exports.getCssAssets = exports.getThemeName = exports.getAssets = exports.activatedPackages = exports.downloadedPackages = exports.packageList = undefined;
 
-	var _map2 = __webpack_require__(261);
+	var _map2 = __webpack_require__(276);
 
 	var _map3 = _interopRequireDefault(_map2);
 
-	var _flatMap2 = __webpack_require__(263);
+	var _flatMap2 = __webpack_require__(278);
 
 	var _flatMap3 = _interopRequireDefault(_flatMap2);
 
-	var _reselect = __webpack_require__(264);
+	var _reselect = __webpack_require__(279);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10149,12 +10529,12 @@
 	});
 
 /***/ },
-/* 261 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var arrayMap = __webpack_require__(220),
 	    baseIteratee = __webpack_require__(177),
-	    baseMap = __webpack_require__(262),
+	    baseMap = __webpack_require__(277),
 	    isArray = __webpack_require__(69);
 
 	/**
@@ -10208,7 +10588,7 @@
 
 
 /***/ },
-/* 262 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseEach = __webpack_require__(230),
@@ -10236,11 +10616,11 @@
 
 
 /***/ },
-/* 263 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseFlatten = __webpack_require__(213),
-	    map = __webpack_require__(261);
+	    map = __webpack_require__(276);
 
 	/**
 	 * Creates a flattened array of values by running each element in `collection`
@@ -10272,13 +10652,13 @@
 
 
 /***/ },
-/* 264 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(6))("febe5374b4779e3d8170ecd4f4641bf2");
 
 /***/ },
-/* 265 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10292,7 +10672,7 @@
 
 	var _woronaDeps = __webpack_require__(7);
 
-	var _effects = __webpack_require__(258);
+	var _effects = __webpack_require__(273);
 
 	var _update = __webpack_require__(235);
 
@@ -10321,7 +10701,7 @@
 	var requireLocalPackage = exports.requireLocalPackage = function requireLocalPackage(pkg) {
 	  return new Promise(function (resolve) {
 	    var pkgName = /(.+)-worona/.exec(pkg.name)[1];
-	    var req = __webpack_require__(266)("./" + pkgName + '-worona/src/index.js');
+	    var req = __webpack_require__(281)("./" + pkgName + '-worona/src/index.js');
 	    req(function (module) {
 	      return resolve(module);
 	    });
@@ -10399,16 +10779,17 @@
 	}
 
 /***/ },
-/* 266 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./accounts-dashboard-extension-worona/src/index.js": 267,
-		"./bulma-dashboard-theme-worona/src/index.js": 268,
-		"./connection-dashboard-extension-worona/src/index.js": 269,
+		"./accounts-dashboard-extension-worona/src/index.js": 282,
+		"./bulma-dashboard-theme-worona/src/index.js": 283,
+		"./connection-dashboard-extension-worona/src/index.js": 284,
 		"./core-dashboard-worona/src/index.js": 4,
-		"./sites-dashboard-extension-worona/src/index.js": 270,
-		"./subscriptions-dashboard-extension-worona/src/index.js": 271
+		"./settings-dashboard-extension-worona/src/index.js": 285,
+		"./sites-dashboard-extension-worona/src/index.js": 286,
+		"./subscriptions-dashboard-extension-worona/src/index.js": 287
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -10421,41 +10802,47 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 266;
+	webpackContext.id = 281;
 
 
 /***/ },
-/* 267 */
+/* 282 */
 /***/ function(module, exports) {
 
 	
 
 /***/ },
-/* 268 */
+/* 283 */
 /***/ function(module, exports) {
 
 	
 
 /***/ },
-/* 269 */
+/* 284 */
 /***/ function(module, exports) {
 
 	
 
 /***/ },
-/* 270 */
+/* 285 */
 /***/ function(module, exports) {
 
 	
 
 /***/ },
-/* 271 */
+/* 286 */
 /***/ function(module, exports) {
 
 	
 
 /***/ },
-/* 272 */
+/* 287 */
+/***/ function(module, exports) {
+
+	
+
+/***/ },
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10471,7 +10858,7 @@
 
 	var _woronaDeps = __webpack_require__(7);
 
-	var _effects = __webpack_require__(258);
+	var _effects = __webpack_require__(273);
 
 	var _reduxSaga = __webpack_require__(244);
 
@@ -10485,7 +10872,7 @@
 
 	var actions = _interopRequireWildcard(_actions);
 
-	var _waitFor = __webpack_require__(273);
+	var _waitFor = __webpack_require__(289);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -10661,7 +11048,7 @@
 	}
 
 /***/ },
-/* 273 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10671,7 +11058,7 @@
 	});
 	exports.waitFor = waitFor;
 
-	var _effects = __webpack_require__(258);
+	var _effects = __webpack_require__(273);
 
 	var _marked = [waitFor].map(regeneratorRuntime.mark); /* eslint-disable no-constant-condition */
 
@@ -10731,7 +11118,7 @@
 	}
 
 /***/ },
-/* 274 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10741,7 +11128,7 @@
 	});
 	exports.assetsLoadSaga = undefined;
 
-	var _reduce2 = __webpack_require__(275);
+	var _reduce2 = __webpack_require__(291);
 
 	var _reduce3 = _interopRequireDefault(_reduce2);
 
@@ -10749,7 +11136,7 @@
 
 	var _reduxSaga = __webpack_require__(244);
 
-	var _effects = __webpack_require__(258);
+	var _effects = __webpack_require__(273);
 
 	var _types = __webpack_require__(22);
 
@@ -10759,7 +11146,7 @@
 
 	var actions = _interopRequireWildcard(_actions);
 
-	var _selectors = __webpack_require__(260);
+	var _selectors = __webpack_require__(275);
 
 	var selectors = _interopRequireWildcard(_selectors);
 
@@ -10837,13 +11224,13 @@
 	}
 
 /***/ },
-/* 275 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var arrayReduce = __webpack_require__(161),
 	    baseEach = __webpack_require__(230),
 	    baseIteratee = __webpack_require__(177),
-	    baseReduce = __webpack_require__(276),
+	    baseReduce = __webpack_require__(292),
 	    isArray = __webpack_require__(69);
 
 	/**
@@ -10894,7 +11281,7 @@
 
 
 /***/ },
-/* 276 */
+/* 292 */
 /***/ function(module, exports) {
 
 	/**
@@ -10923,7 +11310,56 @@
 
 
 /***/ },
-/* 277 */
+/* 293 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  body: [{
+	    namespace: 'accounts',
+	    name: 'accounts-dashboard-extension-worona',
+	    dependencies: ['build', 'connection'],
+	    type: 'extension',
+	    prod: { assets: {} }
+	  }, {
+	    namespace: 'connection',
+	    name: 'connection-dashboard-extension-worona',
+	    dependencies: [],
+	    type: 'extension',
+	    prod: { assets: {} }
+	  }, {
+	    namespace: 'sites',
+	    name: 'sites-dashboard-extension-worona',
+	    dependencies: ['build', 'connection', 'subscriptions'],
+	    type: 'extension',
+	    prod: { assets: {} }
+	  }, {
+	    namespace: 'subscriptions',
+	    name: 'subscriptions-dashboard-extension-worona',
+	    dependencies: ['connection', 'accounts'],
+	    type: 'extension',
+	    prod: { assets: {} }
+	  }, {
+	    namespace: 'settings',
+	    name: 'settings-dashboard-extension-worona',
+	    dependencies: ['subscriptions'],
+	    type: 'extension',
+	    prod: { assets: {} }
+	  }, {
+	    namespace: 'theme',
+	    name: 'bulma-dashboard-theme-worona',
+	    dependencies: ['build', 'accounts', 'sites'],
+	    type: 'theme',
+	    prod: { assets: {} }
+	  }]
+	};
+
+/***/ },
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10932,7 +11368,7 @@
 	  value: true
 	});
 
-	var _drop4 = __webpack_require__(278);
+	var _drop4 = __webpack_require__(295);
 
 	var _drop5 = _interopRequireDefault(_drop4);
 
@@ -10940,11 +11376,11 @@
 
 	var _woronaDeps = __webpack_require__(7);
 
-	var _i18next = __webpack_require__(279);
+	var _i18next = __webpack_require__(296);
 
 	var _i18next2 = _interopRequireDefault(_i18next);
 
-	var _i18nextXhrBackend = __webpack_require__(280);
+	var _i18nextXhrBackend = __webpack_require__(297);
 
 	var _i18nextXhrBackend2 = _interopRequireDefault(_i18nextXhrBackend);
 
@@ -10994,7 +11430,7 @@
 	if (typeof window !== 'undefined') window.i18next = _i18next2.default;
 
 /***/ },
-/* 278 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseSlice = __webpack_require__(218),
@@ -11038,24 +11474,24 @@
 
 
 /***/ },
-/* 279 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(6))("1022b2ed07597005b7dc7f210afa3a00");
 
 /***/ },
-/* 280 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(6))("04acf3a26c637eb66d836083a787e1e2");
 
 /***/ },
-/* 281 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./en.json": 282,
-		"./es.json": 284
+		"./en.json": 299,
+		"./es.json": 301
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -11068,11 +11504,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 281;
+	webpackContext.id = 298;
 
 
 /***/ },
-/* 282 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var cbs = [], 
@@ -11082,7 +11518,7 @@
 		else cb(data);
 	}
 	__webpack_require__.e/* nsure */(1, function(require) {
-		data = __webpack_require__(283);
+		data = __webpack_require__(300);
 		var callbacks = cbs;
 		cbs = null;
 		for(var i = 0, l = callbacks.length; i < l; i++) {
@@ -11091,8 +11527,8 @@
 	});
 
 /***/ },
-/* 283 */,
-/* 284 */
+/* 300 */,
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var cbs = [], 
@@ -11102,7 +11538,7 @@
 		else cb(data);
 	}
 	__webpack_require__.e/* nsure */(2, function(require) {
-		data = __webpack_require__(285);
+		data = __webpack_require__(302);
 		var callbacks = cbs;
 		cbs = null;
 		for(var i = 0, l = callbacks.length; i < l; i++) {
@@ -11111,8 +11547,8 @@
 	});
 
 /***/ },
-/* 285 */,
-/* 286 */
+/* 302 */,
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11120,26 +11556,41 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.reducers = exports.routes = exports.namespace = exports.name = undefined;
+	exports.selectors = exports.types = exports.actions = exports.reducers = exports.routes = exports.namespace = exports.name = undefined;
 
-	var _reducers = __webpack_require__(287);
+	var _reducers = __webpack_require__(304);
 
 	var reducers = _interopRequireWildcard(_reducers);
 
-	var _routes = __webpack_require__(288);
+	var _routes = __webpack_require__(305);
 
 	var routes = _interopRequireWildcard(_routes);
 
+	var _actions = __webpack_require__(309);
+
+	var actions = _interopRequireWildcard(_actions);
+
+	var _types = __webpack_require__(310);
+
+	var types = _interopRequireWildcard(_types);
+
+	var _selectors = __webpack_require__(311);
+
+	var selectors = _interopRequireWildcard(_selectors);
+
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-	var name = exports.name = 'routing-dashboard-extension-worona';
-	var namespace = exports.namespace = 'routing';
+	var name = exports.name = 'router-dashboard-extension-worona';
+	var namespace = exports.namespace = 'router';
 
 	exports.routes = routes;
 	exports.reducers = reducers;
+	exports.actions = actions;
+	exports.types = types;
+	exports.selectors = selectors;
 
 /***/ },
-/* 287 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11150,14 +11601,14 @@
 
 	var _redux = __webpack_require__(25);
 
-	var _reactRouterRedux = __webpack_require__(245);
+	var _reduxRouter = __webpack_require__(245);
 
 	exports.default = (0, _redux.combineReducers)({
-	  routing: _reactRouterRedux.routerReducer
+	  router: _reduxRouter.routerStateReducer
 	});
 
 /***/ },
-/* 288 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11175,15 +11626,15 @@
 
 	var _woronaDeps = __webpack_require__(7);
 
-	var _reactRedux = __webpack_require__(289);
+	var _reactRedux = __webpack_require__(306);
 
 	var _reactRouter = __webpack_require__(242);
 
-	var _CssLoader = __webpack_require__(290);
+	var _CssLoader = __webpack_require__(307);
 
 	var _CssLoader2 = _interopRequireDefault(_CssLoader);
 
-	var _dependencies = __webpack_require__(291);
+	var _dependencies = __webpack_require__(308);
 
 	var deps = _interopRequireWildcard(_dependencies);
 
@@ -11261,7 +11712,12 @@
 	var requireAuth = function requireAuth(store) {
 	  return function (nextState, replace) {
 	    var accounts = store.getState().accounts;
-	    if (!accounts || !accounts.isLoggedIn) replace({ pathname: '/login' });
+	    if (!accounts || !accounts.isLoggedIn) {
+	      replace({
+	        pathname: '/login',
+	        query: { next: nextState.location.pathname }
+	      });
+	    }
 	  };
 	};
 
@@ -11276,7 +11732,7 @@
 	  return _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: ThemeLoader },
-	    _react2.default.createElement(_reactRouter.IndexRedirect, { to: 'login' }),
+	    _react2.default.createElement(_reactRouter.IndexRedirect, { to: '/login' }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'login', component: Entry, wrapped: 'Login', onEnter: dontRequireAuth(store) }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'register', component: Entry, wrapped: 'Register', onEnter: dontRequireAuth(store) }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'add-site', component: Entry, wrapped: 'AddSite',
@@ -11284,24 +11740,22 @@
 	    }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'profile', component: Entry, wrapped: 'Profile', onEnter: requireAuth(store) }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'sites', component: Entry, wrapped: 'Sites', onEnter: requireAuth(store) }),
-	    _react2.default.createElement(
-	      _reactRouter.Route,
-	      { path: 'site/:siteId', component: Entry, wrapped: 'SiteHome', onEnter: requireAuth(store) },
-	      _react2.default.createElement(_reactRouter.IndexRoute, { component: Entry, wrapped: 'SitesEntry' })
-	    )
+	    _react2.default.createElement(_reactRouter.Route, { path: '/site/:siteId/:service/:namespace', component: Entry, wrapped: 'SiteHome',
+	      onEnter: requireAuth(store)
+	    })
 	  );
 	};
 
 	exports.default = routes;
 
 /***/ },
-/* 289 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(6))("4794000db35a6eb39a997a945916e9d1");
 
 /***/ },
-/* 290 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11319,9 +11773,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(289);
+	var _reactRedux = __webpack_require__(306);
 
-	var _dependencies = __webpack_require__(291);
+	var _dependencies = __webpack_require__(308);
 
 	var deps = _interopRequireWildcard(_dependencies);
 
@@ -11410,7 +11864,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(CssLoader);
 
 /***/ },
-/* 291 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11438,19 +11892,66 @@
 	};
 
 /***/ },
-/* 292 */
+/* 309 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.goForward = exports.goBack = exports.go = exports.replace = exports.push = undefined;
+
+	var _reduxRouter = __webpack_require__(245);
+
+	var actions = _interopRequireWildcard(_reduxRouter);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	var push = exports.push = actions.push;
+	var replace = exports.replace = actions.replace;
+	var go = exports.go = actions.go;
+	var goBack = exports.goBack = actions.goBack;
+	var goForward = exports.goForward = actions.goForward;
+
+/***/ },
+/* 310 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var ROUTER_DID_CHANGE = exports.ROUTER_DID_CHANGE = '@@reduxReactRouter/routerDidChange';
+
+/***/ },
+/* 311 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var getSiteId = exports.getSiteId = function getSiteId(state) {
+	  return state.router.params.siteId;
+	};
+
+/***/ },
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(6))("5fdcf1aea784583ca083db0529872971");
 
 /***/ },
-/* 293 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(6))("33ac667b0d4bcb6940f0afa93d1b066b");
 
 /***/ },
-/* 294 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(6))("73636c3d4ba7ca0d921b703acd4a6c95");

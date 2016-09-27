@@ -1,6 +1,6 @@
 {
   "name": "settings-dashboard-extension-worona",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Extension for managing Worona settings.",
   "main": "src/index.js",
   "scripts": {

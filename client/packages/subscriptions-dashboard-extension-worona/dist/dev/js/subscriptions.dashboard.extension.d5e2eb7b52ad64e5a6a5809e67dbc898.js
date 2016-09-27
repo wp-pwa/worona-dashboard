@@ -322,7 +322,7 @@ module.exports =
 
 	          case 6:
 	            _context2.next = 8;
-	            return (0, _effects.put)(actions.subscriptionStarted());
+	            return (0, _effects.put)(actions.subscriptionStarted(selectedCollection));
 
 	          case 8:
 	            _context2.next = 10;
