@@ -56,7 +56,7 @@
     "redux-saga": "^0.11.0",
     "reselect": "^2.5.1",
     "superagent": "^2.2.0",
-    "worona-deps": "^1.6.1"
+    "worona-deps": "^1.7.0"
   },
   "devDependencies": {
     "ava": "^0.15.1",
