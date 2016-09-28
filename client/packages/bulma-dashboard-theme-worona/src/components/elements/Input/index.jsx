@@ -7,7 +7,7 @@ const Input = ({ input, meta: { touched, error }, size, label, icon, placeholder
   <div className={styles.input}>
     {label && <label className="label">{label}</label>}
     <div className="control">
-      <p className={cx('control', 'is-expanded', icon && 'has-icon')}>
+      <p className={cx('control', icon && 'has-icon')}>
         <input className={cx('input', error && touched
            && 'is-danger', size && `is-${size}`)}
           {...input} placeholder={placeholder} type={type}

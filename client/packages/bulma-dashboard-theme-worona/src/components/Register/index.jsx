@@ -8,9 +8,12 @@ import Header from '../Header';
 import TopNav from '../Header/TopNav';
 import Body from '../Body';
 import Main from '../Main';
+import Footer from '../Footer';
+import FooterLinks from '../Footer/FooterLinks';
 
 import Hero from '../elements/Hero';
 import Input from '../elements/Input';
+import Checkbox from '../elements/Checkbox';
 import Button from '../elements/Button';
 import * as deps from '../../dependencies';
 import { validate } from './validate';
@@ -23,70 +26,97 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
   <Body>
     <Header>
       <TopNav />
-      <Hero title="Create an account"
-        subtitle="Welcome to Worona. You are only one step away to start making apps."
-      />
+      <Hero title="Register">
+      Welcome to Worona! Make your <strong>WordPress mobile-ready</strong> with a few clicks.
+      </Hero>
     </Header>
 
     <Main>
-    <section className="hero-body">
-      <div className="container has-text-centered">
+      <div className="container">
+        <div className="columns">
+          <div className="column is-half is-offset-one-quarter">
+            <form onSubmit={handleSubmit(submit)}>
 
-        <form onSubmit={handleSubmit(submit)}>
+              <Field
+                name="name"
+                label="Name"
+                component={Input}
+                type="text"
+                placeholder="Alan"
+                icon="user"
+                size="large"
+              />
 
-          <Field
-            name="name"
-            component={Input}
-            type="text"
-            placeholder="My name is..."
-            icon="user"
-          />
+              <Field
+                name="email"
+                label="Email"
+                component={Input}
+                type="email"
+                placeholder="alan@email.com"
+                icon="envelope"
+                size="large"
+              />
 
-          <Field
-            name="email"
-            component={Input}
-            type="text"
-            placeholder="Email"
-            icon="envelope"
-          />
+              <Field
+                name="password"
+                label="Password"
+                component={Input}
+                type="password"
+                placeholder="●●●●●●●●"
+                icon="lock"
+                size="large"
+              />
 
-          <Field
-            name="password"
-            component={Input}
-            type="password"
-            placeholder="Password"
-            icon="lock"
-          />
+            <br />
+              <Field
+                name="EULA"
+                component={Checkbox}
+                type="checkbox"
+              >
+                I have read and agree to the <a href="#">terms and conditions</a> of Worona.
+            </Field>
 
-          <Button
-            color="success"
-            center
-            size="medium"
-            loading={waiting}
-            disabled={waiting}
-            type="submit"
-          >
-            Create my account
-          </Button>
+            <br />
+            <p className="control" />
 
-          <div className="help" >
-            {statusMessage}
+            <div className="level is-mobile">
+              <div className="level-left">
+                <Button
+                  color="primary"
+                  size="large"
+                  loading={waiting}
+                  disabled={waiting}
+                  type="submit"
+                >
+                  Register
+                </Button>
+
+                <div className="help" >
+                  {statusMessage}
+                </div>
+
+                <div className={cn('help', 'is-danger')}>
+                  {errorMessage.reason}
+                </div>
+              </div>
+
+              <div className="level-right">
+                <Link to="/login">
+                  Already have an account? Login
+                </Link>
+              </div>
+            </div>
+
+            </form>
           </div>
-
-          <div className={cn('help', 'is-danger')}>
-            {errorMessage.reason}
-          </div>
-        </form>
-
-        <div>
-          <Link to="/login">
-            I do have an account
-          </Link>
         </div>
-
       </div>
-    </section>
   </Main>
+
+  <Footer>
+    <FooterLinks />
+  </Footer>
+
 </Body>
 );
 
