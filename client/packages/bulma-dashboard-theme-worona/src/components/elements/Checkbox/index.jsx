@@ -14,7 +14,7 @@ const Checkbox = ({ children, input, meta: { touched, error } }) => (
 
 Checkbox.propTypes = {
   input: React.PropTypes.object,
-  children: React.PropTypes.object,
+  children: React.PropTypes.node,
   meta: React.PropTypes.shape({
     error: React.PropTypes.string,
     touched: React.PropTypes.bool,

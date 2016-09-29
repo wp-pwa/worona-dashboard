@@ -10,6 +10,7 @@ import Body from '../Body';
 import Main from '../Main';
 import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
+import TermsAndConditions from './TermsAndConditions';
 
 import Hero from '../elements/Hero';
 import Input from '../elements/Input';
@@ -18,11 +19,15 @@ import Button from '../elements/Button';
 import * as deps from '../../dependencies';
 import { validate } from './validate';
 
+import { toggleTermsAndConditions } from '../../actions';
+
+import styles from './style.css';
+
 const submit = (values, dispatch) => {
   dispatch(deps.actions.createAccountRequested(values.name, values.email, values.password));
 };
 
-const Register = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
+const Register = ({ handleSubmit, waiting, statusMessage, errorMessage, toggleTerms }) => (
   <Body>
     <Header>
       <TopNav />
@@ -73,7 +78,11 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
                 component={Checkbox}
                 type="checkbox"
               >
-                I have read and agree to the <a href="#">terms and conditions</a> of Worona.
+              I have read and agree to the{' '}
+              <button className={styles.button} type="button" onClick={toggleTerms}>
+                terms and conditions
+              </button>
+              {' '}of Worona.
             </Field>
 
             <br />
@@ -117,6 +126,8 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
     <FooterLinks />
   </Footer>
 
+  <TermsAndConditions />
+
 </Body>
 );
 
@@ -125,6 +136,7 @@ Register.propTypes = {
   waiting: React.PropTypes.bool,
   statusMessage: React.PropTypes.any,
   errorMessage: React.PropTypes.any,
+  toggleTerms: React.PropTypes.func,
 };
 
 const RegisterWithForm = reduxForm({
@@ -137,4 +149,4 @@ export default connect(state => ({
   waiting: deps.selectors.isCreatingAccount(state),
   statusMessage: deps.selectors.createAccountStatus(state),
   errorMessage: deps.selectors.createAccountError(state),
-}))(RegisterWithForm);
+}), (dispatch) => ({ toggleTerms: () => dispatch(toggleTermsAndConditions()) }))(RegisterWithForm);
