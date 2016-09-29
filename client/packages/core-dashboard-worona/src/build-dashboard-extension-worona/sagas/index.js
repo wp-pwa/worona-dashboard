@@ -38,13 +38,13 @@ export function* addCorePackagesSaga() {
 export function* packageActivationSaga({ pkg }) {
   try {
     // Download phase.
-    const downloaded = select(selectors.downloadedPackages);
+    const downloaded = select(selectors.getDownloadedPackages);
     if (!downloaded[pkg.name]) {
       yield put(actions.packageDownloadRequested({ pkg }));
       yield call(waitFor, pkg.name, types.PACKAGE_DOWNLOAD_SUCCEED, types.PACKAGE_DOWNLOAD_FAILED);
     }
     // Deactivation of previous package phase.
-    const activated = select(selectors.activatedPackages);
+    const activated = select(selectors.getActivatedPackages);
     const previousPackage = activated[pkg.namespace];
     if (previousPackage) {
       yield put(actions.packageDeactivationRequested({ previousPackage }));

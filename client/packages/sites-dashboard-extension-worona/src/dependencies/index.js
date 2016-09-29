@@ -16,3 +16,7 @@ export const sagaCreators = {
     return dep('subscriptions', 'sagaCreators', 'subscriptionWatcherCreator');
   },
 };
+
+export const selectors = {
+  get getParam() { return dep('router', 'selectors', 'getParam'); },
+};

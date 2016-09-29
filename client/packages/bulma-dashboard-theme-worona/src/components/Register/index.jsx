@@ -104,7 +104,7 @@ const RegisterWithForm = reduxForm({
 })(Register);
 
 export default connect(state => ({
-  waiting: deps.selectors.isCreatingAccount(state),
-  statusMessage: deps.selectors.createAccountStatus(state),
-  errorMessage: deps.selectors.createAccountError(state),
+  waiting: deps.selectors.getIsCreatingAccount(state),
+  statusMessage: deps.selectors.getCreateAccountStatus(state),
+  errorMessage: deps.selectors.getCreateAccountError(state),
 }))(RegisterWithForm);

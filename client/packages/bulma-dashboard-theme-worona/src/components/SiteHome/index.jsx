@@ -13,22 +13,22 @@ import { connect } from 'react-redux';
 import ServiceTabs from './ServiceTabs';
 import AsideMenu from './AsideMenu';
 
-const SiteHome = ({ siteId, siteInfo }) => (
+const SiteHome = ({ site }) => (
   <Body>
     <Header>
       <TopNav />
-      <Hero title={siteInfo.name}>
-        <small>{siteId}</small>
+      <Hero title={site.name}>
+        <small>{site.id}</small>
         <br />
-        <small>{siteInfo.url}</small>
+        <small>{site.url}</small>
       </Hero>
       <ServiceTabs />
     </Header>
 
     <Main>
       <div className="columns is-mobile" >
-      {/* <PackageContent /> */}
       <AsideMenu />
+      {/* <PackageContent /> */}
       </div>
     </Main>
 
@@ -38,15 +38,16 @@ const SiteHome = ({ siteId, siteInfo }) => (
   </Body>
 );
 
-const mapStateToProps = (state) => {
-  const siteId = deps.selectors.getSiteId(state);
-  const siteInfo = Object.assign({}, { siteId }, deps.selectors.getSiteInfo(siteId)(state));
-  return ({ siteId, siteInfo });
-};
+const mapStateToProps = (state) => ({
+  site: deps.selectors.getSelectedSite(state),
+});
 
 SiteHome.propTypes = {
-  siteId: React.PropTypes.string.isRequired,
-  siteInfo: React.PropTypes.object.isRequired,
+  site: React.PropTypes.shape({
+    name: React.PropTypes.string.isRequired,
+    id: React.PropTypes.string.isRequired,
+    url: React.PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps)(SiteHome);

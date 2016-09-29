@@ -83,7 +83,7 @@ const LoginWithForm = reduxForm({
 })(LoginTranslated);
 
 export default connect(state => ({
-  waiting: deps.selectors.isLoggingIn(state),
-  statusMessage: deps.selectors.loginStatus(state),
-  errorMessage: deps.selectors.loginError(state),
+  waiting: deps.selectors.getIsLoggingIn(state),
+  statusMessage: deps.selectors.getLoginStatus(state),
+  errorMessage: deps.selectors.getLoginError(state),
 }))(LoginWithForm);

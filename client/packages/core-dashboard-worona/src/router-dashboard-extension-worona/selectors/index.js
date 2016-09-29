@@ -1,1 +1,1 @@
-export const getSiteId = state => state.router.params.siteId;
+export const getParam = param => state => state.router.params[param];

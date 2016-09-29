@@ -11,10 +11,6 @@ export const sagaCreators = {
   },
 };
 
-export const libs = {
-  get call() { return dep('connection', 'libs', 'call'); },
-};
-
-export const types = {
-  get CONNECTION_SUCCEED() { return dep('connection', 'types', 'CONNECTION_SUCCEED'); },
+export const selectors = {
+  get getSelectedSiteId() { return dep('sites', 'selectors', 'getSelectedSiteId'); },
 };
