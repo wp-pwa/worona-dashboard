@@ -13,6 +13,9 @@ var publicPath = argv.remote ? 'https://cdn.worona.io/' : 'https://localhost:400
 
 module.exports = {
   entry: {
+    development: [
+      path.join(__dirname, 'development', 'entry.js'),
+    ],
     core: [
       // 'webpack/hot/dev-server',
       'script!systemjs/dist/system.js',
@@ -21,7 +24,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist', env),
-    filename: 'packages/core-dashboard-worona/dist/' + env + '/js/core.[hash].js',
+    filename: 'packages/core-dashboard-worona/dist/' + env + '/js/[name].[hash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 32,
   },
