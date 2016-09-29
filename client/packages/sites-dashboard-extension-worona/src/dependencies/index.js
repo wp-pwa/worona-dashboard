@@ -3,7 +3,6 @@ import { dep } from 'worona-deps';
 export const libs = {
   get call() { return dep('connection', 'libs', 'call'); },
   get subscription() { return dep('subscriptions', 'libs', 'subscription'); },
-  get push() { return dep('build', 'libs', 'push'); },
 };
 
 export const reducerCreators = {
@@ -14,5 +13,11 @@ export const reducerCreators = {
 export const sagaCreators = {
   get subscriptionWatcherCreator() {
     return dep('subscriptions', 'sagaCreators', 'subscriptionWatcherCreator');
+  },
+};
+
+export const actions = {
+  get push() {
+    return dep('router', 'actions', 'push');
   },
 };
