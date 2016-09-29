@@ -42,6 +42,13 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
                 <br />
                 <p className="control" />
 
+                <div className="help">
+                  {statusMessage}
+                </div>
+                <div className={cn('help', 'is-danger')}>
+                  {errorMessage}
+                </div>
+
                 <div className="level is-mobile">
                   <div className="level-left">
                     <Button
@@ -55,13 +62,7 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
                       <strong>Login</strong>
                     </Button>
 
-                    <div className="help">
-                      {statusMessage}
-                    </div>
 
-                    <div className={cn('help', 'is-danger')}>
-                      {errorMessage.reason}
-                    </div>
                   </div>
                   <div className="level-right">
                     <Link to="/register">
