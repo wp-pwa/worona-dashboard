@@ -7,7 +7,7 @@ import * as types from '../types';
 import * as deps from '../dependencies';
 
 export function* createAccountSaga({ name, email, password }) {
-  if (yield select(deps.selectors.isConnected)) {
+  if (yield select(deps.selectors.getIsConnected)) {
     try {
       yield put(actions.createAccountStatusChanged(CREATING_ACCOUNT));
       const userId = yield call(libs.createAccount, name, email, password);
