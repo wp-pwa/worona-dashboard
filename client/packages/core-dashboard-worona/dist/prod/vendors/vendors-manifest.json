@@ -359,8 +359,8 @@
     "./node_modules/i18next/dist/commonjs/i18next.js": "c9be7fa6488ce0b84b8a1e92e2bd6b81",
     "./node_modules/i18next/dist/commonjs/index.js": "8d94d1a75e7e07b68493d4f09e94c802",
     "./node_modules/i18next/dist/commonjs/logger.js": "0842e26686ee3ee15c2945892ea28de8",
+    "./node_modules/i18next/dist/commonjs/postProcessor.js": "4ebda06051698c7d6d9df2618d5ebf4d",
     "./node_modules/classnames/index.js": "1b55c86a6f139b5df00c447b8e42f181",
-    "./node_modules/i18next/dist/commonjs/utils.js": "60d5338d4596dda259a4ea2d6fb93178",
     "./node_modules/i18next/index.js": "1022b2ed07597005b7dc7f210afa3a00",
     "./node_modules/invariant/browser.js": "ff63c002879b565dabcbfcb4aa14dbed",
     "./node_modules/lodash/_DataView.js": "b4d5f56ea3ed59c247fb04cc9b2925f2",
@@ -719,6 +719,6 @@
     "./node_modules/worona-deps/src/index.js": "3dc67d31d7435ab49745de8e10359378",
     "./packages/core-dashboard-worona/node_modules/process/browser.js": "83923e6ec728b5df1e809c68f89f8647",
     "./packages/core-dashboard-worona/node_modules/webpack/buildin/module.js": "ef51f946ed10934df0b5c96dbb2f1811",
-    "./node_modules/i18next/dist/commonjs/postProcessor.js": "4ebda06051698c7d6d9df2618d5ebf4d"
+    "./node_modules/i18next/dist/commonjs/utils.js": "60d5338d4596dda259a4ea2d6fb93178"
   }
 }
