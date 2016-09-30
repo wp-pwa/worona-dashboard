@@ -15,16 +15,16 @@ export const getSiteSettings = id => createSelector(
   settings => settings.filter(setting => setting.siteId === id)
 );
 
-export const getSelectedSiteSettings = state => {
+export const getSelectedSiteSettings = (state) => {
   const currentId = deps.selectors.getSelectedSiteId(state);
   return getSiteSettings(currentId);
 };
 
-export const getSiteSettingsByCategory = id => createSelector(
-  getCategories,
-  getSiteSettings(id),
-  (categories, settings) => categories.map(({ name }) => ({
-    name,
-    entries: settings.filter(entry => entry.categoryName === name),
-  }))
-);
+// export const getSiteSettingsByCategory = id => createSelector(
+//   getCategories,
+//   getSiteSettings(id),start
+//   (categories, settings) => categories.map(({ name }) => ({
+//     name,
+//     entries: settings.filter(entry => entry.categoryName === name),
+//   }))
+// );

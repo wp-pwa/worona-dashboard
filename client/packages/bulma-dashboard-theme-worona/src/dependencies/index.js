@@ -21,6 +21,7 @@ export const selectors = {
   get getCreateAccountStatus() { return dep('accounts', 'selectors', 'getCreateAccountStatus'); },
   get getCreateAccountError() { return dep('accounts', 'selectors', 'getCreateAccountError'); },
   get getIsCreatingAccount() { return dep('accounts', 'selectors', 'getIsCreatingAccount'); },
+  get getIsFirstLogin() { return dep('accounts', 'selectors', 'getIsFirstLogin'); },
   get getIsLoggingIn() { return dep('accounts', 'selectors', 'getIsLoggingIn'); },
   get getLoginStatus() { return dep('accounts', 'selectors', 'getLoginStatus'); },
   get getLoginError() { return dep('accounts', 'selectors', 'getLoginError'); },
@@ -32,4 +33,6 @@ export const selectors = {
   get getSiteSettingsByCategory() {
     return dep('settings', 'selectors', 'getSiteSettingsByCategory');
   },
+  get getSelectedSiteId() { return dep('router', 'selectors', 'getSelectedSiteId'); },
+  get getSelectedService() { return dep('router', 'selectors', 'getSelectedService'); },
 };

@@ -12,5 +12,5 @@ export const sagaCreators = {
 };
 
 export const selectors = {
-  get getSelectedSiteId() { return dep('sites', 'selectors', 'getSelectedSiteId'); },
+  get getSelectedSiteId() { return dep('router', 'selectors', 'getSelectedSiteId'); },
 };

@@ -1,15 +1,17 @@
+/* eslint-disable no-unused-vars  */
 import React from 'react';
 import { Link } from 'react-router';
 import cn from 'classnames';
 
 import Icon from '../elements/Icon';
 
-export const ExtLink = props => (
-  <a {...props}>
-    {props.children}
+export const ExtLink = ({ activeClassName, children, ...rest }) => (
+  <a {...rest}>
+    {children}
   </a>
 );
 ExtLink.propTypes = {
+  activeClassName: React.PropTypes.string,
   children: React.PropTypes.node.isRequired,
 };
 
@@ -20,9 +22,10 @@ export const MenuItem = ({ type, name, url, target, link, action, icon, tabindex
   });
   return (
     <span className="nav-item">
-      <Anchor className={anchorClass}
+      <Anchor
+        className={anchorClass}
         href={url} to={link} target={target} onClick={action}
-        role="button" tabIndex={tabindex} activeClassName={!!link ? 'is-active' : null}
+        role="button" tabIndex={tabindex} activeClassName={link ? 'is-active' : null}
       >
         {type === 'button' && icon ? (
           <Icon iconFaCode={icon} small />

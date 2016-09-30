@@ -13,10 +13,8 @@ export const getSite = id => createSelector(
   sites => _.find(sites, site => site.id === id)
 );
 
-export const getSelectedSiteId = state => deps.selectors.getParam('siteId')(state) || false;
-
 export const getSelectedSite = createSelector(
-  getSelectedSiteId,
+  deps.selectors.getSelectedSiteId,
   getAllSites,
   (id, sites) => (id ? _.find(sites, site => site.id === id) : {})
 );

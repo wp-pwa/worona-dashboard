@@ -1,7 +1,7 @@
 {
-  "name": "settings-dashboard-extension-worona",
-  "version": "1.0.2",
-  "description": "Extension for managing Worona settings.",
+  "name": "test-development-package-worona",
+  "version": "1.0.1",
+  "description": "A package to test development packages within worona dashboard core.",
   "main": "src/index.js",
   "scripts": {
     "update:vendors": "node node_modules/worona-packages/update-vendors.js --service dashboard",
@@ -23,59 +23,51 @@
   "keywords": [
     "worona",
     "extension",
-    "settings"
+    "accounts",
+    "dashboard"
   ],
-  "author": "Worona Labs SL | Abel Serrano, @akronix",
+  "author": "Worona Labs SL | Luis Herranz, @luisherranz",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/worona/worona-dashboard/issues"
   },
-  "homepage": "https://github.com/worona/worona-dashboard#readme",
+  "homepage": "https://github.com/worona/worona#readme",
   "worona": {
-    "niceName": "Settings",
-    "slug": "settings",
-    "namespace": "settings",
+    "niceName": "Test Develoment Package",
+    "slug": "testDevelopmentPackage",
+    "namespace": "development",
     "type": "extension",
     "service": "dashboard",
     "authors": [
-      "abel@worona.org"
+      "luis@worona.org"
     ],
-    "default": 1,
-    "core": 1,
+    "default": 0,
+    "core": 0,
     "listed": 0,
     "deactivable": 0,
     "public": 1,
-    "dependencies": [
-      "subscriptions",
-      "sites",
-      "router"
-    ],
-    "dev": {
-      "files": [
-        {
-          "file": "settings-dashboard-extension-worona/dist/dev/js/settings.dashboard.extension.ca2e57dbe52096aa5a32a38858843b3b.js",
-          "hash": "ca2e57dbe52096aa5a32a38858843b3b"
-        }
-      ],
-      "assets": {},
-      "main": "settings-dashboard-extension-worona/dist/dev/js/settings.dashboard.extension.ca2e57dbe52096aa5a32a38858843b3b.js"
-    },
+    "dependencies": [],
     "prod": {
       "files": [
         {
-          "file": "settings-dashboard-extension-worona/dist/prod/js/settings.dashboard.extension.646090daf8df7394bb69135d2f99606c.js",
-          "hash": "646090daf8df7394bb69135d2f99606c"
+          "file": "test-development-package-worona/dist/prod/js/test-development-package.dashboard.extension.d80aa5ad09543be45eb46ce866d7b2d2.js",
+          "hash": "d80aa5ad09543be45eb46ce866d7b2d2"
         }
       ],
       "assets": {},
-      "main": "settings-dashboard-extension-worona/dist/prod/js/settings.dashboard.extension.646090daf8df7394bb69135d2f99606c.js"
+      "main": "test-development-package-worona/dist/prod/js/test-development-package.dashboard.extension.d80aa5ad09543be45eb46ce866d7b2d2.js"
+    },
+    "dev": {
+      "files": [
+        {
+          "file": "test-development-package-worona/dist/dev/js/test-development-package.dashboard.extension.885d1305731ccc83f8b14ce8f4d6bbbe.js",
+          "hash": "885d1305731ccc83f8b14ce8f4d6bbbe"
+        }
+      ],
+      "assets": {},
+      "main": "test-development-package-worona/dist/dev/js/test-development-package.dashboard.extension.885d1305731ccc83f8b14ce8f4d6bbbe.js"
     }
   },
-  "menu": {
-    "category": "appearance",
-    "order": 102
-  },
-  "dev": {},
   "devDependencies": {
     "rimraf": "^2.5.4",
     "webpack": "^1.13.1",
