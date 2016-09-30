@@ -1,5 +1,5 @@
-import * as types from '../types';
 import stringifyError from 'stringify-error-message';
+import * as types from '../types';
 // Create Site actions:
 export const createSiteRequested = (name, url, _id) =>
   ({ type: types.CREATE_SITE_REQUESTED, name, url, _id });
@@ -14,7 +14,7 @@ export const deleteSiteRequested = ({ _id }) =>
   ({ type: types.DELETE_SITE_REQUESTED, _id });
 export const deleteSiteStatusChanged = status =>
     ({ type: types.DELETE_SITE_STATUS_CHANGED, status });
-export const deleteSiteSucceed = ({ siteId }) =>
+export const deleteSiteSucceed = siteId =>
   ({ type: types.DELETE_SITE_SUCCEED, siteId });
 export const deleteSiteFailed = errorObj =>
   ({ type: types.DELETE_SITE_FAILED, error: stringifyError(errorObj) });
