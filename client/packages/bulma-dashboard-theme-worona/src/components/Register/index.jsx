@@ -14,7 +14,6 @@ import TermsAndConditions from './TermsAndConditions';
 
 import Hero from '../elements/Hero';
 import Input from '../elements/Input';
-import Checkbox from '../elements/Checkbox';
 import Button from '../elements/Button';
 import * as deps from '../../dependencies';
 import { validate } from './validate';
@@ -73,17 +72,13 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage, toggleTe
               />
 
             <br />
-              <Field
-                name="EULA"
-                component={Checkbox}
-                type="checkbox"
-              >
-              I have read and agree to the{' '}
+
+              <p>
+              By creating an account you agree to our{' '}
               <button className={styles.button} type="button" onClick={toggleTerms}>
-                terms and conditions
+                Terms and Conditions.
               </button>
-              {' '}of Worona.
-            </Field>
+              </p>
 
             <br />
             <p className="control" />
