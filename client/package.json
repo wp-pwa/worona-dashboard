@@ -55,7 +55,7 @@
     "redux-router": "^2.1.2",
     "redux-saga": "^0.11.0",
     "reselect": "^2.5.1",
-    "stringify-error-message": "^1.0.1",
+    "stringify-error-message": "^1.0.2",
     "superagent": "^2.2.0",
     "worona-deps": "^1.7.0"
   },
