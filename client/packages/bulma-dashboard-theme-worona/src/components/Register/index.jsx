@@ -83,6 +83,14 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage, toggleTe
             <br />
             <p className="control" />
 
+            <div className="help" >
+              {statusMessage}
+            </div>
+
+            <div className={cn('help', 'is-danger')}>
+              {errorMessage}
+            </div>
+
             <div className="level is-mobile">
               <div className="level-left">
                 <Button
@@ -94,14 +102,6 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage, toggleTe
                 >
                   Register
                 </Button>
-
-                <div className="help" >
-                  {statusMessage}
-                </div>
-
-                <div className={cn('help', 'is-danger')}>
-                  {errorMessage.reason}
-                </div>
               </div>
 
               <div className="level-right">
