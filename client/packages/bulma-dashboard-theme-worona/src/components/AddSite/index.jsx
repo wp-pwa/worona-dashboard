@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import Header from '../Header';
 import TopNav from '../Header/TopNav';
 import Hero from '../elements/Hero';
@@ -8,8 +7,8 @@ import Body from '../Body';
 import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
 import Main from '../Main';
-
 import AddSiteForm from './AddSiteForm';
+import * as deps from '../../dependencies';
 
 const AddSite = ({ isFirstLogin }) => {
   let header = '';
@@ -53,7 +52,7 @@ AddSite.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isFirstLogin: state.accounts.isFirstLogin,
+  isFirstLogin: deps.selectors.getIsFirstLogin(state),
 });
 
 export default connect(mapStateToProps)(AddSite);

@@ -4,97 +4,139 @@ import cn from 'classnames';
 import { Link } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
 
+import * as deps from '../../dependencies';
+import { toggleTermsAndConditions } from '../../actions';
+import { validate } from './validate';
+
 import Header from '../Header';
 import TopNav from '../Header/TopNav';
 import Body from '../Body';
 import Main from '../Main';
-
+import Footer from '../Footer';
+import FooterLinks from '../Footer/FooterLinks';
+import TermsAndConditions from './TermsAndConditions';
 import Hero from '../elements/Hero';
 import Input from '../elements/Input';
 import Button from '../elements/Button';
-import * as deps from '../../dependencies';
-import { validate } from './validate';
+
+import styles from './style.css';
 
 const submit = (values, dispatch) => {
   dispatch(deps.actions.createAccountRequested(values.name, values.email, values.password));
 };
 
-const Register = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
+const Register = ({ handleSubmit, waiting, statusMessage, errorMessage, toggleTerms }) => (
   <Body>
     <Header>
       <TopNav />
-      <Hero title="Create an account"
-        subtitle="Welcome to Worona. You are only one step away to start making apps."
-      />
+      <Hero title="Register">
+        Welcome to Worona! Make your <strong>WordPress mobile-ready</strong> with a few clicks.
+      </Hero>
     </Header>
 
     <Main>
-    <section className="hero-body">
-      <div className="container has-text-centered">
+      <div className="container">
+        <div className="columns">
+          <div className="column is-half is-offset-one-quarter">
+            <form onSubmit={handleSubmit(submit)}>
 
-        <form onSubmit={handleSubmit(submit)}>
+              <Field
+                name="name"
+                label="Name"
+                component={Input}
+                type="text"
+                placeholder="Alan"
+                icon="user"
+                size="large"
+              />
 
-          <Field
-            name="name"
-            component={Input}
-            type="text"
-            placeholder="My name is..."
-            icon="user"
-          />
+              <Field
+                name="email"
+                label="Email"
+                component={Input}
+                type="email"
+                placeholder="alan@email.com"
+                icon="envelope"
+                size="large"
+              />
 
-          <Field
-            name="email"
-            component={Input}
-            type="text"
-            placeholder="Email"
-            icon="envelope"
-          />
+              <Field
+                name="password"
+                label="Password"
+                component={Input}
+                type="password"
+                placeholder="●●●●●●●●"
+                icon="lock"
+                size="large"
+              />
 
-          <Field
-            name="password"
-            component={Input}
-            type="password"
-            placeholder="Password"
-            icon="lock"
-          />
+              <br />
 
-          <Button
-            color="success"
-            center
-            size="medium"
-            loading={waiting}
-            disabled={waiting}
-            type="submit"
-          >
-            Create my account
-          </Button>
+              <p>
+                By creating an account you agree to our{' '}
+                <button className={styles.button} type="button" onClick={toggleTerms}>
+                  Terms and Conditions.
+                </button>
+              </p>
 
-          <div className="help" >
-            {statusMessage}
+              <br />
+              <p className="control" />
+
+              <div className="help" >
+                {statusMessage}
+              </div>
+
+              <div className={cn('help', 'is-danger')}>
+                {errorMessage}
+              </div>
+
+              <div className="level is-mobile">
+                <div className="level-left">
+                  <Button
+                    color="primary"
+                    size="large"
+                    loading={waiting}
+                    disabled={waiting}
+                    type="submit"
+                  >
+                    Register
+                  </Button>
+                </div>
+
+                <div className="level-right">
+                  <Link to="/login">
+                    Already have an account? Login
+                  </Link>
+                </div>
+              </div>
+
+            </form>
           </div>
-
-          <div className={cn('help', 'is-danger')}>
-            {errorMessage.reason}
-          </div>
-        </form>
-
-        <div>
-          <Link to="/login">
-            I do have an account
-          </Link>
         </div>
-
       </div>
-    </section>
-  </Main>
-</Body>
+    </Main>
+
+    <Footer>
+      <FooterLinks />
+    </Footer>
+
+    <TermsAndConditions />
+
+  </Body>
 );
 
 Register.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool,
-  statusMessage: React.PropTypes.any,
-  errorMessage: React.PropTypes.any,
+  statusMessage: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.boolean,
+  ]),
+  errorMessage: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.boolean,
+  ]),
+  toggleTerms: React.PropTypes.func,
 };
 
 const RegisterWithForm = reduxForm({
@@ -104,7 +146,9 @@ const RegisterWithForm = reduxForm({
 })(Register);
 
 export default connect(state => ({
-  waiting: deps.selectors.isCreatingAccount(state),
-  statusMessage: deps.selectors.createAccountStatus(state),
-  errorMessage: deps.selectors.createAccountError(state),
+  waiting: deps.selectors.getIsCreatingAccount(state),
+  statusMessage: deps.selectors.getCreateAccountStatus(state),
+  errorMessage: deps.selectors.getCreateAccountError(state),
+}), dispatch => ({
+  toggleTerms: () => dispatch(toggleTermsAndConditions()),
 }))(RegisterWithForm);

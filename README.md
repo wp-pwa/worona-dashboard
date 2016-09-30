@@ -2,7 +2,7 @@
 
 ## Installation
 
-Clone this repo or [download the zip file from Github](https://github.com/worona/worona/archive/master.zip).
+Clone this repo or [download the zip file from Github](https://github.com/worona/worona-dashboard/archive/master.zip).
 
 ```bash
 git clone https://github.com/worona/worona-dashboard.git

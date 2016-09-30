@@ -96,7 +96,7 @@ const AddSiteWithForm = reduxForm({
 })(AddSiteForm);
 
 export default connect(state => ({
-  waiting: deps.selectors.isCreatingSite(state),
-  statusMessage: deps.selectors.createSiteStatus(state),
-  errorMessage: deps.selectors.createSiteError(state),
+  waiting: deps.selectors.getIsCreatingSite(state),
+  statusMessage: deps.selectors.getCreateSiteStatus(state),
+  errorMessage: deps.selectors.getCreateSiteError(state),
 }))(AddSiteWithForm);

@@ -3,9 +3,12 @@ import { settings } from './collections';
 import { sites } from '../sites/collections';
 
 Meteor.publish('settings', function settingsPublish() {
-  const userSites = sites.find(
-  { userIds: { $in: [this.userId] } },
-  { fields: { _id: 1 } });
-  const siteIds = userSites.map(site => site._id);
-  return settings.find({ siteId: { $in: siteIds } });
+  this.autorun(() => {
+    const userSites = sites.find(
+      { userIds: { $in: [this.userId] } },
+      { fields: { _id: 1 } }
+    );
+    const siteIds = userSites.map(site => site._id);
+    return settings.find({ siteId: { $in: siteIds } });
+  });
 });

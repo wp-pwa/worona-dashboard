@@ -20,13 +20,15 @@
   "author": "Worona Labs SL | Luis Herranz @luisherranz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/worona/worona/issues"
+    "url": "https://github.com/worona/worona-dashboard/issues"
   },
   "homepage": "https://github.com/worona/worona#readme",
   "devDependencies": {
-    "eslint": "^2.5.3",
-    "eslint-config-airbnb": "^6.2.0",
-    "eslint-plugin-react": "^4.2.3",
+    "eslint": "^3.6.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0",
     "recursive-install": "^1.1.0"
   },
   "dependencies": {}

@@ -8,13 +8,13 @@ import * as types from '../types';
 import * as deps from '../dependencies';
 
 export function* loginRequestedSaga({ email, password }) {
-  if (yield select(deps.selectors.isConnected)) {
+  if (yield select(deps.selectors.getIsConnected)) {
     try {
       yield put(actions.loginStatusChanged(LOGIN_IN));
       const userId = yield call(deps.libs.loginWithPassword, email, password);
       yield put(actions.loginSucceed(userId));
     } catch (error) {
-      yield put(actions.loginFailed(error.message));
+      yield put(actions.loginFailed(error));
     }
   } else {
     yield put(actions.loginStatusChanged(NOT_CONNECTED));
@@ -23,20 +23,14 @@ export function* loginRequestedSaga({ email, password }) {
     yield call(loginRequestedSaga, { email, password });
   }
 }
-export function* loginRequestedWatcher() {
-  yield* takeLatest(types.LOGIN_REQUESTED, loginRequestedSaga);
-}
 
 export function* loginSucceedSaga() {
-  if (yield select(selectors.isFirstLogin)) {
+  if (yield select(selectors.getIsFirstLogin)) {
     yield put(deps.actions.push('/add-site'));
   } else {
-    const redirect = yield select(selectors.redirectAfterLogin);
+    const redirect = yield select(selectors.getRedirectAfterLogin);
     yield put(deps.actions.push(redirect));
   }
-}
-export function* loginSucceedWatcher() {
-  yield* takeLatest(types.LOGIN_SUCCEED, loginSucceedSaga);
 }
 
 export function* loginEvent(loggedInEvents) {
@@ -87,8 +81,8 @@ export function* logEventsWatcher() {
 
 export default function* loginSagas() {
   yield [
-    fork(loginRequestedWatcher),
-    fork(loginSucceedWatcher),
+    takeLatest(types.LOGIN_REQUESTED, loginRequestedSaga),
+    takeLatest(types.LOGIN_SUCCEED, loginSucceedSaga),
     fork(logEventsWatcher),
   ];
 }

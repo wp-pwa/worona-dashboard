@@ -13,16 +13,26 @@ ExtLink.propTypes = {
   children: React.PropTypes.node.isRequired,
 };
 
+export const InnerLink = props => (
+  <Link {...props} activeClassName="is-active">
+    {props.children}
+  </Link>
+);
+InnerLink.propTypes = {
+  children: React.PropTypes.node.isRequired,
+};
+
 export const MenuItem = ({ type, name, url, target, link, action, icon, tabindex }) => {
-  const Anchor = !link ? ExtLink : Link;
+  const Anchor = !link ? ExtLink : InnerLink;
   const anchorClass = cn({
     'button is-primary': type === 'button',
   });
   return (
     <span className="nav-item">
-      <Anchor className={anchorClass}
+      <Anchor
+        className={anchorClass}
         href={url} to={link} target={target} onClick={action}
-        role="button" tabIndex={tabindex} activeClassName={!!link ? 'is-active' : null}
+        role="button" tabIndex={tabindex}
       >
         {type === 'button' && icon ? (
           <Icon iconFaCode={icon} small />

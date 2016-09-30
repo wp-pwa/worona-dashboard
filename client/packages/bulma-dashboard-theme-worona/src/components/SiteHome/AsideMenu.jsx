@@ -1,28 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-
 import * as deps from '../../dependencies';
 
-let MenuEntry = ({ name, target, params }) => (
+let MenuEntry = ({ name, target, selectedSiteId, selectedService }) => (
   <li>
-    <Link to={`/site/${params.siteId}/${params.service}/${target}`}
+    <Link to={`/site/${selectedSiteId}/${selectedService}/${target}`}
       role="button" activeClassName="is-active"
     >
       {name}
     </Link>
   </li>
 );
-
-const mapStateToMenuEntryProps = (state) => ({
-  params: state.router.params,
-});
-
 MenuEntry.propTypes = {
   name: React.PropTypes.string,
   target: React.PropTypes.string,
-  params: React.PropTypes.object.isRequired,
+  selectedSiteId: React.PropTypes.string.isRequired,
+  selectedService: React.PropTypes.string.isRequired,
 };
+
+const mapStateToMenuEntryProps = (state) => ({
+  selectedSiteId: deps.selectors.getSelectedSiteId(state),
+  selectedService: deps.selectors.getSelectedService(state),
+});
 
 MenuEntry = connect(mapStateToMenuEntryProps)(MenuEntry);
 

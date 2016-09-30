@@ -18,19 +18,21 @@ export const actions = {
 };
 
 export const selectors = {
-  get createAccountStatus() { return dep('accounts', 'selectors', 'createAccountStatus'); },
-  get createAccountError() { return dep('accounts', 'selectors', 'createAccountError'); },
-  get isCreatingAccount() { return dep('accounts', 'selectors', 'isCreatingAccount'); },
-  get isLoggingIn() { return dep('accounts', 'selectors', 'isLoggingIn'); },
-  get loginStatus() { return dep('accounts', 'selectors', 'loginStatus'); },
-  get loginError() { return dep('accounts', 'selectors', 'loginError'); },
-  get isCreatingSite() { return dep('sites', 'selectors', 'isCreatingSite'); },
-  get createSiteStatus() { return dep('sites', 'selectors', 'createSiteStatus'); },
-  get createSiteError() { return dep('sites', 'selectors', 'createSiteError'); },
+  get getCreateAccountStatus() { return dep('accounts', 'selectors', 'getCreateAccountStatus'); },
+  get getCreateAccountError() { return dep('accounts', 'selectors', 'getCreateAccountError'); },
+  get getIsCreatingAccount() { return dep('accounts', 'selectors', 'getIsCreatingAccount'); },
+  get getIsFirstLogin() { return dep('accounts', 'selectors', 'getIsFirstLogin'); },
+  get getIsLoggingIn() { return dep('accounts', 'selectors', 'getIsLoggingIn'); },
+  get getLoginStatus() { return dep('accounts', 'selectors', 'getLoginStatus'); },
+  get getLoginError() { return dep('accounts', 'selectors', 'getLoginError'); },
+  get getIsCreatingSite() { return dep('sites', 'selectors', 'getIsCreatingSite'); },
+  get getCreateSiteStatus() { return dep('sites', 'selectors', 'getCreateSiteStatus'); },
+  get getCreateSiteError() { return dep('sites', 'selectors', 'getCreateSiteError'); },
   get getAllSites() { return dep('sites', 'selectors', 'getAllSites'); },
-  get getSiteId() { return dep('router', 'selectors', 'getSiteId'); },
-  get getSiteInfo() { return dep('sites', 'selectors', 'getSiteInfo'); },
+  get getSelectedSite() { return dep('sites', 'selectors', 'getSelectedSite'); },
   get getSiteSettingsByCategory() {
     return dep('settings', 'selectors', 'getSiteSettingsByCategory');
   },
+  get getSelectedSiteId() { return dep('router', 'selectors', 'getSelectedSiteId'); },
+  get getSelectedService() { return dep('router', 'selectors', 'getSelectedService'); },
 };

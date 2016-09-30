@@ -2,17 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import cn from 'classnames';
+import * as deps from '../../dependencies';
 
 import Icon from '../elements/Icon';
 
-let Tab = ({ name, target, service, params, icon, disabled }) => {
+let Tab = ({ name, target, service, selectedSiteId, selectedService, icon, disabled }) => {
   const liClass = cn({
     'is-disabled': disabled,
-    'is-active': params.service === service,
+    'is-active': selectedService === service,
   });
   return (
     <li className={liClass}>
-      <Link to={`/site/${params.siteId}/${target}`} activeClassName="is-active">
+      <Link to={`/site/${selectedSiteId}/${target}`} activeClassName="is-active">
           <Icon iconFaCode={icon} />
         <span className="is-hidden-mobile">{name}</span>
       </Link>
@@ -23,13 +24,17 @@ let Tab = ({ name, target, service, params, icon, disabled }) => {
 Tab.propTypes = {
   name: React.PropTypes.string.isRequired,
   target: React.PropTypes.string.isRequired,
-  params: React.PropTypes.object.isRequired,
+  selectedSiteId: React.PropTypes.string.isRequired,
+  selectedService: React.PropTypes.string.isRequired,
   icon: React.PropTypes.string,
   service: React.PropTypes.string,
   disabled: React.PropTypes.bool,
 };
 
-const mapStateToProps = state => ({ params: state.router.params });
+const mapStateToProps = state => ({
+  selectedSiteId: deps.selectors.getSelectedSiteId(state),
+  selectedService: deps.selectors.getSelectedService(state),
+});
 Tab = connect(mapStateToProps)(Tab);
 
 const ServiceTabs = () => (

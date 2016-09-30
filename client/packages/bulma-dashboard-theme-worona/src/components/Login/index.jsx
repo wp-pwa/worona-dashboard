@@ -14,9 +14,9 @@ const Login = () => (
   <Body>
     <Header>
       <TopNav />
-      <Hero title="Login"
-        subtitle="Welcome to Worona. You are only one step away to start making apps."
-      />
+      <Hero title="Login">
+        Welcome back! Create a fast, smooth mobile experience.
+      </Hero>
     </Header>
 
     <Main>

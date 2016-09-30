@@ -18,5 +18,5 @@ export const types = {
 };
 
 export const selectors = {
-  get isConnected() { return dep('connection', 'selectors', 'isConnected'); },
+  get getIsConnected() { return dep('connection', 'selectors', 'getIsConnected'); },
 };

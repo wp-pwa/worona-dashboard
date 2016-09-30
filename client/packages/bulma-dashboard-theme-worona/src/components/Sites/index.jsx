@@ -20,8 +20,8 @@ const Sites = () => (
       </Hero>
     </Header>
 
+    <AddSiteNav />
     <Main>
-      <AddSiteNav />
       <SitesList />
     </Main>
 
