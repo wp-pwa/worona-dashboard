@@ -105,7 +105,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  // devtool: '#eval-source-map',
+  devtool: '#eval-source-map',
   devServer: {
 		contentBase: path.join(__dirname, 'dist', env),
 		noInfo: false,
