@@ -16,5 +16,6 @@
   "classnames",
   "worona-deps",
   "superagent",
-  "normalizr"
+  "normalizr",
+  "stringify-error-message"
 ]

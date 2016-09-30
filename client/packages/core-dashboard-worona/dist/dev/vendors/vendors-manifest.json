@@ -474,6 +474,7 @@
     "./node_modules/normalizr/lib/IterableSchema.js": "22d3f95f2e1c40147d9aa01de7903e64",
     "./node_modules/normalizr/lib/UnionSchema.js": "2f65d2fcd5b5d85da717fa03dcad8a9a",
     "./node_modules/lodash/isEqual.js": "f6b38d1d671210206dfdfbae975a1294",
+    "./node_modules/stringify-error-message/index.js": "9c041a0cfc9ec77efd7bf816731960de",
     "./node_modules/react-dom/index.js": "5fdcf1aea784583ca083db0529872971",
     "./node_modules/react/lib/ReactDOM.js": "b61a9ff0f2e2e419d74b23f6d628fe4b",
     "./node_modules/react/lib/ReactDOMComponentTree.js": "2c45fbeda2f69c3f989f2fc515e1a533",

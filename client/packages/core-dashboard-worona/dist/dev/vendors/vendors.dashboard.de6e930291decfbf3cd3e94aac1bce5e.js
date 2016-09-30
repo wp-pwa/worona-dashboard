@@ -22054,6 +22054,50 @@ var vendors_dashboard_worona =
 
 /***/ },
 
+/***/ "9c041a0cfc9ec77efd7bf816731960de":
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function stringifyError(value) {
+	  if (typeof value === 'object') {
+
+	    // Meteor Error or alike
+	    if (value.reason)
+	      return value.reason;
+
+	    // Default Javascript Error
+	    if (value instanceof Error)
+	      return value.message;
+
+	    // other Errors
+			if (typeof value.message === 'string') {
+				return value.message;
+			}
+	    else {
+	      return "An Error impossible to stringify has happened";
+	    }
+
+		}
+
+	  // simple string
+	  else if (typeof value === string)
+	    return value;
+
+		// function
+		else if (typeof value === 'function') {
+			return value().toString();
+		}
+
+	  else {
+	    return "An error impossible to stringify has happened";
+	  }
+
+	};
+
+
+/***/ },
+
 /***/ "5fdcf1aea784583ca083db0529872971":
 /***/ function(module, exports, __webpack_require__) {
 
