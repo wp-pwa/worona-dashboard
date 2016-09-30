@@ -31,7 +31,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /packages\/.+-worona\/src\/index\.js$/,
+        test: /packages\/.+-worona\/src\/dashboard\/index\.js$/,
         loader: 'bundle-loader',
         query: {
           lazy: true,

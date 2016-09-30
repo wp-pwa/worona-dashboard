@@ -1,25 +1,24 @@
-/* eslint-disable no-constant-condition, no-undef */
-import { isRemote } from 'worona-deps';
+/* eslint-disable no-constant-condition, no-undef, global-require, import/no-dynamic-require */
+import { isRemote, packageDownloaded } from 'worona-deps';
 import { put, call } from 'redux-saga/effects';
 import update from 'react/lib/update';
 import { takeEvery } from 'redux-saga';
-import { packageDownloaded } from 'worona-deps';
 import * as types from '../types';
 import * as actions from '../actions';
 
 // Function used to require local packages. It uses a "require context" of webpack
 // so webpack knows about the included packages and create the bundles. We use bundle-loader
 // in the webpack config to separate the bundles.
-export const requireLocalPackage = pkg => new Promise(resolve => {
+export const requireLocalPackage = pkg => new Promise((resolve) => {
   const pkgName = /(.+)-worona/.exec(pkg.name)[1];
-  const req = require(`../../../../${pkgName}-worona/src/index.js`);
+  const req = require(`../../../../${pkgName}-worona/src/dashboard/index.js`);
   req(module => resolve(module));
 });
 
 // Function used to require remote packages. It uses systemjs.import because we
 // are now in the browser without webpack. We need to be able to modify those packages without
 // having to recompile the core-dashboard-worona package, so we can't use Webpack here.
-export const requireRemotePackage = pkg => new Promise(resolve => {
+export const requireRemotePackage = pkg => new Promise((resolve) => {
   SystemJS.import(`https://cdn.worona.io/packages/${pkg.prod.main}`)
   .then(module => resolve(module));
 });
