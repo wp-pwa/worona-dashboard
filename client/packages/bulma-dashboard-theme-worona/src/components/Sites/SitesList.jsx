@@ -5,13 +5,11 @@ import Site from './Site';
 import * as deps from '../../dependencies';
 
 const SitesList = ({ sites }) => (
-  <section className="section">
-    <div className="columns is-multiline">
-      {sites.map(site => (
-        <Site {...site} date={site.modifiedAt.$date} key={site.id} />
-      ))}
-    </div>
-  </section>
+  <div className="columns is-multiline">
+    {sites.map(site => (
+      <Site {...site} date={site.modifiedAt.$date} key={site.id} />
+    ))}
+  </div>
 );
 SitesList.propTypes = {
   sites: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
