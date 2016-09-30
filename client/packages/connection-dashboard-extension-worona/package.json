@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/worona/worona.git"
+    "url": "git+ssh://git@github.com/worona/worona-dashboard.git"
   },
   "keywords": [
     "worona",
@@ -29,7 +29,7 @@
   "author": "Worona Labs SL | Luis Herranz, @luisherranz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/worona/worona/issues"
+    "url": "https://github.com/worona/worona-dashboard/issues"
   },
   "homepage": "https://github.com/worona/worona#readme",
   "worona": {
