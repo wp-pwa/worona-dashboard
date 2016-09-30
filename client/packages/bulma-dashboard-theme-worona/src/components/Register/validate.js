@@ -8,6 +8,7 @@ export const messages = {
   minChar: minChar => `Must be ${minChar} characters or more`,
   maxChar: maxChar => `Must be ${maxChar} characters or less`,
   invalidEmail: 'Invalid email address',
+  acceptEULA: 'You must agree the terms and conditions prior to register',
 };
 
 export const validate = values => {
@@ -27,5 +28,8 @@ export const validate = values => {
   } else if (values.password.length < 8) {
     errors.password = messages.minChar(8);
   }
+
+  if (!values.EULA) errors.EULA = messages.acceptEULA;
+
   return errors;
 };

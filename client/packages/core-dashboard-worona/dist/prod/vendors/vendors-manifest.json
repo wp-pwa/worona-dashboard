@@ -708,6 +708,7 @@
     "./node_modules/regenerator-runtime/runtime.js": "280d92cedd4801edbe66ef51b030548b",
     "./node_modules/reselect/lib/index.js": "febe5374b4779e3d8170ecd4f4641bf2",
     "./node_modules/strict-uri-encode/index.js": "b609834b8af7c325f0384b4474dab384",
+    "./node_modules/stringify-error-message/index.js": "9c041a0cfc9ec77efd7bf816731960de",
     "./node_modules/superagent/lib/client.js": "6c17280eadd6cd31a69c0c65741ef9b4",
     "./node_modules/superagent/lib/is-object.js": "e72f32ec7a04b360ef9d6a0dcac6b73e",
     "./node_modules/superagent/lib/request-base.js": "59ba2a98ba5f77e216b2ab295bc8c3c0",

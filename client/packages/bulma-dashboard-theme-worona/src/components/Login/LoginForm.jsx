@@ -15,55 +15,66 @@ const submit = (values, dispatch) => {
 
 const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
 
-    <section className="hero-body">
-      <div className="container has-text-centered">
+      <div className="container">
+        <div className="columns">
+          <div className="column is-half is-offset-one-quarter">
+            <div className="control">
+              <form onSubmit={handleSubmit(submit)}>
+                <Field
+                  name="email"
+                  label="Email"
+                  component={Input}
+                  type="text"
+                  placeholder="account@email.com"
+                  icon="envelope"
+                  size="large"
+                />
+                <Field
+                  name="password"
+                  label="Password"
+                  component={Input}
+                  type="password"
+                  placeholder="●●●●●●●"
+                  icon="lock"
+                  size="large"
+                />
 
-        <form onSubmit={handleSubmit(submit)}>
+                <br />
+                <p className="control" />
 
-          <Field
-            name="email"
-            component={Input}
-            type="text"
-            placeholder="Email"
-            icon="envelope"
-          />
+                <div className="help">
+                  {statusMessage}
+                </div>
+                <div className={cn('help', 'is-danger')}>
+                  {errorMessage}
+                </div>
 
-          <Field
-            name="password"
-            component={Input}
-            type="password"
-            placeholder="Password"
-            icon="lock"
-          />
+                <div className="level is-mobile">
+                  <div className="level-left">
+                    <Button
+                      color="primary"
+                      center
+                      size="large"
+                      loading={waiting}
+                      disabled={waiting}
+                      type="submit"
+                    >
+                      <strong>Login</strong>
+                    </Button>
 
-          <Button
-            color="success"
-            center
-            size="medium"
-            loading={waiting}
-            disabled={waiting}
-            type="submit"
-          >
-            Let me in!
-          </Button>
 
-          <div className="help">
-            {statusMessage}
+                  </div>
+                  <div className="level-right">
+                    <Link to="/register">
+                      Don't have an account? Register
+                    </Link>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
-
-          <div className={cn('help', 'is-danger')}>
-            {errorMessage.reason}
-          </div>
-        </form>
-
-        <div>
-          <Link to="/register">
-            I don't have an account yet
-          </Link>
         </div>
-
       </div>
-    </section>
 
 );
 LoginForm.propTypes = {

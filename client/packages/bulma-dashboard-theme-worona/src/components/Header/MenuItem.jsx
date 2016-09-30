@@ -1,22 +1,29 @@
-/* eslint-disable no-unused-vars  */
 import React from 'react';
 import { Link } from 'react-router';
 import cn from 'classnames';
 
 import Icon from '../elements/Icon';
 
-export const ExtLink = ({ activeClassName, children, ...rest }) => (
-  <a {...rest}>
-    {children}
+export const ExtLink = props => (
+  <a {...props}>
+    {props.children}
   </a>
 );
 ExtLink.propTypes = {
-  activeClassName: React.PropTypes.string,
+  children: React.PropTypes.node.isRequired,
+};
+
+export const InnerLink = props => (
+  <Link {...props} activeClassName="is-active">
+    {props.children}
+  </Link>
+);
+InnerLink.propTypes = {
   children: React.PropTypes.node.isRequired,
 };
 
 export const MenuItem = ({ type, name, url, target, link, action, icon, tabindex }) => {
-  const Anchor = !link ? ExtLink : Link;
+  const Anchor = !link ? ExtLink : InnerLink;
   const anchorClass = cn({
     'button is-primary': type === 'button',
   });
@@ -25,7 +32,7 @@ export const MenuItem = ({ type, name, url, target, link, action, icon, tabindex
       <Anchor
         className={anchorClass}
         href={url} to={link} target={target} onClick={action}
-        role="button" tabIndex={tabindex} activeClassName={link ? 'is-active' : null}
+        role="button" tabIndex={tabindex}
       >
         {type === 'button' && icon ? (
           <Icon iconFaCode={icon} small />
