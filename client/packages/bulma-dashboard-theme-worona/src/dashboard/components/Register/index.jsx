@@ -1,7 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
-import cn from 'classnames';
 import { Link } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
 
@@ -83,13 +82,23 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage, toggleTe
               <br />
               <p className="control" />
 
-              <div className="help" >
-                {statusMessage}
-              </div>
+              {statusMessage ? (
+                <article className="message">
+                  <div className="message-body has-text-centered">
+                    <strong>{statusMessage}</strong>
+                  </div>
+                </article>)
+                 : null
+               }
 
-              <div className={cn('help', 'is-danger')}>
-                {errorMessage}
-              </div>
+              {errorMessage ? (
+                <article className="message is-danger">
+                  <div className="message-body has-text-centered">
+                    <strong>{errorMessage}</strong>
+                  </div>
+                </article>)
+                 : null
+               }
 
               <div className="level is-mobile">
                 <div className="level-left">
