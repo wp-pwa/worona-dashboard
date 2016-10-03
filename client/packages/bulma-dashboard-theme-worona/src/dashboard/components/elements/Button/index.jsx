@@ -18,7 +18,9 @@ const Button = ({
   return (
     <span className={cx(center && 'is-text-centered')}>
       <button type={type} className={buttonClass} onClick={onClick}>
-        {children}
+        <span> {/* To force button's children to be inline instead of flex */}
+          {children}
+        </span>
       </button>
     </span>
   );
