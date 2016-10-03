@@ -9,7 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
-var publicPath = argv.remote ? 'https://cdn.worona.io/' : 'https://localhost:4000/';
+var publicPath = argv.remote ? 'https://cdn.worona.io/' : 'http://localhost:4000/';
 
 module.exports = {
   entry: {
@@ -112,7 +112,7 @@ module.exports = {
 		// hot: true,
 		inline: true,
     port: 4000,
-    https: true,
+    https: false,
     compress: false,
     historyApiFallback: true,
 	},
@@ -131,7 +131,7 @@ module.exports = {
       template: path.join(__dirname, 'html', 'index.html'),
       favicon: path.join(__dirname, 'html', 'favicon.png'),
       vendorsFile: 'packages/core-dashboard-worona/dist/' + env + '/vendors/' + vendorsFile,
-      devServer: 'https://localhost:4000',
+      devServer: 'http://localhost:4000',
       window: {
         publicPath: publicPath,
         __worona__: { [env]: true, remote: argv.remote },

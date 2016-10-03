@@ -9,7 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
-var publicPath = argv.remote ? 'https://cdn.worona.io/' : 'https://localhost:4000/';
+var publicPath = argv.remote ? 'https://cdn.worona.io/' : 'http://localhost:4000/';
 
 module.exports = {
   entry: {
