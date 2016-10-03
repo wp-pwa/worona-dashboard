@@ -3,7 +3,7 @@
 import React from 'react';
 import { dep } from 'worona-deps';
 import { connect } from 'react-redux';
-import { Route, IndexRedirect } from 'react-router';
+import { Route, IndexRedirect, Redirect } from 'react-router';
 import CssLoader from '../components/CssLoader';
 import * as deps from '../dependencies';
 
@@ -62,9 +62,10 @@ export const routes = (store) => (
     />
     <Route path="profile" component={Entry} wrapped="Profile" onEnter={requireAuth(store)} />
     <Route path="sites" component={Entry} wrapped="Sites" onEnter={requireAuth(store)} />
-      <Route path="/site/:siteId/:service/:namespace" component={Entry} wrapped="SiteHome"
-        onEnter={requireAuth(store)}
-      />
+    <Route path="/site/:siteId/:service/:namespace" component={Entry} wrapped="SiteHome"
+      onEnter={requireAuth(store)}
+    />
+    <Redirect from="/site/:siteId/" to="/site/:siteId/app/general" />
   </Route>
 );
 
