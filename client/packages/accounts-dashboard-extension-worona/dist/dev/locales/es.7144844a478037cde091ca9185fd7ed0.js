@@ -1,6 +1,6 @@
-webpackJsonpaccounts_dashboard_extension([1],{
+webpackJsonpaccounts_dashboard_extension([3],{
 
-/***/ 151:
+/***/ 22:
 /***/ function(module, exports) {
 
 	module.exports = {
