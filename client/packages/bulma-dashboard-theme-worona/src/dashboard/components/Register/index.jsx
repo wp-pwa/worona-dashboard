@@ -149,10 +149,13 @@ const RegisterWithForm = reduxForm({
   getFormState: state => state.theme.reduxForm,
 })(Register);
 
-export default connect(state => ({
+const mapStateToProps = state => ({
   waiting: deps.selectors.getIsCreatingAccount(state),
   statusMessage: deps.selectors.getCreateAccountStatus(state),
   errorMessage: deps.selectors.getCreateAccountError(state),
-}), dispatch => ({
+  initialValues: deps.selectors.getURLQueries(state),
+});
+
+export default connect(mapStateToProps, dispatch => ({
   toggleTerms: () => dispatch(toggleTermsAndConditions()),
 }))(RegisterWithForm);

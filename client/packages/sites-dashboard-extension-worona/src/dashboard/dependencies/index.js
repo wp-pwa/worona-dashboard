@@ -25,3 +25,7 @@ export const actions = {
     return dep('router', 'actions', 'push');
   },
 };
+
+export const types = {
+  get ROUTER_DID_CHANGE() { return dep('router', 'types', 'ROUTER_DID_CHANGE'); },
+};

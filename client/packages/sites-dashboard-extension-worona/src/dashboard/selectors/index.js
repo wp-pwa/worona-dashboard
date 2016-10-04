@@ -1,6 +1,6 @@
+import _ from 'lodash';
 import { createSelector } from 'reselect';
 import * as deps from '../dependencies';
-import _ from 'lodash';
 
 export const getIsCreatingSite = state => state.sites.isCreatingSite;
 export const getCreateSiteStatus = state => state.sites.createSiteStatus;
@@ -18,3 +18,5 @@ export const getSelectedSite = createSelector(
   getAllSites,
   (id, sites) => (id ? _.find(sites, site => site.id === id) : {})
 );
+
+export const getNewSiteInfo = state => state.sites.newSiteInfo;

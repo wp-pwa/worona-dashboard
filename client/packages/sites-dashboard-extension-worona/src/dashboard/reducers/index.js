@@ -43,10 +43,20 @@ export const createSiteError = (state = false, action) => {
   }
 };
 
+export const newSiteInfo = (state = {}, action) => {
+  if (action.type === deps.types.ROUTER_DID_CHANGE
+   && action.payload.location.pathname === '/register') {
+    const { siteName, siteURL } = action.payload.location.query;
+    return { siteName, siteURL };
+  } else if (action.type === types.CREATE_SITE_SUCCEED) return {};
+  return state;
+};
+
 export default () => combineReducers({
   isCreatingSite,
   createSiteStatus,
   createSiteError,
+  newSiteInfo,
   collection: deps.reducerCreators.collectionCreator('sites'),
   isReady: deps.reducerCreators.isReadyCreator('sites'),
 });

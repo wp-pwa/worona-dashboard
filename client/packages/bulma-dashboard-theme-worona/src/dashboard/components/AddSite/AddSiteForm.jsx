@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router';
-import cn from 'classnames';
 import Input from '../elements/Input';
 import Button from '../elements/Button';
 import Icon from '../elements/Icon';
@@ -10,7 +9,7 @@ import * as deps from '../../dependencies';
 import { validate } from './validate';
 
 const submit = (values, dispatch) => {
-  dispatch(deps.actions.createSiteRequested(values.title, values.url));
+  dispatch(deps.actions.createSiteRequested(values.siteName, values.siteURL));
 };
 
 const AddSiteForm = ({ handleSubmit, waiting, statusMessage, errorMessage, reset }) => (
@@ -22,7 +21,7 @@ const AddSiteForm = ({ handleSubmit, waiting, statusMessage, errorMessage, reset
           <div className="column is-half is-offset-one-quarter">
 
             <Field
-              name="url"
+              name="siteURL"
               label="Wordpress URL"
               component={Input}
               type="text"
@@ -32,7 +31,7 @@ const AddSiteForm = ({ handleSubmit, waiting, statusMessage, errorMessage, reset
             />
 
             <Field
-              name="title"
+              name="siteName"
               label="Site name"
               component={Input}
               type="text"
@@ -40,6 +39,24 @@ const AddSiteForm = ({ handleSubmit, waiting, statusMessage, errorMessage, reset
               icon="info-circle"
               size="is-large"
             />
+
+            {statusMessage ? (
+              <article className="message">
+                <div className="message-body has-text-centered">
+                  <strong>{statusMessage}</strong>
+                </div>
+              </article>)
+              : null
+            }
+
+            {errorMessage ? (
+              <article className="message is-danger">
+                <div className="message-body has-text-centered">
+                  <strong>{errorMessage}</strong>
+                </div>
+              </article>)
+              : null
+            }
 
             <div className="level is-mobile">
               <div className="level-left center">
@@ -62,16 +79,6 @@ const AddSiteForm = ({ handleSubmit, waiting, statusMessage, errorMessage, reset
                 <Link className="button" to="/">Cancel</Link>
               </div>
             </div>
-
-            <div className="help">
-              {statusMessage}
-            </div>
-
-            <div className={cn('help', 'is-danger')}>
-              {errorMessage.error}
-              {errorMessage.reason}
-            </div>
-
           </div>
         </div>
       </form>
@@ -82,15 +89,20 @@ const AddSiteForm = ({ handleSubmit, waiting, statusMessage, errorMessage, reset
 AddSiteForm.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool,
-  failed: React.PropTypes.bool,
-  statusMessage: React.PropTypes.any,
-  errorMessage: React.PropTypes.any,
-  reset: React.PropTypes.any,
+  statusMessage: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.bool,
+  ]),
+  errorMessage: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.bool,
+  ]),
+  reset: React.PropTypes.func,
 };
 
 const AddSiteWithForm = reduxForm({
   form: 'AddSiteForm',
-  fields: ['title', 'url'],
+  fields: ['siteName', 'siteURL'],
   validate,
   getFormState: state => state.theme.reduxForm,
 })(AddSiteForm);
@@ -99,4 +111,5 @@ export default connect(state => ({
   waiting: deps.selectors.getIsCreatingSite(state),
   statusMessage: deps.selectors.getCreateSiteStatus(state),
   errorMessage: deps.selectors.getCreateSiteError(state),
+  initialValues: deps.selectors.getNewSiteInfo(state),
 }))(AddSiteWithForm);
