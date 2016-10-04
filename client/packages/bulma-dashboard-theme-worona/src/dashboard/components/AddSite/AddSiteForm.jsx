@@ -8,15 +8,16 @@ import Icon from '../elements/Icon';
 import * as deps from '../../dependencies';
 import { validate } from './validate';
 
-const submit = (values, dispatch) => {
-  dispatch(deps.actions.createSiteRequested(values.siteName, values.siteURL));
+const submit = siteId => (values, dispatch) => {
+  dispatch(deps.actions.createSiteRequested(values.siteName, values.siteURL, siteId));
 };
 
-const AddSiteForm = ({ handleSubmit, waiting, statusMessage, errorMessage, reset }) => (
+const AddSiteForm =
+({ handleSubmit, waiting, statusMessage, errorMessage, reset, initialValues: { siteId } }) => (
   <section className="section">
     <div className="container">
 
-      <form onSubmit={handleSubmit(submit)} >
+      <form onSubmit={handleSubmit(submit(siteId))} >
         <div className="columns">
           <div className="column is-half is-offset-one-quarter">
 
@@ -98,6 +99,11 @@ AddSiteForm.propTypes = {
     React.PropTypes.bool,
   ]),
   reset: React.PropTypes.func,
+  initialValues: React.PropTypes.shape({
+    siteId: React.PropTypes.string,
+    siteName: React.PropTypes.string,
+    siteURL: React.PropTypes.string,
+  }),
 };
 
 const AddSiteWithForm = reduxForm({
@@ -107,9 +113,11 @@ const AddSiteWithForm = reduxForm({
   getFormState: state => state.theme.reduxForm,
 })(AddSiteForm);
 
-export default connect(state => ({
+const mapStateToProps = state => ({
   waiting: deps.selectors.getIsCreatingSite(state),
   statusMessage: deps.selectors.getCreateSiteStatus(state),
   errorMessage: deps.selectors.getCreateSiteError(state),
   initialValues: deps.selectors.getNewSiteInfo(state),
-}))(AddSiteWithForm);
+});
+
+export default connect(mapStateToProps)(AddSiteWithForm);

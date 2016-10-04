@@ -41,8 +41,8 @@ const requireAuth = (store) => (nextState, replace) => {
   const accounts = store.getState().accounts;
   if (!accounts || !accounts.isLoggedIn) {
     replace({
-      pathname: '/login',
-      query: { next: nextState.location.pathname },
+      pathname: '/register',
+      query: { ...nextState.location.query, next: nextState.location.pathname },
     });
   }
 };
@@ -54,12 +54,10 @@ const dontRequireAuth = (store) => (nextState, replace) => {
 
 export const routes = (store) => (
   <Route path="/" component={ThemeLoader} >
-    <IndexRedirect to="/login" />
+    <IndexRedirect to="/register" />
     <Route path="login" component={Entry} wrapped="Login" onEnter={dontRequireAuth(store)} />
     <Route path="register" component={Entry} wrapped="Register" onEnter={dontRequireAuth(store)} />
-    <Route path="add-site" component={Entry} wrapped="AddSite"
-      onEnter={requireAuth(store)}
-    />
+    <Route path="add-site" component={Entry} wrapped="AddSite" onEnter={requireAuth(store)} />
     <Route path="profile" component={Entry} wrapped="Profile" onEnter={requireAuth(store)} />
     <Route path="sites" component={Entry} wrapped="Sites" onEnter={requireAuth(store)} />
     <Route path="/site/:siteId/:service/:namespace" component={Entry} wrapped="SiteHome"
