@@ -1,5 +1,5 @@
-import * as t from '../types';
 import stringifyError from 'stringify-error-message';
+import * as t from '../types';
 
 export const loginRequested = (email, password) => ({ type: t.LOGIN_REQUESTED, email, password });
 export const loginStatusChanged = status => ({ type: t.LOGIN_STATUS_CHANGED, status });

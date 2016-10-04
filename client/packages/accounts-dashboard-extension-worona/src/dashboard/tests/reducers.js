@@ -38,17 +38,19 @@ test('logoutStatus', t => {
 });
 
 test('loginError', t => {
-  const error = {};
+  const msg = 'Some Account Error';
+  const error = new Error(msg);
   t.false(reducers.loginError(undefined, {}));
-  t.is(reducers.loginError(false, actions.loginFailed(error)), error);
+  t.is(reducers.loginError(false, actions.loginFailed(error)), msg);
   t.false(reducers.loginError(error, actions.loginRequested()));
   t.false(reducers.loginError(error, actions.loginSucceed()));
 });
 
 test('logoutError', t => {
-  const error = {};
+  const msg = 'Some Account Error';
+  const error = new Error(msg);
   t.false(reducers.logoutError(undefined, {}));
-  t.is(reducers.logoutError(false, actions.logoutFailed(error)), error);
+  t.is(reducers.logoutError(false, actions.logoutFailed(error)), msg);
   t.false(reducers.logoutError(error, actions.logoutRequested()));
   t.false(reducers.logoutError(error, actions.logoutSucceed()));
 });
@@ -76,9 +78,10 @@ test('createAccountStatus', t => {
 });
 
 test('createAccountError', t => {
-  const error = {};
+  const msg = 'Some Account Error';
+  const error = new Error(msg);
   t.false(reducers.createAccountError(undefined, {}));
-  t.is(reducers.createAccountError(false, actions.createAccountFailed(error)), error);
+  t.is(reducers.createAccountError(false, actions.createAccountFailed(error)), msg);
   t.false(reducers.createAccountError(error, actions.createAccountRequested()));
   t.false(reducers.createAccountError(error, actions.createAccountSucceed()));
 });

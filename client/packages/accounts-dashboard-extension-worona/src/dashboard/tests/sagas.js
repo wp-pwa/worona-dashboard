@@ -17,7 +17,7 @@ mock(deps);
 test('createAccountSaga not connected', t => {
   const action = { name: 'name', email: 'email', password: 'pass' };
   const gen = createAccountSaga(action);
-  t.deepEqual(gen.next().value, select(deps.selectors.isConnected));
+  t.deepEqual(gen.next().value, select(deps.selectors.getIsConnected));
   t.deepEqual(gen.next(false).value, put(actions.createAccountStatusChanged(NOT_CONNECTED)));
   t.deepEqual(gen.next().value, take(deps.types.CONNECTION_SUCCEED));
   t.deepEqual(gen.next({ type: deps.types.CONNECTION_SUCCEED }).value,
@@ -30,7 +30,7 @@ test('createAccountSaga connected and succeed', t => {
   const action = { name: 'name', email: 'email', password: 'pass' };
   const userId = {};
   const gen = createAccountSaga(action);
-  t.deepEqual(gen.next().value, select(deps.selectors.isConnected));
+  t.deepEqual(gen.next().value, select(deps.selectors.getIsConnected));
   t.deepEqual(gen.next(true).value, put(actions.createAccountStatusChanged(CREATING_ACCOUNT)));
   t.deepEqual(gen.next().value,
     call(libs.createAccount, action.name, action.email, action.password));
@@ -43,7 +43,7 @@ test('createAccountSaga connected and failed', t => {
   const actn = { name: 'name', email: 'email', password: 'pass' };
   const error = {};
   const gen = createAccountSaga(actn);
-  t.deepEqual(gen.next().value, select(deps.selectors.isConnected));
+  t.deepEqual(gen.next().value, select(deps.selectors.getIsConnected));
   t.deepEqual(gen.next(true).value, put(actions.createAccountStatusChanged(CREATING_ACCOUNT)));
   t.deepEqual(gen.next().value, call(libs.createAccount, actn.name, actn.email, actn.password));
   t.deepEqual(gen.throw(error).value, put(actions.createAccountFailed(error)));
@@ -53,7 +53,7 @@ test('createAccountSaga connected and failed', t => {
 test('loginRequestedSaga not connected', t => {
   const action = { email: 'email', password: 'pass' };
   const gen = loginRequestedSaga(action);
-  t.deepEqual(gen.next().value, select(deps.selectors.isConnected));
+  t.deepEqual(gen.next().value, select(deps.selectors.getIsConnected));
   t.deepEqual(gen.next(false).value, put(actions.loginStatusChanged(NOT_CONNECTED)));
   t.deepEqual(gen.next().value, take(deps.types.CONNECTION_SUCCEED));
   t.deepEqual(gen.next({ type: deps.types.CONNECTION_SUCCEED }).value,
@@ -66,7 +66,7 @@ test('loginRequestedSaga connected and succeed', t => {
   const actn = { email: 'email', password: 'pass' };
   const userId = {};
   const gen = loginRequestedSaga(actn);
-  t.deepEqual(gen.next().value, select(deps.selectors.isConnected));
+  t.deepEqual(gen.next().value, select(deps.selectors.getIsConnected));
   t.deepEqual(gen.next(true).value, put(actions.loginStatusChanged(LOGIN_IN)));
   t.deepEqual(gen.next().value, call(deps.libs.loginWithPassword, actn.email, actn.password));
   t.deepEqual(gen.next(userId).value, put(actions.loginSucceed(userId)));
@@ -77,7 +77,7 @@ test('loginRequestedSaga connected and failed', t => {
   const actn = { email: 'email', password: 'pass' };
   const error = {};
   const gen = loginRequestedSaga(actn);
-  t.deepEqual(gen.next().value, select(deps.selectors.isConnected));
+  t.deepEqual(gen.next().value, select(deps.selectors.getIsConnected));
   t.deepEqual(gen.next(true).value, put(actions.loginStatusChanged(LOGIN_IN)));
   t.deepEqual(gen.next().value, call(deps.libs.loginWithPassword, actn.email, actn.password));
   t.deepEqual(gen.throw(error).value, put(actions.loginFailed(error)));
@@ -85,7 +85,7 @@ test('loginRequestedSaga connected and failed', t => {
 });
 
 test('loginEvent automatic login', t => {
-  const loggedInEvents = eventChannel(() => {});
+  const loggedInEvents = eventChannel(() => (() => {}));
   const gen = loginEvent(loggedInEvents);
   const automaticLogin = { automaticLogin: 1234 };
   t.deepEqual(gen.next().value, race({
@@ -97,7 +97,7 @@ test('loginEvent automatic login', t => {
 });
 
 test('loginEvent manual login with success', t => {
-  const loggedInEvents = eventChannel(() => {});
+  const loggedInEvents = eventChannel(() => (() => {}));
   const gen = loginEvent(loggedInEvents);
   t.deepEqual(gen.next().value, race({
     automaticLogin: take(loggedInEvents),
@@ -111,7 +111,7 @@ test('loginEvent manual login with success', t => {
 });
 
 test('loginEvent manual login with failure', t => {
-  const loggedInEvents = eventChannel(() => {});
+  const loggedInEvents = eventChannel(() => (() => {}));
   const gen = loginEvent(loggedInEvents);
   t.deepEqual(gen.next().value, race({
     automaticLogin: take(loggedInEvents),
@@ -128,7 +128,7 @@ test('loginEvent manual login with failure', t => {
 });
 
 test('logoutEvent automatic logout', t => {
-  const loggedOutEvents = eventChannel(() => {});
+  const loggedOutEvents = eventChannel(() => (() => {}));
   const gen = logoutEvent(loggedOutEvents);
   const automaticLogout = { automaticLogout: 1234 };
   t.deepEqual(gen.next().value, race({
@@ -140,7 +140,7 @@ test('logoutEvent automatic logout', t => {
 });
 
 test('logoutEvent manual login with success', t => {
-  const loggedOutEvents = eventChannel(() => {});
+  const loggedOutEvents = eventChannel(() => (() => {}));
   const gen = logoutEvent(loggedOutEvents);
   t.deepEqual(gen.next().value, race({
     automaticLogout: take(loggedOutEvents),
@@ -154,7 +154,7 @@ test('logoutEvent manual login with success', t => {
 });
 
 test('logoutEvent manual login with failure', t => {
-  const loggedOutEvents = eventChannel(() => {});
+  const loggedOutEvents = eventChannel(() => (() => {}));
   const gen = logoutEvent(loggedOutEvents);
   t.deepEqual(gen.next().value, race({
     automaticLogout: take(loggedOutEvents),
