@@ -1,6 +1,11 @@
 import test from 'ava';
-import * as actions from '../actions';
+import deepFreeze from 'deep-freeze';
+import { mock } from 'worona-deps';
 import * as reducers from '../reducers';
+import * as actions from '../actions';
+import * as deps from '../dependencies';
+
+mock(deps);
 
 test('isLoggedIn', t => {
   t.false(reducers.isLoggedIn(undefined, {}));
@@ -23,6 +28,7 @@ test('isLoggingIn', t => {
 
 test('loginStatus', t => {
   const status = {};
+  deepFreeze(status);
   t.false(reducers.loginStatus(undefined, {}));
   t.is(reducers.loginStatus(false, actions.loginStatusChanged(status)), status);
   t.false(reducers.loginStatus(status, actions.loginSucceed()));
@@ -71,6 +77,7 @@ test('isCreatingAccount', t => {
 
 test('createAccountStatus', t => {
   const status = {};
+  deepFreeze(status);
   t.false(reducers.createAccountStatus(undefined, {}));
   t.is(reducers.createAccountStatus(false, actions.createAccountStatusChanged(status)), status);
   t.false(reducers.createAccountStatus(status, actions.createAccountSucceed()));
@@ -90,4 +97,21 @@ test('isFirstLogin', t => {
   t.false(reducers.isFirstLogin(undefined, {}));
   t.true(reducers.isFirstLogin(false, actions.createAccountSucceed()));
   t.false(reducers.isFirstLogin(true, actions.logoutSucceed()));
+});
+
+test('redirectAfterLogin', t => {
+  t.is(reducers.redirectAfterLogin(undefined, {}), '/sites');
+  t.is(reducers.redirectAfterLogin(undefined, actions.logoutSucceed()), '/sites');
+  t.is(reducers.redirectAfterLogin('/', {}), '/');
+  const mockAction = { type: deps.types.ROUTER_DID_CHANGE, payload: { location: { pathname: '/', query: {} } } };
+  t.is(reducers.redirectAfterLogin(undefined, mockAction), '/sites');
+  t.is(reducers.redirectAfterLogin('/sites', mockAction), '/sites');
+  mockAction.payload.location.pathname = '/login';
+  t.is(reducers.redirectAfterLogin('/sites', mockAction), '/sites');
+  mockAction.payload.location.query.next = '/add-site';
+  t.is(reducers.redirectAfterLogin('/sites', mockAction), '/add-site');
+  mockAction.payload.location.pathname = '/register';
+  t.is(reducers.redirectAfterLogin('/sites', mockAction), '/add-site');
+  mockAction.payload.location.query.next = '';
+  t.is(reducers.redirectAfterLogin('/sites', mockAction), '/sites');
 });

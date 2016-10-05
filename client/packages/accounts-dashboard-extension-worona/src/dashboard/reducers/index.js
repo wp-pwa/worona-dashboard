@@ -147,9 +147,10 @@ export const isFirstLogin = (state = false, action) => {
 export const redirectAfterLogin = (state = '/sites', action) => {
   switch (action.type) {
     case deps.types.ROUTER_DID_CHANGE:
-      if (action.payload.location.pathname === '/login' ||
-        action.payload.location.pathname === '/register') {
-        if (state === '/sites') return action.payload.location.query.next || '/sites';
+      if (state === '/sites' && (
+      action.payload.location.pathname === '/login' ||
+      action.payload.location.pathname === '/register')) {
+        return action.payload.location.query.next || '/sites';
       }
       return state;
     case types.LOGOUT_SUCCEED:
