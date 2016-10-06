@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
+import { reducer as reduxForm } from 'redux-form';
 import header from './header';
 import forms from './forms';
-import { reducer as reduxForm } from 'redux-form';
 
 export default () => combineReducers({
   header,
