@@ -7,10 +7,10 @@ import * as actions from '../actions';
 import { CONNECTION_LOST, CONNECTION_TIMEOUT } from '../errors';
 import { timeout } from '../config';
 
-test('connectionStarter connection successfull and disconnected', t => {
+test('connectionStarter: connection successfull and disconnected', t => {
   const gen = connectionStarter();
-  const connectedChannel = eventChannel(() => {});
-  const disconnectedChannel = eventChannel(() => {});
+  const connectedChannel = eventChannel(() => (() => {}));
+  const disconnectedChannel = eventChannel(() => (() => {}));
   t.deepEqual(gen.next().value, call(libs.start));
   t.deepEqual(gen.next().value, put(actions.connectionStarted()));
   t.deepEqual(gen.next().value, call(libs.connectedEventChannel));
@@ -28,10 +28,10 @@ test('connectionStarter connection successfull and disconnected', t => {
   t.deepEqual(gen.next().value, put(actions.connectionRequested()));
 });
 
-test('connectionStarter connection failed and reconnected', t => {
+test('connectionStarter: connection failed and reconnected', t => {
   const gen = connectionStarter();
-  const connectedChannel = eventChannel(() => {});
-  const disconnectedChannel = eventChannel(() => {});
+  const connectedChannel = eventChannel(() => (() => {}));
+  const disconnectedChannel = eventChannel(() => (() => {}));
   t.deepEqual(gen.next().value, call(libs.start));
   t.deepEqual(gen.next().value, put(actions.connectionStarted()));
   t.deepEqual(gen.next().value, call(libs.connectedEventChannel));

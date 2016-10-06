@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import { createClass } from 'asteroid';
 import { eventChannel } from 'redux-saga';
 import { url } from '../config';
@@ -6,49 +7,49 @@ const Asteroid = createClass();
 
 export class Connection {
   constructor(options = {}) {
-    this._url = options.url || url;
-    this._client = null;
+    this.url = options.url || url;
+    this.client = null;
   }
 
   start() {
-    this._client = new Asteroid({
+    this.client = new Asteroid({
       autoConnect: false,
       autoReconnect: false,
       maintainCollections: true,
       ddpVersion: '1',
-      endpoint: this._url,
+      endpoint: this.url,
     });
   }
 
   connect() {
-    this._client.ddp.connect();
+    this.client.ddp.connect();
   }
 
   connectedEventChannel() {
     return eventChannel(listener => {
-      const connected = this._client.ddp.on('connected', () => {
+      const connected = this.client.ddp.on('connected', () => {
         listener('connected');
       });
       return () => {
-        this._client.ddp.removeListener('connected', connected);
+        this.client.ddp.removeListener('connected', connected);
       };
     });
   }
 
   disconnectedEventChannel() {
     return eventChannel(listener => {
-      const disconnected = this._client.ddp.on('disconnected', () => {
+      const disconnected = this.client.ddp.on('disconnected', () => {
         listener('disconnected');
       });
       return () => {
-        this._client.ddp.removeListener('disconnected', disconnected);
+        this.client.ddp.removeListener('disconnected', disconnected);
       };
     });
   }
 
   call(...params) {
     return new Promise((resolve, reject) => {
-      this._client.call(...params)
+      this.client.call(...params)
       .then(result => {
         if (typeof result === 'object' && result.errorType === 'Meteor.Error') {
           reject(result);
@@ -61,64 +62,64 @@ export class Connection {
   }
 
   loginWithPassword(email, password) {
-    return this._client.loginWithPassword({ email, password });
+    return this.client.loginWithPassword({ email, password });
   }
 
   loggedInEventChannel() {
     return eventChannel(listener => {
-      const loggedIn = this._client.on('loggedIn', () => {
-        listener(this._client.userId);
+      const loggedIn = this.client.on('loggedIn', () => {
+        listener(this.client.userId);
       });
       return () => {
-        this._client.removeListener('loggedIn', loggedIn);
+        this.client.removeListener('loggedIn', loggedIn);
       };
     });
   }
 
   loggedOutEventChannel() {
     return eventChannel(listener => {
-      const loggedOut = this._client.on('loggedOut', () => {
+      const loggedOut = this.client.on('loggedOut', () => {
         listener('logout');
       });
       return () => {
-        this._client.removeListener('loggedOut', loggedOut);
+        this.client.removeListener('loggedOut', loggedOut);
       };
     });
   }
 
   logout() {
-    return this._client.logout();
+    return this.client.logout();
   }
 
   subscribe(...params) {
-    return this._client.subscribe(...params);
+    return this.client.subscribe(...params);
   }
 
   unsubscribe(id) {
-    this._client.unsubscribe(id);
+    this.client.unsubscribe(id);
   }
 
   collectionEventChannel(selectedCollection) {
     return eventChannel(listener => {
-      const added = this._client.ddp.on('added', ({ collection, id, fields }) => {
+      const added = this.client.ddp.on('added', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
           listener({ collection, event: 'added', id, fields });
         }
       });
-      const changed = this._client.ddp.on('changed', ({ collection, id, fields }) => {
+      const changed = this.client.ddp.on('changed', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
           listener({ collection, event: 'changed', id, fields });
         }
       });
-      const removed = this._client.ddp.on('removed', ({ collection, id, fields }) => {
+      const removed = this.client.ddp.on('removed', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
           listener({ collection, event: 'removed', id, fields });
         }
       });
       return () => {
-        this._client.ddp.removeListener('added', added);
-        this._client.ddp.removeListener('changed', changed);
-        this._client.ddp.removeListener('removed', removed);
+        this.client.ddp.removeListener('added', added);
+        this.client.ddp.removeListener('changed', changed);
+        this.client.ddp.removeListener('removed', removed);
       };
     });
   }
