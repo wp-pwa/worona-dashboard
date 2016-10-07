@@ -4,6 +4,7 @@
   "description": "Core Package of Worona Dashboard",
   "main": "dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js",
   "scripts": {
+    "test" : "ava src/**/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
     "clean": "rimraf dist",
     "clean:dev": "rimraf dist/dev",
     "clean:prod": "rimraf dist/prod",
