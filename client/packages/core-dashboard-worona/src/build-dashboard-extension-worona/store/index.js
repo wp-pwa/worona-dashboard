@@ -1,9 +1,10 @@
+/* eslint-disable global-require */
+/* global window */
 import { compose, createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { routerStateReducer as router } from 'redux-router';
+import { isTest } from 'worona-deps';
+import { reduxReactRouter, routerStateReducer as router } from 'redux-router';
 import build from '../reducers';
-import { reduxReactRouter } from 'redux-router';
-import { createHistory } from 'history';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -15,11 +16,12 @@ export const store = createStore(
   compose(
     applyMiddleware(sagaMiddleware),
     reduxReactRouter({
-      createHistory,
+      createHistory: !isTest ? require('history').createHistory : require('history').createMemoryHistory,
     }),
     typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
+
 export default store;
 
 export const dispatch = action => store.dispatch(action);
@@ -29,9 +31,3 @@ export const removeReducer = namespace => { if (reducers[namespace]) delete redu
 export const startSaga = (namespace, saga) => { sagas[namespace] = sagaMiddleware.run(saga); };
 export const stopSaga = (namespace) => { if (sagas[namespace]) sagas[namespace].cancel(); };
 export const getState = store.getState.bind(store);
-
-if (module.hot) {
-  module.hot.accept(() => {
-    reloadReducers();
-  });
-}

@@ -4,6 +4,7 @@
   "description": "Extension for the Worona Dashboard in charge of the connection to the server.",
   "main": "src/index.js",
   "scripts": {
+    "test" : "ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
     "update:vendors": "node node_modules/worona-packages/update-vendors.js --service dashboard",
     "clean": "rimraf dist",
     "clean:dev": "rimraf dist/dev",

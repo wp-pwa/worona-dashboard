@@ -1,6 +1,11 @@
 import test from 'ava';
-import * as actions from '../actions';
+import deepFreeze from 'deep-freeze';
+import { mock } from 'worona-deps';
 import * as reducers from '../reducers';
+import * as actions from '../actions';
+import * as deps from '../dependencies';
+
+mock(deps);
 
 test('isLoggedIn', t => {
   t.false(reducers.isLoggedIn(undefined, {}));
@@ -23,6 +28,7 @@ test('isLoggingIn', t => {
 
 test('loginStatus', t => {
   const status = {};
+  deepFreeze(status);
   t.false(reducers.loginStatus(undefined, {}));
   t.is(reducers.loginStatus(false, actions.loginStatusChanged(status)), status);
   t.false(reducers.loginStatus(status, actions.loginSucceed()));
@@ -31,6 +37,7 @@ test('loginStatus', t => {
 
 test('logoutStatus', t => {
   const status = {};
+  deepFreeze(status);
   t.false(reducers.logoutStatus(undefined, {}));
   t.is(reducers.logoutStatus(false, actions.logoutStatusChanged(status)), status);
   t.false(reducers.logoutStatus(status, actions.logoutSucceed()));
@@ -40,6 +47,7 @@ test('logoutStatus', t => {
 test('loginError', t => {
   const msg = 'Some Account Error';
   const error = new Error(msg);
+  deepFreeze(error);
   t.false(reducers.loginError(undefined, {}));
   t.is(reducers.loginError(false, actions.loginFailed(error)), msg);
   t.false(reducers.loginError(error, actions.loginRequested()));
@@ -49,6 +57,7 @@ test('loginError', t => {
 test('logoutError', t => {
   const msg = 'Some Account Error';
   const error = new Error(msg);
+  deepFreeze(error);
   t.false(reducers.logoutError(undefined, {}));
   t.is(reducers.logoutError(false, actions.logoutFailed(error)), msg);
   t.false(reducers.logoutError(error, actions.logoutRequested()));
@@ -71,6 +80,7 @@ test('isCreatingAccount', t => {
 
 test('createAccountStatus', t => {
   const status = {};
+  deepFreeze(status);
   t.false(reducers.createAccountStatus(undefined, {}));
   t.is(reducers.createAccountStatus(false, actions.createAccountStatusChanged(status)), status);
   t.false(reducers.createAccountStatus(status, actions.createAccountSucceed()));
@@ -80,6 +90,7 @@ test('createAccountStatus', t => {
 test('createAccountError', t => {
   const msg = 'Some Account Error';
   const error = new Error(msg);
+  deepFreeze(error);
   t.false(reducers.createAccountError(undefined, {}));
   t.is(reducers.createAccountError(false, actions.createAccountFailed(error)), msg);
   t.false(reducers.createAccountError(error, actions.createAccountRequested()));
@@ -90,4 +101,28 @@ test('isFirstLogin', t => {
   t.false(reducers.isFirstLogin(undefined, {}));
   t.true(reducers.isFirstLogin(false, actions.createAccountSucceed()));
   t.false(reducers.isFirstLogin(true, actions.logoutSucceed()));
+});
+
+test('redirectAfterLogin', t => {
+  t.is(reducers.redirectAfterLogin(undefined, {}), '/sites');
+  t.is(reducers.redirectAfterLogin(undefined, actions.logoutSucceed()), '/sites');
+  t.is(reducers.redirectAfterLogin('/', {}), '/');
+  const mockAction = { type: deps.types.ROUTER_DID_CHANGE };
+
+  const noRedirectAction = Object.assign({ type: deps.types.ROUTER_DID_CHANGE, payload: { location: { pathname: '/', query: {} } } }, mockAction);
+  deepFreeze(noRedirectAction);
+  t.is(reducers.redirectAfterLogin(undefined, noRedirectAction), '/sites');
+  t.is(reducers.redirectAfterLogin('/sites', noRedirectAction), '/sites');
+
+  const loginButNoRedirect = Object.assign({ payload: { location: { pathname: '/login', query: {} } } }, mockAction);
+  deepFreeze(loginButNoRedirect);
+  t.is(reducers.redirectAfterLogin('/sites', loginButNoRedirect), '/sites');
+
+  const registerButNoRedirect = Object.assign({ payload: { location: { pathname: '/register', query: { next: '' } } } }, mockAction);
+  deepFreeze(registerButNoRedirect);
+  t.is(reducers.redirectAfterLogin('/sites', registerButNoRedirect), '/sites');
+
+  const registerAndRedirect = Object.assign({ payload: { location: { pathname: '/register', query: { next: '/add-site' } } } }, mockAction);
+  deepFreeze(registerAndRedirect);
+  t.is(reducers.redirectAfterLogin('/sites', registerAndRedirect), '/add-site');
 });

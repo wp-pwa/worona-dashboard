@@ -1,3 +1,4 @@
+import lodash from 'lodash';
 import { combineReducers } from 'redux';
 import * as types from '../types';
 import { METEOR_USER_NOT_LOGGED_IN, YOU_ARE_NOT_LOGGED_IN } from '../errors';
@@ -49,11 +50,13 @@ export const newSiteInfo = (state = {}, action) => {
      || action.payload.location.query.siteURL
      || action.payload.location.query.siteId)) {
     const { siteName, siteURL, siteId } = action.payload.location.query;
-    return { siteName, siteURL, siteId };
+    let siteInfo = { siteName, siteURL, siteId };
+    siteInfo = lodash.pickBy(siteInfo, prop => !lodash.isUndefined(prop));
+    return siteInfo;
   } else if (action.type === types.CREATE_SITE_SUCCEED) return {};
+
   return state;
 };
-
 export default () => combineReducers({
   isCreatingSite,
   createSiteStatus,

@@ -15,129 +15,129 @@ test.afterEach(() => {
 });
 
 test('start', t => {
-  t.falsy(connection._client);
+  t.falsy(connection.client);
   connection.start();
-  t.is(connection._client.endpoint, 'ws://test');
+  t.is(connection.client.endpoint, 'ws://test');
 });
 
 test('connect', t => {
   connection.start();
-  sinon.spy(connection._client.ddp, 'connect');
+  sinon.spy(connection.client.ddp, 'connect');
   connection.connect();
-  t.true(connection._client.ddp.connect.called);
+  t.true(connection.client.ddp.connect.called);
 });
 
 test('connectedEventChannel', t => {
   connection.start();
-  sinon.spy(connection._client.ddp, 'on');
-  sinon.spy(connection._client.ddp, 'removeListener');
+  sinon.spy(connection.client.ddp, 'on');
+  sinon.spy(connection.client.ddp, 'removeListener');
   const channel = connection.connectedEventChannel();
-  t.true(connection._client.ddp.on.calledWith('connected'));
+  t.true(connection.client.ddp.on.calledWith('connected'));
   channel.close();
-  t.true(connection._client.ddp.removeListener.calledWith('connected'));
+  t.true(connection.client.ddp.removeListener.calledWith('connected'));
 });
 
 test('disconnectedEventChannel', t => {
   connection.start();
-  sinon.spy(connection._client.ddp, 'on');
-  sinon.spy(connection._client.ddp, 'removeListener');
+  sinon.spy(connection.client.ddp, 'on');
+  sinon.spy(connection.client.ddp, 'removeListener');
   const channel = connection.disconnectedEventChannel();
-  t.true(connection._client.ddp.on.calledWith('disconnected'));
+  t.true(connection.client.ddp.on.calledWith('disconnected'));
   channel.close();
-  t.true(connection._client.ddp.removeListener.calledWith('disconnected'));
+  t.true(connection.client.ddp.removeListener.calledWith('disconnected'));
 });
 
 test('call success', t => {
   connection.start();
-  const call = sinon.stub(connection._client, 'call');
+  const call = sinon.stub(connection.client, 'call');
   const userId = {};
   call.returns(Promise.resolve(userId));
   connection.call('createAccount', 'name', 'password').then(result => t.is(userId, result));
-  t.true(connection._client.call.calledWith('createAccount', 'name', 'password'));
+  t.true(connection.client.call.calledWith('createAccount', 'name', 'password'));
 });
 
 test('call throws', t => {
   connection.start();
-  const call = sinon.stub(connection._client, 'call');
+  const call = sinon.stub(connection.client, 'call');
   const error = {};
   call.returns(Promise.reject(error));
   connection.call('createAccount', 'name', 'password').catch(err => t.is(err, error));
-  t.true(connection._client.call.calledWith('createAccount', 'name', 'password'));
+  t.true(connection.client.call.calledWith('createAccount', 'name', 'password'));
 });
 
 test('call throws with Meteor Error', t => {
   connection.start();
-  const call = sinon.stub(connection._client, 'call');
+  const call = sinon.stub(connection.client, 'call');
   const meteorError = { errorType: 'Meteor.Error' };
   call.returns(Promise.resolve(meteorError));
   connection.call('createAccount', 'name', 'password').catch(err => t.is(err, meteorError));
-  t.true(connection._client.call.calledWith('createAccount', 'name', 'password'));
+  t.true(connection.client.call.calledWith('createAccount', 'name', 'password'));
 });
 
 test('loginWithPassword', t => {
   connection.start();
-  const login = sinon.stub(connection._client, 'loginWithPassword');
+  const login = sinon.stub(connection.client, 'loginWithPassword');
   login.returns(1234);
   const userId = connection.loginWithPassword('email', 'password');
   t.is(userId, 1234);
-  t.true(connection._client.loginWithPassword.calledWith({ email: 'email', password: 'password' }));
+  t.true(connection.client.loginWithPassword.calledWith({ email: 'email', password: 'password' }));
 });
 
 test('logout', t => {
   connection.start();
-  sinon.spy(connection._client, 'logout');
+  sinon.spy(connection.client, 'logout');
   connection.logout();
-  t.true(connection._client.logout.called);
+  t.true(connection.client.logout.called);
 });
 
 test('loggedInEventChannel', t => {
   connection.start();
-  sinon.spy(connection._client, 'on');
-  sinon.spy(connection._client, 'removeListener');
+  sinon.spy(connection.client, 'on');
+  sinon.spy(connection.client, 'removeListener');
   const channel = connection.loggedInEventChannel();
-  t.true(connection._client.on.calledWith('loggedIn'));
+  t.true(connection.client.on.calledWith('loggedIn'));
   channel.close();
-  t.true(connection._client.removeListener.calledWith('loggedIn'));
+  t.true(connection.client.removeListener.calledWith('loggedIn'));
 });
 
 test('loggedOutEventChannel', t => {
   connection.start();
-  sinon.spy(connection._client, 'on');
-  sinon.spy(connection._client, 'removeListener');
+  sinon.spy(connection.client, 'on');
+  sinon.spy(connection.client, 'removeListener');
   const channel = connection.loggedOutEventChannel();
-  t.true(connection._client.on.calledWith('loggedOut'));
+  t.true(connection.client.on.calledWith('loggedOut'));
   channel.close();
-  t.true(connection._client.removeListener.calledWith('loggedOut'));
+  t.true(connection.client.removeListener.calledWith('loggedOut'));
 });
 
 test('subscribe', t => {
   connection.start();
-  sinon.spy(connection._client, 'subscribe');
+  sinon.spy(connection.client, 'subscribe');
   const params = {};
   connection.subscribe(params);
-  t.true(connection._client.subscribe.calledWith(params));
+  t.true(connection.client.subscribe.calledWith(params));
 });
 
 test('unsubscribe', t => {
   connection.start();
-  sinon.spy(connection._client, 'unsubscribe');
+  sinon.spy(connection.client, 'unsubscribe');
   const id = {};
   connection.unsubscribe(id);
-  t.true(connection._client.unsubscribe.calledWith(id));
+  t.true(connection.client.unsubscribe.calledWith(id));
 });
 
 test('collectionEventChannel', t => {
   connection.start();
-  sinon.spy(connection._client.ddp, 'on');
-  sinon.spy(connection._client.ddp, 'removeListener');
+  sinon.spy(connection.client.ddp, 'on');
+  sinon.spy(connection.client.ddp, 'removeListener');
   const channel = connection.collectionEventChannel('somecollection');
-  t.true(connection._client.ddp.on.calledWith('added'));
-  t.true(connection._client.ddp.on.calledWith('changed'));
-  t.true(connection._client.ddp.on.calledWith('removed'));
+  t.true(connection.client.ddp.on.calledWith('added'));
+  t.true(connection.client.ddp.on.calledWith('changed'));
+  t.true(connection.client.ddp.on.calledWith('removed'));
   channel.close();
-  t.true(connection._client.ddp.removeListener.calledWith('added'));
-  t.true(connection._client.ddp.removeListener.calledWith('changed'));
-  t.true(connection._client.ddp.removeListener.calledWith('removed'));
+  t.true(connection.client.ddp.removeListener.calledWith('added'));
+  t.true(connection.client.ddp.removeListener.calledWith('changed'));
+  t.true(connection.client.ddp.removeListener.calledWith('removed'));
 });
 
 test('readyEventChannel', t => {
