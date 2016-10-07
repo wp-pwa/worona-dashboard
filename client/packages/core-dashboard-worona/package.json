@@ -1,6 +1,6 @@
 {
   "name": "core-dashboard-worona",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Core Package of Worona Dashboard",
   "main": "src/index.js",
   "scripts": {},
@@ -41,6 +41,7 @@
     "fastclick": "^1.0.6",
     "i18next": "^3.4.3",
     "i18next-xhr-backend": "^1.2.0",
+    "lodash": "^4.16.4",
     "normalizr": "^2.2.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -54,6 +55,6 @@
     "stringify-error-message": "^1.0.2",
     "superagent": "^2.3.0",
     "systemjs": "^0.19.39",
-    "worona-deps": "^1.7.0"
+    "worona-deps": "^1.7.2"
   }
 }
