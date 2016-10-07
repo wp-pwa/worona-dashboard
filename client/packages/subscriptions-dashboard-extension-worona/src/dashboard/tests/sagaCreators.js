@@ -9,7 +9,7 @@ import * as deps from '../dependencies';
 mock(deps);
 
 test('subscriptionEvents', t => {
-  const channel = eventChannel(() => {});
+  const channel = eventChannel(() => () => {});
   const action = () => ({ type: 'SOME_ACTION' });
   const result = {};
   const gen = sagaCreators.subscriptionEvents(channel, action);
@@ -23,13 +23,13 @@ test('subscriptionWatcherCreator', t => {
   const subscription = { id: 1 };
   const watcher = sagaCreators.subscriptionWatcherCreator('test', params);
   const gen = watcher();
-  const subsChannel = eventChannel(() => {});
-  const readyChannel = eventChannel(() => {});
-  const errorChannel = eventChannel(() => {});
+  const subsChannel = eventChannel(() => () => {});
+  const readyChannel = eventChannel(() => () => {});
+  const errorChannel = eventChannel(() => () => {});
   const task = { cancel: () => {} };
   t.deepEqual(gen.next().value, call(deps.libs.collectionEventChannel, 'test'));
   t.deepEqual(gen.next(subsChannel).value, take(deps.types.LOGIN_SUCCEED));
-  t.deepEqual(gen.next().value, put(actions.subscriptionStarted()));
+  t.deepEqual(gen.next().value, put(actions.subscriptionStarted('test')));
   t.deepEqual(gen.next().value, call(deps.libs.subscribe, 'test', params));
   t.deepEqual(gen.next(subscription).value, call(deps.libs.readyEventChannel, subscription));
   t.deepEqual(gen.next(readyChannel).value, call(deps.libs.errorEventChannel, subscription));
