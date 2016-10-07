@@ -12,7 +12,8 @@ export function* createSiteSaga(action) {
     yield put(actions.createSiteStatusChanged(CREATING_SITE));
     const siteId = yield call(libs.createSite, { name, url, _id });
     yield put(actions.createSiteSucceed(siteId));
-    yield put(deps.actions.push('/sites'));
+    const nextURL = `/check-site/${siteId}`;
+    yield put(deps.actions.push(nextURL));
   } catch (error) {
     yield put(actions.createSiteFailed(error));
   }

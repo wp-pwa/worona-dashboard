@@ -58,9 +58,13 @@ export const routes = (store) => (
     <Route path="login" component={Entry} wrapped="Login" onEnter={dontRequireAuth(store)} />
     <Route path="register" component={Entry} wrapped="Register" onEnter={dontRequireAuth(store)} />
     <Route path="add-site" component={Entry} wrapped="AddSite" onEnter={requireAuth(store)} />
+    <Route
+      path="check-site/:siteId" component={Entry} wrapped="CheckSite" onEnter={requireAuth(store)}
+    />
     <Route path="profile" component={Entry} wrapped="Profile" onEnter={requireAuth(store)} />
     <Route path="sites" component={Entry} wrapped="Sites" onEnter={requireAuth(store)} />
-    <Route path="/site/:siteId/:service/:namespace" component={Entry} wrapped="SiteHome"
+    <Route
+      path="/site/:siteId/:service/:namespace" component={Entry} wrapped="SiteHome"
       onEnter={requireAuth(store)}
     />
     <Redirect from="/site/:siteId/" to="/site/:siteId/app/general" />

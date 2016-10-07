@@ -9,14 +9,15 @@ import * as actions from '../actions';
 import * as deps from '../dependencies';
 
 mock(deps);
+
 test('createSiteSaga succeed', t => {
   const action = { name: 'name', url: 'url', _id: '1234' };
-  const siteId = {};
+  const finalURL = '/check-site/' + action._id;
   const gen = createSiteSaga(action);
   t.deepEqual(gen.next().value, put(actions.createSiteStatusChanged(CREATING_SITE)));
   t.deepEqual(gen.next().value, call(libs.createSite, action));
-  t.deepEqual(gen.next(siteId).value, put(actions.createSiteSucceed(siteId)));
-  t.deepEqual(gen.next().value, put(deps.actions.push('/sites')));
+  t.deepEqual(gen.next(action._id).value, put(actions.createSiteSucceed(action._id)));
+  t.deepEqual(gen.next().value, put(deps.actions.push(finalURL)));
   t.true(gen.next().done);
 });
 
