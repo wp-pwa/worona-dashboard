@@ -24,7 +24,7 @@ const Site = ({ name, url, date, id, deleteSite }) => (
         </div>
       </div>
       <footer className="card-footer">
-        <Link className="card-footer-item" to={`/site/${id}/app/general`} role="button" >
+        <Link className="card-footer-item" to={`/check-site/${id}`} role="button" >
           <span className={cn('icon', 'is-small')}>
             <i className="fa fa-cog"></i>
           </span>

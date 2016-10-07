@@ -11,7 +11,7 @@ import Hero from '../elements/Hero';
 import Icon from '../elements/Icon';
 import * as deps from '../../dependencies';
 
-const Check = ({ text, status }) => {
+const Check = ({ key, text, status }) => {
   if (status === 'inactive') {
     return (
       <div className="notification">
@@ -59,6 +59,12 @@ const Check = ({ text, status }) => {
   );
 };
 
+Check.propTypes = {
+  key: React.PropTypes.string.isRequired,
+  text: React.PropTypes.string.isRequired,
+  status: React.PropTypes.string.isRequired,
+};
+
 const CheckSite = ({ site }) => (
   <Body>
     <Header>
@@ -73,7 +79,9 @@ const CheckSite = ({ site }) => (
     <Main>
       <div className="columns" >
         <div className="column is-4 is-offset-4">
-          <Check text="Site online" status="success" />
+          <Check text="Site online" status="inactive" key="online" />
+          <Check text="Worona WordPress Plugin" status="inactive" key="wordpress-plugin" />
+          <Check text="Checking Site ID" status="inactive" key="wordpress-plugin" />
         </div>
       </div>
     </Main>
