@@ -9,7 +9,6 @@ import { toggleTermsAndConditions } from '../../actions';
 import { validate } from './validate';
 
 import Header from '../Header';
-import TopNav from '../Header/TopNav';
 import Body from '../Body';
 import Main from '../Main';
 import Footer from '../Footer';
@@ -28,7 +27,6 @@ const submit = (values, dispatch) => {
 const Register = ({ handleSubmit, waiting, statusMessage, errorMessage, toggleTerms }) => (
   <Body>
     <Header>
-      <TopNav />
       <Hero title="Register">
         Welcome to Worona! Make your <strong>WordPress mobile-ready</strong> with a few clicks.
       </Hero>

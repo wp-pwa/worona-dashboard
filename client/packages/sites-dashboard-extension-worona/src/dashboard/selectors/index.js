@@ -7,6 +7,7 @@ export const getCreateSiteStatus = state => state.sites.createSiteStatus;
 export const getCreateSiteError = state => state.sites.createSiteError;
 
 export const getAllSites = state => state.sites.collection;
+export const getIsReadySites = state => state.sites.isReady;
 
 export const getSite = id => createSelector(
   getAllSites,

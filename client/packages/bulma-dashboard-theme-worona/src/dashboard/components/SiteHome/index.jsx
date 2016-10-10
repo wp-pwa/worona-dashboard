@@ -1,22 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Header from '../Header';
-import TopNav from '../Header/TopNav';
 import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
 import Main from '../Main';
 import Hero from '../elements/Hero';
 import * as deps from '../../dependencies';
-import { connect } from 'react-redux';
 
 import ServiceTabs from './ServiceTabs';
 import AsideMenu from './AsideMenu';
 
 const SiteHome = ({ site }) => (
   <Body>
-    <Header>
-      <TopNav />
+    <Header waitForSubscriptions={[deps.selectors.getIsReadySites]}>
       <Hero title={site.name}>
         <small>{site.id}</small>
         <br />
@@ -25,10 +23,10 @@ const SiteHome = ({ site }) => (
       <ServiceTabs />
     </Header>
 
-    <Main>
+    <Main waitForSubscriptions={[deps.selectors.getIsReadySettings]}>
       <div className="columns is-mobile" >
-      <AsideMenu />
-      {/* <PackageContent /> */}
+        <AsideMenu />
+        {/* <PackageContent /> */}
       </div>
     </Main>
 

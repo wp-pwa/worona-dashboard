@@ -51,6 +51,7 @@
       "build",
       "accounts",
       "sites",
+      "settings",
       "router"
     ],
     "dev": {

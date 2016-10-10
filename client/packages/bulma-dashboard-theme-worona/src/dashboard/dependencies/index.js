@@ -37,4 +37,6 @@ export const selectors = {
   get getSelectedService() { return dep('router', 'selectors', 'getSelectedService'); },
   get getURLQueries() { return dep('router', 'selectors', 'getURLQueries'); },
   get getNewSiteInfo() { return dep('sites', 'selectors', 'getNewSiteInfo'); },
+  get getIsReadySites() { return dep('sites', 'selectors', 'getIsReadySites'); },
+  get getIsReadySettings() { return dep('settings', 'selectors', 'getIsReadySettings'); },
 };

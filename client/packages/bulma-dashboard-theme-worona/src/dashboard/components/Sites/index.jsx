@@ -1,7 +1,8 @@
 import React from 'react';
 
+import * as deps from '../../dependencies';
+
 import Header from '../Header';
-import TopNav from '../Header/TopNav';
 import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
@@ -14,14 +15,13 @@ import AddSiteNav from './AddSiteNav';
 const Sites = () => (
   <Body>
     <Header>
-      <TopNav />
       <Hero title="Sites">
         Manage your <strong>WordPress Sites</strong> or add new ones.
       </Hero>
     </Header>
 
     <AddSiteNav />
-    <Main>
+    <Main waitForSubscriptions={[deps.selectors.getIsReadySites]}>
       <SitesList />
     </Main>
 

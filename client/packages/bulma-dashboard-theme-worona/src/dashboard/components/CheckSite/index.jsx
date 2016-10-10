@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import * as deps from '../../dependencies';
+
 import Header from '../Header';
-import TopNav from '../Header/TopNav';
 import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
 import Main from '../Main';
 import Hero from '../elements/Hero';
 import Icon from '../elements/Icon';
-import * as deps from '../../dependencies';
 
-const Check = ({ key, text, status }) => {
+export const Check = ({ text, status, key }) => {
   if (status === 'inactive') {
     return (
       <div className="notification">
@@ -60,28 +60,44 @@ const Check = ({ key, text, status }) => {
 };
 
 Check.propTypes = {
-  key: React.PropTypes.string.isRequired,
+  key: React.PropTypes.string,
   text: React.PropTypes.string.isRequired,
   status: React.PropTypes.string.isRequired,
 };
 
-const CheckSite = ({ site }) => (
-  <Body>
-    <Header>
-      <TopNav />
-      <Hero title={site.name}>
-        <small>{site.id}</small>
-        <br />
-        <small>{site.url}</small>
-      </Hero>
-    </Header>
+let CheckSiteHeader = ({ site }) => (
+  <Hero title={site.name}>
+    <small>{site.id}</small>
+    <br />
+    <small>{site.url}</small>
+  </Hero>
+);
 
-    <Main>
+const mapStateToProps = (state) => ({
+  site: deps.selectors.getSelectedSite(state),
+});
+
+CheckSiteHeader.propTypes = {
+  site: React.PropTypes.shape({
+    name: React.PropTypes.string.isRequired,
+    id: React.PropTypes.string.isRequired,
+    url: React.PropTypes.string.isRequired,
+  }),
+};
+
+CheckSiteHeader = connect(mapStateToProps)(CheckSiteHeader);
+
+const CheckSite = () => (
+  <Body>
+    <Header waitForSubscriptions={[deps.selectors.getIsReadySites]}>
+      <CheckSiteHeader />
+    </Header>
+    <Main waitForSubscriptions={[deps.selectors.getIsReadySites]}>
       <div className="columns" >
         <div className="column is-4 is-offset-4">
           <Check text="Site online" status="inactive" key="online" />
           <Check text="Worona WordPress Plugin" status="inactive" key="wordpress-plugin" />
-          <Check text="Checking Site ID" status="inactive" key="wordpress-plugin" />
+          <Check text="Checking Site ID" status="inactive" key="site-id" />
         </div>
       </div>
     </Main>
@@ -92,17 +108,4 @@ const CheckSite = ({ site }) => (
   </Body>
 );
 
-
-const mapStateToProps = (state) => ({
-  site: deps.selectors.getSelectedSite(state),
-});
-
-CheckSite.propTypes = {
-  site: React.PropTypes.shape({
-    name: React.PropTypes.string.isRequired,
-    id: React.PropTypes.string.isRequired,
-    url: React.PropTypes.string.isRequired,
-  }).isRequired,
-};
-
-export default connect(mapStateToProps)(CheckSite);
+export default CheckSite;

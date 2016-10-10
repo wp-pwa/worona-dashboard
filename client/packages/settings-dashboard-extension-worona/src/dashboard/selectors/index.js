@@ -9,6 +9,7 @@ export const getCategories = () => ([
 ]);
 
 export const getAllSettings = state => state.settings.collection;
+export const getIsReadySettings = state => state.settings.isReady;
 
 export const getSiteSettings = id => createSelector(
   getAllSettings,

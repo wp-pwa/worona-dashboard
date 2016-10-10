@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header';
-import TopNav from '../Header/TopNav';
 import Hero from '../elements/Hero';
 import Body from '../Body';
 import Footer from '../Footer';
@@ -15,7 +14,6 @@ const AddSite = ({ isFirstLogin }) => {
   if (isFirstLogin) {
     header = (
       <Header>
-        <TopNav />
         <Hero title = "Now, create your first site"
           subtitle="Your are one step away from making your site work great on mobile."
         />
@@ -24,7 +22,6 @@ const AddSite = ({ isFirstLogin }) => {
   } else {
     header = (
       <Header>
-        <TopNav />
         <Hero title = "Add Site"
           subtitle="Your are one step away from making your site work great on mobile."
         />
