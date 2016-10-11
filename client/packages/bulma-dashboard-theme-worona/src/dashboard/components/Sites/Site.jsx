@@ -49,7 +49,7 @@ Site.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  deleteSite: () => dispatch(deps.actions.deleteSiteRequested({ _id: ownProps.id })),
+  deleteSite: () => dispatch(deps.actions.deleteSiteRequested(ownProps.id)),
 });
 
 export default connect(null, mapDispatchToProps)(Site);
