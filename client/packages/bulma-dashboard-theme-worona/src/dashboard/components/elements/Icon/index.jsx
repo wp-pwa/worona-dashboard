@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Icon = ({ iconFaCode, small }) => (
+const Icon = ({ code, small }) => (
   <span className={`icon ${(small ? 'is-small' : '')}`}>
-    <i className={`fa fa-${iconFaCode}`}></i>
+    <i className={`fa fa-${code}`}></i>
   </span>
 );
 Icon.propTypes = {
-  iconFaCode: React.PropTypes.string.isRequired,
+  code: React.PropTypes.string.isRequired,
   small: React.PropTypes.bool,
 };
 

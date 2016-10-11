@@ -69,7 +69,7 @@ const AddSiteForm =
                   disabled={waiting}
                   type="submit"
                 >
-                  <Icon iconFaCode="plus-circle" />
+                  <Icon code="plus-circle" />
                   <span><strong>Add Site</strong></span>
                 </Button>
 

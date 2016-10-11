@@ -35,7 +35,7 @@ export const MenuItem = ({ type, name, url, target, link, action, icon, tabindex
         role="button" tabIndex={tabindex}
       >
         {type === 'button' && icon ? (
-          <Icon iconFaCode={icon} small />
+          <Icon code={icon} small />
         ) : null}
         <span>{name}</span>
       </Anchor>

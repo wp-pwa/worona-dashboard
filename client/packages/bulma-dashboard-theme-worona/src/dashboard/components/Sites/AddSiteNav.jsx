@@ -7,7 +7,7 @@ const AddSiteNav = () => (
     <div className="nav-left">
       <span className="nav-item">
         <Link className="button is-primary" to="add-site" href="add-site">
-          <Icon iconFaCode="plus-circle" />
+          <Icon code="plus-circle" />
           <span>Add Site</span>
         </Link>
       </span>
