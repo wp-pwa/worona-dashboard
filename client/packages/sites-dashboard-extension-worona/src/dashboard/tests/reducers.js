@@ -56,3 +56,30 @@ test('newSiteInfo', t => {
   deepFreeze(siteNameURLAndIdQuery);
   t.deepEqual(reducers.newSiteInfo(undefined, siteNameURLAndIdQuery), newSiteInfoState);
 });
+
+test('checkSite successful', t => {
+  t.deepEqual(reducers.checkSite(undefined, {}), {});
+
+  /* checking if site is online */
+  let mockAction = { type:types.CHECK_SITE_STATUS_CHANGED,
+     checkType: types.checkType.online,
+     status: status.online};
+  let state = { online : status.online, plugin: 'inactive', siteId: 'inactive' };
+  t.deepEqual(reducers.checkSite(undefined, mockAction), state);
+
+  mockAction =
+  state.online = 'success';
+  t.deepEqual(reducers.checkSite(undefined, mockAction), state);
+
+  /* checking if WP plugin is installed */
+
+  state.plugin = 'loading';
+  t.deepEqual(reducers.checkSite(undefined, mockAction), state);
+
+
+  state.plugin = 'success';
+  t.deepEqual(reducers.checkSite(undefined, mockAction), state);
+
+
+  /* checking if dashboard siteId matches with WP siteId */
+});
