@@ -18,7 +18,7 @@ const Header = ({ isReady, children }) => {
   return (
     <section className={cn('hero', 'is-primary', styles.header)}>
       <TopNav />
-      <Hero title="&nbsp;"/>
+      <Hero title="&nbsp;" />
     </section>
   );
 };

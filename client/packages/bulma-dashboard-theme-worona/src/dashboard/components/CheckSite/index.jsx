@@ -9,8 +9,7 @@ import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
 import Main from '../Main';
 import Hero from '../elements/Hero';
-
-import { Check } from './Check';
+import Check from './Check';
 
 /* Header */
 let CheckSiteHeader = ({ site }) => (
@@ -42,9 +41,9 @@ const CheckSite = () => (
       <CheckSiteHeader />
     </Header>
     <Main waitForSubscriptions={[deps.selectors.getIsReadySites]}>
-      <Check text="Site online and available" status="inactive" key="online" />
-      <Check text="Worona WordPress Plugin" status="danger" key="plugin" />
-      <Check text="Checking Site ID" status="warning" key="siteId" />
+      <Check text="Site online and available" id="online" />
+      <Check text="Worona WordPress Plugin" id="plugin" />
+      <Check text="Checking Site ID" id="siteId" />
     </Main>
 
     <Footer>

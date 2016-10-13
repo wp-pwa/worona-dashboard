@@ -4,6 +4,7 @@ import { mock } from 'worona-deps';
 import * as reducers from '../reducers';
 import * as actions from '../actions';
 import * as deps from '../dependencies';
+import * as errors from '../errors';
 
 mock(deps);
 
@@ -57,29 +58,40 @@ test('newSiteInfo', t => {
   t.deepEqual(reducers.newSiteInfo(undefined, siteNameURLAndIdQuery), newSiteInfoState);
 });
 
-test('checkSite successful', t => {
-  t.deepEqual(reducers.checkSite(undefined, {}), {});
+test('checkSite', t => {
+  const CheckSiteState = reducers.CheckSiteState;
 
-  /* checking if site is online */
-  let mockAction = { type:types.CHECK_SITE_STATUS_CHANGED,
-     checkType: types.checkType.online,
-     status: status.online};
-  let state = { online : status.online, plugin: 'inactive', siteId: 'inactive' };
-  t.deepEqual(reducers.checkSite(undefined, mockAction), state);
+  t.deepEqual(reducers.checkSite(undefined, {}), new CheckSiteState());
 
-  mockAction =
-  state.online = 'success';
-  t.deepEqual(reducers.checkSite(undefined, mockAction), state);
+  const state = {};
+  const requestAction = actions.checkSiteRequested('https://1234.com', '1234');
+  deepFreeze(requestAction);
+  t.deepEqual(reducers.checkSite(state, requestAction), new CheckSiteState('loading', 'loading', 'loading'));
 
-  /* checking if WP plugin is installed */
+  /* successful */
+  const successfulAction = actions.checkSiteSucceed();
+  deepFreeze(successfulAction);
+  t.deepEqual(reducers.checkSite(state, successfulAction), new CheckSiteState('success', 'success', 'success'));
 
-  state.plugin = 'loading';
-  t.deepEqual(reducers.checkSite(undefined, mockAction), state);
+  /* Errors */
 
+  /* site is down */
+  const siteIsDownAction = actions.checkSiteFailed(new Error(errors.RESPONSE_NOT_200));
+  deepFreeze(siteIsDownAction);
+  t.deepEqual(reducers.checkSite(state, siteIsDownAction), new CheckSiteState('error'));
 
-  state.plugin = 'success';
-  t.deepEqual(reducers.checkSite(undefined, mockAction), state);
+  /* API is not installed */
+  const APINotInstalledAction = actions.checkSiteFailed(new Error(errors.WP_API_NOT_FOUND));
+  deepFreeze(APINotInstalledAction);
+  t.deepEqual(reducers.checkSite(state, APINotInstalledAction), new CheckSiteState('success', 'error'));
 
+  /* Worona WordPress Plugin is not installed */
+  const WWPPNotInstalledAction = actions.checkSiteFailed(new Error(errors.WORONA_PLUGIN_NOT_FOUND));
+  deepFreeze(WWPPNotInstalledAction);
+  t.deepEqual(reducers.checkSite(state, WWPPNotInstalledAction), new CheckSiteState('success', 'error'));
 
-  /* checking if dashboard siteId matches with WP siteId */
+  /* Dashboard siteId doesn't match with WP siteId */
+  const IdsDontMatchAction = actions.checkSiteFailed(new Error(errors.SITEID_DONT_MATCH));
+  deepFreeze(IdsDontMatchAction);
+  t.deepEqual(reducers.checkSite(state, IdsDontMatchAction), new CheckSiteState('success', 'success', 'warning'));
 });

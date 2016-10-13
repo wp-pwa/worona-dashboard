@@ -3,9 +3,11 @@ import { mock } from 'worona-deps';
 import { call, put } from 'redux-saga/effects';
 import { createSiteSaga } from '../sagas/createSite';
 import { deleteSiteSaga } from '../sagas/deleteSite';
+import { checkSiteSaga, requestFunc } from '../sagas/checkSite';
 import { CREATING_SITE, DELETING_SITE } from '../messages';
 import * as libs from '../libs';
 import * as actions from '../actions';
+import * as errors from '../errors';
 import * as deps from '../dependencies';
 
 mock(deps);
@@ -48,5 +50,76 @@ test('deleteSiteSaga failed', t => {
   t.deepEqual(gen.next().value, put(actions.deleteSiteStatusChanged(DELETING_SITE)));
   t.deepEqual(gen.next().value, call(libs.deleteSite, action));
   t.deepEqual(gen.throw(error).value, put(actions.deleteSiteFailed(error)));
+  t.true(gen.next().done);
+});
+
+test('checkSiteSaga: succeed', t => {
+  const siteId = '1234';
+  const url = 'http://www.example.net/';
+  const action = { url, _id: siteId };
+  const res = { status: 200, type: 'application/json', body: { siteId } };
+  const gen = checkSiteSaga(action);
+  t.deepEqual(gen.next().value, call(requestFunc, url));
+  t.deepEqual(gen.next(res).value, put(actions.checkSiteSucceed()));
+  t.true(gen.next().done);
+});
+
+test('checkSiteSaga failed: superagent throws an error', t => {
+  const siteId = '1234';
+  const url = '';
+  const action = { url, _id: siteId };
+  const error = {};
+  const gen = checkSiteSaga(action);
+  t.deepEqual(gen.next().value, call(requestFunc, url));
+  t.deepEqual(gen.throw(error).value, put(actions.checkSiteFailed(error)));
+  t.true(gen.next().done);
+});
+
+test("checkSiteSaga failed: Site server doesn't respond 200", t => {
+  const siteId = '1234';
+  const url = 'http://www.example.net/';
+  const action = { url, _id: siteId };
+  const res = { status: 404 };
+  const error = new Error(errors.RESPONSE_NOT_200);
+  const gen = checkSiteSaga(action);
+  t.deepEqual(gen.next().value, call(requestFunc, url));
+  t.deepEqual(gen.next(res).value, put(actions.checkSiteFailed(error)));
+  t.true(gen.next().done);
+});
+
+test("checkSiteSaga failed: Site hasn't WP API installed", t => {
+  const siteId = '1234';
+  const url = 'http://www.example.net/';
+  const action = { url, _id: siteId };
+  const res = { status: 200, type: 'text/html' };
+  const error = new Error(errors.WP_API_NOT_FOUND);
+  const gen = checkSiteSaga(action);
+  t.deepEqual(gen.next().value, call(requestFunc, url));
+  t.deepEqual(gen.next(res).value, put(actions.checkSiteFailed(error)));
+  t.true(gen.next().done);
+});
+
+test("checkSiteSaga failed: Site hasn't Worona WP plugin installed", t => {
+  const siteId = '1234';
+  const url = 'http://www.example.net/';
+  const action = { url, _id: siteId };
+  const res = { status: 404, type: 'application/json', body: { siteId: '1234' } };
+  const error = new Error(errors.WORONA_PLUGIN_NOT_FOUND);
+  const gen = checkSiteSaga(action);
+  t.deepEqual(gen.next().value, call(requestFunc, url));
+  t.deepEqual(gen.next(res).value, put(actions.checkSiteFailed(error)));
+  t.true(gen.next().done);
+});
+
+
+test("checkSiteSaga failed: Site Ids don't match", t => {
+  const siteId = '1234';
+  const url = 'http://www.example.net/';
+  const action = { url, _id: siteId };
+  const res = { status: 200, type: 'application/json', body: { siteId: '4321' } };
+  const error = new Error(errors.SITEID_DONT_MATCH);
+  const gen = checkSiteSaga(action);
+  t.deepEqual(gen.next().value, call(requestFunc, url));
+  t.deepEqual(gen.next(res).value, put(actions.checkSiteFailed(error)));
   t.true(gen.next().done);
 });

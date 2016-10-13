@@ -39,4 +39,5 @@ export const selectors = {
   get getNewSiteInfo() { return dep('sites', 'selectors', 'getNewSiteInfo'); },
   get getIsReadySites() { return dep('sites', 'selectors', 'getIsReadySites'); },
   get getIsReadySettings() { return dep('settings', 'selectors', 'getIsReadySettings'); },
+  get getCheckSite() { return dep('sites', 'selectors', 'getCheckSite'); },
 };

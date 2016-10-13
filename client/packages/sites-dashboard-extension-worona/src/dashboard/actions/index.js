@@ -19,11 +19,9 @@ export const deleteSiteSucceed = siteId =>
 export const deleteSiteFailed = errorObj =>
   ({ type: types.DELETE_SITE_FAILED, error: stringifyError(errorObj) });
   // Check Site actions
-export const checkSiteRequested = url =>
-  ({ type: types.CHECK_SITE_REQUESTED, url });
-export const checkSiteStatusChanged = status =>
-  ({ type: types.CHECK_SITE_STATUS_CHANGED, status });
-export const checkSiteSucceed = (status, id) =>
-  ({ type: types.CHECK_SITE_SUCCEED, status, id });
-export const checkSiteFailed = (status, errorObj) =>
+export const checkSiteRequested = (url, _id) =>
+  ({ type: types.CHECK_SITE_REQUESTED, url, _id });
+export const checkSiteSucceed = () =>
+  ({ type: types.CHECK_SITE_SUCCEED });
+export const checkSiteFailed = (errorObj) =>
   ({ type: types.CHECK_SITE_FAILED, error: stringifyError(errorObj) });

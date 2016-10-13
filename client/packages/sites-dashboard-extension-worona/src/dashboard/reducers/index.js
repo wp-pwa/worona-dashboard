@@ -1,7 +1,7 @@
 import lodash from 'lodash';
 import { combineReducers } from 'redux';
 import * as types from '../types';
-import { METEOR_USER_NOT_LOGGED_IN, YOU_ARE_NOT_LOGGED_IN } from '../errors';
+import * as errors from '../errors';
 import * as deps from '../dependencies';
 
 export const isCreatingSite = (state = false, action) => {
@@ -32,8 +32,8 @@ export const createSiteError = (state = false, action) => {
   const { error } = action;
   switch (action.type) {
     case types.CREATE_SITE_FAILED:
-      if (error.error === METEOR_USER_NOT_LOGGED_IN) {
-        error.reason = YOU_ARE_NOT_LOGGED_IN;
+      if (error.error === errors.METEOR_USER_NOT_LOGGED_IN) {
+        error.reason = errors.YOU_ARE_NOT_LOGGED_IN;
       }
       return error;
     case types.CREATE_SITE_REQUESTED:
@@ -57,11 +57,39 @@ export const newSiteInfo = (state = {}, action) => {
 
   return state;
 };
+
+/* aux function for checkSite reducer */
+export function CheckSiteState(online = 'inactive', plugin = 'inactive', siteId = 'inactive') {
+  this.online = online;
+  this.plugin = plugin;
+  this.siteId = siteId;
+}
+
+export const checkSite = (state = new CheckSiteState(), action) => {
+  switch (action.type) {
+    case types.CHECK_SITE_REQUESTED:
+      return new CheckSiteState('loading', 'loading', 'loading');
+    case types.CHECK_SITE_SUCCEED:
+      return new CheckSiteState('success', 'success', 'success');
+    case types.CHECK_SITE_FAILED: {
+      const { error } = action;
+      if (error === errors.RESPONSE_NOT_200) return new CheckSiteState('error');
+      if (error === errors.WORONA_PLUGIN_NOT_FOUND) return new CheckSiteState('success', 'error');
+      if (error === errors.WP_API_NOT_FOUND) return new CheckSiteState('success', 'error');
+      if (error === errors.SITEID_DONT_MATCH) return new CheckSiteState('success', 'success', 'warning');
+      /* else any other error */ return new CheckSiteState('error');
+    }
+    default:
+      return state;
+  }
+};
+
 export default () => combineReducers({
   isCreatingSite,
   createSiteStatus,
   createSiteError,
   newSiteInfo,
+  checkSite,
   collection: deps.reducerCreators.collectionCreator('sites'),
   isReady: deps.reducerCreators.isReadyCreator('sites'),
 });

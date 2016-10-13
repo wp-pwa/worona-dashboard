@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+import * as deps from '../../dependencies';
 import Icon from '../elements/Icon';
 import Button from '../elements/Button';
 
@@ -53,10 +55,10 @@ export const RetryButton = () => (
 );
 
 /* Notification Check Item */
-export const Check = ({ text, status, key }) => {
+const Check = ({ text, status, id }) => {
   if (status === 'inactive') {
     return (
-      <div id={key} className="columns" >
+      <div id={id} className="columns" >
         <div className="column is-4 is-offset-4">
           <div className="notification">
             <div className="level is-mobile">
@@ -119,7 +121,13 @@ export const Check = ({ text, status, key }) => {
 };
 
 Check.propTypes = {
-  key: React.PropTypes.string,
+  id: React.PropTypes.string,
   text: React.PropTypes.string.isRequired,
   status: React.PropTypes.string.isRequired,
 };
+
+const mapStateToProps = (state, ownProps) => ({
+  status: deps.selectors.getCheckSite(state, ownProps.id),
+});
+
+export default connect(mapStateToProps)(Check);
