@@ -1,5 +1,5 @@
 import { takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
+import { call, put, select, fork } from 'redux-saga/effects';
 import request from 'superagent';
 
 import * as actions from '../actions';
@@ -9,7 +9,7 @@ import * as selectors from '../selectors';
 import * as deps from '../dependencies';
 
 
-export const woronaEndPoint = 'worona/v1/siteid';
+export const woronaEndPoint = '/worona/v1/siteid';
 export const restRouteQuery = '?rest_route=';
 
 export const requestFunc = (baseURL) => request
@@ -22,7 +22,7 @@ export function* checkSiteSaga() {
   /* block until sites subscription is ready */
   yield deps.sagaCreators.waitForReadySubscription('sites', selectors.getIsReadySites);
 
-  const site = selectors.getSelectedSite();
+  const site = yield select(selectors.getSelectedSite);
   const { url, id } = site;
 
   try {
@@ -57,15 +57,23 @@ export function* checkSiteSaga() {
 }
 
 export function* checkSiteRouterWatcher(action) {
+  console.log('goo');
   if (action && action.payload && action.payload.location
     && action.payload.location.pathname.startsWith('/check-site/')) {
-    yield put(actions.checkSiteRequested(action.payload.params.siteId));
+    yield put(actions.checkSiteRequested());
   }
+}
+
+export function* firstRouteIsCheckSite() {
+  yield deps.sagaCreators.waitForReadySubscription('sites', selectors.getIsReadySites);
+  const pathname = yield select(deps.selectors.getPathname);
+  if (pathname.startsWith('/check-site/')) yield put(actions.checkSiteRequested());
 }
 
 export function* checkSiteWatcher() {
   yield [
     takeLatest(deps.types.ROUTER_DID_CHANGE, checkSiteRouterWatcher),
     takeLatest(types.CHECK_SITE_REQUESTED, checkSiteSaga),
+    fork(firstRouteIsCheckSite),
   ];
 }

@@ -14,9 +14,9 @@ const sagas = {};
 export const store = createStore(
   combineReducers(reducers),
   compose(
-    reduxReactRouter({
-      createHistory: !isTest ? require('history').createHistory : require('history').createMemoryHistory,
-    }),
+    // reduxReactRouter({
+    //   createHistory: !isTest ? require('history').createHistory : require('history').createMemoryHistory,
+    // }),
     applyMiddleware(sagaMiddleware),
     reduxReactRouter({
       createHistory: !isTest ? require('history').createHistory : require('history').createMemoryHistory,

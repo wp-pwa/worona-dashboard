@@ -58,22 +58,11 @@ const UnConnectedRetryButton = ({ requestCheckSite }) => (
 UnConnectedRetryButton.propTypes = {
   requestCheckSite: React.PropTypes.func.isRequired,
 };
-
-const mapStateToRetryButtonProps = (state) => ({
-  site: deps.selectors.getSelectedSite(state),
+const mapDispatchToRetryButtonProps = (dispatch) => ({
+  requestCheckSite: () => dispatch(deps.actions.checkSiteRequested()),
 });
 
-const mapDispatchToRetryButtonProps = dispatch => ({ dispatch });
-
-const mergeRetryButtonProps = (stateProps, { dispatch }) => ({
-  requestCheckSite: () =>
-    dispatch(deps.actions.checkSiteRequested(stateProps.url, stateProps.id)),
-});
-
-export const RetryButton = connect(
-  mapStateToRetryButtonProps,
-  mapDispatchToRetryButtonProps,
-  mergeRetryButtonProps)(UnConnectedRetryButton);
+export const RetryButton = connect(null, mapDispatchToRetryButtonProps)(UnConnectedRetryButton);
 
 /* Notification Check Item */
 const Check = ({ text, status, id }) => {

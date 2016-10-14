@@ -23,8 +23,8 @@ export function* packageLoadSaga({ pkg }) {
   try {
     yield call(waitForDeps, pkg.dependencies, 10000);
     yield call(loadReducers, pkg.name, pkg.namespace);
-    yield call(loadSagas, pkg.name, pkg.namespace);
     yield call(reloadReducers);
+    yield call(loadSagas, pkg.name, pkg.namespace);
     if (isRemote) {
       yield [
         call(waitFor, pkg.name,
