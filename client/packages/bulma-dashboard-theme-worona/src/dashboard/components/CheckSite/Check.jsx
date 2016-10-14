@@ -37,13 +37,14 @@ Message.propTypes = {
 };
 
 /* Retry Button in case of warning or error */
-export const RetryButton = () => (
+const UnConnectedRetryButton = ({ requestCheckSite }) => (
   <div className="column is-1">
     <div className="level is-mobile">
       <div className="level-left is-marginless">
         <div className="notification is-white has-text-centered">
           <Button
             size="large"
+            onClick={requestCheckSite}
           >
             <Icon code="refresh" />
             <span>Retry</span>
@@ -53,6 +54,26 @@ export const RetryButton = () => (
     </div>
   </div>
 );
+
+UnConnectedRetryButton.propTypes = {
+  requestCheckSite: React.PropTypes.func.isRequired,
+};
+
+const mapStateToRetryButtonProps = (state) => ({
+  site: deps.selectors.getSelectedSite(state),
+});
+
+const mapDispatchToRetryButtonProps = dispatch => ({ dispatch });
+
+const mergeRetryButtonProps = (stateProps, { dispatch }) => ({
+  requestCheckSite: () =>
+    dispatch(deps.actions.checkSiteRequested(stateProps.url, stateProps.id)),
+});
+
+export const RetryButton = connect(
+  mapStateToRetryButtonProps,
+  mapDispatchToRetryButtonProps,
+  mergeRetryButtonProps)(UnConnectedRetryButton);
 
 /* Notification Check Item */
 const Check = ({ text, status, id }) => {
@@ -73,18 +94,19 @@ const Check = ({ text, status, id }) => {
   }
   let color;
   let icon;
-  const conflict = status === 'warning' || status === 'danger';
+  const conflict = status === 'warning' || status === 'error';
   if (status === 'loading') {
     color = 'primary';
-  } else {
-    color = status;
-    if (status === 'warning') {
-      icon = 'warning';
-    } else if (status === 'success') {
-      icon = 'check';
-    } else if (status === 'danger') {
-      icon = 'times';
-    }
+    icon = null;
+  } else if (status === 'warning') {
+    icon = 'warning';
+    color = 'warning';
+  } else if (status === 'success') {
+    icon = 'check';
+    color = 'success';
+  } else if (status === 'error') {
+    icon = 'times';
+    color = 'danger';
   }
 
   return (
@@ -95,10 +117,10 @@ const Check = ({ text, status, id }) => {
             <div className="level-left">
               {text}
             </div>
-            {status !== 'loading' ?
+            {icon ?
               <div className="level-right is-marginless">
-                <a className={`button is-${status} is-disabled`} />
-                <Icon code={icon} small />
+                <a className={`button is-${color} is-disabled`} />
+                <Icon code={icon} />
               </div>
               :
               <div className="level-right is-marginless">
@@ -121,13 +143,13 @@ const Check = ({ text, status, id }) => {
 };
 
 Check.propTypes = {
-  id: React.PropTypes.string,
+  id: React.PropTypes.string.isRequired,
   text: React.PropTypes.string.isRequired,
   status: React.PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToCheckProps = (state, ownProps) => ({
   status: deps.selectors.getCheckSite(state, ownProps.id),
 });
 
-export default connect(mapStateToProps)(Check);
+export default connect(mapStateToCheckProps)(Check);

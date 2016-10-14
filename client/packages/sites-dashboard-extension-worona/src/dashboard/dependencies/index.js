@@ -14,6 +14,9 @@ export const sagaCreators = {
   get subscriptionWatcherCreator() {
     return dep('subscriptions', 'sagaCreators', 'subscriptionWatcherCreator');
   },
+  get waitForReadySubscription() {
+    return dep('subscriptions', 'sagaCreators', 'waitForReadySubscription');
+  },
 };
 
 export const selectors = {

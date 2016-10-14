@@ -5,6 +5,7 @@ import request from 'superagent';
 import * as actions from '../actions';
 import * as types from '../types';
 import * as errors from '../errors';
+import * as selectors from '../selectors';
 import * as deps from '../dependencies';
 
 
@@ -15,10 +16,15 @@ export const requestFunc = (baseURL) => request
   .get(baseURL + restRouteQuery + woronaEndPoint)
   .set('Accept', 'application/json');
 
-export function* checkSiteSaga(action) {
+export function* checkSiteSaga() {
   let woronaSiteId;
 
-  const { url, _id } = action;
+  /* block until sites subscription is ready */
+  yield deps.sagaCreators.waitForReadySubscription('sites', selectors.getIsReadySites);
+
+  const site = selectors.getSelectedSite();
+  const { url, id } = site;
+
   try {
     /* calling directly to the worona endpoint thank to rest_route query */
     const res = yield call(requestFunc, url);
@@ -40,7 +46,7 @@ export function* checkSiteSaga(action) {
 
     /* Does siteIds match? */
     woronaSiteId = res.body.siteId;
-    if (woronaSiteId !== _id) {
+    if (woronaSiteId !== id) {
       throw new Error(errors.SITEID_DONT_MATCH);
     }
 
@@ -51,15 +57,13 @@ export function* checkSiteSaga(action) {
 }
 
 export function* checkSiteRouterWatcher(action) {
-  console.log(action);
-  if (action && action.payload && action.payload.location) {
-    console.log("foo");
-    yield put(actions.checkSiteRequested());
+  if (action && action.payload && action.payload.location
+    && action.payload.location.pathname.startsWith('/check-site/')) {
+    yield put(actions.checkSiteRequested(action.payload.params.siteId));
   }
 }
 
 export function* checkSiteWatcher() {
-  console.log(deps.types.ROUTER_DID_CHANGE);
   yield [
     takeLatest(deps.types.ROUTER_DID_CHANGE, checkSiteRouterWatcher),
     takeLatest(types.CHECK_SITE_REQUESTED, checkSiteSaga),

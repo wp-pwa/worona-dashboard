@@ -15,6 +15,7 @@ export const actions = {
   get logoutSucceed() { return dep('accounts', 'actions', 'logoutSucceed'); },
   get createSiteRequested() { return dep('sites', 'actions', 'createSiteRequested'); },
   get deleteSiteRequested() { return dep('sites', 'actions', 'deleteSiteRequested'); },
+  get checkSiteRequested() { return dep('sites', 'actions', 'checkSiteRequested'); },
 };
 
 export const selectors = {

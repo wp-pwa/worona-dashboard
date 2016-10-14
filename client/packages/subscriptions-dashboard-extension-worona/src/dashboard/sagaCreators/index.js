@@ -1,7 +1,8 @@
 /* eslint-disable no-constant-condition */
-import { call, take, put, fork } from 'redux-saga/effects';
+import { call, take, put, fork, select } from 'redux-saga/effects';
 import * as actions from '../actions';
 import * as deps from '../dependencies';
+import * as types from '../types';
 
 export function* subscriptionEvents(channel, action) {
   while (true) {
@@ -30,4 +31,13 @@ export function subscriptionWatcherCreator(selectedCollection, ...params) {
       yield put(actions.subscriptionStopped());
     }
   };
+}
+
+export function* waitForReadySubscription(selectedCollection, selector) {
+  let ready = yield select(selector);
+  while (!ready) {
+    const action = yield take(types.SUBSCRIPTION_READY);
+    if (action.collection === selectedCollection) ready = true;
+  }
+  return ready;
 }
