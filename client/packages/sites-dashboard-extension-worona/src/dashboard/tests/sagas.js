@@ -1,14 +1,15 @@
 import test from 'ava';
+import { call, put, select } from 'redux-saga/effects';
 import { mock } from 'worona-deps';
-import { call, put } from 'redux-saga/effects';
+import * as deps from '../dependencies';
 import { createSiteSaga } from '../sagas/createSite';
 import { deleteSiteSaga } from '../sagas/deleteSite';
 import { checkSiteSaga, requestFunc } from '../sagas/checkSite';
 import { CREATING_SITE, DELETING_SITE } from '../messages';
 import * as libs from '../libs';
 import * as actions from '../actions';
+import * as selectors from '../selectors';
 import * as errors from '../errors';
-import * as deps from '../dependencies';
 
 mock(deps);
 
@@ -19,7 +20,7 @@ test('createSiteSaga succeed', t => {
   t.deepEqual(gen.next().value, put(actions.createSiteStatusChanged(CREATING_SITE)));
   t.deepEqual(gen.next().value, call(libs.createSite, action));
   t.deepEqual(gen.next(action._id).value, put(actions.createSiteSucceed(action._id)));
-  t.deepEqual(gen.next().value, put(deps.actions.push(finalURL)));
+  t.deepEqual(gen.next().value, call(deps.libs.push, finalURL));
   t.true(gen.next().done);
 });
 
@@ -56,10 +57,12 @@ test('deleteSiteSaga failed', t => {
 test('checkSiteSaga: succeed', t => {
   const siteId = '1234';
   const url = 'http://www.example.net/';
-  const action = { url, _id: siteId };
+  const site = { url, id: siteId };
   const res = { status: 200, type: 'application/json', body: { siteId } };
-  const gen = checkSiteSaga(action);
-  t.deepEqual(gen.next().value, call(requestFunc, url));
+  const gen = checkSiteSaga();
+  t.deepEqual(gen.next().value, deps.sagaCreators.waitForReadySubscription('sites', selectors.getIsReadySites));
+  t.deepEqual(gen.next().value, select(selectors.getSelectedSite));
+  t.deepEqual(gen.next(site).value, call(requestFunc, url));
   t.deepEqual(gen.next(res).value, put(actions.checkSiteSucceed()));
   t.true(gen.next().done);
 });

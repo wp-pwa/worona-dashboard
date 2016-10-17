@@ -26,10 +26,10 @@ export function* loginRequestedSaga({ email, password }) {
 
 export function* loginSucceedSaga() {
   if (yield select(selectors.getIsFirstLogin)) {
-    yield put(deps.actions.push('/add-site'));
+    yield call(deps.libs.push, '/add-site');
   } else {
     const redirect = yield select(selectors.getRedirectAfterLogin);
-    yield put(deps.actions.push(redirect));
+    yield call(deps.libs.push, redirect);
   }
 }
 

@@ -14,13 +14,10 @@ const sagas = {};
 export const store = createStore(
   combineReducers(reducers),
   compose(
-    // reduxReactRouter({
-    //   createHistory: !isTest ? require('history').createHistory : require('history').createMemoryHistory,
-    // }),
-    applyMiddleware(sagaMiddleware),
     reduxReactRouter({
       createHistory: !isTest ? require('history').createHistory : require('history').createMemoryHistory,
     }),
+    applyMiddleware(sagaMiddleware),
     typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
@@ -34,3 +31,4 @@ export const removeReducer = namespace => { if (reducers[namespace]) delete redu
 export const startSaga = (namespace, saga) => { sagas[namespace] = sagaMiddleware.run(saga); };
 export const stopSaga = (namespace) => { if (sagas[namespace]) sagas[namespace].cancel(); };
 export const getState = store.getState.bind(store);
+export const history = store.history;

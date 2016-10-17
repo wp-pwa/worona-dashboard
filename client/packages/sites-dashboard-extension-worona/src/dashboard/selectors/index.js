@@ -1,6 +1,9 @@
 import _ from 'lodash';
+import { mock, isTest } from 'worona-deps';
 import { createSelector } from 'reselect';
 import * as deps from '../dependencies';
+
+if (isTest) mock(deps);
 
 export const getIsCreatingSite = state => state.sites.isCreatingSite;
 export const getCreateSiteStatus = state => state.sites.createSiteStatus;

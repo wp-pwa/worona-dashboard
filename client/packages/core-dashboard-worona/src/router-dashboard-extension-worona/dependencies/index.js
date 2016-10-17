@@ -10,3 +10,9 @@ export const actions = {
     return dep('build', 'actions', 'packageAssetFileDownloaded');
   },
 };
+
+export const store = {
+  get history() {
+    return dep('build', 'store', 'history');
+  },
+};

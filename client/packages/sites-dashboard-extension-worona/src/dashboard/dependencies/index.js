@@ -3,6 +3,9 @@ import { dep } from 'worona-deps';
 export const libs = {
   get call() { return dep('connection', 'libs', 'call'); },
   get subscription() { return dep('subscriptions', 'libs', 'subscription'); },
+  get push() {
+    return dep('router', 'libs', 'push');
+  },
 };
 
 export const reducerCreators = {
@@ -22,12 +25,6 @@ export const sagaCreators = {
 export const selectors = {
   get getSelectedSiteId() { return dep('router', 'selectors', 'getSelectedSiteId'); },
   get getPathname() { return dep('router', 'selectors', 'getPathname'); },
-};
-
-export const actions = {
-  get push() {
-    return dep('router', 'actions', 'push');
-  },
 };
 
 export const types = {

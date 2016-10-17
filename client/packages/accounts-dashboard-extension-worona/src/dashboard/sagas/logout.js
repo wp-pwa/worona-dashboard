@@ -15,7 +15,7 @@ export function* logoutRequestedSaga() {
 
 export function* logoutSucceedSaga() {
   // Redirect the user to the home after a successful logout.
-  yield put(deps.actions.push('/login'));
+  yield call(deps.libs.push, '/login');
 }
 
 export default function* logoutSagas() {

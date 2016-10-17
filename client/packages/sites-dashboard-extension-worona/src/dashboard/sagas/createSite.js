@@ -13,7 +13,7 @@ export function* createSiteSaga(action) {
     const siteId = yield call(libs.createSite, { name, url, _id });
     yield put(actions.createSiteSucceed(siteId));
     const nextURL = `/check-site/${siteId}`;
-    yield put(deps.actions.push(nextURL));
+    yield call(deps.libs.push, nextURL);
   } catch (error) {
     yield put(actions.createSiteFailed(error));
   }
