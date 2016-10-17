@@ -1,9 +1,10 @@
 {
   "name": "connection-dashboard-extension-worona",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Extension for the Worona Dashboard in charge of the connection to the server.",
   "main": "src/index.js",
   "scripts": {
+    "test" : "ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
     "update:vendors": "node node_modules/worona-packages/update-vendors.js --service dashboard",
     "clean": "rimraf dist",
     "clean:dev": "rimraf dist/dev",
@@ -18,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/worona/worona.git"
+    "url": "git+ssh://git@github.com/worona/worona-dashboard.git"
   },
   "keywords": [
     "worona",
@@ -29,7 +30,7 @@
   "author": "Worona Labs SL | Luis Herranz, @luisherranz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/worona/worona/issues"
+    "url": "https://github.com/worona/worona-dashboard/issues"
   },
   "homepage": "https://github.com/worona/worona#readme",
   "worona": {

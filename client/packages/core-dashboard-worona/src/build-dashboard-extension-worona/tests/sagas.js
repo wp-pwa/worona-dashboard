@@ -3,9 +3,17 @@ import { addPackage, getSagas } from 'worona-deps';
 import { put, call, take, race } from 'redux-saga/effects';
 import * as actions from '../actions';
 import * as types from '../types';
-import * as sagas from '../sagas';
-import { reloadReducers, runSaga } from '../store';
+import { loadSagas } from '../sagas/load';
+import { addReducer, startSaga, reloadReducers, removeReducer, stopSaga } from '../store';
 
+test('loadSagas', t => {
+  const gen = loadSagas('settings', 'general');
+  const testSagas = call(getSagas, 'settings');
+  t.deepEqual(gen.next().value, testSagas);
+  t.deepEqual(gen.next().value, call(startSaga, 'general', testSagas));
+});
+
+/*
 test('themeDownloadSaga succeed', t => {
   const gen = sagas.themeDownloadSaga({ name: 'test', uid: 1 });
   t.deepEqual(gen.next().value, call(sagas.requirePackage, 'test-dashboard-theme'));
@@ -107,6 +115,7 @@ test('packagesAdditionSaga failed', t => {
 
 test('loadPackage succeed', t => {
   const gen = sagas.loadPackage('test', 1);
+  const runSaga = () => {};
   t.deepEqual(gen.next().value, call(getSagas, 'test'));
   const newSagas = {};
   t.deepEqual(gen.next(newSagas).value, call(runSaga, newSagas));
@@ -129,6 +138,7 @@ test('loadPackage failed', t => {
 test('packagesLoadSaga', t => {
   const action = { theme: 'test1', extensions: ['test2', 'test3'], uid: 1 };
   const gen = sagas.packagesLoadSaga(action);
+  const reloadReducers = () => {};
   t.deepEqual(gen.next().value, call(reloadReducers));
   t.deepEqual(gen.next().value, [
     call(sagas.loadPackage, action.extensions[0], action.uid),
@@ -168,3 +178,4 @@ test('loadCoreTheme failed', t => {
     put(actions.themeChangeFailed({ error: error.message, name: action.theme, uid: 'core' })));
   t.true(gen.next().done);
 });
+*/

@@ -1,0 +1,14 @@
+@import "../../variables.css";
+
+.button {
+  text-decoration: none;
+  display: inline; padding: 0px 0px;
+  background: transparent;
+  color: #1fc8db;
+  border: none;
+  font: inherit;
+}
+
+.button:hover {
+  color: black;
+}

@@ -1,9 +1,10 @@
 {
   "name": "core-dashboard-worona",
-  "version": "1.1.22",
+  "version": "1.1.23",
   "description": "Core Package of Worona Dashboard",
   "main": "dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js",
   "scripts": {
+    "test" : "ava src/**/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
     "clean": "rimraf dist",
     "clean:dev": "rimraf dist/dev",
     "clean:prod": "rimraf dist/prod",
@@ -43,7 +44,7 @@
   "author": "Worona Labs SL | Luis Herranz, @luisherranz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/worona/worona/issues"
+    "url": "https://github.com/worona/worona-dashboard/issues"
   },
   "homepage": "https://github.com/worona/worona#readme",
   "worona": {
@@ -64,62 +65,62 @@
       "vendors": {
         "files": [
           {
-            "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.ce14cf40082b98d94130b1eb06db76a3.js",
-            "hash": "ce14cf40082b98d94130b1eb06db76a3"
+            "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.fa9535e577e6486d4ce6e7d9852157d2.js",
+            "hash": "fa9535e577e6486d4ce6e7d9852157d2"
           }
         ],
-        "main": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.ce14cf40082b98d94130b1eb06db76a3.js"
+        "main": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.fa9535e577e6486d4ce6e7d9852157d2.js"
       },
       "files": [
         {
-          "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.ce14cf40082b98d94130b1eb06db76a3.js",
-          "hash": "ce14cf40082b98d94130b1eb06db76a3"
+          "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.de6e930291decfbf3cd3e94aac1bce5e.js",
+          "hash": "de6e930291decfbf3cd3e94aac1bce5e"
         },
         {
-          "file": "core-dashboard-worona/dist/dev/js/core.dashboard.6d86263318a14223e264abdf5f906ffc.js",
-          "hash": "6d86263318a14223e264abdf5f906ffc"
+          "file": "core-dashboard-worona/dist/dev/js/core.dashboard.6dab7c264e22d011eaa84a8231b4ef49.js",
+          "hash": "6dab7c264e22d011eaa84a8231b4ef49"
         },
         {
-          "file": "core-dashboard-worona/dist/dev/locales/en.b8c7b7705d6a70fdc2a22217434d20de.js",
-          "hash": "b8c7b7705d6a70fdc2a22217434d20de"
+          "file": "core-dashboard-worona/dist/dev/locales/en.0eab3406c28b92ba6c485d0dba018896.js",
+          "hash": "0eab3406c28b92ba6c485d0dba018896"
         },
         {
-          "file": "core-dashboard-worona/dist/dev/locales/es.639204e4747bba18558ba4d6353805ba.js",
-          "hash": "639204e4747bba18558ba4d6353805ba"
+          "file": "core-dashboard-worona/dist/dev/locales/es.c988e4e6c716e56e3a771da9d82fb248.js",
+          "hash": "c988e4e6c716e56e3a771da9d82fb248"
         }
       ],
-      "main": "core-dashboard-worona/dist/dev/js/core.dashboard.6d86263318a14223e264abdf5f906ffc.js",
+      "main": "core-dashboard-worona/dist/dev/js/core.dashboard.6dab7c264e22d011eaa84a8231b4ef49.js",
       "assets": {}
     },
     "prod": {
       "vendors": {
         "files": [
           {
-            "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.9d6c47026399756931f7becb995e0d87.js",
-            "hash": "9d6c47026399756931f7becb995e0d87"
+            "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.2f52b4d3f2a5c1d0d58ba065b525cb1b.js",
+            "hash": "2f52b4d3f2a5c1d0d58ba065b525cb1b"
           }
         ],
-        "main": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.9d6c47026399756931f7becb995e0d87.js"
+        "main": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.2f52b4d3f2a5c1d0d58ba065b525cb1b.js"
       },
       "files": [
         {
-          "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.9d6c47026399756931f7becb995e0d87.js",
-          "hash": "9d6c47026399756931f7becb995e0d87"
+          "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.4f8cf09d66e1dc6b46d7bbee77b753af.js",
+          "hash": "4f8cf09d66e1dc6b46d7bbee77b753af"
         },
         {
-          "file": "core-dashboard-worona/dist/prod/js/core.dashboard.d7de71a138d84a0f1d2b9e4d6a506a7c.js",
-          "hash": "d7de71a138d84a0f1d2b9e4d6a506a7c"
+          "file": "core-dashboard-worona/dist/prod/js/core.dashboard.564b24d8f13c39bd1f22bafab279f3c1.js",
+          "hash": "564b24d8f13c39bd1f22bafab279f3c1"
         },
         {
-          "file": "core-dashboard-worona/dist/prod/locales/es.50468b32b82d13f15012ad4415bdabf0.js",
-          "hash": "50468b32b82d13f15012ad4415bdabf0"
+          "file": "core-dashboard-worona/dist/prod/locales/es.8ea2791917bf49aa21d85bb18b7ca0b8.js",
+          "hash": "8ea2791917bf49aa21d85bb18b7ca0b8"
         },
         {
-          "file": "core-dashboard-worona/dist/prod/locales/en.d78812597923ea4ef894090c4b7817be.js",
-          "hash": "d78812597923ea4ef894090c4b7817be"
+          "file": "core-dashboard-worona/dist/prod/locales/en.4d1669d14f1c3088d0010ee2a0ce7475.js",
+          "hash": "4d1669d14f1c3088d0010ee2a0ce7475"
         }
       ],
-      "main": "core-dashboard-worona/dist/prod/js/core.dashboard.d7de71a138d84a0f1d2b9e4d6a506a7c.js",
+      "main": "core-dashboard-worona/dist/prod/js/core.dashboard.564b24d8f13c39bd1f22bafab279f3c1.js",
       "assets": {}
     }
   },

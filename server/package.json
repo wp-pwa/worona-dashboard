@@ -4,7 +4,7 @@
   "description": "Worona dashboard server core package",
   "main": "index.js",
   "scripts": {
-    "start": "bash mongo.sh && meteor",
+    "start": "bash -c 'source mongo.sh && meteor'",
     "deploy": "DEPLOY_HOSTNAME=eu-west-1.galaxy-deploy.meteor.com meteor deploy meteor.worona.io --settings settings-production.json"
   },
   "repository": {

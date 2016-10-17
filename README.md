@@ -2,11 +2,11 @@
 
 ## Installation
 
-Clone this repo or [download the zip file from Github](https://github.com/worona/worona/archive/master.zip).
+Clone this repo or [download the zip file from Github](https://github.com/worona/worona-dashboard/archive/master.zip).
 
 ```bash
-git clone https://github.com/worona/worona.git
-cd worona
+git clone https://github.com/worona/worona-dashboard.git
+cd worona-dashboard
 ```
 
 ----
@@ -35,7 +35,7 @@ npm run install:all
 Run the dashboard client.
 
 ```bash
-cd dashboard/client
+cd client
 npm start
 ```
 
@@ -48,7 +48,7 @@ npm test
 Open another terminal and run the dashboard server.
 
 ```bash
-cd dahsboard/server
+cd server
 npm start
 ```
 

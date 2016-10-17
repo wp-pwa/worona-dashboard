@@ -10,3 +10,5 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 accounts-base
 accounts-password
+aldeed:collection2
+peerlibrary:reactive-publish

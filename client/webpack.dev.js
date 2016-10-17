@@ -9,10 +9,13 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
-var publicPath = argv.remote ? 'https://cdn.worona.io/' : 'https://localhost:4000/';
+var publicPath = argv.remote ? 'https://cdn.worona.io/' : 'http://localhost:4000/';
 
 module.exports = {
   entry: {
+    development: [
+      path.join(__dirname, 'development', 'entry.js'),
+    ],
     core: [
       // 'webpack/hot/dev-server',
       'script!systemjs/dist/system.js',
@@ -21,14 +24,14 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist', env),
-    filename: 'packages/core-dashboard-worona/dist/' + env + '/js/core.[hash].js',
+    filename: 'packages/core-dashboard-worona/dist/' + env + '/js/[name].[hash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 32,
   },
   module: {
     loaders: [
       {
-        test: /packages\/.+-worona\/src\/index\.js$/,
+        test: /packages\/.+-worona\/src\/dashboard\/index\.js$/,
         loader: 'bundle-loader',
         query: {
           lazy: true,
@@ -102,14 +105,14 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  // devtool: '#eval-source-map',
+  devtool: '#eval-source-map',
   devServer: {
 		contentBase: path.join(__dirname, 'dist', env),
 		noInfo: false,
 		// hot: true,
 		inline: true,
     port: 4000,
-    https: true,
+    https: false,
     compress: false,
     historyApiFallback: true,
 	},
@@ -128,7 +131,7 @@ module.exports = {
       template: path.join(__dirname, 'html', 'index.html'),
       favicon: path.join(__dirname, 'html', 'favicon.png'),
       vendorsFile: 'packages/core-dashboard-worona/dist/' + env + '/vendors/' + vendorsFile,
-      devServer: 'https://localhost:4000',
+      devServer: 'http://localhost:4000',
       window: {
         publicPath: publicPath,
         __worona__: { [env]: true, remote: argv.remote },
