@@ -1,8 +1,7 @@
 /* eslint-disable no-constant-condition */
-import { isRemote } from 'worona-deps';
+import { isRemote, getSagas, getReducers, packageActivated, waitForDeps } from 'worona-deps';
 import { put, call } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
-import { getSagas, getReducers, packageActivated, waitForDeps } from 'worona-deps';
 import { addReducer, startSaga, reloadReducers, removeReducer, stopSaga } from '../store';
 import * as types from '../types';
 import * as actions from '../actions';

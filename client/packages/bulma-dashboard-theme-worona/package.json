@@ -2,9 +2,8 @@
   "name": "bulma-dashboard-theme-worona",
   "version": "1.2.0",
   "description": "Theme for the Worona Dashboard.",
-  "main": "src/dashboard/index.js",
   "scripts": {
-    "test" : "ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
+    "test" : "ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
   },
   "repository": {
     "type": "git",
@@ -35,14 +34,7 @@
     "core": 1,
     "listed": 0,
     "deactivable": 0,
-    "public": 1,
-    "dependencies": [
-      "build",
-      "accounts",
-      "sites",
-      "settings",
-      "router"
-    ]
+    "public": 1
   },
   "devDependencies": {},
   "dependencies": {
