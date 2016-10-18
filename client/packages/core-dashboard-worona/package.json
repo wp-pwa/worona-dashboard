@@ -1,10 +1,9 @@
 {
   "name": "core-dashboard-worona",
-  "version": "1.2.4",
+  "version": "1.2.6",
   "description": "Core Package of Worona Dashboard",
-  "main": "src/index.js",
   "scripts": {
-    "test" : "ava src/**/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
+    "test" : "ava src/**/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
   },
   "repository": {
     "type": "git",
@@ -36,15 +35,27 @@
     "deactivable": 0,
     "public": 1
   },
-  "devDependencies": {
-    "copy-webpack-plugin": "^3.0.1",
-    "fix-moduleid-and-chunkid-plugin": "^0.1.1",
-    "html-webpack-plugin": "^2.22.0",
-    "ignore-loader": "^0.1.1",
-    "rimraf": "^2.5.4",
-    "systemjs": "^0.19.37",
-    "webpack": "^1.13.1",
-    "webpack-stats-plugin": "^0.1.3"
-  },
-  "dependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "babel-polyfill": "^6.16.0",
+    "classnames": "^2.2.5",
+    "fastclick": "^1.0.6",
+    "i18next": "^3.4.3",
+    "i18next-xhr-backend": "^1.2.0",
+    "lodash": "^4.16.4",
+    "normalizr": "^2.2.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-i18next": "^1.10.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0",
+    "redux-router": "^2.1.2",
+    "redux-saga": "^0.12.0",
+    "reselect": "^2.5.4",
+    "stringify-error-message": "^1.0.2",
+    "superagent": "^2.3.0",
+    "systemjs": "^0.19.39",
+    "worona-deps": "^1.8.0"
+  }
 }

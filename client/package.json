@@ -38,27 +38,7 @@
     "url": "https://github.com/worona/worona-core/issues"
   },
   "homepage": "https://github.com/worona/worona-core#readme",
-  "dependencies": {
-    "babel-polyfill": "^6.9.1",
-    "classnames": "^2.2.5",
-    "fastclick": "^1.0.6",
-    "i18next": "^3.4.1",
-    "i18next-xhr-backend": "^0.6.0",
-    "lodash": "^4.13.1",
-    "normalizr": "^2.2.1",
-    "react": "^15.3.0",
-    "react-dom": "^15.1.0",
-    "react-i18next": "^1.6.3",
-    "react-redux": "^4.4.5",
-    "react-router": "^2.8.1",
-    "redux": "^3.5.2",
-    "redux-router": "^2.1.2",
-    "redux-saga": "^0.11.0",
-    "reselect": "^2.5.1",
-    "stringify-error-message": "^1.0.2",
-    "superagent": "^2.2.0",
-    "worona-deps": "^1.7.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "ava": "^0.15.1",
     "babel-core": "^6.9.0",
