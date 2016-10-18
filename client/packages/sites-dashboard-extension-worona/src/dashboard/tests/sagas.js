@@ -40,7 +40,7 @@ test('deleteSiteSaga succeed', t => {
   const gen = deleteSiteSaga(action);
   t.deepEqual(gen.next().value, put(actions.deleteSiteStatusChanged(DELETING_SITE)));
   t.deepEqual(gen.next().value, call(libs.deleteSite, action));
-  t.deepEqual(gen.next(siteId).value, put(actions.deleteSiteSucceed(siteId)));
+  t.deepEqual(gen.next().value, put(actions.deleteSiteSucceed(siteId)));
   t.true(gen.next().done);
 });
 
