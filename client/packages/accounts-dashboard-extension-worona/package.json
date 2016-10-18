@@ -1,9 +1,9 @@
 {
   "name": "accounts-dashboard-extension-worona",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Extension for the Worona Dashboard in charge of the accounts system.",
   "scripts": {
-    "test" : "ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
+    "test" : "ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
   },
   "repository": {
     "type": "git",
@@ -34,11 +34,7 @@
     "core": 1,
     "listed": 0,
     "deactivable": 0,
-    "public": 1,
-    "dependencies": [
-      "build",
-      "connection"
-    ]
+    "public": 1
   },
   "devDependencies": {},
   "dependencies": {}
