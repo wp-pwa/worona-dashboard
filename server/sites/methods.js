@@ -45,6 +45,6 @@ Meteor.methods({
       return new Meteor.Error('Current user doesn\'t own the selected site');
     }
 
-    return sites.remove({ _id }, true);
+    return sites.remove({ _id });
   },
 });
