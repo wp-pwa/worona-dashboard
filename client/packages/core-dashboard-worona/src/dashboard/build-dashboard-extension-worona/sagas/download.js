@@ -11,7 +11,7 @@ import * as actions from '../actions';
 // in the webpack config to separate the bundles.
 export const requireLocalPackage = pkg => new Promise((resolve) => {
   const pkgName = /(.+)-worona/.exec(pkg.name)[1];
-  const req = require(`../../../../${pkgName}-worona/src/dashboard/index.js`);
+  const req = require(`../../../../../${pkgName}-worona/src/dashboard/index.js`);
   req(module => resolve(module));
 });
 

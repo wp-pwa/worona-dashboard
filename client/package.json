@@ -4,21 +4,9 @@
   "description": "Worona dashboard client",
   "main": "index.js",
   "scripts": {
-    "clean:dev": "rimraf dist/dev",
-    "clean:prod": "rimraf dist/prod",
-    "build:dev": "npm run clean:dev && NODE_PATH=./node_modules webpack --config webpack.dev.js --progress",
-    "build:prod": "npm run clean:prod && NODE_PATH=./node_modules webpack --config webpack.prod.js --progress -p",
-    "build:dev:modules": "npm run clean:dev && NODE_PATH=./node_modules webpack --config webpack.dev.js --progress --display-modules",
-    "build:prod:modules": "npm run clean:prod && NODE_PATH=./node_modules webpack --config webpack.prod.js --progress -p --display-modules",
-    "build:dev:reasons": "npm run clean:dev && NODE_PATH=./node_modules webpack --config webpack.dev.js --progress --display-modules --display-reasons",
-    "build:prod:reasons": "npm run clean:prod && NODE_PATH=./node_modules webpack --config webpack.prod.js --progress -p --display-modules --display-reasons",
-    "build": "npm run build:dev && npm run build:prod",
-    "start": "webpack-dev-server --config webpack.dev.js",
-    "start:remote": "webpack-dev-server --config webpack.dev.js --remote",
-    "start:prod": "webpack-dev-server --config webpack.prod.js -p",
-    "start:prod:remote": "webpack-dev-server --config webpack.prod.js -p --remote",
-    "test": "ava **/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
-    "update:vendors": "npm install --save --save-exact vendors-dashboard-worona@latest"
+    "build": "babel-node webpack/start.js --build",
+    "start": "babel-node webpack/start.js",
+    "test": "ava **/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
   },
   "repository": {
     "type": "git",
@@ -41,6 +29,7 @@
   "dependencies": {},
   "devDependencies": {
     "ava": "^0.15.1",
+    "babel-cli": "^6.16.0",
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
     "babel-plugin-lodash": "^3.2.8",
@@ -49,10 +38,13 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.16.0",
     "bundle-loader": "^0.5.4",
+    "child-process-promise": "^2.1.3",
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.23.1",
     "deep-freeze": "0.0.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "fix-moduleid-and-chunkid-plugin": "^0.1.1",
     "html-webpack-plugin": "^2.17.0",
     "json-loader": "^0.5.4",
     "lodash-webpack-plugin": "^0.10.0",
@@ -69,6 +61,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
+    "webpack-stats-plugin": "^0.1.3",
     "yargs": "^5.0.0"
   }
 }
