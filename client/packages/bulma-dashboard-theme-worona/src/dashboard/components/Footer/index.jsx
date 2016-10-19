@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './style.css';
 import cn from 'classnames';
+import styles from './style.css';
 
 const Footer = ({ children }) => (
   <footer className={cn(styles.footer, 'footer')}>
