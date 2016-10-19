@@ -1,0 +1,10 @@
+.button {
+  background: none;
+  border:none;
+  font: inherit;
+  cursor: pointer;
+  color: #1fc8db;
+}
+.button:hover {
+  color: #222324;
+}
