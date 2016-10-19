@@ -1,5 +1,5 @@
-import { takeLatest } from 'redux-saga';
-import { call, put, select, fork } from 'redux-saga/effects';
+import { takeLatest, delay } from 'redux-saga';
+import { call, put, select, fork, race } from 'redux-saga/effects';
 import request from 'superagent';
 import stringifyError from 'stringify-error-message';
 
@@ -28,8 +28,14 @@ export function* checkSiteSaga() {
   const { url, id } = site;
 
   try {
-    /* calling directly to the worona endpoint thank to rest_route query */
-    const res = yield call(requestFunc, url);
+    const { res, timeout } = yield race({
+      /* calling directly to the worona endpoint thank to rest_route query */
+      res: call(requestFunc, url),
+      /* Adding a timeout in case of user loses or has a very poor connection */
+      timeout: call(delay, 30000), // 30 seg timeout
+    });
+
+    if (timeout) throw new Error(errors.TIMEOUT);
 
     /* Bad response */
     if (res.status !== 200) {
@@ -71,6 +77,7 @@ export function* checkSiteRouterWatcher(action) {
 }
 
 export function* firstRouteIsCheckSite() {
+  /* block until sites subscription is ready */
   yield deps.sagaCreators.waitForReadySubscription('sites', selectors.getIsReadySites);
   const pathname = yield select(deps.selectors.getPathname);
   if (pathname.startsWith('/check-site/')) yield put(actions.checkSiteRequested());
