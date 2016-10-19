@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { VelocityTransitionGroup } from 'velocity-react';
 import worona from './worona.png';
-import { Menu } from './Menu.jsx';
+import { Menu } from './Menu';
 import { toggleMobileMenu } from '../../actions';
 import * as selectors from '../../selectors';
 import styles from './style.css';
@@ -13,9 +14,9 @@ const TopNav = ({ items, toggle, active }) => {
     navigationMenu = (
       <div>
         <span className={`nav-toggle is-right ${(active ? 'is-active' : '')}`} onClick={toggle}>
-          <span></span>
-          <span></span>
-          <span></span>
+          <span />
+          <span />
+          <span />
         </span>
 
         <Menu items={items} />
@@ -30,19 +31,19 @@ const TopNav = ({ items, toggle, active }) => {
     );
   }
   return (
-  <div className="hero-head">
-    <div className="container">
-      <nav className={`nav ${styles.navigationMenu}`}>
-        {/* Left side*/}
-        <div className="nav-left">
-          <a className="nav-item is-brand" href="/">
-            <img src={worona} alt="Worona" />
-          </a>
-        </div>
-        {navigationMenu}
-      </nav>
+    <div className="hero-head">
+      <div className="container">
+        <nav className={`nav ${styles.navigationMenu}`}>
+          {/* Left side*/}
+          <div className="nav-left">
+            <Link className="nav-item is-brand" to="/" tabIndex="1" role="button">
+              <img src={worona} alt="Worona" />
+            </Link>
+          </div>
+          {navigationMenu}
+        </nav>
+      </div>
     </div>
-  </div>
   );
 };
 
