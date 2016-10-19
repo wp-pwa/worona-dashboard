@@ -1,17 +1,24 @@
 import React from 'react';
 import cn from 'classnames';
 import moment from 'moment';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as deps from '../../dependencies';
-import { Link } from 'react-router';
+import styles from './style.css';
 
-const Site = ({ name, url, date, id, deleteSite }) => (
+const Site = ({ name, url, date, id, deleteSite, status }) => (
   <div className="column is-narrow-mobile is-one-third-tablet is-one-quarter-desktop">
     <div className={cn('card', 'is-fullwidth')}>
       <header className="card-header">
         <p className="card-header-title">
           {name}
         </p>
+        { status.type === 'conflict' ?
+          <Link className="card-header-icon" style={{ color: 'red' }} to={`/check-site/${id}`} role="button" >
+            <i className="fa fa-exclamation-triangle" />
+          </Link>
+        : null
+        }
       </header>
       <div className="card-content">
         <div className="content">
@@ -26,16 +33,16 @@ const Site = ({ name, url, date, id, deleteSite }) => (
       <footer className="card-footer">
         <Link className="card-footer-item" to={`/check-site/${id}`} role="button" >
           <span className={cn('icon', 'is-small')}>
-            <i className="fa fa-cog"></i>
+            <i className="fa fa-cog" />
           </span>
           Configure
         </Link>
-        <a className="card-footer-item is-loading" onClick={deleteSite} role="button" >
+        <button className={cn('is-primary', 'card-footer-item', styles.button)} onClick={deleteSite} role="button" >
           <span className={cn('icon', 'is-small')}>
-            <i className="fa fa-trash-o"></i>
+            <i className="fa fa-trash-o" />
           </span>
           Delete
-        </a>
+        </button>
       </footer>
     </div>
   </div>
@@ -46,6 +53,10 @@ Site.propTypes = {
   id: React.PropTypes.string.isRequired,
   date: React.PropTypes.number.isRequired,
   deleteSite: React.PropTypes.func.isRequired,
+  status: React.PropTypes.shape({
+    type: React.PropTypes.string.isRequired,
+    description: React.PropTypes.string,
+  }),
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

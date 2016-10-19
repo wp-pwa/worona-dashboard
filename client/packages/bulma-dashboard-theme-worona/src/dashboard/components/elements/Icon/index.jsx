@@ -2,7 +2,7 @@ import React from 'react';
 
 const Icon = ({ code, small }) => (
   <span className={`icon ${(small ? 'is-small' : '')}`}>
-    <i className={`fa fa-${code}`}></i>
+    <i className={`fa fa-${code}`} />
   </span>
 );
 Icon.propTypes = {

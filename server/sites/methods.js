@@ -47,4 +47,25 @@ Meteor.methods({
 
     return sites.remove({ _id }, true);
   },
+  updateSiteStatus({ _id, status }) {
+    check(_id, String);
+    check(status, Object);
+    check(status.type, String);
+
+    const userId = this.userId;
+    if (!userId) {
+      return new Meteor.Error('User is not logged in.');
+    }
+
+    const site = sites.findOne({ _id });
+    if (!site) {
+      return new Meteor.Error('Site ID not found.');
+    }
+
+    if (site.userIds.indexOf(userId) < 0) {
+      return new Meteor.Error('Current user doesn\'t own the selected site');
+    }
+
+    return sites.update(_id, { $set: { status } });
+  },
 });
