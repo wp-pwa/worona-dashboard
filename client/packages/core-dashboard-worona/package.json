@@ -1,40 +1,13 @@
 {
   "name": "core-dashboard-worona",
-  "version": "1.1.23",
+  "version": "1.2.6",
   "description": "Core Package of Worona Dashboard",
-  "main": "dist/prod/js/vendors.dashboard.2c7650aea216ec9bf4efad8aff5e9600.js",
   "scripts": {
-    "test" : "ava src/**/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill",
-    "clean": "rimraf dist",
-    "clean:dev": "rimraf dist/dev",
-    "clean:prod": "rimraf dist/prod",
-    "clean:core:dev": "rimraf dist/dev/js && rimraf dist/dev/locales && rimraf dist/dev/html",
-    "clean:core:prod": "rimraf dist/prod/js && rimraf dist/prod/locales && rimraf dist/prod/html",
-    "clean:vendors:dev": "rimraf dist/dev/vendors",
-    "clean:vendors:prod": "rimraf dist/prod/vendors",
-    "build:core:dev": "npm run clean:core:dev && webpack --progress --config webpack.dev.js",
-    "build:core:prod": "npm run clean:core:prod && webpack -p --progress --config webpack.prod.js",
-    "build:core:dev:modules": "npm run clean:core:dev && webpack --progress --config webpack.dev.js --display-modules",
-    "build:core:prod:modules": "npm run clean:core:prod && webpack -p --progress --config webpack.prod.js --display-modules",
-    "build:core:dev:reasons": "npm run clean:core:dev && webpack --progress --config webpack.dev.js --display-modules --display-reasons",
-    "build:core:prod:reasons": "npm run clean:core:prod && webpack -p --progress --config webpack.prod.js --display-modules --display-reasons",
-    "build:core:dev:stats": "npm run clean:core:dev && webpack --progress --config webpack.dev.js --profile --json > dev-stats.json",
-    "build:core:prod:stats": "npm run clean:core:prod && webpack -p --progress --config webpack.prod.js --profile --json > prod-stats.json",
-    "build:core": "npm run build:core:dev && npm run build:core:prod",
-    "build:vendors:dev": "npm run clean:vendors:dev && webpack --progress --config vendors/webpack.dev.js",
-    "build:vendors:prod": "npm run clean:vendors:prod && webpack -p --progress --config vendors/webpack.prod.js",
-    "build:vendors:dev:modules": "npm run clean:vendors:dev && webpack --progress --config vendors/webpack.dev.js --display-modules",
-    "build:vendors:prod:modules": "npm run clean:vendors:prod && webpack --progress --config vendors/webpack.prod.js --display-modules",
-    "build:vendors:dev:reasons": "npm run clean:vendors:dev && webpack -p --progress --config vendors/webpack.dev.js --display-modules --display-reasons",
-    "build:vendors:prod:reasons": "npm run clean:vendors:prod && webpack -p --progress --config vendors/webpack.prod.js --display-modules --display-reasons",
-    "build:vendors:dev:stats": "npm run clean:vendors:dev && webpack -p --progress --config vendors/webpack.dev.js --profile --json > vendors/dev-stats.json",
-    "build:vendors:prod:stats": "npm run clean:vendors:prod && webpack -p --progress --config vendors/webpack.prod.js --profile --json > vendors/prod-stats.json",
-    "build:vendors": "npm run build:vendors:dev && npm run build:vendors:prod",
-    "build": "npm run build:vendors && npm run build:core"
+    "test": "ava src/**/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/worona/worona.git"
+    "url": "git+https://github.com/worona/worona-dashboard.git"
   },
   "keywords": [
     "worona",
@@ -46,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/worona/worona-dashboard/issues"
   },
-  "homepage": "https://github.com/worona/worona#readme",
+  "homepage": "https://github.com/worona/worona-dashboard#readme",
   "worona": {
     "niceName": "Core",
     "slug": "core",
@@ -60,79 +33,29 @@
     "core": 1,
     "listed": 0,
     "deactivable": 0,
-    "public": 1,
-    "dev": {
-      "vendors": {
-        "files": [
-          {
-            "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.fa9535e577e6486d4ce6e7d9852157d2.js",
-            "hash": "fa9535e577e6486d4ce6e7d9852157d2"
-          }
-        ],
-        "main": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.fa9535e577e6486d4ce6e7d9852157d2.js"
-      },
-      "files": [
-        {
-          "file": "core-dashboard-worona/dist/dev/vendors/vendors.dashboard.de6e930291decfbf3cd3e94aac1bce5e.js",
-          "hash": "de6e930291decfbf3cd3e94aac1bce5e"
-        },
-        {
-          "file": "core-dashboard-worona/dist/dev/js/core.dashboard.6dab7c264e22d011eaa84a8231b4ef49.js",
-          "hash": "6dab7c264e22d011eaa84a8231b4ef49"
-        },
-        {
-          "file": "core-dashboard-worona/dist/dev/locales/en.0eab3406c28b92ba6c485d0dba018896.js",
-          "hash": "0eab3406c28b92ba6c485d0dba018896"
-        },
-        {
-          "file": "core-dashboard-worona/dist/dev/locales/es.c988e4e6c716e56e3a771da9d82fb248.js",
-          "hash": "c988e4e6c716e56e3a771da9d82fb248"
-        }
-      ],
-      "main": "core-dashboard-worona/dist/dev/js/core.dashboard.6dab7c264e22d011eaa84a8231b4ef49.js",
-      "assets": {}
-    },
-    "prod": {
-      "vendors": {
-        "files": [
-          {
-            "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.2f52b4d3f2a5c1d0d58ba065b525cb1b.js",
-            "hash": "2f52b4d3f2a5c1d0d58ba065b525cb1b"
-          }
-        ],
-        "main": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.2f52b4d3f2a5c1d0d58ba065b525cb1b.js"
-      },
-      "files": [
-        {
-          "file": "core-dashboard-worona/dist/prod/vendors/vendors.dashboard.4f8cf09d66e1dc6b46d7bbee77b753af.js",
-          "hash": "4f8cf09d66e1dc6b46d7bbee77b753af"
-        },
-        {
-          "file": "core-dashboard-worona/dist/prod/js/core.dashboard.564b24d8f13c39bd1f22bafab279f3c1.js",
-          "hash": "564b24d8f13c39bd1f22bafab279f3c1"
-        },
-        {
-          "file": "core-dashboard-worona/dist/prod/locales/es.8ea2791917bf49aa21d85bb18b7ca0b8.js",
-          "hash": "8ea2791917bf49aa21d85bb18b7ca0b8"
-        },
-        {
-          "file": "core-dashboard-worona/dist/prod/locales/en.4d1669d14f1c3088d0010ee2a0ce7475.js",
-          "hash": "4d1669d14f1c3088d0010ee2a0ce7475"
-        }
-      ],
-      "main": "core-dashboard-worona/dist/prod/js/core.dashboard.564b24d8f13c39bd1f22bafab279f3c1.js",
-      "assets": {}
-    }
+    "public": 1
   },
-  "devDependencies": {
-    "copy-webpack-plugin": "^3.0.1",
-    "fix-moduleid-and-chunkid-plugin": "^0.1.1",
-    "html-webpack-plugin": "^2.22.0",
-    "ignore-loader": "^0.1.1",
-    "rimraf": "^2.5.4",
-    "systemjs": "^0.19.37",
-    "webpack": "^1.13.1",
-    "webpack-stats-plugin": "^0.1.3"
-  },
-  "dependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "babel-polyfill": "^6.16.0",
+    "classnames": "^2.2.5",
+    "fastclick": "^1.0.6",
+    "i18next": "^3.4.3",
+    "i18next-xhr-backend": "^1.2.0",
+    "lodash": "^4.16.4",
+    "normalizr": "^2.2.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-i18next": "^1.10.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0",
+    "redux-router": "^2.1.2",
+    "redux-saga": "^0.12.0",
+    "reselect": "^2.5.4",
+    "stringify-error-message": "^1.0.2",
+    "superagent": "^2.3.0",
+    "systemjs": "^0.19.39",
+    "worona-deps": "^1.8.1"
+  }
 }

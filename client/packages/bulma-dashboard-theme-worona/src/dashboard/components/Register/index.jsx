@@ -1,10 +1,9 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
 
-import * as deps from '../../dependencies';
+import * as deps from '../../deps';
 import { toggleTermsAndConditions } from '../../actions';
 import { validate } from './validate';
 
@@ -136,8 +135,14 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage, toggleTe
 Register.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool,
-  statusMessage: React.PropTypes.any,
-  errorMessage: React.PropTypes.any,
+  statusMessage: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.bool,
+  ]),
+  errorMessage: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.bool,
+  ]),
   toggleTerms: React.PropTypes.func,
 };
 

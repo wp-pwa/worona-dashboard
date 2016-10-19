@@ -4,7 +4,7 @@ import { translate } from 'react-i18next';
 import { Link } from 'react-router';
 
 import Site from './Site';
-import * as deps from '../../dependencies';
+import * as deps from '../../deps';
 
 const SitesList = ({ sites }) => {
   if (sites.length === 0) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import * as deps from '../../dependencies';
+import * as deps from '../../deps';
 
 let MenuEntry = ({ name, target, selectedSiteId, selectedService }) => (
   <li>

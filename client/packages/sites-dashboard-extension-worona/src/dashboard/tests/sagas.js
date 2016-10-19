@@ -1,7 +1,7 @@
 import test from 'ava';
 import { call, put, select } from 'redux-saga/effects';
 import { mock } from 'worona-deps';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 import { createSiteSaga } from '../sagas/createSite';
 import { deleteSiteSaga } from '../sagas/deleteSite';
 import { checkSiteSaga, requestFunc } from '../sagas/checkSite';
@@ -40,7 +40,7 @@ test('deleteSiteSaga succeed', t => {
   const gen = deleteSiteSaga(action);
   t.deepEqual(gen.next().value, put(actions.deleteSiteStatusChanged(DELETING_SITE)));
   t.deepEqual(gen.next().value, call(libs.deleteSite, action));
-  t.deepEqual(gen.next(siteId).value, put(actions.deleteSiteSucceed(siteId)));
+  t.deepEqual(gen.next().value, put(actions.deleteSiteSucceed(siteId)));
   t.true(gen.next().done);
 });
 

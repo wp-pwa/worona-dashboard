@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import * as types from '../types';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 export const showingMobileMenu = (state = false, action) => {
   switch (action.type) {

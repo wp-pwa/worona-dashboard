@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import * as deps from '../../dependencies';
+import * as deps from '../../deps';
 import Icon from '../elements/Icon';
 import Button from '../elements/Button';
 

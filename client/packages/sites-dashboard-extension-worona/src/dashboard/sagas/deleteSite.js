@@ -9,8 +9,8 @@ export function* deleteSiteSaga(action) {
   const { _id } = action;
   try {
     yield put(actions.deleteSiteStatusChanged(DELETING_SITE));
-    const siteId = yield call(libs.deleteSite, { _id });
-    yield put(actions.deleteSiteSucceed(siteId));
+    yield call(libs.deleteSite, { _id });
+    yield put(actions.deleteSiteSucceed(_id));
   } catch (error) {
     yield put(actions.deleteSiteFailed(error));
   }

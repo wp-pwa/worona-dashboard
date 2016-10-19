@@ -4,7 +4,7 @@ import { NOT_CONNECTED, CREATING_ACCOUNT, CONNECTED_CREATING_ACCOUNT } from '../
 import * as libs from '../libs';
 import * as actions from '../actions';
 import * as types from '../types';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 export function* createAccountSaga({ name, email, password }) {
   if (yield select(deps.selectors.getIsConnected)) {

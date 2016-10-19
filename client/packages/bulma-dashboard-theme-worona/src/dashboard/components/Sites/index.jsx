@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as deps from '../../dependencies';
+import * as deps from '../../deps';
 
 import Header from '../Header';
 import Footer from '../Footer';

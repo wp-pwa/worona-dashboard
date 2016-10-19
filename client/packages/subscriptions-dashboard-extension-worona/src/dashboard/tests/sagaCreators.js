@@ -4,7 +4,7 @@ import { call, put, take, fork } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 import * as sagaCreators from '../sagaCreators';
 import * as actions from '../actions';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 mock(deps);
 
