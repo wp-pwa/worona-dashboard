@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as deps from '../../dependencies';
 import styles from './style.css';
+import Icon from '../elements/Icon';
 
 const Site = ({ name, url, date, id, deleteSite, status }) => (
   <div className="column is-narrow-mobile is-one-third-tablet is-one-quarter-desktop">
@@ -37,10 +38,8 @@ const Site = ({ name, url, date, id, deleteSite, status }) => (
           </span>
           Configure
         </Link>
-        <button className={cn('is-primary', 'card-footer-item', styles.button)} onClick={deleteSite} role="button" >
-          <span className={cn('icon', 'is-small')}>
-            <i className="fa fa-trash-o" />
-          </span>
+        <button className={cn('card-footer-item', styles.button)} onClick={deleteSite} role="button" >
+          <Icon code="trash-o" small />
           Delete
         </button>
       </footer>
