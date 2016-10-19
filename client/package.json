@@ -4,8 +4,8 @@
   "description": "Worona dashboard client",
   "main": "index.js",
   "scripts": {
-    "build": "babel-node webpack/start.js --build",
-    "start": "babel-node webpack/start.js",
+    "build": "babel-node start.js --build",
+    "start": "babel-node start.js",
     "test": "ava **/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
   },
   "repository": {
