@@ -10,7 +10,7 @@ import * as types from '../types';
 import { NOT_CONNECTED, CREATING_ACCOUNT, CONNECTED_CREATING_ACCOUNT, CONNECTED_LOGIN_IN, LOGIN_IN }
   from '../messages';
 import * as libs from '../libs';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 mock(deps);
 

@@ -7,7 +7,7 @@ import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
 import Main from '../Main';
 import Hero from '../elements/Hero';
-import * as deps from '../../dependencies';
+import * as deps from '../../deps';
 
 import ServiceTabs from './ServiceTabs';
 import AsideMenu from './AsideMenu';

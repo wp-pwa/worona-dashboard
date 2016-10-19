@@ -3,6 +3,7 @@ import * as types from './types';
 import * as reducers from './reducers';
 import * as selectors from './selectors';
 import * as sagas from './sagas';
+import * as deps from './deps';
 
 export {
   actions,
@@ -10,4 +11,5 @@ export {
   reducers,
   selectors,
   sagas,
+  deps,
 };

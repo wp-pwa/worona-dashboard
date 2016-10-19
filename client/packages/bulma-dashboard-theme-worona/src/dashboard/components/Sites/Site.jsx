@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import * as deps from '../../dependencies';
+import * as deps from '../../deps';
 import { Link } from 'react-router';
 
 const Site = ({ name, url, date, id, deleteSite }) => (

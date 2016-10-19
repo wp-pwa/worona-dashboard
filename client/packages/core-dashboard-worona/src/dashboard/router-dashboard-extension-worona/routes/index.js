@@ -5,7 +5,7 @@ import { dep } from 'worona-deps';
 import { connect } from 'react-redux';
 import { Route, IndexRedirect, Redirect } from 'react-router';
 import CssLoader from '../components/CssLoader';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 const mapStateToProps = state => ({
   themeName: deps.selectors.getThemeName(state),

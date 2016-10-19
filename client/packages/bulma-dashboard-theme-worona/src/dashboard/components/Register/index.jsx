@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
 
-import * as deps from '../../dependencies';
+import * as deps from '../../deps';
 import { toggleTermsAndConditions } from '../../actions';
 import { validate } from './validate';
 

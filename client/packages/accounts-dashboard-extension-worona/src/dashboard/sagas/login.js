@@ -5,7 +5,7 @@ import { NOT_CONNECTED, LOGIN_IN, CONNECTED_LOGIN_IN } from '../messages';
 import * as selectors from '../selectors';
 import * as actions from '../actions';
 import * as types from '../types';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 export function* loginRequestedSaga({ email, password }) {
   if (yield select(deps.selectors.getIsConnected)) {

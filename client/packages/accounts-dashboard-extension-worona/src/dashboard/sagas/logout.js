@@ -2,7 +2,7 @@ import { takeLatest } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import * as types from '../types';
 import * as actions from '../actions';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 export function* logoutRequestedSaga() {
   try {

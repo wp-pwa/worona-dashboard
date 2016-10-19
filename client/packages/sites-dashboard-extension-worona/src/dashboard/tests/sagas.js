@@ -1,7 +1,7 @@
 import test from 'ava';
 import { call, put, select } from 'redux-saga/effects';
 import { mock } from 'worona-deps';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 import { createSiteSaga } from '../sagas/createSite';
 import { deleteSiteSaga } from '../sagas/deleteSite';
 import { checkSiteSaga, requestFunc } from '../sagas/checkSite';

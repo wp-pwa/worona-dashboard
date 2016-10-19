@@ -1,4 +1,4 @@
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 import { closeMobileMenu } from '../actions';
 
 export const initialHeaderItems = [];

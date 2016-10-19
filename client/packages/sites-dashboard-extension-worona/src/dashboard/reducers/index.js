@@ -2,7 +2,7 @@ import lodash from 'lodash';
 import { combineReducers } from 'redux';
 import * as types from '../types';
 import * as errors from '../errors';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 export const isCreatingSite = (state = false, action) => {
   switch (action.type) {

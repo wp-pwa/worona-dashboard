@@ -6,7 +6,7 @@ import * as actions from '../actions';
 import * as types from '../types';
 import * as errors from '../errors';
 import * as selectors from '../selectors';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 export const CORSAnywhere = 'https://cors-anywhere.herokuapp.com/';
 export const woronaEndPoint = '/worona/v1/siteid';

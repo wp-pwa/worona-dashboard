@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import Input from '../elements/Input';
 import Button from '../elements/Button';
 import Icon from '../elements/Icon';
-import * as deps from '../../dependencies';
+import * as deps from '../../deps';
 import { validate } from './validate';
 
 const submit = siteId => (values, dispatch) => {

@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 export const getCategories = () => ([
   { name: 'Settings', order: 0 },
