@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 export default () => combineReducers({
   collection: deps.reducerCreators.collectionCreator('settings'),

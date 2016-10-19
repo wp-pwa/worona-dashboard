@@ -1,5 +1,5 @@
 import { fork } from 'redux-saga/effects';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 export default function* settingsagas() {
   yield [

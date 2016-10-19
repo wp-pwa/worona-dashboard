@@ -1,7 +1,7 @@
 import { isRemote } from 'worona-deps';
 import React from 'react';
 import { connect } from 'react-redux';
-import * as deps from '../../dependencies';
+import * as deps from '../../deps';
 
 class LinkCss extends React.Component {
   componentDidMount() {

@@ -3,7 +3,7 @@ import { mock } from 'worona-deps';
 import { showingMobileMenu } from '../reducers/header';
 import { showingTermsAndConditions } from '../reducers/forms/register';
 import * as actions from '../actions';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 mock(deps);
 deps.actions.logoutSucceed = () => ({ type: deps.types.LOGOUT_SUCCEED });

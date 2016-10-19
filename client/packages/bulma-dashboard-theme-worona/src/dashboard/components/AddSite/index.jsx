@@ -7,7 +7,7 @@ import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
 import Main from '../Main';
 import AddSiteForm from './AddSiteForm';
-import * as deps from '../../dependencies';
+import * as deps from '../../deps';
 
 const AddSite = ({ isFirstLogin }) => {
   let header = '';

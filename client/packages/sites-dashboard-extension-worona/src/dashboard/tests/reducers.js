@@ -3,7 +3,7 @@ import deepFreeze from 'deep-freeze';
 import { mock } from 'worona-deps';
 import * as reducers from '../reducers';
 import * as actions from '../actions';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 import * as errors from '../errors';
 
 mock(deps);

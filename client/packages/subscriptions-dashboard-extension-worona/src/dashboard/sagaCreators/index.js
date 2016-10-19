@@ -1,7 +1,7 @@
 /* eslint-disable no-constant-condition */
 import { call, take, put, fork, select } from 'redux-saga/effects';
 import * as actions from '../actions';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 import * as types from '../types';
 
 export function* subscriptionEvents(channel, action) {

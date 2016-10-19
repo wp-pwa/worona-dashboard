@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { mock, isTest } from 'worona-deps';
 import { createSelector } from 'reselect';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 if (isTest) mock(deps);
 

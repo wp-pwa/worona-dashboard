@@ -4,7 +4,7 @@ import { CREATING_SITE } from '../messages';
 import * as actions from '../actions';
 import * as libs from '../libs';
 import * as types from '../types';
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 export function* createSiteSaga(action) {
   const { name, url, _id } = action;

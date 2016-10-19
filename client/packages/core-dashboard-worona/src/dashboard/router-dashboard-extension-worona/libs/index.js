@@ -1,4 +1,4 @@
-import * as deps from '../dependencies';
+import * as deps from '../deps';
 
 export const push = (...args) => deps.store.history.push(...args);
 export const replace = (...args) => deps.store.history.replace(...args);
