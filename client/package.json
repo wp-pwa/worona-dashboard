@@ -6,6 +6,7 @@
   "scripts": {
     "build": "babel-node start.js --build",
     "start": "babel-node start.js",
+    "publish": "babel-node publish.js",
     "test": "ava **/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
   },
   "repository": {
@@ -49,12 +50,14 @@
     "json-loader": "^0.5.4",
     "lodash-webpack-plugin": "^0.10.0",
     "node-sass": "^3.7.0",
+    "npm-registry": "^0.1.13",
     "postcss": "^5.0.21",
     "postcss-cssnext": "^2.5.2",
     "postcss-loader": "^0.9.1",
     "rimraf": "^2.5.2",
     "sass-loader": "^3.2.0",
     "script-loader": "^0.7.0",
+    "semver": "^5.3.0",
     "sinon": "^1.17.4",
     "style-loader": "^0.13.1",
     "systemjs": "^0.19.37",
