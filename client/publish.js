@@ -1,36 +1,32 @@
 /* eslint-disable no-console, global-require, import/no-dynamic-require */
 import { spawn } from 'child-process-promise';
-import Registry from 'npm-registry';
+import request from 'superagent';
 import fs from 'fs';
 import path from 'path';
 import semver from 'semver';
 
-const npm = new Registry({ registry: 'https://registry.npmjs.org/' });
-
-const getPackageVersion = name => new Promise((resolve, reject) => {
-  npm.packages.get(name, (err, data) => {
-    if (err) reject(err);
-    else resolve(data[0].version);
-  });
-});
+const getPackageVersion = async (name) => {
+  const res = await request(`https://registry.npmjs.org/${name}`);
+  return res.body['dist-tags'].latest;
+};
 
 const getDirectories = srcpath =>
   fs.readdirSync(srcpath).filter(file =>
     fs.statSync(path.join(srcpath, file)).isDirectory());
 
-const publish = async () => {
-  const directories = getDirectories('./packages/');
+const publish = async ({ folder }) => {
+  const directories = getDirectories(`./${folder}/`);
 
   for (let i = 0; i < directories.length; i += 1) {
     const name = directories[i];
-    const localVersion = require(`./packages/${name}/package.json`).version;
+    const localVersion = require(`./${folder}/${name}/package.json`).version;
     const remoteVersion = await getPackageVersion(name);
 
     if (semver.gt(localVersion, remoteVersion)) {
-      console.log(`Updating package '${name}' from ${remoteVersion} to ${localVersion}...\n`);
-      await spawn('npm', ['publish', `packages/${name}`], { stdio: 'inherit' });
+      console.log(`\nUpdating package '${name}' from ${remoteVersion} to ${localVersion}...`);
+      await spawn('npm', ['publish', `${folder}/${name}`], { stdio: 'inherit' });
     } else {
-      console.log(`Package '${name}' is already up to date: ${localVersion}.\n`);
+      console.log(`\nPackage '${name}' is already up to date: ${localVersion}.`);
     }
   }
 };
@@ -40,4 +36,10 @@ process.on('unhandledRejection', (err) => {
   process.exit(1);
 });
 
-publish();
+const start = async () => {
+  await publish({ folder: 'packages' });
+  await publish({ folder: 'development' });
+  console.log('\n');
+};
+
+start();

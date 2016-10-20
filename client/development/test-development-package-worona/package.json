@@ -1,6 +1,6 @@
 {
   "name": "test-development-package-worona",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A package to test development packages within worona dashboard core.",
   "scripts": {
     "test" : "ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
