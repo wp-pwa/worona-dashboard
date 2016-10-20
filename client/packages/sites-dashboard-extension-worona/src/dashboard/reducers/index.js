@@ -32,9 +32,6 @@ export const createSiteError = (state = false, action) => {
   const { error } = action;
   switch (action.type) {
     case types.CREATE_SITE_FAILED:
-      if (error.error === errors.METEOR_USER_NOT_LOGGED_IN) {
-        error.reason = errors.YOU_ARE_NOT_LOGGED_IN;
-      }
       return error;
     case types.CREATE_SITE_REQUESTED:
     case types.CREATE_SITE_SUCCEED:

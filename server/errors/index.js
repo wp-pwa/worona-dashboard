@@ -1,4 +1,1 @@
-export const NOT_LOGGED_IN = [
-  'not-logged-in.',
-  'You are not logged in.',
-];
+export const NOT_LOGGED_IN = 'NOT_LOGGED_IN';

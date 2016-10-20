@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
+import { flow } from 'lodash/fp';
 import { Link } from 'react-router';
+import { translate } from 'react-i18next';
 import Input from '../elements/Input';
 import Button from '../elements/Button';
 import Icon from '../elements/Icon';
@@ -13,7 +15,7 @@ const submit = siteId => (values, dispatch) => {
 };
 
 const AddSiteForm =
-({ handleSubmit, waiting, statusMessage, errorMessage, reset, initialValues: { siteId } }) => (
+({ t, handleSubmit, waiting, statusMessage, errorMessage, reset, initialValues: { siteId } }) => (
   <section className="section">
     <div className="container">
 
@@ -53,7 +55,7 @@ const AddSiteForm =
             {errorMessage ? (
               <article className="message is-danger">
                 <div className="message-body has-text-centered">
-                  <strong>{errorMessage}</strong>
+                  <strong>{t(errorMessage)}</strong>
                 </div>
               </article>)
               : null
@@ -104,14 +106,8 @@ AddSiteForm.propTypes = {
     siteName: React.PropTypes.string,
     siteURL: React.PropTypes.string,
   }),
+  t: React.PropTypes.func,
 };
-
-const AddSiteWithForm = reduxForm({
-  form: 'AddSiteForm',
-  fields: ['siteName', 'siteURL'],
-  validate,
-  getFormState: state => state.theme.reduxForm,
-})(AddSiteForm);
 
 const mapStateToProps = state => ({
   waiting: deps.selectors.getIsCreatingSite(state),
@@ -120,4 +116,13 @@ const mapStateToProps = state => ({
   initialValues: deps.selectors.getNewSiteInfo(state),
 });
 
-export default connect(mapStateToProps)(AddSiteWithForm);
+export default flow(
+  reduxForm({
+    form: 'AddSiteForm',
+    fields: ['siteName', 'siteURL'],
+    validate,
+    getFormState: state => state.theme.reduxForm,
+  }),
+  connect(mapStateToProps),
+  translate(['sites'])
+)(AddSiteForm);
