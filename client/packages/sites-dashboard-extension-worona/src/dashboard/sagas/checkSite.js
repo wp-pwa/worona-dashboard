@@ -22,7 +22,7 @@ export function* checkSiteSaga() {
   let woronaSiteId;
 
   /* block until sites subscription is ready */
-  yield deps.sagaCreators.waitForReadySubscription('sites', selectors.getIsReadySites);
+  yield deps.sagaHelpers.waitForReadySubscription('sites', selectors.getIsReadySites);
 
   const site = yield select(selectors.getSelectedSite);
   const { url, id } = site;
@@ -78,7 +78,7 @@ export function* checkSiteRouterWatcher(action) {
 
 export function* firstRouteIsCheckSite() {
   /* block until sites subscription is ready */
-  yield deps.sagaCreators.waitForReadySubscription('sites', selectors.getIsReadySites);
+  yield deps.sagaHelpers.waitForReadySubscription('sites', selectors.getIsReadySites);
   const pathname = yield select(deps.selectors.getPathname);
   if (pathname.startsWith('/check-site/')) yield put(actions.checkSiteRequested());
 }

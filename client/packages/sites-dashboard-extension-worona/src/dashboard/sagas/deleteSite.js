@@ -4,9 +4,11 @@ import { DELETING_SITE } from '../messages';
 import * as actions from '../actions';
 import * as libs from '../libs';
 import * as types from '../types';
+import * as deps from '../deps';
 
 export function* deleteSiteSaga(action) {
   const { _id } = action;
+  yield deps.sagaHelpers.waitForConnectionEstablished();
   try {
     yield put(actions.deleteSiteStatusChanged(DELETING_SITE));
     yield call(libs.deleteSite, { _id });

@@ -17,8 +17,14 @@ export const sagaCreators = {
   get subscriptionWatcherCreator() {
     return dep('subscriptions', 'sagaCreators', 'subscriptionWatcherCreator');
   },
+};
+
+export const sagaHelpers = {
   get waitForReadySubscription() {
-    return dep('subscriptions', 'sagaCreators', 'waitForReadySubscription');
+    return dep('subscriptions', 'sagaHelpers', 'waitForReadySubscription');
+  },
+  get waitForConnectionEstablished() {
+    return dep('accounts', 'sagaHelpers', 'waitForConnectionEstablished');
   },
 };
 

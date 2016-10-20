@@ -4,6 +4,7 @@ import * as types from './types';
 import * as reducers from './reducers';
 import * as selectors from './selectors';
 import * as sagas from './sagas';
+import * as sagaHelpers from './sagaHelpers';
 import * as deps from './deps';
 
 const locales = lang => require(`./locales/${lang}.json`);
@@ -14,6 +15,7 @@ export {
   reducers,
   selectors,
   sagas,
+  sagaHelpers,
   locales,
   deps,
 };
