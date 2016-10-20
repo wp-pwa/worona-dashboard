@@ -56,6 +56,6 @@
     "stringify-error-message": "^1.0.2",
     "superagent": "^2.3.0",
     "systemjs": "^0.19.39",
-    "worona-deps": "^1.8.1"
+    "worona-deps": "^1.8.2"
   }
 }

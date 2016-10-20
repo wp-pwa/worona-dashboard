@@ -124,5 +124,5 @@ export default flow(
     getFormState: state => state.theme.reduxForm,
   }),
   connect(mapStateToProps),
-  translate(['sites'])
+  translate('sites')
 )(AddSiteForm);
