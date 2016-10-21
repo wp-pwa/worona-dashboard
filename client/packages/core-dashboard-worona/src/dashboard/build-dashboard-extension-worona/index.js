@@ -7,6 +7,7 @@ import * as store from './store';
 import * as sagas from './sagas';
 import * as selectors from './selectors';
 import * as i18n from './i18n';
+
 const locales = lang => require(`./locales/${lang}.json`);
 
 export const name = 'build-dashboard-extension-worona';
