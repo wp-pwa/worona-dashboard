@@ -4,5 +4,7 @@
   "WORONA_PLUGIN_NOT_FOUND" : "Worona WordPress Plugin is not installed on the site.",
   "SITEID_DONT_MATCH" : "Worona Plugin and Dashboard site ids don't match.",
   "TIMEOUT" : "Time waiting for response has expired. Please try again later.",
-  "NOT_LOGGED_IN" : "You are not logged in."
+  "NOT_LOGGED_IN" : "You are not logged in.",
+  "CREATING_SITE" : "Creating your new site. Please wait...",
+  "DELETING_SITE" : "Deleting site..."
 }

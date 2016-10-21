@@ -12,7 +12,7 @@ const submit = (values, dispatch) => {
   dispatch(deps.actions.loginRequested(values.email, values.password));
 };
 
-const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
+const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) => (
 
   <div className="container">
     <div className="columns">
@@ -44,7 +44,7 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
             {statusMessage ? (
               <article className="message">
                 <div className="message-body has-text-centered">
-                  <strong>{statusMessage}</strong>
+                  <strong>{t(statusMessage)}</strong>
                 </div>
               </article>)
                : null
@@ -53,7 +53,7 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage }) => (
             {errorMessage ? (
               <article className="message is-danger">
                 <div className="message-body has-text-centered">
-                  <strong>{errorMessage}</strong>
+                  <strong>{t(errorMessage)}</strong>
                 </div>
               </article>)
                : null
@@ -97,9 +97,10 @@ LoginForm.propTypes = {
     React.PropTypes.string,
     React.PropTypes.bool,
   ]),
+  t: React.PropTypes.func,
 };
 
-const LoginTranslated = translate('bulma')(LoginForm);
+const LoginTranslated = translate('accounts')(LoginForm);
 
 const LoginWithForm = reduxForm({
   form: 'login',

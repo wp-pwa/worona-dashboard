@@ -46,7 +46,7 @@ const AddSiteForm =
             {statusMessage ? (
               <article className="message">
                 <div className="message-body has-text-centered">
-                  <strong>{statusMessage}</strong>
+                  <strong>{t(statusMessage)}</strong>
                 </div>
               </article>)
               : null
