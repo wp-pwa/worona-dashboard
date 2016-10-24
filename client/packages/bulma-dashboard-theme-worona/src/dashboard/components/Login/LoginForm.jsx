@@ -59,7 +59,7 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) =>
                : null
              }
 
-            <div className="level is-mobile">
+            <div className="level">
               <div className="level-left">
                 <Button
                   color="primary"
