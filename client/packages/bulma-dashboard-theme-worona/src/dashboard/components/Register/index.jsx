@@ -98,7 +98,7 @@ const Register = ({ t, handleSubmit, waiting, statusMessage, errorMessage, toggl
                  : null
                }
 
-              <div className="level is-mobile">
+              <div className="level">
                 <div className="level-left">
                   <Button
                     color="primary"

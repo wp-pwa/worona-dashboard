@@ -28,7 +28,7 @@ export function subscriptionWatcherCreator(selectedCollection, ...params) {
       readySaga.cancel();
       failedSaga.cancel();
       yield call(deps.libs.unsubscribe, subscription.id);
-      yield put(actions.subscriptionStopped());
+      yield put(actions.subscriptionStopped(selectedCollection));
     }
   };
 }
