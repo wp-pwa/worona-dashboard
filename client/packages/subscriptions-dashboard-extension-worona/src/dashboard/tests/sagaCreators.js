@@ -41,6 +41,6 @@ test('subscriptionWatcherCreator', t => {
     fork(sagaCreators.subscriptionEvents, errorChannel, actions.subscriptionFailed));
   t.deepEqual(gen.next(task).value, take(deps.types.LOGOUT_SUCCEED));
   t.deepEqual(gen.next().value, call(deps.libs.unsubscribe, subscription.id));
-  t.deepEqual(gen.next().value, put(actions.subscriptionStopped()));
+  t.deepEqual(gen.next().value, put(actions.subscriptionStopped('test')));
   t.deepEqual(gen.next().value, take(deps.types.LOGIN_SUCCEED));
 });
