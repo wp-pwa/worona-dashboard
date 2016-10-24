@@ -14,14 +14,14 @@ const FooterLinks = () => (
           </a>
         </li>
         <li>
-          <a href="docs.worona.org" target="_blank">
+          <a href="https://docs.worona.org" target="_blank">
             <span className="icon is-small"><i className="fa fa-book" /></span>
             &nbsp;
             <span>Documentation</span>
           </a>
         </li>
         <li>
-          <a href="blog.worona.org" target="_blank">
+          <a href="https://blog.worona.org" target="_blank">
             <span className="icon is-small"><i className="fa fa-rss" /></span>
             &nbsp;
             <span>Blog</span>

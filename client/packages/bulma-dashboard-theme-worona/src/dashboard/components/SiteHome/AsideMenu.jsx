@@ -5,7 +5,8 @@ import * as deps from '../../deps';
 
 let MenuEntry = ({ name, target, selectedSiteId, selectedService }) => (
   <li>
-    <Link to={`/site/${selectedSiteId}/${selectedService}/${target}`}
+    <Link
+      to={`/site/${selectedSiteId}/${selectedService}/${target}`}
       role="button" activeClassName="is-active"
     >
       {name}
@@ -45,17 +46,15 @@ MenuCategory.propTypes = {
 };
 
 const AsideMenu = ({ settings }) => (
-    <div className="column is-hidden-mobile is-2-desktop">
-        <aside className="menu">
-          {
-            settings.map(({ name, entries }, index) =>
-            (<MenuCategory key={index} name={name}
-              entries={entries}
-            />)
-            )
-          }
-        </aside>
-    </div>
+  <div className="column is-hidden-mobile is-2-desktop">
+    <aside className="menu">
+      {
+        settings.map(({ name, entries }, index) =>
+          <MenuCategory key={index} name={name} entries={entries} />
+        )
+      }
+    </aside>
+  </div>
 );
 
 AsideMenu.propTypes = {
@@ -63,7 +62,7 @@ AsideMenu.propTypes = {
 };
 
 const mapStateToMenuProps = (state) => ({
-  settings: deps.selectors.getSiteSettingsByCategory(deps.selectors.getSiteId(state))(state),
+  settings: [],
 });
 
 export default connect(mapStateToMenuProps)(AsideMenu);
