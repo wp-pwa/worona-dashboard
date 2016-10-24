@@ -1,12 +1,14 @@
-import { takeLatest } from 'redux-saga';
-import { call, put, select, fork } from 'redux-saga/effects';
+import { takeLatest, delay } from 'redux-saga';
+import { call, put, select, fork, race } from 'redux-saga/effects';
 import request from 'superagent';
+import stringifyError from 'stringify-error-message';
 
 import * as actions from '../actions';
 import * as types from '../types';
 import * as errors from '../errors';
 import * as selectors from '../selectors';
 import * as deps from '../deps';
+import * as libs from '../libs';
 
 export const CORSAnywhere = 'https://cors-anywhere.herokuapp.com/';
 export const woronaEndPoint = '/worona/v1/siteid';
@@ -20,14 +22,20 @@ export function* checkSiteSaga() {
   let woronaSiteId;
 
   /* block until sites subscription is ready */
-  yield deps.sagaCreators.waitForReadySubscription('sites', selectors.getIsReadySites);
+  yield deps.sagaHelpers.waitForReadySubscription('sites', selectors.getIsReadySites);
 
   const site = yield select(selectors.getSelectedSite);
   const { url, id } = site;
 
   try {
-    /* calling directly to the worona endpoint thank to rest_route query */
-    const res = yield call(requestFunc, url);
+    const { res, timeout } = yield race({
+      /* calling directly to the worona endpoint thank to rest_route query */
+      res: call(requestFunc, url),
+      /* Adding a timeout in case of user loses or has a very poor connection */
+      timeout: call(delay, 30000), // 30 seg timeout
+    });
+
+    if (timeout) throw new Error(errors.TIMEOUT);
 
     /* Bad response */
     if (res.status !== 200) {
@@ -46,13 +54,17 @@ export function* checkSiteSaga() {
     }
 
     yield put(actions.checkSiteSucceed());
+    yield call(libs.updateSiteStatus, { _id: id, status: { type: 'ok' } });
   } catch (error) {
     /* It responses 404 but in WP API JSON format */
     if (error.status === 404 && error.response.body && error.response.body.code === 'rest_no_route') {
-      yield put(actions.checkSiteFailed(new Error(errors.WORONA_PLUGIN_NOT_FOUND)));
+      const noPluginError = new Error(errors.WORONA_PLUGIN_NOT_FOUND);
+      yield put(actions.checkSiteFailed(noPluginError));
+      yield call(libs.updateSiteStatus, { _id: id, status: { type: 'conflict', description: stringifyError(noPluginError) } });
     /* else, there's a server error */
     } else {
       yield put(actions.checkSiteFailed(error));
+      yield call(libs.updateSiteStatus, { _id: id, status: { type: 'conflict', description: stringifyError(error) } });
     }
   }
 }
@@ -65,7 +77,8 @@ export function* checkSiteRouterWatcher(action) {
 }
 
 export function* firstRouteIsCheckSite() {
-  yield deps.sagaCreators.waitForReadySubscription('sites', selectors.getIsReadySites);
+  /* block until sites subscription is ready */
+  yield deps.sagaHelpers.waitForReadySubscription('sites', selectors.getIsReadySites);
   const pathname = yield select(deps.selectors.getPathname);
   if (pathname.startsWith('/check-site/')) yield put(actions.checkSiteRequested());
 }

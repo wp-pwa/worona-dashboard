@@ -1,6 +1,6 @@
 {
   "name": "core-dashboard-worona",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Core Package of Worona Dashboard",
   "scripts": {
     "test": "ava src/**/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
@@ -56,6 +56,6 @@
     "stringify-error-message": "^1.0.2",
     "superagent": "^2.3.0",
     "systemjs": "^0.19.39",
-    "worona-deps": "^1.8.1"
+    "worona-deps": "^1.8.2"
   }
 }

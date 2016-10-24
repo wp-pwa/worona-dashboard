@@ -1,5 +1,5 @@
-export const NOT_CONNECTED = 'Not connected. Waiting for connection...';
-export const CONNECTED_LOGIN_IN = 'Connected. Waiting to login...';
-export const LOGIN_IN = 'Waiting to login...';
-export const CONNECTED_CREATING_ACCOUNT = 'Connected. Waiting to create account...';
-export const CREATING_ACCOUNT = 'Waiting to create account...';
+export const NOT_CONNECTED = 'NOT_CONNECTED';
+export const CONNECTED_LOGIN_IN = 'CONNECTED_LOGIN_IN';
+export const LOGIN_IN = 'LOGIN_IN';
+export const CONNECTED_CREATING_ACCOUNT = 'CONNECTED_CREATING_ACCOUNT';
+export const CREATING_ACCOUNT = 'CREATING_ACCOUNT';

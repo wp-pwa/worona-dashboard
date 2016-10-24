@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 import { Link } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
 
@@ -23,7 +24,7 @@ const submit = (values, dispatch) => {
   dispatch(deps.actions.createAccountRequested(values.name, values.email, values.password));
 };
 
-const Register = ({ handleSubmit, waiting, statusMessage, errorMessage, toggleTerms }) => (
+const Register = ({ t, handleSubmit, waiting, statusMessage, errorMessage, toggleTerms }) => (
   <Body>
     <Header>
       <Hero title="Register">
@@ -82,7 +83,7 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage, toggleTe
               {statusMessage ? (
                 <article className="message">
                   <div className="message-body has-text-centered">
-                    <strong>{statusMessage}</strong>
+                    <strong>{t(statusMessage)}</strong>
                   </div>
                 </article>)
                  : null
@@ -91,13 +92,13 @@ const Register = ({ handleSubmit, waiting, statusMessage, errorMessage, toggleTe
               {errorMessage ? (
                 <article className="message is-danger">
                   <div className="message-body has-text-centered">
-                    <strong>{errorMessage}</strong>
+                    <strong>{t(errorMessage)}</strong>
                   </div>
                 </article>)
                  : null
                }
 
-              <div className="level is-mobile">
+              <div className="level">
                 <div className="level-left">
                   <Button
                     color="primary"
@@ -144,13 +145,16 @@ Register.propTypes = {
     React.PropTypes.bool,
   ]),
   toggleTerms: React.PropTypes.func,
+  t: React.PropTypes.func,
 };
+
+const RegisterTranslated = translate('accounts')(Register);
 
 const RegisterWithForm = reduxForm({
   form: 'register',
   validate,
   getFormState: state => state.theme.reduxForm,
-})(Register);
+})(RegisterTranslated);
 
 const mapStateToProps = state => ({
   waiting: deps.selectors.getIsCreatingAccount(state),

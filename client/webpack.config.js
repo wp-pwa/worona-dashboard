@@ -55,7 +55,7 @@ switch (config.type) {
           'packages/core-' + config.entrie + '-worona/node_modules',
         ],
       },
-      devtool: '#eval-source-map',
+      // devtool: '#eval-source-map',
       devServer: {
     		contentBase: 'dist',
     		noInfo: false,

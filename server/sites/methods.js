@@ -2,6 +2,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check, Match } from 'meteor/check';
 import { sites } from './collections';
+import * as errors from '../errors';
 
 Meteor.methods({
   createSite({ name, url, _id }) {
@@ -11,7 +12,7 @@ Meteor.methods({
     if (process.env.NODE_ENV === 'development') Meteor._sleepForMs(500);
 
     if (!this.userId) {
-      return new Meteor.Error('User is not logged in.');
+      return new Meteor.Error(errors.NOT_LOGGED_IN);
     }
 
     const userId = this.userId;
@@ -33,7 +34,7 @@ Meteor.methods({
 
     const userId = this.userId;
     if (!userId) {
-      return new Meteor.Error('User is not logged in.');
+      return new Meteor.Error(errors.NOT_LOGGED_IN);
     }
 
     const site = sites.findOne({ _id });
@@ -46,5 +47,26 @@ Meteor.methods({
     }
 
     return sites.remove({ _id });
+  },
+  updateSiteStatus({ _id, status }) {
+    check(_id, String);
+    check(status, Object);
+    check(status.type, String);
+
+    const userId = this.userId;
+    if (!userId) {
+      return new Meteor.Error(errors.NOT_LOGGED_IN);
+    }
+
+    const site = sites.findOne({ _id });
+    if (!site) {
+      return new Meteor.Error('Site ID not found.');
+    }
+
+    if (site.userIds.indexOf(userId) < 0) {
+      return new Meteor.Error('Current user doesn\'t own the selected site');
+    }
+
+    return sites.update(_id, { $set: { status } });
   },
 });
