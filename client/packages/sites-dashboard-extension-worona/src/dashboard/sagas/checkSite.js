@@ -22,7 +22,7 @@ export function* checkSiteSaga() {
   let woronaSiteId;
 
   /* block until sites subscription is ready */
-  yield deps.sagaCreators.waitForReadySubscription('sites', selectors.getIsReadySites);
+  yield deps.sagaHelpers.waitForReadySubscription('sites', selectors.getIsReadySites);
 
   const site = yield select(selectors.getSelectedSite);
   const { url, id } = site;
@@ -60,7 +60,7 @@ export function* checkSiteSaga() {
     if (error.status === 404 && error.response.body && error.response.body.code === 'rest_no_route') {
       const noPluginError = new Error(errors.WORONA_PLUGIN_NOT_FOUND);
       yield put(actions.checkSiteFailed(noPluginError));
-      yield call(libs.updateSiteStatus, { _id: id, status: { type: 'conflict', description: noPluginError.message } });
+      yield call(libs.updateSiteStatus, { _id: id, status: { type: 'conflict', description: stringifyError(noPluginError) } });
     /* else, there's a server error */
     } else {
       yield put(actions.checkSiteFailed(error));
@@ -78,7 +78,7 @@ export function* checkSiteRouterWatcher(action) {
 
 export function* firstRouteIsCheckSite() {
   /* block until sites subscription is ready */
-  yield deps.sagaCreators.waitForReadySubscription('sites', selectors.getIsReadySites);
+  yield deps.sagaHelpers.waitForReadySubscription('sites', selectors.getIsReadySites);
   const pathname = yield select(deps.selectors.getPathname);
   if (pathname.startsWith('/check-site/')) yield put(actions.checkSiteRequested());
 }

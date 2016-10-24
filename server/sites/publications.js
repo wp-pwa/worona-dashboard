@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Meteor } from 'meteor/meteor';
 import { sites } from './collections';
 

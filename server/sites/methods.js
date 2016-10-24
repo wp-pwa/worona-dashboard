@@ -2,6 +2,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check, Match } from 'meteor/check';
 import { sites } from './collections';
+import * as errors from '../errors';
 
 Meteor.methods({
   createSite({ name, url, _id }) {
@@ -11,7 +12,7 @@ Meteor.methods({
     if (process.env.NODE_ENV === 'development') Meteor._sleepForMs(500);
 
     if (!this.userId) {
-      return new Meteor.Error('User is not logged in.');
+      return new Meteor.Error(errors.NOT_LOGGED_IN);
     }
 
     const userId = this.userId;
@@ -33,7 +34,7 @@ Meteor.methods({
 
     const userId = this.userId;
     if (!userId) {
-      return new Meteor.Error('User is not logged in.');
+      return new Meteor.Error(errors.NOT_LOGGED_IN);
     }
 
     const site = sites.findOne({ _id });
@@ -54,7 +55,7 @@ Meteor.methods({
 
     const userId = this.userId;
     if (!userId) {
-      return new Meteor.Error('User is not logged in.');
+      return new Meteor.Error(errors.NOT_LOGGED_IN);
     }
 
     const site = sites.findOne({ _id });

@@ -1,3 +1,12 @@
 {
-  "Test": "test"
+  "Incorrect password": "Incorrect password.",
+  "Match failed": "There was an error in the form.",
+  "Unrecognized options for login request" : "Internal error.",
+  "User not found" : "User not found.",
+  "User has no password set" : "You have not set a pasword yet.",
+  "NOT_CONNECTED": "Not connected. Waiting for connection...",
+  "CONNECTED_LOGIN_IN": "Connected. Waiting to login...",
+  "LOGIN_IN": "Waiting to login...",
+  "CONNECTED_CREATING_ACCOUNT": "Connected. Waiting to create account...",
+  "CREATING_ACCOUNT": "Waiting to create account..."
 }

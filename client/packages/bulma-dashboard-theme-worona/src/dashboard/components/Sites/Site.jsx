@@ -7,7 +7,7 @@ import * as deps from '../../deps';
 import Icon from '../elements/Icon';
 import styles from './style.css';
 
-const Site = ({ name, url, date, id, deleteSite, status }) => (
+const Site = ({ name, url, date, id, deleteSite, status = {} }) => (
   <div className="column is-narrow-mobile is-one-third-tablet is-one-quarter-desktop">
     <div className={cn('card', 'is-fullwidth')}>
       <header className="card-header">
