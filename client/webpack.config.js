@@ -44,7 +44,6 @@ switch (config.type) {
     module.exports = {
       entry: { main: [
         'script!systemjs/dist/system.js',
-        'babel-polyfill',
         './development/entry.js',
         './packages/' + config.name + '/src/' + config.entrie + '/index.js',
       ] },

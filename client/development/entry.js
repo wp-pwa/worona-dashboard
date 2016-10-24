@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import { packageDevelopment } from 'worona-deps';
 import pkg from './test-development-package-worona/src/dashboard';
 
