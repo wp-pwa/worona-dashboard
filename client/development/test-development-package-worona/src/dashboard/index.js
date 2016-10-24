@@ -1,4 +1,5 @@
-import sagas from './sagas';
+import * as reducers from './reducers';
+import * as sagas from './sagas';
 
 const name = 'test-development-package-worona';
 const namespace = 'development';
@@ -6,5 +7,6 @@ const namespace = 'development';
 export default {
   name,
   namespace,
+  reducers,
   sagas,
 };

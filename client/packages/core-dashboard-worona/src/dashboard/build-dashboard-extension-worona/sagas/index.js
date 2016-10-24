@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition, array-callback-return */
 import request from 'superagent';
-import { isRemote } from 'worona-deps';
+import { isRemote, getDevelopmentPackages } from 'worona-deps';
 import { normalize } from 'normalizr';
 import { takeEvery } from 'redux-saga';
 import { put, fork, call, select } from 'redux-saga/effects';
