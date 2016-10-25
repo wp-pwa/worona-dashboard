@@ -12,15 +12,36 @@ import * as deps from '../../deps';
 import ServiceTabs from './ServiceTabs';
 import AsideMenu from './AsideMenu';
 
-const SiteHome = ({ site }) => (
+/* Header */
+let SiteHomeHeader = ({ site }) => (
+  <div>
+    <Hero title={site.name}>
+      <small>{site.id}</small>
+      <br />
+      <small>{site.url}</small>
+    </Hero>
+    <ServiceTabs />
+  </div>
+);
+
+const mapStateToProps = (state) => ({
+  site: deps.selectors.getSelectedSite(state),
+});
+
+SiteHomeHeader.propTypes = {
+  site: React.PropTypes.shape({
+    name: React.PropTypes.string.isRequired,
+    id: React.PropTypes.string.isRequired,
+    url: React.PropTypes.string.isRequired,
+  }),
+};
+
+SiteHomeHeader = connect(mapStateToProps)(SiteHomeHeader);
+
+const SiteHome = () => (
   <Body>
     <Header waitForSubscriptions={[deps.selectors.getIsReadySites]}>
-      <Hero title={site.name}>
-        <small>{site.id}</small>
-        <br />
-        <small>{site.url}</small>
-      </Hero>
-      <ServiceTabs />
+      <SiteHomeHeader />
     </Header>
 
     <Main waitForSubscriptions={[deps.selectors.getIsReadySettings]}>
@@ -36,16 +57,4 @@ const SiteHome = ({ site }) => (
   </Body>
 );
 
-const mapStateToProps = (state) => ({
-  site: deps.selectors.getSelectedSite(state),
-});
-
-SiteHome.propTypes = {
-  site: React.PropTypes.shape({
-    name: React.PropTypes.string.isRequired,
-    id: React.PropTypes.string.isRequired,
-    url: React.PropTypes.string.isRequired,
-  }).isRequired,
-};
-
-export default connect(mapStateToProps)(SiteHome);
+export default SiteHome;
