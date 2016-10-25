@@ -34,6 +34,13 @@ const FooterLinks = () => (
             <span>WordPress Plugin</span>
           </a>
         </li>
+        <li>
+          <a href="#" target="_blank">
+            <span className="icon is-small"><i className="fa fa-info-circle" /></span>
+            &nbsp;
+            <span>Privacy &amp; Terms</span>
+          </a>
+        </li>
       </ul>
     </div>
     <div className="column is-one-third content">
@@ -69,6 +76,10 @@ const FooterLinks = () => (
         <a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT</a>.
         <br />
         If you want to collaborate join us on Github.
+      </p>
+      <br />
+      <p>
+        © 2015 - 2016 Worona Labs S.L.
       </p>
     </div>
   </div>
