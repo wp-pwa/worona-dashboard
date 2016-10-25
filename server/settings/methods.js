@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import { settings } from './collections';
-import { defaultSettings } from './defaultSettings';
+import settings from './collections';
+import defaultSettings from './defaultSettings';
 
 Meteor.methods({
   saveSettings(setting) {

@@ -1,4 +1,4 @@
-export const defaultSettings = [
+export default [
   {
     name: 'General',
     categoryName: 'Settings',
