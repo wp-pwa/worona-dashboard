@@ -11,35 +11,33 @@ import * as deps from '../../deps';
 import { validate } from './validate';
 
 const submit = siteId => (values, dispatch) => {
-  dispatch(deps.actions.createSiteRequested(values.siteName, values.siteURL, siteId));
+  dispatch(deps.actions.editSiteRequested(values.name, values.url, siteId));
 };
 
-const AddSiteForm =
-({ t, handleSubmit, waiting, statusMessage, errorMessage, submitFailed, invalid,
-   initialValues: { siteId } }) =>
+const EditSiteForm =
+({ t, handleSubmit, waiting, statusMessage, errorMessage, pristine, anyTouched, invalid,
+   initialValues: { id } }) =>
 (
   <div className="container">
-    <form onSubmit={handleSubmit(submit(siteId))} >
+    <form
+      onSubmit={handleSubmit(submit(id))}
+    >
       <div className="columns">
         <div className="column is-half is-offset-one-quarter">
 
           <Field
-            name="siteURL"
+            name="url"
             label="Wordpress URL"
             component={Input}
             type="text"
-            placeholder="http://www.site.com"
-            icon="wordpress"
             size="large"
           />
 
           <Field
-            name="siteName"
+            name="name"
             label="Site name"
             component={Input}
             type="text"
-            placeholder="Site"
-            icon="info-circle"
             size="large"
           />
 
@@ -68,11 +66,11 @@ const AddSiteForm =
                 color="primary"
                 size="large"
                 loading={waiting}
-                disabled={waiting || (invalid && submitFailed)}
+                disabled={waiting || pristine || (invalid && anyTouched)}
                 type="submit"
               >
-                <Icon code="plus-circle" />
-                <span><strong>Add Site</strong></span>
+                <Icon code="refresh" />
+                <span><strong>Edit</strong></span>
               </Button>
             </div>
 
@@ -85,11 +83,12 @@ const AddSiteForm =
     </form>
   </div>
 );
-AddSiteForm.propTypes = {
+EditSiteForm.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool,
+  pristine: React.PropTypes.bool,
   invalid: React.PropTypes.bool,
-  submitFailed: React.PropTypes.bool,
+  anyTouched: React.PropTypes.bool,
   statusMessage: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.bool,
@@ -99,27 +98,27 @@ AddSiteForm.propTypes = {
     React.PropTypes.bool,
   ]),
   initialValues: React.PropTypes.shape({
-    siteId: React.PropTypes.string,
-    siteName: React.PropTypes.string,
-    siteURL: React.PropTypes.string,
+    id: React.PropTypes.string,
+    name: React.PropTypes.string,
+    url: React.PropTypes.string,
   }),
   t: React.PropTypes.func,
 };
 
 const mapStateToProps = state => ({
-  waiting: deps.selectors.getIsCreatingSite(state),
-  statusMessage: deps.selectors.getCreateSiteStatus(state),
-  errorMessage: deps.selectors.getCreateSiteError(state),
-  initialValues: deps.selectors.getNewSiteInfo(state),
+  waiting: deps.selectors.getIsEditingSite(state),
+  statusMessage: deps.selectors.getEditSiteStatus(state),
+  errorMessage: deps.selectors.getEditSiteError(state),
+  initialValues: deps.selectors.getSelectedSite(state),
 });
 
 export default flow(
   reduxForm({
-    form: 'AddSiteForm',
-    fields: ['siteName', 'siteURL'],
+    form: 'EditSiteForm',
+    fields: ['name', 'url'],
     validate,
     getFormState: state => state.theme.reduxForm,
   }),
   connect(mapStateToProps),
   translate('sites')
-)(AddSiteForm);
+)(EditSiteForm);

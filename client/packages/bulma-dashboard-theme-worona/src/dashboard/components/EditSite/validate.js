@@ -12,15 +12,15 @@ export const messages = {
 
 export const validate = values => {
   const errors = {};
-  if (!values.siteName) {
-    errors.siteName = messages.required;
-  } else if (values.siteName.length > config.nameMax) {
-    errors.siteName = messages.maxChar(config.nameMax);
+  if (!values.name) {
+    errors.name = messages.required;
+  } else if (values.name.length > config.nameMax) {
+    errors.name = messages.maxChar(config.nameMax);
   }
-  if (!values.siteURL) {
-    errors.siteURL = messages.required;
-  } else if (!urlValidator.validate(values.siteURL)) {
-    errors.siteURL = messages.invalidUrl;
+  if (!values.url) {
+    errors.url = messages.required;
+  } else if (!urlValidator.validate(values.url)) {
+    errors.url = messages.invalidUrl;
   }
   return errors;
 };

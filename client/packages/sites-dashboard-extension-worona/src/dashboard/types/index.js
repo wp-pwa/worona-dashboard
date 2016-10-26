@@ -12,3 +12,8 @@ export const DELETE_SITE_FAILED = 'sites/DELETE_SITE_FAILED';
 export const CHECK_SITE_REQUESTED = 'sites/CHECK_SITE_REQUESTED';
 export const CHECK_SITE_SUCCEED = 'sites/CHECK_SITE_SUCCEED';
 export const CHECK_SITE_FAILED = 'sites/CHECK_SITE_FAILED';
+// Create Site types:
+export const EDIT_SITE_REQUESTED = 'sites/EDIT_SITE_REQUESTED';
+export const EDIT_SITE_STATUS_CHANGED = 'sites/EDIT_SITE_STATUS_CHANGED';
+export const EDIT_SITE_SUCCEED = 'sites/EDIT_SITE_SUCCEED';
+export const EDIT_SITE_FAILED = 'sites/EDIT_SITE_FAILED';
