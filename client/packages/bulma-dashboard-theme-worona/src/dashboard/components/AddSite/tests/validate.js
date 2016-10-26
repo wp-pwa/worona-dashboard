@@ -2,29 +2,29 @@ import test from 'ava';
 import { validate, messages, config } from '../validate';
 
 test('url is required', t => {
-  t.is(validate({ url: '' }).url, messages.required);
+  t.is(validate({ siteURL: '' }).siteURL, messages.required);
 });
 
 test('url should be valid', t => {
-  t.is(validate({ url: 'http' }).url, messages.invalidUrl);
-  t.is(validate({ url: 'http://' }).url, messages.invalidUrl);
-  t.is(validate({ url: 'http://domain' }).url, messages.invalidUrl);
-  t.is(validate({ url: 'http://domain.' }).url, messages.invalidUrl);
-  t.is(validate({ url: 'http://domain.c' }).url, messages.invalidUrl);
-  t.is(validate({ url: 'http://domain.com' }).url, undefined);
-  t.is(validate({ url: 'https://domain.com' }).url, undefined);
-  t.is(validate({ url: 'https://domain.com/folder' }).url, undefined);
-  t.is(validate({ url: 'https://sub.domain.com/folder' }).url, undefined);
-  t.is(validate({ url: 'http://sub.domain.com/folder' }).url, undefined);
-  t.is(validate({ url: 'http://sub.domain.com' }).url, undefined);
-  t.is(validate({ url: 'http//sub.domain.com' }).url, messages.invalidUrl);
+  t.is(validate({ siteURL: 'http' }).siteURL, messages.invalidUrl);
+  t.is(validate({ siteURL: 'http://' }).siteURL, messages.invalidUrl);
+  t.is(validate({ siteURL: 'http://domain' }).siteURL, messages.invalidUrl);
+  t.is(validate({ siteURL: 'http://domain.' }).siteURL, messages.invalidUrl);
+  t.is(validate({ siteURL: 'http://domain.c' }).siteURL, messages.invalidUrl);
+  t.is(validate({ siteURL: 'http://domain.com' }).siteURL, undefined);
+  t.is(validate({ siteURL: 'https://domain.com' }).siteURL, undefined);
+  t.is(validate({ siteURL: 'https://domain.com/folder' }).siteURL, undefined);
+  t.is(validate({ siteURL: 'https://sub.domain.com/folder' }).siteURL, undefined);
+  t.is(validate({ siteURL: 'http://sub.domain.com/folder' }).siteURL, undefined);
+  t.is(validate({ siteURL: 'http://sub.domain.com' }).siteURL, undefined);
+  t.is(validate({ siteURL: 'http//sub.domain.com' }).siteURL, messages.invalidUrl);
 });
 
-test('title is required', t => {
-  t.is(validate({ title: '' }).title, messages.required);
+test('siteName is required', t => {
+  t.is(validate({ siteName: '' }).siteName, messages.required);
 });
 
-test('title should have 15 char or less', t => {
-  t.is(validate({ title: '123456789012345' }).title, undefined);
-  t.is(validate({ title: '1234567890123456' }).title, messages.maxChar(config.titleMax));
+test('siteName should have 15 char or less', t => {
+  t.is(validate({ siteName: '123456789012345' }).siteName, undefined);
+  t.is(validate({ siteName: '1234567890123456' }).siteName, messages.maxChar(config.nameMax));
 });
