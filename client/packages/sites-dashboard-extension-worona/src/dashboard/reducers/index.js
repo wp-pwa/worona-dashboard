@@ -66,14 +66,18 @@ export const checkSite = (state = new CheckSiteState(), action) => {
   switch (action.type) {
     case types.CHECK_SITE_REQUESTED:
       return new CheckSiteState('loading', 'loading', 'loading');
-    case types.CHECK_SITE_SUCCEED:
+    case types.CHECK_SITE_SUCCEED: {
+      const { warning } = action;
+      if (warning) {
+        return new CheckSiteState('success', 'success', 'warning');
+      }
       return new CheckSiteState('success', 'success', 'success');
+    }
     case types.CHECK_SITE_FAILED: {
       const { error } = action;
       if (error === errors.RESPONSE_NOT_200) return new CheckSiteState('error');
       if (error === errors.WORONA_PLUGIN_NOT_FOUND) return new CheckSiteState('success', 'error');
       if (error === errors.WP_API_NOT_FOUND) return new CheckSiteState('success', 'error');
-      if (error === errors.SITEID_DONT_MATCH) return new CheckSiteState('success', 'success', 'warning');
       /* else any other error */ return new CheckSiteState('error');
     }
     default:

@@ -21,8 +21,8 @@ export const deleteSiteFailed = errorObj =>
   // Check Site actions
 export const checkSiteRequested = () =>
   ({ type: types.CHECK_SITE_REQUESTED });
-export const checkSiteSucceed = () =>
-  ({ type: types.CHECK_SITE_SUCCEED });
+export const checkSiteSucceed = (siteId, warning) =>
+  ({ type: types.CHECK_SITE_SUCCEED, siteId, warning });
 export const checkSiteFailed = (errorObj) =>
   ({ type: types.CHECK_SITE_FAILED, error: stringifyError(errorObj) });
   // Edit Site actions:
