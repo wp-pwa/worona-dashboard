@@ -5,6 +5,7 @@ import { spawn } from 'child-process-promise';
 
 const start = async () => {
   const env = config.env || 'dev';
+  const location = config.location || 'local';
   rimrafSync('dist/**/*');
 
   // Generate vendors.
@@ -22,6 +23,7 @@ const start = async () => {
     '--entrie', 'dashboard',
     '--type', 'core',
     '--env', env,
+    '--location', location,
   ], { stdio: 'inherit' });
 };
 

@@ -7,7 +7,7 @@ export const assets = (state = {}, action) => {
   let pkgAssets;
   switch (action.type) {
     case types.PACKAGE_ASSETS_LOAD_REQUESTED:
-      pkgAssets = mapValues(action.pkg.prod.assets, item => flow(
+      pkgAssets = mapValues(action.pkg.assets, item => flow(
         keyBy(key => key),
         mapValuesFp(() => false)
       )(item));
