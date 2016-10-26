@@ -15,7 +15,9 @@ const submit = siteId => (values, dispatch) => {
 };
 
 const EditSiteForm =
-({ t, handleSubmit, waiting, statusMessage, errorMessage, pristine, initialValues: { id } }) => (
+({ t, handleSubmit, waiting, statusMessage, errorMessage, pristine, anyTouched, invalid,
+   initialValues: { id } }) =>
+(
   <div className="container">
     <form
       onSubmit={handleSubmit(submit(id))}
@@ -64,7 +66,7 @@ const EditSiteForm =
                 color="primary"
                 size="large"
                 loading={waiting}
-                disabled={waiting || pristine}
+                disabled={waiting || pristine || (invalid && anyTouched)}
                 type="submit"
               >
                 <Icon code="refresh" />
@@ -85,6 +87,8 @@ EditSiteForm.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool,
   pristine: React.PropTypes.bool,
+  invalid: React.PropTypes.bool,
+  anyTouched: React.PropTypes.bool,
   statusMessage: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.bool,

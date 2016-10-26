@@ -20,11 +20,11 @@ test('url should be valid', t => {
   t.is(validate({ url: 'http//sub.domain.com' }).url, messages.invalidUrl);
 });
 
-test('title is required', t => {
-  t.is(validate({ title: '' }).title, messages.required);
+test('name is required', t => {
+  t.is(validate({ name: '' }).name, messages.required);
 });
 
-test('title should have 15 char or less', t => {
-  t.is(validate({ title: '123456789012345' }).title, undefined);
-  t.is(validate({ title: '1234567890123456' }).title, messages.maxChar(config.titleMax));
+test('name should have 15 char or less', t => {
+  t.is(validate({ name: '123456789012345' }).name, undefined);
+  t.is(validate({ name: '1234567890123456' }).name, messages.maxChar(config.nameMax));
 });

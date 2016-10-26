@@ -15,7 +15,9 @@ const submit = siteId => (values, dispatch) => {
 };
 
 const AddSiteForm =
-({ t, handleSubmit, waiting, statusMessage, errorMessage, initialValues: { siteId } }) => (
+({ t, handleSubmit, waiting, statusMessage, errorMessage, submitFailed, invalid,
+   initialValues: { siteId } }) =>
+(
   <div className="container">
     <form onSubmit={handleSubmit(submit(siteId))} >
       <div className="columns">
@@ -66,7 +68,7 @@ const AddSiteForm =
                 color="primary"
                 size="large"
                 loading={waiting}
-                disabled={waiting}
+                disabled={waiting || (invalid && submitFailed)}
                 type="submit"
               >
                 <Icon code="plus-circle" />
@@ -86,6 +88,8 @@ const AddSiteForm =
 AddSiteForm.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool,
+  invalid: React.PropTypes.bool,
+  submitFailed: React.PropTypes.bool,
   statusMessage: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.bool,
