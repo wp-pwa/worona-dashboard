@@ -113,7 +113,7 @@ var htmlWebpackPlugin = function(config) {
     devServer: 'http://localhost:4000',
     window: {
       publicPath: publicPath,
-      __worona__: { [config.env]: true, remote: !!config.remote },
+      __worona__: { [config.env]: true, remote: config.location === 'remote' },
     },
     appMountId: 'root',
     minify: { preserveLineBreaks: true, collapseWhitespace: true },
