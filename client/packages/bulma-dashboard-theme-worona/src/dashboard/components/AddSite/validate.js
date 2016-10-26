@@ -1,27 +1,26 @@
 import urlValidator from 'url-regexp';
 
 export const config = {
-  titleMax: 15,
-  passwordMin: 8,
+  nameMax: 15,
 };
 
 export const messages = {
   required: 'Required',
   maxChar: maxChar => `Must be ${maxChar} characters or less`,
-  invalidUrl: 'Invalid url. It should be something like: http://www.mydomain.com.',
+  invalidUrl: 'Invalid url. It should be something like: http[s]://www.mydomain.com.',
 };
 
 export const validate = values => {
   const errors = {};
-  if (!values.title) {
-    errors.title = messages.required;
-  } else if (values.title.length > 15) {
-    errors.title = messages.maxChar(15);
+  if (!values.siteName) {
+    errors.siteName = messages.required;
+  } else if (values.siteName.length > config.nameMax) {
+    errors.siteName = messages.maxChar(config.nameMax);
   }
-  if (!values.url) {
-    errors.url = messages.required;
-  } else if (!urlValidator.validate(values.url)) {
-    errors.url = messages.invalidUrl;
+  if (!values.siteURL) {
+    errors.siteURL = messages.required;
+  } else if (!urlValidator.validate(values.siteURL)) {
+    errors.siteURL = messages.invalidUrl;
   }
   return errors;
 };
