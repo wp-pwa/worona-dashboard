@@ -1,5 +1,6 @@
 {
   "name": "worona-dashboard-client",
+  "private": true,
   "version": "1.0.0",
   "description": "Worona dashboard client",
   "main": "index.js",

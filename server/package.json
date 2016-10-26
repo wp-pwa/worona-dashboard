@@ -1,5 +1,6 @@
 {
   "name": "worona-dashboard-server",
+  "private": true,
   "version": "1.0.0",
   "description": "Worona dashboard server core package",
   "main": "index.js",
