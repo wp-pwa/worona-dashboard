@@ -1,4 +1,6 @@
 /* eslint-disable react/prefer-stateless-function, camelcase, no-undef, import/imports-first */
+__webpack_public_path__ = window.publicPath;
+
 import 'babel-polyfill';
 import { packageDownloaded, packageActivated } from 'worona-deps';
 
