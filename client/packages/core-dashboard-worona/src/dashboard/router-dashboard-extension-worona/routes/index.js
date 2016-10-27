@@ -66,11 +66,11 @@ export const routes = (store) => (
     />
     <Route path="profile" component={Entry} wrapped="Profile" onEnter={requireAuth(store)} />
     <Route path="sites" component={Entry} wrapped="Sites" onEnter={requireAuth(store)} />
+    <Redirect from="/site/:siteId/" to="/site/:siteId/app/general" />
     <Route
       path="/site/:siteId/:service/:namespace" component={Entry} wrapped="SiteHome"
       onEnter={requireAuth(store)}
     />
-    <Redirect from="/site/:siteId/" to="/site/:siteId/app/general" />
   </Route>
 );
 
