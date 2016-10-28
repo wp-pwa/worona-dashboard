@@ -27,9 +27,14 @@ const submit = (values, dispatch) => {
 const Register = ({ t, handleSubmit, waiting, statusMessage, errorMessage, toggleTerms }) => (
   <Body>
     <Header>
-      <Hero title="Register">
-        Welcome to Worona! Make your <strong>WordPress mobile-ready</strong> with a few clicks.
-      </Hero>
+      <Hero
+        title="Login"
+        subtitle={
+          <span>
+            Welcome to Worona! Make your <strong>WordPress mobile-ready</strong> with a few clicks.
+          </span>
+        }
+      />
     </Header>
 
     <Main>

@@ -9,15 +9,27 @@ import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
 import Main from '../Main';
 import Hero from '../elements/Hero';
+import EditSiteIcon from '../elements/EditSiteIcon';
 import Check from './Check';
 
 /* Header */
 let CheckSiteHeader = ({ site }) => (
-  <Hero title={site.name}>
-    <small>{site.id}</small>
-    <br />
-    <small>{site.url}</small>
-  </Hero>
+  <Hero
+    title={(
+      <span>
+        {site.name}
+        &nbsp;
+        <EditSiteIcon id={site.id} />
+      </span>
+    )}
+    subtitle={
+      <span>
+        <small>{site.id}</small>
+        <br />
+        <small>{site.url}</small>
+      </span>
+    }
+  />
 );
 
 const mapStateToProps = (state) => ({
