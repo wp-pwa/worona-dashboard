@@ -65,7 +65,7 @@ export function* checkSiteSaga() {
     woronaSiteId = res.body.siteId;
     if (woronaSiteId !== id) {
       yield put(actions.checkSiteSucceed(id, errors.SITEID_DONT_MATCH));
-      yield call(libs.updateSiteStatus, { _id: id, status: { type: 'conflict', description: errors.SITEID_DONT_MATCH } });
+      yield call(libs.updateSiteStatus, { _id: id, status: { type: 'ok', description: errors.SITEID_DONT_MATCH } });
     } else {
       yield put(actions.checkSiteSucceed(id));
       yield call(libs.updateSiteStatus, { _id: id, status: { type: 'ok' } });
@@ -97,7 +97,7 @@ export function* checkSiteWatcher() {
   yield [
     takeLatest(deps.types.ROUTER_DID_CHANGE, checkSiteRouterWatcher),
     takeLatest(types.CHECK_SITE_REQUESTED, checkSiteSaga),
-    takeEvery(types.CHECK_SITE_SUCCEED, redirectAfterCheckSiteWatcher),
+    // takeEvery(types.CHECK_SITE_SUCCEED, redirectAfterCheckSiteWatcher),
     fork(firstRouteIsCheckSite),
   ];
 }

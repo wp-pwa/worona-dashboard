@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as deps from '../../deps';
 import Icon from '../elements/Icon';
+import EditSiteLink from '../elements/EditSiteLink';
 import styles from './style.css';
 
 const Site = ({ name, url, date, id, deleteSite, status = {} }) => (
@@ -13,6 +14,8 @@ const Site = ({ name, url, date, id, deleteSite, status = {} }) => (
       <header className="card-header">
         <p className="card-header-title">
           {name}
+          &nbsp;
+          <EditSiteLink id={id} color="#69707a" />
         </p>
         { status.type === 'conflict' ?
           <Link className="card-header-icon" style={{ color: 'red' }} to={`/check-site/${id}`} role="button" >
@@ -33,14 +36,12 @@ const Site = ({ name, url, date, id, deleteSite, status = {} }) => (
       </div>
       <footer className="card-footer">
         <Link className="card-footer-item" to={`/check-site/${id}`} role="button" >
-          <span className={cn('icon', 'is-small')}>
-            <i className="fa fa-cog" />
-          </span>
-          Configure
+          <Icon code="sliders" small />
+          &nbsp;Configure
         </Link>
         <button className={cn('card-footer-item', styles.button)} onClick={deleteSite} role="button" >
           <Icon code="trash-o" small />
-          Delete
+          &nbsp;Delete
         </button>
       </footer>
     </div>

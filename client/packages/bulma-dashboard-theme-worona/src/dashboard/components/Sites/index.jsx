@@ -15,9 +15,14 @@ import AddSiteNav from './AddSiteNav';
 const Sites = () => (
   <Body>
     <Header>
-      <Hero title="Sites">
-        Manage your <strong>WordPress Sites</strong> or add new ones.
-      </Hero>
+      <Hero
+        title="Sites"
+        subtitle={
+          <span>
+            Manage your <strong>WordPress Sites</strong> or add new ones.
+          </span>
+        }
+      />
     </Header>
 
     <AddSiteNav />

@@ -160,7 +160,7 @@ test("checkSiteSaga warning: Site Ids don't match", t => {
   const url = 'http://www.example.net/';
   const site = { url, id };
   const res = { status: 200, type: 'application/json', body: { siteId: '4321' } };
-  const newSiteStatus = { _id: id, status: { type: 'conflict', description: errors.SITEID_DONT_MATCH } };
+  const newSiteStatus = { _id: id, status: { type: 'ok', description: errors.SITEID_DONT_MATCH } };
   const gen = checkSiteSaga();
 
   t.deepEqual(gen.next().value, deps.sagaHelpers.waitForReadySubscription('sites', selectors.getIsReadySites));
