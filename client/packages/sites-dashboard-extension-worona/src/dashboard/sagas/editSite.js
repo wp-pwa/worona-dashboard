@@ -13,7 +13,7 @@ export function* editSiteSaga(action) {
     yield put(actions.editSiteStatusChanged(EDITING_SITE));
     yield call(libs.editSite, { name, url, _id });
     yield put(actions.editSiteSucceed(_id));
-    yield call(deps.libs.push, '/sites');
+    yield call(deps.libs.push, `/check-site/${_id}/`);
   } catch (error) {
     yield put(actions.editSiteFailed(error));
   }

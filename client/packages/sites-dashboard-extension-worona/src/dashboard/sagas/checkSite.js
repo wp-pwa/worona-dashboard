@@ -97,7 +97,7 @@ export function* checkSiteWatcher() {
   yield [
     takeLatest(deps.types.ROUTER_DID_CHANGE, checkSiteRouterWatcher),
     takeLatest(types.CHECK_SITE_REQUESTED, checkSiteSaga),
-    takeEvery(types.CHECK_SITE_SUCCEED, redirectAfterCheckSiteWatcher),
+    // takeEvery(types.CHECK_SITE_SUCCEED, redirectAfterCheckSiteWatcher),
     fork(firstRouteIsCheckSite),
   ];
 }

@@ -19,7 +19,7 @@ export const loggedInItems = [
     type: 'button',
     url: 'licenses',
     link: '/licenses',
-    icon: 'sliders',
+    icon: 'list-ul',
     action: closeMobileMenuAction,
   },
   {

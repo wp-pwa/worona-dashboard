@@ -9,7 +9,7 @@ import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
 import Main from '../Main';
 import Hero from '../elements/Hero';
-import EditSiteIcon from '../elements/EditSiteIcon';
+import EditSiteLink from '../elements/EditSiteLink';
 import Check from './Check';
 
 /* Header */
@@ -19,7 +19,7 @@ let CheckSiteHeader = ({ site }) => (
       <span>
         {site.name}
         &nbsp;
-        <EditSiteIcon id={site.id} />
+        <EditSiteLink id={site.id} color="rgba(255,255,255,.7)" />
       </span>
     )}
     subtitle={

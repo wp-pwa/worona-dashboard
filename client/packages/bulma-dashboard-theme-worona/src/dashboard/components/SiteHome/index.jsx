@@ -7,7 +7,7 @@ import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
 import Main from '../Main';
 import Hero from '../elements/Hero';
-import EditSiteIcon from '../elements/EditSiteIcon';
+import EditSiteLink from '../elements/EditSiteLink';
 import * as deps from '../../deps';
 
 import ServiceTabs from './ServiceTabs';
@@ -21,7 +21,7 @@ let SiteHomeHeader = ({ site }) => (
       <span>
         {site.name}
         &nbsp;
-        <EditSiteIcon id={site.id} />
+        <EditSiteLink id={site.id} />
       </span>
     )}
     subtitle={
