@@ -8,8 +8,8 @@ export const showingMobileMenu = (state = false, action) => {
       return !state;
     case types.CLOSE_MOBILE_MENU:
       return false;
-    case deps.types.LOGOUT_SUCCEED:
-      return false;
+    // case deps.types.LOGOUT_SUCCEED:
+    //   return false;
     default:
       return state;
   }
