@@ -7,21 +7,31 @@ import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
 import Main from '../Main';
 import Hero from '../elements/Hero';
+import EditSiteLink from '../elements/EditSiteLink';
 import * as deps from '../../deps';
 
 import ServiceTabs from './ServiceTabs';
 import AsideMenu from './AsideMenu';
 
+
 /* Header */
 let SiteHomeHeader = ({ site }) => (
-  <div>
-    <Hero title={site.name}>
-      <small>{site.id}</small>
-      <br />
-      <small>{site.url}</small>
-    </Hero>
-    <ServiceTabs />
-  </div>
+  <Hero
+    title={(
+      <span>
+        {site.name}
+        &nbsp;
+        <EditSiteLink id={site.id} />
+      </span>
+    )}
+    subtitle={
+      <span>
+        <small>{site.id}</small>
+        <br />
+        <small>{site.url}</small>
+      </span>
+    }
+  />
 );
 
 const mapStateToProps = (state) => ({
@@ -40,11 +50,12 @@ SiteHomeHeader = connect(mapStateToProps)(SiteHomeHeader);
 
 const SiteHome = () => (
   <Body>
-    <Header waitForSubscriptions={[deps.selectors.getIsReadySites]}>
+    <Header waitForSubscriptions={[deps.selectors.getIsReadySelectedSite]}>
       <SiteHomeHeader />
+      <ServiceTabs />
     </Header>
 
-    <Main waitForSubscriptions={[deps.selectors.getIsReadySettings]}>
+    <Main waitForSubscriptions={[deps.selectors.getIsReadySelectedSite]}>
       <div className="columns is-mobile" >
         <AsideMenu />
         {/* <PackageContent /> */}
@@ -57,4 +68,4 @@ const SiteHome = () => (
   </Body>
 );
 
-export default SiteHome;
+export default connect(mapStateToProps)(SiteHome);

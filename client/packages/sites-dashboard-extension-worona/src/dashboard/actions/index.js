@@ -21,7 +21,16 @@ export const deleteSiteFailed = errorObj =>
   // Check Site actions
 export const checkSiteRequested = () =>
   ({ type: types.CHECK_SITE_REQUESTED });
-export const checkSiteSucceed = () =>
-  ({ type: types.CHECK_SITE_SUCCEED });
+export const checkSiteSucceed = (siteId, warning) =>
+  ({ type: types.CHECK_SITE_SUCCEED, siteId, warning });
 export const checkSiteFailed = (errorObj) =>
   ({ type: types.CHECK_SITE_FAILED, error: stringifyError(errorObj) });
+  // Edit Site actions:
+export const editSiteRequested = (name, url, _id) =>
+  ({ type: types.EDIT_SITE_REQUESTED, name, url, _id });
+export const editSiteStatusChanged = status =>
+  ({ type: types.EDIT_SITE_STATUS_CHANGED, status });
+export const editSiteSucceed = siteId =>
+  ({ type: types.EDIT_SITE_SUCCEED, siteId });
+export const editSiteFailed = errorObj =>
+  ({ type: types.EDIT_SITE_FAILED, error: stringifyError(errorObj) });

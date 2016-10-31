@@ -91,7 +91,7 @@ test('checkSite', t => {
   t.deepEqual(reducers.checkSite(state, WWPPNotInstalledAction), new CheckSiteState('success', 'error'));
 
   /* Dashboard siteId doesn't match with WP siteId */
-  const IdsDontMatchAction = actions.checkSiteFailed(new Error(errors.SITEID_DONT_MATCH));
+  const IdsDontMatchAction = actions.checkSiteSucceed('', errors.SITEID_DONT_MATCH);
   deepFreeze(IdsDontMatchAction);
   t.deepEqual(reducers.checkSite(state, IdsDontMatchAction), new CheckSiteState('success', 'success', 'warning'));
 });

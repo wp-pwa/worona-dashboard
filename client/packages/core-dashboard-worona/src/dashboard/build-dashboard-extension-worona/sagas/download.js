@@ -19,7 +19,7 @@ export const requireLocalPackage = pkg => new Promise((resolve) => {
 // are now in the browser without webpack. We need to be able to modify those packages without
 // having to recompile the core-dashboard-worona package, so we can't use Webpack here.
 export const requireRemotePackage = pkg => new Promise((resolve) => {
-  SystemJS.import(`https://cdn.worona.io/packages/${pkg.prod.main}`)
+  SystemJS.import(`https://cdn.worona.io/packages/${pkg.main}`)
   .then(module => resolve(module));
 });
 

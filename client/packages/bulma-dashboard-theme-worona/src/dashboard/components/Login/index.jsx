@@ -12,9 +12,10 @@ import LoginForm from './LoginForm';
 const Login = () => (
   <Body>
     <Header>
-      <Hero title="Login">
-        Welcome back! Create a fast, smooth mobile experience.
-      </Hero>
+      <Hero
+        title="Login"
+        subtitle="Welcome back! Create a fast, smooth mobile experience."
+      />
     </Header>
 
     <Main>

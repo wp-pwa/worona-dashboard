@@ -16,6 +16,7 @@ export const actions = {
   get createSiteRequested() { return dep('sites', 'actions', 'createSiteRequested'); },
   get deleteSiteRequested() { return dep('sites', 'actions', 'deleteSiteRequested'); },
   get checkSiteRequested() { return dep('sites', 'actions', 'checkSiteRequested'); },
+  get editSiteRequested() { return dep('sites', 'actions', 'editSiteRequested'); },
 };
 
 export const selectors = {
@@ -29,6 +30,9 @@ export const selectors = {
   get getIsCreatingSite() { return dep('sites', 'selectors', 'getIsCreatingSite'); },
   get getCreateSiteStatus() { return dep('sites', 'selectors', 'getCreateSiteStatus'); },
   get getCreateSiteError() { return dep('sites', 'selectors', 'getCreateSiteError'); },
+  get getIsEditingSite() { return dep('sites', 'selectors', 'getIsEditingSite'); },
+  get getEditSiteStatus() { return dep('sites', 'selectors', 'getEditSiteStatus'); },
+  get getEditSiteError() { return dep('sites', 'selectors', 'getEditSiteError'); },
   get getAllSites() { return dep('sites', 'selectors', 'getAllSites'); },
   get getSelectedSite() { return dep('sites', 'selectors', 'getSelectedSite'); },
   get getSiteSettingsByCategory() {
@@ -39,6 +43,7 @@ export const selectors = {
   get getURLQueries() { return dep('router', 'selectors', 'getURLQueries'); },
   get getNewSiteInfo() { return dep('sites', 'selectors', 'getNewSiteInfo'); },
   get getIsReadySites() { return dep('sites', 'selectors', 'getIsReadySites'); },
+  get getIsReadySelectedSite() { return dep('sites', 'selectors', 'getIsReadySelectedSite'); },
   get getIsReadySettings() { return dep('settings', 'selectors', 'getIsReadySettings'); },
   get getCheckSite() { return dep('sites', 'selectors', 'getCheckSite'); },
 };

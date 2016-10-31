@@ -9,15 +9,27 @@ import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
 import Main from '../Main';
 import Hero from '../elements/Hero';
+import EditSiteLink from '../elements/EditSiteLink';
 import Check from './Check';
 
 /* Header */
 let CheckSiteHeader = ({ site }) => (
-  <Hero title={site.name}>
-    <small>{site.id}</small>
-    <br />
-    <small>{site.url}</small>
-  </Hero>
+  <Hero
+    title={(
+      <span>
+        {site.name}
+        &nbsp;
+        <EditSiteLink id={site.id} color="rgba(255,255,255,.7)" />
+      </span>
+    )}
+    subtitle={
+      <span>
+        <small>{site.id}</small>
+        <br />
+        <small>{site.url}</small>
+      </span>
+    }
+  />
 );
 
 const mapStateToProps = (state) => ({
@@ -37,13 +49,12 @@ CheckSiteHeader = connect(mapStateToProps)(CheckSiteHeader);
 /* CheckSite screen */
 const CheckSite = () => (
   <Body>
-    <Header waitForSubscriptions={[deps.selectors.getIsReadySites]}>
+    <Header waitForSubscriptions={[deps.selectors.getIsReadySelectedSite]}>
       <CheckSiteHeader />
     </Header>
-    <Main waitForSubscriptions={[deps.selectors.getIsReadySites]}>
+    <Main waitForSubscriptions={[deps.selectors.getIsReadySelectedSite]}>
       <Check text="Site online and available" id="online" />
       <Check text="Worona WordPress Plugin" id="plugin" />
-      <Check text="Checking Site ID" id="siteId" />
     </Main>
 
     <Footer>
