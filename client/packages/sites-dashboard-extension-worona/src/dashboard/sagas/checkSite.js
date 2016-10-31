@@ -1,4 +1,4 @@
-import { takeLatest, delay, takeEvery } from 'redux-saga';
+import { takeLatest, delay } from 'redux-saga';
 import { call, put, select, fork, race } from 'redux-saga/effects';
 import request from 'superagent';
 import stringifyError from 'stringify-error-message';
@@ -9,6 +9,7 @@ import * as errors from '../errors';
 import * as selectors from '../selectors';
 import * as deps from '../deps';
 import * as libs from '../libs';
+import * as sagaHelpers from '../sagaHelpers';
 
 export const CORSAnywhere = 'https://cors-anywhere.herokuapp.com/';
 export const woronaEndPoint = '/worona/v1/siteid';
@@ -30,7 +31,7 @@ export function* checkSiteSaga() {
   let woronaSiteId;
 
   /* block until sites subscription is ready */
-  yield deps.sagaHelpers.waitForReadySubscription('sites', selectors.getIsReadySites);
+  yield sagaHelpers.waitForReadySelectedSite();
 
   const site = yield select(selectors.getSelectedSite);
   const { url, id } = site;

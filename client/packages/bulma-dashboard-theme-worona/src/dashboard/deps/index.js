@@ -43,6 +43,7 @@ export const selectors = {
   get getURLQueries() { return dep('router', 'selectors', 'getURLQueries'); },
   get getNewSiteInfo() { return dep('sites', 'selectors', 'getNewSiteInfo'); },
   get getIsReadySites() { return dep('sites', 'selectors', 'getIsReadySites'); },
+  get getIsReadySelectedSite() { return dep('sites', 'selectors', 'getIsReadySelectedSite'); },
   get getIsReadySettings() { return dep('settings', 'selectors', 'getIsReadySettings'); },
   get getCheckSite() { return dep('sites', 'selectors', 'getCheckSite'); },
 };
