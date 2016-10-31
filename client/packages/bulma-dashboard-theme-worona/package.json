@@ -42,6 +42,7 @@
     "bulma": "^0.1.0",
     "font-awesome": "^4.6.3",
     "moment": "^2.13.0",
+    "react-dropzone-s3-uploader": "^0.7.3",
     "redux-form": "^6.0.5",
     "url-regexp": "^1.0.2",
     "velocity-react": "^1.1.5"
