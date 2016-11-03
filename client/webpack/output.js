@@ -10,10 +10,17 @@ var core = function(config) {
   };
 };
 
+var polyfills = function(config) {
+  return {
+    path: path.resolve('dist'),
+    filename: config.name + '/' + config.entrie + '/' + config.env + '/js/polyfills-' + config.entrie + '.js',
+  };
+};
+
 var vendors = function(config) {
   return {
     path: path.resolve('dist'),
-    filename: config.name + '/' + config.entrie + '/' + config.env + '/js/vendors-' + config.entrie + '.[chunkhash].js',
+    filename: config.name + '/' + config.entrie + '/' + config.env + '/js/vendors-' + config.entrie + '.js',
     library: 'vendors_' + config.entrie + '_worona',
     hashDigestLength: 32,
   };
@@ -22,4 +29,5 @@ var vendors = function(config) {
 module.exports = {
   core: core,
   vendors: vendors,
+  polyfills: polyfills,
 };

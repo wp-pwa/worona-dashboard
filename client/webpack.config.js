@@ -13,11 +13,26 @@ switch (config.type) {
       plugins.occurrenceOrderPlugin(config),
       plugins.dllPlugin(config),
       plugins.fixModuleIdAndChunkIdPlugin(config),
-      plugins.statsWriterPlugin(config),
     ].filter(function(plugin) { return typeof plugin !== 'undefined'; });
     module.exports = {
       entry: { main: require('./packages/core-' + config.entrie + '-worona/vendors.json') },
       output: output.vendors(config),
+      resolve: { modulesDirectories: ['packages/core-' + config.entrie + '-worona/node_modules'] },
+      plugins: pluginsArr,
+    };
+    break;
+
+  case 'polyfills':
+    var pluginsArr = [
+      plugins.definePlugin(config),
+      plugins.uglifyJsPlugin(config),
+      plugins.dedupePlugin(config),
+      plugins.occurrenceOrderPlugin(config),
+      plugins.dllReferencePlugin(config),
+    ].filter(function(plugin) { return typeof plugin !== 'undefined'; });
+    module.exports = {
+      entry: { polyfills: './packages/core-' + config.entrie + '-worona/polyfills.js' },
+      output: output.polyfills(config),
       resolve: { modulesDirectories: ['packages/core-' + config.entrie + '-worona/node_modules'] },
       plugins: pluginsArr,
     };

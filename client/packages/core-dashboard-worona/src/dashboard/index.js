@@ -1,8 +1,7 @@
 /* eslint-disable react/prefer-stateless-function, camelcase, no-undef, import/imports-first,
   no-underscore-dangle, global-require */
-__webpack_public_path__ = window.publicPath;
 
-if (!window._babelPolyfill) require('babel-polyfill');
+__webpack_public_path__ = window.publicPath;
 
 import { packageDownloaded, packageActivated } from 'worona-deps';
 
