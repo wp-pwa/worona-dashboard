@@ -28,7 +28,7 @@ class ImageUploaderClass extends React.Component {
     };
     const uploaderProps = {
       style,
-      server: 'http://localhost:4500',
+      server: 'https://backend.worona.io',
       signingUrl: '/api/v1/s3/sign',
       signingUrlQueryParams: { siteId: this.props.siteId, imgType: 'icon' },
       accept: 'image/*',
@@ -62,7 +62,7 @@ class ImageUploaderClass extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   handleFinishedUpload: (signResult) => dispatch(actions.uploadSucceed(signResult.filename)),
-  handleUploadError: (status) => dispatch(actions.uploadError(status)),
+  handleUploadError: (status, file) => dispatch(actions.uploadError({ status, file })),
 });
 
 const mapStateToProps = (state) => ({
