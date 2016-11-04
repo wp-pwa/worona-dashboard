@@ -1,40 +1,66 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { translate, Interpolate } from 'react-i18next';
+import { flow } from 'lodash/fp';
+import { Link } from 'react-router';
 
 import * as deps from '../../deps';
 import Icon from '../elements/Icon';
 import Button from '../elements/Button';
 
 /* Error Message */
-export const Message = ({ header, body, color, status }) => (
-  <article className={`message is-${color}`}>
-    <div className="message-header">
-      {header}
-    </div>
-    <div className="message-body">
-      {body}
-      <div className="has-text-centered">
-        <Button color={color} size="large">
-          <Icon code="info-circle" />
-          <span>Help</span>
-        </Button>
-        &nbsp;
-        { (status === 'warning') ?
-          <Button size="large">
-            Continue
-          </Button>
-        : null }
+let Message = ({ header, body, color, status, t, site }) => {
+  const LinkToEditURL = <Link to={`/edit-site/${site.id}`}>{t('check-edit-url-text')}</Link>;
+  return (
+    <article className={`message is-${color}`}>
+      <div className="message-header">
+        <strong>{t(header)}</strong>
       </div>
-    </div>
-  </article>
-);
+      <div className="message-body">
+        <div className="content">
+          <Interpolate
+            i18nKey={body}
+            useDangerouslySetInnerHTML
+            dangerouslySetInnerHTMLPartElement={null}
+            LinkToEditURLComponent={LinkToEditURL}
+            value={<strong>{site.url}</strong>}
+            regexp={/(.*)/}
+          />
+        </div>
+        <div className="has-text-centered">
+          <Button color={color} size="large">
+            <Icon code="info-circle">
+            <span>Help</span>
+          </Button>
+          &nbsp;
+          { (status === 'warning') ?
+            <Button size="large">
+              Continue
+            </Button>
+          : null }
+        </div>
+      </div>
+    </article>
+  );
+};
 
 Message.propTypes = {
   header: React.PropTypes.string.isRequired,
   body: React.PropTypes.string.isRequired,
   color: React.PropTypes.string.isRequired,
   status: React.PropTypes.string.isRequired,
+  site: React.PropTypes.object,
+  t: React.PropTypes.func,
 };
+
+const mapStateToMessageProps = state => ({
+  site: deps.selectors.getSelectedSite(state),
+});
+
+Message = flow(
+  connect(mapStateToMessageProps),
+  translate('theme')
+)(Message);
 
 /* Retry Button in case of warning or error */
 const UnConnectedRetryButton = ({ requestCheckSite }) => (
@@ -65,7 +91,7 @@ const mapDispatchToRetryButtonProps = (dispatch) => ({
 export const RetryButton = connect(null, mapDispatchToRetryButtonProps)(UnConnectedRetryButton);
 
 /* Notification Check Item */
-const Check = ({ text, status, id }) => {
+const Check = ({ text, status, id, t }) => {
   if (status === 'inactive') {
     return (
       <div id={id} className="columns" >
@@ -104,7 +130,7 @@ const Check = ({ text, status, id }) => {
         <div className={`notification is-${color}`}>
           <div className="level is-mobile">
             <div className="level-left">
-              {text}
+              {t(`check-text-${id}`)}
             </div>
             {icon ?
               <div className="level-right is-marginless">
@@ -120,7 +146,7 @@ const Check = ({ text, status, id }) => {
         </div>
         {/* Error Message? */}
         { conflict ?
-          <Message header="lorem" body="ipsum" color={color} status={status} />
+          <Message header={`check-error-${id}-header`} body={`check-error-${id}-body`} color={color} status={status} />
         : null}
       </div>
       {/* Retry Button? */}
@@ -135,10 +161,13 @@ Check.propTypes = {
   id: React.PropTypes.string.isRequired,
   text: React.PropTypes.string.isRequired,
   status: React.PropTypes.string.isRequired,
+  t: React.PropTypes.func,
 };
 
 const mapStateToCheckProps = (state, ownProps) => ({
   status: deps.selectors.getCheckSite(state, ownProps.id),
 });
-
-export default connect(mapStateToCheckProps)(Check);
+export default flow(
+  connect(mapStateToCheckProps),
+  translate('theme')
+)(Check);

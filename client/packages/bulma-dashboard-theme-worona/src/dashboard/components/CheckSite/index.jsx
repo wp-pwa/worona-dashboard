@@ -53,7 +53,7 @@ const CheckSite = () => (
       <CheckSiteHeader />
     </Header>
     <Main waitForSubscriptions={[deps.selectors.getIsReadySelectedSite]}>
-      <Check text="Site online and available" id="online" />
+      <Check text="Site online" id="online" />
       <Check text="Worona WordPress Plugin" id="plugin" />
     </Main>
 
