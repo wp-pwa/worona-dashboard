@@ -1,9 +1,9 @@
 /* eslint-disable react/prefer-stateless-function, camelcase, no-undef, import/imports-first,
   no-underscore-dangle, global-require */
+
 __webpack_public_path__ = window.publicPath;
 
-if (!window._babelPolyfill) require('babel-polyfill');
-
+import 'worona-polyfills';
 import { packageDownloaded, packageActivated } from 'worona-deps';
 
 import * as loading from './loading-dashboard-theme-worona';

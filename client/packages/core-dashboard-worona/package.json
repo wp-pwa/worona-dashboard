@@ -37,7 +37,6 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "babel-polyfill": "^6.16.0",
     "classnames": "^2.2.5",
     "fastclick": "^1.0.6",
     "i18next": "^3.4.3",
@@ -56,6 +55,7 @@
     "stringify-error-message": "^1.0.2",
     "superagent": "^2.3.0",
     "systemjs": "^0.19.39",
-    "worona-deps": "^1.8.3"
+    "worona-deps": "^1.8.3",
+    "worona-polyfills": "^1.0.0"
   }
 }

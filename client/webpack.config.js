@@ -44,7 +44,7 @@ switch (config.type) {
     module.exports = {
       entry: { main: [
         'script!systemjs/dist/system.js',
-        './development/entry.js',
+        // './development/entry.js',
         './packages/' + config.name + '/src/' + config.entrie + '/index.js',
       ] },
       output: output.core(config),
