@@ -1,4 +1,4 @@
-export const defaultSettings = [
+export default [
   {
     package: {
       name: 'general-app-extension-worona',

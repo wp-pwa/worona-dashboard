@@ -5,6 +5,7 @@
     "import/no-unresolved": 0,
     "import/extensions": 0,
     "arrow-parens": 0,
-    "react/no-unused-prop-types": [2, {"skipShapeProps": true}]
+    "react/no-unused-prop-types": [2, {"skipShapeProps": true}],
+    "no-underscore-dangle": ["error", { "allow": [ "_id", "_sleepForMs" ] }]
   }
 }

@@ -15,6 +15,6 @@ export const showingMobileMenu = (state = false, action) => {
   }
 };
 
-export default combineReducers({
+export default () => combineReducers({
   showingMobileMenu,
 });

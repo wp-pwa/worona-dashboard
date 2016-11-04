@@ -4,7 +4,7 @@ import header from './header';
 import forms from './forms';
 
 export default () => combineReducers({
-  header,
+  header: header(),
   forms,
   reduxForm,
 });

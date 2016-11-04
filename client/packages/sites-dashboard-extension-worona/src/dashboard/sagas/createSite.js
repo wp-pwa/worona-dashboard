@@ -8,9 +8,9 @@ import * as deps from '../deps';
 
 export function* createSiteSaga(action) {
   const { name, url, _id } = action;
-  yield deps.sagaHelpers.waitForConnectionEstablished();
   try {
     yield put(actions.createSiteStatusChanged(CREATING_SITE));
+    yield deps.sagaHelpers.waitForConnectionEstablished();
     const siteId = yield call(libs.createSite, { name, url, _id });
     yield put(actions.createSiteSucceed(siteId));
     const nextURL = `/check-site/${siteId}`;

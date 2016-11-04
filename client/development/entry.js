@@ -1,5 +1,6 @@
+import 'worona-polyfills';
 import { packageDevelopment } from 'worona-deps';
-import pkg from './test-development-package-worona/src';
+import pkg from './test-development-package-worona/src/dashboard';
 
 packageDevelopment(pkg);
 

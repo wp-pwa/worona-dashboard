@@ -1,5 +1,5 @@
 [
-  "babel-polyfill",
+  "worona-polyfills",
   "react",
   "react-dom",
   "react-redux",

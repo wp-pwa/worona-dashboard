@@ -31,3 +31,8 @@ export const getNewSiteInfo = state => state.sites.newSiteInfo;
 
 export const getCheckSiteObj = (state) => state.sites.checkSite;
 export const getCheckSite = (state, id) => state.sites.checkSite[id];
+
+export const getIsReadySelectedSite = createSelector(
+  getSelectedSite,
+  (site) => (!!site)
+);

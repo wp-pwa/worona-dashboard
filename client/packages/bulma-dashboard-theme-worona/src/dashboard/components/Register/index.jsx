@@ -28,7 +28,7 @@ const Register = ({ t, handleSubmit, waiting, statusMessage, errorMessage, toggl
   <Body>
     <Header>
       <Hero
-        title="Login"
+        title="Register"
         subtitle={
           <span>
             Welcome to Worona! Make your <strong>WordPress mobile-ready</strong> with a few clicks.
