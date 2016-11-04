@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
-import { settings } from './collections';
-import { sites } from '../sites/collections';
+import settings from './collections';
+import sites from '../sites/collections';
 
 Meteor.publish('settings', function settingsPublish() {
   this.autorun(() => {

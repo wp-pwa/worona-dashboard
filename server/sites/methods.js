@@ -1,7 +1,7 @@
 /* eslint-disable new-cap */
 import { Meteor } from 'meteor/meteor';
 import { check, Match } from 'meteor/check';
-import { sites } from './collections';
+import sites from './collections';
 import * as errors from '../errors';
 
 Meteor.methods({
@@ -19,7 +19,7 @@ Meteor.methods({
     const createdAt = new Date();
     const modifiedAt = new Date();
     const data = { name, url, userIds: [userId], createdAt, modifiedAt };
-    if (!!_id) data._id = _id;
+    if (_id) data._id = _id;
 
     const siteId = sites.insert(data);
 

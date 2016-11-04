@@ -44,6 +44,7 @@ switch (config.type) {
     module.exports = {
       entry: { main: [
         'script!systemjs/dist/system.js',
+        // './development/entry.js',
         './packages/' + config.name + '/src/' + config.entrie + '/index.js',
       ] },
       output: output.core(config),
@@ -55,7 +56,7 @@ switch (config.type) {
           'packages/core-' + config.entrie + '-worona/node_modules',
         ],
       },
-      // devtool: '#eval-source-map',
+      devtool: '#eval-source-map',
       devServer: {
     		contentBase: 'dist',
     		noInfo: false,

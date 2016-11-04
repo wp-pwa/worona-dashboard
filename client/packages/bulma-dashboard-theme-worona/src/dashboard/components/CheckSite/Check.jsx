@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import * as deps from '../../deps';
 import Icon from '../elements/Icon';
 import Button from '../elements/Button';
 
 /* Error Message */
-export const Message = ({ header, body, color, status }) => (
+export const Message = ({ header, body, color, status, id }) => (
   <article className={`message is-${color}`}>
     <div className="message-header">
       {header}
@@ -20,9 +21,11 @@ export const Message = ({ header, body, color, status }) => (
         </Button>
         &nbsp;
         { (status === 'warning') ?
-          <Button size="large">
-            Continue
-          </Button>
+          <Link to={`/site/${id}/app/general`}>
+            <Button size="large">
+              Continue
+            </Button>
+          </Link>
         : null }
       </div>
     </div>
@@ -34,6 +37,7 @@ Message.propTypes = {
   body: React.PropTypes.string.isRequired,
   color: React.PropTypes.string.isRequired,
   status: React.PropTypes.string.isRequired,
+  id: React.PropTypes.string.isRequired,
 };
 
 /* Retry Button in case of warning or error */
@@ -65,7 +69,7 @@ const mapDispatchToRetryButtonProps = (dispatch) => ({
 export const RetryButton = connect(null, mapDispatchToRetryButtonProps)(UnConnectedRetryButton);
 
 /* Notification Check Item */
-const Check = ({ text, status, id }) => {
+const Check = ({ text, status, id, siteId }) => {
   if (status === 'inactive') {
     return (
       <div id={id} className="columns" >
@@ -120,7 +124,7 @@ const Check = ({ text, status, id }) => {
         </div>
         {/* Error Message? */}
         { conflict ?
-          <Message header="lorem" body="ipsum" color={color} status={status} />
+          <Message header="lorem" body="ipsum" color={color} status={status} id={siteId} />
         : null}
       </div>
       {/* Retry Button? */}
@@ -135,10 +139,12 @@ Check.propTypes = {
   id: React.PropTypes.string.isRequired,
   text: React.PropTypes.string.isRequired,
   status: React.PropTypes.string.isRequired,
+  siteId: React.PropTypes.string.isRequired,
 };
 
 const mapStateToCheckProps = (state, ownProps) => ({
   status: deps.selectors.getCheckSite(state, ownProps.id),
+  siteId: deps.selectors.getSelectedSiteId(state),
 });
 
 export default connect(mapStateToCheckProps)(Check);
