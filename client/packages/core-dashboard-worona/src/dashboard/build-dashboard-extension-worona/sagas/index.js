@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition, array-callback-return */
 import request from 'superagent';
-import { isRemote } from 'worona-deps';
+import { isRemote, isDev } from 'worona-deps';
 import { normalize } from 'normalizr';
 import { takeEvery } from 'redux-saga';
 import { put, fork, call, select } from 'redux-saga/effects';
@@ -21,8 +21,9 @@ export function* addCorePackagesSaga() {
   yield put(actions.corePackagesRequested());
   try {
     // Call the API.
+    const env = isDev ? 'dev' : 'prod';
     const res = isRemote ?
-      yield call(request.get, 'https://cdn.worona.io/api/v1/settings/core/dashboard') :
+      yield call(request.get, `https://cdn.worona.io/api/v1/settings/core/dashboard/${env}`) :
       defaultPackages;
     // Normalize the result using normalizr.
     const pkgs = normalize(res.body, schemas.arrayOfPackages).entities.packages;
