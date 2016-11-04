@@ -20,7 +20,7 @@ export const requireLocalPackage = pkg => new Promise((resolve) => {
 // having to recompile the core-dashboard-worona package, so we can't use Webpack here.
 export const requireRemotePackage = pkg => new Promise((resolve) => {
   SystemJS.import(`https://cdn.worona.io/packages/${pkg.main}`)
-  .then(module => { resolve(module); });
+  .then(module => resolve(module));
 });
 
 // Function triggered by PACKAGE_DOWNLOAD_REQUESTED and used to download each package/module

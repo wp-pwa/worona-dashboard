@@ -1,6 +1,4 @@
-export const url = 'wss://meteor.worona.io/websocket';
-export const timeout = 10000;
+import { isRemote } from 'worona-deps';
 
-module.exports.url = process.env.NODE_ENV === 'production' ?
-  'wss://meteor.worona.io/websocket' :
-  'ws://localhost:3000/websocket';
+export const url = isRemote ? 'wss://meteor.worona.io/websocket' : 'ws://localhost:3000/websocket';
+export const timeout = 10000;
