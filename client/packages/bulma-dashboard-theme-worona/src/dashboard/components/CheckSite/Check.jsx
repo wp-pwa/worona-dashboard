@@ -9,35 +9,49 @@ import Icon from '../elements/Icon';
 import Button from '../elements/Button';
 
 /* Error Message */
-let Message = ({ header, body, color, status, t, site }) => {
+let Message = ({ checkType, color, t, site }) => {
   const LinkToEditURL = <Link to={`/edit-site/${site.id}`}>{t('check-edit-url-text')}</Link>;
+  let ErrorMessageBody;
+  if (checkType === 'online') {
+    ErrorMessageBody = () => (
+      <div className="content">
+        {t('check-error-online-body')}
+        <br />
+        <ul>
+          <li>
+            <Interpolate
+              i18nKey="check-error-online-body-iscorrect"
+              LinkToEditURLComponent={LinkToEditURL}
+              value={<strong>{site.url}</strong>}
+            />
+          </li>
+          <br />
+          <li>{t('check-error-online-body-isup')}</li>
+        </ul>
+      </div>
+    );
+  } else if (checkType === 'plugin') {
+    ErrorMessageBody = () => (
+      <div className="content">
+        <Interpolate
+          i18nKey="check-error-plugin-body"
+          useDangerouslySetInnerHTML
+        />
+      </div>
+    );
+  }
   return (
     <article className={`message is-${color}`}>
       <div className="message-header">
-        <strong>{t(header)}</strong>
+        <strong>{t(`check-error-${checkType}-header`)}</strong>
       </div>
       <div className="message-body">
-        <div className="content">
-          <Interpolate
-            i18nKey={body}
-            useDangerouslySetInnerHTML
-            dangerouslySetInnerHTMLPartElement={null}
-            LinkToEditURLComponent={LinkToEditURL}
-            value={<strong>{site.url}</strong>}
-            regexp={/(.*)/}
-          />
-        </div>
+        <ErrorMessageBody />
         <div className="has-text-centered">
           <Button color={color} size="large">
-            <Icon code="info-circle">
+            <Icon code="info-circle" />
             <span>Help</span>
           </Button>
-          &nbsp;
-          { (status === 'warning') ?
-            <Button size="large">
-              Continue
-            </Button>
-          : null }
         </div>
       </div>
     </article>
@@ -45,11 +59,12 @@ let Message = ({ header, body, color, status, t, site }) => {
 };
 
 Message.propTypes = {
-  header: React.PropTypes.string.isRequired,
-  body: React.PropTypes.string.isRequired,
+  checkType: React.PropTypes.string.isRequired,
   color: React.PropTypes.string.isRequired,
-  status: React.PropTypes.string.isRequired,
-  site: React.PropTypes.object,
+  site: React.PropTypes.shape({
+    url: React.PropTypes.string.isRequired,
+    id: React.PropTypes.string.isRequired,
+  }),
   t: React.PropTypes.func,
 };
 
@@ -91,10 +106,10 @@ const mapDispatchToRetryButtonProps = (dispatch) => ({
 export const RetryButton = connect(null, mapDispatchToRetryButtonProps)(UnConnectedRetryButton);
 
 /* Notification Check Item */
-const Check = ({ text, status, id, t }) => {
+const Check = ({ text, status, checkType, t }) => {
   if (status === 'inactive') {
     return (
-      <div id={id} className="columns" >
+      <div id={checkType} className="columns" >
         <div className="column is-4 is-offset-4">
           <div className="notification">
             <div className="level is-mobile">
@@ -130,7 +145,7 @@ const Check = ({ text, status, id, t }) => {
         <div className={`notification is-${color}`}>
           <div className="level is-mobile">
             <div className="level-left">
-              {t(`check-text-${id}`)}
+              {t(`check-text-${checkType}`)}
             </div>
             {icon ?
               <div className="level-right is-marginless">
@@ -146,7 +161,7 @@ const Check = ({ text, status, id, t }) => {
         </div>
         {/* Error Message? */}
         { conflict ?
-          <Message header={`check-error-${id}-header`} body={`check-error-${id}-body`} color={color} status={status} />
+          <Message checkType={checkType} color={color} status={status} />
         : null}
       </div>
       {/* Retry Button? */}
@@ -158,14 +173,14 @@ const Check = ({ text, status, id, t }) => {
 };
 
 Check.propTypes = {
-  id: React.PropTypes.string.isRequired,
+  checkType: React.PropTypes.string.isRequired,
   text: React.PropTypes.string.isRequired,
   status: React.PropTypes.string.isRequired,
   t: React.PropTypes.func,
 };
 
 const mapStateToCheckProps = (state, ownProps) => ({
-  status: deps.selectors.getCheckSite(state, ownProps.id),
+  status: deps.selectors.getCheckSite(state, ownProps.checkType),
 });
 export default flow(
   connect(mapStateToCheckProps),

@@ -8,7 +8,12 @@
   "Logout": "Logout",
   "MySites": "My Sites",
   "check-text-online": "Site online",
+  "check-text-plugin": "Worona WordPress Plugin",
   "check-edit-url-text": "Edit your URL here.",
   "check-error-online-header": "Oops!",
-  "check-error-online-body": "Looks like your site is not online or available. This may occur if:<br/><ul><li>You have entered an incorrect URL. Please make sure your site is correct: <strong>{{value}}</strong> Want to fix it? {{LinkToEditURLComponent}}</li><br/><li>Your WordPress website is down or it is too slow to respond. Please contact us or try again later.</li></ul>"
+  "check-error-online-body": "Looks like your site is not online or available. This may occur if:",
+  "check-error-online-body-iscorrect": "You have entered an incorrect URL. Please make sure your site is correct: {{value}} Want to fix it? {{LinkToEditURLComponent}}",
+  "check-error-online-body-isup": "Your WordPress website is down or it is too slow to respond. Please contact us or try again later.",
+  "check-error-plugin-header": "WordPress Plugin missing",
+  "check-error-plugin-body": "We can't find the <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://wordpress.org/plugins/worona/\">Worona Plugin</a> installed in your site.<br /><br />Our plugin lets you synchronize your WordPress site with our platform, please make sure it is installed and active.<br /><br /><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://wordpress.org/plugins/worona/\">Install and activate Worona Plugin</a> now or check out our <a href=\"https://docs.worona.org\">help documentation</a>."
 }
