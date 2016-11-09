@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { translate, Interpolate } from 'react-i18next';
+import { flow } from 'lodash/fp';
 import { Link } from 'react-router';
 
 import * as deps from '../../deps';
@@ -7,38 +9,73 @@ import Icon from '../elements/Icon';
 import Button from '../elements/Button';
 
 /* Error Message */
-export const Message = ({ header, body, color, status, id }) => (
-  <article className={`message is-${color}`}>
-    <div className="message-header">
-      {header}
-    </div>
-    <div className="message-body">
-      {body}
-      <div className="has-text-centered">
-        <Button color={color} size="large">
-          <Icon code="info-circle" />
-          <span>Help</span>
-        </Button>
-        &nbsp;
-        { (status === 'warning') ?
-          <Link to={`/site/${id}/app/general`}>
-            <Button size="large">
-              Continue
-            </Button>
-          </Link>
-        : null }
+let Message = ({ checkType, color, t, site }) => {
+  const LinkToEditURL = <Link to={`/edit-site/${site.id}`}>{t('check-edit-url-text')}</Link>;
+  let ErrorMessageBody;
+  if (checkType === 'online') {
+    ErrorMessageBody = () => (
+      <div className="content">
+        {t('check-error-online-body')}
+        <br />
+        <ul>
+          <li>
+            <Interpolate
+              i18nKey="check-error-online-body-iscorrect"
+              LinkToEditURLComponent={LinkToEditURL}
+              value={<strong>{site.url}</strong>}
+            />
+          </li>
+          <br />
+          <li>{t('check-error-online-body-isup')}</li>
+        </ul>
       </div>
-    </div>
-  </article>
-);
+    );
+  } else if (checkType === 'plugin') {
+    ErrorMessageBody = () => (
+      <div className="content">
+        <Interpolate
+          i18nKey="check-error-plugin-body"
+          useDangerouslySetInnerHTML
+        />
+      </div>
+    );
+  }
+  return (
+    <article className={`message is-${color}`}>
+      <div className="message-header">
+        <strong>{t(`check-error-${checkType}-header`)}</strong>
+      </div>
+      <div className="message-body">
+        <ErrorMessageBody />
+        <div className="has-text-centered">
+          <Button color={color} size="large">
+            <Icon code="info-circle" />
+            <span>Help</span>
+          </Button>
+        </div>
+      </div>
+    </article>
+  );
+};
 
 Message.propTypes = {
-  header: React.PropTypes.string.isRequired,
-  body: React.PropTypes.string.isRequired,
+  checkType: React.PropTypes.string.isRequired,
   color: React.PropTypes.string.isRequired,
-  status: React.PropTypes.string.isRequired,
-  id: React.PropTypes.string.isRequired,
+  site: React.PropTypes.shape({
+    url: React.PropTypes.string.isRequired,
+    id: React.PropTypes.string.isRequired,
+  }),
+  t: React.PropTypes.func,
 };
+
+const mapStateToMessageProps = state => ({
+  site: deps.selectors.getSelectedSite(state),
+});
+
+Message = flow(
+  connect(mapStateToMessageProps),
+  translate('theme')
+)(Message);
 
 /* Retry Button in case of warning or error */
 const UnConnectedRetryButton = ({ requestCheckSite }) => (
@@ -69,10 +106,10 @@ const mapDispatchToRetryButtonProps = (dispatch) => ({
 export const RetryButton = connect(null, mapDispatchToRetryButtonProps)(UnConnectedRetryButton);
 
 /* Notification Check Item */
-const Check = ({ text, status, id, siteId }) => {
+const Check = ({ text, status, checkType, t }) => {
   if (status === 'inactive') {
     return (
-      <div id={id} className="columns" >
+      <div id={checkType} className="columns" >
         <div className="column is-4 is-offset-4">
           <div className="notification">
             <div className="level is-mobile">
@@ -108,7 +145,7 @@ const Check = ({ text, status, id, siteId }) => {
         <div className={`notification is-${color}`}>
           <div className="level is-mobile">
             <div className="level-left">
-              {text}
+              {t(`check-text-${checkType}`)}
             </div>
             {icon ?
               <div className="level-right is-marginless">
@@ -124,7 +161,7 @@ const Check = ({ text, status, id, siteId }) => {
         </div>
         {/* Error Message? */}
         { conflict ?
-          <Message header="lorem" body="ipsum" color={color} status={status} id={siteId} />
+          <Message checkType={checkType} color={color} status={status} />
         : null}
       </div>
       {/* Retry Button? */}
@@ -136,15 +173,16 @@ const Check = ({ text, status, id, siteId }) => {
 };
 
 Check.propTypes = {
-  id: React.PropTypes.string.isRequired,
+  checkType: React.PropTypes.string.isRequired,
   text: React.PropTypes.string.isRequired,
   status: React.PropTypes.string.isRequired,
-  siteId: React.PropTypes.string.isRequired,
+  t: React.PropTypes.func,
 };
 
 const mapStateToCheckProps = (state, ownProps) => ({
-  status: deps.selectors.getCheckSite(state, ownProps.id),
-  siteId: deps.selectors.getSelectedSiteId(state),
+  status: deps.selectors.getCheckSite(state, ownProps.checkType),
 });
-
-export default connect(mapStateToCheckProps)(Check);
+export default flow(
+  connect(mapStateToCheckProps),
+  translate('theme')
+)(Check);
