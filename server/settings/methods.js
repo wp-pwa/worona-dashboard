@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import settings from './collections';
+import { settingsLive } from './collections';
 import defaultSettings from './defaultSettings';
 
 Meteor.methods({
@@ -10,7 +10,9 @@ Meteor.methods({
   },
   initSettings(siteId) {
     check(siteId, String);
-    defaultSettings.forEach(setting =>
-      settings.insert(Object.assign({}, setting, { siteId })));
+    defaultSettings.forEach(setting => {
+      const woronaInfo = Object.assign({}, setting.woronaInfo, { siteId });
+      settingsLive.insert(Object.assign({}, setting, { woronaInfo }));
+    });
   },
 });
