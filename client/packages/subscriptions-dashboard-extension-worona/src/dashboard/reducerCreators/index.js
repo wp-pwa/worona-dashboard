@@ -1,7 +1,7 @@
 import * as types from '../types';
 
-const newItem = (id, fields) => Object.assign({}, { id }, fields);
-const changeItem = (oldFields, newFields) => Object.assign({}, oldFields, newFields);
+const newItem = (id, fields) => ({ ...fields, id });
+const changeItem = (oldFields, newFields) => ({ ...oldFields, ...newFields });
 
 export const collectionCreator = collection => (state = [], action) => {
   if ((action.type === types.SUBSCRIPTION_MODIFIED) && (action.collection === collection)) {

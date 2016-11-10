@@ -1,12 +1,24 @@
 import { createSelector } from 'reselect';
+import { findIndex } from 'lodash';
+import { flow, map, sortBy, groupBy } from 'lodash/fp';
 import * as deps from '../deps';
 
-export const getCategories = () => ([
-  { name: 'Settings', order: 0 },
-  { name: 'Appearance', order: 100 },
-  { name: 'Extensions', order: 200 },
-  { name: 'Publish', order: 500 },
-]);
+export const getSettingsLiveCollection = state => state.settings.collections.live.collection;
+export const getSettingsLiveIsReady = state => state.settings.collections.live.isReady;
+export const getSettingsPreviewCollection = state => state.settings.collections.preview.collection;
+export const getSettingsPreviewIsReady = state => state.settings.collections.preview.isReady;
+export const getSettingsPackageCollection = state => state.settings.collections.packages.collection;
+export const getSettingsPackageIsReady = state => state.settings.collections.packages.isReady;
+
+export const getCategories = createSelector(
+  getSettingsLiveCollection,
+  getSettingsPackageCollection,
+  (settings, packages) => flow(
+    map(item => packages[findIndex(packages, pkg => pkg.name === item.woronaInfo.name)]),
+    sortBy(item => item.menu.order),
+    groupBy(item => item.menu.category)
+  )(settings)
+);
 
 export const getAllSettings = state => state.settings.collection;
 export const getIsReadySettings = state => state.settings.isReady;
