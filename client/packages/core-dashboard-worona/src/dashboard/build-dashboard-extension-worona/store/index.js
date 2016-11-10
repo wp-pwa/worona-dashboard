@@ -1,9 +1,10 @@
 /* eslint-disable global-require */
 /* global window */
-import { compose, createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { isTest } from 'worona-deps';
 import { reduxReactRouter, routerStateReducer as router } from 'redux-router';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import build from '../reducers';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -11,14 +12,17 @@ const sagaMiddleware = createSagaMiddleware();
 const reducers = { build: build(), router };
 const sagas = {};
 
+const composeEnhancers = composeWithDevTools({
+  serializeState: false,
+});
+
 export const store = createStore(
   combineReducers(reducers),
-  compose(
+  composeEnhancers(
     reduxReactRouter({
       createHistory: !isTest ? require('history').createHistory : require('history').createMemoryHistory,
     }),
     applyMiddleware(sagaMiddleware),
-    typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
 
