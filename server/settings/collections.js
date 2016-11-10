@@ -1,3 +1,4 @@
 import { Mongo } from 'meteor/mongo';
 
-export default new Mongo.Collection('settings');
+export const settingsLive = new Mongo.Collection('settings-live');
+export const settingsPreview = new Mongo.Collection('settings-preview');
