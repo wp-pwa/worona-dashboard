@@ -1,5 +1,5 @@
-import * as types from '../types';
 import stringifyError from 'stringify-error-message';
+import * as types from '../types';
 
 export const subscriptionStarted = collection =>
   ({ type: types.SUBSCRIPTION_STARTED, collection });

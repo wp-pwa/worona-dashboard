@@ -10,11 +10,31 @@ export const collectionCreator = collection => (state = [], action) => {
       case 'added': {
         const index = state.map(item => item.id).indexOf(id);
         if (index === -1) return [...state, newItem(id, fields)];
-        return state.map((item, i) => (i === index ? newItem(id, fields) : item)); }
-      case 'changed':
-        return state.map(item => (item.id === id ? changeItem(item, fields) : item));
+        return state.map((item, i) => (i === index ? newItem(id, fields) : item));
+      }
+      case 'changed': {
+        const index = state.map(item => item.id).indexOf(id);
+        if (index === -1) return [...state, newItem(id, fields)];
+        return state.map((item, i) => (i === index ? changeItem(item, fields) : item));
+      }
       case 'removed':
         return state.filter(item => item.id !== id);
+      default:
+        return state;
+    }
+  }
+  return state;
+};
+
+export const objectCreator = object => (state = {}, action) => {
+  if ((action.type === types.SUBSCRIPTION_MODIFIED) && (action.collection === object)) {
+    const { id, fields } = action;
+    switch (action.event) {
+      case 'added':
+      case 'changed':
+        return newItem(id, fields);
+      case 'removed':
+        return {};
       default:
         return state;
     }

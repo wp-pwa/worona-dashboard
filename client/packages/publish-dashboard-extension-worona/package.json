@@ -1,6 +1,6 @@
 {
   "name": "publish-dashboard-extension-worona",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Extension for the Worona Dashboard to publish an app.",
   "scripts": {
     "test": "NODE_PATH=../core-dashboard-worona/node_modules ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
@@ -15,7 +15,7 @@
     "publish",
     "dashboard"
   ],
-  "author": "Worona Labs SL | Abel Serrano, @akronix5",
+  "author": "Worona Labs SL | Abel Serrano Juste, @akronix",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/worona/worona-dashboard/issues"

@@ -1,7 +1,7 @@
 {
-  "name": "settings-dashboard-extension-worona",
-  "version": "1.2.1",
-  "description": "Extension for managing Worona settings.",
+  "name": "profile-dashboard-extension-worona",
+  "version": "1.2.0",
+  "description": "Extension for the Worona Dashboard in charge of the profile user data.",
   "scripts": {
     "test": "NODE_PATH=../core-dashboard-worona/node_modules ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
   },
@@ -12,7 +12,8 @@
   "keywords": [
     "worona",
     "extension",
-    "settings"
+    "profile",
+    "dashboard"
   ],
   "author": "Worona Labs SL | Abel Serrano Juste, @akronix",
   "license": "MIT",
@@ -21,9 +22,9 @@
   },
   "homepage": "https://github.com/worona/worona-dashboard#readme",
   "worona": {
-    "niceName": "Settings",
-    "slug": "settings",
-    "namespace": "settings",
+    "niceName": "Profile",
+    "slug": "profile",
+    "namespace": "profile",
     "type": "extension",
     "service": "dashboard",
     "authors": [

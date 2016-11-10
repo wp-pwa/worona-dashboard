@@ -2,16 +2,17 @@ import JSZip from 'jszip';
 import FileSaver from 'file-saver';
 import JSZipUtils from 'jszip-utils';
 import { takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
+import { call, put, select } from 'redux-saga/effects';
 
+import * as deps from '../deps';
 import * as types from '../types';
 import * as actions from '../actions';
-// import generateConfigXML from '../templates/config.xml.js';
+import generateConfigXML from '../templates/config.xml.js';
 
 // export const requestFunc = () => request
 //   .get('https://worona.imgix.net/sites/undefined/icon/2fc7dbf0-cf1d-4baa-b983-fcda378def82_Tux_saying_Akronix_from_terminal_(avatar).png');
 
-const url = 'https://worona.imgix.net/sites/undefined/icon/2fc7dbf0-cf1d-4baa-b983-fcda378def82_Tux_saying_Akronix_from_terminal_(avatar).png'
+const url = 'https://worona.imgix.net/sites/undefined/icon/2fc7dbf0-cf1d-4baa-b983-fcda378def82_Tux_saying_Akronix_from_terminal_(avatar).png';
 
 export const requestFunc = url => new Promise((resolve, reject) => {
   JSZipUtils.getBinaryContent(url, (err, data) => {
@@ -21,12 +22,28 @@ export const requestFunc = url => new Promise((resolve, reject) => {
 });
 
 
-function createZipFile(siteId, icon) {
+function createZipFile(siteId, site, user, icon) {
   /* Creating the zip file */
   const zip = new JSZip();
   const www = zip.folder('www');
+
+  /* Generate index.html file */
   www.file('index.html', '<html>Hello world</html>');
-  www.file('config.xml', '<widget>Hello world</widget>');
+
+  /* Generate config.xml file */
+  const configParams = {
+    appId: siteId,
+    appName: site.name,
+    siteURL: site.url,
+    userEmail: user.email,
+    userName: user.name,
+    siteId,
+  };
+  const xmlFile = generateConfigXML(configParams);
+  debugger;
+  www.file('config.xml', xmlFile);
+
+  /* Generate icons */
   www.file('icon.png', icon, { binary: true });
   return zip;
 }
@@ -34,16 +51,16 @@ function createZipFile(siteId, icon) {
 export function* publishSiteSaga(action) {
   // try {
   const { siteId } = action;
-  const data = yield call(requestFunc, url);
-  const zip = createZipFile(siteId, data);
+  const site = yield select(deps.selectors.getSite, siteId);
+  const user = yield select(deps.selectors.getNameAndEmail);
+  const icon = yield call(requestFunc, url);
+  const zip = createZipFile(siteId, site, user, icon);
   const content = yield zip.generateAsync({ type: 'blob' });
   FileSaver.saveAs(content, 'example.zip');
   yield put(actions.publishSiteSucceed());
   // } catch (error) {
   //   yield put(actions.publishSiteFailed(error));
   // }
-
-  /* send zip to phonegap build */
 }
 
 export function* publishSiteWatcher() {
