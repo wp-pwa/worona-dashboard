@@ -1,6 +1,6 @@
 {
   "name": "connection-dashboard-extension-worona",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Extension for the Worona Dashboard in charge of the connection to the server.",
   "scripts": {
     "test": "NODE_PATH=../core-dashboard-worona/node_modules ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
@@ -26,7 +26,7 @@
     "slug": "connection",
     "namespace": "connection",
     "type": "extension",
-    "service": "dashboard",
+    "services": ["dashboard"],
     "authors": [
       "luis@worona.org"
     ],
