@@ -28,6 +28,8 @@ export default ({ appId, appName,
 
     <!-- Plugins -->
     <!-- Core plugins -->
+    <plugin name="cordova-plugin-appsettings"              source="npm" spec="~1.0.2" />
+
     <!-- <plugin name="cordova-plugin-battery-status"      source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera"              source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture"       source="npm" spec="~1.2.0" />
