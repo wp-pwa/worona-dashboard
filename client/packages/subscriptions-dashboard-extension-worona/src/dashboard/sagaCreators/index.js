@@ -12,11 +12,13 @@ export function* subscriptionEvents(channel, action) {
 
 export function subscriptionWatcherCreator(selectedPublication, ...params) {
   return function* subscriptionWatcher() {
-    const subsChannel = yield call(deps.libs.collectionEventChannel, selectedPublication);
     while (true) {
       yield take(deps.types.LOGIN_SUCCEED);
       yield put(actions.subscriptionStarted(selectedPublication));
       const subscription = yield call(deps.libs.subscribe, selectedPublication, ...params);
+      const subsChannel = yield call(deps.libs.collectionEventChannel, selectedPublication, subscription);
+      console.log(subscription);
+      // console.log(selectedPublication);
       const readyChannel = yield call(deps.libs.readyEventChannel, subscription);
       const errorChannel = yield call(deps.libs.errorEventChannel, subscription);
       const subsSaga = yield fork(subscriptionEvents, subsChannel, actions.subscriptionModified);

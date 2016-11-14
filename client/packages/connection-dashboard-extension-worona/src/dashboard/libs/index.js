@@ -99,21 +99,23 @@ export class Connection {
     this.client.unsubscribe(id);
   }
 
-  collectionEventChannel(selectedCollection) {
+  collectionEventChannel(selectedCollection, subscription) {
     return eventChannel(listener => {
       const added = this.client.ddp.on('added', ({ collection, id, fields }) => {
+        console.log(collection);
         if (collection === selectedCollection) {
-          listener({ collection, event: 'added', id, fields });
+          listener({ collection: subscription.name, event: 'added', id, fields });
         }
       });
       const changed = this.client.ddp.on('changed', ({ collection, id, fields }) => {
+        console.log(collection);
         if (collection === selectedCollection) {
-          listener({ collection, event: 'changed', id, fields });
+          listener({ collection: subscription.name, event: 'changed', id, fields });
         }
       });
       const removed = this.client.ddp.on('removed', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
-          listener({ collection, event: 'removed', id, fields });
+          listener({ collection: subscription.name, event: 'removed', id, fields });
         }
       });
       return () => {

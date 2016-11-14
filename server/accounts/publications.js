@@ -1,19 +1,33 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.publish('userData', function () {
+  const self = this;
   console.log('entro en publicacion');
   // this.autorun(() => {
   if (this.userId) {
     console.log('Este es el user id:', this.userId);
     console.log('hago query');
-    const cursor = Meteor.users.find(
+
+    const handle = Meteor.users.find(
       { _id: this.userId },
       { fields: { _id: 1, emails: 1, profile: 1 } },
-    );
-    console.log(cursor.count());
-    return cursor;
+    ).observeChanges({
+        added: function (id, fields) {
+          self.added('userData', id, fields);
+        },
+        changed: function (id, fields) {
+          self.changed('userData', id, fields);
+        },
+        removed: function (id) {
+          self.removed('userData', id);
+        },
+    });
+    console.log('handle:', handle);
+    self.ready();
+    self.onStop(function () {
+      handle.stop();
+    });
   }
-  return this.ready();
 });
 // });
 
