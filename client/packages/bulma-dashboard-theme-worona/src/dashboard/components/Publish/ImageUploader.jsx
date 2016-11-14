@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 
 import * as actions from '../../actions';
-import * as deps from '../../deps';
 
 class ImageUploaderClass extends React.Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class ImageUploaderClass extends React.Component {
     };
     const uploaderProps = {
       style,
-      server: 'https://backend.worona.io',
+      server: 'http://backend.worona.io',
       signingUrl: '/api/v1/s3/sign',
       signingUrlQueryParams: { siteId: this.props.siteId, imgType: 'icon' },
       accept: 'image/*',
@@ -54,8 +53,10 @@ class ImageUploaderClass extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  handleFinishedUpload: (signResult) => dispatch(actions.uploadSucceed(signResult.filename)),
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  handleFinishedUpload: (signResult) => dispatch(
+    actions.uploadSucceed(signResult.filename, ownProps.siteId)
+  ),
   handleUploadError: (status, file) => dispatch(actions.uploadError({ status, file })),
 });
 

@@ -22,7 +22,6 @@ Meteor.publish('userData', function () {
           self.removed('userData', id);
         },
     });
-    console.log('handle:', handle);
     self.ready();
     self.onStop(function () {
       handle.stop();
