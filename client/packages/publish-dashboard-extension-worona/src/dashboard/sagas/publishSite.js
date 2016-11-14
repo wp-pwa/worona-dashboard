@@ -51,7 +51,9 @@ function createZipFile(siteId, site, user, icon) {
 export function* publishSiteSaga(action) {
   // try {
   const { siteId } = action;
-  const site = yield select(deps.selectors.getSite, siteId);
+  // const site = yield select(deps.selectors.getSite, siteId);
+  const site = yield select(deps.selectors.getSelectedSite);
+  if (site.id !== siteId) throw new Error('Trying to publish a site different than the current one.');
   const user = yield select(deps.selectors.getNameAndEmail);
   const icon = yield call(requestFunc, url);
   const zip = createZipFile(siteId, site, user, icon);
