@@ -1,5 +1,5 @@
 /* eslint-disable no-constant-condition, no-undef, global-require, import/no-dynamic-require */
-import { isRemote, packageDownloaded } from 'worona-deps';
+import worona, { isRemote, packageDownloaded } from 'worona-deps';
 import { put, call } from 'redux-saga/effects';
 import update from 'react/lib/update';
 import { takeEvery } from 'redux-saga';

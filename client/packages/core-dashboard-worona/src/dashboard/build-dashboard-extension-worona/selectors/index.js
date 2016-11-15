@@ -4,6 +4,7 @@ import { flatMap, map } from 'lodash';
 export const getPackageList = state => state.build.packages.list;
 export const getDownloadedPackages = state => state.build.packages.downloaded;
 export const getActivatedPackages = state => state.build.packages.activated;
+export const getDevelopmentPackages = state => state.build.packages.development;
 export const getAssets = state => state.build.assets;
 export const getThemeName = state => state.build.packages.activated.theme;
 

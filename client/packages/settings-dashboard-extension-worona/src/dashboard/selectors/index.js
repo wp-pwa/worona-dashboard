@@ -13,12 +13,22 @@ export const getSettingsPackageIsReady = state => state.settings.collections.pac
 export const getCategories = createSelector(
   getSettingsLiveCollection,
   getSettingsPackageCollection,
-  (settings, packages) => flow(
-    map(item => packages[findIndex(packages, pkg => pkg.name === item.woronaInfo.name)]),
-    filter(item => typeof item !== 'undefined'),
-    sortBy(item => item.menu.order),
-    groupBy(item => item.menu.category)
-  )(settings)
+  deps.selectors.getDevelopmentPackages,
+  (settings, packages, development) => {
+    const normal = flow(
+      map(item => packages[findIndex(packages, pkg => pkg.name === item.woronaInfo.name)]),
+      filter(item => typeof item !== 'undefined'),
+      sortBy(item => item.menu.order),
+      groupBy(item => item.menu.category)
+    )(settings);
+    return { ...normal, Development: [{
+      niceName: 'Dev',
+      name: 'test-development',
+      namespace: 'development',
+      id: 1,
+      type: 'extension',
+    }] };
+  }
 );
 
 export const getAllSettings = state => state.settings.collection;
@@ -33,12 +43,3 @@ export const getSelectedSiteSettings = (state) => {
   const currentId = deps.selectors.getSelectedSiteId(state);
   return getSiteSettings(currentId);
 };
-
-// export const getSiteSettingsByCategory = id => createSelector(
-//   getCategories,
-//   getSiteSettings(id),start
-//   (categories, settings) => categories.map(({ name }) => ({
-//     name,
-//     entries: settings.filter(entry => entry.categoryName === name),
-//   }))
-// );
