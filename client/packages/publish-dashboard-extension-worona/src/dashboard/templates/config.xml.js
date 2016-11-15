@@ -91,16 +91,18 @@ export default ({ appId, appName,
         <icon   src="www/res/icon/ios/icon-small.png"                   platform="ios" width="29"   height="29" />
         <icon   src="www/res/icon/ios/icon-small@2x.png"                platform="ios" width="58"   height="58" />
         <icon   src="www/res/icon/ios/icon-small@3x.png"                platform="ios" width="87"   height="87" />
-        <splash src="www/res/screen/ios/Default-568h@2x~iphone.png"     platform="ios" width="640"  height="1136" />
-        <splash src="www/res/screen/ios/Default-667h.png"               platform="ios" width="750"  height="1334" />
-        <splash src="www/res/screen/ios/Default-736h.png"               platform="ios" width="1242" height="2208" />
+        <splash src="www/res/screen/ios/Default.png"                    platform="ios" width="320"  height="480" /> -->
+        <splash src="www/res/screen/ios/Default@2x.png"                 platform="ios" width="640"  height="960" />
+        <splash src="www/res/screen/ios/Default-568h@2x.png"            platform="ios" width="640"  height="1136" />
+        <splash src="www/res/screen/ios/Default-667h@2x.png"            platform="ios" width="750"  height="1334" />
+        <splash src="www/res/screen/ios/Default-Portrait-736h@3x.png"   platform="ios" width="1242" height="2208" />
+        <splash src="www/res/screen/ios/Default-Portrait@2x.png"        platform="ios" width="1536" height="2048" />
+        <splash src="www/res/screen/ios/Default-Portrait.png"           platform="ios" width="768"  height="1024" />
+
+
         <splash src="www/res/screen/ios/Default-Landscape-736h.png"     platform="ios" width="2208" height="1242" />
         <splash src="www/res/screen/ios/Default-Landscape@2x~ipad.png"  platform="ios" width="2048" height="1536" />
         <splash src="www/res/screen/ios/Default-Landscape~ipad.png"     platform="ios" width="1024" height="768" />
-        <splash src="www/res/screen/ios/Default-Portrait@2x~ipad.png"   platform="ios" width="1536" height="2048" />
-        <splash src="www/res/screen/ios/Default-Portrait~ipad.png"      platform="ios" width="768"  height="1024" />
-        <splash src="www/res/screen/ios/Default@2x~iphone.png"          platform="ios" width="640"  height="960" />
-        <splash src="www/res/screen/ios/Default~iphone.png"             platform="ios" width="320"  height="480" /> -->
     </platform>
 
     <!--

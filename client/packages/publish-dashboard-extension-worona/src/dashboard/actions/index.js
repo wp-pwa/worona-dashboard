@@ -8,4 +8,4 @@ export const publishSiteStatusChanged = status =>
 export const publishSiteSucceed = siteId =>
   ({ type: types.PUBLISH_SITE_SUCCEED, siteId });
 export const publishSiteFailed = errorObj =>
-  ({ type: types.PUBLISH_SITE_FAILED, error: errorObj });
+  ({ type: types.PUBLISH_SITE_FAILED, error: stringifyError(errorObj) });
