@@ -8,10 +8,15 @@ import * as deps from '../deps';
 import * as types from '../types';
 import * as actions from '../actions';
 import generateConfigXML from '../templates/config.xml.js';
-import images from '../templates/images.js';
+import generateImagesArray from '../templates/images.js';
 
-// export const requestFunc = () => request
-//   .get('https://worona.imgix.net/sites/undefined/icon/2fc7dbf0-cf1d-4baa-b983-fcda378def82_Tux_saying_Akronix_from_terminal_(avatar).png');
+function getImagesArray(siteId, iconId) {
+  const baseUrl = (iconId) ? // If user doesn't provide an icon we user Worona images.
+    `http://worona.imgix.net/sites/${siteId}/icon/${iconId}`
+    :
+    'http://worona.imgix.net/splashes/watermark/logo-1024.png';
+  return generateImagesArray(baseUrl);
+}
 
 export const requestFunc = url => new Promise((resolve, reject) => {
   JSZipUtils.getBinaryContent(url, (err, data) => {
@@ -20,16 +25,12 @@ export const requestFunc = url => new Promise((resolve, reject) => {
   });
 });
 
-function getImages(siteId, iconId) {
-  const baseUrl = (iconId) ? // If user doesn't provide an icon we user Worona images.
-  `https://worona.imgix.net/sites/${siteId}/icon/${iconId}`
-  : 'http://worona.imgix.net/splashes/watermark/logo-1024.png';
-  const imageRequests = images.map(({ query }) => requestFunc(baseUrl + query));
+function getAllImagesPromise(images) {
+  const imageRequests = images.map(({ url }) => requestFunc(url));
   return Promise.all(imageRequests);
 }
 
-
-function createZipFile(siteId, site, user, imagesData) {
+function createZipFile(siteId, site, user, images, imagesData) {
   /* Creating the zip file */
   const zip = new JSZip();
   const www = zip.folder('www');
@@ -55,8 +56,8 @@ function createZipFile(siteId, site, user, imagesData) {
   /* Platform icons and screens */
   images.forEach((item, index) => {
     if (item.platform) {
-      return www.file(
-        `res/icon/${item.platform}/${item.fileName}`,
+      www.file(
+        `res/${item.type}/${item.platform}/${item.fileName}`,
         imagesData[index],
         { binary: true }
       );
@@ -72,13 +73,16 @@ export function* publishSiteSaga(action) {
   const site = yield select(deps.selectors.getSite(siteId));
   if (site.id !== siteId) throw new Error('Trying to publish a site different than the current one.');
   const user = yield select(deps.selectors.getNameAndEmail);
+  const images = getImagesArray(site.id, site.iconId);
   yield put(actions.publishSiteStatusChanged('Downloading images...'));
-  const imagesData = yield call(getImages, siteId, site.iconId);
+  const imagesData = yield call(getAllImagesPromise, images);
   yield put(actions.publishSiteStatusChanged('All images dowloaded!'));
+
   yield put(actions.publishSiteStatusChanged('Generating zip file...'));
-  const zip = createZipFile(siteId, site, user, imagesData);
+  const zip = createZipFile(siteId, site, user, images, imagesData);
   const content = yield zip.generateAsync({ type: 'blob' });
   yield put(actions.publishSiteStatusChanged('Zip generated!'));
+
   FileSaver.saveAs(content, 'example.zip');
   yield put(actions.publishSiteStatusChanged('Zip downloaded!'));
   yield put(actions.publishSiteSucceed());

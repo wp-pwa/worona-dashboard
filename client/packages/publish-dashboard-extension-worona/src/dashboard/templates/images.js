@@ -1,4 +1,4 @@
-export default ({ baseUrl }) => [
+export default (baseUrl) => [
   /* Icons */
     // Default
   {
@@ -147,12 +147,6 @@ export default ({ baseUrl }) => [
     fileName: 'ldpi.png',
     platform: 'android',
     url: `http://worona.imgix.net/splashes/watermark/ldpi.png?markalign=center%2Cmiddle&markscale=45&markfit=max&mark=${baseUrl}`,
-  },
-  {
-    type: 'screen',
-    fileName: 'mdpi.png',
-    platform: 'android',
-    url: `http://worona.imgix.net/splashes/watermark/mdpi.png?markalign=center%2Cmiddle&markscale=45&markfit=max&mark=${baseUrl}`,
   },
   {
     type: 'screen',
