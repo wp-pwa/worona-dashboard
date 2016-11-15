@@ -1,17 +1,17 @@
 import stringifyError from 'stringify-error-message';
 import * as types from '../types';
 
-export const subscriptionStarted = collection =>
-  ({ type: types.SUBSCRIPTION_STARTED, collection });
+export const collectionModified = ({ collection, event, id, fields }) =>
+({ type: types.COLLECTION_MODIFIED, collection, event, id, fields });
 
-export const subscriptionModified = ({ collection, event, id, fields }) =>
-  ({ type: types.SUBSCRIPTION_MODIFIED, collection, event, id, fields });
+export const subscriptionStarted = ({ subscription }) =>
+  ({ type: types.SUBSCRIPTION_STARTED, subscription });
 
-export const subscriptionReady = collection =>
-  ({ type: types.SUBSCRIPTION_READY, collection });
+export const subscriptionReady = ({ subscription }) =>
+  ({ type: types.SUBSCRIPTION_READY, subscription });
 
-export const subscriptionFailed = (collection, errorObj) =>
-  ({ type: types.SUBSCRIPTION_FAILED, collection, error: stringifyError(errorObj) });
+export const subscriptionFailed = ({ subscription, error }) =>
+  ({ type: types.SUBSCRIPTION_FAILED, subscription, error: stringifyError(error) });
 
-export const subscriptionStopped = collection =>
-  ({ type: types.SUBSCRIPTION_STOPPED, collection });
+export const subscriptionStopped = ({ subscription }) =>
+  ({ type: types.SUBSCRIPTION_STOPPED, subscription });
