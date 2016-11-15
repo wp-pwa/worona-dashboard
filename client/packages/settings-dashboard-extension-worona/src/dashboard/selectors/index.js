@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { findIndex } from 'lodash';
-import { flow, map, sortBy, groupBy } from 'lodash/fp';
+import { flow, map, sortBy, groupBy, filter } from 'lodash/fp';
 import * as deps from '../deps';
 
 export const getSettingsLiveCollection = state => state.settings.collections.live.collection;
@@ -15,6 +15,7 @@ export const getCategories = createSelector(
   getSettingsPackageCollection,
   (settings, packages) => flow(
     map(item => packages[findIndex(packages, pkg => pkg.name === item.woronaInfo.name)]),
+    filter(item => typeof item !== 'undefined'),
     sortBy(item => item.menu.order),
     groupBy(item => item.menu.category)
   )(settings)

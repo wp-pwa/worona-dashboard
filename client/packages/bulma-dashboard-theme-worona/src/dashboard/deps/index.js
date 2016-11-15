@@ -35,8 +35,8 @@ export const selectors = {
   get getEditSiteError() { return dep('sites', 'selectors', 'getEditSiteError'); },
   get getAllSites() { return dep('sites', 'selectors', 'getAllSites'); },
   get getSelectedSite() { return dep('sites', 'selectors', 'getSelectedSite'); },
-  get getSiteSettingsByCategory() {
-    return dep('settings', 'selectors', 'getSiteSettingsByCategory');
+  get getCategories() {
+    return dep('settings', 'selectors', 'getCategories');
   },
   get getSelectedSiteId() { return dep('router', 'selectors', 'getSelectedSiteId'); },
   get getSelectedService() { return dep('router', 'selectors', 'getSelectedService'); },

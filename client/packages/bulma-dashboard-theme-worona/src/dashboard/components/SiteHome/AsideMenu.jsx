@@ -1,21 +1,22 @@
 import React from 'react';
+import { map } from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import * as deps from '../../deps';
 
-let MenuEntry = ({ name, target, selectedSiteId, selectedService }) => (
+let MenuEntry = ({ niceName, name, selectedSiteId, selectedService }) => (
   <li>
     <Link
-      to={`/site/${selectedSiteId}/${selectedService}/${target}`}
+      to={`/site/${selectedSiteId}/${selectedService}/${name}`}
       role="button" activeClassName="is-active"
     >
-      {name}
+      {niceName}
     </Link>
   </li>
 );
 MenuEntry.propTypes = {
+  niceName: React.PropTypes.string,
   name: React.PropTypes.string,
-  target: React.PropTypes.string,
   selectedSiteId: React.PropTypes.string.isRequired,
   selectedService: React.PropTypes.string.isRequired,
 };
@@ -28,13 +29,13 @@ const mapStateToMenuEntryProps = (state) => ({
 MenuEntry = connect(mapStateToMenuEntryProps)(MenuEntry);
 
 const MenuCategory = ({ name, entries }) => (
-  <div name={name}>
+  <div>
     <p className="menu-label">
       {name}
     </p>
     <ul className="menu-list">
-      {entries.map((entry, index) =>
-        (<MenuEntry key={index} tabindex={index + 4} {...entry} />)
+      {entries.map(entry =>
+        (<MenuEntry key={entry.id} {...entry} />)
       )}
     </ul>
   </div>
@@ -49,8 +50,8 @@ const AsideMenu = ({ settings }) => (
   <div className="column is-hidden-mobile is-2-desktop">
     <aside className="menu">
       {
-        settings.map(({ name, entries }, index) =>
-          <MenuCategory key={index} name={name} entries={entries} />
+        map(settings, (entries, name) =>
+          <MenuCategory key={name} name={name} entries={entries} />
         )
       }
     </aside>
@@ -58,11 +59,20 @@ const AsideMenu = ({ settings }) => (
 );
 
 AsideMenu.propTypes = {
-  settings: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  settings: React.PropTypes.objectOf(
+    React.PropTypes.arrayOf(
+      React.PropTypes.shape({
+        name: React.PropTypes.string.isRequired,
+        namespace: React.PropTypes.string.isRequired,
+        niceName: React.PropTypes.string.isRequired,
+        type: React.PropTypes.oneOf(['extension', 'theme']).isRequired,
+      })
+    )
+  ).isRequired,
 };
 
 const mapStateToMenuProps = (state) => ({
-  settings: [],
+  settings: deps.selectors.getCategories(state),
 });
 
 export default connect(mapStateToMenuProps)(AsideMenu);
