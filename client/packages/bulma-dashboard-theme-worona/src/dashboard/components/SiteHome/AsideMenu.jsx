@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import * as deps from '../../deps';
 
-let MenuEntry = ({ niceName, name, selectedSiteId, selectedService }) => (
-  <li>
+let MenuEntry = ({ niceName, name, selectedSiteId, selectedService, selectedPackageName }) => (
+  <li className={selectedPackageName === name && 'is-active'}>
     <Link
       to={`/site/${selectedSiteId}/${selectedService}/${name}`}
       role="button" activeClassName="is-active"
@@ -19,11 +19,13 @@ MenuEntry.propTypes = {
   name: React.PropTypes.string,
   selectedSiteId: React.PropTypes.string.isRequired,
   selectedService: React.PropTypes.string.isRequired,
+  selectedPackageName: React.PropTypes.string.isRequired,
 };
 
 const mapStateToMenuEntryProps = (state) => ({
   selectedSiteId: deps.selectors.getSelectedSiteId(state),
   selectedService: deps.selectors.getSelectedService(state),
+  selectedPackageName: deps.selectors.getSelectedPackageName(state),
 });
 
 MenuEntry = connect(mapStateToMenuEntryProps)(MenuEntry);

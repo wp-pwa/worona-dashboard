@@ -13,7 +13,7 @@ let Tab = ({ name, target, service, selectedSiteId, selectedService, icon, disab
   });
   return (
     <li className={liClass}>
-      <Link to={`/site/${selectedSiteId}/${target}`} activeClassName="is-active">
+      <Link to={`/site/${selectedSiteId}/${target}`}>
         <Icon code={icon} />
         <span className="is-hidden-mobile">{name}</span>
       </Link>

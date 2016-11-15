@@ -13,7 +13,6 @@ export const getSettingsPackageIsReady = state => state.settings.collections.pac
 export const getCategories = createSelector(
   getSettingsLiveCollection,
   getSettingsPackageCollection,
-  deps.selectors.getDevelopmentPackages,
   (settings, packages, development) => {
     const normal = flow(
       map(item => packages[findIndex(packages, pkg => pkg.name === item.woronaInfo.name)]),
