@@ -61,16 +61,7 @@ const AsideMenu = ({ settings }) => (
 );
 
 AsideMenu.propTypes = {
-  settings: React.PropTypes.objectOf(
-    React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        name: React.PropTypes.string.isRequired,
-        namespace: React.PropTypes.string.isRequired,
-        niceName: React.PropTypes.string.isRequired,
-        type: React.PropTypes.oneOf(['extension', 'theme']).isRequired,
-      })
-    )
-  ).isRequired,
+  settings: React.PropTypes.objectOf(React.PropTypes.array).isRequired,
 };
 
 const mapStateToMenuProps = (state) => ({

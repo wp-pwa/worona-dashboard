@@ -42,3 +42,14 @@ export const getSelectedSiteSettings = (state) => {
   const currentId = deps.selectors.getSelectedSiteId(state);
   return getSiteSettings(currentId);
 };
+
+export const getSelectedPackage = createSelector(
+  deps.selectors.getSelectedPackageName,
+  getPackageCollection,
+  getDevPackageCollection,
+  (name, packages, devPackages) => {
+    const allPackages = [...packages, ...devPackages];
+    const index = findIndex(allPackages, pkg => pkg.name === name);
+    return allPackages[index] || {};
+  }
+);
