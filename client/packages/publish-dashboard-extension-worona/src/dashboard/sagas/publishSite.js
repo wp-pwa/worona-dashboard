@@ -30,6 +30,22 @@ function getAllImagesPromise(images) {
   return Promise.all(imageRequests);
 }
 
+function generateAppId(rawUrl) {
+  const noProtocolURI = new RegExp('http[s]?://');
+  const noDoubleSlashesRegExp = new RegExp('/[/]+', 'g');
+  let url = rawUrl.toLowerCase();
+  url = url.replace(noProtocolURI, ''); // remove http(s)://
+  url = url.replace(noDoubleSlashesRegExp, '/'); // site//something -> site/something
+  if (url[url.length - 1] === '/') { // remove trailing slash/
+    url = url.slice(0, -1);
+  }
+  const directories = url.split('/');
+  const domains = directories.shift().split('.');
+  domains.reverse();
+  const appId = domains.concat(directories.concat(['app'])).join('.');
+  return appId;
+}
+
 function createZipFile(siteId, site, user, images, imagesData) {
   /* Creating the zip file */
   const zip = new JSZip();
@@ -40,7 +56,7 @@ function createZipFile(siteId, site, user, images, imagesData) {
 
   /* Generate config.xml file */
   const configParams = {
-    appId: siteId,
+    appId: generateAppId(site.url),
     appName: site.name,
     siteURL: site.url,
     userEmail: user.email,
