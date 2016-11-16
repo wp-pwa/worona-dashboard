@@ -4,7 +4,7 @@ const newItem = (id, fields) => Object.assign({}, { id }, fields);
 const changeItem = (oldFields, newFields) => Object.assign({}, oldFields, newFields);
 
 export const collectionCreator = collection => (state = [], action) => {
-  if ((action.type === types.SUBSCRIPTION_MODIFIED) && (action.collection === collection)) {
+  if ((action.type === types.COLLECTION_MODIFIED) && (action.collection === collection)) {
     const { id, fields } = action;
     switch (action.event) {
       case 'added': {
@@ -27,7 +27,7 @@ export const collectionCreator = collection => (state = [], action) => {
 };
 
 export const objectCreator = object => (state = {}, action) => {
-  if ((action.type === types.SUBSCRIPTION_MODIFIED) && (action.collection === object)) {
+  if ((action.type === types.COLLECTION_MODIFIED) && (action.collection === object)) {
     const { id, fields } = action;
     switch (action.event) {
       case 'added':
@@ -42,8 +42,8 @@ export const objectCreator = object => (state = {}, action) => {
   return state;
 };
 
-export const isReadyCreator = collection => (state = false, action) => {
-  if (action.collection === collection) {
+export const isReadyCreator = subscription => (state = false, action) => {
+  if (action.subscription === subscription) {
     switch (action.type) {
       case types.SUBSCRIPTION_READY:
         return true;
