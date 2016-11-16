@@ -27,7 +27,10 @@
     "namespace": "development",
     "type": "extension",
     "services": [
-      "dashboard"
+      "dashboard",
+      "app",
+      "fbia",
+      "amp"
     ],
     "authors": [
       "luis@worona.org"

@@ -1,5 +1,5 @@
 /* eslint-disable react/prefer-stateless-function, react/no-multi-comp, react/prop-types */
-/* eslint-disable prefer-template, react/prefer-es6-class */
+/* eslint-disable prefer-template, react/prefer-es6-class, react/jsx-filename-extension */
 import React from 'react';
 import { dep } from 'worona-deps';
 import { connect } from 'react-redux';
@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
   themeName: deps.selectors.getThemeName(state),
 });
 
-class ThemeLoader extends React.Component {
+class ThemeLoaderClass extends React.Component {
   render() {
     const Theme = dep('theme', 'components', 'Theme');
     return (
@@ -22,7 +22,7 @@ class ThemeLoader extends React.Component {
     );
   }
 }
-ThemeLoader = connect(mapStateToProps)(ThemeLoader);
+const ThemeLoader = connect(mapStateToProps)(ThemeLoaderClass);
 
 class Entry extends React.Component {
   render() {
@@ -66,7 +66,8 @@ export const routes = (store) => (
     />
     <Route path="profile" component={Entry} wrapped="Profile" onEnter={requireAuth(store)} />
     <Route path="sites" component={Entry} wrapped="Sites" onEnter={requireAuth(store)} />
-    <Redirect from="/site/:siteId/" to="/site/:siteId/app/general" />
+    <Redirect from="/site/:siteId/app" to="/site/:siteId/app/general-app-extension-worona" />
+    <Redirect from="/site/:siteId/fbia" to="/site/:siteId/fbia/general-fbia-extension-worona" />
     <Route
       path="/site/:siteId/:service/:packageName" component={Entry} wrapped="SiteHome"
       onEnter={requireAuth(store)}

@@ -31,6 +31,7 @@ Meteor.publish('packages', function settingsPublish(env = 'prod') {
         niceName: 1,
         menu: 1,
         type: 1,
+        services: 1,
       } },
     );
   });

@@ -16,6 +16,7 @@ packageDevelopment({
       category: 'Development',
       order: 10,
     },
+    services: pkgJson.worona.services,
   },
   ...pkg,
 });

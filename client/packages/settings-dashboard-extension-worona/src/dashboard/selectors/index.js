@@ -12,12 +12,15 @@ export const getPackageIsReady = state => state.settings.collections.packages.is
 export const getDevPackageCollection = state => state.settings.collections.devPackages.collection;
 
 export const getCategories = createSelector(
+  deps.selectors.getSelectedService,
   getSettingsLiveCollection,
   getPackageCollection,
   getDevPackageCollection,
-  (settings, packages, devPackages) => {
+  (service, settings, packages, devPackages) => {
     const pkgsWithSettings = flow(
-      map(item => packages[findIndex(packages, pkg => pkg.name === item.woronaInfo.name)]),
+      map(item => packages[findIndex(packages, pkg =>
+        pkg.name === item.woronaInfo.name && pkg.services.indexOf(service) !== -1
+      )]),
       filter(item => typeof item !== 'undefined'),
       sortBy(item => item.menu.order),
       groupBy(item => item.menu.category)
