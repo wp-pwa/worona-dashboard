@@ -9,6 +9,7 @@
   "redux-saga",
   "redux-saga/effects",
   "redux-router",
+  "redux-form",
   "reselect",
   "i18next",
   "i18next-xhr-backend",
