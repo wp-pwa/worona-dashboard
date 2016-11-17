@@ -61,12 +61,12 @@ export default ({ appId, appName,
         <icon   src="www/res/icon/android/xhdpi-icon.png"              qualifier="xhdpi" />
         <icon   src="www/res/icon/android/xxhdpi-icon.png"             qualifier="xxhdpi" />
         <icon   src="www/res/icon/android/xxxhdpi-icon.png"            qualifier="xxxhdpi" />
-        <splash src="www/res/screen/android/ldpi-screen.png"           qualifier="ldpi" />
-        <splash src="www/res/screen/android/mdpi-screen.png"           qualifier="mdpi" />
-        <splash src="www/res/screen/android/hdpi-screen.png"           qualifier="hdpi" />
-        <splash src="www/res/screen/android/xhdpi-screen.png"          qualifier="xhdpi" />
-        <splash src="www/res/screen/android/xxhdpi-screen.png"         qualifier="xxhdpi" />
-        <splash src="www/res/screen/android/xxxhdpi-screen.png"        qualifier="xxxhdpi" />
+        <splash src="www/res/screen/android/ldpi.png"                  qualifier="ldpi" />
+        <splash src="www/res/screen/android/mdpi.png"                  qualifier="mdpi" />
+        <splash src="www/res/screen/android/hdpi.png"                  qualifier="hdpi" />
+        <splash src="www/res/screen/android/xhdpi.png"                 qualifier="xhdpi" />
+        <splash src="www/res/screen/android/xxhdpi.png"                qualifier="xxhdpi" />
+        <splash src="www/res/screen/android/xxxhdpi.png"               qualifier="xxxhdpi" />
     </platform>
 
     <platform name="ios">
