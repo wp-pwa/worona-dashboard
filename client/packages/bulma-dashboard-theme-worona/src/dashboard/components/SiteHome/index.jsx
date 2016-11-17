@@ -12,6 +12,7 @@ import * as deps from '../../deps';
 
 import ServiceTabs from './ServiceTabs';
 import AsideMenu from './AsideMenu';
+import RootContainer from './RootContainer';
 
 
 /* Header */
@@ -58,7 +59,7 @@ const SiteHome = () => (
     <Main waitForSubscriptions={[deps.selectors.getIsReadySelectedSite]}>
       <div className="columns is-mobile" >
         <AsideMenu />
-        {/* <PackageContent /> */}
+        <RootContainer />
       </div>
     </Main>
 

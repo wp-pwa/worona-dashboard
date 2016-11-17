@@ -6,14 +6,14 @@ import * as deps from '../../deps';
 
 import Icon from '../elements/Icon';
 
-let Tab = ({ name, target, service, selectedSiteId, selectedService, icon, disabled }) => {
+let Tab = ({ name, service, selectedSiteId, selectedService, icon, disabled }) => {
   const liClass = cn({
     'is-disabled': disabled,
     'is-active': selectedService === service,
   });
   return (
     <li className={liClass}>
-      <Link to={`/site/${selectedSiteId}/${target}`} activeClassName="is-active">
+      <Link to={`/site/${selectedSiteId}/${service}`}>
         <Icon code={icon} />
         <span className="is-hidden-mobile">{name}</span>
       </Link>
@@ -23,7 +23,6 @@ let Tab = ({ name, target, service, selectedSiteId, selectedService, icon, disab
 
 Tab.propTypes = {
   name: React.PropTypes.string.isRequired,
-  target: React.PropTypes.string.isRequired,
   selectedSiteId: React.PropTypes.string.isRequired,
   selectedService: React.PropTypes.string.isRequired,
   icon: React.PropTypes.string,
@@ -42,9 +41,9 @@ const ServiceTabs = () => (
     <div className="container">
       <div className="tabs is-boxed">
         <ul>
-          <Tab name="Native & Web App" target="app/general" service="app" icon="mobile" />
-          <Tab name="Instant Articles" target="fbia/general" service="fbia" icon="facebook" />
-          <Tab name="AMP" target="amp/general" service="amp" icon="google" disabled />
+          <Tab name="Native & Web App" service="app" icon="mobile" />
+          <Tab name="Instant Articles" service="fbia" icon="facebook" />
+          <Tab name="AMP" service="amp" icon="google" disabled />
         </ul>
       </div>
     </div>

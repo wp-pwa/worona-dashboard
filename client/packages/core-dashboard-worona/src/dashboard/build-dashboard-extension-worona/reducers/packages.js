@@ -1,26 +1,28 @@
+import { getDevelopmentPackages } from 'worona-deps';
 import { combineReducers } from 'redux';
+import { map } from 'lodash';
 import update from 'react/lib/update';
 import * as types from '../types';
+
+const developmentPackages = getDevelopmentPackages();
 
 const defaultList = {
   'build-dashboard-extension-worona': {
     name: 'build-dashboard-extension-worona',
     namespace: 'build',
-    type: 'extension',
   },
   'loading-dashboard-theme-worona': {
     name: 'loading-dashboard-theme-worona',
     namespace: 'theme',
-    type: 'theme',
   },
   'routing-dashboard-extension-worona': {
     name: 'routing-dashboard-extension-worona',
     namespace: 'routing',
-    type: 'extension',
   },
 };
 
 const defaultDownloaded = [
+  ...map(developmentPackages, item => item.name),
   'build-dashboard-extension-worona',
   'loading-dashboard-theme-worona',
   'routing-dashboard-extension-worona',

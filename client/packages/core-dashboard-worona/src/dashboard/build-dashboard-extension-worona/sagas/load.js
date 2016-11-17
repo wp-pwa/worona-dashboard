@@ -1,7 +1,8 @@
 /* eslint-disable no-constant-condition */
 import { isProd, getSagas, getReducers, packageActivated, getDeps, waitForDeps,
   getDevelopmentPackages } from 'worona-deps';
-import { put, call, fork } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
+import { map } from 'lodash';
 import { takeEvery } from 'redux-saga';
 import { addReducer, startSaga, reloadReducers, removeReducer, stopSaga } from '../store';
 import * as types from '../types';
@@ -51,15 +52,9 @@ export function* packageUnloadSaga(pkg) {
   }
 }
 
-export function* addDevelopmentPackagesSaga() {
-  const pkgs = getDevelopmentPackages();
-  yield pkgs.map(pkg => put(actions.packageLoadRequested({ pkg })));
-}
-
 export default function* sagas() {
   yield [
     takeEvery(types.PACKAGE_LOAD_REQUESTED, packageLoadSaga),
     takeEvery(types.PACKAGE_DEACTIVATION_REQUESTED, packageUnloadSaga),
-    fork(addDevelopmentPackagesSaga),
   ];
 }

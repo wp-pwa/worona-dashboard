@@ -1,12 +1,37 @@
 import { createSelector } from 'reselect';
+import { findIndex } from 'lodash';
+import { flow, map, sortBy, groupBy, filter } from 'lodash/fp';
 import * as deps from '../deps';
 
-export const getCategories = () => ([
-  { name: 'Settings', order: 0 },
-  { name: 'Appearance', order: 100 },
-  { name: 'Extensions', order: 200 },
-  { name: 'Publish', order: 500 },
-]);
+export const getSettingsLiveCollection = state => state.settings.collections.live.collection;
+export const getSettingsLiveIsReady = state => state.settings.collections.live.isReady;
+export const getSettingsPreviewCollection = state => state.settings.collections.preview.collection;
+export const getSettingsPreviewIsReady = state => state.settings.collections.preview.isReady;
+export const getPackageCollection = state => state.settings.collections.packages.collection;
+export const getPackageIsReady = state => state.settings.collections.packages.isReady;
+export const getDevPackageCollection = state => state.settings.collections.devPackages.collection;
+
+export const getCategories = createSelector(
+  deps.selectors.getSelectedService,
+  getSettingsLiveCollection,
+  getPackageCollection,
+  getDevPackageCollection,
+  (service, settings, packages, devPackages) => {
+    const pkgsWithSettings = flow(
+      map(item => packages[findIndex(packages, pkg =>
+        pkg.name === item.woronaInfo.name && pkg.services.indexOf(service) !== -1
+      )]),
+      filter(item => typeof item !== 'undefined'),
+      sortBy(item => item.menu.order),
+      groupBy(item => item.menu.category)
+    )(settings);
+    const pkgsFromDev = flow(
+      sortBy(item => item.menu.order),
+      groupBy(item => item.menu.category)
+    )(devPackages);
+    return { ...pkgsWithSettings, ...pkgsFromDev };
+  }
+);
 
 export const getAllSettings = state => state.settings.collection;
 export const getIsReadySettings = state => state.settings.isReady;
@@ -21,11 +46,13 @@ export const getSelectedSiteSettings = (state) => {
   return getSiteSettings(currentId);
 };
 
-// export const getSiteSettingsByCategory = id => createSelector(
-//   getCategories,
-//   getSiteSettings(id),start
-//   (categories, settings) => categories.map(({ name }) => ({
-//     name,
-//     entries: settings.filter(entry => entry.categoryName === name),
-//   }))
-// );
+export const getSelectedPackage = createSelector(
+  deps.selectors.getSelectedPackageName,
+  getPackageCollection,
+  getDevPackageCollection,
+  (name, packages, devPackages) => {
+    const allPackages = [...packages, ...devPackages];
+    const index = findIndex(allPackages, pkg => pkg.name === name);
+    return allPackages[index] || {};
+  }
+);
