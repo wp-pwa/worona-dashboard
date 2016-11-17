@@ -35,15 +35,17 @@ export const selectors = {
   get getEditSiteError() { return dep('sites', 'selectors', 'getEditSiteError'); },
   get getAllSites() { return dep('sites', 'selectors', 'getAllSites'); },
   get getSelectedSite() { return dep('sites', 'selectors', 'getSelectedSite'); },
-  get getSiteSettingsByCategory() {
-    return dep('settings', 'selectors', 'getSiteSettingsByCategory');
+  get getCategories() {
+    return dep('settings', 'selectors', 'getCategories');
   },
   get getSelectedSiteId() { return dep('router', 'selectors', 'getSelectedSiteId'); },
   get getSelectedService() { return dep('router', 'selectors', 'getSelectedService'); },
+  get getSelectedPackageName() { return dep('router', 'selectors', 'getSelectedPackageName'); },
   get getURLQueries() { return dep('router', 'selectors', 'getURLQueries'); },
   get getNewSiteInfo() { return dep('sites', 'selectors', 'getNewSiteInfo'); },
   get getIsReadySites() { return dep('sites', 'selectors', 'getIsReadySites'); },
   get getIsReadySelectedSite() { return dep('sites', 'selectors', 'getIsReadySelectedSite'); },
   get getIsReadySettings() { return dep('settings', 'selectors', 'getIsReadySettings'); },
+  get getSelectedPackage() { return dep('settings', 'selectors', 'getSelectedPackage'); },
   get getCheckSite() { return dep('sites', 'selectors', 'getCheckSite'); },
 };

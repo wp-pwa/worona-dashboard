@@ -6,7 +6,22 @@ import { spawn } from 'child-process-promise';
 const start = async () => {
   const env = config.env || 'dev';
   const location = config.location || 'local';
+
+  // Reset dist folder.
   rimrafSync('dist/**/*');
+
+  // Update all packages.
+  console.log('Checking if you are up-to-date with npm. Please wait...\n');
+  const recursiveInstall = spawn('../node_modules/.bin/npm-recursive-install');
+  const childProcess = recursiveInstall.childProcess;
+  childProcess.stdout.on('data', data => {
+    if (data.toString() !== '\n') console.log(data.toString().replace('...\n', '...'));
+  });
+  childProcess.stderr.on('data', data => {
+    if (/ERR/.test(data.toString())) console.log(data.toString());
+  });
+  await recursiveInstall;
+  console.log('\nEverything is fine. Let\'s run webpack.\n');
 
   // Generate vendors.
   await spawn('./node_modules/.bin/webpack', ['--config', 'webpack.config.js', '--progress',

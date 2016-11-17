@@ -1,6 +1,6 @@
 {
   "name": "subscriptions-dashboard-extension-worona",
-  "version": "1.2.1",
+  "version": "1.2.4",
   "description": "Extension for the Worona Dashboard to manage subscriptions.",
   "scripts": {
     "test": "NODE_PATH=../core-dashboard-worona/node_modules ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
@@ -26,7 +26,7 @@
     "slug": "subscriptions",
     "namespace": "subscriptions",
     "type": "extension",
-    "service": "dashboard",
+    "services": ["dashboard"],
     "authors": [
       "luis@worona.org"
     ],

@@ -1,6 +1,6 @@
 {
   "name": "settings-dashboard-extension-worona",
-  "version": "1.2.1",
+  "version": "1.2.4",
   "description": "Extension for managing Worona settings.",
   "scripts": {
     "test": "NODE_PATH=../core-dashboard-worona/node_modules ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
@@ -25,7 +25,7 @@
     "slug": "settings",
     "namespace": "settings",
     "type": "extension",
-    "service": "dashboard",
+    "services": ["dashboard"],
     "authors": [
       "abel@worona.org"
     ],
