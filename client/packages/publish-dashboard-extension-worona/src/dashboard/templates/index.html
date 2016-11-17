@@ -33,15 +33,9 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
-        app.initialize();
-        AppSettings.get(
-        	function(id) {
-        		document.getElementById('title').html+= JSON.stringify(id));
-        	},
-        	function(error) {
-            	alert("Error getting the site id! " + JSON.stringify(error));
-          }, ["siteId"]);
+      app.initialize();
     </script>
+
 </body>
 
 </html>

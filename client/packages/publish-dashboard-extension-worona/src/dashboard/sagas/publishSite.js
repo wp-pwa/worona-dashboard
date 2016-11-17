@@ -4,11 +4,14 @@ import JSZipUtils from 'jszip-utils';
 import { takeLatest } from 'redux-saga';
 import { call, put, select } from 'redux-saga/effects';
 
+import indexHtml from 'raw!../templates/index.html';
+import indexJs from 'raw!../templates/index.js';
 import * as deps from '../deps';
 import * as types from '../types';
 import * as actions from '../actions';
 import generateConfigXML from '../templates/config.xml.js';
 import generateImagesArray from '../templates/images.js';
+
 
 function getImagesArray(siteId, iconId) {
   const baseUrl = (iconId) ? // If user doesn't provide an icon we user Worona images.
@@ -52,7 +55,7 @@ function createZipFile(siteId, site, user, images, imagesData) {
   const www = zip.folder('www');
 
   /* Generate index.html file */
-  www.file('index.html', '<html>Hello world</html>');
+  www.file('index.html', indexHtml);
 
   /* Generate config.xml file */
   const configParams = {
@@ -65,6 +68,10 @@ function createZipFile(siteId, site, user, images, imagesData) {
   };
   const xmlFile = generateConfigXML(configParams);
   www.file('config.xml', xmlFile);
+
+  /* javascript code */
+  const js = www.folder('js');
+  js.file('index.js', indexJs);
 
   /* Default icon */
   www.file('icon.png', imagesData[0], { binary: true });

@@ -28,7 +28,7 @@ export default ({ appId, appName,
 
     <!-- Plugins -->
     <!-- Core plugins -->
-    <plugin name="cordova-plugin-appsettings"              source="npm" spec="~1.0.2" />
+    <plugin name="cordova-plugin-appsettings"         source="npm" spec="~1.0.2" />
 
     <!--
     <plugin name="cordova-plugin-battery-status"      source="npm" spec="~1.1.1" />
