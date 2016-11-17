@@ -73,18 +73,13 @@ function createZipFile(siteId, site, user, images, imagesData) {
   const js = www.folder('js');
   js.file('index.js', indexJs);
 
-  /* Default icon */
-  www.file('icon.png', imagesData[0], { binary: true });
-
   /* Platform icons and screens */
   images.forEach((item, index) => {
-    if (item.platform) {
-      www.file(
-        `res/${item.type}/${item.platform}/${item.fileName}`,
-        imagesData[index],
-        { binary: true }
-      );
-    }
+    www.file(
+      `res/${item.type}/${item.platform}/${item.fileName}`,
+      imagesData[index],
+      { binary: true }
+    );
   });
 
   return zip;

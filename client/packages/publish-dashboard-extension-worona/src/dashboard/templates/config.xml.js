@@ -54,7 +54,6 @@ export default ({ appId, appName,
     -->
 
     <!-- Define app icon and splashscreen for each platform. -->
-    <icon src="icon.png" />
     <platform name="android">
         <icon   src="www/res/icon/android/ldpi-icon.png"               qualifier="ldpi" />
         <icon   src="www/res/icon/android/mdpi-icon.png"               qualifier="mdpi" />

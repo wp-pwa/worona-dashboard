@@ -1,11 +1,5 @@
 export default (baseUrl) => [
   /* Icons */
-    // Default
-  {
-    fileName: 'icon.png',
-    type: 'icon',
-    url: `${baseUrl}?fit=crop&h=128&w=128&fm=png`,
-  },
     // Android
   {
     type: 'icon',
