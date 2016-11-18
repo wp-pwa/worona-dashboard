@@ -18,17 +18,26 @@ export default ({ appId, appName,
     <!-- Define the main entry-point to the application -->
     <content src="index.html" />
 
-    <!-- siteId preference. -->
-    <preference name="siteId" value="${siteId}" />
-
+    <!-- General preferences -->
     <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
     <preference name="android-minSdkVersion" value="14" />
     <!-- Define a specific version of PhoneGap to build into your app. -->
-    <!-- <preference name="phonegap-version"       value="cli-6.0.0" /> -->
+    <preference name="phonegap-version"       value="cli-6.3.0" />
+    <preference name="orientation"            value="all" />
+
+
 
     <!-- Plugins -->
-    <!-- Core plugins -->
+    <!-- General plugins -->
     <plugin name="cordova-plugin-appsettings"         source="npm" spec="~1.0.2" />
+    <!-- siteId preference. -->
+    <preference name="siteId" value="${siteId}" />
+
+    <plugin name="cordova-plugin-splashscreen"        source="npm" />
+    <preference name="SplashScreenDelay"              value="3000" />
+    <preference name="AutoHideSplashScreen"           value="true" />
+    <preference name="SplashScreen"                   value="www/res/screen/android" />
+    <preference name="SplashMaintainAspectRatio"      value="true" />
 
     <!--
     <plugin name="cordova-plugin-battery-status"      source="npm" spec="~1.1.1" />
@@ -61,12 +70,12 @@ export default ({ appId, appName,
         <icon   src="www/res/icon/android/xhdpi-icon.png"              qualifier="xhdpi" />
         <icon   src="www/res/icon/android/xxhdpi-icon.png"             qualifier="xxhdpi" />
         <icon   src="www/res/icon/android/xxxhdpi-icon.png"            qualifier="xxxhdpi" />
-        <splash src="www/res/screen/android/ldpi.png"                  qualifier="ldpi" />
-        <splash src="www/res/screen/android/mdpi.png"                  qualifier="mdpi" />
-        <splash src="www/res/screen/android/hdpi.png"                  qualifier="hdpi" />
-        <splash src="www/res/screen/android/xhdpi.png"                 qualifier="xhdpi" />
-        <splash src="www/res/screen/android/xxhdpi.png"                qualifier="xxhdpi" />
-        <splash src="www/res/screen/android/xxxhdpi.png"               qualifier="xxxhdpi" />
+        <splash src="www/res/screen/android/ldpi.png"                  density="ldpi" />
+        <splash src="www/res/screen/android/mdpi.png"                  density="mdpi" />
+        <splash src="www/res/screen/android/hdpi.png"                  density="hdpi" />
+        <splash src="www/res/screen/android/xhdpi.png"                 density="xhdpi" />
+        <splash src="www/res/screen/android/xxhdpi.png"                density="xxhdpi" />
+        <splash src="www/res/screen/android/xxxhdpi.png"               density="xxxhdpi" />
     </platform>
 
     <platform name="ios">
