@@ -40,11 +40,11 @@
   "dependencies": {
     "animate.css": "^3.5.1",
     "bulma": "^0.1.0",
-    "font-awesome": "^4.6.3",
-    "moment": "^2.13.0",
-    "react-dropzone-s3-uploader": "^0.7.3",
-    "redux-form": "^6.0.5",
+    "font-awesome": "^4.7.0",
+    "moment": "^2.16.0",
+    "react-dropzone-s3-uploader": "^0.8.0",
+    "redux-form": "^6.2.0",
     "url-regexp": "^1.0.2",
-    "velocity-react": "^1.1.5"
+    "velocity-react": "^1.1.11"
   }
 }
