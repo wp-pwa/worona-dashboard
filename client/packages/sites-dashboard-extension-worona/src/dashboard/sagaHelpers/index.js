@@ -5,7 +5,7 @@ import * as selectors from '../selectors';
 export function* waitForReadySelectedSite() {
   let ready = yield select(selectors.getIsReadySelectedSite);
   while (!ready) {
-    yield take(deps.types.SUBSCRIPTION_MODIFIED);
+    yield take(deps.types.COLLECTION_MODIFIED);
     ready = yield select(selectors.getIsReadySelectedSite);
   }
   return ready;

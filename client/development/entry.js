@@ -1,7 +1,7 @@
 import 'worona-polyfills';
 import { packageDevelopment } from 'worona-deps';
-import pkg from './test-development-package-worona/src/dashboard';
 import pkgJson from './test-development-package-worona/package.json';
+import * as pkg from './test-development-package-worona/src/dashboard';
 
 packageDevelopment({
   name: pkgJson.name,

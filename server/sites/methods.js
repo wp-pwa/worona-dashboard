@@ -91,4 +91,24 @@ Meteor.methods({
     const modifiedAt = new Date();
     return sites.update(_id, { $set: { name, url, modifiedAt } });
   },
+  setSiteIcon({ _id, fileId }) {
+    check(_id, String);
+    check(fileId, String);
+
+    const userId = this.userId;
+    if (!userId) {
+      return new Meteor.Error(errors.NOT_LOGGED_IN);
+    }
+
+    const site = sites.findOne({ _id });
+    if (!site) {
+      return new Meteor.Error('Site ID not found.');
+    }
+
+    if (site.userIds.indexOf(userId) < 0) {
+      return new Meteor.Error('Current user doesn\'t own the selected site');
+    }
+
+    return sites.update(_id, { $set: { iconId: fileId } });
+  },
 });

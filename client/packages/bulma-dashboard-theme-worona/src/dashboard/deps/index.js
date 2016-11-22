@@ -49,3 +49,13 @@ export const selectors = {
   get getSelectedPackage() { return dep('settings', 'selectors', 'getSelectedPackage'); },
   get getCheckSite() { return dep('sites', 'selectors', 'getCheckSite'); },
 };
+
+export const sagaHelpers = {
+  get waitForConnectionEstablished() {
+    return dep('accounts', 'sagaHelpers', 'waitForConnectionEstablished');
+  },
+};
+
+export const libs = {
+  get setSiteIcon() { return dep('sites', 'libs', 'setSiteIcon'); },
+};

@@ -9,6 +9,9 @@ export const sagaCreators = {
   get subscriptionWatcherCreator() {
     return dep('subscriptions', 'sagaCreators', 'subscriptionWatcherCreator');
   },
+  get collectionWatcherCreator() {
+    return dep('subscriptions', 'sagaCreators', 'collectionWatcherCreator');
+  },
 };
 
 export const selectors = {

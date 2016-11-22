@@ -14,9 +14,9 @@ import Main from '../Main';
 import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
 import TermsAndConditions from './TermsAndConditions';
-import Hero from '../elements/Hero';
-import Input from '../elements/Input';
-import Button from '../elements/Button';
+import Hero from '../../elements/Hero';
+import Input from '../../elements/Input';
+import Button from '../../elements/Button';
 
 import styles from './style.css';
 

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router';
-import Input from '../elements/Input';
-import Button from '../elements/Button';
+import Input from '../../elements/Input';
+import Button from '../../elements/Button';
 import * as deps from '../../deps';
 import { validate } from './validate';
 

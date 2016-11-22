@@ -8,8 +8,8 @@ import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
 import Main from '../Main';
-import Hero from '../elements/Hero';
-import EditSiteLink from '../elements/EditSiteLink';
+import Hero from '../../elements/Hero';
+import EditSiteLink from '../../elements/EditSiteLink';
 import Check from './Check';
 
 /* Header */

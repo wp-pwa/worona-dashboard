@@ -7,7 +7,7 @@ import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
 import Main from '../Main';
-import Hero from '../elements/Hero';
+import Hero from '../../elements/Hero';
 
 import SitesList from './SitesList';
 import AddSiteNav from './AddSiteNav';

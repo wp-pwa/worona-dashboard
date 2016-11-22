@@ -1,4 +1,4 @@
-import { takeLatest, delay } from 'redux-saga';
+import { takeLatest, takeEvery, delay } from 'redux-saga';
 import { call, put, select, fork, race } from 'redux-saga/effects';
 import request from 'superagent';
 import stringifyError from 'stringify-error-message';
@@ -91,14 +91,14 @@ export function* firstRouteIsCheckSite() {
 export function* redirectAfterCheckSiteWatcher(action) {
   const { siteId } = action;
   yield delay(1000);
-  yield call(deps.libs.push, `/site/${siteId}/`);
+  yield call(deps.libs.push, `/site/${siteId}/app/test-development-package-worona`);
 }
 
 export function* checkSiteWatcher() {
   yield [
     takeLatest(deps.types.ROUTER_DID_CHANGE, checkSiteRouterWatcher),
     takeLatest(types.CHECK_SITE_REQUESTED, checkSiteSaga),
-    // takeEvery(types.CHECK_SITE_SUCCEED, redirectAfterCheckSiteWatcher),
+    takeEvery(types.CHECK_SITE_SUCCEED, redirectAfterCheckSiteWatcher),
     fork(firstRouteIsCheckSite),
   ];
 }

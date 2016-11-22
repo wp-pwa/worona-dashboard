@@ -6,8 +6,8 @@ import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
 import Body from '../Body';
 import Main from '../Main';
-import Hero from '../elements/Hero';
-import EditSiteLink from '../elements/EditSiteLink';
+import Hero from '../../elements/Hero';
+import EditSiteLink from '../../elements/EditSiteLink';
 import * as deps from '../../deps';
 
 import ServiceTabs from './ServiceTabs';

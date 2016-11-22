@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import cn from 'classnames';
 
-import Icon from '../elements/Icon';
+import Icon from '../../elements/Icon';
 
 export const ExtLink = props => (
   <a {...props}>

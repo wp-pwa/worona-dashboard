@@ -5,11 +5,11 @@
 # but you can also edit it by hand.
 
 meteor-base@1.0.4             # Packages every Meteor app needs to have
-mongo@1.1.12_1                   # The database Meteor supports right now
+mongo@1.1.13                   # The database Meteor supports right now
 ecmascript@0.5.8_1              # Enable ECMAScript2015+ syntax in app code
 
-accounts-base@1.2.11
+accounts-base@1.2.13
 accounts-password@1.3.0
 aldeed:collection2
 peerlibrary:reactive-publish
-shell-server
+shell-server@0.2.1

@@ -14,6 +14,9 @@ export const reducerCreators = {
 };
 
 export const sagaCreators = {
+  get collectionWatcherCreator() {
+    return dep('subscriptions', 'sagaCreators', 'collectionWatcherCreator');
+  },
   get subscriptionWatcherCreator() {
     return dep('subscriptions', 'sagaCreators', 'subscriptionWatcherCreator');
   },
@@ -35,5 +38,5 @@ export const selectors = {
 
 export const types = {
   get ROUTER_DID_CHANGE() { return dep('router', 'types', 'ROUTER_DID_CHANGE'); },
-  get SUBSCRIPTION_MODIFIED() { return dep('subscriptions', 'types', 'SUBSCRIPTION_MODIFIED'); },
+  get COLLECTION_MODIFIED() { return dep('subscriptions', 'types', 'COLLECTION_MODIFIED'); },
 };
