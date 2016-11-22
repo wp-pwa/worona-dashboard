@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import cn from 'classnames';
 import * as deps from '../../deps';
 
-import Icon from '../elements/Icon';
+import Icon from '../../elements/Icon';
 
 let Tab = ({ name, service, selectedSiteId, selectedService, icon, disabled }) => {
   const liClass = cn({

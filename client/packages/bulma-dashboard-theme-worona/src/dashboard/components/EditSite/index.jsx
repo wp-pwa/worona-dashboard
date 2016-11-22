@@ -3,7 +3,7 @@ import React from 'react';
 import * as deps from '../../deps';
 
 import Header from '../Header';
-import Hero from '../elements/Hero';
+import Hero from '../../elements/Hero';
 import Body from '../Body';
 import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';

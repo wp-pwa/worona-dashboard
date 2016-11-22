@@ -64,9 +64,6 @@ export const routes = (store) => (
     <Route
       path="edit-site/:siteId" component={Entry} wrapped="EditSite" onEnter={requireAuth(store)}
     />
-    <Route
-      path="publish/:siteId" component={Entry} wrapped="Publish" onEnter={requireAuth(store)}
-    />
     <Route path="sites" component={Entry} wrapped="Sites" onEnter={requireAuth(store)} />
     <Redirect from="/site/:siteId/app" to="/site/:siteId/app/general-app-extension-worona" />
     <Redirect from="/site/:siteId/fbia" to="/site/:siteId/fbia/general-fbia-extension-worona" />

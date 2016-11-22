@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../elements/Icon';
+import Icon from '../../elements/Icon';
 import { Link } from 'react-router';
 
 const AddSiteNav = () => (

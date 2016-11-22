@@ -6,4 +6,3 @@ export { default as Sites } from './Sites';
 export { default as SiteHome } from './SiteHome';
 export { default as CheckSite } from './CheckSite';
 export { default as EditSite } from './EditSite';
-export { default as Publish } from './Publish';

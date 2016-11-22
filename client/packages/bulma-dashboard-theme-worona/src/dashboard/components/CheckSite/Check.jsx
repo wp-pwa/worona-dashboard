@@ -5,8 +5,8 @@ import { flow } from 'lodash/fp';
 import { Link } from 'react-router';
 
 import * as deps from '../../deps';
-import Icon from '../elements/Icon';
-import Button from '../elements/Button';
+import Icon from '../../elements/Icon';
+import Button from '../../elements/Button';
 
 /* Error Message */
 let Message = ({ checkType, color, t, site }) => {

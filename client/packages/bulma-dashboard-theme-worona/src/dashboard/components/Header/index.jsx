@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import cn from 'classnames';
 import styles from './style.css';
 
-import Hero from '../elements/Hero';
+import Hero from '../../elements/Hero';
 import TopNav from './TopNav';
 
 const Header = ({ isReady, children }) => {

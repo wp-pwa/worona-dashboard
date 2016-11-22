@@ -13,10 +13,6 @@ export default {
       name: 'profile-dashboard-extension-worona',
     },
     {
-      namespace: 'publish',
-      name: 'publish-dashboard-extension-worona',
-    },
-    {
       namespace: 'sites',
       name: 'sites-dashboard-extension-worona',
     },

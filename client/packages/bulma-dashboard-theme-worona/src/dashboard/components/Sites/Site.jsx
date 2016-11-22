@@ -4,8 +4,8 @@ import moment from 'moment';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as deps from '../../deps';
-import Icon from '../elements/Icon';
-import EditSiteLink from '../elements/EditSiteLink';
+import Icon from '../../elements/Icon';
+import EditSiteLink from '../../elements/EditSiteLink';
 import styles from './style.css';
 
 const Site = ({ name, url, date, id, deleteSite, status = {} }) => (

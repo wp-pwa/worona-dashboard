@@ -17,7 +17,6 @@ export const actions = {
   get deleteSiteRequested() { return dep('sites', 'actions', 'deleteSiteRequested'); },
   get checkSiteRequested() { return dep('sites', 'actions', 'checkSiteRequested'); },
   get editSiteRequested() { return dep('sites', 'actions', 'editSiteRequested'); },
-  get publishSiteRequested() { return dep('publish', 'actions', 'publishSiteRequested'); },
 };
 
 export const selectors = {

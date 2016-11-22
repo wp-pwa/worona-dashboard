@@ -4,9 +4,9 @@ import { reduxForm, Field } from 'redux-form';
 import { flow } from 'lodash/fp';
 import { Link } from 'react-router';
 import { translate } from 'react-i18next';
-import Input from '../elements/Input';
-import Button from '../elements/Button';
-import Icon from '../elements/Icon';
+import Input from '../../elements/Input';
+import Button from '../../elements/Button';
+import Icon from '../../elements/Icon';
 import * as deps from '../../deps';
 import { validate } from './validate';
 
