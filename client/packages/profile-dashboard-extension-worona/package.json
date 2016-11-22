@@ -1,0 +1,41 @@
+{
+  "name": "profile-dashboard-extension-worona",
+  "version": "1.2.0",
+  "description": "Extension for the Worona Dashboard in charge of the profile user data.",
+  "scripts": {
+    "test": "NODE_PATH=../core-dashboard-worona/node_modules ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/worona/worona-dashboard.git"
+  },
+  "keywords": [
+    "worona",
+    "extension",
+    "profile",
+    "dashboard"
+  ],
+  "author": "Worona Labs SL | Abel Serrano Juste, @akronix",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/worona/worona-dashboard/issues"
+  },
+  "homepage": "https://github.com/worona/worona-dashboard#readme",
+  "worona": {
+    "niceName": "Profile",
+    "slug": "profile",
+    "namespace": "profile",
+    "type": "extension",
+    "service": "dashboard",
+    "authors": [
+      "abel@worona.org"
+    ],
+    "default": 1,
+    "core": 1,
+    "listed": 0,
+    "deactivable": 0,
+    "public": 1
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}

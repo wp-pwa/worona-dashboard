@@ -103,17 +103,17 @@ export class Connection {
     return eventChannel(listener => {
       const added = this.client.ddp.on('added', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
-          listener({ collection, event: 'added', id, fields });
+          listener({ collection: selectedCollection, event: 'added', id, fields });
         }
       });
       const changed = this.client.ddp.on('changed', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
-          listener({ collection, event: 'changed', id, fields });
+          listener({ collection: selectedCollection, event: 'changed', id, fields });
         }
       });
       const removed = this.client.ddp.on('removed', ({ collection, id, fields }) => {
         if (collection === selectedCollection) {
-          listener({ collection, event: 'removed', id, fields });
+          listener({ collection: selectedCollection, event: 'removed', id, fields });
         }
       });
       return () => {
@@ -127,7 +127,7 @@ export class Connection {
   readyEventChannel(subscription) {
     return eventChannel(listener => {
       const ready = subscription.on('ready', () => {
-        listener(subscription.name);
+        listener({ subscription: subscription.name });
       });
       return () => {
         subscription.removeListener('ready', ready);
@@ -138,7 +138,7 @@ export class Connection {
   errorEventChannel(subscription) {
     return eventChannel(listener => {
       const error = subscription.on('error', err => {
-        listener(subscription.name, err);
+        listener({ subscription: subscription.name, error: err });
       });
       return () => {
         subscription.removeListener('error', error);

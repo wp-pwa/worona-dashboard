@@ -9,6 +9,14 @@ export default {
       name: 'connection-dashboard-extension-worona',
     },
     {
+      namespace: 'profile',
+      name: 'profile-dashboard-extension-worona',
+    },
+    {
+      namespace: 'publish',
+      name: 'publish-dashboard-extension-worona',
+    },
+    {
       namespace: 'sites',
       name: 'sites-dashboard-extension-worona',
     },

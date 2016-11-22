@@ -11,6 +11,7 @@ export default function* siteSagas() {
     fork(deleteSiteWatcher),
     fork(checkSiteWatcher),
     fork(editSiteWatcher),
+    fork(deps.sagaCreators.collectionWatcherCreator('sites')),
     fork(deps.sagaCreators.subscriptionWatcherCreator('sites')),
   ];
 }

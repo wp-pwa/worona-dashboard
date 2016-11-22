@@ -17,6 +17,7 @@ export const actions = {
   get deleteSiteRequested() { return dep('sites', 'actions', 'deleteSiteRequested'); },
   get checkSiteRequested() { return dep('sites', 'actions', 'checkSiteRequested'); },
   get editSiteRequested() { return dep('sites', 'actions', 'editSiteRequested'); },
+  get publishSiteRequested() { return dep('publish', 'actions', 'publishSiteRequested'); },
 };
 
 export const selectors = {
@@ -48,4 +49,14 @@ export const selectors = {
   get getIsReadySettings() { return dep('settings', 'selectors', 'getIsReadySettings'); },
   get getSelectedPackage() { return dep('settings', 'selectors', 'getSelectedPackage'); },
   get getCheckSite() { return dep('sites', 'selectors', 'getCheckSite'); },
+};
+
+export const sagaHelpers = {
+  get waitForConnectionEstablished() {
+    return dep('accounts', 'sagaHelpers', 'waitForConnectionEstablished');
+  },
+};
+
+export const libs = {
+  get setSiteIcon() { return dep('sites', 'libs', 'setSiteIcon'); },
 };
