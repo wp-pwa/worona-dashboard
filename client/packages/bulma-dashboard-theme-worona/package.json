@@ -1,6 +1,6 @@
 {
   "name": "bulma-dashboard-theme-worona",
-  "version": "1.2.18",
+  "version": "1.2.19",
   "description": "Theme for the Worona Dashboard.",
   "scripts": {
     "test": "NODE_PATH=../core-dashboard-worona/node_modules ava src/dashboard/components/**/tests/*.js src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
@@ -44,7 +44,6 @@
     "bulma": "^0.1.0",
     "font-awesome": "^4.6.3",
     "moment": "^2.13.0",
-    "react-dropzone-s3-uploader": "^0.8.0",
     "url-regexp": "^1.0.2",
     "velocity-react": "^1.1.11"
   }
