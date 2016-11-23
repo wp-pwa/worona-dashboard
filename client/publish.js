@@ -6,8 +6,12 @@ import path from 'path';
 import semver from 'semver';
 
 const getPackageVersion = async (name) => {
-  const res = await request(`https://registry.npmjs.org/${name}`);
-  return res.body['dist-tags'].latest;
+  try {
+    const res = await request(`https://registry.npmjs.org/${name}`);
+    return res.body['dist-tags'].latest;
+  } catch (error) {
+    return '0.0.0';
+  }
 };
 
 const getDirectories = srcpath =>
