@@ -1,6 +1,6 @@
 {
   "name": "profile-dashboard-extension-worona",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Extension for the Worona Dashboard in charge of the profile user data.",
   "scripts": {
     "test": "NODE_PATH=../core-dashboard-worona/node_modules ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
@@ -26,7 +26,9 @@
     "slug": "profile",
     "namespace": "profile",
     "type": "extension",
-    "service": "dashboard",
+    "services": [
+      "dashboard"
+    ],
     "authors": [
       "abel@worona.org"
     ],
