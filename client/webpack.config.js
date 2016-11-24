@@ -59,7 +59,7 @@ switch (config.type) {
       // devtool: '#eval-source-map',
       devServer: {
     		contentBase: 'dist',
-    		noInfo: true,
+    		noInfo: false,
     		inline: true,
         port: 4000,
         historyApiFallback: true,
