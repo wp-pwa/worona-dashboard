@@ -6,10 +6,10 @@ export default [
     },
     something: 'some value',
   },
-  // {
-  //   woronaInfo: {
-  //     name: 'publish-app-extension-worona',
-  //   },
-  //   other: 'some other value',
-  // },
+  {
+    woronaInfo: {
+      name: 'publish-native-dashboard-extension-worona',
+    },
+    other: 'some other value',
+  },
 ];
