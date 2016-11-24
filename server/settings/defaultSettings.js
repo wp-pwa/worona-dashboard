@@ -8,7 +8,8 @@ export default [
   },
   {
     woronaInfo: {
-      name: 'publish-native-dashboard-extension-worona',
+      name: 'publish-native-app-extension-worona',
+      active: true,
     },
     other: 'some other value',
   },

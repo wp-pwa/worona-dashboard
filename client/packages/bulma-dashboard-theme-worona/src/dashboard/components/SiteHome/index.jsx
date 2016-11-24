@@ -51,12 +51,12 @@ SiteHomeHeader = connect(mapStateToProps)(SiteHomeHeader);
 
 const SiteHome = () => (
   <Body>
-    <Header waitForSubscriptions={[deps.selectors.getIsReadySelectedSite]}>
+    <Header waitForSelectors={[deps.selectors.getIsReadySelectedSite]}>
       <SiteHomeHeader />
       <ServiceTabs />
     </Header>
 
-    <Main waitForSubscriptions={[deps.selectors.getIsReadySelectedSite]}>
+    <Main waitForSelectors={[deps.selectors.getIsReadySelectedSite]}>
       <div className="columns is-mobile" >
         <AsideMenu />
         <RootContainer />

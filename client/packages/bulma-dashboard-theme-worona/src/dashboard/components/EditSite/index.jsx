@@ -16,7 +16,7 @@ export const EditSite = () => (
       <Hero title="Edit Site" subtitle="Here you can change the URL or Site name." />
     </Header>
 
-    <Main waitForSubscriptions={[deps.selectors.getIsReadySites]}>
+    <Main waitForSelectors={[deps.selectors.getIsReadySites]}>
       <EditSiteForm />
     </Main>
 
