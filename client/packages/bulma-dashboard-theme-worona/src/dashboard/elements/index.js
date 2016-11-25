@@ -5,3 +5,5 @@ export { default as Hero } from './Hero';
 export { default as Icon } from './Icon';
 export { default as Input } from './Input';
 export { default as Loader } from './Loader';
+export { default as MobilePreview } from './MobilePreview';
+export { default as RootContainer } from './RootContainer';
