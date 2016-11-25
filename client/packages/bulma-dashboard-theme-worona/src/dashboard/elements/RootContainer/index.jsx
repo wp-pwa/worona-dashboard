@@ -5,7 +5,9 @@ import MobilePreview from '../MobilePreview';
 const RootContainer = ({ children, mobilePreview }) => (
   <div className="columns is-mobile" >
     <AsideMenu />
-    {children}
+    <div className="column content">
+      {children}
+    </div>
     {mobilePreview && <MobilePreview />}
   </div>
 );
