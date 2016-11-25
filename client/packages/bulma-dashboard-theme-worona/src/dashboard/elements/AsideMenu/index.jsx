@@ -49,7 +49,7 @@ MenuCategory.propTypes = {
 };
 
 const AsideMenu = ({ settings }) => (
-  <div className="column is-hidden-mobile is-2-desktop">
+  <div className="column is-hidden-mobile is-2">
     <aside className="menu">
       {
         map(settings, (entries, name) =>

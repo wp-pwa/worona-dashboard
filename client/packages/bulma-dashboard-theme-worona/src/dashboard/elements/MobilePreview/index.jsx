@@ -2,7 +2,7 @@
 import React from 'react';
 
 export default () => (
-  <div className="is-hidden-mobile column is-4-desktop is-3-tablet has-text-centered">
+  <div className="is-hidden-touch column is-4 has-text-centered" style={{ minWidth: '355px' }}>
     <svg
       width="355px"
       height="671px"

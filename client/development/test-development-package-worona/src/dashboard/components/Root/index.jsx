@@ -2,7 +2,7 @@ import React from 'react';
 import * as deps from '../../deps';
 
 const Content = () => (
-  <div className="column is-12-tablet is-6-desktop">
+  <div className="column">
     <div className="content">
       <h3>
         Categories &amp; tag names
