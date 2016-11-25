@@ -11,3 +11,8 @@ export const getCssAssets = createSelector(
   getAssets,
   assets => flatMap(assets, (pkg, pkgName) => map(pkg.css, (val, path) => ({ path, pkgName })))
 );
+
+export const getActivatedPackage = pkgNamespace => createSelector(
+  getActivatedPackages,
+  pkgs => pkgs[pkgNamespace] !== -1
+);

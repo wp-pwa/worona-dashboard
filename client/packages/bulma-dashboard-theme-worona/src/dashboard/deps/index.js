@@ -48,6 +48,9 @@ export const selectors = {
   get getIsReadySettings() { return dep('settings', 'selectors', 'getIsReadySettings'); },
   get getSelectedPackage() { return dep('settings', 'selectors', 'getSelectedPackage'); },
   get getCheckSite() { return dep('sites', 'selectors', 'getCheckSite'); },
+  get getSelectedPackageIsActivated() {
+    return dep('settings', 'selectors', 'getSelectedPackageIsActivated');
+  },
 };
 
 export const sagaHelpers = {

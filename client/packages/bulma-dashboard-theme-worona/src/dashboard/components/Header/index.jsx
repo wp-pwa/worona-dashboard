@@ -28,13 +28,9 @@ Header.propTypes = {
   isReady: React.PropTypes.bool,
 };
 
-const mapStateToProps = (state, ownProps) => {
-  if (!ownProps.waitForSubscriptions) return ({ isReady: true });
-  return ({
-    isReady: ownProps.waitForSubscriptions.reduce(
-      (previous, current) => (previous && current(state)),
-      true),
-  });
-};
+const mapStateToProps = (state, ownProps) => ({
+  isReady: !ownProps.waitForSelectors || ownProps.waitForSelectors.reduce(
+    (previous, current) => (previous && current(state)), true),
+});
 
 export default connect(mapStateToProps)(Header);

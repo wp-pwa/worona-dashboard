@@ -26,7 +26,7 @@ const Sites = () => (
     </Header>
 
     <AddSiteNav />
-    <Main waitForSubscriptions={[deps.selectors.getIsReadySites]}>
+    <Main waitForSelectors={[deps.selectors.getIsReadySites]}>
       <SitesList />
     </Main>
 

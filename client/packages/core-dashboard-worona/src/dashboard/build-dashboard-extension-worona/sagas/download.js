@@ -28,7 +28,7 @@ export const requireRemotePackage = pkg => new Promise((resolve) => {
 // requireLocalPackage or requireRemotePackage and dispatches PACKAGE_DOWNLOAD_SUCCED or
 // PACKAGE_DOWNLOAD_FAILED if necessary.
 export function* packageDownloadSaga({ pkg }) {
-  const requirePackage = isRemote ? requireRemotePackage : requireLocalPackage;
+  const requirePackage = pkg.local ? requireLocalPackage : requireRemotePackage;
   try {
     const module = yield call(requirePackage, pkg);
     // Adds the download module to worona-deps.

@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { findIndex } from 'lodash';
+import { findIndex, findKey } from 'lodash';
 import { flow, map, sortBy, groupBy, filter } from 'lodash/fp';
 import * as deps from '../deps';
 
@@ -19,7 +19,7 @@ export const getCategories = createSelector(
   (service, settings, packages, devPackages) => {
     const pkgsWithSettings = flow(
       map(item => packages[findIndex(packages, pkg =>
-        pkg.name === item.woronaInfo.name && pkg.services.indexOf(service) !== -1
+        pkg.name === item.woronaInfo.name && pkg.menu.services.indexOf(service) !== -1
       )]),
       filter(item => typeof item !== 'undefined'),
       sortBy(item => item.menu.order),
@@ -55,4 +55,10 @@ export const getSelectedPackage = createSelector(
     const index = findIndex(allPackages, pkg => pkg.name === name);
     return allPackages[index] || {};
   }
+);
+
+export const getSelectedPackageIsActivated = createSelector(
+  deps.selectors.getSelectedPackageName,
+  deps.selectors.getActivatedPackages,
+  (selectedName, activatedPkgs) => !!findKey(activatedPkgs, pkgName => pkgName === selectedName)
 );

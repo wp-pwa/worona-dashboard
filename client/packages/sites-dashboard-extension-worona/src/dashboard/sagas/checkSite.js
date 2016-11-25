@@ -91,7 +91,7 @@ export function* firstRouteIsCheckSite() {
 export function* redirectAfterCheckSiteWatcher(action) {
   const { siteId } = action;
   yield delay(1000);
-  yield call(deps.libs.push, `/site/${siteId}/app/test-development-package-worona`);
+  yield call(deps.libs.push, `/site/${siteId}/app`);
 }
 
 export function* checkSiteWatcher() {

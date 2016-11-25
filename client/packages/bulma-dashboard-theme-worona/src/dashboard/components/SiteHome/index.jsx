@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import { dep } from 'worona-deps';
 import Header from '../Header';
 import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
@@ -9,13 +9,8 @@ import Main from '../Main';
 import Hero from '../../elements/Hero';
 import EditSiteLink from '../../elements/EditSiteLink';
 import * as deps from '../../deps';
-
 import ServiceTabs from './ServiceTabs';
-import AsideMenu from './AsideMenu';
-import RootContainer from './RootContainer';
 
-
-/* Header */
 let SiteHomeHeader = ({ site }) => (
   <Hero
     title={(
@@ -34,11 +29,9 @@ let SiteHomeHeader = ({ site }) => (
     }
   />
 );
-
-const mapStateToProps = (state) => ({
+const mapSiteHeaderToState = (state) => ({
   site: deps.selectors.getSelectedSite(state),
 });
-
 SiteHomeHeader.propTypes = {
   site: React.PropTypes.shape({
     name: React.PropTypes.string.isRequired,
@@ -46,21 +39,32 @@ SiteHomeHeader.propTypes = {
     url: React.PropTypes.string.isRequired,
   }),
 };
+SiteHomeHeader = connect(mapSiteHeaderToState)(SiteHomeHeader);
 
-SiteHomeHeader = connect(mapStateToProps)(SiteHomeHeader);
+let Root = ({ namespace }) => {
+  const RootFromComponent = dep(namespace, 'components', 'Root');
+  return <RootFromComponent />;
+};
+Root.propTypes = { namespace: React.PropTypes.string.isRequired };
+const mapRootToState = state => ({
+  namespace: deps.selectors.getSelectedPackage(state).namespace,
+});
+Root = connect(mapRootToState)(Root);
 
 const SiteHome = () => (
   <Body>
-    <Header waitForSubscriptions={[deps.selectors.getIsReadySelectedSite]}>
+    <Header waitForSelectors={[deps.selectors.getIsReadySelectedSite]}>
       <SiteHomeHeader />
       <ServiceTabs />
     </Header>
 
-    <Main waitForSubscriptions={[deps.selectors.getIsReadySelectedSite]}>
-      <div className="columns is-mobile" >
-        <AsideMenu />
-        <RootContainer />
-      </div>
+    <Main
+      waitForSelectors={[
+        deps.selectors.getIsReadySelectedSite,
+        deps.selectors.getSelectedPackageIsActivated,
+      ]}
+    >
+      <Root />
     </Main>
 
     <Footer>
@@ -69,4 +73,4 @@ const SiteHome = () => (
   </Body>
 );
 
-export default connect(mapStateToProps)(SiteHome);
+export default SiteHome;
