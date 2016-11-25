@@ -12,7 +12,7 @@ switch (config.type) {
       plugins.dedupePlugin(config),
       plugins.occurrenceOrderPlugin(config),
       plugins.dllPlugin(config),
-      plugins.fixModuleIdAndChunkIdPlugin(config),
+      // plugins.fixModuleIdAndChunkIdPlugin(config),
       plugins.statsWriterPlugin(config),
     ].filter(function(plugin) { return typeof plugin !== 'undefined'; });
     module.exports = {
