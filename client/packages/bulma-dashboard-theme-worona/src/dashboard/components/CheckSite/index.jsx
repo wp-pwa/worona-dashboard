@@ -49,10 +49,10 @@ CheckSiteHeader = connect(mapStateToProps)(CheckSiteHeader);
 /* CheckSite screen */
 const CheckSite = () => (
   <Body>
-    <Header waitForSubscriptions={[deps.selectors.getIsReadySelectedSite]}>
+    <Header waitForSelectors={[deps.selectors.getIsReadySelectedSite]}>
       <CheckSiteHeader />
     </Header>
-    <Main waitForSubscriptions={[deps.selectors.getIsReadySelectedSite]}>
+    <Main waitForSelectors={[deps.selectors.getIsReadySelectedSite]}>
       <Check text="Site online" checkType="online" />
       <Check text="Worona WordPress Plugin" checkType="plugin" />
     </Main>
