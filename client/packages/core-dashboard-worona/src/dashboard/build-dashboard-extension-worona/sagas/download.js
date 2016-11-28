@@ -1,5 +1,5 @@
 /* eslint-disable no-constant-condition, no-undef, global-require, import/no-dynamic-require */
-import worona, { isRemote, packageDownloaded } from 'worona-deps';
+import { isRemote, packageDownloaded } from 'worona-deps';
 import { put, call } from 'redux-saga/effects';
 import update from 'react/lib/update';
 import { takeEvery } from 'redux-saga';
@@ -28,7 +28,7 @@ export const requireRemotePackage = pkg => new Promise((resolve) => {
 // requireLocalPackage or requireRemotePackage and dispatches PACKAGE_DOWNLOAD_SUCCED or
 // PACKAGE_DOWNLOAD_FAILED if necessary.
 export function* packageDownloadSaga({ pkg }) {
-  const requirePackage = pkg.local ? requireLocalPackage : requireRemotePackage;
+  const requirePackage = !isRemote ? requireLocalPackage : requireRemotePackage;
   try {
     const module = yield call(requirePackage, pkg);
     // Adds the download module to worona-deps.

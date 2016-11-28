@@ -51,7 +51,8 @@ var dllReferencePlugin = function(config) {
 
 var dllPlugin = function(config) {
   return new webpack.DllPlugin({
-    path: path.resolve('dist', config.name, config.entrie, config.env, 'json', 'manifest.json'),
+    // context: path.resolve('packages', 'core-' + config.entrie + '-worona'),
+    path: path.resolve('..', '..', 'dist', config.name, config.entrie, config.env, 'json', 'manifest.json'),
     name: 'vendors_' + config.entrie + '_worona',
   });
 };

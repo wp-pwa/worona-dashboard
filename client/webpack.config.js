@@ -1,4 +1,5 @@
 /* eslint-disable */
+var path = require('path');
 var config = require('yargs').argv;
 var plugins = require('./webpack/plugins');
 var output = require('./webpack/output');
@@ -9,16 +10,15 @@ switch (config.type) {
     var pluginsArr = [
       plugins.definePlugin(config),
       plugins.uglifyJsPlugin(config),
-      plugins.dedupePlugin(config),
+      // plugins.dedupePlugin(config),
       plugins.occurrenceOrderPlugin(config),
       plugins.dllPlugin(config),
-      // plugins.fixModuleIdAndChunkIdPlugin(config),
+      plugins.fixModuleIdAndChunkIdPlugin(config),
       plugins.statsWriterPlugin(config),
     ].filter(function(plugin) { return typeof plugin !== 'undefined'; });
     module.exports = {
       entry: { main: require('./packages/core-' + config.entrie + '-worona/vendors.json') },
       output: output.vendors(config),
-      resolve: { modulesDirectories: ['packages/core-' + config.entrie + '-worona/node_modules'] },
       plugins: pluginsArr,
     };
     break;

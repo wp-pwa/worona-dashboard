@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import path from 'path';
 import { argv as config } from 'yargs';
 import { sync as rimrafSync } from 'rimraf';
 import { spawn } from 'child-process-promise';
@@ -24,12 +25,14 @@ const start = async () => {
   console.log('\nEverything is fine. Let\'s run webpack.\n');
 
   // Generate vendors.
-  await spawn('./node_modules/.bin/webpack', ['--config', 'webpack.config.js', '--progress',
+  await spawn('./node_modules/.bin/webpack', [
+    '--config', '../../webpack.config.js',
+    '--progress',
     '--name', 'vendors-dashboard-worona',
     '--entrie', 'dashboard',
     '--type', 'vendors',
     '--env', env,
-  ], { stdio: 'inherit' });
+  ], { cwd: path.resolve('packages', 'core-dashboard-worona'), stdio: 'inherit' });
 
   // Run webpack-dev-server.
   const webpack = config.build ? 'webpack' : 'webpack-dev-server';
