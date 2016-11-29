@@ -12,7 +12,7 @@ var core = function(config) {
 
 var vendors = function(config) {
   return {
-    path: path.resolve('dist'),
+    path: path.resolve('..', '..', 'dist'),
     filename: config.name + '/' + config.entrie + '/' + config.env + '/js/vendors-' + config.entrie + '.[chunkhash].js',
     library: 'vendors_' + config.entrie + '_worona',
     hashDigestLength: 32,

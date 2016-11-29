@@ -45,6 +45,7 @@
     "i18next-xhr-backend": "^1.2.0",
     "lodash": "^4.16.4",
     "normalizr": "^2.2.1",
+    "process": "^0.11.9",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-i18next": "^1.10.1",
@@ -59,6 +60,7 @@
     "stringify-error-message": "^1.0.2",
     "superagent": "^2.3.0",
     "systemjs": "^0.19.39",
+    "webpack": "^1.13.3",
     "worona-deps": "^1.8.6",
     "worona-polyfills": "^1.0.0"
   }
