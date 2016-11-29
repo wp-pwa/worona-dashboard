@@ -16,8 +16,10 @@ export const getCategories = createSelector(
   getSettingsLiveCollection,
   getPackageCollection,
   getDevPackageCollection,
-  (service, settings, packages, devPackages) => {
+  deps.selectors.getSelectedSiteId,
+  (service, settings, packages, devPackages, siteId) => {
     const pkgsWithSettings = flow(
+      filter(item => item.woronaInfo.siteId === siteId),
       map(item => packages[findIndex(packages, pkg =>
         pkg.name === item.woronaInfo.name && pkg.menu.services.indexOf(service) !== -1
       )]),
