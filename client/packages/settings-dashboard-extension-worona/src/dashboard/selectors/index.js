@@ -35,19 +35,6 @@ export const getCategories = createSelector(
   }
 );
 
-export const getAllSettings = state => state.settings.collection;
-export const getIsReadySettings = state => state.settings.isReady;
-
-export const getSiteSettings = id => createSelector(
-  getAllSettings,
-  settings => settings.filter(setting => setting.siteId === id)
-);
-
-export const getSelectedSiteSettings = (state) => {
-  const currentId = deps.selectors.getSelectedSiteId(state);
-  return getSiteSettings(currentId);
-};
-
 export const getSelectedPackage = createSelector(
   deps.selectors.getSelectedPackageName,
   getPackageCollection,
