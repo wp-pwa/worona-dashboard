@@ -8,5 +8,3 @@ export const updateSiteStatus = ({ _id, status, caller = deps.libs.call }) =>
   caller('updateSiteStatus', { _id, status });
 export const editSite = ({ name, url, _id, caller = deps.libs.call }) =>
   caller('editSite', { name, url, _id });
-export const setSiteIcon = ({ _id, fileId, caller = deps.libs.call }) =>
-  caller('setSiteIcon', { _id, fileId });

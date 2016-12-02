@@ -3,6 +3,7 @@ import { isDev } from 'worona-deps';
 import { fork, call, select, put } from 'redux-saga/effects';
 import * as deps from '../deps';
 import * as selectors from '../selectors';
+import { saveSettingsWatcher } from './saveSettings';
 
 const env = isDev ? 'dev' : 'prod';
 
@@ -22,5 +23,6 @@ export default function* settingsagas() {
     fork(deps.sagaCreators.collectionWatcherCreator('packages')),
     fork(deps.sagaCreators.subscriptionWatcherCreator('packages', env)),
     fork(requestPackages),
+    fork(saveSettingsWatcher),
   ];
 }
