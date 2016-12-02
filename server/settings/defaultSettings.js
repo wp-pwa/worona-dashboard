@@ -13,11 +13,4 @@ export default [
     },
     other: 'some other value',
   },
-  {
-    woronaInfo: {
-      name: 'test-development-package-worona',
-      active: true,
-    },
-    tagName: 'Default tag name',
-  },
 ];
