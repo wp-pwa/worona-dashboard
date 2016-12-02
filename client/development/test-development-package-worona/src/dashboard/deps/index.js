@@ -7,3 +7,8 @@ export const actions = {
 export const elements = {
   get RootContainer() { return dep('theme', 'elements', 'RootContainer'); },
 };
+
+export const selectorCreators = {
+  get getSettingsCreator() { return dep('settings', 'selectorCreators', 'getSettingsCreator'); },
+  get getSettingCreator() { return dep('settings', 'selectorCreators', 'getSettingCreator'); },
+};

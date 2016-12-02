@@ -6,7 +6,7 @@ import { checkSiteIdOwnership, checkUserLoggedIn } from '../utils';
 
 Meteor.methods({
   saveSettings(setting) {
-    check(setting._id, String);
+    check(setting.id, String);
     check(setting.woronaInfo.name, String);
     check(setting.woronaInfo.active, Boolean);
     check(setting.woronaInfo.siteId, String);
@@ -21,7 +21,7 @@ Meteor.methods({
     Object.assign(newSettingData, setting);
     delete newSettingData.woronaInfo;
 
-    return settingsLive.update(setting._id, { $set: newSettingData });
+    return settingsLive.update(setting.id, { $set: newSettingData });
   },
   initSettings(siteId) {
     check(siteId, String);
