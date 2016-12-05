@@ -23,7 +23,7 @@ export function* defaultSettings(action) {
       // The correct package is not loaded, we need to wait until it is.
       yield waitForPackageActivation({ name });
     }
-    yield put(actions.defaultSettingsNeeded({ name }));
+    yield put(actions.defaultSettingsNeeded({ name, siteId: action.fields.woronaInfo.siteId }));
   }
 }
 
