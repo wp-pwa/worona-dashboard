@@ -18,6 +18,7 @@ Meteor.methods({
     const newSettingData = {};
     Object.assign(newSettingData, settings);
     delete newSettingData.woronaInfo;
+    newSettingData['woronaInfo.init'] = true;
 
     const id = settingsLive.findOne({ 'woronaInfo.name': name, 'woronaInfo.siteId': siteId })._id;
 
