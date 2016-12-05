@@ -48,7 +48,7 @@ export function* packageActivationSaga({ pkg }) {
       yield call(waitFor, pkg.name, types.PACKAGE_DOWNLOAD_SUCCEED, types.PACKAGE_DOWNLOAD_FAILED);
     }
     // Deactivation of previous package phase.
-    const activated = select(selectors.getActivatedPackages);
+    const activated = yield select(selectors.getActivatedPackages);
     const previousPackage = activated[pkg.namespace];
     if (previousPackage) {
       yield put(actions.packageDeactivationRequested({ previousPackage }));

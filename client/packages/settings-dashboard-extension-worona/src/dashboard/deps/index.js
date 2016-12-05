@@ -35,6 +35,8 @@ export const selectors = {
 
 export const types = {
   get SUBSCRIPTION_READY() { return dep('subscriptions', 'types', 'SUBSCRIPTION_READY'); },
+  get COLLECTION_MODIFIED() { return dep('subscriptions', 'types', 'COLLECTION_MODIFIED'); },
+  get PACKAGE_ACTIVATION_SUCCEED() { return dep('build', 'types', 'PACKAGE_ACTIVATION_SUCCEED'); },
 };
 
 export const actions = {

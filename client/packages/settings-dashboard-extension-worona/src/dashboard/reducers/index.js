@@ -6,7 +6,12 @@ import * as deps from '../deps';
 const env = isDev ? 'dev' : 'prod';
 const mapPkg = pkg => ({ ...pkg, main: pkg.cdn && pkg.cdn.dashboard[env].main.file });
 
-const create = collection => combineReducers({
+const createSetting = collection => combineReducers({
+  collection: deps.reducerCreators.collectionCreator(collection),
+  isReady: deps.reducerCreators.isReadyCreator(collection),
+});
+
+const createPkg = collection => combineReducers({
   collection: deps.reducerCreators.collectionCreator(collection, mapPkg),
   isReady: deps.reducerCreators.isReadyCreator(collection),
 });
@@ -15,9 +20,9 @@ const devPkgs = map(getDevelopmentPackages(), pkg => pkg.woronaInfo);
 export const devPackages = () => devPkgs;
 
 export const collections = () => combineReducers({
-  live: create('settings-live'),
-  preview: create('settings-preview'),
-  packages: create('packages'),
+  live: createSetting('settings-live'),
+  preview: createSetting('settings-preview'),
+  packages: createPkg('packages'),
   devPackages: combineReducers({ collection: devPackages }),
 });
 
