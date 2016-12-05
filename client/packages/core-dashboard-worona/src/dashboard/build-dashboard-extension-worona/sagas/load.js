@@ -40,7 +40,7 @@ export function* packageLoadSaga({ pkg }) {
   }
 }
 
-export function* packageUnloadSaga(pkg) {
+export function* packageUnloadSaga({ pkg }) {
   try {
     yield call(removeReducer, pkg.namespace);
     yield call(stopSaga, pkg.namespace);
