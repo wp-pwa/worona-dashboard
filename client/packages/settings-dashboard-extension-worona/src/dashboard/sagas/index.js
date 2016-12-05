@@ -4,6 +4,7 @@ import { fork, call, select, put } from 'redux-saga/effects';
 import * as deps from '../deps';
 import * as selectors from '../selectors';
 import { saveSettingsWatcher } from './saveSettings';
+import { defaultSettingsWatcher } from './defaultSettings';
 
 const env = isDev ? 'dev' : 'prod';
 
@@ -18,6 +19,7 @@ function* requestPackages() {
 
 export default function* settingsagas() {
   yield [
+    fork(defaultSettingsWatcher),
     fork(deps.sagaCreators.collectionWatcherCreator('settings-live')),
     fork(deps.sagaCreators.subscriptionWatcherCreator('settings-live')),
     fork(deps.sagaCreators.collectionWatcherCreator('packages')),

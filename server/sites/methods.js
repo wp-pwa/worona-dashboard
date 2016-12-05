@@ -30,7 +30,7 @@ Meteor.methods({
   deleteSite({ _id }) {
     check(_id, String);
 
-    if (process.env.NODE_ENV === 'development') Meteor._sleepForMs(2000);
+    if (process.env.NODE_ENV === 'development') Meteor._sleepForMs(500);
 
     const userId = this.userId;
     if (!userId) {

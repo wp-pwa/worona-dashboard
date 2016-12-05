@@ -5,24 +5,25 @@ import defaultSettings from './defaultSettings';
 import { checkSiteIdOwnership, checkUserLoggedIn } from '../utils';
 
 Meteor.methods({
-  saveSettings(setting) {
-    check(setting.id, String);
-    check(setting.woronaInfo.name, String);
-    check(setting.woronaInfo.active, Boolean);
-    check(setting.woronaInfo.siteId, String);
-
+  saveSettings(settings) {
     const userId = this.userId;
-    checkUserLoggedIn(userId);
+    const name = settings.woronaInfo.name;
+    const siteId = settings.woronaInfo.siteId;
 
-    const siteId = setting.woronaInfo.siteId;
+    check(name, String);
+    check(siteId, String);
+    checkUserLoggedIn(userId);
     checkSiteIdOwnership(siteId, userId);
 
     const newSettingData = {};
-    Object.assign(newSettingData, setting);
+    Object.assign(newSettingData, settings);
     delete newSettingData.woronaInfo;
 
-    return settingsLive.update(setting.id, { $set: newSettingData });
+    const id = settingsLive.findOne({ 'woronaInfo.name': name, 'woronaInfo.siteId': siteId })._id;
+
+    return settingsLive.update(id, { $set: newSettingData });
   },
+
   initSettings(siteId) {
     check(siteId, String);
     defaultSettings.forEach(setting => {

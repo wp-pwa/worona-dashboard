@@ -1,7 +1,7 @@
 import { dep } from 'worona-deps';
 
 export const actions = {
-  get saveSettingRequested() { return dep('settings', 'actions', 'saveSettingRequested'); },
+  get saveSettingsRequested() { return dep('settings', 'actions', 'saveSettingsRequested'); },
 };
 
 export const elements = {
@@ -11,4 +11,8 @@ export const elements = {
 export const selectorCreators = {
   get getSettingsCreator() { return dep('settings', 'selectorCreators', 'getSettingsCreator'); },
   get getSettingCreator() { return dep('settings', 'selectorCreators', 'getSettingCreator'); },
+};
+
+export const types = {
+  get DEFAULT_SETTINGS_NEEDED() { return dep('settings', 'types', 'DEFAULT_SETTINGS_NEEDED'); },
 };
