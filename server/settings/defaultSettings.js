@@ -1,16 +1,31 @@
-export default [
+const defaults = [
   {
     woronaInfo: {
       name: 'general-app-extension-worona',
+      namespace: 'generalApp',
       active: true,
+      init: false,
     },
-    something: 'some value',
   },
   {
     woronaInfo: {
       name: 'publish-native-app-extension-worona',
+      namespace: 'publishNative',
       active: true,
+      init: false,
     },
-    other: 'some other value',
   },
 ];
+
+if (process.env.NODE_ENV === 'development') {
+  defaults.push({
+    woronaInfo: {
+      name: 'test-development-package-worona',
+      namespace: 'development',
+      active: true,
+      init: false,
+    },
+  });
+}
+
+export default defaults;

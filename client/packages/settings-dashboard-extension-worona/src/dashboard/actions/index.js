@@ -1,11 +1,15 @@
 import stringifyError from 'stringify-error-message';
 import * as types from '../types';
-  // Save settings actions:
-export const saveSettingRequested = (setting) =>
-  ({ type: types.SAVE_SETTING_REQUESTED, setting });
-export const saveSettingStatusChanged = status =>
-  ({ type: types.SAVE_SETTING_STATUS_CHANGED, status });
-export const saveSettingSucceed = settingId =>
-  ({ type: types.SAVE_SETTING_SUCCEED, settingId });
-export const saveSettingFailed = errorObj =>
-  ({ type: types.SAVE_SETTING_FAILED, error: stringifyError(errorObj) });
+
+// Save settings actions:
+export const saveSettingsRequested = (settings, woronaInfo) =>
+  ({ type: types.SAVE_SETTINGS_REQUESTED, settings, woronaInfo });
+export const saveSettingsStatusChanged = status =>
+  ({ type: types.SAVE_SETTINGS_STATUS_CHANGED, status });
+export const saveSettingsSucceed = ({ settingId }) =>
+  ({ type: types.SAVE_SETTINGS_SUCCEED, settingId });
+export const saveSettingsFailed = ({ errorObj }) =>
+  ({ type: types.SAVE_SETTINGS_FAILED, error: stringifyError(errorObj) });
+
+export const defaultSettingsNeeded = ({ name, siteId }) =>
+  ({ type: types.DEFAULT_SETTINGS_NEEDED, name, siteId });
