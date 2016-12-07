@@ -1,8 +1,22 @@
+/* eslint-disable new-cap */
 import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check';
+import { check, Match } from 'meteor/check';
 import { settingsLive } from './collections';
 import defaultSettings from './defaultSettings';
 import { checkSiteIdOwnership, checkUserLoggedIn } from '../utils';
+
+const activatePackage = ({ name, namespace, siteId }) => {
+  check(name, String);
+  check(namespace, Match.OneOf(String, undefined));
+  check(siteId, String);
+  settingsLive.insert({ woronaInfo: {
+    name,
+    namespace,
+    siteId,
+    active: true,
+    init: false,
+  } });
+};
 
 Meteor.methods({
   saveSettings(settings) {
@@ -25,11 +39,11 @@ Meteor.methods({
     return settingsLive.update(id, { $set: newSettingData });
   },
 
-  initSettings(siteId) {
-    check(siteId, String);
-    defaultSettings.forEach(setting => {
-      const woronaInfo = Object.assign({}, setting.woronaInfo, { siteId });
-      settingsLive.insert(Object.assign({}, setting, { woronaInfo }));
+  activatePackage(...args) { activatePackage(...args); },
+
+  activateDefaultPackages(siteId) {
+    defaultSettings.forEach(pkg => {
+      activatePackage({ name: pkg.name, namespace: pkg.namespace, siteId });
     });
   },
 });
