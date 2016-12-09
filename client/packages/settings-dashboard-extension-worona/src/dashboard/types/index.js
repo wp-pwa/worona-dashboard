@@ -1,3 +1,9 @@
+// Add Settings types:
+export const ADD_SETTINGS_REQUESTED = 'settings/ADD_SETTINGS_REQUESTED';
+export const ADD_SETTINGS_STATUS_CHANGED = 'settings/ADD_SETTINGS_STATUS_CHANGED';
+export const ADD_SETTINGS_SUCCEED = 'settings/ADD_SETTINGS_SUCCEED';
+export const ADD_SETTINGS_FAILED = 'settings/ADD_SETTINGS_FAILED';
+
 // Save Settings types:
 export const SAVE_SETTINGS_REQUESTED = 'settings/SAVE_SETTINGS_REQUESTED';
 export const SAVE_SETTINGS_STATUS_CHANGED = 'settings/SAVE_SETTINGS_STATUS_CHANGED';

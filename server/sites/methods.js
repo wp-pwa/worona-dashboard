@@ -23,7 +23,7 @@ Meteor.methods({
 
     const siteId = sites.insert(data);
 
-    Meteor.call('activateDefaultPackages', siteId);
+    Meteor.call('addDefaultSettings', siteId);
 
     return siteId;
   },

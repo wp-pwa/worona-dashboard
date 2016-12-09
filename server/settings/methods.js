@@ -5,17 +5,19 @@ import { settingsLive } from './collections';
 import defaultSettings from './defaultSettings';
 import { checkSiteIdOwnership, checkUserLoggedIn } from '../utils';
 
-const activatePackage = ({ name, namespace, siteId }) => {
+const addSettings = ({ name, namespace, siteId }) => {
   check(name, String);
   check(namespace, Match.OneOf(String, undefined));
   check(siteId, String);
-  settingsLive.insert({ woronaInfo: {
-    name,
-    namespace,
-    siteId,
-    active: true,
-    init: false,
-  } });
+
+  return settingsLive.findOne({ 'woronaInfo.name': name, 'woronaInfo.siteId': siteId }) ? false :
+    settingsLive.insert({ woronaInfo: {
+      name,
+      namespace,
+      siteId,
+      active: true,
+      init: false,
+    } });
 };
 
 Meteor.methods({
@@ -39,11 +41,11 @@ Meteor.methods({
     return settingsLive.update(id, { $set: newSettingData });
   },
 
-  activatePackage(...args) { activatePackage(...args); },
+  addSettings(options) { return addSettings(options); },
 
-  activateDefaultPackages(siteId) {
+  addDefaultSettings(siteId) {
     defaultSettings.forEach(pkg => {
-      activatePackage({ name: pkg.name, namespace: pkg.namespace, siteId });
+      addSettings({ name: pkg.name, namespace: pkg.namespace, siteId });
     });
   },
 });

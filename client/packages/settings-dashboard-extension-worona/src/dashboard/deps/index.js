@@ -37,6 +37,7 @@ export const types = {
   get SUBSCRIPTION_READY() { return dep('subscriptions', 'types', 'SUBSCRIPTION_READY'); },
   get COLLECTION_MODIFIED() { return dep('subscriptions', 'types', 'COLLECTION_MODIFIED'); },
   get PACKAGE_ACTIVATION_SUCCEED() { return dep('build', 'types', 'PACKAGE_ACTIVATION_SUCCEED'); },
+  get CREATE_SITE_SUCCEED() { return dep('sites', 'types', 'CREATE_SITE_SUCCEED'); },
 };
 
 export const actions = {
