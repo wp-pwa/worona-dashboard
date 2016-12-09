@@ -23,10 +23,11 @@ Meteor.methods({
 
     const siteId = sites.insert(data);
 
-    Meteor.call('initSettings', siteId);
+    Meteor.call('addDefaultSettings', siteId);
 
     return siteId;
   },
+
   deleteSite({ _id }) {
     check(_id, String);
 
@@ -48,6 +49,7 @@ Meteor.methods({
 
     return sites.remove({ _id });
   },
+
   updateSiteStatus({ _id, status }) {
     check(_id, String);
     check(status, Object);
@@ -69,6 +71,7 @@ Meteor.methods({
 
     return sites.update(_id, { $set: { status } });
   },
+
   editSite({ name, url, _id }) {
     check(_id, String);
     check(name, String);
@@ -91,6 +94,7 @@ Meteor.methods({
     const modifiedAt = new Date();
     return sites.update(_id, { $set: { name, url, modifiedAt } });
   },
+
   setSiteIcon({ _id, fileId }) {
     check(_id, String);
     check(fileId, String);

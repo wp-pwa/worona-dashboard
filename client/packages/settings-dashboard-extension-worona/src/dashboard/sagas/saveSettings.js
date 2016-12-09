@@ -23,6 +23,6 @@ export function* saveSettingsSaga({ settings, woronaInfo }) {
   }
 }
 
-export function* saveSettingsWatcher() {
+export default function* saveSettingsWatcher() {
   yield* takeEvery(types.SAVE_SETTINGS_REQUESTED, saveSettingsSaga);
 }

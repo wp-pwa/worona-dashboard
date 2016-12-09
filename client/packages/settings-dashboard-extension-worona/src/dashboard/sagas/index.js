@@ -1,14 +1,17 @@
 /* eslint-disable no-constant-condition */
 import { isDev } from 'worona-deps';
+import { takeEvery } from 'redux-saga';
 import { fork, call, select, put } from 'redux-saga/effects';
 import * as deps from '../deps';
 import * as selectors from '../selectors';
-import { saveSettingsWatcher } from './saveSettings';
-import { defaultSettingsWatcher } from './defaultSettings';
+import * as actions from '../actions';
+import addSettings from './addSettings';
+import saveSettings from './saveSettings';
+import defaultSettings from './defaultSettings';
 
 const env = isDev ? 'dev' : 'prod';
 
-function* requestPackages() {
+export function* requestPackages() {
   yield [
     call(deps.sagaHelpers.waitForReady, 'settings-live', selectors.getSettingsLiveIsReady),
     call(deps.sagaHelpers.waitForReady, 'packages', selectors.getPackageIsReady),
@@ -17,14 +20,21 @@ function* requestPackages() {
   yield pkgs.map(pkg => put(deps.actions.packageActivationRequested({ pkg })));
 }
 
+export function* addDefaultSettings({ siteId }) {
+  const devPkgs = yield select(selectors.getDevPackageCollection);
+  yield devPkgs.map(pkg => put(actions.addSettingsRequested({ ...pkg, siteId })));
+}
+
 export default function* settingsagas() {
   yield [
-    fork(defaultSettingsWatcher),
+    fork(defaultSettings),
     fork(deps.sagaCreators.collectionWatcherCreator('settings-live')),
     fork(deps.sagaCreators.subscriptionWatcherCreator('settings-live')),
     fork(deps.sagaCreators.collectionWatcherCreator('packages')),
     fork(deps.sagaCreators.subscriptionWatcherCreator('packages', env)),
     fork(requestPackages),
-    fork(saveSettingsWatcher),
+    fork(saveSettings),
+    fork(addSettings),
+    takeEvery(deps.types.CREATE_SITE_SUCCEED, addDefaultSettings),
   ];
 }
