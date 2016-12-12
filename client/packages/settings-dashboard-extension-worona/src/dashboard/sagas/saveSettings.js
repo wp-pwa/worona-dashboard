@@ -10,16 +10,16 @@ export function* saveSettingsSaga({ settings, woronaInfo }) {
   if (typeof woronaInfo.name !== 'string') throw new Error('Package name needed when saving settings.');
   yield deps.sagaHelpers.waitForConnectionEstablished();
   try {
-    yield put(actions.saveSettingsStatusChanged(SAVING_SETTINGS));
+    yield put(actions.saveSettingsStatusChanged({ status: SAVING_SETTINGS, settings, woronaInfo }));
     const selectedSiteId = yield select(deps.selectors.getSelectedSiteId);
-    const id = yield call(libs.saveSettings, { ...settings,
+    yield call(libs.saveSettings, { ...settings,
       woronaInfo: {
         name: woronaInfo.name,
         siteId: woronaInfo.siteId || selectedSiteId,
       } });
-    yield put(actions.saveSettingsSucceed({ id }));
+    yield put(actions.saveSettingsSucceed({ settings, woronaInfo }));
   } catch (error) {
-    yield put(actions.saveSettingsFailed({ error }));
+    yield put(actions.saveSettingsFailed({ error, settings, woronaInfo }));
   }
 }
 
