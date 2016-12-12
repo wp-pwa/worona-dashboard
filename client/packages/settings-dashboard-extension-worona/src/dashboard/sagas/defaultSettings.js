@@ -11,7 +11,7 @@ export function* waitForPackageActivation({ name }) {
   }
 }
 
-export function* defaultSettings(action) {
+export function* defaultSettingsSaga(action) {
   // First check if the new setting has been initialisated or not.
   if (action.collection === 'settings-live' && action.event === 'added' &&
     action.fields.woronaInfo.init === false) {
@@ -27,6 +27,6 @@ export function* defaultSettings(action) {
   }
 }
 
-export function* defaultSettingsWatcher() {
-  yield takeEvery(deps.types.COLLECTION_MODIFIED, defaultSettings);
+export default function* defaultSettingsWatcher() {
+  yield takeEvery(deps.types.COLLECTION_MODIFIED, defaultSettingsSaga);
 }
