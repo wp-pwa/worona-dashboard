@@ -29,7 +29,8 @@
       "dashboard"
     ],
     "authors": [
-      "luis@worona.org"
+      "luis@worona.org",
+      "abel@worona.org"
     ],
     "default": 1,
     "core": 1,
