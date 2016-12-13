@@ -1,6 +1,7 @@
 /* eslint-disable no-constant-condition */
 import { isDev } from 'worona-deps';
 import { takeEvery } from 'redux-saga';
+import { find } from 'lodash';
 import { fork, call, select, put } from 'redux-saga/effects';
 import * as deps from '../deps';
 import * as selectors from '../selectors';
@@ -11,6 +12,12 @@ import defaultSettings from './defaultSettings';
 
 const env = isDev ? 'dev' : 'prod';
 
+export function* requestPackage({ fields: { name } }) {
+  const pkgs = yield select(selectors.getPackageCollection);
+  const pkg = find(pkgs, pkgObj => pkgObj.name === name);
+  yield put(deps.actions.packageActivationRequested({ pkg }));
+}
+
 export function* requestPackages() {
   yield [
     call(deps.sagaHelpers.waitForReady, 'settings-live', selectors.getSettingsLiveIsReady),
@@ -18,6 +25,11 @@ export function* requestPackages() {
   ];
   const pkgs = yield select(selectors.getPackageCollection);
   yield pkgs.map(pkg => put(deps.actions.packageActivationRequested({ pkg })));
+
+  yield takeEvery(({ type, collection, event }) =>
+    type === deps.types.COLLECTION_MODIFIED && collection === 'packages' && event === 'added',
+    requestPackage
+  );
 }
 
 export function* addDefaultSettings({ siteId }) {
