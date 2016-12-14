@@ -37,9 +37,10 @@ let Content = ({ setting, tagName, catName, requestSaveSettings }) => (
       </p>
     </div>
     <deps.elements.Select
-      size="large"
+      size="medium"
       options={[1, 2, 3, 4, 5]}
       selected={3}
+      label="Testing select"
     />
     <p>
       You are modififying the site: {setting.woronaInfo.siteId} <br />

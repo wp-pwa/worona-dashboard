@@ -1,28 +1,20 @@
 import React from 'react';
 import cx from 'classnames';
 
-const Select = ({ size, options, selected }) => {
-  let generateOption;
-  if (!selected) {
-    generateOption = (option) => <option value={option}>{option}</option>;
-  } else {
-    generateOption = (option) => {
-      if (selected === option) {
-        return (<option value={option} selected>{option}</option>);
-      }
-      return (<option value={option}>{option}</option>);
-    };
-  }
-  return (
+const Select = ({ name, size, options, selected, label }) => (
+  <p className="control">
+    {label && <label className="label" htmlFor={name}>{label}</label>}
     <span className={cx('select', size && `is-${size}`)}>
-      <select>
-        {options.map(generateOption)}
+      <select defaultValue={selected}>
+        {options.map((option, index) => <option value={option} key={index}>{option}</option>)}
       </select>
     </span>
+  </p>
  );
-};
 
 Select.propTypes = {
+  name: React.PropTypes.string,
+  label: React.PropTypes.string,
   size: React.PropTypes.string,
   options: React.PropTypes.arrayOf(React.PropTypes.number),
   selected: React.PropTypes.number,
