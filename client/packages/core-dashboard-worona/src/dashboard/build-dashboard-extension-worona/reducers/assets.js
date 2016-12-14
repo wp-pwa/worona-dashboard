@@ -8,7 +8,8 @@ export default (state = {}, action) => {
   switch (action.type) {
     case types.PACKAGE_ASSETS_LOAD_REQUESTED:
       pkgAssets = mapValues(action.pkg.assets, item => flow(
-        keyBy(key => key),
+        keyBy(key => (action.pkg.local ? `http://localhost:4000/packages/${key}` :
+          `https://cdn.worona.io/packages/${key}`)),
         mapValuesFp(() => false)
       )(item));
       return update(state, { $merge: { [action.pkg.name]: pkgAssets } });

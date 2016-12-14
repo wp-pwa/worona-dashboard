@@ -27,6 +27,7 @@ Meteor.publish('packages', function settingsPublish(env = 'prod') {
       { fields: {
         name: 1,
         [`cdn.dashboard.${env}.main.file`]: 1,
+        [`cdn.dashboard.${env}.assets`]: 1,
         namespace: 1,
         niceName: 1,
         menu: 1,
