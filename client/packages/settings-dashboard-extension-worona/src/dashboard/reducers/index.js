@@ -4,7 +4,10 @@ import { combineReducers } from 'redux';
 import * as deps from '../deps';
 
 const env = isDev ? 'dev' : 'prod';
-const mapPkg = pkg => ({ ...pkg, main: pkg.cdn && pkg.cdn.dashboard[env].main.file });
+const mapPkg = pkg => ({ ...pkg,
+  main: pkg.cdn && pkg.cdn.dashboard[env].main.file,
+  assets: pkg.cdn && pkg.cdn.dashboard[env].assets,
+});
 
 const createSetting = collection => combineReducers({
   collection: deps.reducerCreators.collectionCreator(collection),
