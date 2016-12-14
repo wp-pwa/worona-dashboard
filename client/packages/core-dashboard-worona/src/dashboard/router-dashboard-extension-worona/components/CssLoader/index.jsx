@@ -8,9 +8,8 @@ class LinkCssClass extends React.Component {
     this.refs.link.addEventListener('load', this.props.assetsFileDownloaded);
   }
   render() {
-    const { cdn, path } = this.props;
     return (
-      <link rel="stylesheet" ref="link" type="text/css" href={`${cdn}${path}`} />
+      <link rel="stylesheet" ref="link" type="text/css" href={this.props.path} />
     );
   }
 }
@@ -28,16 +27,13 @@ const mapDispatchToProps = (dispatch, { path, pkgName }) => ({
 
 const LinkCss = connect(null, mapDispatchToProps)(LinkCssClass);
 
-const CssLoader = ({ cssAssets }) => {
-  const cdn = isRemote ? 'https://cdn.worona.io/packages/' : 'http://localhost:4000/packages/';
-  return (
-    <div>
-      {cssAssets.map(asset =>
-        <LinkCss cdn={cdn} pkgName={asset.pkgName} path={asset.path} key={asset.path} />
-      )}
-    </div>
-  );
-};
+const CssLoader = ({ cssAssets }) =>
+  <div>
+    {cssAssets.map(asset =>
+      <LinkCss pkgName={asset.pkgName} path={asset.path} key={asset.path} />
+    )}
+  </div>
+;
 
 CssLoader.propTypes = {
   cssAssets: React.PropTypes.arrayOf(React.PropTypes.shape({
