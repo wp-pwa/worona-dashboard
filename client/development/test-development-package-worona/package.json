@@ -24,7 +24,9 @@
   "worona": {
     "niceName": "Test Develoment Package",
     "slug": "testDevelopmentPackage",
-    "namespace": "development",
+    "namespace": {
+      "dashboard": "development"
+    },
     "type": "extension",
     "services": [
       "dashboard",

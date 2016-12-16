@@ -8,6 +8,7 @@ const env = isDev ? 'dev' : 'prod';
 const mapPkg = pkg => ({ ...pkg,
   main: pkg.cdn && pkg.cdn.dashboard[env].main.file,
   assets: pkg.cdn && pkg.cdn.dashboard[env].assets,
+  namespace: typeof pkg.namespace === 'object' ? pkg.namespace.dashboard : pkg.namespace,
 });
 
 const createSetting = collection => combineReducers({
@@ -21,7 +22,9 @@ const createPkg = collection => combineReducers({
 });
 
 const devPkgs = map(getDevelopmentPackages(), pkg => pkg.woronaInfo);
-export const devPackages = () => devPkgs;
+export const devPackages = () => {
+  return devPkgs.map(pkg => mapPkg(pkg));
+};
 
 export const collections = () => combineReducers({
   live: createSetting('settings-live'),
