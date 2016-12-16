@@ -2,6 +2,7 @@ import { isDev, getDevelopmentPackages } from 'worona-deps';
 import { map } from 'lodash';
 import { combineReducers } from 'redux';
 import * as deps from '../deps';
+import savingSettings from './savingSettings';
 
 const env = isDev ? 'dev' : 'prod';
 const mapPkg = pkg => ({ ...pkg,
@@ -31,4 +32,5 @@ export const collections = () => combineReducers({
 
 export default () => combineReducers({
   collections: collections(),
+  savingSettings,
 });

@@ -10,6 +10,7 @@ import Hero from '../../elements/Hero';
 import EditSiteLink from '../../elements/EditSiteLink';
 import * as deps from '../../deps';
 import ServiceTabs from './ServiceTabs';
+import MobileMenu from './MobileMenu';
 
 let SiteHomeHeader = ({ site }) => (
   <Hero
@@ -57,6 +58,7 @@ const SiteHome = () => (
       <SiteHomeHeader />
       <ServiceTabs />
     </Header>
+    <MobileMenu />
 
     <Main
       waitForSelectors={[
