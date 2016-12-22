@@ -1,0 +1,59 @@
+{
+  "name": "vendors-dashboard-worona",
+  "version": "1.3.0",
+  "description": "Core Package of Worona Dashboard",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/worona/worona-dashboard.git"
+  },
+  "keywords": [
+    "vendors",
+    "dashboard",
+    "worona",
+    "package"
+  ],
+  "author": "Worona Labs SL | Luis Herranz, @luisherranz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/worona/worona-dashboard/issues"
+  },
+  "homepage": "https://github.com/worona/worona-dashboard#readme",
+  "worona": {
+    "authors": [
+      "luis@worona.org",
+      "abel@worona.org"
+    ],
+    "private": false,
+    "dashboard": {
+      "type": "vendors",
+      "namespace": "vendors",
+      "default": false,
+      "core": false
+    }
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "fastclick": "^1.0.6",
+    "i18next": "^3.4.3",
+    "i18next-xhr-backend": "^1.2.0",
+    "normalizr": "^2.2.1",
+    "process": "^0.11.9",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-i18next": "^1.10.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0",
+    "redux-form": "^6.2.0",
+    "redux-router": "^2.1.2",
+    "redux-saga": "^0.12.0",
+    "reselect": "^2.5.4",
+    "stringify-error-message": "^1.0.2",
+    "superagent": "^2.3.0",
+    "webpack": "^1.13.3",
+    "worona-deps": "^1.9.0",
+    "worona-polyfills": "^1.0.0"
+  }
+}
