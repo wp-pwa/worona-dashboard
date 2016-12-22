@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSelector } from 'reselect';
 import { findIndex, findKey } from 'lodash';
 import { flow, map, sortBy, groupBy, filter } from 'lodash/fp';
@@ -28,11 +29,13 @@ export const getCategories = createSelector(
       sortBy(item => item.menu.order),
       groupBy(item => item.menu.category),
     )(settings);
-    // const pkgsFromDev = flow(
-    //   sortBy(item => item.menu.order),
-    //   groupBy(item => item.menu.category)
-    // )(devPackages);
-    return { ...pkgsWithSettings };
+    const pkgsFromDev = flow(
+      map(item => ({ name: item.name, menu: item.dashboard.menu[service] })),
+      map(item => { item.menu.category = 'Development'; return item; }),
+      sortBy(item => item.menu.order),
+      groupBy(item => item.menu.category)
+    )(devPackages);
+    return { ...pkgsWithSettings, ...pkgsFromDev };
   }
 );
 

@@ -31,17 +31,17 @@
       "default": false,
       "menu": {
         "app": {
-          "name": "Package Development",
+          "niceName": "Package Development",
           "category": "General",
           "order": 70
         },
         "fbia": {
-          "name": "Package Development",
+          "niceName": "Package Development",
           "category": "General",
           "order": 70
         },
         "amp": {
-          "name": "Package Development",
+          "niceName": "Package Development",
           "category": "General",
           "order": 70
         }
