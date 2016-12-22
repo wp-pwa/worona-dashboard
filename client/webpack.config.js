@@ -17,7 +17,7 @@ switch (config.type) {
       plugins.statsWriterPlugin(config),
     ].filter(function(plugin) { return typeof plugin !== 'undefined'; });
     module.exports = {
-      entry: { main: require('./packages/core-' + config.entrie + '-worona/vendors.json') },
+      entry: { main: require('./packages/vendors-dashboard-worona/vendors.json') },
       output: output.vendors(config),
       plugins: pluginsArr,
     };
@@ -53,7 +53,7 @@ switch (config.type) {
         extensions: ['', '.js', '.jsx'],
         modulesDirectories: [
           'node_modules',
-          'packages/core-' + config.entrie + '-worona/node_modules',
+          'packages/vendors-dashboard-worona/node_modules',
         ],
       },
       // devtool: '#eval-source-map',

@@ -6,9 +6,9 @@ import savingSettings from './savingSettings';
 
 const env = isDev ? 'dev' : 'prod';
 const mapPkg = pkg => ({ ...pkg,
-  main: pkg.cdn && pkg.cdn.dashboard[env].main.file,
-  assets: pkg.cdn && pkg.cdn.dashboard[env].assets,
-  namespace: typeof pkg.namespace === 'object' ? pkg.namespace.dashboard : pkg.namespace,
+  main: pkg.dashboard[env] && pkg.dashboard[env].main.file,
+  assets: pkg.dashboard[env] && pkg.dashboard[env].assets,
+  namespace: pkg.dashboard.namespace,
 });
 
 const createSetting = collection => combineReducers({
@@ -22,9 +22,7 @@ const createPkg = collection => combineReducers({
 });
 
 const devPkgs = map(getDevelopmentPackages(), pkg => pkg.woronaInfo);
-export const devPackages = () => {
-  return devPkgs.map(pkg => mapPkg(pkg));
-};
+export const devPackages = () => devPkgs.map(pkg => mapPkg(pkg));
 
 export const collections = () => combineReducers({
   live: createSetting('settings-live'),

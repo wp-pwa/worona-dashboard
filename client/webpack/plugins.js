@@ -43,9 +43,8 @@ var extractTextPlugin = function(config) {
 
 var dllReferencePlugin = function(config) {
   return new webpack.DllReferencePlugin({
-    context: path.resolve('packages/core-' + config.entrie + '-worona'),
-    manifest: require('../dist/vendors-' + config.entrie + '-worona/' + config.entrie +
-      '/' + config.env + '/json/manifest.json'),
+    context: path.resolve('packages/vendors-' + config.entrie + '-worona'),
+    manifest: require('../dist/vendors-' + config.entrie + '-worona/' + config.entrie + '/' + config.env + '/json/manifest.json'),
   });
 };
 

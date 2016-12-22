@@ -31,7 +31,7 @@
       "type": "core",
       "namespace": "core",
       "default": false,
-      "core": false
+      "core": true
     }
   },
   "devDependencies": {},

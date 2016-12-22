@@ -26,13 +26,10 @@ Meteor.publish('packages', function settingsPublish(env = 'prod') {
       { name: { $in: packageNames } },
       { fields: {
         name: 1,
-        [`cdn.dashboard.${env}.main.file`]: 1,
-        [`cdn.dashboard.${env}.assets`]: 1,
-        namespace: 1,
-        niceName: 1,
-        menu: 1,
-        type: 1,
-        services: 1,
+        [`dashboard.${env}.main.file`]: 1,
+        [`dashboard.${env}.assets`]: 1,
+        'dashboard.namespace': 1,
+        'dashboard.menu': 1,
       } },
     );
   });

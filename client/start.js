@@ -32,7 +32,7 @@ const start = async () => {
     '--entrie', 'dashboard',
     '--type', 'vendors',
     '--env', env,
-  ], { cwd: path.resolve('packages', 'core-dashboard-worona'), stdio: 'inherit' });
+  ], { cwd: path.resolve('packages', 'vendors-dashboard-worona'), stdio: 'inherit' });
 
   // Run webpack-dev-server.
   const webpack = config.build ? 'webpack' : 'webpack-dev-server';
