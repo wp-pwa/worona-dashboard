@@ -10,10 +10,9 @@
     "url": "git+ssh://git@github.com/worona/worona-dashboard.git"
   },
   "keywords": [
+    "development",
     "worona",
-    "extension",
-    "accounts",
-    "dashboard"
+    "package"
   ],
   "author": "Worona Labs SL | Luis Herranz, @luisherranz",
   "license": "MIT",
@@ -22,26 +21,32 @@
   },
   "homepage": "https://github.com/worona/worona#readme",
   "worona": {
-    "niceName": "Test Develoment Package",
-    "slug": "testDevelopmentPackage",
-    "namespace": {
-      "dashboard": "development"
-    },
-    "type": "extension",
-    "services": [
-      "dashboard",
-      "app",
-      "fbia",
-      "amp"
-    ],
     "authors": [
       "luis@worona.org"
     ],
-    "default": 0,
-    "core": 0,
-    "listed": 0,
-    "deactivable": 0,
-    "public": 1
+    "private": false,
+    "dashboard": {
+      "type": "extension",
+      "namespace": "development",
+      "default": false,
+      "menu": {
+        "app": {
+          "name": "Package Development",
+          "category": "General",
+          "order": 70
+        },
+        "fbia": {
+          "name": "Package Development",
+          "category": "General",
+          "order": 70
+        },
+        "amp": {
+          "name": "Package Development",
+          "category": "General",
+          "order": 70
+        }
+      }
+    }
   },
   "devDependencies": {},
   "dependencies": {}

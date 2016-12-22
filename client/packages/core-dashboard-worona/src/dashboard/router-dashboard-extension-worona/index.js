@@ -5,9 +5,6 @@ import * as types from './types';
 import * as selectors from './selectors';
 import * as deps from './deps';
 
-export const name = 'router-dashboard-extension-worona';
-export const namespace = 'router';
-
 export {
   libs,
   routes,

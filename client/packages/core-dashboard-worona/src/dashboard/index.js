@@ -10,9 +10,9 @@ import * as loading from './loading-dashboard-theme-worona';
 import * as build from './build-dashboard-extension-worona';
 import * as router from './router-dashboard-extension-worona';
 
-packageDownloaded(build);
-packageDownloaded(loading);
-packageDownloaded(router);
+packageDownloaded(build, 'build-dashboard-extension-worona', 'build');
+packageDownloaded(loading, 'loading-dashboard-theme-worona', 'theme');
+packageDownloaded(router, 'router-dashboard-extension-worona', 'router');
 packageActivated('build-dashboard-extension-worona');
 packageActivated('loading-dashboard-theme-worona');
 packageActivated('router-dashboard-extension-worona');

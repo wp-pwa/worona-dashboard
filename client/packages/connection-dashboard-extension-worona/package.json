@@ -22,20 +22,17 @@
   },
   "homepage": "https://github.com/worona/worona#readme",
   "worona": {
-    "niceName": "Connection",
-    "slug": "connection",
-    "namespace": "connection",
-    "type": "extension",
-    "services": ["dashboard"],
     "authors": [
       "luis@worona.org",
       "abel@worona.org"
     ],
-    "default": 1,
-    "core": 1,
-    "listed": 0,
-    "deactivable": 0,
-    "public": 1
+    "private": false,
+    "dashboard": {
+      "type": "extension",
+      "namespace": "connection",
+      "default": false,
+      "core": true,
+    }
   },
   "dependencies": {
     "asteroid": "^2.0.2",
