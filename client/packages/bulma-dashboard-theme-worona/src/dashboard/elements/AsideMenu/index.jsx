@@ -37,7 +37,7 @@ export const MenuCategory = ({ name, entries }) => (
     </p>
     <ul className="menu-list">
       {entries.map(entry =>
-        (<MenuEntry key={entry.id} {...entry} />)
+        (<MenuEntry key={entry.name} name={entry.name} niceName={entry.menu.niceName} />)
       )}
     </ul>
   </div>

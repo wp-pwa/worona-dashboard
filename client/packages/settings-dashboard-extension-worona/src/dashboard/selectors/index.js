@@ -21,17 +21,18 @@ export const getCategories = createSelector(
     const pkgsWithSettings = flow(
       filter(item => item.woronaInfo.siteId === siteId),
       map(item => packages[findIndex(packages, pkg =>
-        pkg.name === item.woronaInfo.name && pkg.menu.services.indexOf(service) !== -1
+        pkg.name === item.woronaInfo.name && pkg.dashboard.menu[service]
       )]),
       filter(item => typeof item !== 'undefined'),
+      map(item => ({ name: item.name, menu: item.dashboard.menu[service] })),
       sortBy(item => item.menu.order),
-      groupBy(item => item.menu.category)
+      groupBy(item => item.menu.category),
     )(settings);
-    const pkgsFromDev = flow(
-      sortBy(item => item.menu.order),
-      groupBy(item => item.menu.category)
-    )(devPackages);
-    return { ...pkgsWithSettings, ...pkgsFromDev };
+    // const pkgsFromDev = flow(
+    //   sortBy(item => item.menu.order),
+    //   groupBy(item => item.menu.category)
+    // )(devPackages);
+    return { ...pkgsWithSettings };
   }
 );
 
