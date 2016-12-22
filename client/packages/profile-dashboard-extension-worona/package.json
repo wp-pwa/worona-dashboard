@@ -31,7 +31,7 @@
       "type": "extension",
       "namespace": "profile",
       "default": false,
-      "core": true,
+      "core": true
     }
   },
   "devDependencies": {},

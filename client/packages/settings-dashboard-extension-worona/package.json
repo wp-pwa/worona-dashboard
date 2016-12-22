@@ -30,7 +30,7 @@
       "type": "extension",
       "namespace": "settings",
       "default": false,
-      "core": true,
+      "core": true
     }
   },
   "devDependencies": {},
