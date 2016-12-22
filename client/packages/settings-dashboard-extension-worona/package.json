@@ -21,21 +21,17 @@
   },
   "homepage": "https://github.com/worona/worona-dashboard#readme",
   "worona": {
-    "niceName": "Settings",
-    "slug": "settings",
-    "namespace": "settings",
-    "type": "extension",
-    "services": [
-      "dashboard"
-    ],
     "authors": [
+      "luis@worona.org",
       "abel@worona.org"
     ],
-    "default": 1,
-    "core": 1,
-    "listed": 0,
-    "deactivable": 0,
-    "public": 1
+    "private": false,
+    "dashboard": {
+      "type": "extension",
+      "namespace": "settings",
+      "default": false,
+      "core": true,
+    }
   },
   "devDependencies": {},
   "dependencies": {}

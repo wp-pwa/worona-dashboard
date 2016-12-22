@@ -1,7 +1,6 @@
 /* eslint-disable no-constant-condition, no-undef, global-require, import/no-dynamic-require */
 import { packageDownloaded } from 'worona-deps';
 import { put, call } from 'redux-saga/effects';
-import update from 'react/lib/update';
 import { takeEvery } from 'redux-saga';
 import * as types from '../types';
 import * as actions from '../actions';
@@ -32,8 +31,7 @@ export function* packageDownloadSaga({ pkg }) {
   try {
     const module = yield call(requirePackage, pkg);
     // Adds the download module to worona-deps.
-    yield call(packageDownloaded,
-      update(module, { $merge: { name: pkg.name, namespace: pkg.namespace } }));
+    yield call(packageDownloaded, module, pkg.name, pkg.namespace);
     yield put(actions.packageDownloadSucceed({ pkg }));
   } catch (error) {
     yield put(actions.packageDownloadFailed({ error: error.message, pkg }));

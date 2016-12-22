@@ -22,27 +22,22 @@
   },
   "homepage": "https://github.com/worona/worona-dashboard#readme",
   "worona": {
-    "niceName": "Bulma",
-    "slug": "bulma",
-    "namespace": "theme",
-    "type": "theme",
-    "services": [
-      "dashboard"
-    ],
     "authors": [
       "luis@worona.org",
       "abel@worona.org"
     ],
-    "default": 1,
-    "core": 1,
-    "listed": 0,
-    "deactivable": 0,
-    "public": 1
+    "private": false,
+    "dashboard": {
+      "type": "theme",
+      "namespace": "theme",
+      "default": false,
+      "core": true,
+    }
   },
   "devDependencies": {},
   "dependencies": {
     "animate.css": "^3.5.1",
-    "bulma": "^0.1.0",
+    "bulma": "^0.2.3",
     "font-awesome": "^4.6.3",
     "moment": "^2.13.0",
     "url-regexp": "^1.0.2",

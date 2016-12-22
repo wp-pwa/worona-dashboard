@@ -1,32 +1,29 @@
 import React from 'react';
-import Icon from '../../elements/Icon';
+import { map } from 'lodash';
+import { connect } from 'react-redux';
+import { MenuCategory } from '../../elements/AsideMenu';
+import * as deps from '../../deps';
 
-const Menu = ({ entries }) => {
-  {entries.map((item, index) =>
-    (<span>{item.name}</span>)
-  )}
-};
-
-const MobileMenu = ({ entries, active}) => (
-  <nav className="nav has-shadow is-hidden-tablet">
-    <div className="nav-left">
-      <span className="nav-item">
-        <a className="button" href="#">
-          <Icon code="bars" small />
-          <span>menu</span>
-        </a>
-      </span>
-      {active ? <Menu entries={entries} active={active} /> : null}
-    </div>
-    <div className="nav-right">
-      <span className="nav-item">
-       <a className="button is-primary" href="#">
-         <Icon code="eye" small />
-         <span>Preview</span>
-       </a>
-      </span>
-    </div>
-  </nav>
+const MobileMenu = ({ settings, active }) => (
+  <div className={`nav-right nav-menu ${(active ? 'is-active' : '')}`}>
+    <aside className="menu">
+      {
+        map(settings, (entries, name) =>
+          <MenuCategory key={name} name={name} entries={entries} />
+        )
+      }
+    </aside>
+  </div>
 );
 
-export default MobileMenu;
+MobileMenu.propTypes = {
+  active: React.PropTypes.bool,
+  settings: React.PropTypes.objectOf(React.PropTypes.array).isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  active: state.theme.siteHome.showingSiteHomeMobileMenu,
+  settings: deps.selectors.getCategories(state),
+});
+
+export default connect(mapStateToProps)(MobileMenu);

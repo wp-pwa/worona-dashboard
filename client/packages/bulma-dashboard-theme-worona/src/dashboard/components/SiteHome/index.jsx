@@ -10,6 +10,9 @@ import Hero from '../../elements/Hero';
 import EditSiteLink from '../../elements/EditSiteLink';
 import * as deps from '../../deps';
 import ServiceTabs from './ServiceTabs';
+import Icon from '../../elements/Icon';
+import Button from '../../elements/Button';
+import * as actions from '../../actions';
 import MobileMenu from './MobileMenu';
 
 let SiteHomeHeader = ({ site }) => (
@@ -52,13 +55,46 @@ const mapRootToState = state => ({
 });
 Root = connect(mapRootToState)(Root);
 
+let MobileMenuBar = ({ toggleSiteHomeMobileMenu }) => (
+  <nav className="nav has-shadow is-hidden-tablet">
+    <div className="nav-left">
+      <span className="nav-item">
+        <Button onClick={toggleSiteHomeMobileMenu}>
+          <Icon code="bars" small />
+          <span>menu</span>
+        </Button>
+      </span>
+    </div>
+    <div className="nav-right">
+      <span className="nav-item">
+        <Button color="primary">
+          <Icon code="eye" small />
+          <span>Preview</span>
+        </Button>
+      </span>
+    </div>
+    <MobileMenu />
+  </nav>
+);
+
+MobileMenuBar.propTypes = {
+  toggleSiteHomeMobileMenu: React.PropTypes.func.isRequired,
+};
+
+const mapDispatchToMobileMenuProps = (dispatch) => ({
+  toggleSiteHomeMobileMenu: () => dispatch(actions.toggleSiteHomeMobileMenu()),
+});
+
+MobileMenuBar = connect(null, mapDispatchToMobileMenuProps)(MobileMenuBar);
+
+
 const SiteHome = () => (
   <Body>
     <Header waitForSelectors={[deps.selectors.getIsReadySelectedSite]}>
       <SiteHomeHeader />
       <ServiceTabs />
     </Header>
-    <MobileMenu />
+    <MobileMenuBar />
 
     <Main
       waitForSelectors={[

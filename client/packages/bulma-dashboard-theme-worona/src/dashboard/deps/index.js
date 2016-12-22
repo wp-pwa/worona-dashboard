@@ -6,6 +6,7 @@ export const store = {
 
 export const types = {
   get LOGOUT_SUCCEED() { return dep('accounts', 'types', 'LOGOUT_SUCCEED'); },
+  get ROUTER_DID_CHANGE() { return dep('router', 'types', 'ROUTER_DID_CHANGE'); },
 };
 
 export const actions = {

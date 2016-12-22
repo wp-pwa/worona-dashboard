@@ -33,7 +33,7 @@ export function* packageLoadSaga({ pkg }) {
       ];
     }
     yield put(actions.packageLoadSucceed({ pkg }));
-    yield call(packageActivated, pkg.name);
+    yield call(packageActivated, pkg.name, 'dashboard');
   } catch (error) {
     yield put(actions.packageLoadFailed({ error, pkg }));
     throw error;

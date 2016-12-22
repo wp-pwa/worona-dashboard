@@ -1,3 +1,4 @@
+/* eslint-disable global-require, import/no-dynamic-require */
 import * as actions from './actions';
 import * as types from './types';
 import * as reducerCreators from './reducerCreators';
@@ -9,9 +10,6 @@ import * as selectors from './selectors';
 import * as i18n from './i18n';
 
 const locales = lang => require(`./locales/${lang}.json`);
-
-export const name = 'build-dashboard-extension-worona';
-export const namespace = 'build';
 
 export {
   actions,

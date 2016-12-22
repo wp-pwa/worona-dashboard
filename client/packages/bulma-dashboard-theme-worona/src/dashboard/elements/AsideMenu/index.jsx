@@ -30,7 +30,7 @@ const mapStateToMenuEntryProps = (state) => ({
 
 MenuEntry = connect(mapStateToMenuEntryProps)(MenuEntry);
 
-const MenuCategory = ({ name, entries }) => (
+export const MenuCategory = ({ name, entries }) => (
   <div>
     <p className="menu-label">
       {name}

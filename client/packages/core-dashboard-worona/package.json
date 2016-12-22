@@ -10,9 +10,10 @@
     "url": "git+https://github.com/worona/worona-dashboard.git"
   },
   "keywords": [
-    "worona",
+    "core",
     "dashboard",
-    "core"
+    "worona",
+    "package"
   ],
   "author": "Worona Labs SL | Luis Herranz, @luisherranz",
   "license": "MIT",
@@ -21,22 +22,17 @@
   },
   "homepage": "https://github.com/worona/worona-dashboard#readme",
   "worona": {
-    "niceName": "Core",
-    "slug": "core",
-    "namespace": "core",
-    "type": "core",
-    "services": [
-      "dashboard"
-    ],
     "authors": [
       "luis@worona.org",
       "abel@worona.org"
     ],
-    "default": 1,
-    "core": 1,
-    "listed": 0,
-    "deactivable": 0,
-    "public": 1
+    "private": false,
+    "dashboard": {
+      "type": "extension",
+      "namespace": "core",
+      "default": false,
+      "core": true,
+    }
   },
   "devDependencies": {},
   "dependencies": {
@@ -62,7 +58,7 @@
     "superagent": "^2.3.0",
     "systemjs": "^0.19.39",
     "webpack": "^1.13.3",
-    "worona-deps": "^1.8.6",
+    "worona-deps": "^1.9.0",
     "worona-polyfills": "^1.0.0"
   }
 }
