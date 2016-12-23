@@ -1,6 +1,6 @@
 {
   "name": "core-dashboard-worona",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Core Package of Worona Dashboard",
   "scripts": {
     "test": "NODE_PATH=../core-dashboard-worona/node_modules gstava src/**/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
