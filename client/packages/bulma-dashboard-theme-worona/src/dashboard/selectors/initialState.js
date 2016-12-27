@@ -14,6 +14,7 @@ export const loggedInItems = [
     icon: 'th',
     action: closeMobileMenuAction,
   },
+  /*
   {
     name: 'Licenses',
     type: 'button',
@@ -30,6 +31,7 @@ export const loggedInItems = [
     icon: 'user',
     action: closeMobileMenuAction,
   },
+  */
   {
     name: 'Logout',
     type: 'button',
