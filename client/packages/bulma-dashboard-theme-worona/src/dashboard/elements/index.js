@@ -8,3 +8,4 @@ export { default as Loader } from './Loader';
 export { default as MobilePreview } from './MobilePreview';
 export { default as RootContainer } from './RootContainer';
 export { default as Select } from './Select';
+export { default as Switch } from './Switch';

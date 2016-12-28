@@ -7,6 +7,7 @@ export const actions = {
 export const elements = {
   get RootContainer() { return dep('theme', 'elements', 'RootContainer'); },
   get Select() { return dep('theme', 'elements', 'Select'); },
+  get Switch() { return dep('theme', 'elements', 'Switch'); },
 };
 
 export const selectorCreators = {

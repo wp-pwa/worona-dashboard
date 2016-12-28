@@ -18,7 +18,7 @@ const Button = ({
   return (
     <span className={cx(center && 'is-text-centered')}>
       <button type={type} className={buttonClass} onClick={onClick} style={style}>
-          {children}
+        {children}
       </button>
     </span>
   );
