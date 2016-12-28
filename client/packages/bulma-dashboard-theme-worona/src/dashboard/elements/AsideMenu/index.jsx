@@ -3,9 +3,10 @@ import { map } from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import * as deps from '../../deps';
+import styles from './style.css';
 
 let MenuEntry = ({ niceName, name, selectedSiteId, selectedService, selectedPackageName }) => (
-  <li className={selectedPackageName === name && 'is-active'}>
+  <li className={selectedPackageName === name ? 'is-active' : null}>
     <Link
       to={`/site/${selectedSiteId}/${selectedService}/${name}`}
       role="button" activeClassName="is-active"
@@ -31,7 +32,7 @@ const mapStateToMenuEntryProps = (state) => ({
 MenuEntry = connect(mapStateToMenuEntryProps)(MenuEntry);
 
 export const MenuCategory = ({ name, entries }) => (
-  <div>
+  <div className={styles.menuCategory}>
     <p className="menu-label">
       {name}
     </p>

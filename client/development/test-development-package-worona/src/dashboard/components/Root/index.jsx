@@ -42,6 +42,7 @@ let Content = ({ setting, tagName, catName, requestSaveSettings }) => (
       selected={3}
       label="Testing select"
     />
+    <deps.elements.Switch meta={{ touched: false, error: '' }} />
     <p>
       You are modififying the site: {setting.woronaInfo.siteId} <br />
       You are in the package: {setting.woronaInfo.name} <br />
