@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { VelocityTransitionGroup } from 'velocity-react';
-import worona from './worona.png';
+import worona from './worona-logo.png';
 import { Menu } from './Menu';
 import { toggleMobileMenu } from '../../actions';
 import * as selectors from '../../selectors';
