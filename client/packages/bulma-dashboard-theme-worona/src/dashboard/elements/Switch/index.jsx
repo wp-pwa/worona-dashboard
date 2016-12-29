@@ -3,7 +3,7 @@ import BaseSwitch from 'react-ios-switch';
 import '!style!css!postcss!react-ios-switch/build/bundle.css';
 
 const Switch = ({ children, checked, label, name, input, meta: { touched, error } }) => (
-  <div>
+  <div className="control">
     {label && <label htmlFor={name} className="label">{label}</label>}
     <BaseSwitch checked={checked} {...input} />
     {children}

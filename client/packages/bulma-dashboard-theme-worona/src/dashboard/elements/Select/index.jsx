@@ -2,14 +2,16 @@ import React from 'react';
 import cx from 'classnames';
 
 const Select = ({ input, name, size, options, label }) => (
-  <p className="control">
+  <div>
     {label && <label className="label" htmlFor={name}>{label}</label>}
-    <span className={cx('select', size && `is-${size}`)}>
-      <select {...input}>
-        {options.map((option, index) => <option key={index}>{option}</option>)}
-      </select>
-    </span>
-  </p>
+    <p className="control">
+      <span className={cx('select', size && `is-${size}`)}>
+        <select {...input}>
+          {options.map((option, index) => <option key={index}>{option}</option>)}
+        </select>
+      </span>
+    </p>
+  </div>
  );
 
 Select.propTypes = {
