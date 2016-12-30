@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
 
 import * as deps from '../../deps';
-import { toggleTermsAndConditions } from '../../actions';
 import { validate } from './validate';
 
 import Header from '../Header';
@@ -13,18 +12,15 @@ import Body from '../Body';
 import Main from '../Main';
 import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
-import TermsAndConditions from './TermsAndConditions';
 import Hero from '../../elements/Hero';
 import Input from '../../elements/Input';
 import Button from '../../elements/Button';
-
-import styles from './style.css';
 
 const submit = (values, dispatch) => {
   dispatch(deps.actions.createAccountRequested(values.name, values.email, values.password));
 };
 
-const Register = ({ t, handleSubmit, waiting, statusMessage, errorMessage, toggleTerms }) => (
+const Register = ({ t, handleSubmit, waiting, statusMessage, errorMessage }) => (
   <Body>
     <Header>
       <Hero
@@ -77,9 +73,9 @@ const Register = ({ t, handleSubmit, waiting, statusMessage, errorMessage, toggl
 
               <p>
                 By creating an account you agree to our{' '}
-                <button className={styles.button} type="button" onClick={toggleTerms}>
+                <a href="https://www.worona.org/terms" target="_blank" rel="noopener noreferrer">
                   Terms and Conditions.
-                </button>
+                </a>
               </p>
 
               <br />
@@ -133,8 +129,6 @@ const Register = ({ t, handleSubmit, waiting, statusMessage, errorMessage, toggl
       <FooterLinks />
     </Footer>
 
-    <TermsAndConditions />
-
   </Body>
 );
 
@@ -149,7 +143,6 @@ Register.propTypes = {
     React.PropTypes.string,
     React.PropTypes.bool,
   ]),
-  toggleTerms: React.PropTypes.func,
   t: React.PropTypes.func,
 };
 
@@ -168,6 +161,4 @@ const mapStateToProps = state => ({
   initialValues: deps.selectors.getURLQueries(state),
 });
 
-export default connect(mapStateToProps, dispatch => ({
-  toggleTerms: () => dispatch(toggleTermsAndConditions()),
-}))(RegisterWithForm);
+export default connect(mapStateToProps)(RegisterWithForm);
