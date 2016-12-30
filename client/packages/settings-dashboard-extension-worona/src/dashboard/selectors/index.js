@@ -25,11 +25,13 @@ export const getCategories = createSelector(
         pkg.name === item.woronaInfo.name && pkg.dashboard.menu[service]
       )]),
       filter(item => typeof item !== 'undefined'),
+      filter(item => item.dashboard.menu[service] !== undefined),
       map(item => ({ name: item.name, menu: item.dashboard.menu[service] })),
       sortBy(item => item.menu.order),
       groupBy(item => item.menu.category),
     )(settings);
     const pkgsFromDev = flow(
+      filter(item => item.dashboard.menu[service] !== undefined),
       map(item => ({ name: item.name, menu: item.dashboard.menu[service] })),
       map(item => { item.menu.category = 'Development'; return item; }),
       sortBy(item => item.menu.order),
