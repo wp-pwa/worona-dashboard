@@ -43,7 +43,7 @@ const ServiceTabs = () => (
         <ul>
           <Tab name="Native & Web App" service="app" icon="mobile" />
           <Tab name="Instant Articles" service="fbia" icon="facebook" />
-          <Tab name="AMP" service="amp" icon="google" disabled />
+          <Tab name="AMP" service="amp" icon="google" />
         </ul>
       </div>
     </div>

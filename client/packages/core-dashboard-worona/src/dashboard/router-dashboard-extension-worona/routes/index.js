@@ -68,6 +68,7 @@ export const routes = (store) => (
     <Redirect from="/site/:siteId" to="/site/:siteId/app" />
     <Redirect from="/site/:siteId/app" to="/site/:siteId/app/general-app-extension-worona" />
     <Redirect from="/site/:siteId/fbia" to="/site/:siteId/fbia/general-fbia-extension-worona" />
+    <Redirect from="/site/:siteId/amp" to="/site/:siteId/amp/general-amp-extension-worona" />
     <Route
       path="/site/:siteId/:service/:packageName" component={Entry} wrapped="SiteHome"
       onEnter={requireAuth(store)}
