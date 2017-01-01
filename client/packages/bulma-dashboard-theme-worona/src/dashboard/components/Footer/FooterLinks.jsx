@@ -79,7 +79,7 @@ const FooterLinks = () => (
       </p>
       <br />
       <p>
-        © 2015 - 2016 Worona Labs S.L.
+        © 2015 - 2017 Worona Labs S.L.
       </p>
     </div>
   </div>
