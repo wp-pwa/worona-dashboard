@@ -32,7 +32,7 @@ Meteor.methods({
 
     const userId = checkUserLoggedIn(this.userId);
     checkSiteIdOwnership(_id, userId);
-    return sites.remove({ _id });
+    return sites.update({ _id }, { $set: { deleted: true } });
   },
 
   updateSiteStatus({ _id, status }) {
