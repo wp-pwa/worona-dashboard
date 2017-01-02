@@ -2,7 +2,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check, Match } from 'meteor/check';
 import sites from './collections';
-import * as errors from '../errors';
+import { checkSiteIdOwnership, checkUserLoggedIn } from '../utils';
 
 Meteor.methods({
   createSite({ name, url, _id }) {
@@ -11,11 +11,8 @@ Meteor.methods({
     check(_id, Match.OneOf(String, undefined));
     if (process.env.NODE_ENV === 'development') Meteor._sleepForMs(500);
 
-    if (!this.userId) {
-      return new Meteor.Error(errors.NOT_LOGGED_IN);
-    }
+    const userId = checkUserLoggedIn(this.userId);
 
-    const userId = this.userId;
     const createdAt = new Date();
     const modifiedAt = new Date();
     const data = { name, url, userIds: [userId], createdAt, modifiedAt };
@@ -33,20 +30,8 @@ Meteor.methods({
 
     if (process.env.NODE_ENV === 'development') Meteor._sleepForMs(500);
 
-    const userId = this.userId;
-    if (!userId) {
-      return new Meteor.Error(errors.NOT_LOGGED_IN);
-    }
-
-    const site = sites.findOne({ _id });
-    if (!site) {
-      return new Meteor.Error('Site ID not found.');
-    }
-
-    if (site.userIds.indexOf(userId) < 0) {
-      return new Meteor.Error('Current user doesn\'t own the selected site');
-    }
-
+    const userId = checkUserLoggedIn(this.userId);
+    checkSiteIdOwnership(_id, userId);
     return sites.remove({ _id });
   },
 
@@ -55,19 +40,8 @@ Meteor.methods({
     check(status, Object);
     check(status.type, String);
 
-    const userId = this.userId;
-    if (!userId) {
-      return new Meteor.Error(errors.NOT_LOGGED_IN);
-    }
-
-    const site = sites.findOne({ _id });
-    if (!site) {
-      return new Meteor.Error('Site ID not found.');
-    }
-
-    if (site.userIds.indexOf(userId) < 0) {
-      return new Meteor.Error('Current user doesn\'t own the selected site');
-    }
+    const userId = checkUserLoggedIn(this.userId);
+    checkSiteIdOwnership(_id, userId);
 
     return sites.update(_id, { $set: { status } });
   },
@@ -77,42 +51,10 @@ Meteor.methods({
     check(name, String);
     check(url, String);
 
-    const userId = this.userId;
-    if (!userId) {
-      return new Meteor.Error(errors.NOT_LOGGED_IN);
-    }
-
-    const site = sites.findOne({ _id });
-    if (!site) {
-      return new Meteor.Error('Site ID not found.');
-    }
-
-    if (site.userIds.indexOf(userId) < 0) {
-      return new Meteor.Error('Current user doesn\'t own the selected site');
-    }
-
+    const userId = checkUserLoggedIn(this.userId);
+    checkSiteIdOwnership(_id, userId);
     const modifiedAt = new Date();
     return sites.update(_id, { $set: { name, url, modifiedAt } });
   },
 
-  setSiteIcon({ _id, fileId }) {
-    check(_id, String);
-    check(fileId, String);
-
-    const userId = this.userId;
-    if (!userId) {
-      return new Meteor.Error(errors.NOT_LOGGED_IN);
-    }
-
-    const site = sites.findOne({ _id });
-    if (!site) {
-      return new Meteor.Error('Site ID not found.');
-    }
-
-    if (site.userIds.indexOf(userId) < 0) {
-      return new Meteor.Error('Current user doesn\'t own the selected site');
-    }
-
-    return sites.update(_id, { $set: { iconId: fileId } });
-  },
 });
