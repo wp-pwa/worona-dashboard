@@ -11,6 +11,11 @@ export default {
       local: true,
     },
     {
+      namespace: 'gtm',
+      name: 'gtm-dashboard-extension-worona',
+      local: true,
+    },
+    {
       namespace: 'profile',
       name: 'profile-dashboard-extension-worona',
       local: true,
