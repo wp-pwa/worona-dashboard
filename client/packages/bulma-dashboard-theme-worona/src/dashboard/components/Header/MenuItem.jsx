@@ -22,7 +22,7 @@ InnerLink.propTypes = {
   children: React.PropTypes.node.isRequired,
 };
 
-export const MenuItem = ({ type, name, url, target, link, action, icon, tabindex }) => {
+const MenuItem = ({ type, name, url, target, link, action, icon, tabindex }) => {
   const Anchor = !link ? ExtLink : InnerLink;
   const anchorClass = cn({
     'button is-primary': type === 'button',
