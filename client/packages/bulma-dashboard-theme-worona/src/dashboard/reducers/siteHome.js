@@ -7,6 +7,7 @@ export const showingSiteHomeMobileMenu = (state = false, action) => {
     case types.TOGGLE_SITEHOME_MOBILE_MENU:
       return !state;
     case deps.types.ROUTER_DID_CHANGE:
+    case types.CLOSE_SITEHOME_MOBILE_MENU:
       return false;
     default:
       return state;

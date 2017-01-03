@@ -7,6 +7,7 @@ const Cover = ({ onClick, hide, className }) => {
     right: '0px',
     bottom: '0px',
     left: '0px',
+    zIndex: -1,
   };
   if (hide) return (<div></div>);
   return (
