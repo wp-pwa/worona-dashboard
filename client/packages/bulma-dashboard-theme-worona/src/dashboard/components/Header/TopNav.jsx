@@ -7,6 +7,7 @@ import { Menu } from './Menu';
 import { toggleMobileMenu, closeMobileMenu } from '../../actions';
 import * as selectors from '../../selectors';
 import styles from './style.css';
+import Cover from '../../elements/Cover';
 
 const TopNav = ({ items, active, toggle, close }) => {
   let navigationMenu = null;
@@ -27,7 +28,7 @@ const TopNav = ({ items, active, toggle, close }) => {
         >
           {active ? <Menu mobile items={items} active={active} /> : null}
         </VelocityTransitionGroup>
-        {active ? <div className={styles.cover} onClick={close} /> : null}
+        <Cover className="is-hidden-tablet" hide={!active} onClick={close} />
       </div>
     );
   }
