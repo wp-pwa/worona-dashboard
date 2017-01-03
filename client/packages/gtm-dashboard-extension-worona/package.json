@@ -1,0 +1,39 @@
+{
+  "name": "gtm-dashboard-extension-worona",
+  "version": "1.0.0",
+  "description": "Extension for Google Tag Manager stuff.",
+  "scripts": {
+    "test": "NODE_PATH=../core-dashboard-worona/node_modules ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/worona/worona-dashboard.git"
+  },
+  "keywords": [
+    "worona",
+    "extension",
+    "Google",
+    "tag",
+    "manager"
+  ],
+  "author": "Worona Labs SL | Abel Serrano Juste, @akronix",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/worona/worona-dashboard/issues"
+  },
+  "homepage": "https://github.com/worona/worona-dashboard#readme",
+  "worona": {
+    "authors": [
+      "abel@worona.org"
+    ],
+    "private": false,
+    "dashboard": {
+      "type": "extension",
+      "namespace": "gtm",
+      "default": false,
+      "core": true
+    }
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
