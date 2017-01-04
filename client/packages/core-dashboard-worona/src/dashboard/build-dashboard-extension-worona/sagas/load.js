@@ -25,7 +25,7 @@ export function* packageLoadSaga({ pkg }) {
     yield call(loadReducers, pkg.name, pkg.namespace);
     yield call(reloadReducers);
     yield call(loadSagas, pkg.name, pkg.namespace);
-    if (isProd) {
+    if (pkg.assets) {
       yield [
         call(waitFor, pkg.name,
           types.PACKAGE_ASSETS_LOAD_SUCCEED, types.PACKAGE_ASSETS_LOAD_FAILED),
