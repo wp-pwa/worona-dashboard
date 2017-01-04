@@ -1,4 +1,4 @@
-import { Schema, arrayOf } from 'normalizr';
+import { schema } from 'normalizr';
 
-export const packages = new Schema('packages', { idAttribute: 'name' });
-export const arrayOfPackages = arrayOf(packages);
+export const packages = new schema.Entity('packages', {}, { idAttribute: 'name' });
+export const arrayOfPackages = new schema.Array(packages);

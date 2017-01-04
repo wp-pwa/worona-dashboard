@@ -1,5 +1,5 @@
 /* eslint-disable no-constant-condition */
-import { isProd, getSagas, getReducers, packageActivated, getDeps, waitForDeps } from 'worona-deps';
+import { getSagas, getReducers, packageActivated, getDeps, waitForDeps } from 'worona-deps';
 import { put, call } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
 import { addReducer, startSaga, reloadReducers, removeReducer, stopSaga } from '../store';
