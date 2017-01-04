@@ -1,15 +1,17 @@
-import { isRemote } from 'worona-deps';
 import React from 'react';
 import { connect } from 'react-redux';
 import * as deps from '../../deps';
 
 class LinkCssClass extends React.Component {
   componentDidMount() {
-    this.refs.link.addEventListener('load', this.props.assetsFileDownloaded);
+    this.linkElement.addEventListener('load', this.props.assetsFileDownloaded);
   }
   render() {
     return (
-      <link rel="stylesheet" ref="link" type="text/css" href={this.props.path} />
+      <link
+        rel="stylesheet" ref={linkElement => { this.linkElement = linkElement; }} type="text/css"
+        href={this.props.path}
+      />
     );
   }
 }
