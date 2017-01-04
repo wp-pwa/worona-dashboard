@@ -14,7 +14,7 @@ class LinkCssClass extends React.Component {
   }
 }
 LinkCssClass.propTypes = ({
-  cdn: React.PropTypes.string.isRequired,
+  pkgName: React.PropTypes.string.isRequired,
   path: React.PropTypes.string.isRequired,
   assetsFileDownloaded: React.PropTypes.func.isRequired,
 });
