@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition */
 import { getSagas, getReducers, packageActivated, getDeps, waitForDeps } from 'worona-deps';
-import { put, call } from 'redux-saga/effects';
+import { put, call, join, fork } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
 import { addReducer, startSaga, reloadReducers, removeReducer, stopSaga } from '../store';
 import * as types from '../types';
@@ -26,14 +26,13 @@ export function* packageLoadSaga({ pkg }) {
     yield call(reloadReducers);
     yield call(loadSagas, pkg.name, pkg.namespace);
     if (pkg.assets) {
-      yield [
-        call(waitFor, pkg.name,
-          types.PACKAGE_ASSETS_LOAD_SUCCEED, types.PACKAGE_ASSETS_LOAD_FAILED),
-        put(actions.packageAssetsLoadRequested({ pkg })),
-      ];
+      const waitForAssets = yield fork(waitFor, pkg.name,
+        types.PACKAGE_ASSETS_LOAD_SUCCEED, types.PACKAGE_ASSETS_LOAD_FAILED);
+      yield put(actions.packageAssetsLoadRequested({ pkg }));
+      yield join(waitForAssets);
     }
+    yield call(packageActivated, pkg.name);
     yield put(actions.packageLoadSucceed({ pkg }));
-    yield call(packageActivated, pkg.name, 'dashboard');
   } catch (error) {
     yield put(actions.packageLoadFailed({ error, pkg }));
     throw error;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { map } from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import * as deps from '../../deps';
@@ -31,14 +30,14 @@ const mapStateToMenuEntryProps = (state) => ({
 
 MenuEntry = connect(mapStateToMenuEntryProps)(MenuEntry);
 
-export const MenuCategory = ({ name, entries }) => (
+export const MenuCategory = ({ name, items }) => (
   <div className={styles.menuCategory}>
     <p className="menu-label">
       {name}
     </p>
     <ul className="menu-list">
-      {entries.map(entry =>
-        (<MenuEntry key={entry.name} name={entry.name} niceName={entry.menu.niceName} />)
+      {items.map(item =>
+        (<MenuEntry key={item.name} name={item.name} niceName={item.menu.niceName} />)
       )}
     </ul>
   </div>
@@ -46,27 +45,24 @@ export const MenuCategory = ({ name, entries }) => (
 
 MenuCategory.propTypes = {
   name: React.PropTypes.string,
-  entries: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  items: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
 };
 
-const AsideMenu = ({ settings }) => (
+const AsideMenu = ({ categories }) => (
   <div className="column is-hidden-mobile is-2">
     <aside className="menu">
-      {
-        map(settings, (entries, name) =>
-          <MenuCategory key={name} name={name} entries={entries} />
-        )
-      }
+      {categories.map(category =>
+        <MenuCategory key={category.name} name={category.name} items={category.items} />
+      )}
     </aside>
   </div>
 );
-
 AsideMenu.propTypes = {
-  settings: React.PropTypes.objectOf(React.PropTypes.array).isRequired,
+  categories: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
 };
 
 const mapStateToMenuProps = (state) => ({
-  settings: deps.selectors.getCategories(state),
+  categories: deps.selectors.getCategories(state),
 });
 
 export default connect(mapStateToMenuProps)(AsideMenu);

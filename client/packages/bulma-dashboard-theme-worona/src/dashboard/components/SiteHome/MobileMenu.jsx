@@ -1,27 +1,32 @@
 import React from 'react';
-import { map } from 'lodash';
 import { connect } from 'react-redux';
+import { VelocityTransitionGroup } from 'velocity-react';
 import { MenuCategory } from '../../elements/AsideMenu';
 import Cover from '../../elements/Cover';
 import * as deps from '../../deps';
 import * as actions from '../../actions';
 
-const MobileMenu = ({ settings, active, closeSiteHomeMobileMenu }) => (
-  <div className={`nav-right nav-menu ${(active ? 'is-active' : '')}`}>
-    <aside className="menu">
-      {
-        map(settings, (entries, name) =>
-          <MenuCategory key={name} name={name} entries={entries} />
-        )
-      }
-    </aside>
-    <Cover onClick={closeSiteHomeMobileMenu} className="is-hidden-tablet" hide={!active} />
-  </div>
+const MobileMenu = ({ categories, active, closeSiteHomeMobileMenu }) => (
+  <VelocityTransitionGroup
+    enter={{ animation: 'slideDown', duration: 150 }}
+    leave={{ animation: 'slideUp', duration: 150 }}
+  >
+    {active ? (
+      <div className="nav-right nav-menu">
+        <aside className="menu">
+          {categories.map(category =>
+            <MenuCategory key={category.name} name={category.name} items={category.items} />
+          )}
+        </aside>
+        <Cover onClick={closeSiteHomeMobileMenu} className="is-hidden-tablet" />
+      </div>
+    ) : null}
+  </VelocityTransitionGroup>
 );
 
 MobileMenu.propTypes = {
   active: React.PropTypes.bool,
-  settings: React.PropTypes.objectOf(React.PropTypes.array).isRequired,
+  categories: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
   closeSiteHomeMobileMenu: React.PropTypes.func.isRequired,
 };
 
@@ -31,7 +36,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   active: state.theme.siteHome.showingSiteHomeMobileMenu,
-  settings: deps.selectors.getCategories(state),
+  categories: deps.selectors.getCategories(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MobileMenu);
