@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSelector } from 'reselect';
-import { findIndex, findKey } from 'lodash';
+import { findIndex, findKey, forEach } from 'lodash';
 import { flow, map, sortBy, groupBy, filter } from 'lodash/fp';
 import * as deps from '../deps';
 
@@ -37,7 +37,12 @@ export const getCategories = createSelector(
       sortBy(item => item.menu.order),
       groupBy(item => item.menu.category)
     )(devPackages);
-    return { ...pkgsWithSettings, ...pkgsFromDev };
+    const orderedCategories = [];
+    const order = ['General', 'Extensions', 'Themes', 'Publish', 'Development'];
+    forEach({ ...pkgsWithSettings, ...pkgsFromDev }, (value, key) => {
+      orderedCategories[order.indexOf(key)] = { name: key, items: value };
+    });
+    return orderedCategories.filter(cat => cat);
   }
 );
 
