@@ -3,7 +3,7 @@ import MenuItem from './MenuItem';
 import styles from './style.css';
 
 export const Menu = ({ items, active, mobile }) => (
-  <div className={`nav-right nav-menu ${styles.navigationMenu} ${(active ? 'is-active' : '')} ${(mobile ? 'is-hidden-tablet' : '')}`}>
+  <div className={`nav-right nav-menu ${styles.navigationMenu} ${(active ? 'is-active' : '')} ${(mobile ? 'is-hidden-tablet' : 'is-hidden-mobile')}`}>
     {items.map((item, index) =>
       (<MenuItem key={index} tabindex={index + 2} {...item} />)
     )}

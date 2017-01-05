@@ -1,19 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { VelocityTransitionGroup } from 'velocity-react';
 import { MenuCategory } from '../../elements/AsideMenu';
 import Cover from '../../elements/Cover';
 import * as deps from '../../deps';
 import * as actions from '../../actions';
 
 const MobileMenu = ({ categories, active, closeSiteHomeMobileMenu }) => (
-  <div className={`nav-right nav-menu ${(active ? 'is-active' : '')}`}>
-    <aside className="menu">
-      {categories.map(category =>
-        <MenuCategory key={category.name} name={category.name} items={category.items} />
-      )}
-    </aside>
-    <Cover onClick={closeSiteHomeMobileMenu} className="is-hidden-tablet" hide={!active} />
-  </div>
+  <VelocityTransitionGroup
+    enter={{ animation: 'slideDown', duration: 150 }}
+    leave={{ animation: 'slideUp', duration: 150 }}
+  >
+    {active ? (
+      <div className="nav-right nav-menu">
+        <aside className="menu">
+          {categories.map(category =>
+            <MenuCategory key={category.name} name={category.name} items={category.items} />
+          )}
+        </aside>
+        <Cover onClick={closeSiteHomeMobileMenu} className="is-hidden-tablet" />
+      </div>
+    ) : null}
+  </VelocityTransitionGroup>
 );
 
 MobileMenu.propTypes = {
