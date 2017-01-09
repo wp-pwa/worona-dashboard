@@ -35,8 +35,7 @@
     }
   },
   "dependencies": {
-    "asteroid": "^2.0.2",
-    "ws": "^1.1.0"
+    "worona-asteroid": "^1.0.1"
   },
   "devDependencies": {}
 }

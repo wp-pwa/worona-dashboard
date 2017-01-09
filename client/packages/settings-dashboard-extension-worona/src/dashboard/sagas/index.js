@@ -20,7 +20,7 @@ export function* requestPackage({ fields: { name } }) {
 
 export function* requestPackages() {
   yield [
-    call(deps.sagaHelpers.waitForReady, 'settings-live', selectors.getSettingsLiveIsReady),
+    call(deps.sagaHelpers.waitForReady, 'dashboard-settings-live', selectors.getSettingsLiveIsReady),
     call(deps.sagaHelpers.waitForReady, 'packages', selectors.getPackageIsReady),
   ];
   const pkgs = yield select(selectors.getPackageCollection);
@@ -41,7 +41,7 @@ export default function* settingsagas() {
   yield [
     fork(defaultSettings),
     fork(deps.sagaCreators.collectionWatcherCreator('settings-live')),
-    fork(deps.sagaCreators.subscriptionWatcherCreator('settings-live')),
+    fork(deps.sagaCreators.subscriptionWatcherCreator('dashboard-settings-live')),
     fork(deps.sagaCreators.collectionWatcherCreator('packages')),
     fork(deps.sagaCreators.subscriptionWatcherCreator('packages', env)),
     fork(requestPackages),
