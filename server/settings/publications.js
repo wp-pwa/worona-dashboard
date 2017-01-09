@@ -1,8 +1,9 @@
+/* eslint-disable prefer-arrow-callback */
 import { Meteor } from 'meteor/meteor';
 import { settingsLive, packages } from './collections';
 import sites from '../sites/collections';
 
-Meteor.publish('settings-live', function settingsPublish() {
+Meteor.publish('dashboard-settings-live', function dashboardSettingsLive() {
   this.autorun(() => {
     const userSites = sites.find(
       { userIds: { $in: [this.userId] } },
@@ -13,7 +14,10 @@ Meteor.publish('settings-live', function settingsPublish() {
   });
 });
 
-Meteor.publish('packages', function settingsPublish(env = 'prod') {
+Meteor.publish('app-settings-live', ({ siteId }) =>
+  settingsLive.find({ 'woronaInfo.siteId': { $in: [siteId] } }));
+
+Meteor.publish('packages', function packagesFromSettings(env = 'prod') {
   this.autorun(() => {
     const userSites = sites.find(
       { userIds: { $in: [this.userId] } },

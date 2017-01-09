@@ -11,23 +11,23 @@ const mapPkg = pkg => ({ ...pkg,
   namespace: pkg.dashboard.namespace,
 });
 
-const createSetting = collection => combineReducers({
+const createSetting = ({ collection, subscription }) => combineReducers({
   collection: deps.reducerCreators.collectionCreator(collection),
-  isReady: deps.reducerCreators.isReadyCreator(collection),
+  isReady: deps.reducerCreators.isReadyCreator(subscription),
 });
 
-const createPkg = collection => combineReducers({
+const createPkg = ({ collection, subscription }) => combineReducers({
   collection: deps.reducerCreators.collectionCreator(collection, mapPkg),
-  isReady: deps.reducerCreators.isReadyCreator(collection),
+  isReady: deps.reducerCreators.isReadyCreator(subscription),
 });
 
 const devPkgs = map(getDevelopmentPackages(), pkg => pkg.woronaInfo);
 export const devPackages = () => devPkgs.map(pkg => mapPkg(pkg));
 
 export const collections = () => combineReducers({
-  live: createSetting('settings-live'),
-  preview: createSetting('settings-preview'),
-  packages: createPkg('packages'),
+  live: createSetting({ collection: 'settings-live', subscription: 'dashboard-settings-live' }),
+  preview: createSetting({ collection: 'settings-preview', subscription: 'dashboard-settings-live' }),
+  packages: createPkg({ collection: 'packages', subscription: 'packages' }),
   devPackages: combineReducers({ collection: devPackages }),
 });
 
