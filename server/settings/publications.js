@@ -14,8 +14,13 @@ Meteor.publish('dashboard-settings-live', function dashboardSettingsLive() {
   });
 });
 
-Meteor.publish('app-settings-live', ({ siteId }) =>
-  settingsLive.find({ 'woronaInfo.siteId': { $in: [siteId] } }));
+Meteor.publish('app-settings-live', ({ siteId }) => {
+  const pkgs = packages.find({ app: { $exists: true } }, { fields: { name: 1 } });
+  return settingsLive.find({
+    'woronaInfo.siteId': { $in: [siteId] },
+    'woronaInfo.name': { $in: pkgs.map(pkg => pkg.name) },
+  });
+});
 
 Meteor.publish('packages', function packagesFromSettings(env = 'prod') {
   this.autorun(() => {
