@@ -1,7 +1,9 @@
 /* eslint-disable max-len */
 import React from 'react';
+import { connect } from 'react-redux';
+import * as deps from '../../deps';
 
-export default () => (
+const MobilePreview = ({ siteId }) => (
   <div className="is-hidden-touch column is-4 has-text-centered" style={{ minWidth: '355px' }}>
     <svg
       width="355px"
@@ -245,8 +247,17 @@ export default () => (
         </g>
       </g>
       <foreignObject x="15" y="72" width="327" height="511">
-        <iframe src="https://worona.github.io/bulma-starter-theme-layout/list.html" style={{ width: '327px', height: '511px' }} />
+        <iframe src={`https://app.worona.org/?siteId=${siteId}&preview=true`} style={{ width: '327px', height: '511px' }} />
       </foreignObject>
     </svg>
   </div>
 );
+MobilePreview.propTypes = {
+  siteId: React.PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  siteId: deps.selectors.getSelectedSiteId(state),
+});
+
+export default connect(mapStateToProps)(MobilePreview);
