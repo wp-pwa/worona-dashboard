@@ -13,7 +13,7 @@ const reducers = { build: build(), router };
 const sagas = {};
 
 const composeEnhancers = composeWithDevTools({
-  serializeState: false,
+  serialize: false,
 });
 
 export const store = createStore(
