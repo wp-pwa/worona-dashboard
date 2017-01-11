@@ -55,7 +55,7 @@ const mapRootToState = state => ({
 });
 Root = connect(mapRootToState)(Root);
 
-let MobileMenuBar = ({ toggleSiteHomeMobileMenu }) => (
+let MobileMenuBar = ({ toggleSiteHomeMobileMenu, siteId }) => (
   <nav className="nav has-shadow is-hidden-tablet">
     <div className="nav-left">
       <span className="nav-item">
@@ -67,10 +67,15 @@ let MobileMenuBar = ({ toggleSiteHomeMobileMenu }) => (
     </div>
     <div className="nav-right">
       <span className="nav-item">
-        <Button color="primary">
+        <a
+          target="_blank"
+          href={`https://app.worona.org/?siteId=${siteId}&preview=true`}
+          rel="noreferrer noopener"
+          className="button is-primary"
+        >
           <Icon code="eye" small />
           <span>Preview</span>
-        </Button>
+        </a>
       </span>
     </div>
     <MobileMenu />
@@ -79,13 +84,18 @@ let MobileMenuBar = ({ toggleSiteHomeMobileMenu }) => (
 
 MobileMenuBar.propTypes = {
   toggleSiteHomeMobileMenu: React.PropTypes.func.isRequired,
+  siteId: React.PropTypes.string.isRequired,
 };
+
+const mapStateToMobileMenuProps = (state) => ({
+  siteId: deps.selectors.getSelectedSiteId(state),
+});
 
 const mapDispatchToMobileMenuProps = (dispatch) => ({
   toggleSiteHomeMobileMenu: () => dispatch(actions.toggleSiteHomeMobileMenu()),
 });
 
-MobileMenuBar = connect(null, mapDispatchToMobileMenuProps)(MobileMenuBar);
+MobileMenuBar = connect(mapStateToMobileMenuProps, mapDispatchToMobileMenuProps)(MobileMenuBar);
 
 
 const SiteHome = () => (
