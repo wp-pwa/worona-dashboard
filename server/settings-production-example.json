@@ -1,0 +1,14 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://user:pass@server:port,server:port/database?replicaSet=XXXXX",
+      "MONGO_OPLOG_URL": "mongodb://user:pass@server:port,server:port/local?authSource=admin&replicaSet=XXXXXX",
+      "MAIL_URL": "smtp://user:pass@server:port"
+    }
+  },
+  "keycdn": {
+    "url": "XXXXXXX.kxcdn.com",
+    "apiKey": "XXXXXXXXXXXXXXXXXXXXXXXXX",
+    "zoneId": "XXXXXXX"
+  }
+}

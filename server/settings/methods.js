@@ -1,6 +1,7 @@
 /* eslint-disable new-cap */
 import { Meteor } from 'meteor/meteor';
 import { check, Match } from 'meteor/check';
+import KeyCDN from 'keycdn';
 import { settingsLive } from './collections';
 import defaultSettings from './defaultSettings';
 import { checkSiteIdOwnership, checkUserLoggedIn } from '../utils';
@@ -20,6 +21,15 @@ const addSettings = ({ name, namespace, siteId }) => {
     } });
 };
 
+const keycdn = new KeyCDN(Meteor.settings.keycdn.apiKey);
+const purgeSite = siteId => new Promise((resolve, reject) => {
+  keycdn.del(`zones/purgetag/${Meteor.settings.keycdn.zoneId}.json`, { tags: [siteId] }, (err) => {
+    if (err) reject(err);
+    else resolve(true);
+  });
+});
+
+
 Meteor.methods({
   saveSettings(settings) {
     const userId = this.userId;
@@ -37,6 +47,8 @@ Meteor.methods({
     newSettingData['woronaInfo.init'] = true;
 
     const id = settingsLive.findOne({ 'woronaInfo.name': name, 'woronaInfo.siteId': siteId })._id;
+
+    purgeSite(siteId);
 
     return settingsLive.update(id, { $set: newSettingData });
   },

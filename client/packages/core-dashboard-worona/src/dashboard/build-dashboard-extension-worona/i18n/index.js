@@ -5,7 +5,8 @@ import XHR from 'i18next-xhr-backend';
 
 const loadLocales = (url, options, callback) => {
   const [ns, lng] = _.drop(/(.+)##(.+)/.exec(url));
-  if (ns !== 'translation') { // Don't load the default namespace.
+  if (ns !== 'translation') {
+    // Don't load the default namespace.
     try {
       const locale = getLocale(ns, lng);
       locale(file => callback(file, { status: '200' }));
@@ -17,22 +18,20 @@ const loadLocales = (url, options, callback) => {
   }
 };
 
-i18next
-  .use(XHR)
-  .init({
-    lng: 'en',
-    fallbackLng: 'en',
-    ns: 'build',
-    debug: false,
-    interpolation: {
-      escapeValue: false, // Not needed for react.
-    },
-    backend: {
-      loadPath: '{{ns}}##{{lng}}',
-      parse: data => data,
-      ajax: loadLocales,
-    },
-  });
+i18next.use(XHR).init({
+  lng: 'en',
+  fallbackLng: 'en',
+  ns: 'build',
+  debug: false,
+  interpolation: {
+    // Not needed for react.
+    escapeValue: false,
+  },
+  backend: { loadPath: '{{ns}}##{{lng}}', parse: data => data, ajax: loadLocales },
+});
 
 export default i18next;
-if (typeof window !== 'undefined') window.i18next = i18next;
+
+if (typeof window !== 'undefined') {
+  window.i18next = i18next;
+}
