@@ -26,12 +26,9 @@
       "luis@worona.org",
       "abel@worona.org"
     ],
-    "private": false,
     "dashboard": {
       "type": "extension",
-      "namespace": "accounts",
-      "default": false,
-      "core": true
+      "namespace": "accounts"
     }
   },
   "devDependencies": {},
