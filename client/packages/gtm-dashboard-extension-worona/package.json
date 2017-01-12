@@ -26,12 +26,9 @@
     "authors": [
       "abel@worona.org"
     ],
-    "private": false,
     "dashboard": {
       "type": "extension",
-      "namespace": "gtm",
-      "default": false,
-      "core": true
+      "namespace": "gtm"
     }
   },
   "devDependencies": {},
