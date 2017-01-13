@@ -28,6 +28,7 @@
     ],
     "dashboard": {
       "type": "core",
+      "core": true,
       "namespace": "core"
     }
   },
