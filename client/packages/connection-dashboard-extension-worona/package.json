@@ -28,6 +28,7 @@
     ],
     "dashboard": {
       "type": "extension",
+      "core": true,
       "namespace": "connection"
     }
   },

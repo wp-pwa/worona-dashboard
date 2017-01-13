@@ -26,6 +26,7 @@
     ],
     "dashboard": {
       "type": "vendors",
+      "core": true,
       "namespace": "vendors"
     }
   },

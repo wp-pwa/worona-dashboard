@@ -27,6 +27,7 @@
     ],
     "dashboard": {
       "type": "extension",
+      "core": true,
       "namespace": "settings"
     }
   },
