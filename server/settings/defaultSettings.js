@@ -23,6 +23,10 @@ const defaults = [
     name: 'general-amp-extension-worona',
     namespace: 'generalAMP',
   },
+  {
+    name: 'wp-org-connection-app-extension-worona',
+    namespace: 'connection',
+  },
 ];
 
 export default defaults;

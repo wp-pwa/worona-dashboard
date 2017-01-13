@@ -38,7 +38,7 @@ export const getCategories = createSelector(
       groupBy(item => item.menu.category)
     )(devPackages);
     const orderedCategories = [];
-    const order = ['General', 'Extensions', 'Themes', 'Publish', 'Development'];
+    const order = ['Settings', 'Themes', 'Extensions', 'Publish', 'Development'];
     forEach({ ...pkgsWithSettings, ...pkgsFromDev }, (value, key) => {
       orderedCategories[order.indexOf(key)] = { name: key, items: value };
     });
