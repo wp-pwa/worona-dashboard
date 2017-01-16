@@ -1,6 +1,7 @@
 /* eslint-disable new-cap */
 import { Meteor } from 'meteor/meteor';
 import { check, Match } from 'meteor/check';
+import { unique } from 'shorthash';
 import KeyCDN from 'keycdn';
 import { settingsLive } from './collections';
 import defaultSettings from './defaultSettings';
@@ -23,7 +24,8 @@ const addSettings = ({ name, namespace, siteId }) => {
 
 const keycdn = new KeyCDN(Meteor.settings.keycdn.apiKey);
 const purgeSite = siteId => new Promise((resolve, reject) => {
-  keycdn.del(`zones/purgetag/${Meteor.settings.keycdn.zoneId}.json`, { tags: [siteId] }, (err) => {
+  const hashed = unique(siteId).substring(0, 3);
+  keycdn.del(`zones/purgetag/${Meteor.settings.keycdn.zoneId}.json`, { tags: [hashed] }, (err) => {
     if (err) reject(err);
     else resolve(true);
   });

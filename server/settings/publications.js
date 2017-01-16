@@ -32,7 +32,7 @@ Meteor.publish('packages', function packagesFromSettings(env = 'prod') {
     const settings = settingsLive.find({ 'woronaInfo.siteId': { $in: siteIds } });
     const packageNames = settings.map(setting => setting.woronaInfo.name);
     return packages.find(
-      { name: { $in: packageNames } },
+      { name: { $in: packageNames }, dashboard: { $exists: true } },
       { fields: {
         name: 1,
         [`dashboard.${env}.main.file`]: 1,
