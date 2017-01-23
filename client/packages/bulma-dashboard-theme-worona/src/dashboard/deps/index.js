@@ -7,6 +7,7 @@ export const store = {
 export const types = {
   get LOGOUT_SUCCEED() { return dep('accounts', 'types', 'LOGOUT_SUCCEED'); },
   get ROUTER_DID_CHANGE() { return dep('router', 'types', 'ROUTER_DID_CHANGE'); },
+  get DELETE_SITE_REQUESTED() { return dep('sites', 'types', 'DELETE_SITE_REQUESTED'); },
 };
 
 export const actions = {

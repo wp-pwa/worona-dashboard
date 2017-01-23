@@ -4,11 +4,12 @@ import moment from 'moment';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as deps from '../../deps';
+import * as actions from '../../actions'
 import Icon from '../../elements/Icon';
 import EditSiteLink from '../../elements/EditSiteLink';
 import styles from './style.css';
 
-const Site = ({ name, url, date, id, deleteSite, status = {} }) => (
+const Site = ({ name, url, date, id, deleteModal, status = {} }) => (
   <div className="column is-narrow-mobile is-one-third-tablet is-one-quarter-desktop">
     <div className={cn('card', 'is-fullwidth')}>
       <header className="card-header">
@@ -39,7 +40,7 @@ const Site = ({ name, url, date, id, deleteSite, status = {} }) => (
           <Icon code="sliders" small />
           &nbsp;Configure
         </Link>
-        <button className={cn('card-footer-item', styles.delete)} onClick={deleteSite} role="button" >
+        <button className={cn('card-footer-item', styles.delete)} onClick={deleteModal} role="button" >
           <Icon code="trash-o" small />
           &nbsp;Delete
         </button>
@@ -52,7 +53,7 @@ Site.propTypes = {
   url: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
   date: React.PropTypes.number.isRequired,
-  deleteSite: React.PropTypes.func.isRequired,
+  deleteModal: React.PropTypes.func.isRequired,
   status: React.PropTypes.shape({
     type: React.PropTypes.string.isRequired,
     description: React.PropTypes.string,
@@ -60,7 +61,7 @@ Site.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  deleteSite: () => dispatch(deps.actions.deleteSiteRequested(ownProps.id)),
+  deleteModal: () => dispatch(actions.deleteModalOpened({ id: ownProps.id, name: ownProps.name })),
 });
 
 export default connect(null, mapDispatchToProps)(Site);
