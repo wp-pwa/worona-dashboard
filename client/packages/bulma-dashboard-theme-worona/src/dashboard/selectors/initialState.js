@@ -1,15 +1,23 @@
 import * as deps from '../deps';
 import { closeMobileMenu } from '../actions';
 
-export const initialHeaderItems = [];
-
 const closeMobileMenuAction = () => deps.store.dispatch(closeMobileMenu());
+
+export const initialHeaderItems = [
+  {
+    name: 'Get Help',
+    type: 'button',
+    url: 'https://www.worona.org/get-help',
+    target: '_blank',
+    icon: 'question-circle',
+    action: closeMobileMenuAction,
+  },
+];
 
 export const loggedInItems = [
   {
     name: 'Sites',
     type: 'button',
-    url: 'sites',
     link: '/sites',
     icon: 'th',
     action: closeMobileMenuAction,

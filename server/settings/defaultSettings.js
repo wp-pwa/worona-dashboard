@@ -16,6 +16,10 @@ const defaults = [
     namespace: 'extensionsManager',
   },
   {
+    name: 'themes-manager-app-extension-worona',
+    namespace: 'themesManager',
+  },
+  {
     name: 'general-fbia-extension-worona',
     namespace: 'generalFbia',
   },
