@@ -16,7 +16,7 @@ const submit = siteId => (values, dispatch) => {
 
 const AddSiteForm =
 ({ t, handleSubmit, waiting, statusMessage, errorMessage, submitFailed, invalid,
-   initialValues: { siteId } }) =>
+   initialValues: { siteId }, isFirstLogin }) =>
 (
   <div className="container">
     <form onSubmit={handleSubmit(submit(siteId))} >
@@ -77,7 +77,7 @@ const AddSiteForm =
             </div>
 
             <div className="level-right" style={{ marginTop: 0 }}>
-              <Link className="button is-medium" to="/">Cancel</Link>
+              <Link className="button is-medium" to="/">{ isFirstLogin ? 'I\'ll do this later' : 'Cancel' }</Link>
             </div>
           </div>
         </div>
@@ -104,6 +104,7 @@ AddSiteForm.propTypes = {
     siteURL: React.PropTypes.string,
   }),
   t: React.PropTypes.func,
+  isFirstLogin: React.PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
@@ -111,6 +112,7 @@ const mapStateToProps = state => ({
   statusMessage: deps.selectors.getCreateSiteStatus(state),
   errorMessage: deps.selectors.getCreateSiteError(state),
   initialValues: deps.selectors.getNewSiteInfo(state),
+  isFirstLogin: deps.selectors.getIsFirstLogin(state),
 });
 
 export default flow(
