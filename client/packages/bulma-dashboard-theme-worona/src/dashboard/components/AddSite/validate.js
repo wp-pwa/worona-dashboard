@@ -19,7 +19,7 @@ export const validate = values => {
   }
   if (!values.siteURL) {
     errors.siteURL = messages.required;
-  } else if (!urlValidator.validate(values.siteURL)) {
+  } else if (!urlValidator.validate(values.siteURL.match(/https?:\/\//) ? values.siteURL : `http://${values.siteURL}`)) {
     errors.siteURL = messages.invalidUrl;
   }
   return errors;

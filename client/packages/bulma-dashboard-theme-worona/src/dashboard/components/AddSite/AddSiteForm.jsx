@@ -11,7 +11,8 @@ import * as deps from '../../deps';
 import { validate } from './validate';
 
 const submit = siteId => (values, dispatch) => {
-  dispatch(deps.actions.createSiteRequested(values.siteName, values.siteURL, siteId));
+  const siteURL = values.siteURL.match(/https?:\/\//) ? values.siteURL : `http://${values.siteURL}`;
+  dispatch(deps.actions.createSiteRequested(values.siteName, siteURL, siteId));
 };
 
 const AddSiteForm =

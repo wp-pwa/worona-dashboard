@@ -11,7 +11,8 @@ import * as deps from '../../deps';
 import { validate } from './validate';
 
 const submit = siteId => (values, dispatch) => {
-  dispatch(deps.actions.editSiteRequested(values.name, values.url, siteId));
+  const url = values.url.match(/https?:\/\//) ? values.url : `http://${values.url}`;
+  dispatch(deps.actions.editSiteRequested(values.name, url, siteId));
 };
 
 const EditSiteForm =
