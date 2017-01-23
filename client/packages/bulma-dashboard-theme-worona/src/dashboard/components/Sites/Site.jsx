@@ -39,7 +39,7 @@ const Site = ({ name, url, date, id, deleteSite, status = {} }) => (
           <Icon code="sliders" small />
           &nbsp;Configure
         </Link>
-        <button className={cn('card-footer-item', styles.button)} onClick={deleteSite} role="button" >
+        <button className={cn('card-footer-item', styles.delete)} onClick={deleteSite} role="button" >
           <Icon code="trash-o" small />
           &nbsp;Delete
         </button>

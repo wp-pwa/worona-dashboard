@@ -1,10 +1,10 @@
-.button {
+.delete {
   background: none;
   border:none;
   font: inherit;
   cursor: pointer;
-  color: #1fc8db;
+  color: #e15858;
 }
-.button:hover {
+.delete:hover {
   color: #222324;
 }
