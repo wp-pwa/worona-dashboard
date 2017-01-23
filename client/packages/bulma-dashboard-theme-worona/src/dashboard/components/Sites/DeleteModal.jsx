@@ -5,7 +5,7 @@ import * as actions from '../../actions';
 import * as selectors from '../../selectors';
 
 const DeleteModal = ({ active, siteName, deleteSite, closeModal }) => (
-  <div className={`modal ${active ? 'is-active' : ''}`}>
+  <div className={`modal ${active ? 'is-active' : ''}`} onClick={closeModal} > // eslint-disable-line
     <div className="modal-background" />
     <div className="modal-content">
       <div className="columns is-mobile">
