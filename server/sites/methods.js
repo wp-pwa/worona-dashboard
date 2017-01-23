@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { check, Match } from 'meteor/check';
 import sites from './collections';
 import { checkSiteIdOwnership, checkUserLoggedIn } from '../utils';
+import { privateCreateSite } from './private';
 
 Meteor.methods({
   createSite({ name, url, _id }) {
@@ -13,14 +14,7 @@ Meteor.methods({
 
     const userId = checkUserLoggedIn(this.userId);
 
-    const createdAt = new Date();
-    const modifiedAt = new Date();
-    const data = { name, url, userIds: [userId], createdAt, modifiedAt };
-    if (_id) data._id = _id;
-
-    const siteId = sites.insert(data);
-
-    Meteor.call('addDefaultSettings', siteId);
+    const siteId = privateCreateSite({ name, url, _id, userId });
 
     return siteId;
   },
