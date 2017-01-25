@@ -1,6 +1,6 @@
 {
   "name": "accounts-dashboard-extension-worona",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "Extension for the Worona Dashboard in charge of the accounts system.",
   "scripts": {
     "test": "NODE_PATH=../core-dashboard-worona/node_modules ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"

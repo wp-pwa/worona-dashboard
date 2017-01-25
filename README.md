@@ -53,3 +53,8 @@ npm start
 ```
 
 ---
+
+
+## Error tracking 
+
+<a href="http://www.rollbar.com"><img alt="Error Tracking" src="https://d26gfdfi90p7cf.cloudfront.net/rollbar-badge.144534.o.png" width="108"></a>
