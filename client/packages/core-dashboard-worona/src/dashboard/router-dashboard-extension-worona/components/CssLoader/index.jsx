@@ -5,6 +5,7 @@ import * as deps from '../../deps';
 class LinkCssClass extends React.Component {
   componentDidMount() {
     this.linkElement.addEventListener('load', this.props.assetsFileDownloaded);
+    this.linkElement.addEventListener('error', this.props.assetsFileDontDownloaded);
   }
   render() {
     return (
@@ -18,12 +19,15 @@ class LinkCssClass extends React.Component {
 LinkCssClass.propTypes = ({
   path: React.PropTypes.string.isRequired,
   assetsFileDownloaded: React.PropTypes.func.isRequired,
+  assetsFileDontDownloaded: React.PropTypes.func.isRequired,
 });
 
 
 const mapDispatchToProps = (dispatch, { path, pkgName }) => ({
   assetsFileDownloaded: () =>
     dispatch(deps.actions.packageAssetFileDownloaded({ path, pkgName, assetType: 'css' })),
+  assetsFileDontDownloaded: () =>
+    dispatch(deps.actions.packageAssetFileDontDownloaded({ path, pkgName, assetType: 'css' })),
 });
 
 const LinkCss = connect(null, mapDispatchToProps)(LinkCssClass);

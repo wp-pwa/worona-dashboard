@@ -61,6 +61,12 @@ export const packageAssetFileDownloaded = ({ pkgName, assetType, path }) => ({
   assetType,
   path,
 });
+export const packageAssetFileDontDownloaded = ({ pkgName, assetType, path }) => ({
+  type: types.PACKAGE_ASSET_FILE_DONT_DOWNLOADED,
+  pkgName,
+  assetType,
+  path,
+});
 export const packageAssetsLoadSucceed = ({ pkg }) => ({
   type: types.PACKAGE_ASSETS_LOAD_SUCCEED,
   pkg,

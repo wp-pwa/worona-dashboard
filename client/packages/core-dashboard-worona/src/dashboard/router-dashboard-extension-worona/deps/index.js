@@ -9,6 +9,9 @@ export const actions = {
   get packageAssetFileDownloaded() {
     return dep('build', 'actions', 'packageAssetFileDownloaded');
   },
+  get packageAssetFileDontDownloaded() {
+    return dep('build', 'actions', 'packageAssetFileDontDownloaded');
+  },
 };
 
 export const store = {
