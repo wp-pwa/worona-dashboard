@@ -8,26 +8,26 @@ import Input from '../../elements/Input';
 import Button from '../../elements/Button';
 import Icon from '../../elements/Icon';
 import * as deps from '../../deps';
-import { validate } from './validate';
+import { siteNameAndUrlValidator } from '../../validations';
 
 const submit = siteId => (values, dispatch) => {
-  const url = values.url.match(/https?:\/\//) ? values.url : `http://${values.url}`;
-  dispatch(deps.actions.editSiteRequested(values.name, url, siteId));
+  const siteUrl = values.siteUrl.match(/https?:\/\//) ? values.siteUrl : `http://${values.siteUrl}`;
+  dispatch(deps.actions.editSiteRequested({ siteName: values.siteName, siteUrl, siteId }));
 };
 
 const EditSiteForm =
 ({ t, handleSubmit, waiting, statusMessage, errorMessage, pristine, anyTouched, invalid,
-   initialValues: { id } }) =>
+   initialValues: { siteId } }) =>
 (
   <div className="container">
     <form
-      onSubmit={handleSubmit(submit(id))}
+      onSubmit={handleSubmit(submit(siteId))}
     >
       <div className="columns">
         <div className="column is-half is-offset-one-quarter">
 
           <Field
-            name="url"
+            name="siteUrl"
             label="Wordpress URL"
             component={Input}
             type="text"
@@ -35,7 +35,7 @@ const EditSiteForm =
           />
 
           <Field
-            name="name"
+            name="siteName"
             label="Site name"
             component={Input}
             type="text"
@@ -99,9 +99,9 @@ EditSiteForm.propTypes = {
     React.PropTypes.bool,
   ]),
   initialValues: React.PropTypes.shape({
-    id: React.PropTypes.string,
-    name: React.PropTypes.string,
-    url: React.PropTypes.string,
+    siteId: React.PropTypes.string,
+    siteName: React.PropTypes.string,
+    siteUrl: React.PropTypes.string,
   }),
   t: React.PropTypes.func,
 };
@@ -110,14 +110,18 @@ const mapStateToProps = state => ({
   waiting: deps.selectors.getIsEditingSite(state),
   statusMessage: deps.selectors.getEditSiteStatus(state),
   errorMessage: deps.selectors.getEditSiteError(state),
-  initialValues: deps.selectors.getSelectedSite(state),
+  initialValues: {
+    siteId: deps.selectors.getSelectedSite(state).id,
+    siteName: deps.selectors.getSelectedSite(state).name,
+    siteUrl: deps.selectors.getSelectedSite(state).url,
+  },
 });
 
 export default flow(
   reduxForm({
     form: 'EditSiteForm',
-    fields: ['name', 'url'],
-    validate,
+    fields: ['siteName', 'siteUrl'],
+    validate: siteNameAndUrlValidator,
     getFormState: state => state.theme.reduxForm,
   }),
   connect(mapStateToProps),

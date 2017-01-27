@@ -8,11 +8,11 @@ import Input from '../../elements/Input';
 import Button from '../../elements/Button';
 import Icon from '../../elements/Icon';
 import * as deps from '../../deps';
-import { validate } from './validate';
+import { siteNameAndUrlValidator } from '../../validations';
 
 const submit = siteId => (values, dispatch) => {
-  const siteURL = values.siteURL.match(/https?:\/\//) ? values.siteURL : `http://${values.siteURL}`;
-  dispatch(deps.actions.createSiteRequested(values.siteName, siteURL, siteId));
+  const siteUrl = values.siteUrl.match(/https?:\/\//) ? values.siteUrl : `http://${values.siteUrl}`;
+  dispatch(deps.actions.createSiteRequested({ siteName: values.siteName, siteUrl, siteId }));
 };
 
 const AddSiteForm =
@@ -25,7 +25,7 @@ const AddSiteForm =
         <div className="column is-half is-offset-one-quarter">
 
           <Field
-            name="siteURL"
+            name="siteUrl"
             label="Wordpress URL"
             component={Input}
             type="text"
@@ -102,7 +102,7 @@ AddSiteForm.propTypes = {
   initialValues: React.PropTypes.shape({
     siteId: React.PropTypes.string,
     siteName: React.PropTypes.string,
-    siteURL: React.PropTypes.string,
+    siteUrl: React.PropTypes.string,
   }),
   t: React.PropTypes.func,
   isFirstLogin: React.PropTypes.bool,
@@ -119,8 +119,8 @@ const mapStateToProps = state => ({
 export default flow(
   reduxForm({
     form: 'AddSiteForm',
-    fields: ['siteName', 'siteURL'],
-    validate,
+    fields: ['siteName', 'siteUrl'],
+    validate: siteNameAndUrlValidator,
     getFormState: state => state.theme.reduxForm,
   }),
   connect(mapStateToProps),

@@ -7,14 +7,13 @@ import * as types from '../types';
 import * as deps from '../deps';
 
 export function* createSiteSaga(action) {
-  const { name, url, _id } = action;
+  const { siteName, siteUrl, siteId } = action;
   try {
     yield put(actions.createSiteStatusChanged(CREATING_SITE));
     yield deps.sagaHelpers.waitForConnectionEstablished();
-    const siteId = yield call(libs.createSite, { name, url, _id });
-    yield put(actions.createSiteSucceed(siteId));
-    const nextURL = `/check-site/${siteId}`;
-    yield call(deps.libs.push, nextURL);
+    const newId = yield call(libs.createSite, { siteName, siteUrl, siteId });
+    yield put(actions.createSiteSucceed(newId));
+    yield call(deps.libs.push, `/check-site/${newId}`);
   } catch (error) {
     yield put(actions.createSiteFailed(error));
   }

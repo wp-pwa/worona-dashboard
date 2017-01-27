@@ -25,9 +25,9 @@ export const requestFunc = baseURL =>
     )
     .set('Accept', 'application/json');
 
-export function* checkSiteFailedSaga(_id, errorMsg) {
+export function* checkSiteFailedSaga(siteId, errorMsg) {
   yield put(actions.checkSiteFailed(errorMsg));
-  yield call(libs.updateSiteStatus, { _id, status: { type: 'conflict', description: errorMsg } });
+  yield call(libs.updateSiteStatus, { siteId, status: { type: 'conflict', description: errorMsg } });
 }
 
 export function* checkSiteSaga() {
@@ -58,7 +58,7 @@ export function* checkSiteSaga() {
     } else {
       yield put(actions.checkSiteFailed(error));
       yield call(libs.updateSiteStatus, {
-        _id: id,
+        siteId: id,
         status: { type: 'conflict', description: stringifyError(error) },
       });
     }
@@ -79,12 +79,12 @@ export function* checkSiteSaga() {
     if (woronaSiteId !== id) {
       yield put(actions.checkSiteSucceed(id, errors.SITEID_DONT_MATCH));
       yield call(libs.updateSiteStatus, {
-        _id: id,
+        siteId: id,
         status: { type: 'ok', description: errors.SITEID_DONT_MATCH },
       });
     } else {
       yield put(actions.checkSiteSucceed(id));
-      yield call(libs.updateSiteStatus, { _id: id, status: { type: 'ok' } });
+      yield call(libs.updateSiteStatus, { siteId: id, status: { type: 'ok' } });
     }
   }
 }

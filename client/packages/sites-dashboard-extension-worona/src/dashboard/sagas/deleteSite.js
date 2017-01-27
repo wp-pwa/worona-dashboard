@@ -6,13 +6,12 @@ import * as libs from '../libs';
 import * as types from '../types';
 import * as deps from '../deps';
 
-export function* deleteSiteSaga(action) {
-  const { _id } = action;
+export function* deleteSiteSaga({ siteId }) {
   yield deps.sagaHelpers.waitForConnectionEstablished();
   try {
     yield put(actions.deleteSiteStatusChanged(DELETING_SITE));
-    yield call(libs.deleteSite, { _id });
-    yield put(actions.deleteSiteSucceed(_id));
+    yield call(libs.deleteSite, { siteId });
+    yield put(actions.deleteSiteSucceed(siteId));
     yield call(deps.libs.push('/sites'));
   } catch (error) {
     yield put(actions.deleteSiteFailed(error));

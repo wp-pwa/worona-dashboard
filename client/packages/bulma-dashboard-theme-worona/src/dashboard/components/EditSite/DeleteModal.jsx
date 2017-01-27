@@ -53,7 +53,7 @@ const mapStateToProps = state => ({
 const mergeProps = ({ siteName, active, siteId }, { dispatch, closeModal }) => ({
   siteName,
   active,
-  deleteSite: () => dispatch(deps.actions.deleteSiteRequested(siteId)),
+  deleteSite: () => dispatch(deps.actions.deleteSiteRequested({ siteId })),
   closeModal,
 });
 

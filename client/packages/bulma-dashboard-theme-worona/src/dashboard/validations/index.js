@@ -8,22 +8,21 @@ export const messages = {
   invalidUrl: 'Invalid url. It should be something like: http[s]://www.mydomain.com.',
 };
 
-export const validate = values => {
+export const siteNameAndUrlValidator = values => {
   const errors = {};
   if (!values.siteName) {
     errors.siteName = messages.required;
   } else if (values.siteName.length > config.nameMax) {
     errors.siteName = messages.maxChar(config.nameMax);
   }
-  if (!values.siteURL) {
-    errors.siteURL = messages.required;
+  if (!values.siteUrl) {
+    errors.siteUrl = messages.required;
   } else if (
-    /localhost/.test(values.siteURL) &&
       !urlValidator.validate(
-        values.siteURL.match(/https?:\/\//) ? values.siteURL : `http://${values.siteURL}`,
-      )
+        values.siteUrl.match(/https?:\/\//) ? values.siteUrl : `http://${values.siteUrl}`,
+      ) && !/localhost/.test(values.siteUrl)
   ) {
-    errors.siteURL = messages.invalidUrl;
+    errors.siteUrl = messages.invalidUrl;
   }
   return errors;
 };
