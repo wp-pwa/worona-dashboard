@@ -158,7 +158,7 @@ const mapStateToProps = state => ({
   waiting: deps.selectors.getIsCreatingAccount(state),
   statusMessage: deps.selectors.getCreateAccountStatus(state),
   errorMessage: deps.selectors.getCreateAccountError(state),
-  initialValues: deps.selectors.getURLQueries(state),
+  initialValues: deps.selectors.getUrlQueries(state),
 });
 
 export default connect(mapStateToProps)(RegisterWithForm);
