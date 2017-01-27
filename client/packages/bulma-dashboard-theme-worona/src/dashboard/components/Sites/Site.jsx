@@ -39,7 +39,7 @@ const Site = ({ name, url, date, id, status = {} }) => (
       <footer className="card-footer">
         <Link className="card-footer-item" to={`/check-site/${id}`} role="button">
           <Icon code="sliders" small />
-          Configure
+          &nbsp;&nbsp;Configure
         </Link>
         <Link
           className="card-footer-item"
@@ -47,7 +47,7 @@ const Site = ({ name, url, date, id, status = {} }) => (
           role="button"
         >
           <Icon code="cloud-upload" small />
-          Publish
+          &nbsp;&nbsp;Publish
         </Link>
       </footer>
     </div>

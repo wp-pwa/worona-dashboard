@@ -12,11 +12,8 @@ import Hero from '../../elements/Hero';
 import SitesList from './SitesList';
 import AddSiteNav from './AddSiteNav';
 
-import DeleteModal from './DeleteModal';
-
 const Sites = () => (
   <Body>
-    <DeleteModal />
     <Header>
       <Hero
         title="Sites"

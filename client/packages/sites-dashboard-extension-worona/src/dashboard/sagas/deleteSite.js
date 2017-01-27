@@ -13,6 +13,7 @@ export function* deleteSiteSaga(action) {
     yield put(actions.deleteSiteStatusChanged(DELETING_SITE));
     yield call(libs.deleteSite, { _id });
     yield put(actions.deleteSiteSucceed(_id));
+    yield call(deps.libs.push('/sites'));
   } catch (error) {
     yield put(actions.deleteSiteFailed(error));
   }
