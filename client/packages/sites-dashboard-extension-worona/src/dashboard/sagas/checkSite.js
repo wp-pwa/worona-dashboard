@@ -17,7 +17,12 @@ export const restRouteQuery = '?rest_route=';
 
 export const requestFunc = baseURL =>
   request
-    .get(CORSAnywhere + baseURL + restRouteQuery + woronaEndPoint)
+    .get(
+      (/localhost/.test(baseURL) ? '' : CORSAnywhere) +
+        baseURL +
+        restRouteQuery +
+        woronaEndPoint,
+    )
     .set('Accept', 'application/json');
 
 export function* checkSiteFailedSaga(_id, errorMsg) {
