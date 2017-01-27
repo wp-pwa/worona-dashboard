@@ -4,13 +4,13 @@ import Button from '../../elements/Button';
 import * as deps from '../../deps';
 import * as actions from '../../actions';
 
-const DeleteSite = ({ deleteModal, siteId }) => (
+const DeleteSite = ({ deleteModal, name }) => (
   <div className="columns">
     <div className="column is-half is-offset-one-quarter">
       <hr />
       <div className="is-pulled-right">
         <Button size="small" outlined color="danger" onClick={deleteModal}>
-          <span>Delete {siteId}</span>
+          <span>Delete {name}</span>
         </Button>
       </div>
     </div>
@@ -19,13 +19,14 @@ const DeleteSite = ({ deleteModal, siteId }) => (
 
 DeleteSite.propTypes = {
   deleteModal: React.PropTypes.func.isRequired,
-  siteId: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({ site: deps.selectors.getSelectedSite(state) });
 
-const mergeProps = ({ site: { id, name } }, dispatch) => ({
+const mergeProps = ({ site: { id, name } }, { dispatch }) => ({
+  name,
   deleteModal: () => dispatch(actions.deleteModalOpened({ id, name })),
 });
 
-export default connect(mapStateToProps, dispatch => dispatch, mergeProps)(DeleteSite);
+export default connect(mapStateToProps, dispatch => ({ dispatch }), mergeProps)(DeleteSite);
