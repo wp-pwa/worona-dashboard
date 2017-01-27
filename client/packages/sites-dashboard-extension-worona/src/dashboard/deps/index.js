@@ -1,16 +1,24 @@
 import { dep } from 'worona-deps';
 
 export const libs = {
-  get call() { return dep('connection', 'libs', 'call'); },
-  get subscription() { return dep('subscriptions', 'libs', 'subscription'); },
+  get call() {
+    return dep('connection', 'libs', 'call');
+  },
+  get subscription() {
+    return dep('subscriptions', 'libs', 'subscription');
+  },
   get push() {
     return dep('router', 'libs', 'push');
   },
 };
 
 export const reducerCreators = {
-  get collectionCreator() { return dep('subscriptions', 'reducerCreators', 'collectionCreator'); },
-  get isReadyCreator() { return dep('subscriptions', 'reducerCreators', 'isReadyCreator'); },
+  get collectionCreator() {
+    return dep('subscriptions', 'reducerCreators', 'collectionCreator');
+  },
+  get isReadyCreator() {
+    return dep('subscriptions', 'reducerCreators', 'isReadyCreator');
+  },
 };
 
 export const sagaCreators = {
@@ -32,11 +40,25 @@ export const sagaHelpers = {
 };
 
 export const selectors = {
-  get getSelectedSiteId() { return dep('router', 'selectors', 'getSelectedSiteId'); },
-  get getPathname() { return dep('router', 'selectors', 'getPathname'); },
+  get getSelectedSiteId() {
+    return dep('router', 'selectors', 'getSelectedSiteId');
+  },
+  get getPathname() {
+    return dep('router', 'selectors', 'getPathname');
+  },
 };
 
 export const types = {
-  get ROUTER_DID_CHANGE() { return dep('router', 'types', 'ROUTER_DID_CHANGE'); },
-  get COLLECTION_MODIFIED() { return dep('subscriptions', 'types', 'COLLECTION_MODIFIED'); },
+  get ROUTER_DID_CHANGE() {
+    return dep('router', 'types', 'ROUTER_DID_CHANGE');
+  },
+  get COLLECTION_MODIFIED() {
+    return dep('subscriptions', 'types', 'COLLECTION_MODIFIED');
+  },
+};
+
+export const selectorCreators = {
+  get getUrlQuery() {
+    return dep('router', 'selectorCreators', 'getUrlQuery');
+  },
 };

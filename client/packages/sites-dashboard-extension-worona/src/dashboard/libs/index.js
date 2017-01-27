@@ -1,10 +1,10 @@
 import * as deps from '../deps';
 
-export const createSite = ({ name, url, _id, caller = deps.libs.call }) =>
-  caller('createSite', { name, url, _id });
-export const deleteSite = ({ _id, caller = deps.libs.call }) =>
-  caller('deleteSite', { _id });
-export const updateSiteStatus = ({ _id, status, caller = deps.libs.call }) =>
-  caller('updateSiteStatus', { _id, status });
-export const editSite = ({ name, url, _id, caller = deps.libs.call }) =>
-  caller('editSite', { name, url, _id });
+export const createSite = ({ siteName, siteUrl, siteId, caller = deps.libs.call }) =>
+  caller('createSite', { siteName, siteUrl, siteId });
+export const deleteSite = ({ siteId, caller = deps.libs.call }) =>
+  caller('deleteSite', { siteId });
+export const updateSiteStatus = ({ siteId, status, caller = deps.libs.call }) =>
+  caller('updateSiteStatus', { siteId, status });
+export const editSite = ({ siteName, siteUrl, siteId, caller = deps.libs.call }) =>
+  caller('editSite', { siteName, siteUrl, siteId });

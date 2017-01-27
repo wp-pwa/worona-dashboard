@@ -1,8 +1,8 @@
 import stringifyError from 'stringify-error-message';
 import * as types from '../types';
 // Create Site actions:
-export const createSiteRequested = (name, url, _id) =>
-  ({ type: types.CREATE_SITE_REQUESTED, name, url, _id });
+export const createSiteRequested = ({ siteName, siteUrl, siteId }) =>
+  ({ type: types.CREATE_SITE_REQUESTED, siteName, siteUrl, siteId });
 export const createSiteStatusChanged = status =>
   ({ type: types.CREATE_SITE_STATUS_CHANGED, status });
 export const createSiteSucceed = siteId =>
@@ -10,8 +10,8 @@ export const createSiteSucceed = siteId =>
 export const createSiteFailed = errorObj =>
   ({ type: types.CREATE_SITE_FAILED, error: stringifyError(errorObj) });
 // Delete Site actions:
-export const deleteSiteRequested = _id =>
-  ({ type: types.DELETE_SITE_REQUESTED, _id });
+export const deleteSiteRequested = ({ siteId }) =>
+  ({ type: types.DELETE_SITE_REQUESTED, siteId });
 export const deleteSiteStatusChanged = status =>
     ({ type: types.DELETE_SITE_STATUS_CHANGED, status });
 export const deleteSiteSucceed = siteId =>
@@ -26,8 +26,8 @@ export const checkSiteSucceed = (siteId, warning) =>
 export const checkSiteFailed = (errorObj) =>
   ({ type: types.CHECK_SITE_FAILED, error: stringifyError(errorObj) });
   // Edit Site actions:
-export const editSiteRequested = (name, url, _id) =>
-  ({ type: types.EDIT_SITE_REQUESTED, name, url, _id });
+export const editSiteRequested = ({ siteName, siteUrl, siteId }) =>
+  ({ type: types.EDIT_SITE_REQUESTED, siteName, siteUrl, siteId });
 export const editSiteStatusChanged = status =>
   ({ type: types.EDIT_SITE_STATUS_CHANGED, status });
 export const editSiteSucceed = siteId =>

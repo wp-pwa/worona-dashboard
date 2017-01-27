@@ -3,4 +3,4 @@ export const getPathname = state => state.router.location.pathname;
 export const getSelectedSiteId = state => state.router.params.siteId;
 export const getSelectedService = state => state.router.params.service;
 export const getSelectedPackageName = state => state.router.params.packageName;
-export const getURLQueries = state => state.router.location.query;
+export const getUrlQueries = state => state.router.location.query;

@@ -9,6 +9,8 @@ import Footer from '../Footer';
 import FooterLinks from '../Footer/FooterLinks';
 import Main from '../Main';
 import EditSiteForm from './EditSiteForm';
+import DeleteSite from './DeleteSite';
+import DeleteModal from './DeleteModal';
 
 export const EditSite = () => (
   <Body>
@@ -17,7 +19,10 @@ export const EditSite = () => (
     </Header>
 
     <Main waitForSelectors={[deps.selectors.getIsReadySites]}>
+      <DeleteModal />
       <EditSiteForm />
+      <br />
+      <DeleteSite />
     </Main>
 
     <Footer>

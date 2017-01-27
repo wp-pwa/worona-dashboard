@@ -7,12 +7,12 @@ import * as types from '../types';
 import * as deps from '../deps';
 
 export function* editSiteSaga(action) {
-  const { name, url, _id } = action;
+  const { siteName, siteUrl, siteId } = action;
   yield deps.sagaHelpers.waitForConnectionEstablished();
   try {
     yield put(actions.editSiteStatusChanged(EDITING_SITE));
-    yield call(libs.editSite, { name, url, _id });
-    yield put(actions.editSiteSucceed(_id));
+    yield call(libs.editSite, { siteName, siteUrl, siteId });
+    yield put(actions.editSiteSucceed(siteId));
     yield call(deps.libs.push, '/sites');
   } catch (error) {
     yield put(actions.editSiteFailed(error));

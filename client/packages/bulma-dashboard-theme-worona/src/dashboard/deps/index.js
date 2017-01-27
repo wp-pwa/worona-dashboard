@@ -7,6 +7,7 @@ export const store = {
 export const types = {
   get LOGOUT_SUCCEED() { return dep('accounts', 'types', 'LOGOUT_SUCCEED'); },
   get ROUTER_DID_CHANGE() { return dep('router', 'types', 'ROUTER_DID_CHANGE'); },
+  get DELETE_SITE_REQUESTED() { return dep('sites', 'types', 'DELETE_SITE_REQUESTED'); },
 };
 
 export const actions = {
@@ -42,7 +43,7 @@ export const selectors = {
   get getSelectedSiteId() { return dep('router', 'selectors', 'getSelectedSiteId'); },
   get getSelectedService() { return dep('router', 'selectors', 'getSelectedService'); },
   get getSelectedPackageName() { return dep('router', 'selectors', 'getSelectedPackageName'); },
-  get getURLQueries() { return dep('router', 'selectors', 'getURLQueries'); },
+  get getUrlQueries() { return dep('router', 'selectors', 'getUrlQueries'); },
   get getNewSiteInfo() { return dep('sites', 'selectors', 'getNewSiteInfo'); },
   get getIsReadySites() { return dep('sites', 'selectors', 'getIsReadySites'); },
   get getIsReadySelectedSite() { return dep('sites', 'selectors', 'getIsReadySelectedSite'); },

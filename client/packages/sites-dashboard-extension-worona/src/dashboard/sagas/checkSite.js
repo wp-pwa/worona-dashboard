@@ -15,16 +15,19 @@ export const CORSAnywhere = 'https://cors-anywhere.herokuapp.com/';
 export const woronaEndPoint = '/worona/v1/siteid';
 export const restRouteQuery = '?rest_route=';
 
-export const requestFunc = (baseURL) => request
-  .get(CORSAnywhere + baseURL + restRouteQuery + woronaEndPoint)
-  .set('Accept', 'application/json');
+export const requestFunc = baseURL =>
+  request
+    .get(
+      (/localhost/.test(baseURL) ? '' : CORSAnywhere) +
+        baseURL +
+        restRouteQuery +
+        woronaEndPoint,
+    )
+    .set('Accept', 'application/json');
 
-export function* checkSiteFailedSaga(_id, errorMsg) {
+export function* checkSiteFailedSaga(siteId, errorMsg) {
   yield put(actions.checkSiteFailed(errorMsg));
-  yield call(libs.updateSiteStatus,
-    { _id,
-     status: { type: 'conflict', description: errorMsg },
-   });
+  yield call(libs.updateSiteStatus, { siteId, status: { type: 'conflict', description: errorMsg } });
 }
 
 export function* checkSiteSaga() {
@@ -42,41 +45,57 @@ export function* checkSiteSaga() {
       /* calling directly to the worona endpoint thank to rest_route query */
       res: call(requestFunc, url),
       /* Adding a timeout in case of user loses or has a very poor connection */
-      timeout: call(delay, 30000), // 30 seg timeout
+      // 30 seg timeout
+      timeout: call(delay, 30000),
     }));
   } catch (error) {
     /* It responses 404 but in WP API JSON format */
-    if (error.status === 404 && error.response.body && error.response.body.code === 'rest_no_route') {
+    if (
+      error.status === 404 && error.response.body && error.response.body.code === 'rest_no_route'
+    ) {
       yield call(checkSiteFailedSaga, id, errors.WORONA_PLUGIN_NOT_FOUND);
       /* else, there's a server error */
     } else {
       yield put(actions.checkSiteFailed(error));
-      yield call(libs.updateSiteStatus, { _id: id, status: { type: 'conflict', description: stringifyError(error) } });
+      yield call(libs.updateSiteStatus, {
+        siteId: id,
+        status: { type: 'conflict', description: stringifyError(error) },
+      });
     }
     return;
   }
   if (timeout) {
     yield call(checkSiteFailedSaga, id, errors.TIMEOUT);
-  } else if (res.status !== 200) { /* Bad response */
+  } else if (res.status !== 200) {
+    /* Bad response */
     yield call(checkSiteFailedSaga, id, errors.RESPONSE_NOT_200);
-  } else if (res.type !== 'application/json') { /* is response a JSON? */
+  } else if (res.type !== 'application/json') {
+    /* is response a JSON? */
     yield call(checkSiteFailedSaga, id, errors.WP_API_NOT_FOUND);
-  } else { /* Check site suceed!!! */
+  } else {
+    /* Check site suceed!!! */
     /*  -> extra: Does siteIds match? */
     woronaSiteId = res.body.siteId;
     if (woronaSiteId !== id) {
       yield put(actions.checkSiteSucceed(id, errors.SITEID_DONT_MATCH));
-      yield call(libs.updateSiteStatus, { _id: id, status: { type: 'ok', description: errors.SITEID_DONT_MATCH } });
+      yield call(libs.updateSiteStatus, {
+        siteId: id,
+        status: { type: 'ok', description: errors.SITEID_DONT_MATCH },
+      });
     } else {
       yield put(actions.checkSiteSucceed(id));
-      yield call(libs.updateSiteStatus, { _id: id, status: { type: 'ok' } });
+      yield call(libs.updateSiteStatus, { siteId: id, status: { type: 'ok' } });
     }
   }
 }
 
 export function* checkSiteRouterWatcher(action) {
-  if (action && action.payload && action.payload.location
-    && action.payload.location.pathname.startsWith('/check-site/')) {
+  if (
+    action &&
+      action.payload &&
+      action.payload.location &&
+      action.payload.location.pathname.startsWith('/check-site/')
+  ) {
     yield put(actions.checkSiteRequested());
   }
 }
@@ -91,7 +110,8 @@ export function* firstRouteIsCheckSite() {
 export function* redirectAfterCheckSiteWatcher(action) {
   const { siteId } = action;
   yield delay(1000);
-  yield call(deps.libs.push, `/site/${siteId}/app`);
+  const redirect = (yield select(deps.selectorCreators.getUrlQuery('redirect'))) || '/app';
+  yield call(deps.libs.push, `/site/${siteId}${redirect}`);
 }
 
 export function* checkSiteWatcher() {

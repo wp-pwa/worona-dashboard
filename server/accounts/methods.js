@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { check } from 'meteor/check';
+import { privateCreateSite } from '../sites/private';
 
 Meteor.methods({
   createAccount(name, email, password) {
@@ -15,6 +16,8 @@ Meteor.methods({
     if (userId) {
       Meteor.users.update(userId, { $set: { profile: { name } } });
     }
+
+    privateCreateSite({ name: 'Demo', url: 'https://demo.worona.org', userId });
 
     return userId;
   },

@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as deps from '../../deps';
 
-const MobilePreview = ({ siteId }) => (
+const MobilePreview = ({ site: { id, url } }) => (
   <div className="is-hidden-touch column is-4 has-text-centered" style={{ minWidth: '355px' }}>
     <svg
       width="355px"
@@ -34,13 +34,7 @@ const MobilePreview = ({ siteId }) => (
         >
           <use xlinkHref="#path-1" />
         </mask>
-        <ellipse
-          id="path-3"
-          cx="178.374737"
-          cy="627.789149"
-          rx="24.7326316"
-          ry="22.9170818"
-        />
+        <ellipse id="path-3" cx="178.374737" cy="627.789149" rx="24.7326316" ry="22.9170818" />
         <mask
           id="mask-4"
           maskContentUnits="userSpaceOnUse"
@@ -53,13 +47,7 @@ const MobilePreview = ({ siteId }) => (
         >
           <use xlinkHref="#path-3" />
         </mask>
-        <ellipse
-          id="path-5"
-          cx="121.789474"
-          cy="44.098021"
-          rx="5.62105263"
-          ry="5.20842767"
-        />
+        <ellipse id="path-5" cx="121.789474" cy="44.098021" rx="5.62105263" ry="5.20842767" />
         <mask
           id="mask-6"
           maskContentUnits="userSpaceOnUse"
@@ -72,13 +60,7 @@ const MobilePreview = ({ siteId }) => (
         >
           <use xlinkHref="#path-5" />
         </mask>
-        <ellipse
-          id="path-7"
-          cx="177.79176"
-          cy="24.1016295"
-          rx="4.12210526"
-          ry="3.81951363"
-        />
+        <ellipse id="path-7" cx="177.79176" cy="24.1016295" rx="4.12210526" ry="3.81951363" />
         <mask
           id="mask-8"
           maskContentUnits="userSpaceOnUse"
@@ -108,13 +90,7 @@ const MobilePreview = ({ siteId }) => (
           width="60.2105263"
           height="11.0217321"
         >
-          <rect
-            x="147.510883"
-            y="38.1416877"
-            width="60.2105263"
-            height="11.0217321"
-            fill="white"
-          />
+          <rect x="147.510883" y="38.1416877" width="60.2105263" height="11.0217321" fill="white" />
           <use xlinkHref="#path-9" fill="black" />
         </mask>
         <mask
@@ -126,13 +102,7 @@ const MobilePreview = ({ siteId }) => (
           width="60.2105263"
           height="11.0217321"
         >
-          <rect
-            x="147.510883"
-            y="38.1416877"
-            width="60.2105263"
-            height="11.0217321"
-            fill="white"
-          />
+          <rect x="147.510883" y="38.1416877" width="60.2105263" height="11.0217321" fill="white" />
           <use xlinkHref="#path-9" fill="black" />
         </mask>
         <rect
@@ -152,27 +122,12 @@ const MobilePreview = ({ siteId }) => (
           width="330.886657"
           height="515.043412"
         >
-          <rect
-            x="12.3012912"
-            y="70.0571211"
-            width="330.886657"
-            height="515.043412"
-            fill="white"
-          />
+          <rect x="12.3012912" y="70.0571211" width="330.886657" height="515.043412" fill="white" />
           <use xlinkHref="#path-13" fill="black" />
         </mask>
       </defs>
-      <g
-        id="Page-1"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
-        <g
-          id="iPhone-6"
-          transform="translate(1.000000, 0.000000)"
-        >
+      <g id="Page-1" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+        <g id="iPhone-6" transform="translate(1.000000, 0.000000)">
           <g id="Device">
             <g id="Body" stroke="#3A95FF" fill="#FFFFFF">
               <rect
@@ -198,11 +153,7 @@ const MobilePreview = ({ siteId }) => (
                 id="Vol-Down"
                 strokeWidth={2}
               />
-              <use
-                mask="url(#mask-2)"
-                strokeWidth={4}
-                xlinkHref="#path-1"
-              />
+              <use mask="url(#mask-2)" strokeWidth={4} xlinkHref="#path-1" />
             </g>
             <use
               id="Home-Button"
@@ -228,12 +179,7 @@ const MobilePreview = ({ siteId }) => (
             <mask id="mask-11" fill="white">
               <use xlinkHref="#path-9" />
             </mask>
-            <g
-              id="Speaker"
-              stroke="#3A95FF"
-              mask="url(#mask-10)"
-              strokeWidth={4}
-            >
+            <g id="Speaker" stroke="#3A95FF" mask="url(#mask-10)" strokeWidth={4}>
               <use mask="url(#mask-12)" xlinkHref="#path-9" />
             </g>
           </g>
@@ -247,17 +193,23 @@ const MobilePreview = ({ siteId }) => (
         </g>
       </g>
       <foreignObject x="15" y="72" width="327" height="511">
-        <iframe src={`https://app.worona.org/?siteId=${siteId}&preview=true`} style={{ width: '327px', height: '511px' }} />
+        <iframe
+          src={
+            `http${url.startsWith('https') ? 's' : ''}://app.worona.org/?siteId=${id}&preview=true`
+          }
+          style={{ width: '327px', height: '511px' }}
+        />
       </foreignObject>
     </svg>
   </div>
 );
 MobilePreview.propTypes = {
-  siteId: React.PropTypes.string.isRequired,
+  site: React.PropTypes.shape({
+    id: React.PropTypes.string.isRequired,
+    url: React.PropTypes.string.isRequired,
+  }).isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  siteId: deps.selectors.getSelectedSiteId(state),
-});
+const mapStateToProps = state => ({ site: deps.selectors.getSelectedSite(state) });
 
 export default connect(mapStateToProps)(MobilePreview);

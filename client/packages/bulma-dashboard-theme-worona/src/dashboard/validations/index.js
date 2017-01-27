@@ -1,8 +1,6 @@
 import urlValidator from 'url-regexp';
 
-export const config = {
-  nameMax: 15,
-};
+export const config = { nameMax: 15 };
 
 export const messages = {
   required: 'Required',
@@ -10,17 +8,21 @@ export const messages = {
   invalidUrl: 'Invalid url. It should be something like: http[s]://www.mydomain.com.',
 };
 
-export const validate = values => {
+export const siteNameAndUrlValidator = values => {
   const errors = {};
   if (!values.siteName) {
     errors.siteName = messages.required;
   } else if (values.siteName.length > config.nameMax) {
     errors.siteName = messages.maxChar(config.nameMax);
   }
-  if (!values.siteURL) {
-    errors.siteURL = messages.required;
-  } else if (!urlValidator.validate(values.siteURL)) {
-    errors.siteURL = messages.invalidUrl;
+  if (!values.siteUrl) {
+    errors.siteUrl = messages.required;
+  } else if (
+      !urlValidator.validate(
+        values.siteUrl.match(/https?:\/\//) ? values.siteUrl : `http://${values.siteUrl}`,
+      ) && !/localhost/.test(values.siteUrl)
+  ) {
+    errors.siteUrl = messages.invalidUrl;
   }
   return errors;
 };

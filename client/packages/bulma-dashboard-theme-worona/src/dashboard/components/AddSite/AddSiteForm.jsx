@@ -8,15 +8,16 @@ import Input from '../../elements/Input';
 import Button from '../../elements/Button';
 import Icon from '../../elements/Icon';
 import * as deps from '../../deps';
-import { validate } from './validate';
+import { siteNameAndUrlValidator } from '../../validations';
 
 const submit = siteId => (values, dispatch) => {
-  dispatch(deps.actions.createSiteRequested(values.siteName, values.siteURL, siteId));
+  const siteUrl = values.siteUrl.match(/https?:\/\//) ? values.siteUrl : `http://${values.siteUrl}`;
+  dispatch(deps.actions.createSiteRequested({ siteName: values.siteName, siteUrl, siteId }));
 };
 
 const AddSiteForm =
 ({ t, handleSubmit, waiting, statusMessage, errorMessage, submitFailed, invalid,
-   initialValues: { siteId } }) =>
+   initialValues: { siteId }, isFirstLogin }) =>
 (
   <div className="container">
     <form onSubmit={handleSubmit(submit(siteId))} >
@@ -24,7 +25,7 @@ const AddSiteForm =
         <div className="column is-half is-offset-one-quarter">
 
           <Field
-            name="siteURL"
+            name="siteUrl"
             label="Wordpress URL"
             component={Input}
             type="text"
@@ -77,7 +78,7 @@ const AddSiteForm =
             </div>
 
             <div className="level-right" style={{ marginTop: 0 }}>
-              <Link className="button is-medium" to="/">Cancel</Link>
+              <Link className="button is-medium" to="/">{ isFirstLogin ? 'I\'ll do this later' : 'Cancel' }</Link>
             </div>
           </div>
         </div>
@@ -101,9 +102,10 @@ AddSiteForm.propTypes = {
   initialValues: React.PropTypes.shape({
     siteId: React.PropTypes.string,
     siteName: React.PropTypes.string,
-    siteURL: React.PropTypes.string,
+    siteUrl: React.PropTypes.string,
   }),
   t: React.PropTypes.func,
+  isFirstLogin: React.PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
@@ -111,13 +113,14 @@ const mapStateToProps = state => ({
   statusMessage: deps.selectors.getCreateSiteStatus(state),
   errorMessage: deps.selectors.getCreateSiteError(state),
   initialValues: deps.selectors.getNewSiteInfo(state),
+  isFirstLogin: deps.selectors.getIsFirstLogin(state),
 });
 
 export default flow(
   reduxForm({
     form: 'AddSiteForm',
-    fields: ['siteName', 'siteURL'],
-    validate,
+    fields: ['siteName', 'siteUrl'],
+    validate: siteNameAndUrlValidator,
     getFormState: state => state.theme.reduxForm,
   }),
   connect(mapStateToProps),
