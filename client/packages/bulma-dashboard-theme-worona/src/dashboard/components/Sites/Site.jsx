@@ -2,13 +2,10 @@ import React from 'react';
 import cn from 'classnames';
 import moment from 'moment';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
-import * as actions from '../../actions';
 import Icon from '../../elements/Icon';
 import EditSiteLink from '../../elements/EditSiteLink';
-import styles from './style.css';
 
-const Site = ({ name, url, date, id, deleteModal, status = {} }) => (
+const Site = ({ name, url, date, id, status = {} }) => (
   <div className="column is-narrow-mobile is-one-third-tablet is-one-quarter-desktop">
     <div className={cn('card', 'is-fullwidth')}>
       <header className="card-header">
@@ -61,15 +58,10 @@ Site.propTypes = {
   url: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
   date: React.PropTypes.number.isRequired,
-  deleteModal: React.PropTypes.func.isRequired,
   status: React.PropTypes.shape({
     type: React.PropTypes.string.isRequired,
     description: React.PropTypes.string,
   }),
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  deleteModal: () => dispatch(actions.deleteModalOpened({ id: ownProps.id, name: ownProps.name })),
-});
-
-export default connect(null, mapDispatchToProps)(Site);
+export default Site;
