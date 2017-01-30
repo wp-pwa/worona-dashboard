@@ -194,9 +194,7 @@ const MobilePreview = ({ site: { id, url } }) => (
       </g>
       <foreignObject x="15" y="72" width="327" height="511">
         <iframe
-          src={
-            `http${url.startsWith('https') ? 's' : ''}://app.worona.org/?siteId=${id}&preview=true`
-          }
+          src={`https://app.worona.org/?siteId=${id}&preview=true`}
           style={{ width: '327px', height: '511px' }}
         />
       </foreignObject>
