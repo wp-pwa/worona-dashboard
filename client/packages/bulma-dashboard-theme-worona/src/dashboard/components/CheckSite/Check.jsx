@@ -38,6 +38,7 @@ let Message = ({ checkType, color, t, site }) => {
       <div className="content">
         <Interpolate
           i18nKey="check-error-plugin-body"
+          LinkToDownLoadPlugin={`${site.url}/wp-admin/plugin-install.php?tab=plugin-information&plugin=worona`}
           useDangerouslySetInnerHTML
         />
       </div>
