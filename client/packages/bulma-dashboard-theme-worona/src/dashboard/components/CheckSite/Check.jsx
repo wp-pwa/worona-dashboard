@@ -12,7 +12,9 @@ import Button from '../../elements/Button';
 let Message = ({ checkType, color, t, site }) => {
   const LinkToEditURL = <Link to={`/edit-site/${site.id}`}>{t('check-edit-url-text')}</Link>;
   let ErrorMessageBody;
+  let linkToHelp = 'https://docs.worona.org/dashboard/getting-started/troubleshooting.html';
   if (checkType === 'online') {
+    linkToHelp += '#1-your-site-is-not-online-or-available';
     ErrorMessageBody = () => (
       <div className="content">
         {t('check-error-online-body')}
@@ -31,6 +33,7 @@ let Message = ({ checkType, color, t, site }) => {
       </div>
     );
   } else if (checkType === 'plugin') {
+    linkToHelp += '#2-woronas-plugin-is-missing';
     ErrorMessageBody = () => (
       <div className="content">
         <Interpolate
@@ -48,6 +51,12 @@ let Message = ({ checkType, color, t, site }) => {
       <div className="message-body">
         <ErrorMessageBody />
         <div className="has-text-centered">
+          <a className="button is-danger is-outlined" href={linkToHelp}>
+            <span className="icon">
+              <i className="fa fa-info" />
+            </span>
+            <span>Visit our Documentation for help</span>
+          </a>
           <Button color={color} size="large">
             <Icon code="info-circle" />
             <span>Help</span>
