@@ -64,7 +64,7 @@ let Message = ({ checkType, color, t, site }) => {
             target="_blank" rel="noopener noreferrer"
           >
             <span className="icon is-small">
-              <i className="fa fa-check" aria-hidden="true" />
+              <i className="fa fa-download" aria-hidden="true" />
             </span>
             <span>
               &nbsp;Install Worona Plugin
