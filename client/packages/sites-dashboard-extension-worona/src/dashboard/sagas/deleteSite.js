@@ -12,7 +12,7 @@ export function* deleteSiteSaga({ siteId }) {
     yield put(actions.deleteSiteStatusChanged(DELETING_SITE));
     yield call(libs.deleteSite, { siteId });
     yield put(actions.deleteSiteSucceed(siteId));
-    yield call(deps.libs.push('/sites'));
+    yield call(deps.libs.push, '/sites');
   } catch (error) {
     yield put(actions.deleteSiteFailed(error));
   }
