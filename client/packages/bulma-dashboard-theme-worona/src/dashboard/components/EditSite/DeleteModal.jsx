@@ -7,7 +7,7 @@ import * as selectors from '../../selectors';
 const DeleteModal = ({ active, siteName, deleteSite, closeModal }) => (
   <div className={`modal ${active ? 'is-active' : ''}`} onClick={closeModal} >
     <div className="modal-background" />
-    <div className="modal-content">
+    <div className="modal-content" style={{ overflow: 'hidden' }}>
       <div className="columns is-mobile">
         <div className="column is-two-thirds is-offset-one-quarter">
           <div className="card is-fullwidth">
