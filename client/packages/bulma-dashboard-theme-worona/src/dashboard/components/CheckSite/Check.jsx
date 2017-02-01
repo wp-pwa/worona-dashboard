@@ -10,7 +10,6 @@ import Button from '../../elements/Button';
 
 /* Error Message */
 let Message = ({ checkType, color, t, site }) => {
-  const LinkToEditURL = <Link to={`/edit-site/${site.id}`}>{t('check-edit-url-text')}</Link>;
   let ErrorMessageBody;
   let linkToHelp = 'https://docs.worona.org/dashboard/getting-started/troubleshooting.html';
   if (checkType === 'online') {
@@ -21,26 +20,59 @@ let Message = ({ checkType, color, t, site }) => {
         <br />
         <ul>
           <li>
-            <Interpolate
-              i18nKey="check-error-online-body-iscorrect"
-              LinkToEditURLComponent={LinkToEditURL}
-              value={<strong>{site.url}</strong>}
-            />
+            {t('check-error-online-body-isup')}
           </li>
           <br />
-          <li>{t('check-error-online-body-isup')}</li>
+          <li>
+            <Interpolate
+              i18nKey="check-error-online-body-iscorrect"
+              value={<strong>{site.url}</strong>}
+            /></li>
         </ul>
+        <br />
+        <div className="has-text-centered">
+          <Link className="button is-danger is-medium" to={`/edit-site/${site.id}`}>
+            <span className="icon is-small">
+              <i className="fa fa-refresh" aria-hidden="true" />
+            </span>
+            <span>
+              {t('check-edit-url-text')}
+            </span>
+          </Link>
+          <br /><br />
+          or
+        </div>
       </div>
     );
   } else if (checkType === 'plugin') {
+    let linkToDownLoadPlugin = site.url;
+    linkToDownLoadPlugin += '/wp-admin/plugin-install.php?tab=plugin-information&plugin=worona';
+
     linkToHelp += '#2-woronas-plugin-is-missing';
+
     ErrorMessageBody = () => (
       <div className="content">
         <Interpolate
           i18nKey="check-error-plugin-body"
-          LinkToDownLoadPlugin={`${site.url}/wp-admin/plugin-install.php?tab=plugin-information&plugin=worona`}
           useDangerouslySetInnerHTML
         />
+        <br /><br />
+        <div className="has-text-centered">
+          <a
+            className="button is-danger is-medium"
+            href={linkToDownLoadPlugin}
+            target="_blank" rel="noopener noreferrer"
+          >
+            <span className="icon is-small">
+              <i className="fa fa-check" aria-hidden="true" />
+            </span>
+            <span>
+              &nbsp;Install Worona Plugin
+            </span>
+          </a>
+          <br /><br />
+          or
+        </div>
       </div>
     );
   }
@@ -52,16 +84,15 @@ let Message = ({ checkType, color, t, site }) => {
       <div className="message-body">
         <ErrorMessageBody />
         <div className="has-text-centered">
-          <a className="button is-danger is-outlined" href={linkToHelp}>
-            <span className="icon">
+          <a
+            className="button is-danger is-outlined"
+            href={linkToHelp} target="_blank" rel="noopener noreferrer"
+          >
+            <span className="icon is-small">
               <i className="fa fa-info" />
             </span>
             <span>Visit our Documentation for help</span>
           </a>
-          <Button color={color} size="large">
-            <Icon code="info-circle" />
-            <span>Help</span>
-          </Button>
         </div>
       </div>
     </article>
