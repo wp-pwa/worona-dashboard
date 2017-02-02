@@ -57,6 +57,12 @@ export const getSelectedPackage = createSelector(
   }
 );
 
+export const getSelectedPackageNiceName = createSelector(
+  getSelectedPackage,
+  deps.selectors.getSelectedService,
+  (pkg, service) => pkg.dashboard.menu[service].niceName,
+);
+
 export const getSelectedPackageIsActivated = createSelector(
   deps.selectors.getSelectedPackageName,
   deps.selectors.getActivatedPackages,

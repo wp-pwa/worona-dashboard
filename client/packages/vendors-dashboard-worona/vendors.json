@@ -5,6 +5,7 @@
   "react-redux",
   "react-router",
   "react-i18next",
+  "react-helmet",
   "redux",
   "redux-saga",
   "redux-saga/effects",

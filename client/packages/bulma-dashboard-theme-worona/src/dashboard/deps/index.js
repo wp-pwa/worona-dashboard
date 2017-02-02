@@ -53,6 +53,9 @@ export const selectors = {
   get getSelectedPackageIsActivated() {
     return dep('settings', 'selectors', 'getSelectedPackageIsActivated');
   },
+  get getSelectedPackageNiceName() {
+    return dep('settings', 'selectors', 'getSelectedPackageNiceName');
+  },
 };
 
 export const sagaHelpers = {
