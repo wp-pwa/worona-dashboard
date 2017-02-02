@@ -11,7 +11,7 @@ import * as deps from '../deps';
 import * as libs from '../libs';
 import * as sagaHelpers from '../sagaHelpers';
 
-export const CORSAnywhere = 'https://cors-anywhere.herokuapp.com/';
+export const CORSAnywhere = 'https://cors.worona.io/cors/';
 export const woronaEndPoint = '/worona/v1/siteid';
 export const restRouteQuery = '?rest_route=';
 
