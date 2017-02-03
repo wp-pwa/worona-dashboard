@@ -18,7 +18,6 @@ Meteor.methods({
 
     return newId;
   },
-
   deleteSite({ siteId }) {
     check(siteId, String);
 
@@ -28,7 +27,6 @@ Meteor.methods({
     checkSiteIdOwnership(siteId, userId);
     return sites.update(siteId, { $set: { deleted: true } });
   },
-
   updateSiteStatus({ siteId, status }) {
     check(siteId, String);
     check(status, Object);
@@ -39,7 +37,6 @@ Meteor.methods({
 
     return sites.update(siteId, { $set: { status } });
   },
-
   editSite({ siteName, siteUrl, siteId }) {
     check(siteId, String);
     check(siteName, String);
@@ -48,7 +45,8 @@ Meteor.methods({
     const userId = checkUserLoggedIn(this.userId);
     checkSiteIdOwnership(siteId, userId);
     const modifiedAt = new Date();
-    return sites.update(siteId, { $set: { name: siteName, url: siteUrl, modifiedAt } });
+    return sites.update(siteId, {
+      $set: { name: siteName, url: siteUrl.replace(/\/$/, ''), modifiedAt },
+    });
   },
-
 });
