@@ -1,11 +1,9 @@
 /* eslint-disable new-cap */
 import { Meteor } from 'meteor/meteor';
 import { check, Match } from 'meteor/check';
-import { unique } from 'shorthash';
-import KeyCDN from 'keycdn';
 import { settingsLive } from './collections';
 import defaultSettings from './defaultSettings';
-import { checkSiteIdOwnership, checkUserLoggedIn } from '../utils';
+import { checkSiteIdOwnership, checkUserLoggedIn, purgeSite } from '../utils';
 
 const addSettings = ({ name, namespace, siteId }) => {
   check(name, String);
@@ -21,15 +19,6 @@ const addSettings = ({ name, namespace, siteId }) => {
       init: false,
     } });
 };
-
-const keycdn = new KeyCDN(Meteor.settings.keycdn.apiKey);
-const purgeSite = siteId => new Promise((resolve, reject) => {
-  const hashed = unique(siteId).substring(0, 3);
-  keycdn.del(`zones/purgetag/${Meteor.settings.keycdn.zoneId}.json`, { tags: [hashed] }, (err) => {
-    if (err) reject(err);
-    else resolve(true);
-  });
-});
 
 
 Meteor.methods({

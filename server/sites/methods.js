@@ -2,7 +2,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check, Match } from 'meteor/check';
 import sites from './collections';
-import { checkSiteIdOwnership, checkUserLoggedIn } from '../utils';
+import { checkSiteIdOwnership, checkUserLoggedIn, purgeSite } from '../utils';
 import { privateCreateSite } from './private';
 
 Meteor.methods({
@@ -45,6 +45,9 @@ Meteor.methods({
     const userId = checkUserLoggedIn(this.userId);
     checkSiteIdOwnership(siteId, userId);
     const modifiedAt = new Date();
+
+    purgeSite(siteId);
+
     return sites.update(siteId, {
       $set: { name: siteName, url: siteUrl.replace(/\/$/, ''), modifiedAt },
     });
