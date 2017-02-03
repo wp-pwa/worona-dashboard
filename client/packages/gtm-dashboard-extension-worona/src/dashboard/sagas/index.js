@@ -16,13 +16,14 @@ export function initDataLayerArray() {
   window.dataLayer = window.dataLayer || [];
 }
 
-export function* virtualPageView(action) {
+export function* virtualPageView() {
   const service = yield select(deps.selectors.getSelectedService);
   const pkg = yield select(deps.selectors.getSelectedPackageName);
-  const url = yield select(deps.selectors.getPathname);
-  const titleFromUrl = capitalize(/\/?([^/]+)/.exec(url)[1]).replace(/-/g, ' ');
+  const pathname = yield select(deps.selectors.getPathname);
+  const titleFromUrl = capitalize(/\/?([^/]+)/.exec(pathname)[1]).replace(/-/g, ' ');
   const titleFromPkg = pkg ? capitalize(/(.+)-worona/.exec(pkg)[1].replace(/-/g, ' ')) : '';
   const title = !service ? titleFromUrl : titleFromPkg;
+  const url = pathname.replace(/(\/?.+)(\/[a-zA-Z0-9]{17})/, '$1');
   window.dataLayer.push({
     event: 'virtualPageView',
     virtualPage: {
