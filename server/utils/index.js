@@ -1,5 +1,9 @@
+import { Meteor } from 'meteor/meteor';
+import { unique } from 'shorthash';
+import KeyCDN from 'keycdn';
 import sites from '../sites/collections';
 import * as errors from '../errors';
+
 
 export const checkSiteIdOwnership = (siteId, userId) => {
   const site = sites.findOne({ _id: siteId });
@@ -19,3 +23,12 @@ export const checkUserLoggedIn = (userId) => {
   }
   return userId;
 };
+
+const keycdn = new KeyCDN(Meteor.settings.keycdn.apiKey);
+export const purgeSite = siteId => new Promise((resolve, reject) => {
+  const hashed = unique(siteId).substring(0, 3);
+  keycdn.del(`zones/purgetag/${Meteor.settings.keycdn.zoneId}.json`, { tags: [hashed] }, (err) => {
+    if (err) reject(err);
+    else resolve(true);
+  });
+});
