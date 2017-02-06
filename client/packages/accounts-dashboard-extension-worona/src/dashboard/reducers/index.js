@@ -36,7 +36,6 @@ export const isLoggingIn = (state = false, action) => {
   }
 };
 
-
 export const loginStatus = (state = false, action) => {
   switch (action.type) {
     case types.LOGIN_STATUS_CHANGED:
@@ -147,9 +146,11 @@ export const isFirstLogin = (state = false, action) => {
 export const redirectAfterLogin = (state = '/sites', action) => {
   switch (action.type) {
     case deps.types.ROUTER_DID_CHANGE:
-      if (state === '/sites' && (
-      action.payload.location.pathname === '/login' ||
-      action.payload.location.pathname === '/register')) {
+      if (
+        state === '/sites' &&
+          (action.payload.location.pathname === '/login' ||
+            action.payload.location.pathname === '/register')
+      ) {
         return action.payload.location.query.next || '/sites';
       }
       return state;
@@ -191,7 +192,9 @@ export const forgotPasswordError = (state = false, action) => {
     case types.FORGOT_PASSWORD_SUCCEED:
       return false;
     case types.FORGOT_PASSWORD_FAILED:
-      return 'Something went wrong. Please try again or contact support@worona.org';
+      return action.error.error === 'email-doesnt-exist'
+        ? 'Email not registered. Please try again or contact support@worona.org'
+        : 'Something went wrong. Please try again or contact support@worona.org';
     default:
       return state;
   }
