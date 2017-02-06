@@ -51,3 +51,16 @@ export const forgotPasswordFailed = ({ error }) => ({
 export const forgotPasswordSucceed = () => ({
   type: types.FORGOT_PASSWORD_SUCCEED,
 });
+
+export const recoverPasswordRequested = ({ token, password }) => ({
+  type: types.RECOVER_PASSWORD_REQUESTED,
+  token,
+  password,
+});
+export const recoverPasswordFailed = ({ error }) => ({
+  type: types.RECOVER_PASSWORD_FAILED,
+  error,
+});
+export const recoverPasswordSucceed = () => ({
+  type: types.RECOVER_PASSWORD_SUCCEED,
+});

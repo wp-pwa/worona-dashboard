@@ -200,6 +200,45 @@ export const forgotPasswordError = (state = false, action) => {
   }
 };
 
+export const isRecoverPasswordRequested = (state = false, action) => {
+  switch (action.type) {
+    case types.RECOVER_PASSWORD_REQUESTED:
+      return true;
+    case types.RECOVER_PASSWORD_FAILED:
+    case types.RECOVER_PASSWORD_SUCCEED:
+      return false;
+    default:
+      return state;
+  }
+};
+
+export const recoverPasswordStatus = (state = false, action) => {
+  switch (action.type) {
+    case types.RECOVER_PASSWORD_REQUESTED:
+      return 'Saving your new password...';
+    case types.RECOVER_PASSWORD_FAILED:
+      return false;
+    case types.RECOVER_PASSWORD_SUCCEED:
+      return 'Saved! Go can back to the login page now.';
+    default:
+      return state;
+  }
+};
+
+export const recoverPasswordError = (state = false, action) => {
+  switch (action.type) {
+    case types.RECOVER_PASSWORD_REQUESTED:
+    case types.RECOVER_PASSWORD_SUCCEED:
+      return false;
+    case types.RECOVER_PASSWORD_FAILED:
+      return action.error.reason === 'Token expired' ?
+        'Your email link has expired. Please go to the Forgot Password screen and ask for another one.' :
+        'Something went wrong. Please try again or contact support@worona.org';
+    default:
+      return state;
+  }
+};
+
 export default () => combineReducers({
   isLoggedIn,
   userId,
@@ -215,4 +254,7 @@ export default () => combineReducers({
   isForgotPasswordRequested,
   forgotPasswordStatus,
   forgotPasswordError,
+  isRecoverPasswordRequested,
+  recoverPasswordStatus,
+  recoverPasswordError,
 });

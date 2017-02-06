@@ -34,6 +34,9 @@ export const actions = {
   get forgotPasswordRequested() {
     return dep('accounts', 'actions', 'forgotPasswordRequested');
   },
+  get recoverPasswordRequested() {
+    return dep('accounts', 'actions', 'recoverPasswordRequested');
+  },
   get createSiteRequested() {
     return dep('sites', 'actions', 'createSiteRequested');
   },
@@ -66,6 +69,15 @@ export const selectors = {
   },
   get getForgotPasswordError() {
     return dep('accounts', 'selectors', 'getForgotPasswordError');
+  },
+  get getIsRecoverPasswordRequested() {
+    return dep('accounts', 'selectors', 'getIsRecoverPasswordRequested');
+  },
+  get getRecoverPasswordStatus() {
+    return dep('accounts', 'selectors', 'getRecoverPasswordStatus');
+  },
+  get getRecoverPasswordError() {
+    return dep('accounts', 'selectors', 'getRecoverPasswordError');
   },
   get getIsFirstLogin() {
     return dep('accounts', 'selectors', 'getIsFirstLogin');
@@ -141,6 +153,12 @@ export const selectors = {
   },
   get getSelectedPackageNiceName() {
     return dep('settings', 'selectors', 'getSelectedPackageNiceName');
+  },
+};
+
+export const selectorCreators = {
+  get getUrlQuery() {
+    return dep('router', 'selectorCreators', 'getUrlQuery');
   },
 };
 

@@ -8,24 +8,24 @@ import Button from '../../elements/Button';
 import * as deps from '../../deps';
 import { validate } from './validate';
 
-const submit = ({ email }, dispatch) => {
-  dispatch(deps.actions.forgotPasswordRequested({ email }));
+const submit = token => ({ password }, dispatch) => {
+  dispatch(deps.actions.recoverPasswordRequested({ password, token }));
 };
 
-const ForgotPasswordForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) => (
+const RecoverPasswordForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t, token }) => (
 
   <div className="container">
     <div className="columns">
       <div className="column is-half is-offset-one-quarter">
         <div className="control">
-          <form onSubmit={handleSubmit(submit)}>
+          <form onSubmit={handleSubmit(submit(token))}>
             <Field
-              name="email"
-              label="Email"
+              name="password"
+              label="Password"
               component={Input}
-              type="text"
-              placeholder="account@email.com"
-              icon="envelope"
+              type="password"
+              placeholder="●●●●●●●"
+              icon="lock"
               size="large"
             />
 
@@ -60,7 +60,7 @@ const ForgotPasswordForm = ({ handleSubmit, waiting, statusMessage, errorMessage
                   disabled={waiting}
                   type="submit"
                 >
-                  <strong>Send me an email</strong>
+                  <strong>Save my new password</strong>
                 </Button>
 
 
@@ -77,7 +77,7 @@ const ForgotPasswordForm = ({ handleSubmit, waiting, statusMessage, errorMessage
     </div>
   </div>
 );
-ForgotPasswordForm.propTypes = {
+RecoverPasswordForm.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool.isRequired,
   statusMessage: React.PropTypes.oneOfType([
@@ -89,18 +89,20 @@ ForgotPasswordForm.propTypes = {
     React.PropTypes.bool,
   ]),
   t: React.PropTypes.func,
+  token: React.PropTypes.string,
 };
 
-const ForgotPasswordTranslated = translate('accounts')(ForgotPasswordForm);
+const RecoverPasswordTranslated = translate('accounts')(RecoverPasswordForm);
 
-const ForgotPasswordWithForm = reduxForm({
-  form: 'forgot-password',
+const RecoverPasswordWithForm = reduxForm({
+  form: 'recover-password',
   validate,
   getFormState: state => state.theme.reduxForm,
-})(ForgotPasswordTranslated);
+})(RecoverPasswordTranslated);
 
 export default connect(state => ({
-  waiting: deps.selectors.getIsForgotPasswordRequested(state),
-  statusMessage: deps.selectors.getForgotPasswordStatus(state),
-  errorMessage: deps.selectors.getForgotPasswordError(state),
-}))(ForgotPasswordWithForm);
+  waiting: deps.selectors.getIsRecoverPasswordRequested(state),
+  statusMessage: deps.selectors.getRecoverPasswordStatus(state),
+  errorMessage: deps.selectors.getRecoverPasswordError(state),
+  token: deps.selectorCreators.getUrlQuery('token')(state),
+}))(RecoverPasswordWithForm);
