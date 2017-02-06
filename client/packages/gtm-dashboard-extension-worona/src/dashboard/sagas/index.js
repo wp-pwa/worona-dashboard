@@ -4,16 +4,11 @@ import { select } from 'redux-saga/effects';
 import { capitalize } from 'lodash';
 import * as deps from '../deps';
 
-export function launchGTMEventsSaga(action) {
-  const { type, ...props } = action;
+export function launchGtmEventsSaga({ type, ...props }) {
   window.dataLayer.push({
     event: type,
     props,
   });
-}
-
-export function initDataLayerArray() {
-  window.dataLayer = window.dataLayer || [];
 }
 
 export function* virtualPageView() {
@@ -34,7 +29,7 @@ export function* virtualPageView() {
 }
 
 export default function* gtmSagas() {
-  initDataLayerArray();
-  yield [takeEvery('*', launchGTMEventsSaga)];
+  window.dataLayer = window.dataLayer || [];
+  yield [takeEvery('*', launchGtmEventsSaga)];
   yield [takeEvery(deps.types.ROUTER_DID_CHANGE, virtualPageView)];
 }
