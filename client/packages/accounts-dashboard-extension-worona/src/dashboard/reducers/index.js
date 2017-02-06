@@ -36,7 +36,6 @@ export const isLoggingIn = (state = false, action) => {
   }
 };
 
-
 export const loginStatus = (state = false, action) => {
   switch (action.type) {
     case types.LOGIN_STATUS_CHANGED:
@@ -147,14 +146,94 @@ export const isFirstLogin = (state = false, action) => {
 export const redirectAfterLogin = (state = '/sites', action) => {
   switch (action.type) {
     case deps.types.ROUTER_DID_CHANGE:
-      if (state === '/sites' && (
-      action.payload.location.pathname === '/login' ||
-      action.payload.location.pathname === '/register')) {
+      if (
+        state === '/sites' &&
+          (action.payload.location.pathname === '/login' ||
+            action.payload.location.pathname === '/register')
+      ) {
         return action.payload.location.query.next || '/sites';
       }
       return state;
     case types.LOGOUT_SUCCEED:
       return '/sites';
+    default:
+      return state;
+  }
+};
+
+export const isForgotPasswordRequested = (state = false, action) => {
+  switch (action.type) {
+    case types.FORGOT_PASSWORD_REQUESTED:
+      return true;
+    case types.FORGOT_PASSWORD_FAILED:
+    case types.FORGOT_PASSWORD_SUCCEED:
+      return false;
+    default:
+      return state;
+  }
+};
+
+export const forgotPasswordStatus = (state = false, action) => {
+  switch (action.type) {
+    case types.FORGOT_PASSWORD_REQUESTED:
+      return 'Sending email...';
+    case types.FORGOT_PASSWORD_FAILED:
+      return false;
+    case types.FORGOT_PASSWORD_SUCCEED:
+      return 'Sent! Please check your email and use the link to reset your password.';
+    default:
+      return state;
+  }
+};
+
+export const forgotPasswordError = (state = false, action) => {
+  switch (action.type) {
+    case types.FORGOT_PASSWORD_REQUESTED:
+    case types.FORGOT_PASSWORD_SUCCEED:
+      return false;
+    case types.FORGOT_PASSWORD_FAILED:
+      return action.error.error === 'email-doesnt-exist'
+        ? 'Email not registered. Please try again or contact support@worona.org'
+        : 'Something went wrong. Please try again or contact support@worona.org';
+    default:
+      return state;
+  }
+};
+
+export const isRecoverPasswordRequested = (state = false, action) => {
+  switch (action.type) {
+    case types.RECOVER_PASSWORD_REQUESTED:
+      return true;
+    case types.RECOVER_PASSWORD_FAILED:
+    case types.RECOVER_PASSWORD_SUCCEED:
+      return false;
+    default:
+      return state;
+  }
+};
+
+export const recoverPasswordStatus = (state = false, action) => {
+  switch (action.type) {
+    case types.RECOVER_PASSWORD_REQUESTED:
+      return 'Saving your new password...';
+    case types.RECOVER_PASSWORD_FAILED:
+      return false;
+    case types.RECOVER_PASSWORD_SUCCEED:
+      return 'Saved! Go can back to the login page now.';
+    default:
+      return state;
+  }
+};
+
+export const recoverPasswordError = (state = false, action) => {
+  switch (action.type) {
+    case types.RECOVER_PASSWORD_REQUESTED:
+    case types.RECOVER_PASSWORD_SUCCEED:
+      return false;
+    case types.RECOVER_PASSWORD_FAILED:
+      return action.error.reason === 'Token expired' ?
+        'Your email link has expired. Please go to the Forgot Password screen and ask for another one.' :
+        'Something went wrong. Please try again or contact support@worona.org';
     default:
       return state;
   }
@@ -172,4 +251,10 @@ export default () => combineReducers({
   createAccountStatus,
   isFirstLogin,
   redirectAfterLogin,
+  isForgotPasswordRequested,
+  forgotPasswordStatus,
+  forgotPasswordError,
+  isRecoverPasswordRequested,
+  recoverPasswordStatus,
+  recoverPasswordError,
 });
