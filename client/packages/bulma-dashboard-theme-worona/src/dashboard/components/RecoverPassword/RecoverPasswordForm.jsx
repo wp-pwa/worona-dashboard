@@ -8,26 +8,17 @@ import Button from '../../elements/Button';
 import * as deps from '../../deps';
 import { validate } from './validate';
 
-const submit = (values, dispatch) => {
-  dispatch(deps.actions.loginRequested(values.email, values.password));
+const submit = token => ({ password }, dispatch) => {
+  dispatch(deps.actions.recoverPasswordRequested({ password, token }));
 };
 
-const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) => (
+const RecoverPasswordForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t, token }) => (
 
   <div className="container">
     <div className="columns">
       <div className="column is-half is-offset-one-quarter">
         <div className="control">
-          <form onSubmit={handleSubmit(submit)}>
-            <Field
-              name="email"
-              label="Email"
-              component={Input}
-              type="text"
-              placeholder="account@email.com"
-              icon="envelope"
-              size="large"
-            />
+          <form onSubmit={handleSubmit(submit(token))}>
             <Field
               name="password"
               label="Password"
@@ -69,19 +60,14 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) =>
                   disabled={waiting}
                   type="submit"
                 >
-                  <strong>Login</strong>
+                  <strong>Save my new password</strong>
                 </Button>
 
 
               </div>
               <div className="level-right">
-                <Link to="/register">
-                  Don&apos;t have an account? Register
-                </Link>
-              </div>
-              <div className="level-right">
-                <Link to="/forgot-password">
-                  Forgot password?
+                <Link to="/login">
+                  Go to Login
                 </Link>
               </div>
             </div>
@@ -91,7 +77,7 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) =>
     </div>
   </div>
 );
-LoginForm.propTypes = {
+RecoverPasswordForm.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool.isRequired,
   statusMessage: React.PropTypes.oneOfType([
@@ -103,18 +89,20 @@ LoginForm.propTypes = {
     React.PropTypes.bool,
   ]),
   t: React.PropTypes.func,
+  token: React.PropTypes.string,
 };
 
-const LoginTranslated = translate('accounts')(LoginForm);
+const RecoverPasswordTranslated = translate('accounts')(RecoverPasswordForm);
 
-const LoginWithForm = reduxForm({
-  form: 'login',
+const RecoverPasswordWithForm = reduxForm({
+  form: 'recover-password',
   validate,
   getFormState: state => state.theme.reduxForm,
-})(LoginTranslated);
+})(RecoverPasswordTranslated);
 
 export default connect(state => ({
-  waiting: deps.selectors.getIsLoggingIn(state),
-  statusMessage: deps.selectors.getLoginStatus(state),
-  errorMessage: deps.selectors.getLoginError(state),
-}))(LoginWithForm);
+  waiting: deps.selectors.getIsRecoverPasswordRequested(state),
+  statusMessage: deps.selectors.getRecoverPasswordStatus(state),
+  errorMessage: deps.selectors.getRecoverPasswordError(state),
+  token: deps.selectorCreators.getUrlQuery('token')(state),
+}))(RecoverPasswordWithForm);

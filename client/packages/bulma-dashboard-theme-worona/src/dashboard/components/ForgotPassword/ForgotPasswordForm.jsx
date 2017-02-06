@@ -8,11 +8,11 @@ import Button from '../../elements/Button';
 import * as deps from '../../deps';
 import { validate } from './validate';
 
-const submit = (values, dispatch) => {
-  dispatch(deps.actions.loginRequested(values.email, values.password));
+const submit = ({ email }, dispatch) => {
+  dispatch(deps.actions.forgotPasswordRequested({ email }));
 };
 
-const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) => (
+const ForgotPasswordForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) => (
 
   <div className="container">
     <div className="columns">
@@ -26,15 +26,6 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) =>
               type="text"
               placeholder="account@email.com"
               icon="envelope"
-              size="large"
-            />
-            <Field
-              name="password"
-              label="Password"
-              component={Input}
-              type="password"
-              placeholder="●●●●●●●"
-              icon="lock"
               size="large"
             />
 
@@ -69,19 +60,14 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) =>
                   disabled={waiting}
                   type="submit"
                 >
-                  <strong>Login</strong>
+                  <strong>Send me an email</strong>
                 </Button>
 
 
               </div>
               <div className="level-right">
-                <Link to="/register">
-                  Don&apos;t have an account? Register
-                </Link>
-              </div>
-              <div className="level-right">
-                <Link to="/forgot-password">
-                  Forgot password?
+                <Link to="/login">
+                  Go to Login
                 </Link>
               </div>
             </div>
@@ -91,7 +77,7 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) =>
     </div>
   </div>
 );
-LoginForm.propTypes = {
+ForgotPasswordForm.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool.isRequired,
   statusMessage: React.PropTypes.oneOfType([
@@ -105,16 +91,16 @@ LoginForm.propTypes = {
   t: React.PropTypes.func,
 };
 
-const LoginTranslated = translate('accounts')(LoginForm);
+const ForgotPasswordTranslated = translate('accounts')(ForgotPasswordForm);
 
-const LoginWithForm = reduxForm({
-  form: 'login',
+const ForgotPasswordWithForm = reduxForm({
+  form: 'forgot-password',
   validate,
   getFormState: state => state.theme.reduxForm,
-})(LoginTranslated);
+})(ForgotPasswordTranslated);
 
 export default connect(state => ({
-  waiting: deps.selectors.getIsLoggingIn(state),
-  statusMessage: deps.selectors.getLoginStatus(state),
-  errorMessage: deps.selectors.getLoginError(state),
-}))(LoginWithForm);
+  waiting: deps.selectors.getIsForgotPasswordRequested(state),
+  statusMessage: deps.selectors.getForgotPasswordStatus(state),
+  errorMessage: deps.selectors.getForgotPasswordError(state),
+}))(ForgotPasswordWithForm);
