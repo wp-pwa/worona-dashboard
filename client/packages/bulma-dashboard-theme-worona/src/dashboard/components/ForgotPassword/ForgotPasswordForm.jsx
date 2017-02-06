@@ -8,8 +8,8 @@ import Button from '../../elements/Button';
 import * as deps from '../../deps';
 import { validate } from './validate';
 
-const submit = (values, dispatch) => {
-  dispatch(deps.actions.loginRequested(values.email, values.password));
+const submit = ({ email }, dispatch) => {
+  dispatch(deps.actions.forgotPasswordRequested({ email }));
 };
 
 const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) => (
@@ -26,15 +26,6 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) =>
               type="text"
               placeholder="account@email.com"
               icon="envelope"
-              size="large"
-            />
-            <Field
-              name="password"
-              label="Password"
-              component={Input}
-              type="password"
-              placeholder="●●●●●●●"
-              icon="lock"
               size="large"
             />
 
@@ -69,19 +60,14 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) =>
                   disabled={waiting}
                   type="submit"
                 >
-                  <strong>Login</strong>
+                  <strong>Send me an email</strong>
                 </Button>
 
 
               </div>
               <div className="level-right">
-                <Link to="/register">
-                  Don&apos;t have an account? Register
-                </Link>
-              </div>
-              <div className="level-right">
-                <Link to="/forgot-password">
-                  Forgot password?
+                <Link to="/login">
+                  Go to Login
                 </Link>
               </div>
             </div>
@@ -108,13 +94,13 @@ LoginForm.propTypes = {
 const LoginTranslated = translate('accounts')(LoginForm);
 
 const LoginWithForm = reduxForm({
-  form: 'login',
+  form: 'forgot-password',
   validate,
   getFormState: state => state.theme.reduxForm,
 })(LoginTranslated);
 
 export default connect(state => ({
-  waiting: deps.selectors.getIsLoggingIn(state),
-  statusMessage: deps.selectors.getLoginStatus(state),
-  errorMessage: deps.selectors.getLoginError(state),
+  waiting: deps.selectors.getIsForgotPasswordRequested(state),
+  statusMessage: deps.selectors.getForgotPasswordStatus(state),
+  errorMessage: deps.selectors.getForgotPasswordError(state),
 }))(LoginWithForm);

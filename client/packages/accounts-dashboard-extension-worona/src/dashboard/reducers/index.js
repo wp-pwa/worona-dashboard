@@ -160,6 +160,43 @@ export const redirectAfterLogin = (state = '/sites', action) => {
   }
 };
 
+export const isForgotPasswordRequested = (state = false, action) => {
+  switch (action.type) {
+    case types.FORGOT_PASSWORD_REQUESTED:
+      return true;
+    case types.FORGOT_PASSWORD_FAILED:
+    case types.FORGOT_PASSWORD_SUCCEED:
+      return false;
+    default:
+      return state;
+  }
+};
+
+export const forgotPasswordStatus = (state = false, action) => {
+  switch (action.type) {
+    case types.FORGOT_PASSWORD_REQUESTED:
+      return 'Sending email...';
+    case types.FORGOT_PASSWORD_FAILED:
+      return false;
+    case types.FORGOT_PASSWORD_SUCCEED:
+      return 'Sent! Please check your email and use the link to reset your password.';
+    default:
+      return state;
+  }
+};
+
+export const forgotPasswordError = (state = false, action) => {
+  switch (action.type) {
+    case types.FORGOT_PASSWORD_REQUESTED:
+    case types.FORGOT_PASSWORD_SUCCEED:
+      return false;
+    case types.FORGOT_PASSWORD_FAILED:
+      return 'Something went wrong. Please try again or contact support@worona.org';
+    default:
+      return state;
+  }
+};
+
 export default () => combineReducers({
   isLoggedIn,
   userId,
@@ -172,4 +209,7 @@ export default () => combineReducers({
   createAccountStatus,
   isFirstLogin,
   redirectAfterLogin,
+  isForgotPasswordRequested,
+  forgotPasswordStatus,
+  forgotPasswordError,
 });

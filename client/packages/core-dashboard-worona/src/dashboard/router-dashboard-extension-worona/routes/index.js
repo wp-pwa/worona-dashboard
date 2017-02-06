@@ -74,6 +74,13 @@ export const routes = store => (
       onEnter={dontRequireAuth(store)}
     />
     <Route
+      path="forgot-password"
+      component={Entry}
+      wrapped="ForgotPassword"
+      title="Forgot Password"
+      onEnter={dontRequireAuth(store)}
+    />
+    <Route
       path="add-site"
       component={Entry}
       wrapped="AddSite"
