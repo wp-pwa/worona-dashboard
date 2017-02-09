@@ -10,5 +10,8 @@
     "url": "XXXXXXX.kxcdn.com",
     "apiKey": "XXXXXXXXXXXXXXXXXXXXXXXXX",
     "zoneId": "XXXXXXX"
+  },
+  "postmark": {
+    "serverKey": "xxxxxxx-xxxx-xxx-xxxxxxxx"
   }
 }

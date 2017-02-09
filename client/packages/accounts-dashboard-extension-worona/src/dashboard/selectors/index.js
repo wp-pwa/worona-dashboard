@@ -12,3 +12,4 @@ export const getRecoverPasswordError = state => state.accounts.recoverPasswordEr
 export const getIsLoggingIn = state => state.accounts.isLoggingIn;
 export const getLoginStatus = state => state.accounts.loginStatus;
 export const getLoginError = state => state.accounts.loginError;
+export const getUserId = state => state.accounts.userId;
