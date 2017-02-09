@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { takeEvery } from 'redux-saga';
-import { select } from 'redux-saga/effects';
+import { select, fork } from 'redux-saga/effects';
 import { capitalize } from 'lodash';
 import * as deps from '../deps';
 
@@ -30,6 +30,9 @@ export function* virtualPageView() {
 
 export default function* gtmSagas() {
   window.dataLayer = window.dataLayer || [];
-  yield [takeEvery('*', launchGtmEventsSaga)];
-  yield [takeEvery(deps.types.ROUTER_DID_CHANGE, virtualPageView)];
+  yield [
+    takeEvery('*', launchGtmEventsSaga),
+    takeEvery(deps.types.ROUTER_DID_CHANGE, virtualPageView),
+    fork(virtualPageView),
+  ];
 }
