@@ -1,4 +1,4 @@
-/* eslint-disable no-constant-condition, array-callback-return */
+/* eslint-disable no-constant-condition, array-callback-return, no-undef */
 import request from 'superagent';
 import { isRemote, isDev, getDevelopmentPackages } from 'worona-deps';
 import { normalize } from 'normalizr';
@@ -22,8 +22,9 @@ export function* addCorePackagesSaga() {
   try {
     // Call the API.
     const env = isDev ? 'dev' : 'prod';
+    const cdn = window.location.host.startsWith('pre') ? 'precdn' : 'cdn';
     const res = isRemote ?
-      yield call(request.get, `https://cdn.worona.io/api/v1/settings/core/dashboard/${env}`) :
+      yield call(request.get, `https://${cdn}.worona.io/api/v1/settings/core/dashboard/${env}`) :
       defaultPackages;
     // Normalize the result using normalizr.
     const pkgs = {
