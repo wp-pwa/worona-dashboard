@@ -51,10 +51,12 @@ export function* checkSiteSaga() {
   }
 
   try {
-    const { timeout } = yield race({ res: call(checkWorona, url), timeout: delay(30000) });
+    const { res, timeout } = yield race({ res: call(checkWorona, url), timeout: delay(30000) });
     if (timeout) {
       yield call(checkSiteFailedSaga, id, errors.TIMEOUT);
       return;
+    } else if (res.body === null || typeof res.body !== 'object') {
+      throw new Error('The response is not a json');
     }
   } catch (error) {
     yield call(checkSiteFailedSaga, id, errors.WORONA_PLUGIN_NOT_FOUND);
