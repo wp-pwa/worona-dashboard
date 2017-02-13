@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { isRemote } from 'worona-deps';
 
 const remote = window.location.host === 'predashboard.worona.org'

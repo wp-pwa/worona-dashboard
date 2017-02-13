@@ -1,9 +1,9 @@
-/* eslint-disable max-len */
+/* eslint-disable max-len, no-undef */
 import React from 'react';
 import { connect } from 'react-redux';
 import * as deps from '../../deps';
 
-const MobilePreview = ({ site: { id, url } }) => (
+const MobilePreview = ({ site: { id }, app }) => (
   <div className="is-hidden-touch column is-4 has-text-centered" style={{ minWidth: '355px' }}>
     <svg
       width="355px"
@@ -194,7 +194,7 @@ const MobilePreview = ({ site: { id, url } }) => (
       </g>
       <foreignObject x="15" y="72" width="327" height="511">
         <iframe
-          src={`https://app.worona.org/?siteId=${id}&preview=true`}
+          src={`https://${app}.worona.org/?siteId=${id}&preview=true`}
           style={{ width: '327px', height: '511px' }}
         />
       </foreignObject>
@@ -204,10 +204,13 @@ const MobilePreview = ({ site: { id, url } }) => (
 MobilePreview.propTypes = {
   site: React.PropTypes.shape({
     id: React.PropTypes.string.isRequired,
-    url: React.PropTypes.string.isRequired,
   }).isRequired,
+  app: React.PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => ({ site: deps.selectors.getSelectedSite(state) });
+const mapStateToProps = state => ({
+  site: deps.selectors.getSelectedSite(state),
+  app: window.location.host === 'predashboard.worona.org' ? 'preapp' : 'app',
+});
 
 export default connect(mapStateToProps)(MobilePreview);
