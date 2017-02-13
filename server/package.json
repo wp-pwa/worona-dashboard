@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node .start.js",
-    "deploy": "DEPLOY_HOSTNAME=eu-west-1.galaxy-deploy.meteor.com meteor deploy meteor.worona.io --settings settings-production.json"
+    "deploy:prod": "DEPLOY_HOSTNAME=eu-west-1.galaxy-deploy.meteor.com meteor deploy meteor.worona.io --settings settings-production.json",
+    "deploy:pre": "DEPLOY_HOSTNAME=eu-west-1.galaxy-deploy.meteor.com meteor deploy premeteor.worona.io --settings settings-preproduction.json"
   },
   "repository": {
     "type": "git",
