@@ -210,7 +210,11 @@ MobilePreview.propTypes = {
 
 const mapStateToProps = state => ({
   site: deps.selectors.getSelectedSite(state),
-  app: window.location.host === 'predashboard.worona.org' ? 'preapp' : 'app',
+  app: (
+    window.location.host.startsWith('predashboard') || window.location.host.startsWith('localhost')
+      ? 'preapp'
+      : 'app'
+  ),
 });
 
 export default connect(mapStateToProps)(MobilePreview);

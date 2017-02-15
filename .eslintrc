@@ -8,6 +8,7 @@
     "arrow-parens": 0,
     "react/no-unused-prop-types": [2, {"skipShapeProps": true}],
     "no-underscore-dangle": ["error", { "allow": [ "_id", "_sleepForMs" ] }],
-    "no-confusing-arrow": 0
+    "no-confusing-arrow": 0,
+    "no-mixed-operators": 0
   }
 }

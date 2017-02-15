@@ -55,6 +55,7 @@ const CheckSite = () => (
     <Main waitForSelectors={[deps.selectors.getIsReadySelectedSite]}>
       <Check text="Site online" checkType="online" />
       <Check text="Worona WordPress Plugin" checkType="plugin" />
+      <Check text="WordPress REST API" checkType="wpapi" />
     </Main>
 
     <Footer>
