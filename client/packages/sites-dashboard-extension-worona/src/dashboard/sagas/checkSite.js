@@ -1,8 +1,6 @@
 import { takeLatest, takeEvery, delay } from 'redux-saga';
 import { call, put, select, fork, race } from 'redux-saga/effects';
 import request from 'superagent';
-import stringifyError from 'stringify-error-message';
-
 import * as actions from '../actions';
 import * as types from '../types';
 import * as errors from '../errors';
@@ -11,19 +9,13 @@ import * as deps from '../deps';
 import * as libs from '../libs';
 import * as sagaHelpers from '../sagaHelpers';
 
-export const CORSAnywhere = 'https://cors.worona.io/';
-export const woronaEndPoint = '/worona/v1/siteid';
-export const restRouteQuery = '?rest_route=';
+// export const cors = 'https://cors.worona.io/';
+export const cors = 'http://localhost:4500/api/v1/cors/';
+
+export const checkOnline = baseUrl => request((/localhost/.test(baseUrl) ? '' : cors) + baseUrl);
 
 export const checkWorona = baseUrl =>
-  request
-    .get(
-      (/localhost/.test(baseUrl) ? '' : CORSAnywhere) + baseUrl + restRouteQuery + woronaEndPoint,
-    )
-    .set('Accept', 'application/json');
-
-export const checkOnline = baseUrl =>
-  request.head((/localhost/.test(baseUrl) ? '' : CORSAnywhere) + baseUrl);
+  request(`${/localhost/.test(baseUrl) ? '' : cors}${baseUrl}?rest_route=/`);
 
 export function* checkSiteFailedSaga(siteId, errorMsg) {
   yield put(actions.checkSiteFailed(errorMsg));
@@ -39,40 +31,51 @@ export function* checkSiteSaga() {
 
   const { url, id } = yield select(selectors.getSelectedSite);
 
-  try {
-    const { timeout } = yield race({ res: call(checkOnline, url), timeout: delay(30000) });
-    if (timeout) {
-      yield call(checkSiteFailedSaga, id, errors.TIMEOUT);
-      return;
-    }
-  } catch (error) {
-    yield call(checkSiteFailedSaga, id, errors.SITE_NOT_ONLINE);
-    return;
+  const { resOnline, timeoutOnline } = yield race({
+    resOnline: call(checkOnline, url),
+    timeoutOnline: delay(30000),
+  });
+  if (timeoutOnline) {
+    return yield call(checkSiteFailedSaga, id, errors.TIMEOUT);
+  } else if (resOnline.body && resOnline.body.error) {
+    return yield call(checkSiteFailedSaga, id, errors.SITE_NOT_ONLINE);
   }
 
-  try {
-    const { res, timeout } = yield race({ res: call(checkWorona, url), timeout: delay(30000) });
-    if (timeout) {
-      yield call(checkSiteFailedSaga, id, errors.TIMEOUT);
-      return;
-    } else if (res.body === null || typeof res.body !== 'object') {
-      throw new Error('The response is not a json');
-    }
-  } catch (error) {
-    yield call(checkSiteFailedSaga, id, errors.WORONA_PLUGIN_NOT_FOUND);
-    return;
+  const { resWorona, timeoutWorona } = yield race({
+    resWorona: call(checkWorona, url),
+    timeoutWorona: delay(30000),
+  });
+  if (timeoutWorona) {
+    return yield call(checkSiteFailedSaga, id, errors.TIMEOUT);
+  } else if (
+    // Error in request.
+    resWorona.body && resWorona.body.error ||
+    // Request ok but response is not a JSON.
+    typeof resWorona.body !== 'object' ||
+    // API endpoints ok but worona plugin not installed.
+    resWorona.body &&
+    resWorona.body.namespaces &&
+    resWorona.body.namespaces.indexOf('worona/v1') === -1) {
+    return yield call(checkSiteFailedSaga, id, errors.WORONA_PLUGIN_NOT_FOUND);
+  } else if (
+    // API endpoints ok but WP-API plugin not installed.
+    resWorona.body &&
+    resWorona.body.namespaces &&
+    resWorona.body.namespaces.indexOf('wp/v2') === -1
+  ) {
+    return yield call(checkSiteFailedSaga, id, errors.WP_API_NOT_FOUND);
   }
 
   yield put(actions.checkSiteSucceed(id));
-  yield call(libs.updateSiteStatus, { siteId: id, status: { type: 'ok' } });
+  return yield call(libs.updateSiteStatus, { siteId: id, status: { type: 'ok' } });
 }
 
 export function* checkSiteRouterWatcher(action) {
   if (
     action &&
-      action.payload &&
-      action.payload.location &&
-      action.payload.location.pathname.startsWith('/check-site/')
+    action.payload &&
+    action.payload.location &&
+    action.payload.location.pathname.startsWith('/check-site/')
   ) {
     yield put(actions.checkSiteRequested());
   }

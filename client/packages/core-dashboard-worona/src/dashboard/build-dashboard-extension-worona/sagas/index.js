@@ -22,10 +22,12 @@ export function* addCorePackagesSaga() {
   try {
     // Call the API.
     const env = isDev ? 'dev' : 'prod';
-    const cdn = window.location.host.startsWith('pre') ? 'precdn' : 'cdn';
-    const res = isRemote ?
-      yield call(request.get, `https://${cdn}.worona.io/api/v1/settings/core/dashboard/${env}`) :
-      defaultPackages;
+    const isPre = window.location.host.startsWith('pre') ||
+      window.location.host.startsWith('localhost');
+    const cdn = isPre ? 'precdn' : 'cdn';
+    const res = isRemote
+      ? yield call(request.get, `https://${cdn}.worona.io/api/v1/settings/core/dashboard/${env}`)
+      : defaultPackages;
     // Normalize the result using normalizr.
     const pkgs = {
       ...normalize(res.body, schemas.arrayOfPackages).entities.packages,
@@ -57,10 +59,17 @@ export function* packageActivationSaga({ pkg }) {
     } else {
       if (previousPackageName) {
         // A previous package with the same namespace is activated.
-        const waitForDeactivation = yield fork(waitFor, previousPackageName,
-          types.PACKAGE_DEACTIVATION_SUCCEED, types.PACKAGE_DEACTIVATION_FAILED);
-        yield put(actions.packageDeactivationRequested(
-          { pkg: { name: previousPackageName, namespace: pkg.namespace } }));
+        const waitForDeactivation = yield fork(
+          waitFor,
+          previousPackageName,
+          types.PACKAGE_DEACTIVATION_SUCCEED,
+          types.PACKAGE_DEACTIVATION_FAILED,
+        );
+        yield put(
+          actions.packageDeactivationRequested({
+            pkg: { name: previousPackageName, namespace: pkg.namespace },
+          }),
+        );
         yield join(waitForDeactivation);
       }
       // Load phase.

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { translate, Interpolate } from 'react-i18next';
 import { flow } from 'lodash/fp';
 import { Link } from 'react-router';
-
 import * as deps from '../../deps';
 import Icon from '../../elements/Icon';
 import Button from '../../elements/Button';
@@ -68,6 +67,36 @@ let Message = ({ checkType, color, t, site }) => {
             </span>
             <span>
               &nbsp;Install Worona Plugin
+            </span>
+          </a>
+          <br /><br />
+          or
+        </div>
+      </div>
+    );
+  } else if (checkType === 'wpapi') {
+    let linkToDownLoadPlugin = site.url;
+    linkToDownLoadPlugin += '/wp-admin/plugin-install.php?tab=plugin-information&plugin=rest-api';
+    linkToHelp += '#1-install-wp-rest-api-plugin';
+
+    ErrorMessageBody = () => (
+      <div className="content">
+        <Interpolate
+          i18nKey="check-error-wpapi-body"
+          useDangerouslySetInnerHTML
+        />
+        <br /><br />
+        <div className="has-text-centered">
+          <a
+            className="button is-danger is-medium"
+            href={linkToDownLoadPlugin}
+            target="_blank" rel="noopener noreferrer"
+          >
+            <span className="icon is-small">
+              <i className="fa fa-download" aria-hidden="true" />
+            </span>
+            <span>
+              &nbsp;Install WordPress REST API
             </span>
           </a>
           <br /><br />

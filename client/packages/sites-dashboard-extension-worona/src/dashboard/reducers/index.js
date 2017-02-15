@@ -42,10 +42,12 @@ export const createSiteError = (state = false, action) => {
 };
 
 export const newSiteInfo = (state = {}, action) => {
-  if (action.type === deps.types.ROUTER_DID_CHANGE
-   && (action.payload.location.query.siteName
-     || action.payload.location.query.siteURL
-     || action.payload.location.query.siteId)) {
+  if (
+    action.type === deps.types.ROUTER_DID_CHANGE &&
+    (action.payload.location.query.siteName ||
+      action.payload.location.query.siteURL ||
+      action.payload.location.query.siteId)
+  ) {
     const { siteName, siteURL, siteId } = action.payload.location.query;
     let siteInfo = { siteName, siteURL, siteId };
     siteInfo = lodash.pickBy(siteInfo, prop => !lodash.isUndefined(prop));
@@ -55,30 +57,23 @@ export const newSiteInfo = (state = {}, action) => {
   return state;
 };
 
-/* aux function for checkSite reducer */
-export function CheckSiteState(online = 'inactive', plugin = 'inactive', siteId = 'inactive') {
-  this.online = online;
-  this.plugin = plugin;
-  this.siteId = siteId;
-}
-
-export const checkSite = (state = new CheckSiteState(), action) => {
-  switch (action.type) {
+export const checkSite = (state = { online: '', plugin: '', wpapi: '' }, { type, error }) => {
+  switch (type) {
     case types.CHECK_SITE_REQUESTED:
-      return new CheckSiteState('loading', 'loading', 'loading');
+      return { online: 'loading', plugin: 'loading', wpapi: 'loading' };
     case types.CHECK_SITE_SUCCEED: {
-      const { warning } = action;
-      if (warning) {
-        return new CheckSiteState('success', 'success', 'warning');
-      }
-      return new CheckSiteState('success', 'success', 'success');
+      return { online: 'success', plugin: 'success', wpapi: 'success' };
     }
     case types.CHECK_SITE_FAILED: {
-      const { error } = action;
-      if (error === errors.RESPONSE_NOT_200) return new CheckSiteState('error');
-      if (error === errors.WORONA_PLUGIN_NOT_FOUND) return new CheckSiteState('success', 'error');
-      if (error === errors.WP_API_NOT_FOUND) return new CheckSiteState('success', 'error');
-      /* else any other error */ return new CheckSiteState('error');
+      switch (error) {
+        case errors.WORONA_PLUGIN_NOT_FOUND:
+          return { online: 'success', plugin: 'error', wpapi: 'inactive' };
+        case errors.WP_API_NOT_FOUND:
+          return { online: 'success', plugin: 'success', wpapi: 'error' };
+        default:
+          // Also works for SITE_NOT_ONLINE.
+          return { online: 'error', plugin: 'inactive', wpapi: 'inactive' };
+      }
     }
     default:
       return state;
