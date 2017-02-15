@@ -9,7 +9,7 @@ import * as deps from '../deps';
 import * as libs from '../libs';
 import * as sagaHelpers from '../sagaHelpers';
 
-export const cors = 'https://cors.worona.io/';
+export const cors = 'https://backend.worona.io/api/v1/cors/';
 
 export const checkOnline = baseUrl => request((/localhost/.test(baseUrl) ? '' : cors) + baseUrl);
 
