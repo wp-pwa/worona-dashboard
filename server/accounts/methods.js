@@ -17,7 +17,7 @@ Meteor.methods({
     const userId = Accounts.createUser({ email, password });
 
     if (userId) {
-      Meteor.users.update(userId, { $set: { profile: { name } } });
+      Meteor.users.update(userId, { $set: { profile: { name, lastSiteNumber: -1 } } });
     }
 
     privateCreateSite({ name: 'Demo', url: 'https://demo.worona.org', userId });
