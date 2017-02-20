@@ -10,11 +10,16 @@ export const privateCreateSite = ({ name, url, _id, userId }) => {
   const createdAt = new Date();
   const modifiedAt = new Date();
 
-  const data = { name, url, userIds: [userId], createdAt, modifiedAt };
-  if (_id) data._id = _id;
+  const user = Meteor.users.findOne(userId, { fields: { 'profile.lastSiteNumber': 1 } });
+  const siteNumber = user.profile && user.profile.lastSiteNumber
+    ? user.profile.lastSiteNumber + 1
+    : 1;
 
+  const data = { name, url, userIds: [userId], createdAt, modifiedAt, siteNumber };
+  if (_id) data._id = _id;
   const siteId = sites.insert(data);
 
+  Meteor.users.update(userId, { $set: { 'profile.lastSiteNumber': siteNumber } });
   Meteor.call('addDefaultSettings', siteId);
 
   return siteId;
