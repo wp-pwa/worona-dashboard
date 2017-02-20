@@ -49,7 +49,7 @@ Meteor.methods({
     purgeSite(siteId);
 
     return sites.update(siteId, {
-      $set: { name: siteName, url: siteUrl.replace(/\/$/, ''), modifiedAt },
+      $set: { name: siteName, url: siteUrl, modifiedAt },
     });
   },
 });
