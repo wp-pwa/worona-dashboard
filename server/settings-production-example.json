@@ -13,5 +13,8 @@
   },
   "postmark": {
     "serverKey": "xxxxxxx-xxxx-xxx-xxxxxxxx"
+  },
+  "sendgrid": {
+    "apiKey": "XXXXXXXXXXXXXXXXXXXXXXXXX"
   }
 }
