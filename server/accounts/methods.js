@@ -20,7 +20,7 @@ Meteor.methods({
       Meteor.users.update(userId, { $set: { profile: { name, lastSiteNumber: -1 } } });
     }
 
-    privateCreateSite({ name: 'Demo', url: 'https://demo.worona.org', userId });
+    privateCreateSite({ name: 'Demo', url: 'https://demo.worona.org', userId, isEditable: false });
 
     return userId;
   },

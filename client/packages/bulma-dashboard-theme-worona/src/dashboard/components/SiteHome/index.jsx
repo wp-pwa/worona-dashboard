@@ -15,33 +15,32 @@ import Button from '../../elements/Button';
 import * as actions from '../../actions';
 import MobileMenu from './MobileMenu';
 
-let SiteHomeHeader = ({ site }) => (
+let SiteHomeHeader = ({ name, id, url, isEditable = true }) => (
   <Hero
     title={(
       <span>
-        {site.name}
+        {name}
         &nbsp;
-        <EditSiteLink id={site.id} />
+        {isEditable && <EditSiteLink id={id} />}
       </span>
     )}
     subtitle={
       <span>
-        <small>{site.id}</small>
+        <small>{id}</small>
         <br />
-        <small>{site.url}</small>
+        <small>{url}</small>
       </span>
     }
   />
 );
 const mapSiteHeaderToState = (state) => ({
-  site: deps.selectors.getSelectedSite(state),
+  ...deps.selectors.getSelectedSite(state),
 });
 SiteHomeHeader.propTypes = {
-  site: React.PropTypes.shape({
-    name: React.PropTypes.string.isRequired,
-    id: React.PropTypes.string.isRequired,
-    url: React.PropTypes.string.isRequired,
-  }),
+  name: React.PropTypes.string.isRequired,
+  id: React.PropTypes.string.isRequired,
+  url: React.PropTypes.string.isRequired,
+  isEditable: React.PropTypes.bool,
 };
 SiteHomeHeader = connect(mapSiteHeaderToState)(SiteHomeHeader);
 

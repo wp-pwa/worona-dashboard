@@ -13,35 +13,34 @@ import EditSiteLink from '../../elements/EditSiteLink';
 import Check from './Check';
 
 /* Header */
-let CheckSiteHeader = ({ site }) => (
+let CheckSiteHeader = ({ name, id, url, isEditable = true }) => (
   <Hero
     title={(
       <span>
-        {site.name}
+        {name}
         &nbsp;
-        <EditSiteLink id={site.id} color="rgba(255,255,255,.7)" />
+        {isEditable && <EditSiteLink id={id} />}
       </span>
     )}
     subtitle={
       <span>
-        <small>{site.id}</small>
+        <small>{id}</small>
         <br />
-        <small>{site.url}</small>
+        <small>{url}</small>
       </span>
     }
   />
 );
 
 const mapStateToProps = (state) => ({
-  site: deps.selectors.getSelectedSite(state),
+  ...deps.selectors.getSelectedSite(state),
 });
 
 CheckSiteHeader.propTypes = {
-  site: React.PropTypes.shape({
-    name: React.PropTypes.string.isRequired,
-    id: React.PropTypes.string.isRequired,
-    url: React.PropTypes.string.isRequired,
-  }),
+  name: React.PropTypes.string.isRequired,
+  id: React.PropTypes.string.isRequired,
+  url: React.PropTypes.string.isRequired,
+  isEditable: React.PropTypes.bool,
 };
 
 CheckSiteHeader = connect(mapStateToProps)(CheckSiteHeader);

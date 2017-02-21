@@ -5,13 +5,13 @@ import { Link } from 'react-router';
 import Icon from '../../elements/Icon';
 import EditSiteLink from '../../elements/EditSiteLink';
 
-const Site = ({ name, url, date, id, status = {} }) => (
+const Site = ({ name, url, date, id, isEditable = true, status = {} }) => (
   <div className="column is-narrow-mobile is-one-third-tablet is-one-quarter-desktop">
     <div className={cn('card', 'is-fullwidth')}>
       <header className="card-header">
         <p className="card-header-title">
           {name}
-          <EditSiteLink id={id} color="#69707a" />
+          {isEditable && <EditSiteLink id={id} color="#69707a" />}
         </p>
         {
           status.type === 'conflict'
@@ -57,6 +57,7 @@ Site.propTypes = {
   name: React.PropTypes.string.isRequired,
   url: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
+  isEditable: React.PropTypes.number,
   date: React.PropTypes.number.isRequired,
   status: React.PropTypes.shape({
     type: React.PropTypes.string.isRequired,
