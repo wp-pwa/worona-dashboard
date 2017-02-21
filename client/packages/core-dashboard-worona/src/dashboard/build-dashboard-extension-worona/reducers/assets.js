@@ -4,7 +4,9 @@ import { mapValues } from 'lodash';
 import { flow, keyBy, mapValues as mapValuesFp } from 'lodash/fp';
 import * as types from '../types';
 
-const cdn = window.location.host.startsWith('pre') ? 'precdn' : 'cdn';
+const cdn = window.location.host.startsWith('pre') || window.location.host.startsWith('localhost')
+  ? 'precdn'
+  : 'cdn';
 
 export default (state = {}, action) => {
   let pkgAssets;
