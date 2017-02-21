@@ -1,10 +1,13 @@
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, new-cap */
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 import { Accounts } from 'meteor/accounts-base';
 import { check } from 'meteor/check';
 import { Client as PostmarkClient } from 'postmark';
+import Sendgrid from 'sendgrid';
 import { privateCreateSite } from '../sites/private';
+
+const sendgrid = Sendgrid(Meteor.settings.sendgrid.apiKey);
 
 Meteor.methods({
   createAccount(name, email, password) {
@@ -20,7 +23,13 @@ Meteor.methods({
       Meteor.users.update(userId, { $set: { profile: { name, lastSiteNumber: -1 } } });
     }
 
-    privateCreateSite({ name: 'Demo', url: 'https://demo.worona.org', userId });
+    privateCreateSite({ name: 'Demo', url: 'https://demo.worona.org', userId, isEditable: false });
+
+    sendgrid.API({
+      method: 'POST',
+      path: '/v3/asm/groups/2463/suppressions',
+      body: { recipient_emails: [email] },
+    });
 
     return userId;
   },
