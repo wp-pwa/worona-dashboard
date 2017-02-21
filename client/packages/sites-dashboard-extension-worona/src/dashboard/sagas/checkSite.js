@@ -51,16 +51,16 @@ export function* checkSiteSaga() {
     resWorona.body && resWorona.body.error ||
     // Request ok but response is not a JSON.
     typeof resWorona.body !== 'object' ||
+    resWorona.body === null ||
     // API endpoints ok but worona plugin not installed.
     resWorona.body &&
-    resWorona.body.namespaces &&
-    resWorona.body.namespaces.indexOf('worona/v1') === -1) {
+      resWorona.body.namespaces &&
+      resWorona.body.namespaces.indexOf('worona/v1') === -1
+  ) {
     return yield call(checkSiteFailedSaga, id, errors.WORONA_PLUGIN_NOT_FOUND);
   } else if (
     // API endpoints ok but WP-API plugin not installed.
-    resWorona.body &&
-    resWorona.body.namespaces &&
-    resWorona.body.namespaces.indexOf('wp/v2') === -1
+    resWorona.body && resWorona.body.namespaces && resWorona.body.namespaces.indexOf('wp/v2') === -1
   ) {
     return yield call(checkSiteFailedSaga, id, errors.WP_API_NOT_FOUND);
   }
