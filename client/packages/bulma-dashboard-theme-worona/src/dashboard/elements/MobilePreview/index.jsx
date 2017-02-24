@@ -205,7 +205,7 @@ MobilePreview.propTypes = {
   site: React.PropTypes.shape({
     id: React.PropTypes.string.isRequired,
   }).isRequired,
-  app: React.PropTypes.bool.isRequired,
+  app: React.PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
