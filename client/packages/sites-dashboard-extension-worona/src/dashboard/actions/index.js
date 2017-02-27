@@ -5,8 +5,8 @@ export const createSiteRequested = ({ siteName, siteUrl, siteId }) =>
   ({ type: types.CREATE_SITE_REQUESTED, siteName, siteUrl, siteId });
 export const createSiteStatusChanged = status =>
   ({ type: types.CREATE_SITE_STATUS_CHANGED, status });
-export const createSiteSucceed = siteId =>
-  ({ type: types.CREATE_SITE_SUCCEED, siteId });
+export const createSiteSucceed = site =>
+  ({ type: types.CREATE_SITE_SUCCEED, site });
 export const createSiteFailed = errorObj =>
   ({ type: types.CREATE_SITE_FAILED, error: stringifyError(errorObj) });
 // Delete Site actions:

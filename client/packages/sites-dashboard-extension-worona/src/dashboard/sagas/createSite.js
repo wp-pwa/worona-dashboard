@@ -11,9 +11,9 @@ export function* createSiteSaga(action) {
   try {
     yield put(actions.createSiteStatusChanged(CREATING_SITE));
     yield deps.sagaHelpers.waitForConnectionEstablished();
-    const newId = yield call(libs.createSite, { siteName, siteUrl, siteId });
-    yield put(actions.createSiteSucceed(newId));
-    yield call(deps.libs.push, `/check-site/${newId}`);
+    const site = yield call(libs.createSite, { siteName, siteUrl, siteId });
+    yield put(actions.createSiteSucceed(site));
+    yield call(deps.libs.push, `/check-site/${site._id}`);
   } catch (error) {
     yield put(actions.createSiteFailed(error));
   }
