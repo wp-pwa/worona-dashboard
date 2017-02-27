@@ -4,11 +4,13 @@ import { select, fork } from 'redux-saga/effects';
 import { capitalize } from 'lodash';
 import * as deps from '../deps';
 
-export function launchGtmEventsSaga({ type, ...props }) {
-  window.dataLayer.push({
-    event: type,
-    props,
-  });
+export function launchGtmEventsSaga({ type, ...rest }) {
+  const exceptions = [/redux-form/, /subscriptions/, /build\/PACKAGE_/];
+  if (!exceptions.reduce((acc, val) => acc || val.test(type), false))
+    window.dataLayer.push({
+      event: type,
+      actions: { [type]: rest },
+    });
 }
 
 export function* virtualPageView() {
