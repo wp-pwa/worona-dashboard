@@ -11,6 +11,7 @@ export const getSettingsPreviewIsReady = state => state.settings.collections.pre
 export const getPackageCollection = state => state.settings.collections.packages.collection;
 export const getPackageIsReady = state => state.settings.collections.packages.isReady;
 export const getDevPackageCollection = state => state.settings.collections.devPackages.collection;
+export const getSavingSettings = state => state.settings.savingSettings;
 
 export const getCategories = createSelector(
   deps.selectors.getSelectedService,
