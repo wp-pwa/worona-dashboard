@@ -16,7 +16,7 @@ Meteor.methods({
 
     const newId = privateCreateSite({ name: siteName, url: siteUrl, _id: siteId, userId });
 
-    return newId;
+    return sites.findOne(newId);
   },
   deleteSite({ siteId }) {
     check(siteId, String);

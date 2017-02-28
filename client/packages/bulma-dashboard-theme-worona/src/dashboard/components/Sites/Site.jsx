@@ -57,7 +57,7 @@ Site.propTypes = {
   name: React.PropTypes.string.isRequired,
   url: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
-  isEditable: React.PropTypes.number,
+  isEditable: React.PropTypes.bool,
   date: React.PropTypes.number.isRequired,
   status: React.PropTypes.shape({
     type: React.PropTypes.string.isRequired,
