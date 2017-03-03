@@ -26,7 +26,8 @@ let Message = ({ checkType, color, t, site }) => {
             <Interpolate
               i18nKey="check-error-online-body-iscorrect"
               value={<strong>{site.url}</strong>}
-            /></li>
+            />
+          </li>
         </ul>
         <br />
         <div className="has-text-centered">
@@ -51,16 +52,14 @@ let Message = ({ checkType, color, t, site }) => {
 
     ErrorMessageBody = () => (
       <div className="content">
-        <Interpolate
-          i18nKey="check-error-plugin-body"
-          useDangerouslySetInnerHTML
-        />
+        <Interpolate i18nKey="check-error-plugin-body" useDangerouslySetInnerHTML />
         <br /><br />
         <div className="has-text-centered">
           <a
             className="button is-danger is-medium"
             href={linkToDownLoadPlugin}
-            target="_blank" rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <span className="icon is-small">
               <i className="fa fa-download" aria-hidden="true" />
@@ -77,20 +76,18 @@ let Message = ({ checkType, color, t, site }) => {
   } else if (checkType === 'wpapi') {
     let linkToDownLoadPlugin = site.url;
     linkToDownLoadPlugin += '/wp-admin/plugin-install.php?tab=plugin-information&plugin=rest-api';
-    linkToHelp += '#1-install-wp-rest-api-plugin';
+    linkToHelp += '#3-wordpress-rest-api-plugin-missing';
 
     ErrorMessageBody = () => (
       <div className="content">
-        <Interpolate
-          i18nKey="check-error-wpapi-body"
-          useDangerouslySetInnerHTML
-        />
+        <Interpolate i18nKey="check-error-wpapi-body" useDangerouslySetInnerHTML />
         <br /><br />
         <div className="has-text-centered">
           <a
             className="button is-danger is-medium"
             href={linkToDownLoadPlugin}
-            target="_blank" rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <span className="icon is-small">
               <i className="fa fa-download" aria-hidden="true" />
@@ -115,7 +112,9 @@ let Message = ({ checkType, color, t, site }) => {
         <div className="has-text-centered">
           <a
             className="button is-danger is-outlined"
-            href={linkToHelp} target="_blank" rel="noopener noreferrer"
+            href={linkToHelp}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <span className="icon is-small">
               <i className="fa fa-info" />
@@ -142,10 +141,7 @@ const mapStateToMessageProps = state => ({
   site: deps.selectors.getSelectedSite(state),
 });
 
-Message = flow(
-  connect(mapStateToMessageProps),
-  translate('theme')
-)(Message);
+Message = flow(connect(mapStateToMessageProps), translate('theme'))(Message);
 
 /* Retry Button in case of warning or error */
 const UnConnectedRetryButton = ({ requestCheckSite }) => (
@@ -153,10 +149,7 @@ const UnConnectedRetryButton = ({ requestCheckSite }) => (
     <div className="level is-mobile">
       <div className="level-left is-marginless">
         <div className="notification is-white has-text-centered">
-          <Button
-            size="large"
-            onClick={requestCheckSite}
-          >
+          <Button size="large" onClick={requestCheckSite}>
             <Icon code="refresh" />
             <span>Retry</span>
           </Button>
@@ -169,7 +162,7 @@ const UnConnectedRetryButton = ({ requestCheckSite }) => (
 UnConnectedRetryButton.propTypes = {
   requestCheckSite: React.PropTypes.func.isRequired,
 };
-const mapDispatchToRetryButtonProps = (dispatch) => ({
+const mapDispatchToRetryButtonProps = dispatch => ({
   requestCheckSite: () => dispatch(deps.actions.checkSiteRequested()),
 });
 
@@ -179,12 +172,12 @@ export const RetryButton = connect(null, mapDispatchToRetryButtonProps)(UnConnec
 const Check = ({ text, status, checkType, t }) => {
   if (status === 'inactive') {
     return (
-      <div id={checkType} className="columns" >
+      <div id={checkType} className="columns">
         <div className="column is-4 is-offset-4">
           <div className="notification">
             <div className="level is-mobile">
               <div className="level-left">
-                { text }
+                {text}
               </div>
             </div>
           </div>
@@ -210,34 +203,28 @@ const Check = ({ text, status, checkType, t }) => {
   }
 
   return (
-    <div className="columns" >
+    <div className="columns">
       <div className="column is-4 is-offset-4">
         <div className={`notification is-${color}`}>
           <div className="level is-mobile">
             <div className="level-left">
               {t(`check-text-${checkType}`)}
             </div>
-            {icon ?
-              <div className="level-right is-marginless">
-                <a className={`button is-${color} is-disabled`} />
-                <Icon code={icon} />
-              </div>
-              :
-              <div className="level-right is-marginless">
-                <a className="button is-primary is-loading" />
-              </div>
-            }
+            {icon
+              ? <div className="level-right is-marginless">
+                  <button className={`button is-${color} is-disabled`} />
+                  <Icon code={icon} />
+                </div>
+              : <div className="level-right is-marginless">
+                  <button className="button is-primary is-loading" />
+                </div>}
           </div>
         </div>
         {/* Error Message? */}
-        { conflict ?
-          <Message checkType={checkType} color={color} status={status} />
-        : null}
+        {conflict ? <Message checkType={checkType} color={color} status={status} /> : null}
       </div>
       {/* Retry Button? */}
-      { conflict ?
-        <RetryButton />
-      : null}
+      {conflict ? <RetryButton /> : null}
     </div>
   );
 };
@@ -252,7 +239,4 @@ Check.propTypes = {
 const mapStateToCheckProps = (state, ownProps) => ({
   status: deps.selectors.getCheckSite(state, ownProps.checkType),
 });
-export default flow(
-  connect(mapStateToCheckProps),
-  translate('theme')
-)(Check);
+export default flow(connect(mapStateToCheckProps), translate('theme'))(Check);
