@@ -6,9 +6,10 @@ import sites from '../sites/collections';
 Meteor.publish('dashboard-settings-live', function dashboardSettingsLive() {
   this.autorun(() => {
     const userSites = sites.find(
-      { userIds: { $in: [this.userId] } },
+      { userIds: { $in: [this.userId] }, deleted: { $ne: true } },
       { fields: { _id: 1 } }
     );
+    console.log(userSites.fetch());
     const siteIds = userSites.map(site => site._id);
     return settingsLive.find({ 'woronaInfo.siteId': { $in: siteIds } });
   });
@@ -25,7 +26,7 @@ Meteor.publish('app-settings-live', ({ siteId }) => {
 Meteor.publish('packages', function packagesFromSettings(env = 'prod') {
   this.autorun(() => {
     const userSites = sites.find(
-      { userIds: { $in: [this.userId] } },
+      { userIds: { $in: [this.userId] }, deleted: { $ne: true } },
       { fields: { _id: 1 } }
     );
     const siteIds = userSites.map(site => site._id);
