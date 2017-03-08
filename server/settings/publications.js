@@ -9,7 +9,6 @@ Meteor.publish('dashboard-settings-live', function dashboardSettingsLive() {
       { userIds: { $in: [this.userId] }, deleted: { $ne: true } },
       { fields: { _id: 1 } }
     );
-    console.log(userSites.fetch());
     const siteIds = userSites.map(site => site._id);
     return settingsLive.find({ 'woronaInfo.siteId': { $in: siteIds } });
   });
