@@ -1,18 +1,12 @@
 import { dep } from 'worona-deps';
 
-export const actions = {
-  get saveSettingsRequested() { return dep('settings', 'actions', 'saveSettingsRequested'); },
-};
-
 export const elements = {
   get RootContainer() { return dep('theme', 'elements', 'RootContainer'); },
-  get Select() { return dep('theme', 'elements', 'Select'); },
-  get Switch() { return dep('theme', 'elements', 'Switch'); },
 };
 
 export const selectorCreators = {
-  get getSettingsCreator() { return dep('settings', 'selectorCreators', 'getSettingsCreator'); },
-  get getSettingCreator() { return dep('settings', 'selectorCreators', 'getSettingCreator'); },
+  get getSettings() { return dep('settings', 'selectorCreators', 'getSettings'); },
+  get getSetting() { return dep('settings', 'selectorCreators', 'getSetting'); },
 };
 
 export const types = {
