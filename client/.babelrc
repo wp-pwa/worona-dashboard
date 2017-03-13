@@ -1,7 +1,6 @@
 {
   "plugins": [
-    "lodash",
-    "transform-decorators-legacy"
+    "lodash"
   ],
   "presets": [
     "es2015",
