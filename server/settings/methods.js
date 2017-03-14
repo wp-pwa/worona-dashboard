@@ -10,18 +10,39 @@ const addSettings = ({ name, namespace, siteId }) => {
   check(namespace, Match.OneOf(String, undefined));
   check(siteId, String);
 
-  return settingsLive.findOne({ 'woronaInfo.name': name, 'woronaInfo.siteId': siteId }) ? false :
-    settingsLive.insert({ woronaInfo: {
-      name,
-      namespace,
-      siteId,
-      active: true,
-      init: false,
-    } });
+  return settingsLive.findOne({
+    'woronaInfo.name': name,
+    'woronaInfo.siteId': siteId,
+  })
+    ? false
+    : settingsLive.insert({
+        woronaInfo: {
+          name,
+          namespace,
+          siteId,
+          active: true,
+          init: false,
+        },
+      });
 };
 
-
 Meteor.methods({
+  activateExtension({ name, siteId }) {
+    const userId = this.userId;
+    checkSiteIdOwnership(siteId, userId);
+
+    const settings = settingsLive.findOne({
+      'woronaInfo.name': name,
+      'woronaInfo.siteId': siteId,
+    }, { fields: { _id: 1 }});
+
+    if (settings) {
+      settingsLive.update(settings._id, { $set: { 'woronaInfo.active': true }});
+    } else {
+      addSettings({ name, siteId });
+    }
+  },
+
   saveSettings(settings) {
     const userId = this.userId;
     const name = settings.woronaInfo.name;
@@ -37,14 +58,19 @@ Meteor.methods({
     delete newSettingData.woronaInfo;
     newSettingData['woronaInfo.init'] = true;
 
-    const id = settingsLive.findOne({ 'woronaInfo.name': name, 'woronaInfo.siteId': siteId })._id;
+    const id = settingsLive.findOne({
+      'woronaInfo.name': name,
+      'woronaInfo.siteId': siteId,
+    })._id;
 
     purgeSite(siteId);
 
     return settingsLive.update(id, { $set: newSettingData });
   },
 
-  addSettings(options) { return addSettings(options); },
+  addSettings(options) {
+    return addSettings(options);
+  },
 
   addDefaultSettings(siteId) {
     defaultSettings.forEach(pkg => {
