@@ -31,16 +31,38 @@ Meteor.methods({
     const userId = this.userId;
     checkSiteIdOwnership(siteId, userId);
 
-    const settings = settingsLive.findOne({
-      'woronaInfo.name': name,
-      'woronaInfo.siteId': siteId,
-    }, { fields: { _id: 1 }});
+    const settings = settingsLive.findOne(
+      {
+        'woronaInfo.name': name,
+        'woronaInfo.siteId': siteId,
+      },
+      { fields: { _id: 1 } }
+    );
 
     if (settings) {
-      settingsLive.update(settings._id, { $set: { 'woronaInfo.active': true }});
+      settingsLive.update(settings._id, { $set: { 'woronaInfo.active': true } });
     } else {
       addSettings({ name, siteId });
     }
+  },
+
+  deactivateExtension({ name, siteId }) {
+    const userId = this.userId;
+    checkSiteIdOwnership(siteId, userId);
+
+    const settings = settingsLive.findOne(
+      {
+        'woronaInfo.name': name,
+        'woronaInfo.siteId': siteId,
+      },
+      { fields: { _id: 1 } }
+    );
+
+    if (settings) {
+      settingsLive.update(settings._id, { $set: { 'woronaInfo.active': false } });
+      return true;
+    }
+    return new Meteor.Error('Trying to deactivate non-existing package.');
   },
 
   saveSettings(settings) {
