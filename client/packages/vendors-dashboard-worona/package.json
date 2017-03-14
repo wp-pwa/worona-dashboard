@@ -52,7 +52,7 @@
     "stringify-error-message": "1.0.2",
     "superagent": "2.3.0",
     "webpack": "1.13.3",
-    "worona-deps": "1.9.1",
+    "worona-deps": "^1.11.1",
     "worona-polyfills": "1.0.0"
   }
 }
