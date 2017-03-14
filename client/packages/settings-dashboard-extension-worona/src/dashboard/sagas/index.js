@@ -12,10 +12,17 @@ import defaultSettings from './defaultSettings';
 
 const env = isDev ? 'dev' : 'prod';
 
-export function* requestPackage({ fields: { name } }) {
+export function* activatePackage({ fields: { name } }) {
   const pkgs = yield select(selectors.getPackageCollection);
   const pkg = find(pkgs, pkgObj => pkgObj.name === name);
   yield put(deps.actions.packageActivationRequested({ pkg }));
+}
+
+export function* deactivatePackage({ id }) {
+  const pkgs = yield select(selectors.getPackageCollection);
+  debugger;
+  const pkg = find(pkgs, pkgObj => pkgObj.id === id);
+  yield put(deps.actions.packageDeactivationRequested({ pkg }));
 }
 
 export function* requestPackages() {
@@ -28,7 +35,11 @@ export function* requestPackages() {
 
   yield takeEvery(({ type, collection, event }) =>
     type === deps.types.COLLECTION_MODIFIED && collection === 'packages' && event === 'added',
-    requestPackage
+    activatePackage
+  );
+  yield takeEvery(({ type, collection, event }) =>
+    type === deps.types.COLLECTION_MODIFIED && collection === 'packages' && event === 'removed',
+    deactivatePackage
   );
 }
 
