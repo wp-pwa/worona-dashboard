@@ -1,6 +1,6 @@
 import { getDevelopmentPackages } from 'worona-deps';
 import { combineReducers } from 'redux';
-import { map, filter } from 'lodash';
+import { map } from 'lodash';
 import update from 'react/lib/update';
 import * as types from '../types';
 
@@ -56,8 +56,6 @@ export const activated = (state = defaultActivated, { type, pkg }) => {
   switch (type) {
     case types.PACKAGE_ACTIVATION_SUCCEED:
       return update(state, { $merge: { [pkg.namespace]: pkg.name } });
-    case types.PACKAGE_DEACTIVATION_SUCCEED:
-      return filter(state, item => item.name === pkg.name);
     default:
       return state;
   }
