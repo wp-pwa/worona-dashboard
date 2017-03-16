@@ -19,6 +19,7 @@ Meteor.publish('app-settings-live', ({ siteId }) => {
   return settingsLive.find({
     'woronaInfo.siteId': { $in: [siteId] },
     'woronaInfo.name': { $in: pkgs.map(pkg => pkg.name) },
+    'woronaInfo.active': true,
   });
 });
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import update from 'react/lib/update';
-import { mapValues } from 'lodash';
+import { mapValues, pickBy } from 'lodash';
 import { flow, keyBy, mapValues as mapValuesFp } from 'lodash/fp';
 import * as types from '../types';
 
@@ -23,6 +23,8 @@ export default (state = {}, action) => {
           mapValuesFp(() => false),
         )(item));
       return update(state, { $merge: { [action.pkg.name]: pkgAssets } });
+    case types.PACKAGE_ASSETS_UNLOAD_REQUESTED:
+      return pickBy(state, (value, key) => key !== action.pkg.name);
     case types.PACKAGE_ASSET_FILE_DOWNLOADED:
       return update(state, {
         $merge: { [action.pkgName]: { [action.assetType]: { [action.path]: true } } },

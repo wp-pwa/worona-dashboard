@@ -70,3 +70,7 @@ export const packageAssetsLoadFailed = ({ pkg, error }) => ({
   pkg,
   error,
 });
+export const packageAssetsUnloadRequested = ({ pkg }) => ({
+  type: types.PACKAGE_ASSETS_UNLOAD_REQUESTED,
+  pkg,
+});

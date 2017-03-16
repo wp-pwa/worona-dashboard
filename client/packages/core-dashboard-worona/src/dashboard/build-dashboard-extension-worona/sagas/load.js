@@ -43,6 +43,7 @@ export function* packageUnloadSaga({ pkg }) {
   try {
     yield call(removeReducer, pkg.namespace);
     yield call(stopSaga, pkg.namespace);
+    yield put(actions.packageAssetsUnloadRequested({ pkg }));
     yield put(actions.packageDeactivationSucceed({ pkg }));
   } catch (error) {
     yield put(actions.packageDeactivationFailed({ error: error.message, pkg }));
