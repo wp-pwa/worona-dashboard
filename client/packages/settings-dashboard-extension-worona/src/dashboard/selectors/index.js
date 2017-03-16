@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSelector } from 'reselect';
-import { findIndex, findKey, forEach } from 'lodash';
+import { findIndex, findKey, forEach, find } from 'lodash';
 import { flow, map, sortBy, groupBy, filter } from 'lodash/fp';
 import * as deps from '../deps';
 
@@ -18,8 +18,9 @@ export const getCategories = createSelector(
   getSettingsLiveCollection,
   getPackageCollection,
   getDevPackageCollection,
+  deps.selectors.getActivatedPackages,
   deps.selectors.getSelectedSiteId,
-  (service, settings, packages, devPackages, siteId) => {
+  (service, settings, packages, devPackages, activated, siteId) => {
     const pkgsWithSettings = flow(
       filter(item => item.woronaInfo.siteId === siteId),
       map(item => packages[findIndex(packages, pkg =>
@@ -27,6 +28,7 @@ export const getCategories = createSelector(
       )]),
       filter(item => typeof item !== 'undefined'),
       filter(item => item.dashboard.menu[service] !== undefined),
+      filter(item => !!find(activated, name => name === item.name)),
       map(item => ({ name: item.name, menu: item.dashboard.menu[service] })),
       sortBy(item => item.menu.order),
       groupBy(item => item.menu.category),
