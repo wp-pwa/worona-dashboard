@@ -10,7 +10,7 @@ const RootContainer = ({ children, mobilePreview, packageNiceName, service }) =>
   <div className="columns is-mobile" >
     <Helmet title={`Worona Dashboard - ${capitalize(service)} - ${packageNiceName}`} />
     <AsideMenu />
-    <div className="column content">
+    <div className="column">
       {children}
     </div>
     {mobilePreview && <MobilePreview />}
