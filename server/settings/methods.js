@@ -99,14 +99,19 @@ Meteor.methods({
     delete newSettingData.woronaInfo;
     newSettingData['woronaInfo.init'] = true;
 
-    const id = settingsLive.findOne({
+    const previousSettings = settingsLive.findOne({
       'woronaInfo.name': name,
       'woronaInfo.siteId': siteId,
-    })._id;
+    });
 
     purgeSite(siteId);
 
-    return settingsLive.update(id, { $set: newSettingData });
+    if (previousSettings) {
+      settingsLive.update(previousSettings._id, { $set: newSettingData });
+    } else {
+      const id = addSettings({ name, siteId });
+      settingsLive.update(id, { $set: newSettingData });
+    }
   },
 
   addSettings(options) {
