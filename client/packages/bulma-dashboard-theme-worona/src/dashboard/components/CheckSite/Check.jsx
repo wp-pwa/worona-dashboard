@@ -237,6 +237,6 @@ Check.propTypes = {
 };
 
 const mapStateToCheckProps = (state, ownProps) => ({
-  status: deps.selectors.getCheckSite(state, ownProps.checkType),
+  status: deps.selectorCreators.getCheckSite(ownProps.checkType)(state),
 });
 export default flow(connect(mapStateToCheckProps), translate('theme'))(Check);

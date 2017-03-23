@@ -145,9 +145,6 @@ export const selectors = {
   get getSelectedPackage() {
     return dep('settings', 'selectors', 'getSelectedPackage');
   },
-  get getCheckSite() {
-    return dep('sites', 'selectors', 'getCheckSite');
-  },
   get getSelectedPackageIsActivated() {
     return dep('settings', 'selectors', 'getSelectedPackageIsActivated');
   },
@@ -159,6 +156,9 @@ export const selectors = {
 export const selectorCreators = {
   get getUrlQuery() {
     return dep('router', 'selectorCreators', 'getUrlQuery');
+  },
+  get getCheckSite() {
+    return dep('router', 'selectorCreators', 'getCheckSite');
   },
 };
 
