@@ -39,26 +39,27 @@ Meteor.methods({
       { fields: { _id: 1 } },
     );
 
-    if (settings) {
-      // Check if other package with the same namespace is activated.
-      const newPkg = packages.findOne({ name });
-      if (newPkg.app && newPkg.app.namespace) {
-        const oldPkgs = packages
-          .find({ name: { $ne: name }, 'app.namespace': newPkg.app.namespace })
-          .fetch();
-        for (const oldPkg of oldPkgs) {
-          const oldSettings = settingsLive.findOne(
-            {
-              'woronaInfo.name': oldPkg.name,
-              'woronaInfo.siteId': siteId,
-            },
-            { fields: { 'woronaInfo.active': 1 } },
-          );
-          if (oldSettings.woronaInfo.active === true) {
-            Meteor.call('deactivatePackage', { name: oldPkg.name, siteId });
-          }
+    // Check if other package with the same namespace is activated.
+    const newPkg = packages.findOne({ name });
+    if (newPkg.app && newPkg.app.namespace) {
+      const oldPkgs = packages
+        .find({ name: { $ne: name }, 'app.namespace': newPkg.app.namespace })
+        .fetch();
+      for (const oldPkg of oldPkgs) {
+        const oldSettings = settingsLive.findOne(
+          {
+            'woronaInfo.name': oldPkg.name,
+            'woronaInfo.siteId': siteId,
+          },
+          { fields: { 'woronaInfo.active': 1 } },
+        );
+        if (oldSettings && oldSettings.woronaInfo.active === true) {
+          Meteor.call('deactivatePackage', { name: oldPkg.name, siteId });
         }
       }
+    }
+
+    if (settings) {
       settingsLive.update(settings._id, { $set: { 'woronaInfo.active': true } });
     } else {
       addSettings({ name, siteId });

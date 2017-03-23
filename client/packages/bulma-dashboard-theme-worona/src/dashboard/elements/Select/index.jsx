@@ -12,14 +12,16 @@ const Select = ({ input, name, size, options, label }) => (
       </span>
     </p>
   </div>
- );
+);
 
 Select.propTypes = {
   name: React.PropTypes.string,
-  input: React.PropTypes.object,
+  input: React.PropTypes.shape({}),
   label: React.PropTypes.string,
   size: React.PropTypes.string,
-  options: React.PropTypes.arrayOf(React.PropTypes.number),
+  options: React.PropTypes.arrayOf(
+    React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
+  ),
 };
 
 export default Select;

@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { find } from 'lodash';
 import { mock, isTest } from 'worona-deps';
 import { createSelector } from 'reselect';
 import * as deps from '../deps';
@@ -16,23 +16,14 @@ export const getEditSiteError = state => state.sites.editSiteError;
 export const getAllSites = state => state.sites.collection;
 export const getIsReadySites = state => state.sites.isReady;
 
-export const getSite = id => createSelector(
-  getAllSites,
-  sites => _.find(sites, site => site.id === id)
-);
-
 export const getSelectedSite = createSelector(
   deps.selectors.getSelectedSiteId,
   getAllSites,
-  (id, sites) => (id ? _.find(sites, site => site.id === id) : {})
+  (id, sites) => id ? find(sites, site => site.id === id) : {},
 );
 
 export const getNewSiteInfo = state => state.sites.newSiteInfo;
 
-export const getCheckSiteObj = (state) => state.sites.checkSite;
-export const getCheckSite = (state, id) => state.sites.checkSite[id];
+export const getCheckSiteObj = state => state.sites.checkSite;
 
-export const getIsReadySelectedSite = createSelector(
-  getSelectedSite,
-  (site) => (!!site)
-);
+export const getIsReadySelectedSite = createSelector(getSelectedSite, site => !!site);
