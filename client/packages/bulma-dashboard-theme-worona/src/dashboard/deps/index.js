@@ -158,7 +158,7 @@ export const selectorCreators = {
     return dep('router', 'selectorCreators', 'getUrlQuery');
   },
   get getCheckSite() {
-    return dep('router', 'selectorCreators', 'getCheckSite');
+    return dep('sites', 'selectorCreators', 'getCheckSite');
   },
 };
 
