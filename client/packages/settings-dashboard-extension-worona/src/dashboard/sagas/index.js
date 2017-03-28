@@ -12,9 +12,20 @@ import defaultSettings from './defaultSettings';
 
 const env = isDev ? 'dev' : 'prod';
 
-export function* activatePackage({ fields: { name } }) {
-  const pkgs = yield select(selectors.getPackageCollection);
-  const pkg = find(pkgs, pkgObj => pkgObj.name === name);
+export function* activatePackage({ fields: { woronaInfo: { name } } }) {
+  let pkgs = yield select(selectors.getPackageCollection);
+  let pkg = find(pkgs, pkgObj => pkgObj.name === name);
+  if (typeof pkg === 'undefined') {
+    yield take(
+      ({ type, collection, event, fields }) =>
+        type === deps.types.COLLECTION_MODIFIED &&
+        collection === 'packages' &&
+        event === 'added' &&
+        fields.name === name,
+    );
+    pkgs = yield select(selectors.getPackageCollection);
+    pkg = find(pkgs, pkgObj => pkgObj.name === name);
+  }
   yield put(deps.actions.packageActivationRequested({ pkg }));
 }
 
@@ -24,11 +35,13 @@ export function* deactivatePackages() {
     const { added, removed } = yield race({
       added: take(
         ({ type, collection, event }) =>
-        type === deps.types.COLLECTION_MODIFIED && collection === 'packages' && event === 'added'
+          type === deps.types.COLLECTION_MODIFIED && collection === 'packages' && event === 'added',
       ),
       removed: take(
         ({ type, collection, event }) =>
-        type === deps.types.COLLECTION_MODIFIED && collection === 'packages' && event === 'removed'
+          type === deps.types.COLLECTION_MODIFIED &&
+          collection === 'packages' &&
+          event === 'removed',
       ),
     });
     if (added) {
@@ -45,7 +58,7 @@ export function* requestPackages() {
     call(
       deps.sagaHelpers.waitForReady,
       'dashboard-settings-live',
-      selectors.getSettingsLiveIsReady
+      selectors.getSettingsLiveIsReady,
     ),
     call(deps.sagaHelpers.waitForReady, 'packages', selectors.getPackageIsReady),
   ];
@@ -54,8 +67,10 @@ export function* requestPackages() {
 
   yield takeEvery(
     ({ type, collection, event }) =>
-      type === deps.types.COLLECTION_MODIFIED && collection === 'packages' && event === 'added',
-    activatePackage
+      type === deps.types.COLLECTION_MODIFIED &&
+      collection === 'settings-live' &&
+      event === 'added',
+    activatePackage,
   );
 }
 
