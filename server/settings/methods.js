@@ -64,6 +64,8 @@ Meteor.methods({
     } else {
       addSettings({ name, siteId });
     }
+
+    purgeSite(siteId);
   },
 
   deactivatePackage({ name, siteId }) {
