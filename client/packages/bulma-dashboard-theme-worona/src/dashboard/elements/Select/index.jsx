@@ -8,7 +8,7 @@ const Select = ({ input, name, size, options, label, values = [] }) => (
       <span className={cx('select', size && `is-${size}`)}>
         <select {...input}>
           {options.map((option, index) => (
-            <option values={values[index] || option} key={index}>
+            <option value={values[index] || option} key={index}>
               {option}
             </option>
           ))}
