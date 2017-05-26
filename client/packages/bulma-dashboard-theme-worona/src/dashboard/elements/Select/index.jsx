@@ -1,13 +1,17 @@
 import React from 'react';
 import cx from 'classnames';
 
-const Select = ({ input, name, size, options, label }) => (
+const Select = ({ input, name, size, options, label, values = [] }) => (
   <div>
     {label && <label className="label" htmlFor={name}>{label}</label>}
     <p className="control">
       <span className={cx('select', size && `is-${size}`)}>
         <select {...input}>
-          {options.map((option, index) => <option key={index}>{option}</option>)}
+          {options.map((option, index) => (
+            <option values={values[index] || option} key={index}>
+              {option}
+            </option>
+          ))}
         </select>
       </span>
     </p>
@@ -20,7 +24,10 @@ Select.propTypes = {
   label: React.PropTypes.string,
   size: React.PropTypes.string,
   options: React.PropTypes.arrayOf(
-    React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
+    React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string])
+  ),
+  values: React.PropTypes.arrayOf(
+    React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string])
   ),
 };
 
