@@ -1,6 +1,6 @@
 {
   "name": "gtm-dashboard-extension-worona",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Extension for Google Tag Manager stuff.",
   "scripts": {
     "test": "NODE_PATH=../core-dashboard-worona/node_modules ava src/dashboard/tests/**/*.js --watch --verbose --require babel-register --require babel-polyfill"
