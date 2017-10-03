@@ -14,16 +14,17 @@ import Icon from '../../elements/Icon';
 import Button from '../../elements/Button';
 import * as actions from '../../actions';
 import MobileMenu from './MobileMenu';
+import { getAppUrl } from '../../elements/MobilePreview';
 
 let SiteHomeHeader = ({ name, id, url, isEditable = true }) => (
   <Hero
-    title={(
+    title={
       <span>
         {name}
         &nbsp;
         {isEditable && <EditSiteLink id={id} />}
       </span>
-    )}
+    }
     subtitle={
       <span>
         <small>{id}</small>
@@ -33,7 +34,7 @@ let SiteHomeHeader = ({ name, id, url, isEditable = true }) => (
     }
   />
 );
-const mapSiteHeaderToState = (state) => ({
+const mapSiteHeaderToState = state => ({
   ...deps.selectors.getSelectedSite(state),
 });
 SiteHomeHeader.propTypes = {
@@ -54,7 +55,7 @@ const mapRootToState = state => ({
 });
 Root = connect(mapRootToState)(Root);
 
-let MobileMenuBar = ({ toggleSiteHomeMobileMenu, siteId }) => (
+let MobileMenuBar = ({ toggleSiteHomeMobileMenu, siteId, appUrl }) => (
   <nav className="nav has-shadow is-hidden-tablet">
     <div className="nav-left">
       <span className="nav-item">
@@ -68,7 +69,7 @@ let MobileMenuBar = ({ toggleSiteHomeMobileMenu, siteId }) => (
       <span className="nav-item">
         <a
           target="_blank"
-          href={`https://app.worona.org/?siteId=${siteId}&preview=true`}
+          href={`https://${appUrl}/?siteId=${siteId}&preview=true`}
           rel="noreferrer noopener"
           className="button is-primary"
         >
@@ -84,18 +85,27 @@ let MobileMenuBar = ({ toggleSiteHomeMobileMenu, siteId }) => (
 MobileMenuBar.propTypes = {
   toggleSiteHomeMobileMenu: React.PropTypes.func.isRequired,
   siteId: React.PropTypes.string.isRequired,
+  appUrl: React.PropTypes.string.isRequired,
 };
 
-const mapStateToMobileMenuProps = (state) => ({
+const mapStateToMobileMenuProps = state => ({
   siteId: deps.selectors.getSelectedSiteId(state),
+  site: deps.selectors.getSelectedSite(state),
 });
 
-const mapDispatchToMobileMenuProps = (dispatch) => ({
+const mapDispatchToMobileMenuProps = dispatch => ({
   toggleSiteHomeMobileMenu: () => dispatch(actions.toggleSiteHomeMobileMenu()),
 });
 
-MobileMenuBar = connect(mapStateToMobileMenuProps, mapDispatchToMobileMenuProps)(MobileMenuBar);
+const mergeProps = ({ siteId, site }, { toggleSiteHomeMobileMenu }) => ({
+  siteId,
+  toggleSiteHomeMobileMenu,
+  appUrl: getAppUrl({ type: (typeof site === 'object' && site.type) || 'app' }),
+});
 
+MobileMenuBar = connect(mapStateToMobileMenuProps, mapDispatchToMobileMenuProps, mergeProps)(
+  MobileMenuBar
+);
 
 const SiteHome = () => (
   <Body>

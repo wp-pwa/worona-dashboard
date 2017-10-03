@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as deps from '../../deps';
 
-const MobilePreview = ({ site: { id }, app }) => (
+const MobilePreview = ({ site: { id }, appUrl, type }) => (
   <div className="is-hidden-touch column is-4 has-text-centered" style={{ minWidth: '355px' }}>
     <svg
       width="355px"
@@ -13,9 +13,7 @@ const MobilePreview = ({ site: { id }, app }) => (
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
-      <title>
-        iPhone 6
-      </title>
+      <title>iPhone 6</title>
       <desc>Wireframe</desc>
       <defs>
         <path
@@ -194,27 +192,45 @@ const MobilePreview = ({ site: { id }, app }) => (
       </g>
       <foreignObject x="15" y="72" width="327" height="511">
         <iframe
-          src={`https://${app}.worona.org/?siteId=${id}&preview=true`}
+          src={`https://${appUrl}/?siteId=${id}&preview=true`}
           style={{ width: '327px', height: '511px' }}
         />
       </foreignObject>
     </svg>
+    {type === 'pwa' && (
+      <div
+        className="notification is-warning"
+        style={{
+          maxWidth: '270px',
+          margin: 'auto',
+          marginTop: '15px',
+        }}
+      >
+        The <strong>progressive web app</strong> is aggressively cached and can take up to 15
+        minutes to update.
+      </div>
+    )}
   </div>
 );
 MobilePreview.propTypes = {
   site: React.PropTypes.shape({
     id: React.PropTypes.string.isRequired,
   }).isRequired,
-  app: React.PropTypes.string.isRequired,
+  appUrl: React.PropTypes.string.isRequired,
+  type: React.PropTypes.string,
+};
+
+export const getAppUrl = ({ type }) => {
+  const isPre =
+    window.location.host.startsWith('predashboard') || window.location.host.startsWith('localhost');
+  const isPwa = type === 'pwa';
+  return `${isPre ? 'pre' : ''}${isPwa ? 'pwa' : 'app'}.worona.${isPwa ? 'io' : 'org'}`;
 };
 
 const mapStateToProps = state => ({
   site: deps.selectors.getSelectedSite(state),
-  app: (
-    window.location.host.startsWith('predashboard') || window.location.host.startsWith('localhost')
-      ? 'preapp'
-      : 'app'
-  ),
+  appUrl: getAppUrl({ type: deps.selectors.getSelectedSite(state).type }),
+  type: deps.selectors.getSelectedSite(state).type || 'app',
 });
 
 export default connect(mapStateToProps)(MobilePreview);
