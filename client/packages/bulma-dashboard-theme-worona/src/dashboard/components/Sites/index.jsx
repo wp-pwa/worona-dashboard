@@ -10,7 +10,8 @@ import Main from '../Main';
 import Hero from '../../elements/Hero';
 
 import SitesList from './SitesList';
-import AddSiteNav from './AddSiteNav';
+import Announcement from '../Announcement';
+// import AddSiteNav from './AddSiteNav';
 
 const Sites = () => (
   <Body>
@@ -25,7 +26,8 @@ const Sites = () => (
       />
     </Header>
 
-    <AddSiteNav />
+    {/* <AddSiteNav /> */}
+    <Announcement />
     <Main waitForSelectors={[deps.selectors.getIsReadySites]}>
       <SitesList />
     </Main>

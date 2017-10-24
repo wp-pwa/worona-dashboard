@@ -13,7 +13,6 @@ const submit = (values, dispatch) => {
 };
 
 const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) => (
-
   <div className="container">
     <div className="columns">
       <div className="column is-half is-offset-one-quarter">
@@ -46,18 +45,16 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) =>
                 <div className="message-body has-text-centered">
                   <strong>{t(statusMessage)}</strong>
                 </div>
-              </article>)
-               : null
-             }
+              </article>
+            ) : null}
 
             {errorMessage ? (
               <article className="message is-danger">
                 <div className="message-body has-text-centered">
                   <strong>{t(errorMessage)}</strong>
                 </div>
-              </article>)
-               : null
-             }
+              </article>
+            ) : null}
 
             <div className="level">
               <div className="level-left">
@@ -71,18 +68,14 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) =>
                 >
                   <strong>Login</strong>
                 </Button>
-
-
               </div>
-              <div className="level-right">
+              {/* <div className="level-right">
                 <Link to="/register">
                   Don&apos;t have an account? Register
                 </Link>
-              </div>
+              </div> */}
               <div className="level-right">
-                <Link to="/forgot-password">
-                  Forgot password?
-                </Link>
+                <Link to="/forgot-password">Forgot password?</Link>
               </div>
             </div>
           </form>
@@ -94,15 +87,9 @@ const LoginForm = ({ handleSubmit, waiting, statusMessage, errorMessage, t }) =>
 LoginForm.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool.isRequired,
-  statusMessage: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.bool,
-  ]),
-  errorMessage: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.bool,
-  ]),
-  t: React.PropTypes.func,
+  statusMessage: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.bool]),
+  errorMessage: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.bool]),
+  t: React.PropTypes.func
 };
 
 const LoginTranslated = translate('accounts')(LoginForm);
@@ -110,11 +97,11 @@ const LoginTranslated = translate('accounts')(LoginForm);
 const LoginWithForm = reduxForm({
   form: 'login',
   validate,
-  getFormState: state => state.theme.reduxForm,
+  getFormState: state => state.theme.reduxForm
 })(LoginTranslated);
 
 export default connect(state => ({
   waiting: deps.selectors.getIsLoggingIn(state),
   statusMessage: deps.selectors.getLoginStatus(state),
-  errorMessage: deps.selectors.getLoginError(state),
+  errorMessage: deps.selectors.getLoginError(state)
 }))(LoginWithForm);
