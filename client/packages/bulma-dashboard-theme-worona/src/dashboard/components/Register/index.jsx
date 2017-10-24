@@ -15,6 +15,7 @@ import FooterLinks from '../Footer/FooterLinks';
 import Hero from '../../elements/Hero';
 import Input from '../../elements/Input';
 import Button from '../../elements/Button';
+import Announcement from '../Announcement';
 
 const submit = (values, dispatch) => {
   dispatch(deps.actions.createAccountRequested(values.name, values.email, values.password));
@@ -32,13 +33,12 @@ const Register = ({ t, handleSubmit, waiting, statusMessage, errorMessage }) => 
         }
       />
     </Header>
-
+    <Announcement />
     <Main>
       <div className="container">
         <div className="columns">
           <div className="column is-half is-offset-one-quarter">
             <form onSubmit={handleSubmit(submit)}>
-
               <Field
                 name="name"
                 label="Name"
@@ -86,18 +86,16 @@ const Register = ({ t, handleSubmit, waiting, statusMessage, errorMessage }) => 
                   <div className="message-body has-text-centered">
                     <strong>{t(statusMessage)}</strong>
                   </div>
-                </article>)
-                 : null
-               }
+                </article>
+              ) : null}
 
               {errorMessage ? (
                 <article className="message is-danger">
                   <div className="message-body has-text-centered">
                     <strong>{t(errorMessage)}</strong>
                   </div>
-                </article>)
-                 : null
-               }
+                </article>
+              ) : null}
 
               <div className="level">
                 <div className="level-left">
@@ -113,12 +111,9 @@ const Register = ({ t, handleSubmit, waiting, statusMessage, errorMessage }) => 
                 </div>
 
                 <div className="level-right">
-                  <Link to="/login">
-                    Already have an account? Login
-                  </Link>
+                  <Link to="/login">Already have an account? Login</Link>
                 </div>
               </div>
-
             </form>
           </div>
         </div>
@@ -128,22 +123,15 @@ const Register = ({ t, handleSubmit, waiting, statusMessage, errorMessage }) => 
     <Footer>
       <FooterLinks />
     </Footer>
-
   </Body>
 );
 
 Register.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
   waiting: React.PropTypes.bool,
-  statusMessage: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.bool,
-  ]),
-  errorMessage: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.bool,
-  ]),
-  t: React.PropTypes.func,
+  statusMessage: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.bool]),
+  errorMessage: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.bool]),
+  t: React.PropTypes.func
 };
 
 const RegisterTranslated = translate('accounts')(Register);
@@ -151,14 +139,14 @@ const RegisterTranslated = translate('accounts')(Register);
 const RegisterWithForm = reduxForm({
   form: 'register',
   validate,
-  getFormState: state => state.theme.reduxForm,
+  getFormState: state => state.theme.reduxForm
 })(RegisterTranslated);
 
 const mapStateToProps = state => ({
   waiting: deps.selectors.getIsCreatingAccount(state),
   statusMessage: deps.selectors.getCreateAccountStatus(state),
   errorMessage: deps.selectors.getCreateAccountError(state),
-  initialValues: deps.selectors.getUrlQueries(state),
+  initialValues: deps.selectors.getUrlQueries(state)
 });
 
 export default connect(mapStateToProps)(RegisterWithForm);

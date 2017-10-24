@@ -66,13 +66,13 @@ export const routes = store => (
       title="Login"
       onEnter={dontRequireAuth(store)}
     />
-    {/* <Route
-      path="register"
+    <Route
+      path="costumers"
       component={Entry}
       wrapped="Register"
       title="Register"
       onEnter={dontRequireAuth(store)}
-    /> */}
+    />
     <Redirect from="/register" to="/login" />
     <Route
       path="forgot-password"
