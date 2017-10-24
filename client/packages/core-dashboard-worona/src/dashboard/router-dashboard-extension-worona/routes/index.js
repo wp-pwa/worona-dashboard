@@ -67,7 +67,7 @@ export const routes = store => (
       onEnter={dontRequireAuth(store)}
     />
     <Route
-      path="costumers"
+      path="clients"
       component={Entry}
       wrapped="Register"
       title="Register"
