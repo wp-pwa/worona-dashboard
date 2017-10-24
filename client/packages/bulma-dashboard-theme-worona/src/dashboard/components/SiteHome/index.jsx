@@ -14,6 +14,7 @@ import Icon from '../../elements/Icon';
 import Button from '../../elements/Button';
 import * as actions from '../../actions';
 import MobileMenu from './MobileMenu';
+import Announcement from '../Announcement';
 import { getAppUrl } from '../../elements/MobilePreview';
 
 let SiteHomeHeader = ({ name, id, url, isEditable = true }) => (
@@ -35,13 +36,13 @@ let SiteHomeHeader = ({ name, id, url, isEditable = true }) => (
   />
 );
 const mapSiteHeaderToState = state => ({
-  ...deps.selectors.getSelectedSite(state),
+  ...deps.selectors.getSelectedSite(state)
 });
 SiteHomeHeader.propTypes = {
   name: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
   url: React.PropTypes.string.isRequired,
-  isEditable: React.PropTypes.bool,
+  isEditable: React.PropTypes.bool
 };
 SiteHomeHeader = connect(mapSiteHeaderToState)(SiteHomeHeader);
 
@@ -51,7 +52,7 @@ let Root = ({ namespace }) => {
 };
 Root.propTypes = { namespace: React.PropTypes.string.isRequired };
 const mapRootToState = state => ({
-  namespace: deps.selectors.getSelectedPackage(state).namespace,
+  namespace: deps.selectors.getSelectedPackage(state).namespace
 });
 Root = connect(mapRootToState)(Root);
 
@@ -85,22 +86,22 @@ let MobileMenuBar = ({ toggleSiteHomeMobileMenu, siteId, appUrl }) => (
 MobileMenuBar.propTypes = {
   toggleSiteHomeMobileMenu: React.PropTypes.func.isRequired,
   siteId: React.PropTypes.string.isRequired,
-  appUrl: React.PropTypes.string.isRequired,
+  appUrl: React.PropTypes.string.isRequired
 };
 
 const mapStateToMobileMenuProps = state => ({
   siteId: deps.selectors.getSelectedSiteId(state),
-  site: deps.selectors.getSelectedSite(state),
+  site: deps.selectors.getSelectedSite(state)
 });
 
 const mapDispatchToMobileMenuProps = dispatch => ({
-  toggleSiteHomeMobileMenu: () => dispatch(actions.toggleSiteHomeMobileMenu()),
+  toggleSiteHomeMobileMenu: () => dispatch(actions.toggleSiteHomeMobileMenu())
 });
 
 const mergeProps = ({ siteId, site }, { toggleSiteHomeMobileMenu }) => ({
   siteId,
   toggleSiteHomeMobileMenu,
-  appUrl: getAppUrl({ type: (typeof site === 'object' && site.type) || 'app' }),
+  appUrl: getAppUrl({ type: (typeof site === 'object' && site.type) || 'app' })
 });
 
 MobileMenuBar = connect(mapStateToMobileMenuProps, mapDispatchToMobileMenuProps, mergeProps)(
@@ -114,11 +115,11 @@ const SiteHome = () => (
       <ServiceTabs />
     </Header>
     <MobileMenuBar />
-
+    <Announcement />
     <Main
       waitForSelectors={[
         deps.selectors.getIsReadySelectedSite,
-        deps.selectors.getSelectedPackageIsActivated,
+        deps.selectors.getSelectedPackageIsActivated
       ]}
     >
       <Root />
