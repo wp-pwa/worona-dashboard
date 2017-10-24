@@ -9,7 +9,7 @@ import CssLoader from '../components/CssLoader';
 import * as deps from '../deps';
 
 const mapStateToProps = state => ({
-  themeName: deps.selectors.getThemeName(state),
+  themeName: deps.selectors.getThemeName(state)
 });
 
 class ThemeLoaderClass extends React.Component {
@@ -46,7 +46,7 @@ const requireAuth = store => (nextState, replace) => {
   if (!accounts || !accounts.isLoggedIn) {
     replace({
       pathname: '/register',
-      query: { ...nextState.location.query, next: nextState.location.pathname },
+      query: { ...nextState.location.query, next: nextState.location.pathname }
     });
   }
 };
@@ -58,7 +58,7 @@ const dontRequireAuth = store => (nextState, replace) => {
 
 export const routes = store => (
   <Route path="/" component={ThemeLoader}>
-    <IndexRedirect to="/register" />
+    <IndexRedirect to="/login" />
     <Route
       path="login"
       component={Entry}
@@ -66,13 +66,14 @@ export const routes = store => (
       title="Login"
       onEnter={dontRequireAuth(store)}
     />
-    <Route
+    {/* <Route
       path="register"
       component={Entry}
       wrapped="Register"
       title="Register"
       onEnter={dontRequireAuth(store)}
-    />
+    /> */}
+    <Redirect from="/register" to="/login" />
     <Route
       path="forgot-password"
       component={Entry}
@@ -87,13 +88,14 @@ export const routes = store => (
       title="Recover Password"
       onEnter={dontRequireAuth(store)}
     />
-    <Route
+    {/* <Route
       path="add-site"
       component={Entry}
       wrapped="AddSite"
       title="Add Site"
       onEnter={requireAuth(store)}
-    />
+    /> */}
+    <Redirect from="/add-site" to="/sites" />
     <Route
       path="check-site/:siteId"
       component={Entry}
