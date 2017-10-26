@@ -88,14 +88,14 @@ export const routes = store => (
       title="Recover Password"
       onEnter={dontRequireAuth(store)}
     />
-    {/* <Route
+    <Route
       path="add-site"
       component={Entry}
       wrapped="AddSite"
       title="Add Site"
       onEnter={requireAuth(store)}
-    /> */}
-    <Redirect from="/add-site" to="/sites" />
+    />
+    {/* <Redirect from="/add-site" to="/sites" /> */}
     <Route
       path="check-site/:siteId"
       component={Entry}
