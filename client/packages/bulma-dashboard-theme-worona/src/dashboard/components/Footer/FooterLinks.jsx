@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import styles from './style.css';
 
 const FooterLinks = () => (
@@ -54,11 +55,11 @@ const FooterLinks = () => (
           </a>
         </li>
         <li>
-          <a href="https://www.facebook.com/getworona/" target="_blank" rel="noopener noreferrer">
+          <Link to={'/add-site'} >
             <span className="icon is-small"><i className="fa fa-facebook" /></span>
             &nbsp;
             <span>Facebook</span>
-          </a>
+          </Link>
         </li>
         <li>
           <a href="https://www.github.com/worona/" target="_blank" rel="noopener noreferrer">
