@@ -15,7 +15,7 @@ export const privateCreateSite = ({ name, url, _id, userId, isEditable }) => {
     ? user.profile.lastSiteNumber + 1
     : 1;
 
-  const data = { name, url, userIds: [userId], createdAt, modifiedAt, siteNumber };
+  const data = { name, url, userIds: [userId], createdAt, modifiedAt, siteNumber, type: 'pwa' };
   if (_id) data._id = _id;
   if (isEditable !== undefined) data.isEditable = isEditable;
   const siteId = sites.insert(data);

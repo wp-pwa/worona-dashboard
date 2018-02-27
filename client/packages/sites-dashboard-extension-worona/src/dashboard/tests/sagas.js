@@ -17,7 +17,7 @@ import * as errors from '../errors';
 
 test('createSiteSaga succeed', t => {
   const action = { name: 'name', url: 'url', _id: '1234' };
-  const finalURL = `/check-site/${action._id}`;
+  const finalURL = `/site/${action._id}`;
   const gen = createSiteSaga(action);
   t.deepEqual(gen.next().value, deps.sagaHelpers.waitForConnectionEstablished());
   t.deepEqual(gen.next().value, put(actions.createSiteStatusChanged(CREATING_SITE)));

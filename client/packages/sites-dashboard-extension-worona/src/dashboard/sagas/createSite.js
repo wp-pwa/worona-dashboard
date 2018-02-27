@@ -13,7 +13,7 @@ export function* createSiteSaga(action) {
     yield deps.sagaHelpers.waitForConnectionEstablished();
     const site = yield call(libs.createSite, { siteName, siteUrl, siteId });
     yield put(actions.createSiteSucceed(site));
-    yield call(deps.libs.push, `/check-site/${site._id}`);
+    yield call(deps.libs.push, `/site/${site._id}`);
   } catch (error) {
     yield put(actions.createSiteFailed(error));
   }

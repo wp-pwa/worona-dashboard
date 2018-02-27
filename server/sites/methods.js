@@ -14,7 +14,12 @@ Meteor.methods({
 
     const userId = checkUserLoggedIn(this.userId);
 
-    const newId = privateCreateSite({ name: siteName, url: siteUrl, _id: siteId, userId });
+    const newId = privateCreateSite({
+      name: siteName,
+      url: siteUrl,
+      _id: siteId,
+      userId,
+    });
 
     return sites.findOne(newId);
   },
@@ -49,7 +54,7 @@ Meteor.methods({
     purgeSite(siteId);
 
     return sites.update(siteId, {
-      $set: { name: siteName, url: siteUrl, modifiedAt },
+      $set: { name: siteName, url: siteUrl, modifiedAt }
     });
-  },
+  }
 });

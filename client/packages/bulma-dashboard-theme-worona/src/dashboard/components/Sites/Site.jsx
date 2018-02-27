@@ -18,7 +18,7 @@ const Site = ({ name, url, date, id, isEditable = true, status = {} }) => (
             ? <Link
               className="card-header-icon"
               style={{ color: 'red' }}
-              to={`/check-site/${id}`}
+              to={`/site/${id}`}
               role="button"
             >
               <i className="fa fa-exclamation-triangle" />
@@ -37,13 +37,13 @@ const Site = ({ name, url, date, id, isEditable = true, status = {} }) => (
         </div>
       </div>
       <footer className="card-footer">
-        <Link className="card-footer-item" to={`/check-site/${id}`} role="button">
+        <Link className="card-footer-item" to={`/site/${id}`} role="button">
           <Icon code="sliders" small />
           &nbsp;&nbsp;Configure
         </Link>
         <Link
           className="card-footer-item"
-          to={`/check-site/${id}?redirect=/app/publish-native-app-extension-worona`}
+          to={`/site/${id}`}
           role="button"
         >
           <Icon code="cloud-upload" small />

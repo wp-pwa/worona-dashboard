@@ -224,7 +224,7 @@ export const getAppUrl = ({ type }) => {
   const isPre =
     window.location.host.startsWith('predashboard') || window.location.host.startsWith('localhost');
   const isPwa = type === 'pwa';
-  return `${isPre ? 'pre' : ''}${isPwa ? 'pwa' : 'app'}.worona.${isPwa ? 'io' : 'org'}`;
+  return isPwa ? `${isPre ? 'pre' : ''}origin.wp-pwa.com` : `${isPre ? 'pre' : ''}app.worona.org`;
 };
 
 const mapStateToProps = state => ({

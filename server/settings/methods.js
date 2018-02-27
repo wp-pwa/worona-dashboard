@@ -62,7 +62,7 @@ Meteor.methods({
     if (settings) {
       settingsLive.update(settings._id, { $set: { 'woronaInfo.active': true } });
     } else {
-      addSettings({ name, siteId });
+      addSettings({ name, namespace: newPkg.dashboard.namespace, siteId });
     }
 
     purgeSite(siteId);

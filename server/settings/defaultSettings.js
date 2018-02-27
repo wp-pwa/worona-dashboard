@@ -4,8 +4,8 @@ const defaults = [
     namespace: 'generalApp',
   },
   {
-    name: 'starter-app-theme-worona',
-    namespace: 'starterTheme',
+    name: 'saturn-app-theme-worona',
+    namespace: 'saturnTheme',
   },
   {
     name: 'publish-native-app-extension-worona',
