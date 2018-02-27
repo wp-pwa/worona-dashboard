@@ -211,6 +211,19 @@ const MobilePreview = ({ site: { id }, appUrl, type }) => {
         >
           The <strong>progressive web app</strong> is aggressively cached and can take up to 15
           minutes to update.
+
+        </div>
+      )}
+      {type === 'pwa' && (
+        <div
+          className="notification is-primary"
+          style={{
+            maxWidth: '270px',
+            margin: 'auto',
+            marginTop: '15px',
+          }}
+        >
+          {`https://ssr.wp-pwa.com/?siteId=${id}&env=${isPre ? 'pre' : 'prod'}`}
         </div>
       )}
     </div>
